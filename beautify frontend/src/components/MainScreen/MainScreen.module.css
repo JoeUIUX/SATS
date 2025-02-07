@@ -1,0 +1,612 @@
+.mainScreen {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Ensure the main screen content shifts left when the sidebar is retracted */
+.content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+  text-align: right;
+  position: relative;
+}
+
+/* When sidebar is open, align content with sidebar */
+.sidebar:not(.hidden) ~ .content {
+  margin-left: 250px;
+}
+
+/* When sidebar is closed, shift page left */
+.sidebar.hidden ~ .content {
+  margin-left: 0;
+}
+
+/* Ensure Smooth Color Transition for Light/Dark Mode */
+body, 
+.sidebar, 
+.content, 
+.profileHeading, 
+.profileSubtext, 
+.menuItem, 
+.profileSidebarItem, 
+.profilesButton,
+.toggleButton, 
+.settingsButton, 
+.dropdownButton, 
+.addProfileButton, 
+.retractExpandSidebarButton {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Ensure Subtext Aligns with Main Heading */
+.profileSubtext {
+  text-align: left; /* Aligns text to the left */
+  margin-left: 0; /* Ensures it aligns with the main text */
+  padding-left: 10px; /* Adjust for consistency */
+  display: block; /* Ensures proper alignment under the heading */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--bg-color);
+  border-right: 2px solid var(--border-color);
+  transition: background-color 0.3s ease-in-out !important;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-bottom: 15px;
+  overflow: hidden; /* Prevent buttons from protruding */
+}
+
+/* Sidebar retracts */
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Expand Sidebar Button - Ensure It Appears When Sidebar is Hidden */
+.retractExpandSidebarButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 40px; /* Slightly larger for visibility */
+  height: 40px;
+  display: flex; /* Ensure it's always visible */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000; /* Keep it above other elements */
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Ensure Button is Visible When Sidebar is Hidden */
+.sidebar.hidden ~ .retractExpandSidebarButton {
+  display: flex !important;
+}
+
+/* Hover Effect */
+.retractExpandSidebarButton:hover {
+  background-color: #008c9e;
+}
+
+
+/* Triple Bar Button - Flush into the Background of the "Menu" Bar */
+.toggleButton {
+  font-size: 20px;
+  cursor: pointer;
+  background: none; /* Remove white container */
+  border: none; /* Remove border */
+  color: inherit; /* Match text color dynamically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Ensure the Button is Fully Integrated into the "Menu" Bar */
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #008c9e;
+  color: #ffffff;
+}
+
+/* Hover Effect for Better User Experience */
+.toggleButton:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  border-radius: 5px; /* Optional rounded hover effect */
+}
+
+
+/* Menu Items - Ensure Consistent Width & Alignment */
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.menuItem {
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease-in-out !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuItem:hover {
+  background-color: #409410;
+}
+
+/* Profiles Container - Ensure Full Left Alignment */
+.profileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 0; /* Ensure it matches other sidebar buttons */
+  margin-left: 0; /* Ensure full left alignment */
+}
+
+/* Profiles Button - Align with Sidebar Buttons */
+.profilesButton {
+  flex-grow: 1;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-color);
+  padding-left: 15px; /* Ensures it starts from the left edge */
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+
+/* Dropdown and Add Profile Buttons - Align & Add Hover Effects */
+.dropdownButton,
+.addProfileButton {
+    background-color: #00bcd4;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* Push buttons to the right */
+    transition: background-color 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Hover Effect for Dropdown and Add Profile Buttons */
+.dropdownButton:hover,
+.addProfileButton:hover {
+  background-color: #008c9e;
+  border-radius: 5px; /* Optional rounded hover effect */
+}
+
+/* Profile Dropdown - Ensure Alignment */
+.profileDropdown {
+  background-color: var(--bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure alignment */
+}
+
+/* Ensure the + button appears inside the dropdown */
+.profileDropdown .addProfileButton {
+  margin-top: 10px;
+  align-self: center;
+}
+
+/* Profile Button Group - Align with Triple Bar Button */
+.profileButtonGroup {
+  display: flex;
+  justify-content: flex-end; /* Ensures alignment to the right */
+  gap: 8px; /* Adds spacing between buttons */
+  margin-right: 15px; /* Aligns with the sidebar toggle button */
+}
+
+/* Created Profile Tabs - Full Left Alignment */
+.profileSidebarItem {
+  width: 100%;
+  padding: 15px 0; /* Match other sidebar buttons */
+  cursor: pointer;
+  background-color: var(--bg-color);
+  text-align: left;
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-left: 0 !important; /* Force alignment */
+  padding-left: 15px !important; /* Match sidebar buttons */
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+/* Ensure Hover Highlight Starts from the Left Edge */
+.profileSidebarItem:hover {
+  background-color: #409410;
+  padding-left: 15px !important; /* Keep consistency */
+}
+
+
+/* Settings Button - Positioned at the Bottom Left */
+.settingsContainer {
+  position: absolute;
+  bottom: 15px; /* Set margin from the bottom */
+  left: 15px; /* Align to the left */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Settings Button - Square Shape with Proper Margin */
+.settingsButton {
+  background-color: #00bcd4;
+  border: 1px solid #008c9e;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  width: 40px; /* Ensure square shape */
+  height: 40px; /* Equal width and height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: 15px; /* Ensure margin from bottom matches left */
+}
+
+/* Hover Effect */
+.settingsButton:hover {
+  background-color: #008c9e;
+}
+
+/* Profile Page - Ensure Alignment and Styling */
+.profilePage {
+  text-align: left;
+  padding: 20px;
+}
+
+/* Profile Heading - Ensure Main Text and Buttons Align */
+.profileHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Profile Action Buttons */
+.profileActions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Edit and Delete Buttons */
+.editButton, .deleteButton {
+  background-color: #f39c12; /* Orange for edit */
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.deleteButton {
+  background-color: #e74c3c; /* Red for delete */
+}
+
+.editButton:hover {
+  background-color: #e67e22;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
+
+/* Move About Button Below Profile Name */
+.aboutButton {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.aboutButton:hover {
+  background-color: #2980b9;
+}
+
+/* Ensure aboutSection adapts to light/dark mode */
+.aboutSection {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  background-color: var(--section-bg);
+  border: 1px solid var(--section-border);
+  border-radius: 5px;
+  position: relative;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Ensure text adapts */
+.aboutSection p {
+  color: var(--text-color);
+  transition: color 0.3s ease-in-out;
+}
+
+/* ✅ Fix for Dark Mode in CSS Modules */
+:global(html.dark) .aboutSection {
+  background-color: var(--dark-section-bg) !important;
+  border: 1px solid var(--dark-section-border) !important;
+  color: var(--dark-text-color) !important;
+}
+
+/* Light Mode Variables */
+:root {
+  --section-bg: #f9f9f9;
+  --section-border: #ddd;
+  --text-color: #333;
+}
+
+/* Dark Mode Variables */
+:global(html.dark) {
+  --dark-section-bg: #2c3e50;
+  --dark-section-border: #34495e;
+  --dark-text-color: #ecf0f1;
+}
+
+
+
+/* Show About Section When Active */
+.profilePage .aboutSection {
+  display: block;
+}
+
+/* Edit Button - Move to Bottom Right of About Section */
+.aboutSection .editButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #f39c12;
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.aboutSection .editButton:hover {
+  background-color: #e67e22;
+}
+
+/* Delete Button - Ensure It Remains at the Top Right */
+.profileHeading .deleteButton {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.profileHeading .deleteButton:hover {
+  background-color: #c0392b;
+}
+
+/* Upload & Download Buttons */
+.uploadButton,
+.downloadButton {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.uploadButton:hover {
+  background-color: #2980b9;
+}
+
+.downloadButton {
+  background-color: #2ecc71;
+}
+
+.downloadButton:hover {
+  background-color: #27ae60;
+}
+
+/* Editable Textarea */
+.editableTextarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid var(--section-border);
+  background: var(--section-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Save & Cancel Buttons */
+.editButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.saveButton {
+  background-color: #27ae60;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  background-color: #219150;
+}
+
+.cancelButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #c0392b;
+}
+
+/* ✅ Upload File Name Confirmation */
+.uploadedFileName {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+/* ✅ Upload Note (Beside Choose File Button) */
+.uploadNote {
+  font-size: 12px;
+  color: var(--text-secondary-color);
+  margin-top: 5px;
+}
+
+/* ✅ Default Light Mode (Handled Automatically) */
+.richTextEditor {
+  border: 1px solid var(--section-border);
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 200px;
+  overflow: auto;
+  background-color: var(--light-bg); /* ✅ Light mode background */
+  color: var(--light-text); /* ✅ Light mode text */
+}
+
+/* ✅ Dark Mode Styling */
+.dark .richTextEditor {
+  background-color: var(--dark-bg); /* ✅ Dark mode background */
+  color: var(--dark-text); /* ✅ Dark mode text */
+}
+
+
+/* ✅ Align Action Buttons Properly */
+.actionButtons {
+  display: flex;
+  justify-content: flex-start; /* Aligns from left */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+
+/* ✅ Upload Container */
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Image & X button */
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.uploadedImage {
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.removeImageButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  visibility: visible; /* ✅ This is only relevant if the button is rendered */
+}

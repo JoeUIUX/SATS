@@ -1,0 +1,140 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.4s, color 0.4s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcomeWindow, .popup {
+    width: 90%;
+  }
+
+  .form input, .form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* LIGHT DARK MODE SLIDER TOGGLER*/
+/* globals i.e. on webpage */
+/* icons within the slider and they toggle visibility based on the mode. */
+
+/* Light/Dark Mode Container */
+.toggleContainer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* Slider Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffcc00; /* Default light mode background */
+  transition: background-color 0.4s;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+  transform: translateX(0); /* Default position */
+}
+
+input:checked + .slider {
+  background-color: #333; /* Dark mode background */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px); /* Move to the right */
+}
+
+/* Light/Dark Mode Themes */
+body { /* Webpage background dynamically changes with theme */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.4s, color 0.4s;
+  background-color: var(--page-bg-color); /* New variable for webpage background */
+  color: var(--text-color);
+}
+
+/* Global Variables and Modes */
+
+/* Default styles for all modes */
+:root {
+  --page-bg-color: #000; /* Default dark mode webpage background */
+  --bg-color: #ffffff; /* Default (light mode) WelcomeWindow background */
+  --border-color: #ccc; /* Default border color */
+  --text-color: #000000; /* Default (light mode) text color */
+}
+
+/* Light Mode */
+html.light {
+  --page-bg-color: #ffffff; /* Webpage background in light mode */
+  --bg-color: #ffffff; /* WelcomeWindow background in light mode */
+  --border-color: #444; /* Border color in light mode */
+  --text-color: #000000; /* Text color in light mode */
+}
+
+/* Dark Mode */
+html.dark {
+  --page-bg-color: gray; /* Webpage background in dark mode */
+  --bg-color: #000000; /* WelcomeWindow background in dark mode */
+  --border-color: #ffffff; /* Border color in dark mode */
+  --text-color: #ffffff; /* Text color in dark mode */
+}
+
+
+/* Icon Styling */
+.icon {
+  font-size: 16px;
+  transition: color 0.4s;
+}
+
+/* Adjust icon colors for light and dark modes */
+.dark .icon.moon {
+  color: #ccc; /* Dimmed moon in dark mode */
+}
+
+.dark .icon.sun {
+  color: #ffffff; /* Bright sun in dark mode */
+}
+
+.light .icon.moon {
+  color: #ffffff; /* Bright moon in light mode */
+}
+
+.light .icon.sun {
+  color: #ffffff; /* Sun icon now white in light mode */
+}

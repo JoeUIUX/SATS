@@ -1,0 +1,92 @@
+/* WELCOME WINDOW */
+
+/* Center the popup on the screen */
+.welcomeWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 20px;
+  border: 2px solid var(--border-color) !important;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ffffff, #e6f7ff);
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  color: var(--text-color) !important;
+}
+
+html.dark .welcomeWindow {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+/* Align the buttons in a column */
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensure buttons remain perfectly centered */
+  gap: 20px; /* Space between the buttons */
+  margin-top: 20px;
+}
+
+/* Style the buttons */
+.welcomeButton {
+  width: 200px; /* Fixed size for consistent alignment */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #00bcd4, #008c9e);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  position: relative; /* Allow dot to protrude */
+}
+
+.welcomeButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.welcomeButton:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Notification dot alignment */
+.buttonWithNotification {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 200px; /* Matches button width for proper alignment */
+}
+
+.notificationDot {
+  position: absolute;
+  top: -5px;
+  right: -10px; /* Protrude dot to the right of the button */
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the date and time */
+.dateTime {
+  font-size: 14px;
+  color: #df1010;
+  margin-top: 5px;
+}
+
+/* Style for the logo */
+.logo {
+  width: 150px; /* Increase size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: -20px; /* Add spacing below the logo */
+}
