@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beautify Frontend - SATS
 
-## Getting Started
+## Overview
+This is the frontend for the **Satellite Automated Testing System (SATS)**.  
+It is built using **React** with **TypeScript** and uses **CSS Modules** for styling.
 
-First, run the development server:
+---
 
+## 🔧 Installation & Setup
+
+### **1️⃣ Install Dependencies**
+Before running the frontend, install the required dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2️⃣ Run the Frontend**
+To start the development server:
+```bash
+npm run dev
+```
+By default, the application will be available at:
+```bash
+http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
+```
+beautify frontend/
+│-- src/
+│   ├── app/              # Global styles & layout
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   ├── components/       # Reusable UI components
+│   │   ├── MainScreen/
+│   │   │   ├── MainScreen.tsx
+│   │   │   ├── MainScreen.module.css
+│   │   │   ├── SortableItem.tsx
+│   │   ├── ServerWindow/
+│   │   ├── ToTestList/
+│   │   ├── WelcomeWindow/
+│   ├── types/            # TypeScript type definitions
+│   │   ├── types.ts
+│   ├── images.d.ts       # Image imports for TypeScript
+│-- package.json          # Dependencies & scripts
+│-- tsconfig.json         # TypeScript configuration
+│-- .env                  # Environment variables
+│-- README.md             # This file
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Technologies Used
+- **Framework**: React with TypeScript
+- **State Management**: React Hooks
+- **Styling**: CSS Modules
+- **Drag & Drop**: DnD Kit
+- **Rich Text Editing**: TipTap Editor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Environment Variables
+Ensure you have a `.env` file with:
+```env
+REACT_APP_BACKEND_URL=(your backend server url)
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## **Author**
+👤 **Joe Goh**  
+📩 *Feel free to reach out for questions or collaboration!*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
