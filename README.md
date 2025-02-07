@@ -10,8 +10,8 @@ This system supports efficient satellite testing workflows and includes features
 ---
 
 ## Project Structure
-```markdown
-```plaintext
+
+```
 SATS Satellite Automated Testing System/
 │-- backend/
 │   ├── backend_server.py
@@ -45,6 +45,7 @@ SATS Satellite Automated Testing System/
 │   ├── .env
 │-- .gitignore
 │-- README.md
+```
 
 ---
 
