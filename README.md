@@ -65,7 +65,7 @@ Run the following commands in your terminal:
 ```bash
 git clone https://github.com/JoeUIUX/SATS.git
 cd "SATS Satellite Automated Testing System"
-'''
+```
 
 ## 2️⃣ Backend Setup
 Follow these steps to set up the backend:
