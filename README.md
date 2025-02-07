@@ -10,6 +10,7 @@ This system supports efficient satellite testing workflows and includes features
 ---
 
 ## Project Structure
+````plaintext
 SATS Satellite Automated Testing System/
 │-- backend/
 │   ├── backend_server.py
@@ -64,7 +65,7 @@ git clone https://github.com/JoeUIUX/SATS.git
 cd "SATS Satellite Automated Testing System"
 
 
-## **2️⃣ Backend Setup**
+## 2️⃣ Backend Setup
 Follow these steps to set up the backend:
 
 1. **Navigate to the backend folder:**
@@ -90,7 +91,7 @@ Follow these steps to set up the backend:
 
 ---
 
-## **3️⃣ Frontend Setup**
+## 3️⃣ Frontend Setup
 Follow these steps to set up the frontend:
 
 1. **Navigate to the frontend folder:**
@@ -110,7 +111,7 @@ Follow these steps to set up the frontend:
 
 ---
 
-## **4️⃣ Running the Combined Functionality**
+## 4️⃣ Running the Combined Functionality
 Follow these steps to ensure both backend and frontend run together:
 
 ### **Start the Backend First:**
