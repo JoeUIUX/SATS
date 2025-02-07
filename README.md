@@ -82,9 +82,8 @@ Follow these steps to set up the backend:
 
 3. **Create a `.env` file** in the `backend` folder and add the following:
    ```env
-   REACT_APP_BACKEND_URL=http://127.0.0.1:5000
+   REACT_APP_BACKEND_URL=(your backend server url)
    ```
-   *(Replace the URL with the appropriate backend server URL if needed.)*
 
 4. **Run the backend server:**
    ```bash
