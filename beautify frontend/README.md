@@ -38,10 +38,16 @@ beautify frontend/
 │   │   ├── MainScreen/
 │   │   │   ├── MainScreen.tsx
 │   │   │   ├── MainScreen.module.css
-│   │   │   ├── SortableItem.tsx
+│   │   │   ├── DraggableBox.tsx
 │   │   ├── ServerWindow/
+│   │   │   ├── ServerWindow.module.css
+│   │   │   ├── ServerWindow.tsx
 │   │   ├── ToTestList/
+│   │   │   ├── ToTestList.module.css
+│   │   │   ├── ToTestList.tsx
 │   │   ├── WelcomeWindow/
+│   │       ├── WelcomeWindow.module.css
+│   │       ├── WelcomeWindow.tsx
 │   ├── types/            # TypeScript type definitions
 │   │   ├── types.ts
 │   ├── images.d.ts       # Image imports for TypeScript
@@ -59,6 +65,10 @@ beautify frontend/
 - **Styling**: CSS Modules
 - **Drag & Drop**: DnD Kit
 - **Rich Text Editing**: TipTap Editor
+- **Document Processing**:
+    - Mammoth (.docx text extraction)
+    - docx-preview (For rendering .docx previews)
+    - docx (For generating .docx files)
 
 ---
 
