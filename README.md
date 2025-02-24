@@ -27,7 +27,7 @@ SATS Satellite Automated Testing System/
 │   │   │   ├── MainScreen/
 │   │   │   │   ├── MainScreen.module.css
 │   │   │   │   ├── MainScreen.tsx
-│   │   │   │   ├── SortableItem.tsx
+│   │   │   │   ├── DraggableBox.tsx
 │   │   │   ├── ServerWindow/
 │   │   │   │   ├── ServerWindow.module.css
 │   │   │   │   ├── ServerWindow.tsx
