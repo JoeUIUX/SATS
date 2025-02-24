@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./MainScreen.module.css";
 import ToTestList from "../ToTestList/ToTestList";
-import { FaBars, FaCog, FaPlus, FaEdit, FaTrash, FaInfoCircle } from "react-icons/fa";
+import { FaCheck, FaTimes, FaWrench, FaBars, FaCog, FaPlus, FaEdit, FaTrash, FaInfoCircle, FaPlay } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
 import mammoth from "mammoth"; // Import mammoth for `.docx` extraction, npm install mammoth
 import { renderAsync } from "docx-preview"; // npm install docx-preview
@@ -9,12 +9,63 @@ import { Document, Packer, Paragraph } from "docx"; // npm install docx
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Profile } from 'types/types';
+import Table from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import BulletList from "@tiptap/extension-bullet-list";
+import OrderedList from "@tiptap/extension-ordered-list";
+import ListItem from "@tiptap/extension-list-item";
+import TurndownService from "turndown";
+import { DragOverlay, DndContext, closestCorners, closestCenter, pointerWithin, getFirstCollision, useSensor, useSensors, PointerSensor } from "@dnd-kit/core";
+import { Collision, CollisionDetection } from "@dnd-kit/core";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import DraggableBox from "../MainScreen/DraggableBox"; // Import Draggable Box
+import { useDroppable } from "@dnd-kit/core";
+import { useDndContext } from "@dnd-kit/core";
+import { rectIntersection } from "@dnd-kit/core";
+import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"; // fall back
+// Ensure this is correct
 
-const API_URL = "http://127.0.0.1:5000/profiles"; // Ensure this is correct
+interface DroppableContainerType {
+  id: string;
+  data: {
+    type: string;
+    accepts: string[];
+    isDropZone?: boolean;
+  };
+}
 
+interface CollisionRect {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+  width: number;
+  height: number;
+}
 
-const MainScreen: React.FC = () => {
+interface CollisionData {
+  droppableContainer: DroppableContainerType;
+  value: number;
+  rect: CollisionRect;
+}
+
+interface CustomCollision {
+  id: string;
+  data: CollisionData;
+}
+
+interface DraggableItem {
+  id: string;
+  header: string;
+  options: string[];
+  isDropped: boolean;
+}
+
+const MainScreen: React.FC = (): React.ReactElement => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -22,7 +73,7 @@ const MainScreen: React.FC = () => {
   const [showToTestList, setShowToTestList] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [uploadedText, setUploadedText] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false); // for aboutSection
   const [tempDescription, setTempDescription] = useState("");
   const [uploadedImages, setUploadedImages] = useState<{ src: string; alt: string }[]>([]);
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
@@ -33,7 +84,114 @@ const MainScreen: React.FC = () => {
       uploadedFileName?: string; // ✅ Store filename per profile
     } 
   }>({});
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [isCheckoutEditing, setIsCheckoutEditing] = useState(false); // For checkoutSection
+  const [droppedItems, setDroppedItems] = useState<DraggableItem[]>([]);
+  // Manage draggable items
+  const [items, setItems] = useState<DraggableItem[]>([
+    { id: "1", header: "OBC-1", options: ["eMMC"], isDropped: false }, // ✅ Ensure consistent key name
+    { id: "2", header: "OBC-2", options: ["SD Card", "EEPROM"], isDropped: false },
+    { id: "3", header: "S-Band", options: ["Telemetry", "Ground Pass"], isDropped: false },
+    { id: "4", header: "UHF", options: ["Telemetry", "Ground Pass"], isDropped: false },
+    { id: "5", header: "HEPS", options: ["Solar Panel", "Heater", "Hdrm"], isDropped: false },
+    { id: "6", header: "ADCS", options: ["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"], isDropped: false },
+    { id: "7", header: "GPS", options: ["Version Check"], isDropped: false },
+    { id: "8", header: "Propulsion", options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], isDropped: false },
+    { id: "9", header: "PCS", options: ["SD Card"], isDropped: false },
+    { id: "10", header: "Payload", options: ["LEOCAM", "AOD"], isDropped: false },
+    { id: "11", header: "X-Band", options: ["Telecommand", "Telemetry"], isDropped: false },
+  ]);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
+  const [sortableKey, setSortableKey] = useState(0);
+
   
+  // In MainScreen.tsx, add this after your state declarations but before your functions
+  const dragTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+
+  const removeDroppedItem = (itemId: string) => {
+    if (dragTimeoutRef.current) {
+      clearTimeout(dragTimeoutRef.current);
+    }
+  
+    console.log(`🗑️ Attempting to remove item ${itemId} from top section`);
+  
+    // ✅ Remove from `droppedItems`
+    setDroppedItems(prev => {
+      const updatedDroppedItems = prev.filter(item => item.id !== itemId);
+      console.log("✅ Updated dropped items after removal:", updatedDroppedItems);
+      return [...updatedDroppedItems]; // ✅ Force reactivity
+    });
+  
+    // ✅ Ensure item is draggable again by updating `items` state
+    setItems(prev => {
+      const updatedItems = prev.map(item => {
+        if (item.id === itemId) {
+          console.log(`✅ Resetting isDropped for item ${itemId}`);
+          return { ...item, isDropped: false };
+        }
+        return item;
+      });
+      console.log("✅ Updated items after removal:", updatedItems);
+      return [...updatedItems]; // ✅ Ensure a new array reference for reactivity
+    });
+  
+    // ✅ Reset DOM attributes to make the item draggable again
+    setTimeout(() => {
+      const bottomItem = document.querySelector(`[data-draggable-id="${itemId}"]`) as HTMLElement;
+      if (bottomItem) {
+        console.log(`✅ Resetting DOM attributes for item ${itemId}`);
+        bottomItem.removeAttribute('data-dropped');
+        bottomItem.style.pointerEvents = 'auto';
+        bottomItem.style.opacity = '1';
+        bottomItem.style.cursor = 'grab';
+      }
+    }, 50);
+  
+    setActiveId(null);
+    setDragging(false);
+  
+    // ✅ FULL Reset of Drop Zones and SortableContext
+    setTimeout(() => {
+      console.log("🔄 FORCING FULL Reset of Drop Zones and SortableContext...");
+      setDroppedItems(prev => [...prev]);
+      setItems(prev => [...prev]); // ✅ Ensure full re-render
+  
+      // ✅ Force SortableContext to reset
+      setSortableKey(prev => prev + 1);
+    }, 200);
+  };
+  
+  
+  
+  
+  const observerRef = useRef<MutationObserver | null>(null);
+
+  const renderCount = useRef(0); // Track how many times it runs
+
+  useEffect(() => {
+    if (!isCheckoutEditing) return;
+  
+    renderCount.current += 1;
+    console.log(`🔁 useEffect executed ${renderCount.current} times`);
+  
+    const dropZones = document.querySelectorAll('[data-droppable-id]');
+    dropZones.forEach(zone => {
+      zone.setAttribute('data-droppable', 'true');
+      zone.setAttribute('data-type', 'container');
+    });
+  
+  }, [isCheckoutEditing]);
+  
+  
+  
+  
+
+  const [dragging, setDragging] = useState(false);
+
+  useEffect(() => {
+    console.log("🔄 Drop zones reloaded due to dragging state");
+  }, [dragging]);
 
 
   useEffect(() => {
@@ -42,7 +200,7 @@ const MainScreen: React.FC = () => {
 
   const fetchProfiles = async () => {
     try {
-      const response = await fetch(`${API_URL}`);
+      const response = await fetch(`${API_URL}/profiles`);
       if (!response.ok) {
         throw new Error("Failed to fetch profiles.");
       }
@@ -56,8 +214,13 @@ const MainScreen: React.FC = () => {
       data.forEach((profile: Profile) => {
         profileMap[profile.name] = {
           description: profile.description || "",
-          images: profile.images?.length ? profile.images : [], // ✅ Ensure images are properly set
-          uploadedFileName: profile.uploadedFileName || ""
+          images: profile.images && Array.isArray(profile.images)
+            ? profile.images.map(img => 
+                typeof img === "string" 
+                  ? { src: img, alt: "Uploaded image" } 
+                  : img) 
+            : [],
+          uploadedFileName: profile.uploadedFileName || "",
         };
       });
   
@@ -67,6 +230,7 @@ const MainScreen: React.FC = () => {
       console.error("Error fetching profiles:", error);
     }
   };
+  
   
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -93,7 +257,7 @@ const MainScreen: React.FC = () => {
     }
   
     try {
-      const response = await fetch(`${API_URL}`, {
+      const response = await fetch(`${API_URL}/profiles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: profileName, description: "", images: [] }),
@@ -124,30 +288,61 @@ const MainScreen: React.FC = () => {
   
   
   const deleteProfile = async (profileName: string) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete the profile: ${profileName}?`);
+    if (!confirmDelete) {
+      return; // Cancel deletion if user clicks "Cancel"
+    }
+  
     try {
-      await fetch(`${API_URL}/${profileName}`, { method: "DELETE" });
+      await fetch(`${API_URL}/profiles/${profileName}`, { method: "DELETE" });
       setProfiles(profiles.filter((profile) => profile.name !== profileName));
       setSelectedProfile(null);
     } catch (error) {
       console.error("Error deleting profile:", error);
     }
   };
+  
+  const convertImageToBase64 = async (imageUrl: string): Promise<string> => {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.readAsDataURL(blob);
+      });
+    } catch (error) {
+      console.error("Error converting image to Base64:", error);
+      return "";
+    }
+  };
+  
+  let formattedHtml = "";
 
+  const turndownService = new TurndownService();
+  turndownService.addRule("list", {
+    filter: ["ul", "ol"],
+    replacement: function (content: string, node: Node) {
+      return (node as HTMLElement).outerHTML; // ✅ Typecast `node` as `HTMLElement`
+    },
+  });
+  
+  
 /* Function to handle file uploads */
 const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-  if (!selectedProfile) return; // Ensure a profile is selected
+  if (!selectedProfile) return;
 
   const file = event.target.files?.[0];
   if (!file) return;
 
-  const fileName = file.name; // Extract file name
+  const fileName = file.name;
 
-  // ✅ Store the file name for the selected profile
+  // ✅ Store the file name (avoid unnecessary re-renders)
   setProfileData((prevData) => ({
     ...prevData,
     [selectedProfile]: {
       ...prevData[selectedProfile],
-      uploadedFileName: fileName, // Save file name
+      uploadedFileName: fileName,
     },
   }));
 
@@ -156,7 +351,8 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
   if (file.type === "text/plain") {
     reader.onload = (e) => {
       if (e.target?.result) {
-        const uploadedText = e.target.result.toString();
+        const uploadedText = e.target.result.toString().trim();
+        console.log("Extracted Text Content:", uploadedText);
         setUploadedText(uploadedText);
         autoSaveToDatabase(uploadedText, uploadedImages);
       }
@@ -166,30 +362,92 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     reader.onload = async (e) => {
       if (e.target?.result instanceof ArrayBuffer) {
         try {
-          const textResult = await mammoth.convertToHtml({ arrayBuffer: e.target.result });
+          let formattedHtml = "";
+
+          // ✅ Extract HTML using `mammoth.convertToHtml()`
+          const mammothResult = await mammoth.convertToHtml({ arrayBuffer: e.target.result });
+          let extractedHtml = mammothResult.value.trim();
+
+          console.log("Mammoth Extracted Content (With Lists):", extractedHtml);
+
+          // ✅ Preserve bullet points & numbered lists properly
+          formattedHtml = extractedHtml
+            .replace(/<p>\s*•\s*/g, "<ul><li>") // Fix unordered lists
+            .replace(/<p>\s*\d+\.\s*/g, "<ol><li>") // Fix ordered lists
+            .replace(/<\/p>\s*<p>/g, "</li><li>") // Ensure list items are correctly wrapped
+            .replace(/<\/p>/g, "</li></ul>") // Close unordered lists properly
+            .replace(/<\/ol><\/li>/g, "</ol>") // Close ordered lists properly
+            .replace(/<\/li><\/ul>(?!<\/li>)/g, "</ul>"); // Remove misaligned list endings
+
+          console.log("Final Processed HTML (Fixed Lists):", formattedHtml);
+
+          // ✅ Process `docx-preview` but DO NOT append it to the UI
           const docxContainer = document.createElement("div");
           await renderAsync(e.target.result, docxContainer);
 
-          // ✅ Extract all images instead of just the first one
-          const extractedImages = Array.from(docxContainer.querySelectorAll("img")).map((img) => ({
-            src: img.src,
-            alt: img.alt || "Uploaded image",
-          }));
+          // ✅ Extract only relevant content, ignoring `docx-preview` elements
+          const extractedBodyContent = docxContainer.querySelector("article")?.innerHTML || "";
 
-          // ✅ Store the full content and all images
-          setUploadedText(textResult.value.trim());
+          // ✅ Ensure we use the most structured version
+          formattedHtml = extractedBodyContent.includes(formattedHtml)
+            ? extractedBodyContent
+            : extractedBodyContent || formattedHtml;
+
+          // ✅ Remove `docx-preview` elements BEFORE storing content
+          const tempContainer = document.createElement("div");
+          tempContainer.innerHTML = formattedHtml;
+          tempContainer.querySelectorAll("section.docx, .docx-wrapper").forEach((el) => el.remove());
+          formattedHtml = tempContainer.innerHTML.trim();
+
+          // ✅ Ensure proper table & list styling
+          formattedHtml = formattedHtml
+            .replace(/<table/g, '<table style="border-collapse: collapse; width: 100%; border: 1px solid black;"') 
+            .replace(/<td/g, '<td style="padding: 8px; border: 1px solid black;"') 
+            .replace(/<ul/g, '<ul style="padding-left: 20px; list-style-type: disc; margin-top: 10px; margin-bottom: 10px;"') 
+            .replace(/<ol/g, '<ol style="padding-left: 20px; list-style-type: decimal; margin-top: 10px; margin-bottom: 10px;"') 
+            .replace(/<li/g, '<li style="margin-bottom: 5px;"'); // ✅ Ensure list items have proper spacing
+
+          // ✅ Remove incorrect `<li>` wrapping on normal text
+          formattedHtml = formattedHtml.replace(/<li><strong>/g, "<p><strong>").replace(/<\/strong><\/li>/g, "</strong></p>");
+
+          // ✅ Extract images & convert to Base64
+          const extractedImages = await Promise.all(
+            Array.from(docxContainer.querySelectorAll("img")).map(async (img) => {
+              const base64Image = await convertImageToBase64(img.src);
+              return { src: base64Image, alt: img.alt || "Uploaded image" };
+            })
+          );
+
+          // ✅ Store only cleaned & formatted content without `docx-preview`
+          setUploadedText(formattedHtml.trim());
           setUploadedImages(extractedImages);
-          autoSaveToDatabase(textResult.value.trim(), extractedImages);
+          autoSaveToDatabase(formattedHtml.trim(), extractedImages);
+
+          // ✅ Remove `docx-preview` from the DOM after processing
+          document.querySelectorAll("section.docx, .docx-wrapper").forEach((el) => el.remove());
         } catch (error) {
           console.error("Error processing .docx:", error);
         }
       }
     };
     reader.readAsArrayBuffer(file);
+  } else if (file.type.startsWith("image/")) {
+    reader.onload = (e) => {
+      if (e.target?.result) {
+        const base64Image = e.target.result.toString();
+        const newImage = { src: base64Image, alt: "Uploaded image" };
+
+        setUploadedImages((prevImages) => [...prevImages, newImage]);
+        autoSaveToDatabase(uploadedText, [...uploadedImages, newImage]);
+      }
+    };
+    reader.readAsDataURL(file);
   } else {
-    alert("Invalid file type. Please upload a .txt or .docx file.");
+    alert("Invalid file type. Please upload a .txt, .docx, or an image file.");
   }
 };
+
+
 
 
 
@@ -213,7 +471,7 @@ const saveEditedDescription = async () => {
   const formattedText = editor?.getHTML() || "";
 
   try {
-    await fetch(`${API_URL}/${selectedProfile}`, {
+    await fetch(`${API_URL}/profiles/${selectedProfile}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -266,17 +524,21 @@ const removeImage = (index: number) => {
 
 
 /* ✅ Sanitize Extracted HTML */
+/* ✅ Sanitize Extracted HTML */
 const sanitizeHTML = (html: string): string => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, "text/html");
 
-  // ✅ Remove redundant page breaks or empty nodes
+  // ✅ Ensure lists (`<ul>`, `<ol>`, `<li>`) are preserved
   doc.querySelectorAll("p:empty, div:empty").forEach((node) => node.remove());
   doc.querySelectorAll("br").forEach((node) => node.remove());
 
-  // ✅ Return sanitized HTML
+  // ✅ Log extracted HTML to verify if lists exist before rendering
+  console.log("Sanitized HTML Output:", doc.body.innerHTML);
+
   return doc.body.innerHTML;
 };
+
 
 /* Save to File */
 const saveToFile = (format = "txt") => {
@@ -332,21 +594,27 @@ const autoSaveToDatabase = async (text: string, images: { src: string; alt: stri
     return;
   }
 
-  const response = await fetch(`http://127.0.0.1:5000/profiles/${selectedProfile}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      description: text,
-      images: images
-    })
-  });
+  try {
+    const response = await fetch(`${API_URL}/profiles/${selectedProfile}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        description: text,
+        images: images.map(img => img.src), // ✅ Ensure only the src is saved
+        uploadedFileName: profileData[selectedProfile]?.uploadedFileName || "",
+      }),
+    });
 
-  if (response.ok) {
-    console.log("Profile updated automatically.");
-  } else {
-    console.error("Error saving profile.");
+    if (response.ok) {
+      console.log("Profile updated automatically.");
+    } else {
+      console.error("Error saving profile.");
+    }
+  } catch (error) {
+    console.error("Error saving profile:", error);
   }
 };
+
 
 const convertHtmlToPlainText = (html: string): string => {
   const doc = new DOMParser().parseFromString(html, "text/html");
@@ -354,10 +622,31 @@ const convertHtmlToPlainText = (html: string): string => {
 };
 
 const editor = useEditor({
-  extensions: [StarterKit],
+  extensions: [
+    StarterKit.configure({
+      bulletList: false, // ✅ Disable default list handling
+      orderedList: false,
+    }),
+    Table.configure({
+      resizable: true,
+    }),
+    TableRow,
+    TableCell,
+    TableHeader,
+    BulletList, // ✅ Enable bullet points
+    OrderedList, // ✅ Enable numbered lists
+    ListItem,    // ✅ Enable list items
+  ],
   content: uploadedText, // Initialize with the uploaded content
   onUpdate: ({ editor }) => setTempDescription(editor.getHTML()), // Update state with editor changes
+  editorProps: {
+    attributes: {
+      class: "prose focus:outline-none",
+    },
+  },
+  immediatelyRender: false, // Fix SSR Hydration Mismatch
 });
+
 
 // Reset editor content when uploadedText changes
 useEffect(() => {
@@ -378,6 +667,413 @@ const handleProfileSelect = (profileName: string) => {
   setUploadedImages(profile.images.length ? profile.images : []); // ✅ Ensure images exist
   setUploadedText(profile.description);
 };
+
+const toggleCheckout = () => {
+  if (!selectedProfile) return;
+  setShowCheckout(!showCheckout);
+};
+
+const toggleCheckoutEditMode = () => {
+  console.log("Toggling Checkout Edit Mode");
+  setIsCheckoutEditing(prev => !prev);
+};
+
+
+const { active } = useDndContext(); // ✅ Get active drag item
+
+// Define droppable state
+const { isOver: isOverTop, setNodeRef: topSectionRef } = useDroppable({
+  id: "top-section",
+  data: {
+    type: "container",
+    accepts: ["draggable-item"],
+    isDropZone: true,
+  },
+  disabled: false, // Ensure it's always active
+});
+
+const { isOver: isOverBottom, setNodeRef: bottomSectionRef } = useDroppable({
+  id: "bottom-section",
+  data: {
+    accepts: ["draggable-item"],
+    type: "container"
+  }
+});
+
+// ✅ Add this after the useDroppable hooks
+useEffect(() => {
+  console.log("Active Dragging Type:", active?.data?.current?.type);
+}, [active]);
+
+
+// add this state to track the background color, to match checkout section's dynamic background
+const [checkoutBgColor, setCheckoutBgColor] = useState('var(--background-color, #ffffff)');
+
+// Add an effect to update the background color when the theme changes
+useEffect(() => {
+  const updateBackgroundColor = () => {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setCheckoutBgColor(isDarkMode ? 'var(--dark-bg, #1a1a1a)' : 'var(--light-bg, #ffffff)');
+  };
+
+  // Initial update
+  updateBackgroundColor();
+
+  // Create observer for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class') {
+        updateBackgroundColor();
+      }
+    });
+  });
+
+  // Start observing theme changes
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+
+  return () => observer.disconnect();
+}, []);
+
+const lastValidDropZoneRef = useRef<string | null>(null);
+
+let lastValidDropZone: { id: string } | null = null;
+
+// customCollisionDetection function
+// Update collision detection for better sensitivity
+// Replace your existing customCollisionDetection with this updated version
+const customCollisionDetection: CollisionDetection = (args) => {
+  const { collisionRect, droppableContainers } = args;
+  const validDropZoneIds = new Set(["top-section", "bottom-section", "1", "2"]);
+
+  // Create expanded collision rect with larger detection area
+  const expandedRect = {
+    ...collisionRect,
+    width: collisionRect.width + 60,    // Increased detection area
+    height: collisionRect.height + 60,   
+    left: collisionRect.left - 30,      
+    right: collisionRect.right + 30,    
+    top: collisionRect.top - 30,        
+    bottom: collisionRect.bottom + 30    
+  };
+
+  return droppableContainers
+    .filter(container => validDropZoneIds.has(String(container.id)))
+    .map(container => {
+      const element = document.querySelector(`[data-droppable-id="${container.id}"]`);
+      if (!element) return null;
+
+      const rect = element.getBoundingClientRect();
+      const isTopSection = container.id === "top-section" || container.id === "1";
+      
+      // Add padding for better drop detection
+      const adjustedRect = {
+        top: rect.top - (isTopSection ? 40 : 20),
+        bottom: rect.bottom + (isTopSection ? 40 : 20),
+        left: rect.left - (isTopSection ? 40 : 20),
+        right: rect.right + (isTopSection ? 40 : 20),
+        width: rect.width + (isTopSection ? 80 : 40),
+        height: rect.height + (isTopSection ? 80 : 40)
+      };
+
+      // More lenient intersection check
+      const intersects = (
+        expandedRect.left < adjustedRect.right &&
+        expandedRect.right > adjustedRect.left &&
+        expandedRect.top < adjustedRect.bottom &&
+        expandedRect.bottom > adjustedRect.top
+      );
+
+      if (!intersects) return null;
+
+      return {
+        id: String(container.id),
+        data: {
+          droppableContainer: {
+            id: String(container.id),
+            data: {
+              type: "container",
+              accepts: ["draggable-item"],
+              isDropZone: isTopSection
+            }
+          },
+          value: isTopSection ? 2 : 1,
+          rect: adjustedRect
+        }
+      } as CustomCollision;
+    })
+    .filter((collision): collision is CustomCollision => collision !== null)
+    .sort((a, b) => b.data.value - a.data.value);
+};
+
+useEffect(() => {
+  if (!isCheckoutEditing) return; // Prevent execution if not in edit mode
+
+  console.log("✅ Registering Drop Zones (One-Time)");
+
+  const topSection = document.querySelector('[data-droppable-id="1"]');
+  const bottomSection = document.querySelector('[data-droppable-id="2"]');
+
+  if (topSection) {
+    topSection.setAttribute('data-droppable', 'true');
+    topSection.setAttribute('data-type', 'container');
+  }
+
+  if (bottomSection) {
+    bottomSection.setAttribute('data-droppable', 'true');
+    bottomSection.setAttribute('data-type', 'container');
+  }
+
+  console.log("🔍 Found Drop Zones:", topSection, bottomSection);
+
+  return () => {
+    console.log("🛑 Cleaning up Drop Zones (Once)");
+  };
+}, [isCheckoutEditing]);
+
+
+const sensors = useSensors(
+  useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 2,
+      tolerance: 5
+    },
+  })
+);
+
+
+// Updated drag end handler
+const handleDragEnd = (event: DragEndEvent) => {
+  const { active, over } = event;
+  setActiveId(null);
+  setDragging(false);
+
+  if (!over) {
+    console.log("❌ No valid drop target detected");
+    return;
+  }
+
+  const dropZoneId = String(over.id);
+  const draggedItemId = String(active.id);
+
+  console.log(`🛠️ Handling drop of item ${draggedItemId} into zone ${dropZoneId}`);
+
+  const draggedItem = items.find(item => item.id === draggedItemId) || 
+                      droppedItems.find(item => item.id === draggedItemId);
+
+  if (!draggedItem) {
+    console.log("❌ Dragged item not found");
+    return;
+  }
+
+  const isTopSection = dropZoneId === "top-section" || dropZoneId === "1";
+  const isBottomSection = dropZoneId === "bottom-section" || dropZoneId === "2";
+
+  setDroppedItems(prevDroppedItems => {
+    const alreadyInTop = prevDroppedItems.some(item => item.id === draggedItemId);
+
+    if (isTopSection && !alreadyInTop) {
+      console.log(`✅ Adding item ${draggedItemId} to top section`);
+      return [...prevDroppedItems, { ...draggedItem, isDropped: true }];
+    } 
+    
+    if (isBottomSection) {
+      console.log(`✅ Removing item ${draggedItemId} from top section`);
+      return prevDroppedItems.filter(item => item.id !== draggedItemId);
+    }
+
+    return prevDroppedItems;
+  });
+
+  setItems(prevItems => {
+    const updatedItems = prevItems.map(item =>
+      item.id === draggedItemId ? { ...item, isDropped: isTopSection } : item
+    );
+    console.log("✅ Updated items after drop:", updatedItems);
+    return [...updatedItems]; // Ensure a new array reference for reactivity
+  });
+
+  // ✅ FULL Reset of Drop Zones and SortableContext
+  setTimeout(() => {
+    console.log("🔄 FORCING FULL Reset of Drop Zones and SortableContext...");
+    setDroppedItems(prev => [...prev]);
+    setItems(prev => [...prev]); // ✅ Ensure full re-render
+
+    // ✅ Force SortableContext to reset
+    setSortableKey(prev => prev + 1);
+  }, 200);
+};
+
+// Add new effect to maintain drop zones
+const hasUpdatedDropZones = useRef(false); // ✅ Prevent multiple updates
+
+useEffect(() => {
+  if (!isCheckoutEditing) return;
+
+  const startTime = performance.now(); // Start time measurement
+  console.log("⏳ Starting expensive operation...");
+
+  // Simulating work
+  const dropZones = document.querySelectorAll('[data-droppable-id]');
+  dropZones.forEach(zone => {
+    zone.setAttribute('data-droppable', 'true');
+    zone.setAttribute('data-type', 'container');
+  });
+
+  const endTime = performance.now(); // End time measurement
+  console.log(`⚡ Expensive operation took ${endTime - startTime}ms`);
+}, [isCheckoutEditing]);
+
+
+
+// Add this useEffect to monitor state changes
+useEffect(() => {
+  const itemsStatus = items.map(item => ({
+    id: item.id,
+    isDropped: item.isDropped,
+  }));
+  console.log('Items status:', itemsStatus);
+  console.log('Dropped items:', droppedItems);
+}, [items, droppedItems]);
+
+useEffect(() => {
+  console.log("🔵 Drop zones mounted:", document.querySelectorAll("[data-droppable]"));
+
+  setTimeout(() => {
+    const dropZones = document.querySelectorAll("[data-droppable]");
+    console.log("✅ Drop zones found in DOM:", dropZones);
+
+    dropZones.forEach((zone) => {
+      console.log("📍 Drop Zone Element:", zone);
+      console.log("👉 Attributes:", zone.attributes);
+      console.log("📏 Bounding Rect:", zone.getBoundingClientRect());
+    });
+  }, 500); // Delay ensures elements are fully rendered
+
+}, []);
+
+useEffect(() => {
+  console.log("🔄 Drop zones reloaded. Current drop zones:", document.querySelectorAll("[data-droppable]"));
+}, []);
+
+useEffect(() => {
+  document.querySelectorAll("[data-droppable]").forEach((el) =>
+    console.log("🔍 Found Drop Zone ID:", el.id)
+  );
+}, []);
+
+useEffect(() => {
+  document.querySelectorAll("[data-droppable]").forEach((el) =>
+    console.log("✅ Drop Zone Element ID:", el.id)
+  );
+}, []);
+
+const [, setRender] = useState(false);
+
+useEffect(() => {
+  setTimeout(() => {
+    console.log("✅ Forcing a re-render to ensure drop zones exist.");
+    setRender(prev => !prev); // Toggle state to trigger re-render
+  }, 100);
+}, []);
+
+useEffect(() => {
+  console.log("🛠️ isCheckoutEditing changed:", isCheckoutEditing);
+}, [isCheckoutEditing]);
+
+// Update dropZoneStyle
+const dropZoneStyle: React.CSSProperties = {
+  minHeight: "250px",
+  width: "100%",
+  padding: "20px",
+  boxSizing: "border-box",
+  border: isOverTop ? "2px solid #2196F3" : "2px dashed #ccc",
+  backgroundColor: isOverTop ? "rgba(33, 150, 243, 0.1)" : "transparent",
+  position: "relative",
+  zIndex: 1,
+  touchAction: "none",
+  userSelect: "none" as const,
+  overflow: "visible"
+};
+
+const handleSaveCheckout = async () => {
+  if (!selectedProfile) {
+    console.log("❌ No active profile selected");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/checkout/save`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        profile_id: selectedProfile, // ✅ Store checkout items uniquely per profile
+        items: droppedItems,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log(`✅ Checkout items saved for profile ${selectedProfile}:`, result);
+  } catch (error) {
+    console.error("❌ Error saving checkout items:", error);
+  }
+};
+
+
+const handleCancelCheckout = async () => {
+  if (!selectedProfile) {
+    console.log("❌ No active profile selected");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/checkout/load/${selectedProfile}`);
+    
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    setDroppedItems(result.items);
+    console.log(`🔄 Restored checkout items for profile ${selectedProfile}:`, result.items);
+  } catch (error) {
+    console.error("❌ Error loading previous checkout items:", error);
+  }
+};
+
+const handleProfileChange = async (profileId: string) => {
+  console.log(`🔄 Profile changed: ${profileId}`); // ✅ Log profile change
+  setSelectedProfile(profileId);
+
+  try {
+    const response = await fetch(`${API_URL}/checkout/load/${profileId}`);
+    
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    
+    setDroppedItems(result.items || []);
+    console.log(`✅ Loaded checkout items for profile ${profileId}:`, result.items);
+  } catch (error) {
+    console.error("❌ Error loading checkout items for profile:", error);
+  }
+};
+
+useEffect(() => {
+  if (selectedProfile) {
+    handleProfileChange(selectedProfile); // ✅ Load saved checkout items when profile changes
+  }
+}, [selectedProfile]);
+
+
 
 
 
@@ -432,16 +1128,19 @@ return (
         </li>
         {isProfileDropdownOpen && (
           <ul className={styles.profileDropdown}>
-            {profiles.map((profile) => (
-              <li
-                key={profile.id || profile.name} // ✅ Ensure unique key
-                className={styles.profileSidebarItem}
-                onClick={() => handleProfileSelect(profile.name)}
-              >
-                {profile.name}
-              </li>
-            ))}
-          </ul>
+          {profiles.map((profile) => (
+            <li
+              key={profile.id || profile.name}
+              className={styles.profileSidebarItem}
+              onClick={() => {
+                handleProfileChange(profile.name); // ✅ Ensure checkout items load per profile
+              }}
+            >
+              {profile.name}
+            </li>
+          ))}
+        </ul>
+        
         )}
       </ul>
       <div className={styles.settingsContainer}>
@@ -483,6 +1182,16 @@ return (
               {/* ✅ Editing Mode: Use Tiptap Rich Text Editor */}
               {isEditing ? (
                 <>
+                  {/* ✅ Add Toolbar for Lists */}
+                  <div className="toolbar">
+                    <button onClick={() => editor?.chain().focus().toggleBulletList().run()}>
+                      Bullet List
+                    </button>
+                    <button onClick={() => editor?.chain().focus().toggleOrderedList().run()}>
+                      Ordered List
+                    </button>
+                  </div>
+
                   <EditorContent editor={editor} className={styles.richTextEditor} />
 
                   {/* ✅ Show all images outside the editor */}
@@ -529,18 +1238,19 @@ return (
                 <>
                   <div
                       dangerouslySetInnerHTML={{
-                        __html: profileData[selectedProfile]?.description || "",
+                        __html: sanitizeHTML(profileData[selectedProfile]?.description || "<p>No description available.</p>"),
                       }}
                   />
                   {/* ✅ Show all images outside the editor */}
-                  {uploadedImages.length > 0 && (
+                  {profileData[selectedProfile]?.images.length > 0 && (
                     <div className={styles.imageContainer}>
-                        {uploadedImages.map((image, index) => (
-                          <div key={index} className={styles.imageWrapper}>
-                            <img
-                              src={image.src}
-                              alt={image.alt}
-                              className={styles.uploadedImage}
+                      {selectedProfile && profileData[selectedProfile]?.images.map((image: { src: string; alt: string }, index: number) => (
+                        <div key={index} className={styles.imageWrapper}>
+                          <img 
+                             src={image.src} 
+                             alt={image.alt} 
+                             className={styles.uploadedImage}
+                             onError={(e) => e.currentTarget.src = "/fallback-image.png"} // Provide a fallback image
                             />
                           </div>
                         ))}
@@ -573,13 +1283,13 @@ return (
                         onClick={saveEditedDescription}
                         className={styles.saveButton}
                       >
-                        Save
+                        <FaCheck /> Save
                       </button>
                       <button
                         onClick={cancelEditing}
                         className={styles.cancelButton}
                       >
-                        Cancel
+                        <FaTimes /> Cancel
                       </button>
                     </>
                   ) : (
@@ -590,6 +1300,180 @@ return (
                 </div>
               </div>
             )}
+
+              {/* ✅ Test Type & Checkout Button Located Outside About Section */}
+              <h2 className={styles.testTypeHeader}>Test Type</h2>
+              <button className={styles.checkoutButton} onClick={toggleCheckout}>
+                <FaWrench /> Checkout
+              </button>
+   
+ 
+              {showCheckout && (
+                <div className={styles.checkoutSection}
+                  style={{
+                    backgroundColor: checkoutBgColor,
+                    transition: 'background-color 0.3s ease',
+                  }}
+                >
+
+{(() => { console.log("🔄 Checkout Section Re-rendered"); return null; })()}
+
+                <div className={styles.checkoutHeader} style={{ display: 'flex', alignItems: 'center' }}>
+                  <h3 style={{ marginRight: '10px' }}>Test Selection:</h3>
+                  <button className={styles.editButton} onClick={toggleCheckoutEditMode}>
+                    <FaEdit />
+                  </button>
+        
+                  {!isCheckoutEditing && (
+                    <button className={styles.startTestButton} style={{ marginLeft: 'auto' }}>
+                      <FaPlay /> Start Test
+                    </button>
+                  )}
+                </div>
+
+                <DndContext
+  sensors={sensors}
+  collisionDetection={customCollisionDetection}
+  onDragStart={({ active }) => {
+    setActiveId(String(active.id));
+    setDragging(true);
+  }}
+  onDragEnd={handleDragEnd}
+  onDragCancel={() => {
+    setActiveId(null);
+    setDragging(false);
+  }}
+>
+  {/* Top Section Drop Zone */}
+  <div
+  key="top-section"
+  ref={topSectionRef}
+  id="top-section"
+  data-id="1"
+  data-droppable="true"
+  data-droppable-id="1"
+  data-type="container"
+  className={`${styles.topSection} dropZoneArea ${isOverTop ? "isOver" : ""}`}
+  data-is-over={isOverTop ? "true" : "false"}
+  style={dropZoneStyle}
+>
+    {droppedItems.length === 0 && isCheckoutEditing && (
+      <div style={{ 
+        position: "absolute", 
+        top: "50%", 
+        left: "50%", 
+        transform: "translate(-50%, -50%)",
+        color: "#666",
+        fontStyle: "italic"
+      }}>
+        Drop items here
+      </div>
+    )}
+<SortableContext key={sortableKey} items={droppedItems} strategy={verticalListSortingStrategy}>
+  {droppedItems.map((item) => (
+    <div key={`top-${item.id}`} className={styles.droppableBox} style={{ position: 'relative', overflow: 'visible' }}>
+      <DraggableBox 
+        id={item.id}
+        header={item.header}
+        options={item.options}
+        data={{ type: "draggable-item" }}
+        isDropped={true}
+        removeDroppedItem={removeDroppedItem}
+        isCheckoutEditing={isCheckoutEditing}
+      />
+    </div>
+  ))}
+</SortableContext>
+  </div>
+
+  {/* Bottom Section */}
+  {isCheckoutEditing && (
+    <div
+    ref={bottomSectionRef}
+    id="bottom-section"
+    data-id="2"
+    data-droppable="true"
+    data-droppable-id="2"
+    data-type="container"
+    data-current='{"type": "container"}'
+    className={styles.bottomSection}
+    style={{
+      minHeight: "200px",
+      padding: "20px",
+      position: "relative",
+      border: isOverBottom ? "2px solid #2196F3" : "2px dashed #ccc",
+      backgroundColor: isOverBottom ? "rgba(33, 150, 243, 0.1)" : "transparent",
+      touchAction: "none",
+      userSelect: "none",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+      gap: "10px",
+      pointerEvents: "auto"  // Add this to ensure dragging works
+    }}
+  >
+  <h4>Available Components</h4>
+  <SortableContext key={sortableKey} items={items} strategy={verticalListSortingStrategy}>
+
+  {items.map((item) => {
+  const isInTopSection = droppedItems.some(droppedItem => droppedItem.id === item.id);
+  return (
+    <div
+      key={`bottom-${item.id}`}
+      className={styles.dragItem}
+      data-draggable-id={item.id}
+      data-dropped={isInTopSection ? "true" : "false"}
+      style={{
+        opacity: isInTopSection ? 0.3 : 1,
+        pointerEvents: isInTopSection ? 'none' : 'auto',
+        cursor: isInTopSection ? 'not-allowed' : 'grab'
+      }}
+    >
+      <DraggableBox
+        id={item.id}
+        header={item.header}
+        options={item.options}
+        data={{ type: "draggable-item" }}
+        isDropped={isInTopSection}
+        isInBottomSection={true} // ✅ Ensure it knows it's in the bottom section
+      />
+    </div>
+  );
+})}
+</SortableContext>
+</div>
+  )}
+
+<DragOverlay>
+  {activeId ? (
+    <DraggableBox
+      id={activeId}
+      header={(items.find(item => item.id === activeId) || droppedItems.find(item => item.id === activeId))?.header || ""}
+      options={(items.find(item => item.id === activeId) || droppedItems.find(item => item.id === activeId))?.options || []}
+      data={{ type: "draggable-item" }} // ✅ Ensure this is added
+    />
+  ) : null}
+</DragOverlay>
+
+</DndContext>
+
+              {isCheckoutEditing && (
+                <div className={styles.editModeButtons}>
+<button className={styles.saveButton} onClick={() => {
+                      handleSaveCheckout();
+                      toggleCheckoutEditMode(); // ✅ Exit edit mode after saving
+                  }}>
+                    <FaCheck /> Save
+                  </button>
+                  <button className={styles.cancelButton} onClick={() => {
+                      handleCancelCheckout();
+                      toggleCheckoutEditMode(); // ✅ Exit edit mode after canceling
+                  }}>
+                    <FaTimes /> Cancel
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
           </div>
         ) : (
           <div className={styles.profilePage}>

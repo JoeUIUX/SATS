@@ -1,5 +1,7 @@
 /* [project]/src/app/globals.css [app-client] (css) */
 body {
+  background: var(--page-bg-image) no-repeat center center fixed;
+  background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
   transition: background-color .4s, color .4s;
@@ -82,6 +84,7 @@ body {
 }
 
 :root {
+  --page-bg-image: url("/assets/curve_background.png");
   --page-bg-color: #000;
   --bg-color: #fff;
   --border-color: #ccc;
@@ -89,6 +92,7 @@ body {
 }
 
 html.light {
+  --page-bg-image: url("/assets/lightcurve_background.png");
   --page-bg-color: #fff;
   --bg-color: #fff;
   --border-color: #444;
@@ -96,6 +100,7 @@ html.light {
 }
 
 html.dark {
+  --page-bg-image: url("/assets/curve_background.png");
   --page-bg-color: gray;
   --bg-color: #000;
   --border-color: #fff;

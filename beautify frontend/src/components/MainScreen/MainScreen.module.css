@@ -340,6 +340,7 @@ body,
 }
 
 /* Move About Button Below Profile Name */
+.checkoutButton,
 .aboutButton {
   margin-top: 15px;
   display: flex;
@@ -359,9 +360,30 @@ body,
   background-color: #2980b9;
 }
 
+/* Completely hide docx-preview elements */
+.docx-wrapper, .docx {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -1 !important;
+}
+
+.checkoutSection {
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 0;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
 /* Ensure aboutSection adapts to light/dark mode */
 .aboutSection {
-  display: none;
+  display: block; /* Ensure it is visible */
   margin-top: 15px;
   padding: 15px;
   background-color: var(--section-bg);
@@ -372,13 +394,16 @@ body,
 }
 
 /* Ensure text adapts */
+.checkoutSection p,
 .aboutSection p {
   color: var(--text-color);
   transition: color 0.3s ease-in-out;
+  margin: 0;
+  padding: 5px 0;
 }
 
 /* ✅ Fix for Dark Mode in CSS Modules */
-:global(html.dark) .aboutSection {
+:global(html.dark)  .checkoutSection, .aboutSection {
   background-color: var(--dark-section-bg) !important;
   border: 1px solid var(--dark-section-border) !important;
   color: var(--dark-text-color) !important;
@@ -401,7 +426,7 @@ body,
 
 
 /* Show About Section When Active */
-.profilePage .aboutSection {
+.profilePage .checkoutSection, .aboutSection {
   display: block;
 }
 
@@ -428,6 +453,45 @@ body,
 .aboutSection .editButton:hover {
   background-color: #e67e22;
 }
+
+/* ✅ Ensure unordered list styles are applied */
+.aboutSection ul {
+  padding-left: 20px;
+  list-style-type: disc !important; /* Force bullet points */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block !important; /* Ensure visibility */
+}
+
+/* ✅ Ensure ordered list styles are applied */
+.aboutSection ol {
+  padding-left: 20px;
+  list-style-type: decimal !important; /* Force numbers */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block !important; /* Ensure visibility */
+}
+
+/* ✅ Ensure list items have proper spacing */
+.aboutSection li {
+  margin-bottom: 5px;
+  display: list-item !important; /* Ensure list item behavior */
+}
+
+.aboutSection table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.aboutSection th, .aboutSection td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
 
 /* Delete Button - Ensure It Remains at the Top Right */
 .profileHeading .deleteButton {
@@ -609,4 +673,305 @@ body,
   border: none;
   border-radius: 50%;
   visibility: visible; /* ✅ This is only relevant if the button is rendered */
+}
+
+/* ✅ Drop zone styling (Only visible in edit mode) */
+.dropZone {
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.hiddenDropZone {
+  border: none;
+  background-color: transparent;
+}
+
+.dropHereText {
+  text-align: center;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+  color: var(--text-color);
+}
+
+/* ✅ Follow Same Color Transition as 'Test Selection:' Text */
+.dropHereText {
+  color: var(--text-color);
+}
+
+.dropZoneArea {
+  position: relative;
+  min-height: 250px; /* Ensure sufficient height */
+  z-index: 1;
+  width: 100%; /* Take full width */
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px dashed rgb(204, 204, 204);
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Center align the dotted box */
+  align-content: flex-start;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+  background-color: transparent;
+  /* pointer-events: auto !important; */
+  touch-action: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.dropZoneArea[data-is-over="true"] {
+  border-color: #2196F3 !important;
+  background-color: rgba(33, 150, 243, 0.1) !important;
+}
+
+.dropZoneArea.isOver {
+  background-color: rgba(0, 0, 255, 0.2) !important; /* Light blue when hovered */
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* ✅ Ensure removed items in bottom section can be dragged again */
+.bottomSection .dragItem[data-dropped="false"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: grab !important;
+}
+
+.droppableBox {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+  overflow: visible !important; /* Ensure visibility */
+  max-width: 100%; /* Prevent extra width */
+}
+
+.removeDraggedItemsButton {
+  position: absolute;
+  top: -1px !important;
+  right: -1px !important;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  font-size: 14px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure remove button is not clipped */
+.dragItem .removeDraggedItemsButton {
+  overflow: visible !important;
+  position:absolute;
+}
+
+
+.removeDraggedItemsButton:hover {
+  background-color: darkred;
+}
+
+.editModeButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+/* Ensure an empty drop zone is always present in the top section */
+.emptyDropZone {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+  border: 2px dashed transparent;
+}
+
+.dropZone::after {
+  content: '';
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.dropZone:hover {
+  border-color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.scrollableContainer {
+  position: relative;
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add styles for the dropped items container */
+.editableArea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Add isDragging state for dragged items */
+.isDragging {
+  z-index: 1000;
+  pointer-events: none;
+  cursor: grabbing;
+}
+
+.topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important; /* Ensure visibility */
+}
+
+/* Update droppable box in top section */
+.topSection .droppableBox {
+  margin: 5px;
+  position: relative;
+}
+
+.topSection[data-is-over="true"] {
+  border-color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.dragItem {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  transform-origin: center center;
+  will-change: transform;
+  /*overflow-x: hidden !important; /* Prevent horizontal scrolling */
+  white-space: normal !important; /* Prevent text forcing extra width */
+  overflow: visible !important; /* Ensure elements are visible */
+}
+
+/* Allow remove button to be fully visible */
+/* Ensure top section allows button protrusion */
+.topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important; /* Ensure visibility */
+}
+
+/* Allow elements inside droppable boxes to protrude */
+.droppableBox {
+  position: relative;
+  overflow: visible !important; /* Prevents clipping */
+}
+
+/* Ensure remove button is always visible and outside the box */
+.dragItem button {
+  position: absolute;
+  top: -12px !important; /* Protrude further */
+  right: -12px !important; /* Protrude outside */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.dragItem.isDropped {
+  opacity: 0.6;
+  pointer-events: none;
+  filter: blur(2px);
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+:global(html.dark) .dragItem.isDropped {
+  background-color: #404040;  /* Darker grey for dark mode */
+}
+
+/* ✅ Ensure items can be reactivated */
+.dragItem:not(.isDropped),
+.dragItem.isDropped.isEnabled {
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto !important;
+  cursor: grab;
+}
+
+.startTestButton {
+  background-color: #28a745; /* Green background */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
+  transition: background-color 0.2s ease-in-out;
+  margin-left: auto; /* ✅ Pushes the button to the right */
+}
+
+.startTestButton:hover {
+  background-color: #218838; /* Darker green on hover */
 }

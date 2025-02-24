@@ -6,13 +6,14 @@ import sqlite3
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
 
 # Determine simulation mode from an environment variable
 SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
 
 # Initialize SQLite database
-DATABASE = "profiles.db"
+DATABASE = "satellites.db"
 
 
 def get_db():
@@ -26,13 +27,23 @@ def create_table():
     """ Ensure the profiles table exists in the database with description and images fields. """
     db = get_db()
     db.execute(
-        """
+         """
         CREATE TABLE IF NOT EXISTS profiles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT UNIQUE NOT NULL,
             description TEXT DEFAULT 'No details provided.',
-            images TEXT DEFAULT '[]',  -- Stores Base64 image data as JSON
-            uploadedFileName TEXT DEFAULT '' -- ✅ Added column for storing file name
+            images TEXT DEFAULT '[]',
+            uploadedFileName TEXT DEFAULT ''
+        )
+        """
+    )
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS checkout_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            profile_id TEXT NOT NULL,
+            item_data TEXT NOT NULL,
+            UNIQUE(profile_id)
         )
         """
     )
@@ -98,6 +109,7 @@ def get_profiles():
             "images": json.loads(row["images"]) if row["images"] else [],
             "uploadedFileName": row["uploadedFileName"] if "uploadedFileName" in row.keys() else ""  # ✅ Ensure key exists
         })
+    db.close()
     return jsonify(profiles)
 
 
@@ -119,9 +131,12 @@ def add_profile():
         if existing_profile:
             return jsonify({"error": "Profile name must be unique."}), 400  # More specific error
 
+        # ✅ Store images as JSON in the database
+        images_json = json.dumps(data.get("images", []))
+
         db.execute(
             "INSERT INTO profiles (name, description, images, uploadedFileName) VALUES (?, ?, ?, ?)",
-            (name, data.get("description", ""), json.dumps(data.get("images", [])), data.get("uploadedFileName", ""))
+            (name, data.get("description", ""), images_json, data.get("uploadedFileName", ""))
         )
         db.commit()
 
@@ -141,6 +156,7 @@ def add_profile():
         return jsonify({"error": "Profile name must be unique."}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 # ✅ **New API: Update Profile Description and Images**
 @app.route('/profiles/<name>', methods=['PUT'])
@@ -178,6 +194,59 @@ def delete_profile(name):
     db.commit()
     db.close()
     return jsonify({"message": "Profile deleted successfully."})
+
+@app.route('/checkout/save', methods=['POST'])
+def save_checkout_items():
+    """ Saves the checkout section items for a profile uniquely. """
+    try:
+        data = request.json
+        profile_id = data.get("profile_id")
+        item_data = json.dumps(data.get("items", []))
+
+        if not profile_id:
+            return jsonify({"error": "Profile ID is required."}), 400
+
+        db = get_db()
+        db.execute(
+            """
+            INSERT INTO checkout_items (profile_id, item_data)
+            VALUES (?, ?) 
+            ON CONFLICT(profile_id) DO UPDATE SET item_data = excluded.item_data
+            """,
+            (profile_id, item_data)
+        )
+        db.commit()
+        db.close()
+
+        print(f"✅ Checkout items saved uniquely for profile: {profile_id}")
+
+        return jsonify({"message": "Checkout items saved successfully."}), 200
+
+    except Exception as e:
+        print(f"❌ Error in save_checkout_items: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+
+@app.route('/checkout/load/<profile_id>', methods=['GET'])
+def load_checkout_items(profile_id):
+    """ Loads the saved checkout section items for a profile. """
+    try:
+        db = get_db()
+        row = db.execute("SELECT item_data FROM checkout_items WHERE profile_id = ?", (profile_id,)).fetchone()
+        db.close()
+
+        if row:
+            print(f"✅ Checkout items loaded for profile {profile_id}: {row['item_data']}")
+            return jsonify({"items": json.loads(row["item_data"])}), 200
+        else:
+            print(f"ℹ️ No saved checkout items found for profile {profile_id}")
+            return jsonify({"items": []}), 200  # Return empty if no data is found
+
+    except Exception as e:
+        print(f"❌ Error in load_checkout_items: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

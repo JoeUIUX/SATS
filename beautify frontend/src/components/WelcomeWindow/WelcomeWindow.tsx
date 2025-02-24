@@ -77,7 +77,7 @@ const WelcomeWindow: React.FC = () => {
       }}
     >
       <header className={styles.welcomeHeader}>
-        <img src="/SaRCLogo.png" alt="Satellite Research Centre Logo" className={styles.logo} />
+        <img src="/assets/SaRCLogo.png" alt="Satellite Research Centre Logo" className={styles.logo} />
         <h2>Satellite Research Centre</h2>
         <h1>Satellite Automated Testing System</h1>
         {dateTime && <p className={styles.dateTime}>{dateTime}</p>}

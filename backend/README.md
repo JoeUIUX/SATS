@@ -37,7 +37,6 @@ python backend_server.py
 By default, the backend will be available at:
 ```bash
 http://127.0.0.1:5000
-replace with your backend server url as required
 ```
 
 ---

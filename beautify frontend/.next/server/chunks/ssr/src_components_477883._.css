@@ -600,7 +600,7 @@ body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, 
   background-color: #c0392b;
 }
 
-.MainScreen-module__4v2AYG__aboutButton {
+.MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
   margin-top: 15px;
   display: flex;
   align-items: center;
@@ -619,8 +619,28 @@ body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, 
   background-color: #2980b9;
 }
 
+.MainScreen-module__4v2AYG__docx-wrapper, .MainScreen-module__4v2AYG__docx {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -1 !important;
+}
+
+.MainScreen-module__4v2AYG__checkoutSection {
+  z-index: 0;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  transition: background-color .3s;
+  overflow: visible !important;
+  position: relative !important;
+}
+
 .MainScreen-module__4v2AYG__aboutSection {
-  display: none;
+  display: block;
   margin-top: 15px;
   padding: 15px;
   background-color: var(--section-bg);
@@ -630,12 +650,14 @@ body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, 
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
-.MainScreen-module__4v2AYG__aboutSection p {
+.MainScreen-module__4v2AYG__checkoutSection p, .MainScreen-module__4v2AYG__aboutSection p {
   color: var(--text-color);
   transition: color .3s ease-in-out;
+  margin: 0;
+  padding: 5px 0;
 }
 
-html.dark .MainScreen-module__4v2AYG__aboutSection {
+html.dark .MainScreen-module__4v2AYG__checkoutSection, .MainScreen-module__4v2AYG__aboutSection {
   background-color: var(--dark-section-bg) !important;
   border: 1px solid var(--dark-section-border) !important;
   color: var(--dark-text-color) !important;
@@ -653,7 +675,7 @@ html.dark {
   --dark-text-color: #ecf0f1;
 }
 
-.MainScreen-module__4v2AYG__profilePage .MainScreen-module__4v2AYG__aboutSection {
+.MainScreen-module__4v2AYG__profilePage .MainScreen-module__4v2AYG__checkoutSection, .MainScreen-module__4v2AYG__aboutSection {
   display: block;
 }
 
@@ -678,6 +700,41 @@ html.dark {
 
 .MainScreen-module__4v2AYG__aboutSection .MainScreen-module__4v2AYG__editButton:hover {
   background-color: #e67e22;
+}
+
+.MainScreen-module__4v2AYG__aboutSection ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-type: disc !important;
+  display: block !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection ol {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-type: decimal !important;
+  display: block !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection li {
+  margin-bottom: 5px;
+  display: list-item !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+}
+
+.MainScreen-module__4v2AYG__aboutSection th, .MainScreen-module__4v2AYG__aboutSection td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
 }
 
 .MainScreen-module__4v2AYG__profileHeading .MainScreen-module__4v2AYG__deleteButton {
@@ -846,6 +903,286 @@ html.dark {
   border: none;
   border-radius: 50%;
   visibility: visible;
+}
+
+.MainScreen-module__4v2AYG__dropZone {
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s;
+  background-color: #00000005;
+}
+
+.MainScreen-module__4v2AYG__hiddenDropZone {
+  border: none;
+  background-color: #0000;
+}
+
+.MainScreen-module__4v2AYG__dropHereText {
+  text-align: center;
+  font-weight: bold;
+  transition: color .3s ease-in-out;
+  color: var(--text-color);
+}
+
+.MainScreen-module__4v2AYG__dropHereText {
+  color: var(--text-color);
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea {
+  position: relative;
+  min-height: 250px;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: center;
+  position: relative;
+  transition: background-color .2s ease-in-out;
+  background-color: #0000;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea[data-is-over="true"] {
+  border-color: #2196f3 !important;
+  background-color: #2196f31a !important;
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea.MainScreen-module__4v2AYG__isOver {
+  background-color: #00f3 !important;
+}
+
+.MainScreen-module__4v2AYG__bottomSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.MainScreen-module__4v2AYG__bottomSection .MainScreen-module__4v2AYG__dragItem[data-dropped="false"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: grab !important;
+}
+
+.MainScreen-module__4v2AYG__droppableBox {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+  max-width: 100%;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__removeDraggedItemsButton {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  font-size: 14px;
+  box-shadow: 0 0 4px #0000004d;
+  top: -1px !important;
+  right: -1px !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem .MainScreen-module__4v2AYG__removeDraggedItemsButton {
+  position: absolute;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__removeDraggedItemsButton:hover {
+  background-color: #8b0000;
+}
+
+.MainScreen-module__4v2AYG__editModeButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.MainScreen-module__4v2AYG__emptyDropZone {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+  border: 2px dashed #0000;
+}
+
+.MainScreen-module__4v2AYG__dropZone:after {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transition: all .2s;
+}
+
+.MainScreen-module__4v2AYG__dropZone:hover {
+  border-color: #2196f3;
+  background-color: #2196f31a;
+}
+
+.MainScreen-module__4v2AYG__scrollableContainer {
+  position: relative;
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto;
+  transition: background-color .3s;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.MainScreen-module__4v2AYG__editableArea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 200px;
+}
+
+.MainScreen-module__4v2AYG__isDragging {
+  z-index: 1000;
+  pointer-events: none;
+  cursor: grabbing;
+}
+
+.MainScreen-module__4v2AYG__topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__topSection .MainScreen-module__4v2AYG__droppableBox {
+  margin: 5px;
+  position: relative;
+}
+
+.MainScreen-module__4v2AYG__topSection[data-is-over="true"] {
+  border-color: #2196f3;
+  background-color: #2196f31a;
+}
+
+.MainScreen-module__4v2AYG__dragItem {
+  position: relative;
+  transition: transform .2s ease-in-out;
+  transform-origin: center;
+  will-change: transform;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__droppableBox {
+  position: relative;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem button {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0 0 4px #0000004d;
+  top: -12px !important;
+  right: -12px !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped {
+  opacity: .6;
+  pointer-events: none;
+  filter: blur(2px);
+  cursor: not-allowed;
+}
+
+html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped {
+  background-color: #404040;
+}
+
+.MainScreen-module__4v2AYG__dragItem:not(.MainScreen-module__4v2AYG__isDropped), .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped.MainScreen-module__4v2AYG__isEnabled {
+  cursor: grab;
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
+.MainScreen-module__4v2AYG__startTestButton {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color .2s ease-in-out;
+  margin-left: auto;
+}
+
+.MainScreen-module__4v2AYG__startTestButton:hover {
+  background-color: #218838;
 }
 
 

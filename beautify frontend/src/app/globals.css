@@ -1,5 +1,7 @@
 /* Global Styles */
 body {
+  background: var(--page-bg-image) no-repeat center center fixed;
+  background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
   transition: background-color 0.4s, color 0.4s;
@@ -93,14 +95,16 @@ body { /* Webpage background dynamically changes with theme */
 
 /* Default styles for all modes */
 :root {
-  --page-bg-color: #000; /* Default dark mode webpage background */
-  --bg-color: #ffffff; /* Default (light mode) WelcomeWindow background */
+  --page-bg-image: url("/assets/curve_background.png"); /* Default dark mode */
+  --page-bg-color: #000; /* Default dark mode background */
+  --bg-color: #ffffff; /* WelcomeWindow background (light mode) */
   --border-color: #ccc; /* Default border color */
-  --text-color: #000000; /* Default (light mode) text color */
+  --text-color: #000000; /* Default text color */
 }
 
 /* Light Mode */
 html.light {
+  --page-bg-image: url("/assets/lightcurve_background.png"); /* Light mode background */
   --page-bg-color: #ffffff; /* Webpage background in light mode */
   --bg-color: #ffffff; /* WelcomeWindow background in light mode */
   --border-color: #444; /* Border color in light mode */
@@ -109,6 +113,7 @@ html.light {
 
 /* Dark Mode */
 html.dark {
+  --page-bg-image: url("/assets/curve_background.png"); /* Dark mode background */
   --page-bg-color: gray; /* Webpage background in dark mode */
   --bg-color: #000000; /* WelcomeWindow background in dark mode */
   --border-color: #ffffff; /* Border color in dark mode */
