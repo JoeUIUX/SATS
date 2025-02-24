@@ -46,7 +46,7 @@ http://127.0.0.1:5000
 backend/
 │-- backend_server.py   # Flask server and API endpoints
 │-- mccif.py            # MCC server communication module
-│-- profiles.db         # SQLite database file
+│-- satellites.db       # SQLite database file
 │-- .env                # Environment variables
 │-- requirements.txt    # Required dependencies
 │-- README.md           # This file
@@ -70,9 +70,17 @@ REACT_APP_BACKEND_URL=http://127.0.0.1:5000
 
 ---
 
+## 📌 Entity Relationship Diagram (ERD)
+```
+The database structure is described in the SQLiteDatabaseREADME.md file, which provides details about the satellites.db schema.
+
+Profiles Table: Stores profile information, including descriptions and images.
+Checkout Items Table: Stores checkout items associated with a profile.
+For a full description, refer to SQLiteDatabaseREADME.md.
+```
+
 ## **Author**
 👤 **Joe Goh**  
 📩 *Feel free to reach out for questions or collaboration!*
 
 ---
-
