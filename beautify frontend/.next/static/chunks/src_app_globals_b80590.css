@@ -128,5 +128,19 @@ html.dark {
   color: #fff;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.popup {
+  position: fixed;
+  z-index: 2000;
+  max-width: 600px;
+}
+
 
 /*# sourceMappingURL=src_app_globals_b80590.css.map*/

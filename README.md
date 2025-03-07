@@ -170,15 +170,31 @@ npm install
 
 ## **Technologies Used**
 ### **Frontend**
-- **Framework**: React with TypeScript
+- **Framework**: Next.js (React with TypeScript)
 - **Styling**: CSS Modules
-- **Drag-and-Drop**: DnD Kit
+- **Drag & Drop**: DnD Kit (for interactive drag-and-drop UI)
 - **Rich Text Editing**: TipTap Editor
+- **Document Processing**:
+    - Mammoth (.docx text extraction)
+    - docx-preview (For rendering .docx previews)
+    - docx (For generating .docx files)
+    - Turndown (Convert HTML to Markdown)
+- **3D Rendering**:
+    - Three.js
+    - React-Three/Fiber
+    - @react-three/drei (Utility components for Three.js)
+- **UI Components**:
+    - react-draggable (For draggable UI elements)
+    - react-rnd (For resizable & draggable UI)
+- **Icons**:
+    - React-Icons
+    - Font Awesome (via fortawesome)
 
 ### **Backend**
 - **Framework**: Flask
 - **Database**: SQLite
 - **Environment Management**: Python `.env` files
+
 
 ---
 

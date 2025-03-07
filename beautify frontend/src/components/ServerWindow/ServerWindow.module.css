@@ -1,19 +1,18 @@
 .popup {
-  position: fixed;
+  position: fixed !important; /* ✅ Ensure full independence */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  width: 400px;
+  transform: translate(-50%, -50%);
+  width: 600px; /* ✅ Match `ToTestList` */
+  max-width: 90vw;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  opacity: 0;
-  animation: popup-show 0.3s forwards;
+  z-index: inherit !important; /* Allows React-controlled zIndex */
+  opacity: 1 !important;  /* Ensure visibility */
+  visibility: visible !important;  /* Ensure visibility */
 }
 
 @keyframes popup-show {
@@ -31,7 +30,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: grab !important; /* ✅ Shows draggable cursor */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1); /* ✅ Highlighted header */
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
+}
+
+.header:active {
+  cursor: grabbing !important; /* ✅ Cursor changes while dragging */
 }
 
 .closeButton {
@@ -72,4 +79,13 @@ html.dark .closeButton {
 
 .connectButton:hover {
   background-color: #008c9e;
+}
+
+
+.drag-handle {
+  cursor: grab !important;
+}
+
+.drag-handle:active {
+  cursor: grabbing !important;
 }

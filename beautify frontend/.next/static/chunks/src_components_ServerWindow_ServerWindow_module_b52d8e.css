@@ -1,20 +1,19 @@
 /* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
 .ServerWindow-module__wfqmlq__popup {
-  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)scale(.9);
-  width: 400px;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90vw;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  opacity: 0;
-  animation: .3s forwards ServerWindow-module__wfqmlq__popup-show;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @keyframes ServerWindow-module__wfqmlq__popup-show {
@@ -33,7 +32,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__header:active {
+  cursor: grabbing !important;
 }
 
 .ServerWindow-module__wfqmlq__closeButton {
@@ -74,6 +81,14 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
 
 .ServerWindow-module__wfqmlq__connectButton:hover {
   background-color: #008c9e;
+}
+
+.ServerWindow-module__wfqmlq__drag-handle {
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__drag-handle:active {
+  cursor: grabbing !important;
 }
 
 /*# sourceMappingURL=src_components_ServerWindow_ServerWindow_module_b52d8e.css.map*/

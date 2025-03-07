@@ -143,3 +143,18 @@ html.dark {
 .light .icon.sun {
   color: #ffffff; /* Sun icon now white in light mode */
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Ensure the draggable window does not stretch other elements */
+.popup {
+  position: fixed;
+  z-index: 2000; /* ✅ Ensure it appears above everything else */
+  max-width: 600px;
+}

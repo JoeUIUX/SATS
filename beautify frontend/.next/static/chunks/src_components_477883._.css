@@ -1,20 +1,19 @@
 /* [project]/src/components/ToTestList/ToTestList.module.css [app-client] (css) */
 .ToTestList-module__vY2V8W__popup {
-  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)scale(.9);
-  width: 800px;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  opacity: 0;
-  animation: .3s forwards ToTestList-module__vY2V8W__popup-show;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @keyframes ToTestList-module__vY2V8W__popup-show {
@@ -33,7 +32,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
+}
+
+.ToTestList-module__vY2V8W__header:active {
+  cursor: grabbing;
 }
 
 .ToTestList-module__vY2V8W__closeButton {
@@ -139,24 +146,35 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
   background-color: #e67e22;
 }
 
+.ToTestList-module__vY2V8W__drag-handle {
+  cursor: grab !important;
+  background-color: #0000001a !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.ToTestList-module__vY2V8W__drag-handle:active {
+  cursor: grabbing !important;
+  background-color: #0003 !important;
+}
+
 
 /* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
 .ServerWindow-module__wfqmlq__popup {
-  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)scale(.9);
-  width: 400px;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90vw;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  opacity: 0;
-  animation: .3s forwards ServerWindow-module__wfqmlq__popup-show;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @keyframes ServerWindow-module__wfqmlq__popup-show {
@@ -175,7 +193,15 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__header:active {
+  cursor: grabbing !important;
 }
 
 .ServerWindow-module__wfqmlq__closeButton {
@@ -218,10 +244,17 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
   background-color: #008c9e;
 }
 
+.ServerWindow-module__wfqmlq__drag-handle {
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__drag-handle:active {
+  cursor: grabbing !important;
+}
+
 
 /* [project]/src/components/WelcomeWindow/WelcomeWindow.module.css [app-client] (css) */
 .WelcomeWindow-module__WdKywW__welcomeWindow {
-  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -231,14 +264,30 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
   background: linear-gradient(135deg, #fff, #e6f7ff);
   text-align: center;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
   font-family: Arial, sans-serif;
+  position: fixed !important;
   border: 2px solid var(--border-color) !important;
+  z-index: inherit !important;
   color: var(--text-color) !important;
 }
 
 html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWindow {
   background: linear-gradient(135deg, #000, #1a1a1a);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader:active {
+  cursor: grabbing;
 }
 
 .WelcomeWindow-module__WdKywW__buttonContainer {
@@ -302,7 +351,17 @@ html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWi
 .WelcomeWindow-module__WdKywW__logo {
   width: 150px;
   height: auto;
-  margin-bottom: -20px;
+  margin-bottom: 10px;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h2 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h1 {
+  font-size: 24px;
+  margin: 5px 0;
 }
 
 
@@ -600,7 +659,7 @@ body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, 
   background-color: #c0392b;
 }
 
-.MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
+.MainScreen-module__4v2AYG__threeDModelButton, .MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
   margin-top: 15px;
   display: flex;
   align-items: center;
@@ -1183,6 +1242,14 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
 
 .MainScreen-module__4v2AYG__startTestButton:hover {
   background-color: #218838;
+}
+
+.MainScreen-module__4v2AYG__checkoutButton:hover {
+  background-color: #2980b9;
+}
+
+.MainScreen-module__4v2AYG__threeDModelButton:hover {
+  background-color: #2980b9;
 }
 
 

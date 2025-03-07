@@ -1,6 +1,5 @@
 /* [project]/src/components/WelcomeWindow/WelcomeWindow.module.css [app-client] (css) */
 .WelcomeWindow-module__WdKywW__welcomeWindow {
-  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -10,14 +9,30 @@
   background: linear-gradient(135deg, #fff, #e6f7ff);
   text-align: center;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
   font-family: Arial, sans-serif;
+  position: fixed !important;
   border: 2px solid var(--border-color) !important;
+  z-index: inherit !important;
   color: var(--text-color) !important;
 }
 
 html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWindow {
   background: linear-gradient(135deg, #000, #1a1a1a);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader:active {
+  cursor: grabbing;
 }
 
 .WelcomeWindow-module__WdKywW__buttonContainer {
@@ -81,7 +96,17 @@ html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWi
 .WelcomeWindow-module__WdKywW__logo {
   width: 150px;
   height: auto;
-  margin-bottom: -20px;
+  margin-bottom: 10px;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h2 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h1 {
+  font-size: 24px;
+  margin: 5px 0;
 }
 
 /*# sourceMappingURL=src_components_WelcomeWindow_WelcomeWindow_module_b52d8e.css.map*/

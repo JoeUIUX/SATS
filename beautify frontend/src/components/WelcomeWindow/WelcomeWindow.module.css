@@ -2,7 +2,7 @@
 
 /* Center the popup on the screen */
 .welcomeWindow {
-  position: fixed;
+  position: fixed !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -13,13 +13,29 @@
   background: linear-gradient(135deg, #ffffff, #e6f7ff);
   text-align: center;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: inherit !important; /* Allows React-controlled zIndex */
   font-family: Arial, sans-serif;
   color: var(--text-color) !important;
 }
 
 html.dark .welcomeWindow {
   background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+/* Make the header cursor indicate draggable functionality */
+.welcomeHeader {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center elements horizontally */
+  text-align: center;
+  cursor: grab; /* Shows draggable cursor */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.welcomeHeader:active {
+  cursor: grabbing; /* Changes cursor when dragging */
 }
 
 /* Align the buttons in a column */
@@ -88,5 +104,16 @@ html.dark .welcomeWindow {
 .logo {
   width: 150px; /* Increase size of the logo */
   height: auto; /* Maintain aspect ratio */
-  margin-bottom: -20px; /* Add spacing below the logo */
+  margin-bottom: 10px; /* Add spacing below the logo */
+}
+
+/* Adjust title and subtitle for proper alignment */
+.welcomeHeader h2 {
+  font-size: 18px;
+  margin: 5px 0; /* Add spacing */
+}
+
+.welcomeHeader h1 {
+  font-size: 24px;
+  margin: 5px 0;
 }

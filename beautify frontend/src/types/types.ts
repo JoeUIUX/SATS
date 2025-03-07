@@ -5,3 +5,5 @@ export interface Profile {
   images: { src: string; alt: string }[];
   uploadedFileName?: string; // ✅ Add this line
 }
+
+export type WindowName = "WelcomeWindow" | "ToTestList" | "ServerWindow" | "ThreeDModelWindow";

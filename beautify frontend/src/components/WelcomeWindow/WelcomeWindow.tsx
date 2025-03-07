@@ -1,18 +1,42 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Draggable from "react-draggable";
 import ToTestList from "../ToTestList/ToTestList"; // Import the ToTestList popup window React Component
 import ServerWindow from "../ServerWindow/ServerWindow"; // Import Server Window Component
 import styles from "./WelcomeWindow.module.css";
+import { WindowName } from "types/types";
 
 // Use require if not using images.d.ts
 //const logo = require("../../assets/logo.jpg");
 
-const WelcomeWindow: React.FC = () => {
+const WelcomeWindow: React.FC<{
+  zIndex: number;
+  onMouseDown: () => void;
+  onClose: () => void;
+  bringWindowToFront: (windowName: WindowName) => void;
+  windowZIndexes: { [key: string]: number };
+  zIndexCounter: number;
+  // Add these new props
+  openToTestList: () => void;
+  openServerWindow: () => void;
+}> = ({ 
+  zIndex, 
+  onMouseDown, 
+  onClose, 
+  bringWindowToFront, 
+  windowZIndexes, 
+  zIndexCounter,
+  openToTestList,
+  openServerWindow
+}) => {
+
   const [dateTime, setDateTime] = useState<string | null>(null);
   const [showToTestList, setShowToTestList] = useState(false);
   const [showServerWindow, setShowServerWindow] = useState(false);
   const [hasTests, setHasTests] = useState(false); // Track if there are rows in the list
+  const nodeRef = useRef<HTMLDivElement>(null!);
+  const [currentZIndex, setCurrentZIndex] = useState(zIndex);
 
   // Check if the page is in dark mode
   const isDarkMode = document.documentElement.classList.contains("dark");
@@ -48,8 +72,8 @@ const WelcomeWindow: React.FC = () => {
   }, [showToTestList]);
 
   const handleToTestListOpen = () => {
-    console.log("Opening ToTestList...");
-    setShowToTestList(true);
+    console.log("Calling openToTestList");
+    openToTestList(); // This will invoke the function from page.tsx
   };
 
   const handleToTestListClose = () => {
@@ -58,8 +82,8 @@ const WelcomeWindow: React.FC = () => {
   };
 
   const handleServerWindowOpen = () => {
-    console.log("Opening ServerWindow...");
-    setShowServerWindow(true);
+    console.log("Calling openServerWindow");
+    openServerWindow(); // This will invoke the function from page.tsx
   };
 
   const handleServerWindowClose = () => {
@@ -67,16 +91,32 @@ const WelcomeWindow: React.FC = () => {
     setShowServerWindow(false);
   };
 
+  const windowName = "WelcomeWindow";
+
+
+    // Debug when z-index changes
+    useEffect(() => {
+      console.log(`WelcomeWindow z-index updated to ${zIndex}`);
+    }, [zIndex]);
+  
+    console.log(`🎯 WelcomeWindow rendered with zIndex:`, zIndex);
+  
   return (
-    <div
-      className={styles.welcomeWindow}
+    <Draggable nodeRef={nodeRef} handle={`.${styles.welcomeHeader}`}>
+      <div
+        ref={nodeRef}
+        className={styles.welcomeWindow}
       style={{
+        position: "fixed",
+        minHeight: "200px",
+        zIndex: windowZIndexes["WelcomeWindow"],
         background: isDarkMode
           ? "linear-gradient(135deg, #000000, #1a1a1a)"
           : "linear-gradient(135deg, #ffffff, #e6f7ff)",
       }}
+      onMouseDown={onMouseDown}
     >
-      <header className={styles.welcomeHeader}>
+      <header className={`${styles.welcomeHeader} drag-handle`}>
         <img src="/assets/SaRCLogo.png" alt="Satellite Research Centre Logo" className={styles.logo} />
         <h2>Satellite Research Centre</h2>
         <h1>Satellite Automated Testing System</h1>
@@ -99,9 +139,31 @@ const WelcomeWindow: React.FC = () => {
           MCC
         </button>
       </div>
-      {showToTestList && <ToTestList onClose={handleToTestListClose} />}
-      {showServerWindow && <ServerWindow onClose={handleServerWindowClose} />}
+       {/* ✅ Ensure `onMouseDown` is passed */}
+       {showToTestList && (
+  <ToTestList
+    onClose={handleToTestListClose}
+    zIndex={windowZIndexes["ToTestList"] ?? zIndexCounter} 
+    onMouseDown={() => bringWindowToFront("ToTestList" as WindowName)}  
+    bringWindowToFront={bringWindowToFront}  
+    windowZIndexes={windowZIndexes}  // ✅ Pass this prop
+    zIndexCounter={zIndexCounter}  // ✅ Pass this prop
+  />
+)}
+
+{showServerWindow && (
+  <ServerWindow
+    onClose={handleServerWindowClose}
+    zIndex={windowZIndexes.ServerWindow}
+    onMouseDown={() => bringWindowToFront("ServerWindow" as WindowName)}  
+    bringWindowToFront={bringWindowToFront}  
+    windowZIndexes={windowZIndexes}  // ✅ Pass this prop
+    zIndexCounter={zIndexCounter}  // ✅ Pass this prop
+  />
+)}
+
     </div>
+</Draggable>
   );
 };
 

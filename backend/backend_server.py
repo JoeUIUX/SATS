@@ -1,20 +1,31 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from mccif import connect_to_mcc
 import os
 import sqlite3
 import json
+from dotenv import load_dotenv  # ✅ Import dotenv
+import threading
+import time
 
-app = Flask(__name__)
+# ✅ Load .env file
+load_dotenv()
+
+app = Flask(__name__, static_url_path="", static_folder="models")
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 
 # Determine simulation mode from an environment variable
 SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
 
+UPLOAD_FOLDER = os.path.join(os.getcwd(), "models")
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure directory exists
+
 # Initialize SQLite database
 DATABASE = "satellites.db"
 
+SCAN_INTERVAL = 10 # Time in seconds between scans
 
 def get_db():
     """ Connect to SQLite database and return connection. """
@@ -33,7 +44,8 @@ def create_table():
             name TEXT UNIQUE NOT NULL,
             description TEXT DEFAULT 'No details provided.',
             images TEXT DEFAULT '[]',
-            uploadedFileName TEXT DEFAULT ''
+            uploadedFileName TEXT DEFAULT '',
+            model_path TEXT DEFAULT NULL
         )
         """
     )
@@ -248,5 +260,125 @@ def load_checkout_items(profile_id):
         return jsonify({"error": str(e)}), 500
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route("/api/profile/<int:profile_id>", methods=["GET"])
+def get_profile_model(profile_id):
+    """Fetch the 3D model path for a given profile ID."""
+    try:
+        db = get_db()
+        row = db.execute("SELECT model_path FROM profiles WHERE id = ?", (profile_id,)).fetchone()
+        db.close()
+
+        if row and row["model_path"]:
+            model_path = row["model_path"]
+            if not os.path.exists(os.path.join(UPLOAD_FOLDER, os.path.basename(model_path))):
+                # File doesn't exist, return null path but still a 200 status
+                return jsonify({"model_path": None, "message": "Model file not found"}), 200
+
+            # File exists, return the path
+            return jsonify({"model_path": model_path}), 200
+        else:
+            # No model assigned to this profile
+            return jsonify({"model_path": None, "message": "No model assigned"}), 200
+
+    except Exception as e:
+        print(f"Error in get_profile_model: {str(e)}")
+        return jsonify({"error": str(e), "model_path": None}), 500
+
+
+# ✅ **API: Upload and Assign `.glb` Model to a Profile**
+@app.route("/api/upload-glb", methods=["POST"])
+def upload_glb():
+    if "file" not in request.files or "profile_id" not in request.form:
+        return jsonify({"error": "Missing file or profile ID"}), 400
+
+    file = request.files["file"]
+    profile_id = request.form["profile_id"]
+
+    if not file.filename.endswith(".glb"):
+        return jsonify({"error": "Invalid file format. Only .glb allowed"}), 400
+
+    filename = f"profile_{profile_id}.glb"
+    file_path = os.path.join(UPLOAD_FOLDER, filename)
+    file.save(file_path)
+
+    try:
+        db = get_db()
+        full_path = f"/models/{filename}"  # ✅ Store the full path
+        db.execute("UPDATE profiles SET model_path = ? WHERE id = ?", (full_path, profile_id))
+        db.commit()
+        db.close()
+        return jsonify({"message": "File uploaded successfully", "model_path": f"/models/{filename}"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+def sync_models_with_db():
+    """ Scan the models directory and update the database with new .glb files. """
+    db = get_db()
+    cursor = db.cursor()
+    existing_models = {row["model_path"] for row in
+                       cursor.execute("SELECT model_path FROM profiles WHERE model_path IS NOT NULL").fetchall()}
+
+    for filename in os.listdir(UPLOAD_FOLDER):
+        if filename.endswith(".glb"):
+            model_path = f"/models/{filename}"
+            if model_path not in existing_models:
+                profile_id = filename.replace("profile_", "").replace(".glb", "")
+                cursor.execute("UPDATE profiles SET model_path = ? WHERE id = ?", (model_path, profile_id))
+
+    db.commit()
+    db.close()
+
+
+# Run the sync function at startup
+sync_models_with_db()
+
+
+def scan_and_update_database():
+    """Periodically scan the models folder and update the database with new .glb files."""
+    while True:
+        try:
+            conn = get_db()
+            cursor = conn.cursor()
+
+            # Get existing model paths from the database
+            cursor.execute("SELECT model_path FROM profiles")
+            existing_models = {row["model_path"] for row in cursor.fetchall() if row["model_path"]}
+
+            # Scan the models folder for .glb files
+            model_files = {f for f in os.listdir(UPLOAD_FOLDER) if f.endswith(".glb")}
+
+            # Find new files that are not in the database
+            new_files = model_files - existing_models
+
+            for new_file in new_files:
+                # Try to find an empty profile slot to assign the new model
+                cursor.execute("SELECT id FROM profiles WHERE model_path IS NULL LIMIT 1")
+                profile = cursor.fetchone()
+
+                if profile:
+                    profile_id = profile["id"]
+                    cursor.execute("UPDATE profiles SET model_path = ? WHERE id = ?", (new_file, profile_id))
+                    conn.commit()
+                    print(f"✅ Added {new_file} to profile {profile_id} in the database.")
+                else:
+                    print(f"⚠️ No available profile for {new_file}, skipping.")
+
+            conn.close()
+        except Exception as e:
+            print(f"❌ Error scanning models folder: {e}")
+
+        time.sleep(SCAN_INTERVAL)  # Wait before scanning again
+
+
+# Start the scanning thread
+threading.Thread(target=scan_and_update_database, daemon=True).start()
+
+# ✅ Serve static `.glb` models
+@app.route("/models/<filename>")
+def get_model(filename):
+    return send_from_directory(app.config["UPLOAD_FOLDER"], filename, mimetype="model/gltf-binary", as_attachment=False)
+
+if __name__ == "__main__":
+    port = int(os.getenv("FLASK_PORT", 5000))
+    app.run(debug=True, port=port)

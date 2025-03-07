@@ -1,7 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./ToTestList.module.css";
+import Draggable from "react-draggable";
+import { createPortal } from "react-dom";
+import { WindowName } from "types/types";
 
-const ToTestList: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+const ToTestList: React.FC<{ 
+  zIndex: number; 
+  onMouseDown: () => void; 
+  onClose: () => void;
+  bringWindowToFront: (windowName: WindowName) => void;
+  windowZIndexes: { [key: string]: number };  // ✅ Accept this prop
+  zIndexCounter: number;  // ✅ Accept this prop
+}> = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZIndexes, zIndexCounter }) => {
+
+  const nodeRef = useRef<HTMLDivElement>(null!); // ✅ Ensure nodeRef is initialized
   const [rows, setRows] = useState<any[]>([]);
   const [form, setForm] = useState({
     test: "",
@@ -9,24 +21,39 @@ const ToTestList: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     loggedBy: "",
   });
 
-  // Load data from localStorage only when the component is mounted
-  useEffect(() => {
-    const savedRows = localStorage.getItem("toTestListRows");
-    if (savedRows) {
-      console.log("Loaded from localStorage:", JSON.parse(savedRows));
-      setRows(JSON.parse(savedRows)); // Restore the list from localStorage
-    } else {
-      console.log("No saved data found in localStorage.");
-    }
-  }, []); // Run only once when mounted
+  const [currentZIndex, setCurrentZIndex] = useState(zIndex); // ✅ Track `zIndex`
 
-  // Save data to localStorage whenever rows change
+  // Portal management
+  const [portalElement] = useState(() => {
+    // Create portal element once
+    const element = document.createElement("div");
+    element.id = "toTestList-root";
+    document.body.appendChild(element);
+    return element;
+  });
+
+  // Load data from localStorage
+useEffect(() => {
+  // Load data from localStorage
+  const savedRows = localStorage.getItem("toTestListRows");
+  if (savedRows) {
+    setRows(JSON.parse(savedRows));
+  }
+
+  // Cleanup function for when component unmounts
+  return () => {
+    if (portalElement && portalElement.parentNode) {
+      portalElement.parentNode.removeChild(portalElement);
+    }
+  };
+}, [portalElement]);
+
+  // Save data to localStorage when rows change
   useEffect(() => {
     if (rows.length > 0) {
-      console.log("Saving to localStorage:", rows);
       localStorage.setItem("toTestListRows", JSON.stringify(rows));
     } else {
-      console.log("Skipping save to localStorage because rows are empty.");
+      localStorage.removeItem("toTestListRows");
     }
   }, [rows]);
 
@@ -78,18 +105,83 @@ const ToTestList: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     setRows(updatedRows);
   };
 
-  // Determine if the page is in dark mode
-  const isDarkMode = document.documentElement.classList.contains("dark");
+  // Add state to track dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  
+  // Update dark mode state on component mount and when theme changes
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+    
+    // Initial check
+    checkDarkMode();
+    
+    // Set up observer for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          checkDarkMode();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+    
+    return () => observer.disconnect();
+  }, []);
 
-  return (
-    <div className={styles.popup}>
-      <div className={styles.header}>
-        <h2>Tests to Conduct</h2>
-        <button
-          onClick={onClose}
-          className={styles.closeButton}
-          style={{ color: isDarkMode ? "white" : "black" }}
-        >
+  // Determine if the page is in dark mode
+  //const isDarkMode = document.documentElement.classList.contains("dark");
+
+  // ✅ Ensure ToTestList mounts in a completely separate DOM node
+  const portalRoot = document.getElementById("toTestList-root") || (() => {
+    const root = document.createElement("div");
+    root.id = "toTestList-root";
+    document.body.appendChild(root);
+    return root;
+  })();
+
+  // Debug when z-index changes
+  useEffect(() => {
+    console.log(`ToTestList z-index updated to ${zIndex}`);
+  }, [zIndex]);
+
+  console.log(`🎯 ToTestList received zIndex:`, zIndex);
+
+  const windowName = "ToTestList";
+
+  // Log when component renders
+  useEffect(() => {
+    console.log("ToTestList component rendering with z-index:", zIndex);
+  }, [zIndex]);
+
+  
+
+  return createPortal(
+    <Draggable nodeRef={nodeRef} handle=".drag-handle">
+      <div 
+        ref={nodeRef} 
+        className={styles.popup} 
+        style={{ 
+          position: "fixed", 
+          zIndex: windowZIndexes["ToTestList"],
+          backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
+          color: isDarkMode ? "#fff" : "#000",
+          boxShadow: "0 5px 15px rgba(0,0,0,0.3)"
+        }}
+        onClick={onMouseDown} // Change onMouseDown to onClick for better event capturing
+      >
+        <div className={`${styles.header} drag-handle`}>
+          <h2>Tests to Conduct</h2>
+          <button
+            onClick={onClose}
+            className={styles.closeButton}
+            style={{ color: isDarkMode ? "white" : "black" }}
+          >
           ✖
         </button>
       </div>
@@ -158,6 +250,8 @@ const ToTestList: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         </button>
       </div>
     </div>
+    </Draggable>,
+      document.body
   );
 };
 

@@ -292,7 +292,7 @@ body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, 
   background-color: #c0392b;
 }
 
-.MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
+.MainScreen-module__4v2AYG__threeDModelButton, .MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
   margin-top: 15px;
   display: flex;
   align-items: center;
@@ -875,6 +875,14 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
 
 .MainScreen-module__4v2AYG__startTestButton:hover {
   background-color: #218838;
+}
+
+.MainScreen-module__4v2AYG__checkoutButton:hover {
+  background-color: #2980b9;
+}
+
+.MainScreen-module__4v2AYG__threeDModelButton:hover {
+  background-color: #2980b9;
 }
 
 /*# sourceMappingURL=src_components_MainScreen_MainScreen_module_b52d8e.css.map*/

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./MainScreen.module.css";
 import ToTestList from "../ToTestList/ToTestList";
-import { FaCheck, FaTimes, FaWrench, FaBars, FaCog, FaPlus, FaEdit, FaTrash, FaInfoCircle, FaPlay } from "react-icons/fa";
+import { FaCube, FaCheck, FaTimes, FaWrench, FaBars, FaCog, FaPlus, FaEdit, FaTrash, FaInfoCircle, FaPlay } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
 import mammoth from "mammoth"; // Import mammoth for `.docx` extraction, npm install mammoth
 import { renderAsync } from "docx-preview"; // npm install docx-preview
@@ -25,6 +25,9 @@ import { useDroppable } from "@dnd-kit/core";
 import { useDndContext } from "@dnd-kit/core";
 import { rectIntersection } from "@dnd-kit/core";
 import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
+import ThreeDModelWindow from "components/ModelWindow/ThreeDModelWindow";
+import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"; // fall back
 // Ensure this is correct
@@ -65,7 +68,17 @@ interface DraggableItem {
   isDropped: boolean;
 }
 
-const MainScreen: React.FC = (): React.ReactElement => {
+interface MainScreenProps {
+  openToTestList: () => void;
+  openServerWindow: () => void;
+  openModelWindow: (profileId?: number) => void;
+}
+
+const MainScreen: React.FC<MainScreenProps> = ({ 
+  openToTestList, 
+  openServerWindow, 
+  openModelWindow 
+}): React.ReactElement => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -104,6 +117,8 @@ const MainScreen: React.FC = (): React.ReactElement => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
   const [sortableKey, setSortableKey] = useState(0);
+  const [show3DModel, setShow3DModel] = useState(false); // Manage pop-up visibility
+  const [selectedProfileId, setSelectedProfileId] = useState<number | null>(null);
 
   
   // In MainScreen.tsx, add this after your state declarations but before your functions
@@ -1099,9 +1114,9 @@ return (
         <li className={styles.menuItem} onClick={() => setSelectedProfile(null)}>
           Home
         </li>
-        <li className={styles.menuItem} onClick={() => setShowToTestList(true)}>
-          Tests to Conduct
-        </li>
+        <li className={styles.menuItem} onClick={openToTestList}>
+  Tests to Conduct
+</li>
         <li className={styles.menuItem}>
           <div className={styles.profileContainer}>
             <button
@@ -1150,7 +1165,17 @@ return (
       </div>
     </div>
 
-    {showToTestList && <ToTestList onClose={() => setShowToTestList(false)} />}
+    {showToTestList && (
+  <ToTestList
+    onClose={() => setShowToTestList(false)}
+    zIndex={10002} // Provide a default value
+    onMouseDown={() => console.log("Tests window clicked")}
+    bringWindowToFront={() => console.log("Bringing Tests window to front")}
+    windowZIndexes={{ ToTestList: 10002 }}
+    zIndexCounter={10003}
+  />
+)}
+
 
     <div className={styles.content}>
       {selectedProfile ? (
@@ -1474,6 +1499,23 @@ return (
               )}
             </div>
           )}
+          <h2 className={styles.ThreeDModelViewerHeader}>Satellite Model Viewer</h2>
+{/* ✅ Open the 3D Model Viewer for the selected profile */}
+<button
+  className={styles.threeDModelButton}
+  onClick={(e) => {
+    e.preventDefault();
+    console.log("3D Model button clicked");
+    const profile = profiles.find((p) => p.name === selectedProfile);
+    // Always pass a valid profile ID (default to 1 if not found)
+    const profileId = profile?.id || 1;
+    console.log(`Opening 3D Model window for profile ID: ${profileId}`);
+    openModelWindow(profileId);
+  }}
+>
+  <FaCube /> 3D Model
+</button>
+
           </div>
         ) : (
           <div className={styles.profilePage}>

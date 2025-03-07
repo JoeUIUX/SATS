@@ -1,0 +1,1331 @@
+/* [project]/src/components/ToTestList/ToTestList.module.css [app-client] (css) */
+.ToTestList-module__vY2V8W__popup {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px #0003;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@keyframes ToTestList-module__vY2V8W__popup-show {
+  from {
+    transform: translate(-50%, -50%)scale(.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%)scale(1);
+    opacity: 1;
+  }
+}
+
+.ToTestList-module__vY2V8W__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.ToTestList-module__vY2V8W__header:active {
+  cursor: grabbing;
+}
+
+.ToTestList-module__vY2V8W__closeButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__closeButton {
+  color: #fff;
+}
+
+.ToTestList-module__vY2V8W__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.ToTestList-module__vY2V8W__table th, .ToTestList-module__vY2V8W__table td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: left;
+}
+
+.ToTestList-module__vY2V8W__table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__table tbody tr:nth-child(odd) {
+  background-color: #1a1a1a;
+}
+
+.ToTestList-module__vY2V8W__table tbody tr:hover {
+  background-color: #e0f7fa;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__table tbody tr:hover {
+  background-color: #056;
+}
+
+.ToTestList-module__vY2V8W__selectedRow {
+  background-color: #d0ebff;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
+  background-color: #036;
+}
+
+.ToTestList-module__vY2V8W__form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ToTestList-module__vY2V8W__form input {
+  flex: 1;
+  min-width: 150px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.ToTestList-module__vY2V8W__addButton {
+  padding: 8px 12px;
+  font-size: 18px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ToTestList-module__vY2V8W__addButton:hover {
+  background-color: #008c9e;
+}
+
+.ToTestList-module__vY2V8W__actions button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ToTestList-module__vY2V8W__deleteButton {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.ToTestList-module__vY2V8W__deleteButton:hover {
+  background-color: #d32f2f;
+}
+
+.ToTestList-module__vY2V8W__clearButton {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.ToTestList-module__vY2V8W__clearButton:hover {
+  background-color: #e67e22;
+}
+
+.ToTestList-module__vY2V8W__drag-handle {
+  cursor: grab !important;
+  background-color: #0000001a !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.ToTestList-module__vY2V8W__drag-handle:active {
+  cursor: grabbing !important;
+  background-color: #0003 !important;
+}
+
+
+/* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
+.ServerWindow-module__wfqmlq__popup {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90vw;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px #0003;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@keyframes ServerWindow-module__wfqmlq__popup-show {
+  from {
+    transform: translate(-50%, -50%)scale(.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%)scale(1);
+    opacity: 1;
+  }
+}
+
+.ServerWindow-module__wfqmlq__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 20px;
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__header:active {
+  cursor: grabbing !important;
+}
+
+.ServerWindow-module__wfqmlq__closeButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000;
+}
+
+html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton {
+  color: #fff;
+}
+
+.ServerWindow-module__wfqmlq__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ServerWindow-module__wfqmlq__input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.ServerWindow-module__wfqmlq__connectButton {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.ServerWindow-module__wfqmlq__connectButton:hover {
+  background-color: #008c9e;
+}
+
+.ServerWindow-module__wfqmlq__drag-handle {
+  cursor: grab !important;
+}
+
+.ServerWindow-module__wfqmlq__drag-handle:active {
+  cursor: grabbing !important;
+}
+
+
+/* [project]/src/components/WelcomeWindow/WelcomeWindow.module.css [app-client] (css) */
+.WelcomeWindow-module__WdKywW__welcomeWindow {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #fff, #e6f7ff);
+  text-align: center;
+  box-shadow: 0 4px 20px #0003;
+  font-family: Arial, sans-serif;
+  position: fixed !important;
+  border: 2px solid var(--border-color) !important;
+  z-index: inherit !important;
+  color: var(--text-color) !important;
+}
+
+html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWindow {
+  background: linear-gradient(135deg, #000, #1a1a1a);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader:active {
+  cursor: grabbing;
+}
+
+.WelcomeWindow-module__WdKywW__buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeButton {
+  width: 200px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(90deg, #00bcd4, #008c9e);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px #0003;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  text-align: center;
+  position: relative;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px #0000004d;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px #0003;
+}
+
+.WelcomeWindow-module__WdKywW__buttonWithNotification {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 200px;
+}
+
+.WelcomeWindow-module__WdKywW__notificationDot {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #0003;
+}
+
+.WelcomeWindow-module__WdKywW__dateTime {
+  font-size: 14px;
+  color: #df1010;
+  margin-top: 5px;
+}
+
+.WelcomeWindow-module__WdKywW__logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h2 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.WelcomeWindow-module__WdKywW__welcomeHeader h1 {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+
+/* [project]/src/components/MainScreen/MainScreen.module.css [app-client] (css) */
+.MainScreen-module__4v2AYG__mainScreen {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.MainScreen-module__4v2AYG__content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left .3s ease-in-out;
+  text-align: right;
+  position: relative;
+}
+
+.MainScreen-module__4v2AYG__sidebar:not(.MainScreen-module__4v2AYG__hidden) ~ .MainScreen-module__4v2AYG__content {
+  margin-left: 250px;
+}
+
+.MainScreen-module__4v2AYG__sidebar.MainScreen-module__4v2AYG__hidden ~ .MainScreen-module__4v2AYG__content {
+  margin-left: 0;
+}
+
+body, .MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__content, .MainScreen-module__4v2AYG__profileHeading, .MainScreen-module__4v2AYG__profileSubtext, .MainScreen-module__4v2AYG__menuItem, .MainScreen-module__4v2AYG__profileSidebarItem, .MainScreen-module__4v2AYG__profilesButton, .MainScreen-module__4v2AYG__toggleButton, .MainScreen-module__4v2AYG__settingsButton, .MainScreen-module__4v2AYG__dropdownButton, .MainScreen-module__4v2AYG__addProfileButton, .MainScreen-module__4v2AYG__retractExpandSidebarButton {
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__profileSubtext {
+  text-align: left;
+  margin-left: 0;
+  padding-left: 10px;
+  display: block;
+}
+
+.MainScreen-module__4v2AYG__sidebar {
+  width: 250px;
+  background-color: var(--bg-color);
+  border-right: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-bottom: 15px;
+  overflow: hidden;
+  transition: background-color .3s ease-in-out !important;
+}
+
+.MainScreen-module__4v2AYG__sidebar.MainScreen-module__4v2AYG__hidden {
+  transform: translateX(-100%);
+}
+
+.MainScreen-module__4v2AYG__retractExpandSidebarButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__sidebar.MainScreen-module__4v2AYG__hidden ~ .MainScreen-module__4v2AYG__retractExpandSidebarButton {
+  display: flex !important;
+}
+
+.MainScreen-module__4v2AYG__retractExpandSidebarButton:hover {
+  background-color: #008c9e;
+}
+
+.MainScreen-module__4v2AYG__toggleButton {
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #008c9e;
+  color: #fff;
+}
+
+.MainScreen-module__4v2AYG__toggleButton:hover {
+  background-color: #ffffff1a;
+  border-radius: 5px;
+}
+
+.MainScreen-module__4v2AYG__menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.MainScreen-module__4v2AYG__menuItem {
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color .3s ease-in-out !important;
+}
+
+.MainScreen-module__4v2AYG__menuItem:hover {
+  background-color: #409410;
+}
+
+.MainScreen-module__4v2AYG__profileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 0;
+  margin-left: 0;
+}
+
+.MainScreen-module__4v2AYG__profilesButton {
+  flex-grow: 1;
+  text-align: left;
+  background-color: #0000;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-color);
+  padding-left: 15px;
+  transition: background-color .3s ease-in-out !important;
+}
+
+.MainScreen-module__4v2AYG__dropdownButton, .MainScreen-module__4v2AYG__addProfileButton {
+  background-color: #00bcd4;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__dropdownButton:hover, .MainScreen-module__4v2AYG__addProfileButton:hover {
+  background-color: #008c9e;
+  border-radius: 5px;
+}
+
+.MainScreen-module__4v2AYG__profileDropdown {
+  background-color: var(--bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.MainScreen-module__4v2AYG__profileDropdown .MainScreen-module__4v2AYG__addProfileButton {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.MainScreen-module__4v2AYG__profileButtonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.MainScreen-module__4v2AYG__profileSidebarItem {
+  width: 100%;
+  padding: 15px 0;
+  cursor: pointer;
+  background-color: var(--bg-color);
+  text-align: left;
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-left: 0 !important;
+  padding-left: 15px !important;
+  transition: background-color .3s ease-in-out !important;
+}
+
+.MainScreen-module__4v2AYG__profileSidebarItem:hover {
+  background-color: #409410;
+  padding-left: 15px !important;
+}
+
+.MainScreen-module__4v2AYG__settingsContainer {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.MainScreen-module__4v2AYG__settingsButton {
+  background-color: #00bcd4;
+  border: 1px solid #008c9e;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease-in-out;
+  margin-bottom: 15px;
+}
+
+.MainScreen-module__4v2AYG__settingsButton:hover {
+  background-color: #008c9e;
+}
+
+.MainScreen-module__4v2AYG__profilePage {
+  text-align: left;
+  padding: 20px;
+}
+
+.MainScreen-module__4v2AYG__profileHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MainScreen-module__4v2AYG__profileActions {
+  display: flex;
+  gap: 10px;
+}
+
+.MainScreen-module__4v2AYG__editButton, .MainScreen-module__4v2AYG__deleteButton {
+  background-color: #f39c12;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__deleteButton {
+  background-color: #e74c3c;
+}
+
+.MainScreen-module__4v2AYG__editButton:hover {
+  background-color: #e67e22;
+}
+
+.MainScreen-module__4v2AYG__deleteButton:hover {
+  background-color: #c0392b;
+}
+
+.MainScreen-module__4v2AYG__threeDModelButton, .MainScreen-module__4v2AYG__checkoutButton, .MainScreen-module__4v2AYG__aboutButton {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__aboutButton:hover {
+  background-color: #2980b9;
+}
+
+.MainScreen-module__4v2AYG__docx-wrapper, .MainScreen-module__4v2AYG__docx {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -1 !important;
+}
+
+.MainScreen-module__4v2AYG__checkoutSection {
+  z-index: 0;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  transition: background-color .3s;
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection {
+  display: block;
+  margin-top: 15px;
+  padding: 15px;
+  background-color: var(--section-bg);
+  border: 1px solid var(--section-border);
+  border-radius: 5px;
+  position: relative;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__checkoutSection p, .MainScreen-module__4v2AYG__aboutSection p {
+  color: var(--text-color);
+  transition: color .3s ease-in-out;
+  margin: 0;
+  padding: 5px 0;
+}
+
+html.dark .MainScreen-module__4v2AYG__checkoutSection, .MainScreen-module__4v2AYG__aboutSection {
+  background-color: var(--dark-section-bg) !important;
+  border: 1px solid var(--dark-section-border) !important;
+  color: var(--dark-text-color) !important;
+}
+
+:root {
+  --section-bg: #f9f9f9;
+  --section-border: #ddd;
+  --text-color: #333;
+}
+
+html.dark {
+  --dark-section-bg: #2c3e50;
+  --dark-section-border: #34495e;
+  --dark-text-color: #ecf0f1;
+}
+
+.MainScreen-module__4v2AYG__profilePage .MainScreen-module__4v2AYG__checkoutSection, .MainScreen-module__4v2AYG__aboutSection {
+  display: block;
+}
+
+.MainScreen-module__4v2AYG__aboutSection .MainScreen-module__4v2AYG__editButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #f39c12;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__aboutSection .MainScreen-module__4v2AYG__editButton:hover {
+  background-color: #e67e22;
+}
+
+.MainScreen-module__4v2AYG__aboutSection ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-type: disc !important;
+  display: block !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection ol {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-type: decimal !important;
+  display: block !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection li {
+  margin-bottom: 5px;
+  display: list-item !important;
+}
+
+.MainScreen-module__4v2AYG__aboutSection table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+}
+
+.MainScreen-module__4v2AYG__aboutSection th, .MainScreen-module__4v2AYG__aboutSection td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+.MainScreen-module__4v2AYG__profileHeading .MainScreen-module__4v2AYG__deleteButton {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__profileHeading .MainScreen-module__4v2AYG__deleteButton:hover {
+  background-color: #c0392b;
+}
+
+.MainScreen-module__4v2AYG__uploadButton, .MainScreen-module__4v2AYG__downloadButton {
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__uploadButton:hover {
+  background-color: #2980b9;
+}
+
+.MainScreen-module__4v2AYG__downloadButton {
+  background-color: #2ecc71;
+}
+
+.MainScreen-module__4v2AYG__downloadButton:hover {
+  background-color: #27ae60;
+}
+
+.MainScreen-module__4v2AYG__editableTextarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid var(--section-border);
+  background: var(--section-bg);
+  color: var(--text-color);
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.MainScreen-module__4v2AYG__editButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.MainScreen-module__4v2AYG__saveButton {
+  background-color: #27ae60;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.MainScreen-module__4v2AYG__saveButton:hover {
+  background-color: #219150;
+}
+
+.MainScreen-module__4v2AYG__cancelButton {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.MainScreen-module__4v2AYG__cancelButton:hover {
+  background-color: #c0392b;
+}
+
+.MainScreen-module__4v2AYG__uploadedFileName {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+.MainScreen-module__4v2AYG__uploadNote {
+  font-size: 12px;
+  color: var(--text-secondary-color);
+  margin-top: 5px;
+}
+
+.MainScreen-module__4v2AYG__richTextEditor {
+  border: 1px solid var(--section-border);
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 200px;
+  overflow: auto;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+.MainScreen-module__4v2AYG__dark .MainScreen-module__4v2AYG__richTextEditor {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.MainScreen-module__4v2AYG__actionButtons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.MainScreen-module__4v2AYG__uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.MainScreen-module__4v2AYG__imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.MainScreen-module__4v2AYG__imageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.MainScreen-module__4v2AYG__uploadedImage {
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.MainScreen-module__4v2AYG__removeImageButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  visibility: visible;
+}
+
+.MainScreen-module__4v2AYG__dropZone {
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s;
+  background-color: #00000005;
+}
+
+.MainScreen-module__4v2AYG__hiddenDropZone {
+  border: none;
+  background-color: #0000;
+}
+
+.MainScreen-module__4v2AYG__dropHereText {
+  text-align: center;
+  font-weight: bold;
+  transition: color .3s ease-in-out;
+  color: var(--text-color);
+}
+
+.MainScreen-module__4v2AYG__dropHereText {
+  color: var(--text-color);
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea {
+  position: relative;
+  min-height: 250px;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: center;
+  position: relative;
+  transition: background-color .2s ease-in-out;
+  background-color: #0000;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea[data-is-over="true"] {
+  border-color: #2196f3 !important;
+  background-color: #2196f31a !important;
+}
+
+.MainScreen-module__4v2AYG__dropZoneArea.MainScreen-module__4v2AYG__isOver {
+  background-color: #00f3 !important;
+}
+
+.MainScreen-module__4v2AYG__bottomSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  min-height: 200px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.MainScreen-module__4v2AYG__bottomSection .MainScreen-module__4v2AYG__dragItem[data-dropped="false"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: grab !important;
+}
+
+.MainScreen-module__4v2AYG__droppableBox {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+  max-width: 100%;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__removeDraggedItemsButton {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  font-size: 14px;
+  box-shadow: 0 0 4px #0000004d;
+  top: -1px !important;
+  right: -1px !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem .MainScreen-module__4v2AYG__removeDraggedItemsButton {
+  position: absolute;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__removeDraggedItemsButton:hover {
+  background-color: #8b0000;
+}
+
+.MainScreen-module__4v2AYG__editModeButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.MainScreen-module__4v2AYG__emptyDropZone {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+  font-style: italic;
+  border: 2px dashed #0000;
+}
+
+.MainScreen-module__4v2AYG__dropZone:after {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transition: all .2s;
+}
+
+.MainScreen-module__4v2AYG__dropZone:hover {
+  border-color: #2196f3;
+  background-color: #2196f31a;
+}
+
+.MainScreen-module__4v2AYG__scrollableContainer {
+  position: relative;
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto;
+  transition: background-color .3s;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.MainScreen-module__4v2AYG__editableArea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 200px;
+}
+
+.MainScreen-module__4v2AYG__isDragging {
+  z-index: 1000;
+  pointer-events: none;
+  cursor: grabbing;
+}
+
+.MainScreen-module__4v2AYG__topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__topSection .MainScreen-module__4v2AYG__droppableBox {
+  margin: 5px;
+  position: relative;
+}
+
+.MainScreen-module__4v2AYG__topSection[data-is-over="true"] {
+  border-color: #2196f3;
+  background-color: #2196f31a;
+}
+
+.MainScreen-module__4v2AYG__dragItem {
+  position: relative;
+  transition: transform .2s ease-in-out;
+  transform-origin: center;
+  will-change: transform;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__topSection {
+  min-height: 250px;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  position: relative;
+  transition: all .2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__droppableBox {
+  position: relative;
+  overflow: visible !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem button {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0 0 4px #0000004d;
+  top: -12px !important;
+  right: -12px !important;
+}
+
+.MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped {
+  opacity: .6;
+  pointer-events: none;
+  filter: blur(2px);
+  cursor: not-allowed;
+}
+
+html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped {
+  background-color: #404040;
+}
+
+.MainScreen-module__4v2AYG__dragItem:not(.MainScreen-module__4v2AYG__isDropped), .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDropped.MainScreen-module__4v2AYG__isEnabled {
+  cursor: grab;
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
+.MainScreen-module__4v2AYG__startTestButton {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color .2s ease-in-out;
+  margin-left: auto;
+}
+
+.MainScreen-module__4v2AYG__startTestButton:hover {
+  background-color: #218838;
+}
+
+.MainScreen-module__4v2AYG__checkoutButton:hover {
+  background-color: #2980b9;
+}
+
+.MainScreen-module__4v2AYG__threeDModelButton:hover {
+  background-color: #2980b9;
+}
+
+
+/* [project]/src/components/ModelWindow/ThreeDModelWindow.module.css [app-client] (css) */
+.ThreeDModelWindow-module__5BjfpW__popup {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px #0003;
+  position: fixed !important;
+  z-index: inherit !important;
+}
+
+@keyframes ThreeDModelWindow-module__5BjfpW__popup-show {
+  from {
+    transform: translate(-50%, -50%)scale(.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%)scale(1);
+    opacity: 1;
+  }
+}
+
+.ThreeDModelWindow-module__5BjfpW__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.ThreeDModelWindow-module__5BjfpW__header:active {
+  cursor: grabbing;
+}
+
+.ThreeDModelWindow-module__5BjfpW__closeButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .3s ease-in-out;
+}
+
+html.ThreeDModelWindow-module__5BjfpW__light .ThreeDModelWindow-module__5BjfpW__closeButton {
+  color: #000;
+}
+
+html.ThreeDModelWindow-module__5BjfpW__dark .ThreeDModelWindow-module__5BjfpW__closeButton {
+  color: #fff;
+}
+
+.ThreeDModelWindow-module__5BjfpW__content {
+  text-align: center;
+}
+
+.ThreeDModelWindow-module__5BjfpW__drag-handle {
+  cursor: grab !important;
+  background-color: #0000001a !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.ThreeDModelWindow-module__5BjfpW__drag-handle:active {
+  cursor: grabbing !important;
+  background-color: #0003 !important;
+}
+
+
+/*# sourceMappingURL=src_components_80f0c9._.css.map*/

@@ -1,20 +1,19 @@
 /* [project]/src/components/ToTestList/ToTestList.module.css [app-client] (css) */
 .ToTestList-module__vY2V8W__popup {
-  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)scale(.9);
-  width: 800px;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  opacity: 0;
-  animation: .3s forwards ToTestList-module__vY2V8W__popup-show;
+  position: fixed !important;
+  z-index: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @keyframes ToTestList-module__vY2V8W__popup-show {
@@ -33,7 +32,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: grab;
+  padding: 10px;
+  background-color: #0000001a;
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
+}
+
+.ToTestList-module__vY2V8W__header:active {
+  cursor: grabbing;
 }
 
 .ToTestList-module__vY2V8W__closeButton {
@@ -137,6 +144,18 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
 
 .ToTestList-module__vY2V8W__clearButton:hover {
   background-color: #e67e22;
+}
+
+.ToTestList-module__vY2V8W__drag-handle {
+  cursor: grab !important;
+  background-color: #0000001a !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.ToTestList-module__vY2V8W__drag-handle:active {
+  cursor: grabbing !important;
+  background-color: #0003 !important;
 }
 
 /*# sourceMappingURL=src_components_ToTestList_ToTestList_module_b52d8e.css.map*/
