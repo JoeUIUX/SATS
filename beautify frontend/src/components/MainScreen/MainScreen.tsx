@@ -28,6 +28,8 @@ import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 import ThreeDModelWindow from "components/ModelWindow/ThreeDModelWindow";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
+import { WindowName } from "types/types";
+
 
 const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"; // fall back
 // Ensure this is correct
@@ -70,20 +72,37 @@ interface DraggableItem {
 
 interface MainScreenProps {
   openToTestList: () => void;
+  closeToTestList: () => void;  // ✅ Accept close function as a prop
   openServerWindow: () => void;
   openModelWindow: (profileId?: number) => void;
+  closeModelWindow: () => void;  // ✅ Accept close function
+  showToTestList: boolean;  // ✅ Accept this prop
+  showThreeDModelWindow: boolean;  // ✅ Accept this prop
+  threeDModelProfileId: number | null;  // ✅ Accept profile ID
+  windowZIndexes: { [key in WindowName]: number };  // ✅ Ensure proper indexing
+  bringWindowToFront: (windowName: WindowName) => void;  // ✅ Ensure correct function type
+  zIndexCounter: number;  // ✅ Accept counter
+  navigateWithState?: (to: string, options?: any) => void;
 }
 
 const MainScreen: React.FC<MainScreenProps> = ({ 
   openToTestList, 
+  closeToTestList, // ✅ Use close function
   openServerWindow, 
-  openModelWindow 
+  openModelWindow,
+  closeModelWindow,  // ✅ Use function from props
+  showToTestList,  // ✅ Use this prop
+  showThreeDModelWindow,  // ✅ Use this prop
+  threeDModelProfileId,  // ✅ Use profile ID from props
+  windowZIndexes, // ✅ Use windowZIndexes from props
+  bringWindowToFront,  // ✅ Use function from props
+  zIndexCounter  // ✅ Use counter from props
 }): React.ReactElement => {
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [selectedProfile, setSelectedProfile] = useState<string | null>(null);
-  const [showToTestList, setShowToTestList] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [uploadedText, setUploadedText] = useState("");
   const [isEditing, setIsEditing] = useState(false); // for aboutSection
@@ -119,7 +138,6 @@ const MainScreen: React.FC<MainScreenProps> = ({
   const [sortableKey, setSortableKey] = useState(0);
   const [show3DModel, setShow3DModel] = useState(false); // Manage pop-up visibility
   const [selectedProfileId, setSelectedProfileId] = useState<number | null>(null);
-
   
   // In MainScreen.tsx, add this after your state declarations but before your functions
   const dragTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -1088,8 +1106,9 @@ useEffect(() => {
   }
 }, [selectedProfile]);
 
-
-
+console.log("Rendering MainScreen:");
+console.log("showToTestList:", showToTestList);
+console.log("showThreeDModelWindow:", showThreeDModelWindow);
 
 
 return (
@@ -1114,7 +1133,61 @@ return (
         <li className={styles.menuItem} onClick={() => setSelectedProfile(null)}>
           Home
         </li>
-        <li className={styles.menuItem} onClick={openToTestList}>
+{/* Tests to Conduct Sidebar Button */}
+<li 
+  className={styles.menuItem} 
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log("🚀 Menu item clicked: Tests to Conduct");
+    
+    // Force a sessionStorage update first
+    try {
+      // Get current state
+      const currentState = JSON.parse(sessionStorage.getItem('windowVisibility') || '{}');
+      
+      // Even if state shows it's visible, force it to be visible again
+      currentState.ToTestList = true;
+      sessionStorage.setItem('windowVisibility', JSON.stringify(currentState));
+      console.log("Force-updated sessionStorage to show ToTestList:", currentState);
+    } catch (e) {
+      console.error("Error updating sessionStorage:", e);
+    }
+
+    // Check if the ToTestList element actually exists in the DOM
+    const toTestListElement = document.querySelector('[data-window="ToTestList"]');
+    
+    if (toTestListElement) {
+      console.log("ToTestList DOM element found - bringing to front");
+      bringWindowToFront("ToTestList");
+    } else {
+      console.log("ToTestList DOM element NOT found - force opening");
+      
+      // Double-check showToTestList state
+      console.log("Current showToTestList state:", showToTestList);
+      
+      // Force close then reopen to ensure clean state
+      if (showToTestList) {
+        closeToTestList(); // First ensure it's closed
+        
+        // Then reopen after a brief delay
+        setTimeout(() => {
+          openToTestList(); // Reopen
+        }, 50);
+      } else {
+        // Just open normally
+        openToTestList();
+      }
+    }
+    
+    // Verify visibility
+    setTimeout(() => {
+      const isInDOM = !!document.querySelector('[data-window="ToTestList"]');
+      console.log(`Verification: ToTestList in DOM: ${isInDOM}, state: ${showToTestList}`);
+    }, 100);
+  }}
+>
   Tests to Conduct
 </li>
         <li className={styles.menuItem}>
@@ -1164,18 +1237,6 @@ return (
         </button>
       </div>
     </div>
-
-    {showToTestList && (
-  <ToTestList
-    onClose={() => setShowToTestList(false)}
-    zIndex={10002} // Provide a default value
-    onMouseDown={() => console.log("Tests window clicked")}
-    bringWindowToFront={() => console.log("Bringing Tests window to front")}
-    windowZIndexes={{ ToTestList: 10002 }}
-    zIndexCounter={10003}
-  />
-)}
-
 
     <div className={styles.content}>
       {selectedProfile ? (
@@ -1505,15 +1566,29 @@ return (
   className={styles.threeDModelButton}
   onClick={(e) => {
     e.preventDefault();
-    console.log("3D Model button clicked");
+    console.log("🔘 3D Model button clicked");
+    
+    // Find the profile to get its ID
     const profile = profiles.find((p) => p.name === selectedProfile);
-    // Always pass a valid profile ID (default to 1 if not found)
     const profileId = profile?.id || 1;
-    console.log(`Opening 3D Model window for profile ID: ${profileId}`);
-    openModelWindow(profileId);
+    
+    console.log(`📱 Opening 3D Model window for profile ID: ${profileId}`);
+    
+    // Ensure any pending state updates are completed first
+    setTimeout(() => {
+      // Call the openModelWindow function provided through props
+      openModelWindow(profileId);
+      
+      // Log the state after opening
+      setTimeout(() => {
+        console.log("🔍 After 3D Model button click:");
+        console.log("- showThreeDModelWindow:", showThreeDModelWindow);
+        console.log("- threeDModelProfileId:", threeDModelProfileId);
+      }, 100);
+    }, 50);
   }}
 >
-  <FaCube /> 3D Model
+  <FaCube /> 3D Model Viewer
 </button>
 
           </div>

@@ -1,8 +1,4 @@
 .popup {
-  position: fixed !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 500px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -10,9 +6,8 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: inherit !important; /* Allows React-controlled zIndex */
-  opacity: 1 !important;  /* Ensure visibility */
-  visibility: visible !important;  /* Ensure visibility */
+  opacity: 1;
+  visibility: visible
 }
 
 /* popup Animation */

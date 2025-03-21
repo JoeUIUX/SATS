@@ -3,34 +3,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ServerWindow.module.css";
-import { Rnd } from "react-rnd"; // ✅ Use `react-rnd` instead of `react-draggable`
+import { Rnd } from "react-rnd"; // Use react-rnd for draggable and resizable windows
 import { createPortal } from "react-dom";
 import { WindowName } from "types/types";
 
 interface ServerWindowProps {
   onClose: () => void;
-}
-
-const portalRoot = (() => {
-  let node = document.getElementById("serverWindow-root");
-  if (!node) {
-    node = document.createElement("div");
-    node.id = "serverWindow-root";
-    document.body.appendChild(node);
-  }
-  return node;
-})();
-
-const ServerWindow: React.FC<{ 
   zIndex: number; 
   onMouseDown: () => void; 
-  onClose: () => void;
   bringWindowToFront: (windowName: WindowName) => void;
-  windowZIndexes: { [key: string]: number };  // ✅ Accept this prop
-  zIndexCounter: number;  // ✅ Accept this prop
-}> = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZIndexes, zIndexCounter }) => {
+  windowZIndexes: { [key: string]: number };
+  zIndexCounter: number;
+}
 
-
+const ServerWindow: React.FC<ServerWindowProps> = ({ 
+  zIndex, 
+  onMouseDown, 
+  onClose, 
+  bringWindowToFront, 
+  windowZIndexes, 
+  zIndexCounter 
+}) => {
   const [serverAddress, setServerAddress] = useState<string>("");
   const [serverId, setServerId] = useState<string>("");
   const [status, setStatus] = useState<string>("Disconnected");
@@ -50,6 +43,15 @@ const ServerWindow: React.FC<{
     return element;
   });
 
+  // Important: Store position in sessionStorage to maintain it across renders
+  const savedPosition = sessionStorage.getItem('serverWindowPosition');
+  const defaultPosition = savedPosition ? JSON.parse(savedPosition) : {
+    x: (window.innerWidth - 600) / 2, // Correct width of 600px
+    y: (window.innerHeight - 500) / 2 // Better vertical centering
+  };
+
+  const [position, setPosition] = useState(defaultPosition);
+  
   useEffect(() => {
     // Scroll logs to bottom when they update
     if (logsEndRef.current) {
@@ -65,11 +67,16 @@ const ServerWindow: React.FC<{
   }, [logs, portalElement]);
 
   const nodeRef = useRef<HTMLDivElement>(null!);
-  const [currentZIndex, setCurrentZIndex] = useState(zIndex); // ✅ Track `zIndex`
 
   const appendLog = (message: string) => {
     const timestamp = new Date().toLocaleString();
     setLogs((prevLogs) => [...prevLogs, { timestamp, message }]);
+  };
+
+  // When the window is clicked, bring it to front using the passed function
+  const handleWindowClick = () => {
+    console.log(`🖱️ Clicked ${windowName}, bringing to front`);
+    onMouseDown();
   };
 
   const handleConnect = async () => {
@@ -106,7 +113,34 @@ const ServerWindow: React.FC<{
       if (result.status === "success") {
         setStatus("Connected");
         appendLog(result.message);
-        navigate("/main");
+        
+        // Check if ToTestList is visible from sessionStorage
+        const savedVisibility = sessionStorage.getItem('windowVisibility');
+        let isToTestListVisible = false;
+        
+        if (savedVisibility) {
+          try {
+            const parsedVisibility = JSON.parse(savedVisibility);
+            isToTestListVisible = parsedVisibility.ToTestList || false;
+          } catch (e) {
+            console.error("Error parsing window visibility:", e);
+          }
+        }
+        
+        // Save current window state to sessionStorage before navigation
+        const currentWindowState = {
+          ServerWindow: true,
+          ToTestList: isToTestListVisible, // Use the parsed value
+          ThreeDModelWindow: false
+        };
+        
+        // Store window state in sessionStorage for persistence
+        sessionStorage.setItem('windowVisibility', JSON.stringify(currentWindowState));
+        console.log("💾 Saved window state before navigation:", currentWindowState);
+        
+        setTimeout(() => {
+          navigate("/main");
+        }, 100);
       } else {
         setStatus("Failed to Connect");
         appendLog(result.message);
@@ -114,7 +148,7 @@ const ServerWindow: React.FC<{
     } catch (error) {
       console.error("Error connecting to MCC:", error);
       setStatus("Connection Error");
-      appendLog(`Connection error: ${error}`);
+      appendLog(`Connection error: ${error instanceof Error ? error.message : String(error)}`);
     }
   };
 
@@ -124,11 +158,12 @@ const ServerWindow: React.FC<{
   }, [zIndex]);
   
   const [isDarkMode, setIsDarkMode] = useState(false);
-  //const isDarkMode = document.documentElement.classList.contains("dark");
 
   useEffect(() => {
     const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
+      const isDark = document.documentElement.classList.contains("dark");
+      console.log("🌓 Dark mode detected:", isDark);
+      setIsDarkMode(isDark);
     };
     
     // Initial check
@@ -148,115 +183,138 @@ const ServerWindow: React.FC<{
       attributeFilter: ["class"]
     });
     
-    return () => observer.disconnect();
+    // Also check periodically as a backup
+    const interval = setInterval(checkDarkMode, 1000);
+    
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
   }, []);
   
+  // Ensure light/dark mode styling is applied on render
+  useEffect(() => {
+    // Force immediate check when component renders
+    setIsDarkMode(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  // Get the effective z-index value
+  const effectiveZIndex = windowZIndexes["ServerWindow"] || zIndex;
   
-  console.log(`🎯 ServerWindow received zIndex:`, zIndex);
+  // Save position to sessionStorage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem('serverWindowPosition', JSON.stringify(position));
+  }, [position]);
 
   return createPortal(
-    <div 
-    style={{ 
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      pointerEvents: "none",
-      zIndex: windowZIndexes["ServerWindow"],
-    }}
-    onClick={(e) => { // Change to onClick for better event capturing
-      e.stopPropagation();
-      console.log("ServerWindow clicked - bringing to front");
-      onMouseDown();
-    }}
-  >
-     <Rnd
-        default={{
-          x: window.innerWidth / 2 - 250,
-          y: window.innerHeight / 2 - 200,
-          width: 500,
-          height: "auto",
-        }}
-        dragHandleClassName="drag-handle"
-        enableResizing={false}
+    <Rnd
+      position={position}
+      size={{
+        width: 500,
+        height: "auto",
+      }}
+      dragHandleClassName="drag-handle"
+      enableResizing={false}
+      onDragStop={(e, d) => {
+        console.log(`📌 ServerWindow moved to: x=${d.x}, y=${d.y}`);
+        // Save new position to state and sessionStorage
+        setPosition({ x: d.x, y: d.y });
+      }}
+      style={{ 
+        position: "fixed",
+        zIndex: effectiveZIndex,
+        pointerEvents: "auto",
+        backgroundColor: isDarkMode ? "#121212" : "white",
+        borderRadius: "10px",
+        boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
+        willChange: "transform, z-index"
+      }}
+      onClick={handleWindowClick}
+    >
+      <div 
+        className={styles.popup} 
         style={{ 
-          pointerEvents: "auto",
-          backgroundColor: isDarkMode ? "#121212" : "white",
-          borderRadius: "10px",
-          boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)"
+          backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
+          color: isDarkMode ? "#fff" : "#000"
         }}
       >
-        <div 
-          className={styles.popup} 
-          style={{ 
-            backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
-            color: isDarkMode ? "#fff" : "#000"
-          }}
-        >
-          <div className={`${styles.header} drag-handle`}>
-            <h2>Server Connection</h2>
-            <button
-              onClick={onClose}
-              className={styles.closeButton}
-            >
-              ✖
-            </button>
-          </div>
-          <div className={styles.form}>
-            <input
-              type="text"
-              placeholder="Server Address"
-              value={serverAddress}
-              onChange={(e) => setServerAddress(e.target.value)}
-              className={styles.input}
-            />
-            <input
-              type="text"
-              placeholder="Server ID"
-              value={serverId}
-              onChange={(e) => setServerId(e.target.value)}
-              className={styles.input}
-            />
-            <button onClick={handleConnect} className={styles.connectButton}>
-              Connect
-            </button>
-          </div>
-          <p>Status: {status}</p>
-          <div className={styles.logs}>
-            <h3>Logs</h3>
-            <div
-              className={styles.logWindow}
-              style={{
-                maxHeight: "250px",
-                overflowY: "scroll",
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-                backgroundColor: isDarkMode ? "#2a2a2a" : "#f5f5f5"
-              }}
-            >
-              {logs.map((log, index) => (
-                <div key={index} style={{ display: "flex", alignItems: "flex-start" }}>
-                  <span
-                    style={{
-                      fontWeight: "bold",
-                      minWidth: "150px",
-                      marginRight: "8px",
-                      textAlign: "right",
-                    }}
-                  >
-                    [{log.timestamp}]
-                  </span>
-                  <span style={{ flex: 1 }}>{log.message}</span>
-                </div>
-              ))}
-              <div ref={logsEndRef}></div>
-            </div>
+        <div className={`${styles.header} drag-handle`}>
+          <h2>Server Connection</h2>
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents accidental reopening
+              onClose();
+            }}
+            className={styles.closeButton}
+            style={{
+              color: isDarkMode ? "white" : "black", // Apply color dynamically
+            }}
+          >
+            ✖
+          </button>
+        </div>
+        <div className={styles.form}>
+          <input
+            type="text"
+            placeholder="Server Address"
+            value={serverAddress}
+            onChange={(e) => setServerAddress(e.target.value)}
+            className={styles.input}
+            onClick={(e) => e.stopPropagation()} // Prevent window click handler
+          />
+          <input
+            type="text"
+            placeholder="Server ID"
+            value={serverId}
+            onChange={(e) => setServerId(e.target.value)}
+            className={styles.input}
+            onClick={(e) => e.stopPropagation()} // Prevent window click handler
+          />
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              handleConnect();
+            }} 
+            className={styles.connectButton}
+          >
+            Connect
+          </button>
+        </div>
+        <p>Status: {status}</p>
+        <div className={styles.logs}>
+          <h3>Logs</h3>
+          <div
+            className={styles.logWindow}
+            style={{
+              maxHeight: "250px",
+              overflowY: "scroll",
+              border: "1px solid #ccc",
+              padding: "10px",
+              borderRadius: "5px",
+              backgroundColor: isDarkMode ? "#2a2a2a" : "#f5f5f5"
+            }}
+            onClick={(e) => e.stopPropagation()} // Prevent window click handler
+          >
+            {logs.map((log, index) => (
+              <div key={index} style={{ display: "flex", alignItems: "flex-start" }}>
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    minWidth: "150px",
+                    marginRight: "8px",
+                    textAlign: "right",
+                  }}
+                >
+                  [{log.timestamp}]
+                </span>
+                <span style={{ flex: 1 }}>{log.message}</span>
+              </div>
+            ))}
+            <div ref={logsEndRef}></div>
           </div>
         </div>
-      </Rnd>
-    </div>,
+      </div>
+    </Rnd>,
     document.body
   );
 };

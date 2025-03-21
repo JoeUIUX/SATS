@@ -1,19 +1,26 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, Response
 from flask_cors import CORS
+from flask_compress import Compress  # Add compression
 from mccif import connect_to_mcc
 import os
 import sqlite3
 import json
-from dotenv import load_dotenv  # ✅ Import dotenv
+from dotenv import load_dotenv
 import threading
 import time
+import subprocess
+from datetime import datetime, timedelta  # For caching headers
 
-# ✅ Load .env file
+# Load .env file
 load_dotenv()
 
 app = Flask(__name__, static_url_path="", static_folder="models")
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB limit
 
+# Add compression for better performance
+Compress(app)
+
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Determine simulation mode from an environment variable
 SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
@@ -25,7 +32,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure directory exists
 # Initialize SQLite database
 DATABASE = "satellites.db"
 
-SCAN_INTERVAL = 10 # Time in seconds between scans
+SCAN_INTERVAL = 10  # Time in seconds between scans
+
 
 def get_db():
     """ Connect to SQLite database and return connection. """
@@ -38,16 +46,16 @@ def create_table():
     """ Ensure the profiles table exists in the database with description and images fields. """
     db = get_db()
     db.execute(
-         """
-        CREATE TABLE IF NOT EXISTS profiles (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT UNIQUE NOT NULL,
-            description TEXT DEFAULT 'No details provided.',
-            images TEXT DEFAULT '[]',
-            uploadedFileName TEXT DEFAULT '',
-            model_path TEXT DEFAULT NULL
-        )
         """
+       CREATE TABLE IF NOT EXISTS profiles (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           name TEXT UNIQUE NOT NULL,
+           description TEXT DEFAULT 'No details provided.',
+           images TEXT DEFAULT '[]',
+           uploadedFileName TEXT DEFAULT '',
+           model_path TEXT DEFAULT NULL
+       )
+       """
     )
     db.execute(
         """
@@ -61,6 +69,59 @@ def create_table():
     )
     db.commit()
     db.close()
+
+
+# Model optimization function
+def optimize_glb_model(file_path):
+    """Optimize GLB model before storage using gltf-pipeline"""
+    try:
+        # Check if gltf-pipeline is installed
+        try:
+            subprocess.run(['gltf-pipeline', '--version'],
+                           check=True,
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE)
+        except (subprocess.SubprocessError, FileNotFoundError):
+            print("⚠️ gltf-pipeline not found. Using original model file.")
+            return file_path
+
+        # If gltf-pipeline is available, run the optimization
+        output_path = file_path.replace('.glb', '_optimized.glb')
+
+        # Execute gltf-pipeline with Draco compression
+        print(f"🔧 Optimizing model: {file_path}")
+        result = subprocess.run([
+            'gltf-pipeline',
+            '-i', file_path,
+            '-o', output_path,
+            '--draco.compressionLevel=7'
+        ], check=True, capture_output=True, text=True)
+
+        print(f"✅ Model optimized: {output_path}")
+        print(f"📊 Optimization output: {result.stdout}")
+
+        # If optimization successful, return the optimized path
+        if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
+            # Calculate size reduction
+            original_size = os.path.getsize(file_path)
+            optimized_size = os.path.getsize(output_path)
+            reduction = ((original_size - optimized_size) / original_size) * 100
+
+            print(
+                f"📦 Size reduction: {reduction:.2f}% (Original: {original_size / 1024 / 1024:.2f}MB, Optimized: {optimized_size / 1024 / 1024:.2f}MB)")
+
+            # Keep the original file as backup
+            backup_path = file_path + ".backup"
+            os.rename(file_path, backup_path)
+
+            # Use the optimized file
+            return output_path
+        else:
+            print("⚠️ Optimization produced invalid file. Using original model.")
+            return file_path
+    except Exception as e:
+        print(f"❌ Error optimizing model: {e}")
+        return file_path  # Return original on error
 
 
 # Call this function when the server starts
@@ -119,11 +180,11 @@ def get_profiles():
             "name": row["name"],
             "description": row["description"],
             "images": json.loads(row["images"]) if row["images"] else [],
-            "uploadedFileName": row["uploadedFileName"] if "uploadedFileName" in row.keys() else ""  # ✅ Ensure key exists
+            "uploadedFileName": row["uploadedFileName"] if "uploadedFileName" in row.keys() else ""
+            # ✅ Ensure key exists
         })
     db.close()
     return jsonify(profiles)
-
 
 
 # ✅ **New API: Add a Profile with Description and Images**
@@ -196,7 +257,6 @@ def update_profile(name):
         return jsonify({"error": str(e)}), 500
 
 
-
 # ✅ **New API: Delete a Profile**
 @app.route('/profiles/<name>', methods=['DELETE'])
 def delete_profile(name):
@@ -206,6 +266,7 @@ def delete_profile(name):
     db.commit()
     db.close()
     return jsonify({"message": "Profile deleted successfully."})
+
 
 @app.route('/checkout/save', methods=['POST'])
 def save_checkout_items():
@@ -237,7 +298,6 @@ def save_checkout_items():
     except Exception as e:
         print(f"❌ Error in save_checkout_items: {str(e)}")
         return jsonify({"error": str(e)}), 500
-
 
 
 @app.route('/checkout/load/<profile_id>', methods=['GET'])
@@ -300,6 +360,27 @@ def upload_glb():
     filename = f"profile_{profile_id}.glb"
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(file_path)
+
+    # Add optimization step
+    print(f"📦 Original file size: {os.path.getsize(file_path) / 1024 / 1024:.2f}MB")
+    try:
+        optimized_path = optimize_glb_model(file_path)
+        print(f"✅ Using model path: {optimized_path}")
+
+        # Update the filename if optimization created a new file
+        if optimized_path != file_path:
+            filename = os.path.basename(optimized_path)
+
+            # If the new filename doesn't match our naming convention, rename it
+            if not filename.startswith(f"profile_{profile_id}"):
+                new_filename = f"profile_{profile_id}_optimized.glb"
+                new_path = os.path.join(UPLOAD_FOLDER, new_filename)
+                os.rename(optimized_path, new_path)
+                filename = new_filename
+                optimized_path = new_path
+    except Exception as e:
+        print(f"⚠️ Model optimization failed, using original file: {e}")
+        # Continue with the original file
 
     try:
         db = get_db()
@@ -374,10 +455,31 @@ def scan_and_update_database():
 # Start the scanning thread
 threading.Thread(target=scan_and_update_database, daemon=True).start()
 
-# ✅ Serve static `.glb` models
+
+# ✅ Serve static `.glb` models with caching
 @app.route("/models/<filename>")
 def get_model(filename):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], filename, mimetype="model/gltf-binary", as_attachment=False)
+    # Set response with specified mimetype
+    response = send_from_directory(app.config["UPLOAD_FOLDER"],
+                                   filename,
+                                   mimetype="model/gltf-binary",
+                                   as_attachment=False)
+
+    # Add caching headers for better performance
+    # Set cache to 1 year (31536000 seconds)
+    response.headers["Cache-Control"] = "public, max-age=31536000"
+    response.headers["Expires"] = (datetime.utcnow() + timedelta(days=365)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    # Add ETag for better caching
+    file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+    if os.path.exists(file_path):
+        # Generate ETag based on file size and modification time
+        file_stat = os.stat(file_path)
+        etag = f'"{file_stat.st_size}-{file_stat.st_mtime}"'
+        response.headers["ETag"] = etag
+
+    return response
+
 
 if __name__ == "__main__":
     port = int(os.getenv("FLASK_PORT", 5000))

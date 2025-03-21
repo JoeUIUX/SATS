@@ -12,7 +12,7 @@
   font-family: Arial, sans-serif;
   position: fixed !important;
   border: 2px solid var(--border-color) !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
   color: var(--text-color) !important;
 }
 

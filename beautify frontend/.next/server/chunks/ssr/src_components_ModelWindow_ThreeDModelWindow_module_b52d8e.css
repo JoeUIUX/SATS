@@ -1,8 +1,5 @@
 /* [project]/src/components/ModelWindow/ThreeDModelWindow.module.css [app-client] (css) */
 .ThreeDModelWindow-module__5BjfpW__popup {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 500px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -10,8 +7,7 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  position: fixed !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
 }
 
 @keyframes ThreeDModelWindow-module__5BjfpW__popup-show {
@@ -70,6 +66,25 @@ html.ThreeDModelWindow-module__5BjfpW__dark .ThreeDModelWindow-module__5BjfpW__c
 .ThreeDModelWindow-module__5BjfpW__drag-handle:active {
   cursor: grabbing !important;
   background-color: #0003 !important;
+}
+
+@keyframes ThreeDModelWindow-module__5BjfpW__spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ThreeDModelWindow-module__5BjfpW__rotate-icon {
+  display: inline-block;
+  animation: 2s linear infinite ThreeDModelWindow-module__5BjfpW__spin;
+}
+
+.ThreeDModelWindow-module__5BjfpW__rotate-icon.ThreeDModelWindow-module__5BjfpW__paused {
+  animation-play-state: paused;
 }
 
 /*# sourceMappingURL=src_components_ModelWindow_ThreeDModelWindow_module_b52d8e.css.map*/

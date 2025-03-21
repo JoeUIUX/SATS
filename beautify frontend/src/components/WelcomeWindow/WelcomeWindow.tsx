@@ -6,27 +6,15 @@ import ToTestList from "../ToTestList/ToTestList"; // Import the ToTestList popu
 import ServerWindow from "../ServerWindow/ServerWindow"; // Import Server Window Component
 import styles from "./WelcomeWindow.module.css";
 import { WindowName } from "types/types";
+import { useNavigate } from "react-router-dom";
 
 // Use require if not using images.d.ts
 //const logo = require("../../assets/logo.jpg");
 
 const WelcomeWindow: React.FC<{
-  zIndex: number;
-  onMouseDown: () => void;
-  onClose: () => void;
-  bringWindowToFront: (windowName: WindowName) => void;
-  windowZIndexes: { [key: string]: number };
-  zIndexCounter: number;
-  // Add these new props
   openToTestList: () => void;
   openServerWindow: () => void;
 }> = ({ 
-  zIndex, 
-  onMouseDown, 
-  onClose, 
-  bringWindowToFront, 
-  windowZIndexes, 
-  zIndexCounter,
   openToTestList,
   openServerWindow
 }) => {
@@ -36,7 +24,7 @@ const WelcomeWindow: React.FC<{
   const [showServerWindow, setShowServerWindow] = useState(false);
   const [hasTests, setHasTests] = useState(false); // Track if there are rows in the list
   const nodeRef = useRef<HTMLDivElement>(null!);
-  const [currentZIndex, setCurrentZIndex] = useState(zIndex);
+  const navigate = useNavigate();
 
   // Check if the page is in dark mode
   const isDarkMode = document.documentElement.classList.contains("dark");
@@ -90,31 +78,22 @@ const WelcomeWindow: React.FC<{
     console.log("ServerWindow closed");
     setShowServerWindow(false);
   };
-
-  const windowName = "WelcomeWindow";
-
-
-    // Debug when z-index changes
-    useEffect(() => {
-      console.log(`WelcomeWindow z-index updated to ${zIndex}`);
-    }, [zIndex]);
-  
-    console.log(`🎯 WelcomeWindow rendered with zIndex:`, zIndex);
   
   return (
-    <Draggable nodeRef={nodeRef} handle={`.${styles.welcomeHeader}`}>
+    <Draggable nodeRef={nodeRef} handle={`.${styles.welcomeHeader}`} positionOffset={{ x: "-50%", y: "-50%" }}>
       <div
         ref={nodeRef}
         className={styles.welcomeWindow}
-      style={{
-        position: "fixed",
-        minHeight: "200px",
-        zIndex: windowZIndexes["WelcomeWindow"],
-        background: isDarkMode
-          ? "linear-gradient(135deg, #000000, #1a1a1a)"
-          : "linear-gradient(135deg, #ffffff, #e6f7ff)",
-      }}
-      onMouseDown={onMouseDown}
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          minHeight: "200px",
+          background: isDarkMode
+            ? "linear-gradient(135deg, #000000, #1a1a1a)"
+            : "linear-gradient(135deg, #ffffff, #e6f7ff)",
+        }}
     >
       <header className={`${styles.welcomeHeader} drag-handle`}>
         <img src="/assets/SaRCLogo.png" alt="Satellite Research Centre Logo" className={styles.logo} />
@@ -139,29 +118,6 @@ const WelcomeWindow: React.FC<{
           MCC
         </button>
       </div>
-       {/* ✅ Ensure `onMouseDown` is passed */}
-       {showToTestList && (
-  <ToTestList
-    onClose={handleToTestListClose}
-    zIndex={windowZIndexes["ToTestList"] ?? zIndexCounter} 
-    onMouseDown={() => bringWindowToFront("ToTestList" as WindowName)}  
-    bringWindowToFront={bringWindowToFront}  
-    windowZIndexes={windowZIndexes}  // ✅ Pass this prop
-    zIndexCounter={zIndexCounter}  // ✅ Pass this prop
-  />
-)}
-
-{showServerWindow && (
-  <ServerWindow
-    onClose={handleServerWindowClose}
-    zIndex={windowZIndexes.ServerWindow}
-    onMouseDown={() => bringWindowToFront("ServerWindow" as WindowName)}  
-    bringWindowToFront={bringWindowToFront}  
-    windowZIndexes={windowZIndexes}  // ✅ Pass this prop
-    zIndexCounter={zIndexCounter}  // ✅ Pass this prop
-  />
-)}
-
     </div>
 </Draggable>
   );

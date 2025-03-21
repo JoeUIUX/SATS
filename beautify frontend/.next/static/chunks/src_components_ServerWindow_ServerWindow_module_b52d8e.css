@@ -1,8 +1,5 @@
 /* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
 .ServerWindow-module__wfqmlq__popup {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 600px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -10,8 +7,6 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  position: fixed !important;
-  z-index: inherit !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -89,6 +84,14 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
 
 .ServerWindow-module__wfqmlq__drag-handle:active {
   cursor: grabbing !important;
+}
+
+.ServerWindow-module__wfqmlq__logWindow {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=src_components_ServerWindow_ServerWindow_module_b52d8e.css.map*/

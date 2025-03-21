@@ -59,6 +59,10 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
             return element;
         }
     }["ToTestList.useState"]);
+    const [position, setPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: (window.innerWidth - 550) / 2,
+        y: (window.innerHeight - 400) / 2
+    });
     // Load data from localStorage
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ToTestList.useEffect": ()=>{
@@ -203,17 +207,29 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$dom$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$draggable$2f$build$2f$cjs$2f$cjs$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         nodeRef: nodeRef,
         handle: ".drag-handle",
+        position: position,
+        onStop: (e, data)=>{
+            console.log(`📌 ToTestList moved to: x=${data.x}, y=${data.y}`);
+            setPosition({
+                x: data.x,
+                y: data.y
+            }); // ✅ Updates position when dragged
+        },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             ref: nodeRef,
             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].popup,
             style: {
                 position: "fixed",
-                zIndex: windowZIndexes["ToTestList"],
+                zIndex: windowZIndexes["ToTestList"] || zIndex,
                 backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
                 color: isDarkMode ? "#fff" : "#000",
                 boxShadow: "0 5px 15px rgba(0,0,0,0.3)"
             },
-            onClick: onMouseDown,
+            onMouseDown: (e)=>{
+                e.stopPropagation();
+                console.log(`🖱️ Clicked ${windowName}, bringing to front`);
+                bringWindowToFront(windowName);
+            },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].header} drag-handle`,
@@ -222,11 +238,14 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                             children: "Tests to Conduct"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 179,
+                            lineNumber: 197,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: onClose,
+                            onClick: (e)=>{
+                                e.stopPropagation(); // ✅ Prevents accidental reopening
+                                onClose();
+                            },
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].closeButton,
                             style: {
                                 color: isDarkMode ? "white" : "black"
@@ -234,13 +253,13 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                             children: "✖"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 180,
+                            lineNumber: 198,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                    lineNumber: 178,
+                    lineNumber: 196,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -253,46 +272,46 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                                         children: "S/N"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                        lineNumber: 191,
+                                        lineNumber: 212,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                         children: "Test"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                        lineNumber: 192,
+                                        lineNumber: 213,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                         children: "Satellite"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 214,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                         children: "Date/Time Logged"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 215,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                         children: "Logged by"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 216,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                lineNumber: 190,
+                                lineNumber: 211,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 189,
+                            lineNumber: 210,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -309,52 +328,52 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                                             children: row.sn
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                             children: row.test
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                            lineNumber: 213,
+                                            lineNumber: 234,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                             children: row.satellite
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 235,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                             children: row.dateTime
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 236,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                             children: row.loggedBy
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 237,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 221,
                                     columnNumber: 13
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 198,
+                            lineNumber: 219,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                    lineNumber: 188,
+                    lineNumber: 209,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -370,7 +389,7 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                                 })
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 222,
+                            lineNumber: 243,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -383,7 +402,7 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                                 })
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 228,
+                            lineNumber: 249,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -396,7 +415,7 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                                 })
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 234,
+                            lineNumber: 255,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -405,13 +424,13 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                             children: "+"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 240,
+                            lineNumber: 261,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                    lineNumber: 221,
+                    lineNumber: 242,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -423,7 +442,7 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                             children: "Delete Item"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 245,
+                            lineNumber: 266,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -432,28 +451,28 @@ const ToTestList = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZI
                             children: "Clear List"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                            lineNumber: 248,
+                            lineNumber: 269,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-                    lineNumber: 244,
+                    lineNumber: 265,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-            lineNumber: 166,
+            lineNumber: 180,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ToTestList/ToTestList.tsx",
-        lineNumber: 165,
+        lineNumber: 171,
         columnNumber: 5
     }, this), document.body);
 };
-_s(ToTestList, "EjlfcSh8QFrP+eqyAXnvsp61bCQ=");
+_s(ToTestList, "8JgBddz/B0wCSgYSv3r8zkjPU30=");
 _c = ToTestList;
 const __TURBOPACK__default__export__ = ToTestList;
 var _c;
@@ -501,15 +520,7 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-const portalRoot = (()=>{
-    let node = document.getElementById("serverWindow-root");
-    if (!node) {
-        node = document.createElement("div");
-        node.id = "serverWindow-root";
-        document.body.appendChild(node);
-    }
-    return node;
-})();
+const portalRoot = document.body; // ✅ Forces ServerWindow to render inside body
 const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZIndexes, zIndexCounter })=>{
     _s();
     const [serverAddress, setServerAddress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
@@ -529,6 +540,10 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
             return element;
         }
     }["ServerWindow.useState"]);
+    const [position, setPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: (window.innerWidth - 650) / 2,
+        y: (window.innerHeight - 400) / 2
+    });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ServerWindow.useEffect": ()=>{
             // Scroll logs to bottom when they update
@@ -655,22 +670,28 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
             width: "100%",
             height: "100%",
             pointerEvents: "none",
-            zIndex: windowZIndexes["ServerWindow"]
+            zIndex: windowZIndexes["ServerWindow"] || zIndex
         },
-        onClick: (e)=>{
+        onMouseDown: (e)=>{
             e.stopPropagation();
-            console.log("ServerWindow clicked - bringing to front");
-            onMouseDown();
+            console.log(`🖱️ Clicked ${windowName}, bringing to front`);
+            bringWindowToFront(windowName);
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$rnd$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Rnd"], {
-            default: {
-                x: window.innerWidth / 2 - 250,
-                y: window.innerHeight / 2 - 200,
+            position: position,
+            size: {
                 width: 500,
                 height: "auto"
             },
             dragHandleClassName: "drag-handle",
             enableResizing: false,
+            onDragStop: (e, d)=>{
+                console.log(`📌 ServerWindow moved to: x=${d.x}, y=${d.y}`);
+                setPosition({
+                    x: d.x,
+                    y: d.y
+                }); // ✅ Updates position when dragged
+            },
             style: {
                 pointerEvents: "auto",
                 backgroundColor: isDarkMode ? "#121212" : "white",
@@ -695,8 +716,14 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: onClose,
+                                onClick: (e)=>{
+                                    e.stopPropagation(); // ✅ Prevents accidental reopening
+                                    onClose();
+                                },
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].closeButton,
+                                style: {
+                                    color: isDarkMode ? "white" : "black"
+                                },
                                 children: "✖"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
@@ -720,7 +747,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].input
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                lineNumber: 207,
+                                lineNumber: 213,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -731,7 +758,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].input
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                lineNumber: 214,
+                                lineNumber: 220,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -740,13 +767,13 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                 children: "Connect"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                lineNumber: 221,
+                                lineNumber: 227,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                        lineNumber: 206,
+                        lineNumber: 212,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -756,7 +783,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                        lineNumber: 225,
+                        lineNumber: 231,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -766,7 +793,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                 children: "Logs"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                lineNumber: 227,
+                                lineNumber: 233,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -800,7 +827,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                                    lineNumber: 241,
+                                                    lineNumber: 247,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -810,32 +837,32 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
                                                     children: log.message
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                                    lineNumber: 251,
+                                                    lineNumber: 257,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 246,
                                             columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         ref: logsEndRef
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 260,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                lineNumber: 228,
+                                lineNumber: 234,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                        lineNumber: 226,
+                        lineNumber: 232,
                         columnNumber: 11
                     }, this)
                 ]
@@ -846,16 +873,16 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, window
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-            lineNumber: 174,
-            columnNumber: 6
+            lineNumber: 171,
+            columnNumber: 1
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-        lineNumber: 158,
+        lineNumber: 155,
         columnNumber: 5
     }, this), document.body);
 };
-_s(ServerWindow, "MCAQTGdv/GzLNx6+Oktj9F+YHxs=", false, function() {
+_s(ServerWindow, "ygRdPVGgiorHkUL4mICHjqKsWbU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNavigate"]
     ];
@@ -983,16 +1010,27 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$draggable$2f$build$2f$cjs$2f$cjs$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         nodeRef: nodeRef,
         handle: `.${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].welcomeHeader}`,
+        positionOffset: {
+            x: "-50%",
+            y: "-50%"
+        },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             ref: nodeRef,
             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].welcomeWindow,
             style: {
                 position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
                 minHeight: "200px",
-                zIndex: windowZIndexes["WelcomeWindow"],
+                zIndex: windowZIndexes["WelcomeWindow"] || zIndex,
                 background: isDarkMode ? "linear-gradient(135deg, #000000, #1a1a1a)" : "linear-gradient(135deg, #ffffff, #e6f7ff)"
             },
-            onMouseDown: onMouseDown,
+            onMouseDown: (e)=>{
+                e.stopPropagation();
+                console.log(`🖱️ Clicked ${windowName}, bringing to front`);
+                bringWindowToFront(windowName);
+            },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
                     className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].welcomeHeader} drag-handle`,
@@ -1003,21 +1041,21 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].logo
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 120,
+                            lineNumber: 127,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             children: "Satellite Research Centre"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 121,
+                            lineNumber: 128,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             children: "Satellite Automated Testing System"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 122,
+                            lineNumber: 129,
                             columnNumber: 9
                         }, this),
                         dateTime && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1025,13 +1063,13 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                             children: dateTime
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 123,
+                            lineNumber: 130,
                             columnNumber: 22
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 119,
+                    lineNumber: 126,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1046,20 +1084,20 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                                     children: "Tests to Conduct"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                                    lineNumber: 127,
+                                    lineNumber: 134,
                                     columnNumber: 11
                                 }, this),
                                 hasTests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].notificationDot
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                                    lineNumber: 133,
+                                    lineNumber: 140,
                                     columnNumber: 24
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 126,
+                            lineNumber: 133,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1068,13 +1106,13 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                             children: "MCC"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 135,
+                            lineNumber: 142,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 125,
+                    lineNumber: 132,
                     columnNumber: 7
                 }, this),
                 showToTestList && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1086,7 +1124,7 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                     zIndexCounter: zIndexCounter
                 }, void 0, false, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 144,
+                    lineNumber: 151,
                     columnNumber: 3
                 }, this),
                 showServerWindow && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1098,7 +1136,7 @@ const WelcomeWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windo
                     zIndexCounter: zIndexCounter
                 }, void 0, false, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 155,
+                    lineNumber: 162,
                     columnNumber: 3
                 }, this)
             ]
@@ -2452,12 +2490,12 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                 onClick: toggleSidebar,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaBars"], {}, void 0, false, {
                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                    lineNumber: 1102,
+                    lineNumber: 1101,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1098,
+                lineNumber: 1097,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2470,7 +2508,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                 children: "Menu"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1108,
+                                lineNumber: 1107,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2479,13 +2517,13 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                 children: "☰"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1109,
+                                lineNumber: 1108,
                                 columnNumber: 9
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1107,
+                        lineNumber: 1106,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2497,7 +2535,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1114,
+                                lineNumber: 1113,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -2506,7 +2544,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                 children: "Tests to Conduct"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1117,
+                                lineNumber: 1116,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -2520,7 +2558,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             children: "Profiles"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1122,
+                                            lineNumber: 1121,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2532,7 +2570,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: isProfileDropdownOpen ? "▲" : "▼"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1129,
+                                                    lineNumber: 1128,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2540,29 +2578,29 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     onClick: addProfile,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPlus"], {}, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1139,
+                                                        lineNumber: 1138,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1135,
+                                                    lineNumber: 1134,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1128,
+                                            lineNumber: 1127,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1121,
+                                    lineNumber: 1120,
                                     columnNumber: 11
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1120,
+                                lineNumber: 1119,
                                 columnNumber: 9
                             }, this),
                             isProfileDropdownOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2575,18 +2613,18 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                         children: profile.name
                                     }, profile.id || profile.name, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1147,
+                                        lineNumber: 1146,
                                         columnNumber: 13
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1145,
+                                lineNumber: 1144,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1113,
+                        lineNumber: 1112,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2595,23 +2633,23 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].settingsButton,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCog"], {}, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1163,
+                                lineNumber: 1162,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1162,
+                            lineNumber: 1161,
                             columnNumber: 9
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1161,
+                        lineNumber: 1160,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1106,
+                lineNumber: 1105,
                 columnNumber: 5
             }, this),
             showToTestList && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2625,7 +2663,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                 zIndexCounter: 10003
             }, void 0, false, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1169,
+                lineNumber: 1168,
                 columnNumber: 3
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2640,7 +2678,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                     children: selectedProfile
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1184,
+                                    lineNumber: 1183,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2648,18 +2686,18 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                     onClick: ()=>deleteProfile(selectedProfile),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTrash"], {}, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1189,
+                                        lineNumber: 1188,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1185,
+                                    lineNumber: 1184,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1183,
+                            lineNumber: 1182,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2668,14 +2706,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaInfoCircle"], {}, void 0, false, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1195,
+                                    lineNumber: 1194,
                                     columnNumber: 13
                                 }, this),
                                 " About/Specifications"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1194,
+                            lineNumber: 1193,
                             columnNumber: 11
                         }, this),
                         showAbout && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2691,7 +2729,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: "Bullet List"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1212,
+                                                    lineNumber: 1211,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2699,13 +2737,13 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: "Ordered List"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1215,
+                                                    lineNumber: 1214,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1211,
+                                            lineNumber: 1210,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tiptap$2f$react$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["EditorContent"], {
@@ -2713,7 +2751,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].richTextEditor
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1220,
+                                            lineNumber: 1219,
                                             columnNumber: 19
                                         }, this),
                                         uploadedImages.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2727,7 +2765,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].uploadedImage
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1227,
+                                                            lineNumber: 1226,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2736,25 +2774,25 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                             children: "✖"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1233,
+                                                            lineNumber: 1232,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, index, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1226,
+                                                    lineNumber: 1225,
                                                     columnNumber: 25
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1224,
+                                            lineNumber: 1223,
                                             columnNumber: 21
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].imagePlaceholder,
                                             children: "No images uploaded"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1243,
+                                            lineNumber: 1242,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2767,7 +2805,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].uploadInput
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1248,
+                                                    lineNumber: 1247,
                                                     columnNumber: 21
                                                 }, this),
                                                 selectedProfile && profileData[selectedProfile]?.uploadedFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2777,13 +2815,13 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1257,
+                                                    lineNumber: 1256,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1247,
+                                            lineNumber: 1246,
                                             columnNumber: 19
                                         }, this)
                                     ]
@@ -2795,7 +2833,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1264,
+                                            lineNumber: 1263,
                                             columnNumber: 19
                                         }, this),
                                         profileData[selectedProfile]?.images.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2809,17 +2847,17 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                         onError: (e)=>e.currentTarget.src = "/fallback-image.png"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1274,
+                                                        lineNumber: 1273,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, index, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1273,
+                                                    lineNumber: 1272,
                                                     columnNumber: 25
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1271,
+                                            lineNumber: 1270,
                                             columnNumber: 21
                                         }, this)
                                     ]
@@ -2835,14 +2873,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaDownload"], {}, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1295,
+                                                            lineNumber: 1294,
                                                             columnNumber: 25
                                                         }, this),
                                                         " Save as .TXT"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1291,
+                                                    lineNumber: 1290,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2851,14 +2889,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaDownload"], {}, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1301,
+                                                            lineNumber: 1300,
                                                             columnNumber: 25
                                                         }, this),
                                                         " Save as .DOCX"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1297,
+                                                    lineNumber: 1296,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
@@ -2871,14 +2909,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCheck"], {}, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1311,
+                                                            lineNumber: 1310,
                                                             columnNumber: 25
                                                         }, this),
                                                         " Save"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1307,
+                                                    lineNumber: 1306,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2887,14 +2925,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTimes"], {}, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1317,
+                                                            lineNumber: 1316,
                                                             columnNumber: 25
                                                         }, this),
                                                         " Cancel"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1313,
+                                                    lineNumber: 1312,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
@@ -2903,24 +2941,24 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             onClick: startEditing,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaEdit"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1322,
+                                                lineNumber: 1321,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1321,
+                                            lineNumber: 1320,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1288,
+                                    lineNumber: 1287,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1200,
+                            lineNumber: 1199,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2928,7 +2966,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: "Test Type"
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1330,
+                            lineNumber: 1329,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2937,14 +2975,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaWrench"], {}, void 0, false, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1332,
+                                    lineNumber: 1331,
                                     columnNumber: 17
                                 }, this),
                                 " Checkout"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1331,
+                            lineNumber: 1330,
                             columnNumber: 15
                         }, this),
                         showCheckout && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2972,7 +3010,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             children: "Test Selection:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1347,
+                                            lineNumber: 1346,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2980,12 +3018,12 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             onClick: toggleCheckoutEditMode,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaEdit"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1349,
+                                                lineNumber: 1348,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1348,
+                                            lineNumber: 1347,
                                             columnNumber: 19
                                         }, this),
                                         !isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2996,20 +3034,20 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaPlay"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1354,
+                                                    lineNumber: 1353,
                                                     columnNumber: 23
                                                 }, this),
                                                 " Start Test"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1353,
+                                            lineNumber: 1352,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1346,
+                                    lineNumber: 1345,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$core$2f$dist$2f$core$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DndContext"], {
@@ -3048,7 +3086,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: "Drop items here"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1386,
+                                                    lineNumber: 1385,
                                                     columnNumber: 7
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$sortable$2f$dist$2f$sortable$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SortableContext"], {
@@ -3072,23 +3110,23 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                                 isCheckoutEditing: isCheckoutEditing
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1400,
+                                                                lineNumber: 1399,
                                                                 columnNumber: 7
                                                             }, this)
                                                         }, `top-${item.id}`, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1399,
+                                                            lineNumber: 1398,
                                                             columnNumber: 5
                                                         }, this))
                                                 }, sortableKey, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1397,
+                                                    lineNumber: 1396,
                                                     columnNumber: 1
                                                 }, this)
                                             ]
                                         }, "top-section", true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1373,
+                                            lineNumber: 1372,
                                             columnNumber: 3
                                         }, this),
                                         isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3118,7 +3156,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                     children: "Available Components"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1439,
+                                                    lineNumber: 1438,
                                                     columnNumber: 3
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$sortable$2f$dist$2f$sortable$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SortableContext"], {
@@ -3146,24 +3184,24 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                                 isInBottomSection: true
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1456,
+                                                                lineNumber: 1455,
                                                                 columnNumber: 7
                                                             }, this)
                                                         }, `bottom-${item.id}`, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1445,
+                                                            lineNumber: 1444,
                                                             columnNumber: 5
                                                         }, this);
                                                     })
                                                 }, sortableKey, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1440,
+                                                    lineNumber: 1439,
                                                     columnNumber: 3
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1416,
+                                            lineNumber: 1415,
                                             columnNumber: 5
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$core$2f$dist$2f$core$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DragOverlay"], {
@@ -3176,18 +3214,18 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1473,
+                                                lineNumber: 1472,
                                                 columnNumber: 5
                                             }, this) : null
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1471,
+                                            lineNumber: 1470,
                                             columnNumber: 1
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1359,
+                                    lineNumber: 1358,
                                     columnNumber: 17
                                 }, this),
                                 isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3202,14 +3240,14 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCheck"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1490,
+                                                    lineNumber: 1489,
                                                     columnNumber: 21
                                                 }, this),
                                                 " Save"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1486,
+                                            lineNumber: 1485,
                                             columnNumber: 1
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3221,26 +3259,26 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaTimes"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1496,
+                                                    lineNumber: 1495,
                                                     columnNumber: 21
                                                 }, this),
                                                 " Cancel"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1492,
+                                            lineNumber: 1491,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1485,
+                                    lineNumber: 1484,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1337,
+                            lineNumber: 1336,
                             columnNumber: 17
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3248,7 +3286,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: "Satellite Model Viewer"
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1502,
+                            lineNumber: 1501,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3265,20 +3303,20 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaCube"], {}, void 0, false, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1516,
+                                    lineNumber: 1515,
                                     columnNumber: 3
                                 }, this),
                                 " 3D Model"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1504,
+                            lineNumber: 1503,
                             columnNumber: 1
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                    lineNumber: 1182,
+                    lineNumber: 1181,
                     columnNumber: 9
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profilePage,
@@ -3288,7 +3326,7 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: "Satellite Automated Testing System"
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1522,
+                            lineNumber: 1521,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3296,24 +3334,24 @@ const MainScreen = ({ openToTestList, openServerWindow, openModelWindow })=>{
                             children: "Navigate using the side panel"
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1523,
+                            lineNumber: 1522,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                    lineNumber: 1521,
+                    lineNumber: 1520,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1180,
+                lineNumber: 1179,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-        lineNumber: 1096,
+        lineNumber: 1095,
         columnNumber: 3
     }, this);
 };
@@ -3470,6 +3508,10 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
             return element;
         }
     }["ThreeDModelWindow.useState"]);
+    const [position, setPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: (window.innerWidth - 500) / 2,
+        y: (window.innerHeight - 400) / 2
+    });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ThreeDModelWindow.useEffect": ()=>{
             console.log(`📌 Appending ThreeDModelWindow to body`);
@@ -3608,14 +3650,11 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
         zIndex,
         profileId
     ]);
-    // When component mounts, bring it to front
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ThreeDModelWindow.useEffect": ()=>{
             if (bringWindowToFront) {
                 console.log("Bringing 3D model window to front");
-                setTimeout({
-                    "ThreeDModelWindow.useEffect": ()=>bringWindowToFront("ThreeDModelWindow")
-                }["ThreeDModelWindow.useEffect"], 100);
+                bringWindowToFront("ThreeDModelWindow");
             }
         }
     }["ThreeDModelWindow.useEffect"], [
@@ -3625,17 +3664,25 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$dom$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$draggable$2f$build$2f$cjs$2f$cjs$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         nodeRef: nodeRef,
         handle: ".drag-handle",
+        position: position,
+        onStop: (e, data)=>{
+            console.log(`📌 ThreeDModelWindow moved to: x=${data.x}, y=${data.y}`);
+            setPosition({
+                x: data.x,
+                y: data.y
+            }); // ✅ Updates position when dragged
+        },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             ref: nodeRef,
             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].popup,
             style: {
                 position: "fixed",
-                zIndex: windowZIndexes["ThreeDModelWindow"]
+                zIndex: windowZIndexes["ThreeDModelWindow"] || zIndex
             },
-            onClick: (e)=>{
+            onMouseDown: (e)=>{
                 e.stopPropagation();
-                console.log('3D Model window clicked');
-                if (onMouseDown) onMouseDown();
+                console.log(`🖱️ Clicked ${windowName}, bringing to front`);
+                bringWindowToFront(windowName);
             },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3645,7 +3692,7 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                             children: "Satellite Model Viewer"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 273,
+                            lineNumber: 286,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3660,13 +3707,13 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                             children: "✖"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 274,
+                            lineNumber: 287,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                    lineNumber: 272,
+                    lineNumber: 285,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3677,7 +3724,7 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                             children: errorMessage
                         }, void 0, false, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 288,
+                            lineNumber: 301,
                             columnNumber: 13
                         }, this) : modelPath ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
                             camera: {
@@ -3698,7 +3745,7 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                     intensity: 0.8
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 294,
+                                    lineNumber: 307,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -3709,7 +3756,7 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                     ]
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 295,
+                                    lineNumber: 308,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SatelliteModel, {
@@ -3717,25 +3764,25 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                     onColorExtracted: (color)=>setCanvasBgColor(color.getStyle())
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 296,
+                                    lineNumber: 309,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {}, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 310,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 290,
+                            lineNumber: 303,
                             columnNumber: 1
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].errorMessage,
                             children: "⚠️ No file uploaded"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 301,
+                            lineNumber: 314,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3748,13 +3795,13 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                             children: ".glb"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                            lineNumber: 306,
+                                            lineNumber: 319,
                                             columnNumber: 34
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 306,
+                                    lineNumber: 319,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3765,7 +3812,7 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].uploadInput
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 320,
                                     columnNumber: 13
                                 }, this),
                                 selectedFile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3774,34 +3821,34 @@ const ThreeDModelWindow = ({ profileId, zIndex, onMouseDown, onClose, bringWindo
                                     children: "Upload 3D Model file"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                                    lineNumber: 316,
+                                    lineNumber: 329,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                            lineNumber: 305,
+                            lineNumber: 318,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-                    lineNumber: 285,
+                    lineNumber: 298,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-            lineNumber: 260,
+            lineNumber: 273,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.tsx",
-        lineNumber: 259,
+        lineNumber: 264,
         columnNumber: 5
     }, this), portalElement);
 };
-_s1(ThreeDModelWindow, "RYRimNNGB8kv98nQVKyypD0y9KE=");
+_s1(ThreeDModelWindow, "XqJKUuU572hZwvqUZftTIKx1ivo=");
 _c1 = ThreeDModelWindow;
 const __TURBOPACK__default__export__ = ThreeDModelWindow;
 var _c, _c1;
@@ -3845,41 +3892,39 @@ function Page() {
     const [showThreeDModelWindow, setShowThreeDModelWindow] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [zIndexCounter, setZIndexCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(10000); // Base z-index
     const [windowZIndexes, setWindowZIndexes] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        WelcomeWindow: 10003,
-        ToTestList: 10002,
-        ServerWindow: 10001,
-        ThreeDModelWindow: 10000
+        WelcomeWindow: 10000,
+        ToTestList: 10001,
+        ServerWindow: 10002,
+        ThreeDModelWindow: 10003
     });
     // ✅ initial individual z-index
     const [threeDModelProfileId, setThreeDModelProfileId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1); // Default value for testing
-    const [showWelcomeWindow, setShowWelcomeWindow] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [showWelcomeWindow, setShowWelcomeWindow] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        "Page.useState": ()=>{
+            const savedState = localStorage.getItem("showWelcomeWindow");
+            return savedState ? JSON.parse(savedState) : true;
+        }
+    }["Page.useState"]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Page.useEffect": ()=>{
+            localStorage.setItem("showWelcomeWindow", JSON.stringify(showWelcomeWindow));
+        }
+    }["Page.useEffect"], [
+        showWelcomeWindow
+    ]);
     const bringWindowToFront = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "Page.useCallback[bringWindowToFront]": (windowName)=>{
-            console.log(`🎯 Bringing ${windowName} to front`);
-            // ✅ Ensure the window is shown before updating its z-index
-            setTimeout({
-                "Page.useCallback[bringWindowToFront]": ()=>{
-                    if (windowName === "ToTestList" && !showToTestList) {
-                        setShowToTestList(true);
-                    } else if (windowName === "ServerWindow" && !showServerWindow) {
-                        setShowServerWindow(true);
-                    } else if (windowName === "ThreeDModelWindow" && !showThreeDModelWindow) {
-                        setShowThreeDModelWindow(true);
-                    }
-                }
-            }["Page.useCallback[bringWindowToFront]"], 10);
             setWindowZIndexes({
                 "Page.useCallback[bringWindowToFront]": (prevIndexes)=>{
-                    const highestZIndex = Math.max(...Object.values(prevIndexes), 10000);
-                    // ✅ Prevent redundant z-index updates
-                    if (prevIndexes[windowName] >= highestZIndex) {
-                        console.warn(`⚠️ ${windowName} is already at the top. No update needed.`);
-                        return prevIndexes;
-                    }
-                    return {
-                        ...prevIndexes,
-                        [windowName]: highestZIndex + 1
+                    const newZIndexes = {
+                        ...prevIndexes
                     };
+                    const highestZIndex = Math.max(...Object.values(prevIndexes), 10000);
+                    newZIndexes[windowName] = highestZIndex + 1;
+                    console.log(`✅ Updated z-index for ${windowName}: ${newZIndexes[windowName]}`);
+                    return {
+                        ...newZIndexes
+                    }; // ✅ Force React to detect state change
                 }
             }["Page.useCallback[bringWindowToFront]"]);
             setZIndexCounter({
@@ -3887,10 +3932,7 @@ function Page() {
             }["Page.useCallback[bringWindowToFront]"]);
         }
     }["Page.useCallback[bringWindowToFront]"], [
-        showToTestList,
-        showServerWindow,
-        showThreeDModelWindow,
-        windowZIndexes
+        setWindowZIndexes
     ]);
     // Window open/close handlers
     const openToTestList = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
@@ -3943,6 +3985,12 @@ function Page() {
         console.log("🔴 Closing ThreeDModelWindow...");
         setShowThreeDModelWindow(false);
     };
+    const closeWelcomeWindow = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "Page.useCallback[closeWelcomeWindow]": ()=>{
+            console.log("Closing WelcomeWindow");
+            setShowWelcomeWindow(false);
+        }
+    }["Page.useCallback[closeWelcomeWindow]"], []);
     // Debug logging
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Page.useEffect": ()=>{
@@ -4001,7 +4049,7 @@ function Page() {
                     children: "Window Controls:"
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 144,
+                    lineNumber: 139,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4012,7 +4060,7 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 145,
+                    lineNumber: 140,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4023,7 +4071,7 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 148,
+                    lineNumber: 143,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4034,7 +4082,7 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 151,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4044,7 +4092,7 @@ function Page() {
                     children: "Z-Indexes:"
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 154,
+                    lineNumber: 149,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4054,7 +4102,7 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 155,
+                    lineNumber: 150,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4064,7 +4112,7 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 156,
+                    lineNumber: 151,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4074,13 +4122,13 @@ function Page() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 157,
+                    lineNumber: 152,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/page.tsx",
-            lineNumber: 133,
+            lineNumber: 128,
             columnNumber: 7
         }, this);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -4099,7 +4147,7 @@ function Page() {
                         element: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {}, void 0, false)
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 168,
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Route"], {
@@ -4110,18 +4158,18 @@ function Page() {
                             openModelWindow: openModelWindow
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 170,
+                            lineNumber: 165,
                             columnNumber: 13
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 169,
+                        lineNumber: 164,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 167,
+                lineNumber: 162,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4143,7 +4191,7 @@ function Page() {
                     ")",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 189,
+                        lineNumber: 184,
                         columnNumber: 92
                     }, this),
                     "ToTestList: ",
@@ -4153,7 +4201,7 @@ function Page() {
                     ")",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 190,
+                        lineNumber: 185,
                         columnNumber: 89
                     }, this),
                     "ServerWindow: ",
@@ -4163,7 +4211,7 @@ function Page() {
                     ")",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 191,
+                        lineNumber: 186,
                         columnNumber: 95
                     }, this),
                     "ModelWindow: ",
@@ -4174,19 +4222,15 @@ function Page() {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 179,
+                lineNumber: 174,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "window-container",
-                children: [
-                    "WelcomeWindow",
-                    "ToTestList",
-                    "ServerWindow",
-                    "ThreeDModelWindow"
-                ].sort((a, b)=>(windowZIndexes[a] || 0) - (windowZIndexes[b] || 0)).map((windowName)=>{
+                children: Object.entries(windowZIndexes).sort(([, zIndexA], [, zIndexB])=>(zIndexA || 0) - (zIndexB || 0)) // ✅ Ensure valid comparison
+                .map(([windowName])=>{
                     if (windowName === "WelcomeWindow" && showWelcomeWindow) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                        zIndex: windowZIndexes.WelcomeWindow,
+                        zIndex: windowZIndexes.WelcomeWindow || 10000,
                         onMouseDown: ()=>bringWindowToFront("WelcomeWindow"),
                         onClose: ()=>setShowWelcomeWindow(false),
                         bringWindowToFront: bringWindowToFront,
@@ -4196,8 +4240,8 @@ function Page() {
                         openServerWindow: openServerWindow
                     }, "WelcomeWindow", false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 201,
-                        columnNumber: 11
+                        lineNumber: 196,
+                        columnNumber: 1
                     }, this);
                     if (windowName === "ToTestList" && showToTestList) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         zIndex: windowZIndexes.ToTestList,
@@ -4208,7 +4252,7 @@ function Page() {
                         zIndexCounter: zIndexCounter
                     }, "ToTestList", false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 216,
+                        lineNumber: 211,
                         columnNumber: 11
                     }, this);
                     if (windowName === "ServerWindow" && showServerWindow) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4220,11 +4264,11 @@ function Page() {
                         zIndexCounter: zIndexCounter
                     }, "ServerWindow", false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 229,
+                        lineNumber: 224,
                         columnNumber: 11
                     }, this);
-                    if (windowName === "ThreeDModelWindow" && showThreeDModelWindow && threeDModelProfileId !== null) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                        profileId: threeDModelProfileId,
+                    if (windowName === "ThreeDModelWindow" && showThreeDModelWindow) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        profileId: threeDModelProfileId ?? 1,
                         zIndex: windowZIndexes.ThreeDModelWindow,
                         onMouseDown: ()=>bringWindowToFront("ThreeDModelWindow"),
                         onClose: closeModelWindow,
@@ -4233,24 +4277,24 @@ function Page() {
                         zIndexCounter: zIndexCounter
                     }, "ThreeDModelWindow", false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 242,
+                        lineNumber: 237,
                         columnNumber: 11
                     }, this);
                     return null;
                 })
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 195,
+                lineNumber: 190,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/page.tsx",
-        lineNumber: 166,
+        lineNumber: 161,
         columnNumber: 7
     }, this);
 }
-_s(Page, "IYBm7S9RZlYe5jciQ1KyfaIqxMg=");
+_s(Page, "joAA7Xf5l9HT39BcZ+zhUnJUIL8=");
 _c = Page;
 var _c;
 __turbopack_refresh__.register(_c, "Page");

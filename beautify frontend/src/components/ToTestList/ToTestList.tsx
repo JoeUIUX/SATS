@@ -4,49 +4,102 @@ import Draggable from "react-draggable";
 import { createPortal } from "react-dom";
 import { WindowName } from "types/types";
 
-const ToTestList: React.FC<{ 
+interface ToTestListProps {
   zIndex: number; 
   onMouseDown: () => void; 
   onClose: () => void;
   bringWindowToFront: (windowName: WindowName) => void;
-  windowZIndexes: { [key: string]: number };  // ✅ Accept this prop
-  zIndexCounter: number;  // ✅ Accept this prop
-}> = ({ zIndex, onMouseDown, onClose, bringWindowToFront, windowZIndexes, zIndexCounter }) => {
+  windowZIndexes: { [key: string]: number };
+  zIndexCounter: number;
+}
 
-  const nodeRef = useRef<HTMLDivElement>(null!); // ✅ Ensure nodeRef is initialized
-  const [rows, setRows] = useState<any[]>([]);
-  const [form, setForm] = useState({
+interface RowData {
+  sn: number;
+  test: string;
+  satellite: string;
+  dateTime: string;
+  loggedBy: string;
+  selected?: boolean;
+}
+
+const ToTestList: React.FC<ToTestListProps> = ({ 
+  zIndex, 
+  onMouseDown, 
+  onClose, 
+  bringWindowToFront, 
+  windowZIndexes, 
+  zIndexCounter 
+}) => {
+  // Use MutableRefObject instead of RefObject to satisfy Draggable's requirements
+  const nodeRef = useRef<HTMLDivElement>(null);
+  const [rows, setRows] = useState<RowData[]>([]);
+  const [formData, setFormData] = useState({
     test: "",
     satellite: "",
     loggedBy: "",
   });
+  
+  // Important: Add refs to prevent infinite focus loop
+  const hasFocused = useRef(false);
+  const initialMount = useRef(true);
 
-  const [currentZIndex, setCurrentZIndex] = useState(zIndex); // ✅ Track `zIndex`
-
-  // Portal management
+  // Create portal element once on mount
   const [portalElement] = useState(() => {
-    // Create portal element once
+    // Check if portal already exists
+    const existingPortal = document.getElementById("toTestList-root");
+    if (existingPortal) {
+      return existingPortal;
+    }
+    
+    // Create new portal if needed
     const element = document.createElement("div");
     element.id = "toTestList-root";
     document.body.appendChild(element);
     return element;
   });
 
-  // Load data from localStorage
-useEffect(() => {
-  // Load data from localStorage
-  const savedRows = localStorage.getItem("toTestListRows");
-  if (savedRows) {
-    setRows(JSON.parse(savedRows));
-  }
-
-  // Cleanup function for when component unmounts
-  return () => {
-    if (portalElement && portalElement.parentNode) {
-      portalElement.parentNode.removeChild(portalElement);
-    }
+  // Important: Store position in sessionStorage to maintain it across renders
+  const savedPosition = sessionStorage.getItem('toTestListPosition');
+  const defaultPosition = savedPosition ? JSON.parse(savedPosition) : {
+    x: (window.innerWidth - 800) / 2, 
+    y: (window.innerHeight - 500) / 2
   };
-}, [portalElement]);
+
+  const [position, setPosition] = useState(defaultPosition);
+  
+  // When component mounts, load data and focus once
+  useEffect(() => {
+    console.log("🔵 ToTestList mounted");
+    
+    // Focus window, but only once on initial mount
+    if (initialMount.current && !hasFocused.current) {
+      const focusTimeout = setTimeout(() => {
+        console.log("🎯 ToTestList initial focusing");
+        onMouseDown();
+        hasFocused.current = true;
+      }, 50);
+      
+      initialMount.current = false;
+      
+      return () => clearTimeout(focusTimeout);
+    }
+    
+    // Load data from localStorage
+    const savedRows = localStorage.getItem("toTestListRows");
+    if (savedRows) {
+      setRows(JSON.parse(savedRows));
+    }
+  }, []); // Empty dependency array - run once on mount
+
+  // Clean up portal on unmount
+  useEffect(() => {
+    return () => {
+      hasFocused.current = false; // Reset focus state on unmount
+      
+      // Don't remove the portal element itself - this causes issues
+      // Just reset internal state for next mount
+    };
+  }, []);
 
   // Save data to localStorage when rows change
   useEffect(() => {
@@ -57,16 +110,24 @@ useEffect(() => {
     }
   }, [rows]);
 
+  // Save position to sessionStorage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem('toTestListPosition', JSON.stringify(position));
+  }, [position]);
+
   const addItem = () => {
-    const newRow = {
+    if (!formData.test) return; // Prevent adding empty items
+    
+    const newRow: RowData = {
       sn: rows.length + 1,
-      test: form.test,
-      satellite: form.satellite,
+      test: formData.test,
+      satellite: formData.satellite,
       dateTime: new Date().toLocaleString(),
-      loggedBy: form.loggedBy,
+      loggedBy: formData.loggedBy || "Anonymous",
     };
+    
     setRows([...rows, newRow]);
-    setForm({ test: "", satellite: "", loggedBy: "" });
+    setFormData({ test: "", satellite: "", loggedBy: "" });
   };
 
   const deleteItem = () => {
@@ -77,10 +138,7 @@ useEffect(() => {
       if (updatedRows.length === 0) {
         // If the list is empty, clear localStorage
         localStorage.removeItem("toTestListRows");
-      } else {
-        // Otherwise, update the rows and save to localStorage
-        localStorage.setItem("toTestListRows", JSON.stringify(updatedRows));
-      }
+      } 
 
       // Update state with recalculated S/N
       setRows(
@@ -93,8 +151,10 @@ useEffect(() => {
   };
 
   const clearList = () => {
-    setRows([]);
-    localStorage.removeItem("toTestListRows"); // Explicitly clear localStorage
+    if (window.confirm("Are you sure you want to clear all items?")) {
+      setRows([]);
+      localStorage.removeItem("toTestListRows"); // Explicitly clear localStorage
+    }
   };
 
   const toggleRowSelection = (index: number) => {
@@ -105,13 +165,20 @@ useEffect(() => {
     setRows(updatedRows);
   };
 
+  // When the window is clicked, bring it to front using the passed function
+  const handleWindowClick = () => {
+    console.log(`🖱️ Clicked ToTestList, bringing to front`);
+    onMouseDown();
+  };
+
   // Add state to track dark mode
   const [isDarkMode, setIsDarkMode] = useState(false);
   
   // Update dark mode state on component mount and when theme changes
   useEffect(() => {
     const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
+      const isDark = document.documentElement.classList.contains("dark");
+      setIsDarkMode(isDark);
     };
     
     // Initial check
@@ -131,127 +198,200 @@ useEffect(() => {
       attributeFilter: ["class"]
     });
     
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  
+  // Force immediate theme check when component renders
+  useEffect(() => {
+    setIsDarkMode(document.documentElement.classList.contains("dark"));
   }, []);
 
-  // Determine if the page is in dark mode
-  //const isDarkMode = document.documentElement.classList.contains("dark");
+  // Compute actual z-index to use, falling back to provided zIndex if needed
+  const effectiveZIndex = windowZIndexes["ToTestList"] || zIndex;
 
-  // ✅ Ensure ToTestList mounts in a completely separate DOM node
-  const portalRoot = document.getElementById("toTestList-root") || (() => {
-    const root = document.createElement("div");
-    root.id = "toTestList-root";
-    document.body.appendChild(root);
-    return root;
-  })();
-
-  // Debug when z-index changes
-  useEffect(() => {
-    console.log(`ToTestList z-index updated to ${zIndex}`);
-  }, [zIndex]);
-
-  console.log(`🎯 ToTestList received zIndex:`, zIndex);
-
-  const windowName = "ToTestList";
-
-  // Log when component renders
-  useEffect(() => {
-    console.log("ToTestList component rendering with z-index:", zIndex);
-  }, [zIndex]);
-
-  
+  // Handle close with confirmation
+  const handleClose = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevents accidental reopening
+    console.log("🔴 ToTestList close button clicked");
+    
+    // Update sessionStorage directly to ensure persistence
+    try {
+      const savedState = sessionStorage.getItem('windowVisibility');
+      if (savedState) {
+        const state = JSON.parse(savedState);
+        state.ToTestList = false;
+        sessionStorage.setItem('windowVisibility', JSON.stringify(state));
+      }
+    } catch (e) {
+      console.error("Error updating sessionStorage:", e);
+    }
+    
+    onClose();
+  };
 
   return createPortal(
-    <Draggable nodeRef={nodeRef} handle=".drag-handle">
-      <div 
-        ref={nodeRef} 
-        className={styles.popup} 
-        style={{ 
-          position: "fixed", 
-          zIndex: windowZIndexes["ToTestList"],
-          backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
-          color: isDarkMode ? "#fff" : "#000",
-          boxShadow: "0 5px 15px rgba(0,0,0,0.3)"
+    <div 
+      style={{
+        position: "absolute",
+        zIndex: effectiveZIndex,
+        opacity: 1,
+        visibility: "visible",
+        pointerEvents: "auto",
+        display: "block", /* Force display */
+        willChange: "z-index"
+      }}
+      data-window="ToTestList"
+      id="toTestList-window"
+    >
+      <Draggable
+        nodeRef={nodeRef as React.RefObject<HTMLElement>}
+        handle=".drag-handle"
+        position={position}
+        onStop={(e, data) => {
+          console.log(`📌 ToTestList moved to: x=${data.x}, y=${data.y}`);
+          setPosition({ x: data.x, y: data.y });
         }}
-        onClick={onMouseDown} // Change onMouseDown to onClick for better event capturing
       >
-        <div className={`${styles.header} drag-handle`}>
-          <h2>Tests to Conduct</h2>
-          <button
-            onClick={onClose}
-            className={styles.closeButton}
-            style={{ color: isDarkMode ? "white" : "black" }}
-          >
-          ✖
-        </button>
-      </div>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>S/N</th>
-            <th>Test</th>
-            <th>Satellite</th>
-            <th>Date/Time Logged</th>
-            <th>Logged by</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, index) => (
-            <tr
-              key={index}
-              style={{
-                backgroundColor: row.selected
-                  ? isDarkMode
-                    ? "#003366" // Dark blue for dark mode
-                    : "#d0ebff" // Light blue for light mode
-                  : "transparent",
+        <div 
+          ref={nodeRef} 
+          className={styles.popup} 
+          style={{ 
+            position: "fixed", 
+            backgroundColor: isDarkMode ? "#1e1e1e" : "#ffffff",
+            color: isDarkMode ? "#fff" : "#000",
+            boxShadow: "0 5px 15px rgba(0,0,0,0.3)",
+            width: "800px", // Add explicit width
+            minHeight: "400px", // Ensure minimum height  
+            userSelect: "none", // Prevent text selection during drag
+            willChange: "transform",
+            opacity: 1,
+            visibility: "visible",
+            display: "block" /* Force display */
+          }}
+          onClick={handleWindowClick}
+        >
+          {/* Window header */}
+          <div className={`${styles.header} drag-handle`} style={{ display: "flex", justifyContent: "space-between" }}>
+            <h2>Tests to Conduct</h2>
+            <button
+              onClick={handleClose}
+              className={styles.closeButton}
+              style={{ 
+                color: isDarkMode ? "white" : "black",
+                background: "none",
+                border: "none",
+                fontSize: "18px",
+                cursor: "pointer"
               }}
-              className={row.selected ? styles.selectedRow : ""}
-              onClick={() => toggleRowSelection(index)}
             >
-              <td>{row.sn}</td>
-              <td>{row.test}</td>
-              <td>{row.satellite}</td>
-              <td>{row.dateTime}</td>
-              <td>{row.loggedBy}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className={styles.form}>
-        <input
-          type="text"
-          placeholder="Test"
-          value={form.test}
-          onChange={(e) => setForm({ ...form, test: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Satellite"
-          value={form.satellite}
-          onChange={(e) => setForm({ ...form, satellite: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Logged by"
-          value={form.loggedBy}
-          onChange={(e) => setForm({ ...form, loggedBy: e.target.value })}
-        />
-        <button onClick={addItem} className={styles.addButton}>
-          +
-        </button>
-      </div>
-      <div className={styles.actions}>
-        <button onClick={deleteItem} className={styles.deleteButton}>
-          Delete Item
-        </button>
-        <button onClick={clearList} className={styles.clearButton}>
-          Clear List
-        </button>
-      </div>
-    </div>
-    </Draggable>,
-      document.body
+              ✖
+            </button>
+          </div>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Test</th>
+                <th>Satellite</th>
+                <th>Date/Time Logged</th>
+                <th>Logged by</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.length === 0 ? (
+                <tr>
+                  <td colSpan={5} style={{ textAlign: "center", padding: "20px" }}>
+                    No items added yet. Add a test below.
+                  </td>
+                </tr>
+              ) : (
+                rows.map((row, index) => (
+                  <tr
+                    key={index}
+                    style={{
+                      backgroundColor: row.selected
+                        ? isDarkMode
+                          ? "#003366" // Dark blue for dark mode
+                          : "#d0ebff" // Light blue for light mode
+                        : "transparent",
+                    }}
+                    className={row.selected ? styles.selectedRow : ""}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent window click handler
+                      toggleRowSelection(index);
+                    }}
+                  >
+                    <td>{row.sn}</td>
+                    <td>{row.test}</td>
+                    <td>{row.satellite}</td>
+                    <td>{row.dateTime}</td>
+                    <td>{row.loggedBy}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+          <div className={styles.form}>
+            <input
+              type="text"
+              placeholder="Test"
+              value={formData.test}
+              onChange={(e) => setFormData({ ...formData, test: e.target.value })}
+              onMouseDown={(e) => e.stopPropagation()} // Prevent dragging when interacting with inputs
+            />
+            <input
+              type="text"
+              placeholder="Satellite"
+              value={formData.satellite}
+              onChange={(e) => setFormData({ ...formData, satellite: e.target.value })}
+              onMouseDown={(e) => e.stopPropagation()}
+            />
+            <input
+              type="text"
+              placeholder="Logged by"
+              value={formData.loggedBy}
+              onChange={(e) => setFormData({ ...formData, loggedBy: e.target.value })}
+              onMouseDown={(e) => e.stopPropagation()}
+            />
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                addItem();
+              }} 
+              className={styles.addButton}
+            >
+              +
+            </button>
+          </div>
+          <div className={styles.actions}>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteItem();
+              }} 
+              className={styles.deleteButton}
+              disabled={!rows.some(row => row.selected)}
+            >
+              Delete Item
+            </button>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                clearList();
+              }} 
+              className={styles.clearButton}
+              disabled={rows.length === 0}
+            >
+              Clear List
+            </button>
+          </div>
+        </div>
+      </Draggable>
+    </div>,
+    portalElement
   );
 };
 

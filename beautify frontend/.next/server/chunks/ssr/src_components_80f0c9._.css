@@ -1,8 +1,5 @@
 /* [project]/src/components/ToTestList/ToTestList.module.css [app-client] (css) */
 .ToTestList-module__vY2V8W__popup {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 500px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -10,8 +7,7 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  position: fixed !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -161,9 +157,6 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
 
 /* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
 .ServerWindow-module__wfqmlq__popup {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 600px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -171,8 +164,7 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  position: fixed !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -267,7 +259,7 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
   font-family: Arial, sans-serif;
   position: fixed !important;
   border: 2px solid var(--border-color) !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
   color: var(--text-color) !important;
 }
 
@@ -1255,9 +1247,6 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
 
 /* [project]/src/components/ModelWindow/ThreeDModelWindow.module.css [app-client] (css) */
 .ThreeDModelWindow-module__5BjfpW__popup {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 500px;
   max-width: 90vw;
   background-color: var(--bg-color);
@@ -1265,8 +1254,7 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px #0003;
-  position: fixed !important;
-  z-index: inherit !important;
+  z-index: var(--window-z-index, 1) !important;
 }
 
 @keyframes ThreeDModelWindow-module__5BjfpW__popup-show {

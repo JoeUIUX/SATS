@@ -5,7 +5,7 @@ SATS is a project designed to automate satellite testing processes. It consists 
 - **Backend**: A Python-based server that handles core functionalities.
 - **Frontend**: A React-based user interface for user interaction.
   
-This system supports efficient satellite testing workflows and includes features like dynamic profile creation and test management.
+This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, and 3D model visualization.
 
 ---
 
@@ -17,6 +17,7 @@ SATS Satellite Automated Testing System/
 │   ├── backend_server.py
 │   ├── mccif.py
 │   ├── requirements.txt 
+│   ├── models/             # Directory for uploaded 3D models
 │-- beautify frontend/
 │   ├── src/
 │   │   ├── app/
@@ -37,6 +38,9 @@ SATS Satellite Automated Testing System/
 │   │   │   ├── WelcomeWindow/
 │   │   │   │   ├── WelcomeWindow.module.css
 │   │   │   │   ├── WelcomeWindow.tsx
+│   │   │   ├── ModelWindow/
+│   │   │   │   ├── ThreeDModelWindow.jsx
+│   │   │   │   ├── ThreeDModelWindow.module.css
 │   │   ├── types/
 │   │   │   ├── types.ts
 │   │   ├── images.d.ts
@@ -55,6 +59,7 @@ Make sure the following are installed before running the project:
 1. **Git**: [Download Git](https://git-scm.com/downloads)
 2. **Python 3.7+**: [Download Python](https://www.python.org/downloads/)
 3. **Node.js** (with npm): [Download Node.js](https://nodejs.org/)
+4. **gltf-pipeline** (optional, for 3D model optimization): `npm install -g gltf-pipeline`
 
 ---
 
@@ -82,7 +87,9 @@ Follow these steps to set up the backend:
 
 3. **Create a `.env` file** in the `backend` folder and add the following:
    ```env
-   REACT_APP_BACKEND_URL=(your backend server url)
+   REACT_APP_BACKEND_URL=http://127.0.0.1:5000
+   FLASK_PORT=5000
+   SIMULATION_MODE=true
    ```
 
 4. **Run the backend server:**
@@ -142,13 +149,22 @@ The Python backend requires the following dependencies (listed in `requirements.
 
 - **Flask** – Web framework
 - **Flask-Cors** – Cross-Origin Resource Sharing support
+- **Flask-Compress** – Response compression for better performance
 - **SQLite3** – Database management
+- **python-dotenv** – Environment variable management
 - **Requests** – HTTP request library
 
 🔹 **Install all backend dependencies with:**
 ```bash
 pip install -r requirements.txt
 ```
+
+### **Optional Backend Dependencies**
+For 3D model optimization:
+- **gltf-pipeline** - NodeJS tool for optimizing GLB/GLTF files
+  ```bash
+  npm install -g gltf-pipeline
+  ```
 
 ---
 
@@ -159,6 +175,7 @@ The React frontend uses the following dependencies (defined in `package.json`):
 - **`@dnd-kit/sortable`** – Drag-and-drop functionality
 - **`@tiptap/react`, `@tiptap/starter-kit`** – Rich text editing
 - **`mammoth`, `docx`, `docx-preview`** – `.docx` file processing
+- **`three`, `@react-three/fiber`, `@react-three/drei`** – 3D model rendering
 - **`font-awesome`** – Icons
 
 🔹 **Install all frontend dependencies with:**
@@ -193,8 +210,23 @@ npm install
 ### **Backend**
 - **Framework**: Flask
 - **Database**: SQLite
-- **Environment Management**: Python `.env` files
+- **Environment Management**: Python dotenv
+- **Compression**: Flask-Compress
+- **3D Model Optimization**: gltf-pipeline
+- **Response Caching**: Implemented for efficient model delivery
 
+---
+
+## **Key Features**
+- **Profile Management**: Create, read, update, and delete satellite profiles
+- **Test List Management**: Track and manage tests to be conducted
+- **Rich Document Support**: Upload and process text, docx, and image files
+- **3D Model Visualization**: View and interact with 3D models of satellites
+- **Model Optimization**: Automatic optimization of uploaded 3D models
+- **Drag-and-Drop Interface**: Interactive component selection for testing
+- **Light/Dark Mode**: Adaptive theming for better usability
+- **Responsive Design**: Works across different screen sizes
+- **Simulation Mode**: Toggle between real and simulated MCC server connections
 
 ---
 
@@ -203,6 +235,7 @@ npm install
 ✔️ If you encounter issues, check:
    - The `.env` file configuration.
    - That all dependencies are installed correctly.
+   - 3D model file formats (only .glb is supported)
 
 ---
 

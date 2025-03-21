@@ -6,4 +6,4 @@ export interface Profile {
   uploadedFileName?: string; // ✅ Add this line
 }
 
-export type WindowName = "WelcomeWindow" | "ToTestList" | "ServerWindow" | "ThreeDModelWindow";
+export type WindowName = "ToTestList" | "ServerWindow" | "ThreeDModelWindow";
