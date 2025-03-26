@@ -1041,6 +1041,77 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__selectedRow {
   background-color: #0003 !important;
 }
 
+.ToTestList-module__vY2V8W__saveStatus {
+  padding: 4px 10px;
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  animation: 2s forwards ToTestList-module__vY2V8W__fadeOut;
+  animation-delay: 1.5s;
+}
+
+@keyframes ToTestList-module__vY2V8W__fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.ToTestList-module__vY2V8W__loadingIndicator {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  background-color: #0000000d;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+html.ToTestList-module__vY2V8W__light .ToTestList-module__vY2V8W__saveStatus.ToTestList-module__vY2V8W__success {
+  background-color: #dfd;
+  color: #070;
+}
+
+html.ToTestList-module__vY2V8W__light .ToTestList-module__vY2V8W__saveStatus.ToTestList-module__vY2V8W__error {
+  background-color: #fdd;
+  color: #c00;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__saveStatus.ToTestList-module__vY2V8W__success {
+  background-color: #030;
+  color: #8f8;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__saveStatus.ToTestList-module__vY2V8W__error {
+  background-color: #300;
+  color: #f88;
+}
+
+.ToTestList-module__vY2V8W__form input:focus {
+  outline: 2px solid #00bcd4;
+  border-color: #0000;
+}
+
+html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__form input:focus {
+  outline: 2px solid #008c9e;
+}
+
+.ToTestList-module__vY2V8W__deleteButton:disabled, .ToTestList-module__vY2V8W__clearButton:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.ToTestList-module__vY2V8W__drag-handle {
+  cursor: grab !important;
+  background-color: #0000001a !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+  margin-bottom: 10px !important;
+}
+
 
 /* [project]/src/components/ServerWindow/ServerWindow.module.css [app-client] (css) */
 .ServerWindow-module__wfqmlq__popup {
@@ -1328,6 +1399,11 @@ html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWi
   width: 150px;
   height: auto;
   margin-bottom: 10px;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 .WelcomeWindow-module__WdKywW__welcomeHeader h2 {

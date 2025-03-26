@@ -480,6 +480,106 @@ def get_model(filename):
 
     return response
 
+# Create the test_items table when the server starts
+def create_test_items_table():
+    """ Create the test_items table in the database if it doesn't exist. """
+    db = get_db()
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS test_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            test TEXT NOT NULL,
+            satellite TEXT,
+            dateTime TEXT,
+            loggedBy TEXT
+        )
+        """
+    )
+    db.commit()
+    db.close()
+
+
+# Call this function when the server starts
+create_test_items_table()
+
+
+# Add these routes to handle test items
+@app.route('/test-items', methods=['GET'])
+def get_test_items():
+    """ Get all test items from the database. """
+    db = get_db()
+    cursor = db.execute("SELECT id, test, satellite, dateTime, loggedBy FROM test_items ORDER BY id")
+    items = []
+    for row in cursor.fetchall():
+        items.append({
+            "id": row["id"],
+            "test": row["test"],
+            "satellite": row["satellite"],
+            "dateTime": row["dateTime"],
+            "loggedBy": row["loggedBy"]
+        })
+    db.close()
+    return jsonify(items)
+
+
+@app.route('/test-items', methods=['POST'])
+def save_test_items():
+    """ Save test items to the database. """
+    try:
+        data = request.json
+        items = data.get("items", [])
+
+        if not items:
+            return jsonify({"error": "No items provided"}), 400
+
+        db = get_db()
+
+        # Clear existing items first
+        db.execute("DELETE FROM test_items")
+
+        # Insert new items
+        for item in items:
+            db.execute(
+                """
+                INSERT INTO test_items (test, satellite, dateTime, loggedBy)
+                VALUES (?, ?, ?, ?)
+                """,
+                (item["test"], item["satellite"], item["dateTime"], item["loggedBy"])
+            )
+
+        db.commit()
+        db.close()
+
+        return jsonify({"message": f"Successfully saved {len(items)} test items"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/test-items/<int:item_id>', methods=['DELETE'])
+def delete_test_item(item_id):
+    """ Delete a specific test item from the database. """
+    try:
+        db = get_db()
+        db.execute("DELETE FROM test_items WHERE id = ?", (item_id,))
+        db.commit()
+        db.close()
+        return jsonify({"message": f"Successfully deleted test item {item_id}"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/test-items/clear', methods=['DELETE'])
+def clear_test_items():
+    """ Clear all test items from the database. """
+    try:
+        db = get_db()
+        db.execute("DELETE FROM test_items")
+        db.commit()
+        db.close()
+        return jsonify({"message": "Successfully cleared all test items"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
     port = int(os.getenv("FLASK_PORT", 5000))

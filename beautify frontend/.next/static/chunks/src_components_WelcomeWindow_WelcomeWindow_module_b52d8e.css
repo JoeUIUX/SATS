@@ -97,6 +97,11 @@ html.WelcomeWindow-module__WdKywW__dark .WelcomeWindow-module__WdKywW__welcomeWi
   width: 150px;
   height: auto;
   margin-bottom: 10px;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 .WelcomeWindow-module__WdKywW__welcomeHeader h2 {

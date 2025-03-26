@@ -71,7 +71,7 @@ interface DraggableItem {
 }
 
 interface MainScreenProps {
-  openToTestList: () => void;
+  openToTestList: (forceRender?: boolean) => void; // Updated to accept optional parameter
   closeToTestList: () => void;  // ✅ Accept close function as a prop
   openServerWindow: () => void;
   openModelWindow: (profileId?: number) => void;
@@ -1133,59 +1133,68 @@ return (
         <li className={styles.menuItem} onClick={() => setSelectedProfile(null)}>
           Home
         </li>
-{/* Tests to Conduct Sidebar Button */}
+{/* Focused visibility fix for Tests to Conduct button */}
 <li 
   className={styles.menuItem} 
   onClick={(e) => {
     e.preventDefault();
     e.stopPropagation();
     
-    console.log("🚀 Menu item clicked: Tests to Conduct");
+    console.log("🔍 Focused visibility fix initiated");
     
-    // Force a sessionStorage update first
-    try {
-      // Get current state
-      const currentState = JSON.parse(sessionStorage.getItem('windowVisibility') || '{}');
-      
-      // Even if state shows it's visible, force it to be visible again
-      currentState.ToTestList = true;
-      sessionStorage.setItem('windowVisibility', JSON.stringify(currentState));
-      console.log("Force-updated sessionStorage to show ToTestList:", currentState);
-    } catch (e) {
-      console.error("Error updating sessionStorage:", e);
-    }
-
-    // Check if the ToTestList element actually exists in the DOM
-    const toTestListElement = document.querySelector('[data-window="ToTestList"]');
-    
-    if (toTestListElement) {
-      console.log("ToTestList DOM element found - bringing to front");
-      bringWindowToFront("ToTestList");
+    // Toggle the window
+    if (showToTestList) {
+      console.log("Closing ToTestList");
+      closeToTestList();
     } else {
-      console.log("ToTestList DOM element NOT found - force opening");
+      console.log("Opening ToTestList and bringing to front");
+      openToTestList();
       
-      // Double-check showToTestList state
-      console.log("Current showToTestList state:", showToTestList);
-      
-      // Force close then reopen to ensure clean state
-      if (showToTestList) {
-        closeToTestList(); // First ensure it's closed
-        
-        // Then reopen after a brief delay
-        setTimeout(() => {
-          openToTestList(); // Reopen
-        }, 50);
-      } else {
-        // Just open normally
-        openToTestList();
-      }
+      // Ensure window is visible and positioned correctly
+      setTimeout(() => {
+        const toTestListWindow = document.querySelector('[data-window="ToTestList"]');
+        if (toTestListWindow) {
+          console.log("ToTestList found, ensuring visibility and position");
+          
+          // Ensure the window is visible
+          (toTestListWindow as HTMLElement).style.visibility = 'visible';
+          (toTestListWindow as HTMLElement).style.display = 'block';
+          (toTestListWindow as HTMLElement).style.opacity = '1';
+          
+          // Bring to front
+          bringWindowToFront("ToTestList");
+          
+          // Force position to center if it's off-screen
+          const windowRect = toTestListWindow.getBoundingClientRect();
+          if (windowRect.left < 0 || windowRect.top < 0 || 
+              windowRect.right > window.innerWidth || windowRect.bottom > window.innerHeight) {
+            console.log("Window appears to be off-screen, centering it");
+            
+            // Try to set position through sessionStorage
+            try {
+              const centerPosition = {
+                x: (window.innerWidth - 800) / 2, 
+                y: (window.innerHeight - 500) / 2
+              };
+              sessionStorage.setItem('toTestListPosition', JSON.stringify(centerPosition));
+              console.log("Set centered position:", centerPosition);
+              
+              // Attempt to force position directly
+              const draggableElement = toTestListWindow.querySelector('[style*="transform"]');
+              if (draggableElement) {
+                (draggableElement as HTMLElement).style.transform = 
+                  `translate(${centerPosition.x}px, ${centerPosition.y}px)`;
+              }
+              
+              // Last resort: reload the page
+              window.location.reload();
+            } catch (error) {
+              console.error("Error centering window:", error);
+            }
+          }
+        }
+      }, 100);
     }
-    
-    // Verify visibility
-    setTimeout(() => {
-      const isInDOM = !!document.querySelector('[data-window="ToTestList"]');
-      console.log(`Verification: ToTestList in DOM: ${isInDOM}, state: ${showToTestList}`);
-    }, 100);
   }}
 >
   Tests to Conduct

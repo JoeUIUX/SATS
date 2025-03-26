@@ -157,6 +157,8 @@ export default function Page() {
 
 // Enhanced openToTestList function with force render option
 const openToTestList = useCallback((forceRender = false) => {
+  console.log("🔍 openToTestList called with forceRender:", forceRender);
+  console.log("🔍 Current visibility state:", windowVisibility.ToTestList);
   console.log("🟢 Opening ToTestList window, force:", forceRender);
   
   // If force render, skip the check for already being open
@@ -225,6 +227,8 @@ const openToTestList = useCallback((forceRender = false) => {
 }, [bringWindowToFront, windowVisibility.ToTestList, setWindowVisibility, setWindowZIndexes, setZIndexCounter]);
 
   const closeToTestList = useCallback(() => {
+    console.log("🔍 closeToTestList called");
+    console.log("🔍 Current visibility state:", windowVisibility.ToTestList);
     console.log("🔴 Closing ToTestList window");
     
     // Update global flag

@@ -96,7 +96,13 @@ const WelcomeWindow: React.FC<{
         }}
     >
       <header className={`${styles.welcomeHeader} drag-handle`}>
-        <img src="/assets/SaRCLogo.png" alt="Satellite Research Centre Logo" className={styles.logo} />
+      <img 
+          src="/assets/SaRCLogo.png" 
+          alt="Satellite Research Centre Logo" 
+          className={styles.logo} 
+          draggable="false" 
+          onDragStart={(e) => e.preventDefault()}
+        />
         <h2>Satellite Research Centre</h2>
         <h1>Satellite Automated Testing System</h1>
         {dateTime && <p className={styles.dateTime}>{dateTime}</p>}

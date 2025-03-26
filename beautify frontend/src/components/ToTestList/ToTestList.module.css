@@ -154,3 +154,77 @@ html.dark .selectedRow {
   cursor: grabbing !important;
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
+
+/* Add these new styles to your ToTestList.module.css file */
+
+.saveStatus {
+  padding: 4px 10px;
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  animation: fadeOut 2s forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.loadingIndicator {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Style for save status messages */
+html.light .saveStatus.success {
+  background-color: #ddffdd;
+  color: #007700;
+}
+
+html.light .saveStatus.error {
+  background-color: #ffdddd;
+  color: #cc0000;
+}
+
+html.dark .saveStatus.success {
+  background-color: #003300;
+  color: #88ff88;
+}
+
+html.dark .saveStatus.error {
+  background-color: #330000;
+  color: #ff8888;
+}
+
+/* Improve input focus styles */
+.form input:focus {
+  outline: 2px solid #00bcd4;
+  border-color: transparent;
+}
+
+html.dark .form input:focus {
+  outline: 2px solid #008c9e;
+}
+
+/* Add disabled button styles */
+.deleteButton:disabled,
+.clearButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Make sure the drag handle is visible and clickable */
+.drag-handle {
+  cursor: grab !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  padding: 12px !important;
+  border-bottom: 2px solid var(--border-color) !important;
+  margin-bottom: 10px !important;
+}
+

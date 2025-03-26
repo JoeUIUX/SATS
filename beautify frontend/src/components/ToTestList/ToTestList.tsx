@@ -14,6 +14,7 @@ interface ToTestListProps {
 }
 
 interface RowData {
+  id?: number;  // Database ID
   sn: number;
   test: string;
   satellite: string;
@@ -38,10 +39,16 @@ const ToTestList: React.FC<ToTestListProps> = ({
     satellite: "",
     loggedBy: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
   
   // Important: Add refs to prevent infinite focus loop
   const hasFocused = useRef(false);
   const initialMount = useRef(true);
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // API URL from environment or default
+  const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
 
   // Create portal element once on mount
   const [portalElement] = useState(() => {
@@ -67,7 +74,7 @@ const ToTestList: React.FC<ToTestListProps> = ({
 
   const [position, setPosition] = useState(defaultPosition);
   
-  // When component mounts, load data and focus once
+  // Fetch data from the server when component mounts
   useEffect(() => {
     console.log("🔵 ToTestList mounted");
     
@@ -83,17 +90,20 @@ const ToTestList: React.FC<ToTestListProps> = ({
       
       return () => clearTimeout(focusTimeout);
     }
-    
-    // Load data from localStorage
-    const savedRows = localStorage.getItem("toTestListRows");
-    if (savedRows) {
-      setRows(JSON.parse(savedRows));
-    }
+
+    // Fetch data from the server
+    fetchTestItems();
   }, []); // Empty dependency array - run once on mount
 
-  // Clean up portal on unmount
+  // Clean up portal and timers on unmount
   useEffect(() => {
     return () => {
+      // Clear any pending save timeouts
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+        saveTimeoutRef.current = null;
+      }
+      
       hasFocused.current = false; // Reset focus state on unmount
       
       // Don't remove the portal element itself - this causes issues
@@ -101,19 +111,122 @@ const ToTestList: React.FC<ToTestListProps> = ({
     };
   }, []);
 
-  // Save data to localStorage when rows change
+  // Save data to database whenever rows change
   useEffect(() => {
-    if (rows.length > 0) {
-      localStorage.setItem("toTestListRows", JSON.stringify(rows));
-    } else {
-      localStorage.removeItem("toTestListRows");
+    // Don't save on initial mount
+    if (initialMount.current) {
+      return;
     }
+
+    // Clear any existing timeout
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
+
+    // Set a new timeout to save data
+    saveTimeoutRef.current = setTimeout(() => {
+      saveTestItems();
+    }, 500); // Debounce saves to avoid too many API calls
   }, [rows]);
 
   // Save position to sessionStorage whenever it changes
   useEffect(() => {
     sessionStorage.setItem('toTestListPosition', JSON.stringify(position));
   }, [position]);
+
+  // Fetch test items from the database
+  const fetchTestItems = async () => {
+    setIsLoading(true);
+    try {
+      console.log("📥 Fetching test items from server");
+      const response = await fetch(`${API_URL}/test-items`);
+      
+      if (!response.ok) {
+        throw new Error(`Error fetching test items: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log("📊 Received test items:", data);
+      
+      // Map the data to match our expected format
+      const formattedRows = data.map((item: any, index: number) => ({
+        id: item.id,
+        sn: index + 1, // Ensure sequential numbering
+        test: item.test,
+        satellite: item.satellite,
+        dateTime: item.dateTime,
+        loggedBy: item.loggedBy,
+        selected: false
+      }));
+      
+      setRows(formattedRows);
+      
+      // Fall back to localStorage if the server returns no data
+      if (formattedRows.length === 0) {
+        console.log("📝 No data from server, checking localStorage");
+        const savedRows = localStorage.getItem("toTestListRows");
+        if (savedRows) {
+          const parsedRows = JSON.parse(savedRows);
+          setRows(parsedRows);
+          
+          // Save the localStorage data to the server
+          saveTestItems(parsedRows);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching test items:", error);
+      
+      // Fall back to localStorage on error
+      const savedRows = localStorage.getItem("toTestListRows");
+      if (savedRows) {
+        setRows(JSON.parse(savedRows));
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Save test items to both localStorage and the database
+  const saveTestItems = async (itemsToSave = rows) => {
+    if (itemsToSave.length === 0) {
+      console.log("No items to save");
+      return;
+    }
+    
+    // Save to localStorage first (as backup)
+    localStorage.setItem("toTestListRows", JSON.stringify(itemsToSave));
+    
+    // Save to the database
+    try {
+      console.log("💾 Saving test items to server:", itemsToSave);
+      setSaveStatus("Saving...");
+      
+      const response = await fetch(`${API_URL}/test-items`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: itemsToSave }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Error saving test items: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log("✅ Server response:", data);
+      setSaveStatus("Saved");
+      
+      // Clear saved status after 2 seconds
+      setTimeout(() => setSaveStatus(null), 2000);
+    } catch (error) {
+      console.error("Error saving test items:", error);
+      setSaveStatus("Error saving");
+      
+      // Clear error status after 3 seconds
+      setTimeout(() => setSaveStatus(null), 3000);
+    }
+  };
 
   const addItem = () => {
     if (!formData.test) return; // Prevent adding empty items
@@ -130,30 +243,69 @@ const ToTestList: React.FC<ToTestListProps> = ({
     setFormData({ test: "", satellite: "", loggedBy: "" });
   };
 
-  const deleteItem = () => {
+  const deleteItem = async () => {
     const selectedIndex = rows.findIndex((row) => row.selected);
     if (selectedIndex !== -1) {
+      const selectedRow = rows[selectedIndex];
       const updatedRows = rows.filter((_, index) => index !== selectedIndex);
 
-      if (updatedRows.length === 0) {
-        // If the list is empty, clear localStorage
-        localStorage.removeItem("toTestListRows");
-      } 
-
-      // Update state with recalculated S/N
+      // Update local state with recalculated S/N
       setRows(
         updatedRows.map((row, index) => ({
           ...row,
           sn: index + 1, // Recalculate S/N
         }))
       );
+
+      // If the deleted item has an ID, delete it from the server
+      if (selectedRow.id) {
+        try {
+          console.log(`🗑️ Deleting test item ID ${selectedRow.id} from server`);
+          
+          const response = await fetch(`${API_URL}/test-items/${selectedRow.id}`, {
+            method: 'DELETE',
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Error deleting test item: ${response.status}`);
+          }
+          
+          console.log("✅ Item deleted from server");
+        } catch (error) {
+          console.error("Error deleting test item:", error);
+        }
+      }
+
+      // Update localStorage
+      if (updatedRows.length === 0) {
+        localStorage.removeItem("toTestListRows");
+      } else {
+        localStorage.setItem("toTestListRows", JSON.stringify(updatedRows));
+      }
     }
   };
 
-  const clearList = () => {
+  const clearList = async () => {
     if (window.confirm("Are you sure you want to clear all items?")) {
       setRows([]);
       localStorage.removeItem("toTestListRows"); // Explicitly clear localStorage
+      
+      // Clear all items from the server
+      try {
+        console.log("🧹 Clearing all test items from server");
+        
+        const response = await fetch(`${API_URL}/test-items/clear`, {
+          method: 'DELETE',
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Error clearing test items: ${response.status}`);
+        }
+        
+        console.log("✅ All items cleared from server");
+      } catch (error) {
+        console.error("Error clearing test items:", error);
+      }
     }
   };
 
@@ -166,7 +318,16 @@ const ToTestList: React.FC<ToTestListProps> = ({
   };
 
   // When the window is clicked, bring it to front using the passed function
-  const handleWindowClick = () => {
+  const handleWindowClick = (e: React.MouseEvent) => {
+    // Prevent bringing to front for clicks on inputs and buttons
+    if (
+      e.target instanceof HTMLInputElement || 
+      e.target instanceof HTMLButtonElement ||
+      (e.target instanceof HTMLElement && e.target.closest('button') !== null)
+    ) {
+      return;
+    }
+    
     console.log(`🖱️ Clicked ToTestList, bringing to front`);
     onMouseDown();
   };
@@ -241,7 +402,9 @@ const ToTestList: React.FC<ToTestListProps> = ({
         visibility: "visible",
         pointerEvents: "auto",
         display: "block", /* Force display */
-        willChange: "z-index"
+        willChange: "z-index",
+        top: 0,          /* Make sure it's not hidden below viewport */
+        left: 0          /* Make sure it's not hidden off-screen */
       }}
       data-window="ToTestList"
       id="toTestList-window"
@@ -290,104 +453,139 @@ const ToTestList: React.FC<ToTestListProps> = ({
               ✖
             </button>
           </div>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>S/N</th>
-                <th>Test</th>
-                <th>Satellite</th>
-                <th>Date/Time Logged</th>
-                <th>Logged by</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.length === 0 ? (
-                <tr>
-                  <td colSpan={5} style={{ textAlign: "center", padding: "20px" }}>
-                    No items added yet. Add a test below.
-                  </td>
-                </tr>
-              ) : (
-                rows.map((row, index) => (
-                  <tr
-                    key={index}
-                    style={{
-                      backgroundColor: row.selected
-                        ? isDarkMode
-                          ? "#003366" // Dark blue for dark mode
-                          : "#d0ebff" // Light blue for light mode
-                        : "transparent",
-                    }}
-                    className={row.selected ? styles.selectedRow : ""}
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent window click handler
-                      toggleRowSelection(index);
-                    }}
-                  >
-                    <td>{row.sn}</td>
-                    <td>{row.test}</td>
-                    <td>{row.satellite}</td>
-                    <td>{row.dateTime}</td>
-                    <td>{row.loggedBy}</td>
+          
+          {/* Save status indicator */}
+          {saveStatus && (
+            <div className={styles.saveStatus} style={{
+              padding: "4px 10px",
+              margin: "0 0 10px 0",
+              fontSize: "14px",
+              textAlign: "center",
+              backgroundColor: saveStatus.includes("Error") ? "#ffdddd" : "#ddffdd",
+              color: saveStatus.includes("Error") ? "#cc0000" : "#007700",
+              borderRadius: "4px"
+            }}>
+              {saveStatus}
+            </div>
+          )}
+          
+          {/* Loading indicator */}
+          {isLoading ? (
+            <div className={styles.loadingIndicator} style={{
+              textAlign: "center",
+              padding: "20px"
+            }}>
+              Loading test items...
+            </div>
+          ) : (
+            <>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Test</th>
+                    <th>Satellite</th>
+                    <th>Date/Time Logged</th>
+                    <th>Logged by</th>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-          <div className={styles.form}>
-            <input
-              type="text"
-              placeholder="Test"
-              value={formData.test}
-              onChange={(e) => setFormData({ ...formData, test: e.target.value })}
-              onMouseDown={(e) => e.stopPropagation()} // Prevent dragging when interacting with inputs
-            />
-            <input
-              type="text"
-              placeholder="Satellite"
-              value={formData.satellite}
-              onChange={(e) => setFormData({ ...formData, satellite: e.target.value })}
-              onMouseDown={(e) => e.stopPropagation()}
-            />
-            <input
-              type="text"
-              placeholder="Logged by"
-              value={formData.loggedBy}
-              onChange={(e) => setFormData({ ...formData, loggedBy: e.target.value })}
-              onMouseDown={(e) => e.stopPropagation()}
-            />
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                addItem();
-              }} 
-              className={styles.addButton}
-            >
-              +
-            </button>
-          </div>
-          <div className={styles.actions}>
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteItem();
-              }} 
-              className={styles.deleteButton}
-              disabled={!rows.some(row => row.selected)}
-            >
-              Delete Item
-            </button>
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                clearList();
-              }} 
-              className={styles.clearButton}
-              disabled={rows.length === 0}
-            >
-              Clear List
-            </button>
-          </div>
+                </thead>
+                <tbody>
+                  {rows.length === 0 ? (
+                    <tr>
+    <td 
+      colSpan={5} 
+      style={{ 
+        textAlign: "center", 
+        padding: "20px",
+        color: "#000000", // Always black text
+      }}
+    >
+                        No items added yet. Add a test below.
+                      </td>
+                    </tr>
+                  ) : (
+                    rows.map((row, index) => (
+                      <tr
+                        key={index}
+                        style={{
+                          backgroundColor: row.selected
+                            ? isDarkMode
+                              ? "#003366" // Dark blue for dark mode
+                              : "#d0ebff" // Light blue for light mode
+                            : "transparent",
+                        }}
+                        className={row.selected ? styles.selectedRow : ""}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent window click handler
+                          toggleRowSelection(index);
+                        }}
+                      >
+                        <td>{row.sn}</td>
+                        <td>{row.test}</td>
+                        <td>{row.satellite}</td>
+                        <td>{row.dateTime}</td>
+                        <td>{row.loggedBy}</td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+              <div className={styles.form}>
+                <input
+                  type="text"
+                  placeholder="Test"
+                  value={formData.test}
+                  onChange={(e) => setFormData({ ...formData, test: e.target.value })}
+                  onClick={(e) => e.stopPropagation()} // Prevent dragging when interacting with inputs
+                />
+                <input
+                  type="text"
+                  placeholder="Satellite"
+                  value={formData.satellite}
+                  onChange={(e) => setFormData({ ...formData, satellite: e.target.value })}
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <input
+                  type="text"
+                  placeholder="Logged by"
+                  value={formData.loggedBy}
+                  onChange={(e) => setFormData({ ...formData, loggedBy: e.target.value })}
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addItem();
+                  }} 
+                  className={styles.addButton}
+                >
+                  +
+                </button>
+              </div>
+              <div className={styles.actions}>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteItem();
+                  }} 
+                  className={styles.deleteButton}
+                  disabled={!rows.some(row => row.selected)}
+                >
+                  Delete Item
+                </button>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    clearList();
+                  }} 
+                  className={styles.clearButton}
+                  disabled={rows.length === 0}
+                >
+                  Clear List
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </Draggable>
     </div>,

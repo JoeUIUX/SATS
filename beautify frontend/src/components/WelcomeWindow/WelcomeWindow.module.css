@@ -105,6 +105,11 @@ html.dark .welcomeWindow {
   width: 150px; /* Increase size of the logo */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Add spacing below the logo */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging in webkit browsers */
+  -khtml-user-drag: none; /* For older browsers */
+  -moz-user-drag: none; /* For Firefox */
+  -o-user-drag: none; /* For Opera */
 }
 
 /* Adjust title and subtitle for proper alignment */
