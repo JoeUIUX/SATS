@@ -133,6 +133,9 @@ def home():
     return "Welcome to the MCC Backend API. Use POST /connect_mcc to interact with the server."
 
 
+# This is just the modified connect_mcc route from backend_server.py
+# You can replace this route in your existing backend_server.py file
+
 @app.route('/connect_mcc', methods=['POST'])
 def connect_mcc():
     try:
@@ -140,32 +143,92 @@ def connect_mcc():
         print(f"Received data: {data}")
 
         server_address = data.get('server_address')
+        server_port = data.get('server_port', '5000')  # default to port 5000 if not provided
         server_id = data.get('server_id')
+        force_real = data.get('force_real', False)
 
         if not server_address or not server_id:
             return jsonify({'status': 'error', 'message': 'Missing server_address or server_id'}), 400
 
-        if SIMULATION_MODE:
+        # Combine address and port for the connection
+        full_address = f"{server_address}:{server_port}"
+        print(f"Connecting to: {full_address}")
+
+        # For simulation mode, just return success without actual connection verification
+        if SIMULATION_MODE and not force_real:
             print("Simulating connection to MCC server.")
             return jsonify({
                 'status': 'success',
-                'message': f"Simulated connection to MCC server at {server_address} with ID {server_id}"
+                'message': f"Simulated connection to MCC server at {server_address} with ID {server_id}",
+                'verified': False,  # Indicate this is not a verified connection
+                'simulation': True
             })
 
-        success = connect_to_mcc(server_address)
+        # For real connection attempts, try to verify the connection
+        # First, check if the server is reachable with a simple socket connection
+        import socket
+        connection_success = False
+        socket_check = None
 
-        if success:
-            return jsonify({
-                'status': 'success',
-                'message': f"Connected to MCC server at {server_address} with ID {server_id}"
-            })
+        try:
+            # Try to establish a TCP connection to verify server exists
+            socket_check = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            socket_check.settimeout(3)  # 3 second timeout
+            socket_check.connect((server_address, int(server_port)))
+            connection_success = True
+            print(f"✅ Socket connection test successful to {server_address}:{server_port}")
+        except (socket.error, socket.timeout, ValueError) as e:
+            print(f"❌ Socket connection test failed: {e}")
+            connection_success = False
+        finally:
+            if socket_check:
+                socket_check.close()
+
+        # Now attempt actual MCC connection
+        mcc_success = False
+        if connection_success:
+            # Use the imported connect_to_mcc function instead of reimplementing it
+            success = connect_to_mcc(full_address)
+            mcc_success = success is not None
+
+            if mcc_success:
+                print(f"✅ Full MCC connection successful to {full_address}")
+            else:
+                print(f"❌ MCC connection failed despite socket connection")
+
+        # Return appropriate response based on connection status
+        if connection_success:
+            if mcc_success:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Connected to MCC server at {server_address} with ID {server_id}",
+                    'verified': True,
+                    'simulation': False
+                })
+            else:
+                # Socket connection works but MCC protocol fails
+                return jsonify({
+                    'status': 'partial',
+                    'message': f"Server at {server_address} is reachable, but MCC protocol failed.",
+                    'verified': False,
+                    'simulation': False
+                }), 206  # Partial Content status
         else:
+            # Complete failure - server not reachable
             return jsonify({
                 'status': 'failure',
-                'message': f"Failed to connect to MCC server at {server_address}"
-            })
+                'message': f"Failed to connect to server at {server_address}:{server_port}",
+                'verified': False,
+                'simulation': False
+            }), 502  # Bad Gateway status
+
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'verified': False,
+            'simulation': False
+        }), 500
 
 
 # ✅ **New API: Fetch All Profiles with Images**
@@ -292,6 +355,11 @@ def save_checkout_items():
         db.close()
 
         print(f"✅ Checkout items saved uniquely for profile: {profile_id}")
+        # Log some data structure info to verify checkedOptions are included
+        items = json.loads(item_data)
+        for item in items:
+            if 'checkedOptions' in item:
+                print(f"  - {item['header']} has {len(item['checkedOptions'])} checked options")
 
         return jsonify({"message": "Checkout items saved successfully."}), 200
 

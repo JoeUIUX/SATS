@@ -18,6 +18,8 @@ interface DraggableBoxProps {
   className?: string;
   removeDroppedItem?: (id: string) => void;
   isCheckoutEditing?: boolean;
+  checkedOptions?: Record<string, boolean>; // New prop to track checked state
+  onOptionChange?: (id: string, option: string, checked: boolean) => void; // New handler
 }
 
 const DraggableBox: React.FC<DraggableBoxProps> = ({ 
@@ -29,7 +31,9 @@ const DraggableBox: React.FC<DraggableBoxProps> = ({
   isInBottomSection, 
   removeDroppedItem, 
   isCheckoutEditing = false,
-  className
+  className,
+  checkedOptions = {}, // Default to empty object
+  onOptionChange // Handler for checkbox changes
 }) => {
   const {
     attributes,
@@ -104,6 +108,13 @@ const DraggableBox: React.FC<DraggableBoxProps> = ({
     pointerEvents: shouldApplyEffect ? "none" : "auto", // ✅ Only make unselectable in bottom section
   };
 
+  // Handle checkbox change
+  const handleCheckboxChange = (option: string, checked: boolean) => {
+    if (onOptionChange) {
+      onOptionChange(id, option, checked);
+    }
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -136,6 +147,8 @@ const DraggableBox: React.FC<DraggableBoxProps> = ({
             type="checkbox" 
             disabled={isDropped && !isCheckoutEditing}
             style={{ marginRight: "6px" }}
+            checked={checkedOptions[option] || false}
+            onChange={(e) => handleCheckboxChange(option, e.target.checked)}
           />
           <span>{option}</span>
         </label>

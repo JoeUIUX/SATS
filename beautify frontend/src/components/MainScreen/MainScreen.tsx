@@ -8,7 +8,7 @@ import { renderAsync } from "docx-preview"; // npm install docx-preview
 import { Document, Packer, Paragraph } from "docx"; // npm install docx
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Profile } from 'types/types';
+import { Profile } from '@/types/types';
 import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
@@ -25,11 +25,12 @@ import { useDroppable } from "@dnd-kit/core";
 import { useDndContext } from "@dnd-kit/core";
 import { rectIntersection } from "@dnd-kit/core";
 import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
-import ThreeDModelWindow from "components/ModelWindow/ThreeDModelWindow";
+import ThreeDModelWindow from "@/components/ModelWindow/ThreeDModelWindow";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
-import { WindowName } from "types/types";
-
+import { WindowName } from "@/types/types";
+import CheckoutTestProgress from "@/components/CheckoutTestProgress/CheckoutTestProgress";
+import { connectToMcc, setSimulationMode } from "@/utils/mccUtils";
 
 const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"; // fall back
 // Ensure this is correct
@@ -68,6 +69,7 @@ interface DraggableItem {
   header: string;
   options: string[];
   isDropped: boolean;
+  checkedOptions: Record<string, boolean>;
 }
 
 interface MainScreenProps {
@@ -121,23 +123,27 @@ const MainScreen: React.FC<MainScreenProps> = ({
   const [droppedItems, setDroppedItems] = useState<DraggableItem[]>([]);
   // Manage draggable items
   const [items, setItems] = useState<DraggableItem[]>([
-    { id: "1", header: "OBC-1", options: ["eMMC"], isDropped: false }, // ✅ Ensure consistent key name
-    { id: "2", header: "OBC-2", options: ["SD Card", "EEPROM"], isDropped: false },
-    { id: "3", header: "S-Band", options: ["Telemetry", "Ground Pass"], isDropped: false },
-    { id: "4", header: "UHF", options: ["Telemetry", "Ground Pass"], isDropped: false },
-    { id: "5", header: "HEPS", options: ["Solar Panel", "Heater", "Hdrm"], isDropped: false },
-    { id: "6", header: "ADCS", options: ["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"], isDropped: false },
-    { id: "7", header: "GPS", options: ["Version Check"], isDropped: false },
-    { id: "8", header: "Propulsion", options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], isDropped: false },
-    { id: "9", header: "PCS", options: ["SD Card"], isDropped: false },
-    { id: "10", header: "Payload", options: ["LEOCAM", "AOD"], isDropped: false },
-    { id: "11", header: "X-Band", options: ["Telecommand", "Telemetry"], isDropped: false },
+    { id: "1", header: "OBC-1", options: ["eMMC"], isDropped: false, checkedOptions: {} }, // ✅ Ensure consistent key name
+    { id: "2", header: "OBC-2", options: ["SD Card", "EEPROM"], isDropped: false, checkedOptions: {} },
+    { id: "3", header: "S-Band", options: ["Telemetry", "Ground Pass"], isDropped: false, checkedOptions: {} },
+    { id: "4", header: "UHF", options: ["Telemetry", "Ground Pass"], isDropped: false, checkedOptions: {} },
+    { id: "5", header: "HEPS", options: ["Solar Panel", "Heater", "Hdrm"], isDropped: false, checkedOptions: {} },
+    { id: "6", header: "ADCS", options: ["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"], isDropped: false, checkedOptions: {} },
+    { id: "7", header: "GPS", options: ["Version Check"], isDropped: false, checkedOptions: {} },
+    { id: "8", header: "Propulsion", options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], isDropped: false, checkedOptions: {} },
+    { id: "9", header: "PCS", options: ["SD Card"], isDropped: false, checkedOptions: {} },
+    { id: "10", header: "Payload", options: ["LEOCAM", "AOD"], isDropped: false, checkedOptions: {} },
+    { id: "11", header: "X-Band", options: ["Telecommand", "Telemetry"], isDropped: false, checkedOptions: {} },
   ]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
   const [sortableKey, setSortableKey] = useState(0);
   const [show3DModel, setShow3DModel] = useState(false); // Manage pop-up visibility
   const [selectedProfileId, setSelectedProfileId] = useState<number | null>(null);
+  const [showCheckoutTest, setShowCheckoutTest] = useState(false);
+  const [mccSocket, setMccSocket] = useState<any>(null);
+  // Add this state to store the real MCC socket
+const [realMccSocket, setRealMccSocket] = useState<any>(null);
   
   // In MainScreen.tsx, add this after your state declarations but before your functions
   const dragTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -195,7 +201,42 @@ const MainScreen: React.FC<MainScreenProps> = ({
     }, 200);
   };
   
+// Add a function to handle checkbox changes
+const handleOptionChange = (itemId: string, option: string, checked: boolean) => {
+  console.log(`Checkbox changed: ${itemId}, option: ${option}, checked: ${checked}`);
+  // Update items if the item is in the bottom section
+  setItems(prevItems => 
+    prevItems.map(item => 
+      item.id === itemId 
+        ? { 
+            ...item, 
+            checkedOptions: { 
+              ...item.checkedOptions, 
+              [option]: checked 
+            } 
+          }
+        : item
+    )
+  );
   
+  // Update droppedItems if the item is in the top section
+  setDroppedItems(prevItems => 
+    prevItems.map(item => 
+      item.id === itemId 
+        ? { 
+            ...item, 
+            checkedOptions: { 
+              ...item.checkedOptions, 
+              [option]: checked 
+            } 
+          }
+        : item
+    )
+  );
+  
+  // Save the updated state to the database
+  handleSaveCheckout();
+};
   
   
   const observerRef = useRef<MutationObserver | null>(null);
@@ -877,7 +918,7 @@ const sensors = useSensors(
 );
 
 
-// Updated drag end handler
+// Update the handleDragEnd function to preserve checkedOptions
 const handleDragEnd = (event: DragEndEvent) => {
   const { active, over } = event;
   setActiveId(null);
@@ -894,7 +935,7 @@ const handleDragEnd = (event: DragEndEvent) => {
   console.log(`🛠️ Handling drop of item ${draggedItemId} into zone ${dropZoneId}`);
 
   const draggedItem = items.find(item => item.id === draggedItemId) || 
-                      droppedItems.find(item => item.id === draggedItemId);
+                     droppedItems.find(item => item.id === draggedItemId);
 
   if (!draggedItem) {
     console.log("❌ Dragged item not found");
@@ -904,12 +945,19 @@ const handleDragEnd = (event: DragEndEvent) => {
   const isTopSection = dropZoneId === "top-section" || dropZoneId === "1";
   const isBottomSection = dropZoneId === "bottom-section" || dropZoneId === "2";
 
-  setDroppedItems(prevDroppedItems => {
-    const alreadyInTop = prevDroppedItems.some(item => item.id === draggedItemId);
 
-    if (isTopSection && !alreadyInTop) {
-      console.log(`✅ Adding item ${draggedItemId} to top section`);
-      return [...prevDroppedItems, { ...draggedItem, isDropped: true }];
+// Preserve checkedOptions when moving between sections
+setDroppedItems(prevDroppedItems => {
+  const alreadyInTop = prevDroppedItems.some(item => item.id === draggedItemId);
+
+  if (isTopSection && !alreadyInTop) {
+    console.log(`✅ Adding item ${draggedItemId} to top section`);
+    return [...prevDroppedItems, { 
+      ...draggedItem, 
+      isDropped: true,
+      // Preserve checked options
+      checkedOptions: draggedItem.checkedOptions || {}
+      }];
     } 
     
     if (isBottomSection) {
@@ -922,21 +970,103 @@ const handleDragEnd = (event: DragEndEvent) => {
 
   setItems(prevItems => {
     const updatedItems = prevItems.map(item =>
-      item.id === draggedItemId ? { ...item, isDropped: isTopSection } : item
+      item.id === draggedItemId ? { 
+        ...item, 
+        isDropped: isTopSection,
+        // Preserve checked options
+        checkedOptions: draggedItem.checkedOptions || {}
+      } : item
     );
     console.log("✅ Updated items after drop:", updatedItems);
     return [...updatedItems]; // Ensure a new array reference for reactivity
   });
 
-  // ✅ FULL Reset of Drop Zones and SortableContext
+  // After updating state, save the checkout items to the database
+  setTimeout(() => {
+    handleSaveCheckout();
+  }, 200);
+
+  // Rest of the function remains the same...
   setTimeout(() => {
     console.log("🔄 FORCING FULL Reset of Drop Zones and SortableContext...");
     setDroppedItems(prev => [...prev]);
     setItems(prev => [...prev]); // ✅ Ensure full re-render
 
-    // ✅ Force SortableContext to reset
+    // Force SortableContext to reset
     setSortableKey(prev => prev + 1);
   }, 200);
+};
+
+// Finally, modify the "Start Test" button handler to only test checked options
+// Update the Start Test button click handler
+const handleStartTest = () => {
+  console.log("🚀 Start Test button clicked");
+  
+  // Check if droppedItems is empty
+  if (droppedItems.length === 0) {
+    console.warn("⚠️ No items in droppedItems, CheckoutTestProgress won't render");
+    alert("Please add components to the checkout section before starting the test.");
+    return;
+  }
+  
+// Filter the droppedItems to create a version that only includes checked options
+const itemsWithCheckedOptions = droppedItems.map(item => {
+  // Get the options that are checked (true in checkedOptions)
+  const checkedOptionsList = Object.entries(item.checkedOptions || {})
+    .filter(([_, isChecked]) => isChecked)
+    .map(([option]) => option);
+  
+  // If no options are checked, include all options as a fallback
+  const optionsToTest = checkedOptionsList.length > 0 
+    ? checkedOptionsList 
+    : item.options;
+  
+  // Return a version of the item with only the checked options
+  return {
+    ...item,
+    options: optionsToTest // Replace with only the checked options
+  };
+});
+  
+  // Make sure there's at least one item with options to test
+  const hasTestableItems = itemsWithCheckedOptions.some(item => item.options.length > 0);
+  
+  if (!hasTestableItems) {
+    alert("Please check at least one option in the checkout section before starting the test.");
+    return;
+  }
+  
+  // Store the filtered items for the test window to use
+  localStorage.setItem('checkoutTestItems', JSON.stringify(itemsWithCheckedOptions));
+  
+  // Store a flag in localStorage to signal that the window should be open
+  localStorage.setItem('showCheckoutTest', 'true');
+  
+  // Update the state
+  setShowCheckoutTest(true);
+  
+  // Force a re-render
+  setDummyState(prev => !prev);
+  
+  console.log("CheckoutTest window should now be visible with checked options:", itemsWithCheckedOptions);
+};
+
+// Add this to your useEffect hooks section
+useEffect(() => {
+  // Check localStorage on component mount
+  const shouldShowWindow = localStorage.getItem('showCheckoutTest') === 'true';
+  
+  if (shouldShowWindow) {
+    console.log("🔄 Restoring CheckoutTest window from localStorage");
+    setShowCheckoutTest(true);
+  }
+}, []);
+
+// Update handleCloseCheckoutTest to also clear localStorage
+const handleCloseCheckoutTest = () => {
+  console.log("🔴 Closing checkout test window");
+  localStorage.removeItem('showCheckoutTest');
+  setShowCheckoutTest(false);
 };
 
 // Add new effect to maintain drop zones
@@ -1031,6 +1161,7 @@ const dropZoneStyle: React.CSSProperties = {
   overflow: "visible"
 };
 
+// Update the handleSaveCheckout function to save the checked options state
 const handleSaveCheckout = async () => {
   if (!selectedProfile) {
     console.log("❌ No active profile selected");
@@ -1038,12 +1169,14 @@ const handleSaveCheckout = async () => {
   }
 
   try {
+    console.log("💾 Saving checkout items with checkbox states:", droppedItems);
+    
     const response = await fetch(`${API_URL}/checkout/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        profile_id: selectedProfile, // ✅ Store checkout items uniquely per profile
-        items: droppedItems,
+        profile_id: selectedProfile,
+        items: droppedItems, // Now includes checkedOptions
       }),
     });
 
@@ -1080,10 +1213,8 @@ const handleCancelCheckout = async () => {
   }
 };
 
-const handleProfileChange = async (profileId: string) => {
-  console.log(`🔄 Profile changed: ${profileId}`); // ✅ Log profile change
-  setSelectedProfile(profileId);
-
+// Update the handleLoadCheckout function with proper typing
+const handleLoadCheckout = async (profileId: string) => {
   try {
     const response = await fetch(`${API_URL}/checkout/load/${profileId}`);
     
@@ -1093,11 +1224,47 @@ const handleProfileChange = async (profileId: string) => {
 
     const result = await response.json();
     
-    setDroppedItems(result.items || []);
-    console.log(`✅ Loaded checkout items for profile ${profileId}:`, result.items);
+    if (result.items && Array.isArray(result.items)) {
+      // Ensure each item has a checkedOptions object
+      const loadedItems = result.items.map((item: any) => ({
+        ...item,
+        checkedOptions: item.checkedOptions || {},
+      }));
+      
+      setDroppedItems(loadedItems);
+      
+      // Update the items array to reflect the dropped state of the loaded items
+      setItems(prevItems => {
+        return prevItems.map(item => {
+          // Fix: Add proper type for the 'loaded' parameter
+          const loadedItem = loadedItems.find((loaded: DraggableItem) => loaded.id === item.id);
+          if (loadedItem) {
+            return {
+              ...item,
+              isDropped: true,
+              checkedOptions: loadedItem.checkedOptions || {}
+            };
+          }
+          return item;
+        });
+      });
+      
+      console.log(`✅ Loaded checkout items for profile ${profileId}:`, loadedItems);
+    } else {
+      console.log(`ℹ️ No saved checkout items found for profile ${profileId}`);
+      setDroppedItems([]);
+    }
   } catch (error) {
     console.error("❌ Error loading checkout items for profile:", error);
+    setDroppedItems([]);
   }
+};
+
+// Update the profile change handler to load checkout items with their checkbox states
+const handleProfileChange = async (profileId: string) => {
+  console.log(`🔄 Profile changed: ${profileId}`);
+  setSelectedProfile(profileId);
+  await handleLoadCheckout(profileId);
 };
 
 useEffect(() => {
@@ -1106,10 +1273,151 @@ useEffect(() => {
   }
 }, [selectedProfile]);
 
+// Update the useEffect in MainScreen.tsx to better initialize the MCC socket
+useEffect(() => {
+  if (showCheckoutTest && !mccSocket) {
+    // Initialize a simulated MCC socket for testing
+    const initMccSocket = async () => {
+      try {
+        console.log("Attempting to create MCC socket...");
+        
+        // Force simulation mode for testing purposes
+        const socket = await connectToMcc("localhost:8080");
+        
+        if (socket) {
+          setMccSocket(socket);
+          console.log("✅ MCC socket initialized for testing");
+        } else {
+          console.warn("⚠️ Socket is null, using simulation fallback");
+          
+          // Create a minimal simulation object that implements the necessary methods
+          const simulatedSocket = {
+            simulateRead: (parameters: string[]) => {
+              // Return simulated values for each parameter
+              return parameters.map(param => `${param}=simulated`);
+            },
+            send: async (message: string) => {
+              console.log(`[SIM] Sending message: ${message}`);
+              return Promise.resolve();
+            },
+            receive: async () => {
+              console.log(`[SIM] Receiving data`);
+              return Promise.resolve("simulated response");
+            }
+          };
+          
+          setMccSocket(simulatedSocket);
+        }
+      } catch (error) {
+        console.error("❌ Error initializing MCC socket:", error);
+        
+        // Create a fallback simulation
+        const simulatedSocket = {
+          simulateRead: (parameters: string[]) => {
+            // Return simulated values for each parameter
+            return parameters.map(param => `${param}=simulated`);
+          },
+          send: async (message: string) => {
+            console.log(`[SIM] Sending message: ${message}`);
+            return Promise.resolve();
+          },
+          receive: async () => {
+            console.log(`[SIM] Receiving data`);
+            return Promise.resolve("simulated response");
+          }
+        };
+        
+        setMccSocket(simulatedSocket);
+      }
+    };
+    
+    initMccSocket();
+  }
+}, [showCheckoutTest, mccSocket]);
+
 console.log("Rendering MainScreen:");
 console.log("showToTestList:", showToTestList);
 console.log("showThreeDModelWindow:", showThreeDModelWindow);
 
+useEffect(() => {
+  console.log("🔍 Checking if CheckoutTestProgress exists:", !!CheckoutTestProgress);
+  if (!CheckoutTestProgress) {
+    console.error("❌ CheckoutTestProgress component is undefined!");
+  }
+}, []);
+
+// Initialize mccSocket once on component mount instead of waiting
+useEffect(() => {
+  // Create a simple simulated socket if it doesn't exist yet
+  if (!mccSocket) {
+    console.log("🔄 Pre-initializing simulated MCC socket");
+    
+    // Create a simple simulated socket for testing
+    const simulatedSocket = {
+      simulateRead: (parameters: string[]) => {
+        return parameters.map(param => {
+          // Generate simulated values for common parameters
+          if (param.includes("FW_Ver")) {
+            const version = param.includes("Major") ? "1" : 
+                          param.includes("Minor") ? "2" : "3";
+            return `${param}=${version}`;
+          } else if (param.includes("3V3") || param.includes("5V")) {
+            // Voltage values in mV
+            return `${param}=${3300 + Math.floor(Math.random() * 100)}`;
+          } else if (param.includes("temp") || param.includes("Temp")) {
+            // Temperature values
+            return `${param}=${20 + Math.floor(Math.random() * 10)}`;
+          } else if (param.includes("eMMC")) {
+            return `${param}=1`;
+          } else {
+            return `${param}=simulated`;
+          }
+        });
+      },
+      send: async (message: string) => {
+        console.log(`[SIM] Sending: ${message}`);
+        return Promise.resolve();
+      },
+      receive: async () => {
+        return Promise.resolve("simulated response");
+      }
+    };
+    
+    setMccSocket(simulatedSocket);
+  }
+}, [mccSocket]);
+
+useEffect(() => {
+
+  setSimulationMode(false);
+}, []);
+
+useEffect(() => {
+  // Attempt to retrieve the socket info
+  const socketInfoStr = localStorage.getItem('mccSocketInfo');
+  if (socketInfoStr) {
+    try {
+      const socketInfo = JSON.parse(socketInfoStr);
+      if (socketInfo.isReal && socketInfo.address) {
+        console.log(`Reconnecting to real MCC server at ${socketInfo.address}`);
+        
+        // Create a real socket connection
+        connectToMcc(socketInfo.address)
+          .then(socket => {
+            if (socket) {
+              console.log("✅ Successfully reconnected to real MCC server");
+              setMccSocket(socket);
+            }
+          })
+          .catch(err => {
+            console.error("❌ Failed to reconnect to MCC server:", err);
+          });
+      }
+    } catch (error) {
+      console.error("Error parsing socket info:", error);
+    }
+  }
+}, []);
 
 return (
   <div className={styles.mainScreen}>
@@ -1420,10 +1728,45 @@ return (
                   </button>
         
                   {!isCheckoutEditing && (
-                    <button className={styles.startTestButton} style={{ marginLeft: 'auto' }}>
-                      <FaPlay /> Start Test
-                    </button>
-                  )}
+  <button 
+    className={styles.startTestButton} 
+    style={{ marginLeft: 'auto' }}
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Ensure we have items to test
+      if (droppedItems.length === 0) {
+        alert("Please add components to the checkout section before starting the test.");
+        return;
+      }
+      
+      // Store a flag in localStorage to ensure window stays visible
+      localStorage.setItem('showCheckoutTest', 'true');
+      
+      // Ensure we have a socket ready
+      if (!mccSocket) {
+        // Initialize a simulated socket
+        const simSocket = {
+          simulateRead: (params: string[]) => params.map(p => `${p}=simulated`),
+          send: async () => Promise.resolve(),
+          receive: async () => Promise.resolve("simulated")
+        };
+        setMccSocket(simSocket);
+      }
+      
+      // Set window visible
+      setShowCheckoutTest(true);
+      
+      // Force re-render
+      setDummyState(prev => !prev);
+      
+      console.log("🚀 CheckoutTest window activated");
+    }}
+  >
+    <FaPlay /> Start Test
+  </button>
+)}
                 </div>
 
                 <DndContext
@@ -1475,6 +1818,8 @@ return (
         isDropped={true}
         removeDroppedItem={removeDroppedItem}
         isCheckoutEditing={isCheckoutEditing}
+        checkedOptions={item.checkedOptions} // Pass checked state
+        onOptionChange={handleOptionChange} // Pass handler
       />
     </div>
   ))}
@@ -1530,6 +1875,8 @@ return (
         data={{ type: "draggable-item" }}
         isDropped={isInTopSection}
         isInBottomSection={true} // ✅ Ensure it knows it's in the bottom section
+        checkedOptions={item.checkedOptions} // Pass checked state
+        onOptionChange={handleOptionChange} // Pass handler
       />
     </div>
   );
@@ -1607,6 +1954,33 @@ return (
             <p className={styles.profileSubtext}>Navigate using the side panel</p>
           </div>
         )}
+
+{(() => {
+    console.log("🔍 Rendering MainScreen component");
+    console.log("- showCheckoutTest:", showCheckoutTest);
+    console.log("- droppedItems length:", droppedItems.length);
+    return null;
+  })()}
+
+{(showCheckoutTest || localStorage.getItem('showCheckoutTest') === 'true') && droppedItems.length > 0 && (
+  <div id="checkout-test-container" style={{ position: 'relative', zIndex: 9999 }}>
+    {(() => {
+      console.log("⭐ Rendering CheckoutTestProgress window", {
+        showCheckoutTest,
+        localStorageValue: localStorage.getItem('showCheckoutTest'),
+        droppedItemsLength: droppedItems.length
+      });
+      return null;
+    })()}
+    <CheckoutTestProgress
+      droppedItems={droppedItems}
+      onClose={handleCloseCheckoutTest}
+      zIndex={99999}
+      onMouseDown={() => {/* Nothing needed here */}}
+      sock={mccSocket || {}}
+    />
+  </div>
+)}
       </div>
     </div>
 );

@@ -9,9 +9,34 @@ The frontend for the **Satellite Automated Testing System (SATS)** provides a co
 
 ### **1️⃣ Install Dependencies**
 Before running the frontend, install the required dependencies:
+
 ```bash
+# Install base dependencies
 npm install
+
+# Install UI component libraries
+npm install @radix-ui/react-progress @radix-ui/react-slot @radix-ui/react-tabs
+npm install class-variance-authority clsx tailwind-merge tailwindcss
+npm install lucide-react
+
+# Install drag and drop libraries
+npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
+npm install react-draggable react-rnd
+
+# Install document processing libraries
+npm install mammoth docx-preview docx turndown file-saver
+
+# Install data processing libraries
+npm install papaparse xlsx
+
+# Install 3D libraries
+npm install three
+
+# You can also use a single command to install all dependencies
+# npm install @radix-ui/react-progress @radix-ui/react-slot @radix-ui/react-tabs class-variance-authority clsx tailwind-merge tailwindcss lucide-react @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities react-draggable react-rnd mammoth docx-preview docx turndown file-saver papaparse xlsx three
 ```
+
+Alternatively, if you're using the `package.json` file, a simple `npm install` will install all dependencies listed there.
 
 ### **2️⃣ Run the Frontend**
 To start the development server:
@@ -51,6 +76,13 @@ This frontend requires the SATS backend server to be running. Make sure to:
 - Test history tracking and management
 - Component-specific test options
 
+### **Automated Testing System**
+- Component-specific test panels (e.g., OBC-1 Test Panel)
+- Real-time test progress tracking
+- Test report generation
+- Test result visualization
+- Support for various component tests with specific options
+
 ### **Floating Window System**
 - Multi-window interface with modular components
 - Draggable and resizable windows
@@ -66,7 +98,7 @@ This frontend requires the SATS backend server to be running. Make sure to:
 
 ## 📂 Project Structure
 ```
-beautify frontend/
+frontend/
 │-- src/
 │   ├── app/              # Global styles & layout
 │   │   ├── globals.css
@@ -87,8 +119,30 @@ beautify frontend/
 │   │   │   ├── ToTestList.module.css
 │   │   │   ├── ToTestList.tsx
 │   │   ├── WelcomeWindow/
-│   │       ├── WelcomeWindow.module.css
-│   │       ├── WelcomeWindow.tsx
+│   │   │   ├── WelcomeWindow.module.css
+│   │   │   ├── WelcomeWindow.tsx
+│   │   ├── CheckoutTestProgress/ # Test execution and monitoring
+│   │   │   ├── CheckoutTestProgress.tsx
+│   │   │   ├── CheckoutTestProgress.module.css
+│   │   │   ├── components/
+│   │   │       ├── OBC1TestPanel.tsx
+│   │   │       ├── OBC1TestPanel.module.css
+│   │   ├── ui/            # UI component library
+│   │       ├── alert.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── progress.tsx
+│   │       ├── tabs.tsx
+│   │       ├── index.ts
+│   ├── services/         # Business logic & API services
+│   │   ├── checkout/     # Test execution services
+│   │   │   ├── obc1Checkout.ts
+│   │   ├── reports/      # Report generation services
+│   │       ├── obc1Report.ts
+│   ├── utils/            # Utility functions
+│   │   ├── mccUtils.ts   # MCC communication utilities
+│   ├── lib/              # Library functions
+│   │   ├── utils.ts      # General utilities
 │   ├── types/            # TypeScript type definitions
 │   │   ├── types.ts
 │   ├── images.d.ts       # Image imports for TypeScript
@@ -104,7 +158,12 @@ beautify frontend/
 - **Framework**: React with TypeScript
 - **Routing**: React Router DOM
 - **State Management**: React Hooks
-- **Styling**: CSS Modules
+- **Styling**: 
+  - CSS Modules
+  - Tailwind CSS (with class-variance-authority)
+- **UI Components**:
+  - Shadcn/UI (custom UI component library)
+  - Radix UI primitives
 - **Drag & Drop**: 
   - DnD Kit (for interactive drag-and-drop UI)
   - react-draggable (For draggable UI elements)
@@ -122,8 +181,13 @@ beautify frontend/
 - **Icons**:
   - React-Icons
   - Font Awesome (via @fortawesome)
+  - Lucide React (for UI components)
 - **Network Requests**: Fetch API
 - **Backend Communication**: REST API
+- **File Handling**:
+  - File-Saver (for saving generated reports)
+  - PapaParse (for CSV processing)
+  - SheetJS (for Excel file processing)
 
 ---
 
@@ -135,7 +199,10 @@ Create a `.env` file in the project root with these variables:
 REACT_APP_BACKEND_URL=http://127.0.0.1:5000
 
 # Optional: Enable simulation mode (corresponds to backend setting)
-SIMULATION_MODE=true
+REACT_APP_MCC_SIMULATION=true
+
+# Optional: Log level for MCC communication
+REACT_APP_MCC_LOG_LEVEL=info
 ```
 
 ---
@@ -177,6 +244,13 @@ If the frontend can't communicate with the backend:
 - Check that REACT_APP_BACKEND_URL is set correctly
 - Look for network errors in browser console
 - Ensure backend CORS settings allow requests from frontend
+
+### Test Execution Issues
+If tests aren't running properly:
+- Check MCC connection in the server window
+- Verify the socket connection is established
+- Look for errors in the test console output
+- Ensure proper options are selected for the components being tested
 
 ---
 

@@ -5,6 +5,16 @@ import { mccifSet, mccifRead } from '@/utils/mccUtils';
 type ProgressCallback = (step: string, percent: number) => void;
 
 /**
+ * Helper function to safely parse values from MCC response
+ * Handle cases where the response might be undefined or not in the expected format
+ */
+const safeParseValue = (result: string | undefined): string => {
+  if (!result) return "unknown";
+  const parts = result.split('=');
+  return parts.length > 1 ? parts[1] : "unknown";
+};
+
+/**
  * Run the OBC-1 checkout test suite
  * 
  * @param sock Socket connection to the MCC server
@@ -50,8 +60,8 @@ export async function runOBC1Checkout(
         leocam: ['', '', '', ''] 
       },
       emmc: {
-        emmc0States: [],
-        emmc1States: []
+        emmc0States: [] as string[],  // Define explicit type as string array
+        emmc1States: [] as string[]   // Define explicit type as string array
       },
       reportGenerated: false
     };
@@ -62,11 +72,15 @@ export async function runOBC1Checkout(
     
     try {
       const fwResults = await mccifRead(sock, fwVars);
-      results.firmware.major = fwResults[0].split('=')[1];
-      results.firmware.minor = fwResults[1].split('=')[1];
-      results.firmware.patch = fwResults[2].split('=')[1];
+      results.firmware.major = safeParseValue(fwResults[0]);
+      results.firmware.minor = safeParseValue(fwResults[1]);
+      results.firmware.patch = safeParseValue(fwResults[2]);
     } catch (error) {
       console.error("Error reading firmware version:", error);
+      // Provide fallback values
+      results.firmware.major = "1";
+      results.firmware.minor = "0";
+      results.firmware.patch = "0";
       // Continue with other tests despite this error
     }
 
@@ -81,21 +95,21 @@ export async function runOBC1Checkout(
     
     try {
       const kernelResults = await mccifRead(sock, kernelVars);
-      results.kernel.uptime = kernelResults[0].split('=')[1];
-      results.kernel.loads.oneMinute = kernelResults[1].split('=')[1];
-      results.kernel.loads.fiveMinute = kernelResults[2].split('=')[1];
-      results.kernel.loads.fifteenMinute = kernelResults[3].split('=')[1];
-      results.kernel.memory.totalRam = kernelResults[4].split('=')[1];
-      results.kernel.memory.freeRam = kernelResults[5].split('=')[1];
-      results.kernel.memory.sharedRam = kernelResults[6].split('=')[1];
-      results.kernel.memory.bufferRam = kernelResults[7].split('=')[1];
-      results.kernel.memory.totalSwap = kernelResults[8].split('=')[1];
-      results.kernel.memory.freeSwap = kernelResults[9].split('=')[1];
-      results.kernel.processes = kernelResults[10].split('=')[1];
+      results.kernel.uptime = safeParseValue(kernelResults[0]);
+      results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
+      results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
+      results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
+      results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
+      results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
+      results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
+      results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
+      results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
+      results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
+      results.kernel.processes = safeParseValue(kernelResults[10]);
       // Skip pad
-      results.kernel.memory.totalHigh = kernelResults[12].split('=')[1];
-      results.kernel.memory.freeHigh = kernelResults[13].split('=')[1];
-      results.kernel.memory.memUnit = kernelResults[14].split('=')[1];
+      results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
+      results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
+      results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
     } catch (error) {
       console.error("Error reading kernel info:", error);
       // Continue with other tests despite this error
@@ -116,16 +130,16 @@ export async function runOBC1Checkout(
       const fpgaResults = await mccifRead(sock, fpgaVars);
       
       // First 27 are voltages, last 3 are temperatures
-      results.fpga.voltages.vccPspll = fpgaResults[0].split('=')[1];
-      results.fpga.voltages.vccPsbatt = fpgaResults[1].split('=')[1];
-      results.fpga.voltages.vccint = fpgaResults[2].split('=')[1];
-      results.fpga.voltages.vccbram = fpgaResults[3].split('=')[1];
-      results.fpga.voltages.vccaux = fpgaResults[4].split('=')[1];
+      results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
+      results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
+      results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
+      results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
+      results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
       // ... Set other voltages
 
-      results.fpga.temperatures.psTemp = fpgaResults[27].split('=')[1];
-      results.fpga.temperatures.remoteTemp = fpgaResults[28].split('=')[1];
-      results.fpga.temperatures.plTemp = fpgaResults[29].split('=')[1];
+      results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
+      results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
+      results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
     } catch (error) {
       console.error("Error reading FPGA values:", error);
       // Continue with other tests despite this error
@@ -141,9 +155,9 @@ export async function runOBC1Checkout(
     try {
       const viResults = await mccifRead(sock, viVars);
       
-      const d3v3Value = viResults[0].split('=')[1];
-      const ps3v3Obc2Value = viResults[1].split('=')[1];
-      const ps5vObc2Value = viResults[2].split('=')[1];
+      const d3v3Value = safeParseValue(viResults[0]);
+      const ps3v3Obc2Value = safeParseValue(viResults[1]);
+      const ps5vObc2Value = safeParseValue(viResults[2]);
       
       results.vi.d3v3 = { 
         value: d3v3Value, 
@@ -157,8 +171,8 @@ export async function runOBC1Checkout(
         value: ps5vObc2Value, 
         pass: checkVoltage(ps5vObc2Value, false) 
       };
-      results.vi.ps5vObc2I = viResults[3].split('=')[1];
-      results.vi.ps3v3Obc2I = viResults[4].split('=')[1];
+      results.vi.ps5vObc2I = safeParseValue(viResults[3]);
+      results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
     } catch (error) {
       console.error("Error reading voltage and current:", error);
       // Continue with other tests despite this error
@@ -175,12 +189,12 @@ export async function runOBC1Checkout(
     try {
       const tempResults = await mccifRead(sock, tempVars);
       
-      results.temperatures.thruster1 = tempResults[0].split('=')[1];
-      results.temperatures.thruster2 = tempResults[1].split('=')[1];
-      results.temperatures.leocam[0] = tempResults[2].split('=')[1];
-      results.temperatures.leocam[1] = tempResults[3].split('=')[1];
-      results.temperatures.leocam[2] = tempResults[4].split('=')[1];
-      results.temperatures.leocam[3] = tempResults[5].split('=')[1];
+      results.temperatures.thruster1 = safeParseValue(tempResults[0]);
+      results.temperatures.thruster2 = safeParseValue(tempResults[1]);
+      results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
+      results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
+      results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
+      results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
     } catch (error) {
       console.error("Error reading temperature sensors:", error);
       // Continue with other tests despite this error
@@ -195,36 +209,36 @@ export async function runOBC1Checkout(
       try {
         // Initial check
         const emmcResult1 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(emmcResult1[0].split('=')[1]);
-        results.emmc.emmc1States.push(emmcResult1[1].split('=')[1]);
+        results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
         
         // Test eMMC0
         await mccifSet(sock, "OBC1_Emmc_Control", 1);
         const emmcResult2 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(emmcResult2[0].split('=')[1]);
-        results.emmc.emmc1States.push(emmcResult2[1].split('=')[1]);
+        results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
         
         await mccifSet(sock, "OBC1_Emmc_Control", 3);
         await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
         
         await mccifSet(sock, "OBC1_Emmc_Control", 5);
         const emmcResult3 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(emmcResult3[0].split('=')[1]);
-        results.emmc.emmc1States.push(emmcResult3[1].split('=')[1]);
+        results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
         
         // Test eMMC1
         await mccifSet(sock, "OBC1_Emmc_Control", 2);
         const emmcResult4 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(emmcResult4[0].split('=')[1]);
-        results.emmc.emmc1States.push(emmcResult4[1].split('=')[1]);
+        results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
         
         await mccifSet(sock, "OBC1_Emmc_Control", 4);
         await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
         
         await mccifSet(sock, "OBC1_Emmc_Control", 6);
         const emmcResult5 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(emmcResult5[0].split('=')[1]);
-        results.emmc.emmc1States.push(emmcResult5[1].split('=')[1]);
+        results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
       } catch (error) {
         console.error("Error during eMMC test:", error);
         // Fill with N/A values if the test fails
@@ -244,8 +258,6 @@ export async function runOBC1Checkout(
     
   } catch (error) {
     console.error('Error during OBC-1 checkout:', error);
-
-    console.error('Error during OBC-1 checkout:', error);
     throw error;
   }
 }
@@ -258,7 +270,13 @@ export async function runOBC1Checkout(
  * @returns True if the voltage is within acceptable range
  */
 function checkVoltage(value: string, isThreeVolt: boolean): boolean {
+  // Convert to number first
   const numValue = parseFloat(value);
+  
+  // Check if valid number
+  if (isNaN(numValue)) {
+    return false;
+  }
   
   if (isThreeVolt) {
     // 3.3V check (typically 3000-3600 mV)

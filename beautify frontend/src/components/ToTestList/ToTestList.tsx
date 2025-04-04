@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./ToTestList.module.css";
 import Draggable from "react-draggable";
 import { createPortal } from "react-dom";
-import { WindowName } from "types/types";
+import { WindowName } from "@/types/types";
 
 interface ToTestListProps {
   zIndex: number; 

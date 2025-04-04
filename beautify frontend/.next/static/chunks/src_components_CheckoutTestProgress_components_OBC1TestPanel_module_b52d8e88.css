@@ -1,0 +1,342 @@
+/* [project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.module.css [app-client] (css) */
+.OBC1TestPanel-module___sU2RW__testPanel {
+  padding: 16px;
+}
+
+.OBC1TestPanel-module___sU2RW__card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px #0000001a;
+  margin-bottom: 16px;
+}
+
+.OBC1TestPanel-module___sU2RW__cardHeader {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.OBC1TestPanel-module___sU2RW__cardTitle {
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  color: #111827;
+}
+
+.OBC1TestPanel-module___sU2RW__cardIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+.OBC1TestPanel-module___sU2RW__cardContent {
+  padding: 16px;
+}
+
+.OBC1TestPanel-module___sU2RW__statusBadge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.OBC1TestPanel-module___sU2RW__progressContainer {
+  margin-bottom: 16px;
+}
+
+.OBC1TestPanel-module___sU2RW__progressLabel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.OBC1TestPanel-module___sU2RW__progressStep {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.OBC1TestPanel-module___sU2RW__progressValue {
+  font-weight: 600;
+  color: #1d4ed8;
+}
+
+.OBC1TestPanel-module___sU2RW__progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.OBC1TestPanel-module___sU2RW__progressBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .3s;
+}
+
+.OBC1TestPanel-module___sU2RW__parameterBox {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.OBC1TestPanel-module___sU2RW__parameterLabel {
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.OBC1TestPanel-module___sU2RW__parameterIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  color: #6b7280;
+}
+
+.OBC1TestPanel-module___sU2RW__parameterValue {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.OBC1TestPanel-module___sU2RW__button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+}
+
+.OBC1TestPanel-module___sU2RW__button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+.OBC1TestPanel-module___sU2RW__buttonIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+.OBC1TestPanel-module___sU2RW__spinnerIcon {
+  animation: 1s linear infinite OBC1TestPanel-module___sU2RW__spin;
+  margin-right: 6px;
+}
+
+@keyframes OBC1TestPanel-module___sU2RW__spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.OBC1TestPanel-module___sU2RW__infoCard {
+  display: flex;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  margin-bottom: 20px;
+}
+
+.OBC1TestPanel-module___sU2RW__infoIcon {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  background-color: #10b9811a;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.OBC1TestPanel-module___sU2RW__infoContent {
+  flex: 1;
+}
+
+.OBC1TestPanel-module___sU2RW__infoLabel {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.OBC1TestPanel-module___sU2RW__infoValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.OBC1TestPanel-module___sU2RW__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.OBC1TestPanel-module___sU2RW__tableHeader {
+  background-color: #f9fafb;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #6b7280;
+  text-align: left;
+}
+
+.OBC1TestPanel-module___sU2RW__tableHeader th {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 500;
+}
+
+.OBC1TestPanel-module___sU2RW__tableBody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+
+.OBC1TestPanel-module___sU2RW__tableRowAlt {
+  background-color: #f9fafb;
+}
+
+.OBC1TestPanel-module___sU2RW__tempGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.OBC1TestPanel-module___sU2RW__tempCard {
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.OBC1TestPanel-module___sU2RW__tempLabel {
+  font-size: 12px;
+  color: #92400e;
+  margin-bottom: 4px;
+}
+
+.OBC1TestPanel-module___sU2RW__tempValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.OBC1TestPanel-module___sU2RW__reportButton {
+  background-color: #10b981;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin-left: auto;
+  transition: all .2s;
+}
+
+.OBC1TestPanel-module___sU2RW__reportButton:hover {
+  background-color: #059669;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__card {
+  background-color: #1e1e1e;
+  border-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__cardHeader {
+  border-color: #374151;
+  background-color: #111827;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__cardTitle {
+  color: #f3f4f6;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__progressStep {
+  color: #d1d5db;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__progressValue {
+  color: #93c5fd;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__progressBar {
+  background-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__parameterBox {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tableHeader {
+  background-color: #111827;
+  color: #d1d5db;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tableHeader th {
+  border-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tableBody td {
+  border-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tableRowAlt {
+  background-color: #111827;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tempCard {
+  background-color: #92400e1a;
+  border-color: #fcd34d4d;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tempLabel {
+  color: #fcd34d;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__tempValue {
+  color: #fcd34d;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__infoCard {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__infoLabel {
+  color: #9ca3af;
+}
+
+html.dark .OBC1TestPanel-module___sU2RW__infoValue {
+  color: #f3f4f6;
+}
+
+/*# sourceMappingURL=src_components_CheckoutTestProgress_components_OBC1TestPanel_module_b52d8e88.css.map*/

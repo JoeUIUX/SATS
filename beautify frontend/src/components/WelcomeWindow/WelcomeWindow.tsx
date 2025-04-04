@@ -5,7 +5,7 @@ import Draggable from "react-draggable";
 import ToTestList from "../ToTestList/ToTestList"; // Import the ToTestList popup window React Component
 import ServerWindow from "../ServerWindow/ServerWindow"; // Import Server Window Component
 import styles from "./WelcomeWindow.module.css";
-import { WindowName } from "types/types";
+import { WindowName } from "@/types/types";
 import { useNavigate } from "react-router-dom";
 
 // Use require if not using images.d.ts

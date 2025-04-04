@@ -1,0 +1,389 @@
+/* [project]/src/components/CheckoutTestProgress/CheckoutTestProgress.module.css [app-client] (css) */
+.CheckoutTestProgress-module__GtrGZW__checkoutWindow {
+  z-index: 9999;
+  width: 1400px;
+  max-width: 90vw;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px #00000026;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color, #fff);
+  transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+  position: fixed !important;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
+  box-shadow: 0 8px 30px #00000080;
+  background-color: #1e1e1e !important;
+}
+
+.CheckoutTestProgress-module__GtrGZW__windowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: grab;
+  box-shadow: 0 1px 2px #0000000d;
+  flex-shrink: 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.CheckoutTestProgress-module__GtrGZW__resetButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0000001a;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .2s;
+  color: inherit;
+}
+
+.CheckoutTestProgress-module__GtrGZW__resetButton:hover {
+  opacity: 1;
+}
+
+.CheckoutTestProgress-module__GtrGZW__windowHeader:active {
+  cursor: grabbing;
+}
+
+.CheckoutTestProgress-module__GtrGZW__windowTitle {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.CheckoutTestProgress-module__GtrGZW__titleIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__closeButton {
+  background: #0000000d;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+  position: relative;
+  right: 0;
+  margin-left: 16px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__closeButton:hover {
+  background: #0000001a;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__closeButton {
+  background: #ffffff1a;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__closeButton:hover {
+  background: #fff3;
+}
+
+.CheckoutTestProgress-module__GtrGZW__contentArea {
+  padding: 16px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.CheckoutTestProgress-module__GtrGZW__progressContainer {
+  background-color: var(--bg-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px #0000000d;
+}
+
+.CheckoutTestProgress-module__GtrGZW__progressHeading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.CheckoutTestProgress-module__GtrGZW__progressHeadingIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__progressBar {
+  position: relative;
+  height: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--bg-muted, #f3f4f6);
+  margin: 10px 0;
+}
+
+.CheckoutTestProgress-module__GtrGZW__progressBarFill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  transition: width .5s ease-in-out;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusCard {
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  transition: all .2s;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #0000000d;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px #0000001a;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusCardActive {
+  border: 2px solid var(--color-blue, #3b82f6);
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusCardTitle {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabsContainer {
+  background-color: var(--bg-subtle, #f9fafb);
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 2px #0000000d;
+  transition: background-color .3s;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__tabsContainer {
+  background-color: #1f2937;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabsList {
+  display: flex;
+  background-color: var(--bg-elevated, white);
+  border-radius: 6px;
+  padding: 4px;
+  position: relative;
+  box-shadow: inset 0 1px 3px #0000000d;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: background-color .3s;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__tabsList {
+  background-color: #374151;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabsList::-webkit-scrollbar {
+  display: none;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabButton {
+  flex: none;
+  text-align: center;
+  padding: 8px 12px;
+  margin: 0 2px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: all .2s;
+  border: none;
+  background: none;
+  color: var(--text-color, inherit);
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__tabButton {
+  color: #e5e7eb;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabButtonActive {
+  background: linear-gradient(to right, #3b82f6, #4f46e5);
+  color: #fff;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.CheckoutTestProgress-module__GtrGZW__tabIcon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__runAllButton {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  margin-left: auto;
+  transition: all .2s;
+}
+
+.CheckoutTestProgress-module__GtrGZW__runAllButton:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.CheckoutTestProgress-module__GtrGZW__runAllButtonIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+@keyframes CheckoutTestProgress-module__GtrGZW__pulse {
+  0% {
+    opacity: .6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .6;
+  }
+}
+
+.CheckoutTestProgress-module__GtrGZW__pulseAnimation {
+  animation: 1.5s infinite CheckoutTestProgress-module__GtrGZW__pulse;
+}
+
+.CheckoutTestProgress-module__GtrGZW__colorCompleted {
+  background-color: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.CheckoutTestProgress-module__GtrGZW__colorError {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border-color: #fee2e2;
+}
+
+.CheckoutTestProgress-module__GtrGZW__colorRunning {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.CheckoutTestProgress-module__GtrGZW__colorWaiting {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border-color: #e5e7eb;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__colorCompleted {
+  background-color: #04785733;
+  color: #a7f3d0;
+  border-color: #a7f3d04d;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__colorError {
+  background-color: #b91c1c33;
+  color: #fee2e2;
+  border-color: #fee2e24d;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__colorRunning {
+  background-color: #1d4ed833;
+  color: #bfdbfe;
+  border-color: #bfdbfe4d;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__colorWaiting {
+  background-color: #4b556333;
+  color: #e5e7eb;
+  border-color: #e5e7eb4d;
+}
+
+.CheckoutTestProgress-module__GtrGZW__simulationBadge {
+  display: inline-block;
+  background-color: #ff9800;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__realBadge {
+  display: inline-block;
+  background-color: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__simulationMessage {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.CheckoutTestProgress-module__GtrGZW__realMessage {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=src_components_CheckoutTestProgress_CheckoutTestProgress_module_b52d8e88.css.map*/

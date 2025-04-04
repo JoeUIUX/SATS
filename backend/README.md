@@ -88,6 +88,7 @@ The database structure is described in the SQLiteDatabaseREADME.md file, which p
 
 Profiles Table: Stores profile information, including descriptions, images, and 3D model paths.
 Checkout Items Table: Stores checkout items associated with a profile.
+Test Items Table: Manages tests to be conducted with metadata.
 For a full description, refer to SQLiteDatabaseREADME.md.
 ```
 
@@ -95,6 +96,9 @@ For a full description, refer to SQLiteDatabaseREADME.md.
 - **Profile Management**: Create, read, update, and delete satellite profiles
 - **File Uploads**: Upload text, docx, and image files for profile descriptions
 - **3D Model Support**: Upload, optimize, and serve GLB format 3D models
+- **Test Items Management**: API endpoints for managing test items to be conducted
+- **Checkout Management**: Store and retrieve checkout configurations per profile
+- **MCC Communication**: Connect to MCC servers or use simulation mode
 - **Response Compression**: Improved performance with Flask-Compress
 - **Caching**: Enhanced 3D model delivery with proper caching headers
 - **Simulation Mode**: Toggle between real and simulated MCC server connections
@@ -106,6 +110,32 @@ See `requirements.txt` for the full list of Python dependencies:
 - Flask-Compress
 - python-dotenv
 - (Others as specified in requirements.txt)
+
+## 🔌 API Endpoints
+
+### Profile Management
+- `GET /profiles` - Get all profiles
+- `POST /profiles` - Create a new profile
+- `PUT /profiles/<name>` - Update a profile
+- `DELETE /profiles/<name>` - Delete a profile
+
+### 3D Model Management
+- `GET /api/profile/<profile_id>` - Get profile model path
+- `POST /api/upload-glb` - Upload a GLB model file
+- `GET /models/<filename>` - Serve a 3D model file
+
+### Test Management
+- `GET /test-items` - Get all test items
+- `POST /test-items` - Save test items
+- `DELETE /test-items/<item_id>` - Delete a specific test item
+- `DELETE /test-items/clear` - Clear all test items
+
+### Checkout Management
+- `POST /checkout/save` - Save checkout items for a profile
+- `GET /checkout/load/<profile_id>` - Load checkout items for a profile
+
+### MCC Connection
+- `POST /connect_mcc` - Connect to MCC server
 
 ## **Author**
 👤 **Joe Goh**  
