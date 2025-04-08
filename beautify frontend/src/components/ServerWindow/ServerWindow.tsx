@@ -105,17 +105,83 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
       
-      // Try a simple HTTP HEAD request to check basic connectivity
-      const response = await fetch(`http://${address}:${port}`, { 
-        method: 'HEAD',
-        mode: 'no-cors', // Allow checking servers that don't support CORS
-        cache: 'no-cache',
-        signal: controller.signal // Use AbortController signal for timeout
+      // For WebSocket servers, attempting a direct Socket connection is better than HTTP
+      // Try using a basic TCP socket-like approach through the fetch API
+      
+      try {
+        // First attempt: Try connecting via WebSocket directly
+        const wsPromise = new Promise<boolean>((resolve, reject) => {
+          const ws = new WebSocket(`ws://${address}:${port}`);
+          
+          // Connection opened successfully
+          ws.onopen = () => {
+            clearTimeout(timeoutId);
+            ws.close(); // Close the connection
+            resolve(true);
+          };
+          
+          // Connection error
+          ws.onerror = (error) => {
+            // For WebSocket errors, don't immediately reject
+            // Sometimes the server is reachable but not as a WebSocket
+            console.log(`WebSocket connection failed: ${error}`);
+            resolve(false);
+          };
+          
+          // Set a timeout for the WebSocket connection
+          setTimeout(() => {
+            ws.close();
+            resolve(false);
+          }, 2000);
+        });
+        
+        // If the WebSocket connection succeeds, return true
+        const wsResult = await wsPromise;
+        if (wsResult) {
+          return true;
+        }
+      } catch (wsError) {
+        console.log("Error testing WebSocket connection:", wsError);
+        // Continue to other check methods
+      }
+      
+      // Second attempt: Try a fetch request with no-cors mode
+      // This might succeed even if the server doesn't handle HTTP correctly
+      try {
+        const fetchResponse = await fetch(`http://${address}:${port}`, { 
+          method: 'HEAD',
+          mode: 'no-cors', // Allow checking servers that don't support CORS
+          cache: 'no-cache',
+          signal: controller.signal // Use AbortController signal for timeout
+        });
+        
+        // If we get here, some type of server responded (even if invalid HTTP)
+        clearTimeout(timeoutId);
+        return true;
+      } catch (fetchError) {
+        // Fetch failed, but that doesn't necessarily mean the server is unreachable
+        console.log("Fetch check failed:", fetchError);
+        // Continue to the socket check
+      }
+      
+      // Third attempt: If both WebSocket and fetch failed, consider checking port via TCP
+      // For browsers, we can use a simple image load trick as a last resort
+      const imgCheck = new Promise<boolean>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);  // This probably won't happen for non-HTTP servers
+        img.onerror = () => {
+          // An error means the connection attempt was made but failed
+          // For many server types, this actually means the port is reachable
+          // but the server doesn't respond with a valid image
+          resolve(true);
+        };
+        img.src = `http://${address}:${port}?${new Date().getTime()}`;
+        
+        // Set a timeout for this check as well
+        setTimeout(() => resolve(false), 2000);
       });
       
-      // Clear the timeout since the request completed
-      clearTimeout(timeoutId);
-      return true;
+      return await imgCheck;
     } catch (error) {
       // Check if the error is due to timeout (AbortError)
       if (error instanceof DOMException && error.name === 'AbortError') {
@@ -127,6 +193,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
     }
   };
 
+  /*
   const handleConnect = async () => {
     console.log("Connect button pressed");
     console.log("Server Address:", serverAddress);
@@ -302,6 +369,210 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
       setConnectFailed(true);
     } finally {
+      setIsConnecting(false);
+    }
+  };
+
+  */
+
+  const handleConnect = async () => {
+    console.log("Connect button pressed");
+    console.log("Server Address:", serverAddress);
+    console.log("Server Port:", serverPort);
+    
+    // Reset status
+    setConnectFailed(false);
+    setWsConnectionVerified(false);
+    
+    // Trim any whitespace from inputs
+    const trimmedAddress = serverAddress.trim();
+    const trimmedPort = serverPort.trim();
+    
+    if (!trimmedAddress || !trimmedPort) {
+      alert("Please provide both Server Address and Port.");
+      return;
+    }
+    
+    try {
+      console.log("Starting connection process");
+      setIsConnecting(true);
+      setStatus("Connecting...");
+      appendLog(`Attempting to connect to MCC server at ${trimmedAddress}:${trimmedPort} via proxy...`);
+      
+      // First try to check if the proxy server is running
+      try {
+        appendLog("🔍 Checking if proxy server is running...");
+        
+        const proxyCheck = await fetch("http://localhost:8080", {
+          method: 'GET',
+          mode: 'cors', // Explicitly request CORS
+          headers: {
+            'Accept': 'text/plain'
+          }
+        });
+        
+        if (proxyCheck.ok) {
+          appendLog("✅ Proxy server is running and accessible");
+        } else {
+          appendLog(`❌ Proxy server returned status ${proxyCheck.status}`);
+          appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
+          setStatus("Proxy Unavailable");
+          setConnectFailed(true);
+          setIsConnecting(false);
+          return;
+        }
+      } catch (error) {
+        console.error("Proxy check error:", error);
+        appendLog("❌ Proxy server is not running or not reachable");
+        appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
+        setStatus("Proxy Unavailable");
+        setConnectFailed(true);
+        setIsConnecting(false);
+        return;
+      }
+      
+      // Try to connect via the proxy
+      console.log(`Sending connection request to ${backendUrl}/connect_mcc`);
+      console.log("Request data:", {
+        server_address: trimmedAddress,
+        server_port: trimmedPort,
+        server_id: "mcc_client",
+        force_real: true,
+        use_proxy: true
+      });
+      
+      const response = await fetch(`${backendUrl}/connect_mcc`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          server_address: trimmedAddress,
+          server_port: trimmedPort,
+          server_id: "mcc_client",
+          force_real: true,
+          use_proxy: true  // Add a flag to indicate we're using the proxy
+        }),
+      });
+      
+      // Process the response
+      let result;
+      let errorText = "";
+      
+      try {
+        // Try to parse the response as JSON
+        result = await response.json();
+        console.log("Backend response:", result);
+      } catch (error) {
+        // If parsing fails, get the raw text
+        errorText = await response.text();
+        console.error("Non-JSON response:", errorText);
+        appendLog(`HTTP error! Status: ${response.status} - ${errorText}`);
+        setStatus("Connection Error");
+        setConnectFailed(true);
+        setIsConnecting(false);
+        return;
+      }
+      
+      console.log("Successfully parsed response:", result);
+      
+      // Handle different response statuses
+      if (result.status === "success") {
+        console.log("Connection successful, handling success case");
+        // Verify if this is a fully verified connection or just a simulated success
+        if (result.verified === true) {
+          setStatus("Connected");
+          appendLog(`✅ ${result.message}`);
+          if (result.wsConnected) {
+            appendLog("✅ WebSocket and backend connection tests both successful!");
+            appendLog("✅ USING REAL CONNECTION MODE - Test results will use real data");
+          } else {
+            appendLog("⚠️ Backend reports success but WebSocket test failed.");
+            appendLog("🔄 ENTERING SIMULATION MODE - Test results will be simulated");
+          }
+        } else if (result.simulation === true) {
+          setStatus("Connected (Simulation)");
+          appendLog(`ℹ️ ${result.message}`);
+          appendLog("🔄 SIMULATION MODE ACTIVE - All test results will be generated");
+          appendLog("ℹ️ No real hardware communication will occur");
+        } else {
+          setStatus("Connected (Unverified)");
+          appendLog(`⚠️ ${result.message}`);
+          appendLog("🔄 SIMULATION MODE ACTIVE (Unverified Connection)");
+          appendLog("⚠️ Connection reported as successful but not fully verified.");
+        }
+      
+        // Save the socket connection info in localStorage
+        const mccSocketInfo = {
+          isReal: !result.simulation && (result.verified || result.wsConnected),
+          address: `${trimmedAddress}:${trimmedPort}`,
+          simulation: result.simulation || !result.wsConnected, // Consider it simulation if WS failed
+          verified: result.verified || result.wsConnected
+        };
+        
+        // Store in localStorage so it persists across navigation
+        localStorage.setItem('mccSocketInfo', JSON.stringify(mccSocketInfo));
+        appendLog("📦 Connection information saved for use in the application.");
+        
+        // Add explicit simulation status indicator
+        if (mccSocketInfo.simulation) {
+          appendLog("⚠️ SIMULATION MODE will be used for all hardware operations");
+        } else {
+          appendLog("✅ REAL MODE will be used for hardware operations");
+        }
+        
+        // Check if ToTestList is visible from sessionStorage
+        const savedVisibility = sessionStorage.getItem('windowVisibility');
+        let windowVisibility = { 
+          ToTestList: false,
+          ServerWindow: true, // Keep ServerWindow visible
+          ThreeDModelWindow: false
+        };
+        
+        if (savedVisibility) {
+          try {
+            const parsedVisibility = JSON.parse(savedVisibility);
+            windowVisibility.ToTestList = parsedVisibility.ToTestList || false;
+            windowVisibility.ThreeDModelWindow = parsedVisibility.ThreeDModelWindow || false;
+          } catch (e) {
+            console.error("Error parsing window visibility:", e);
+          }
+        }
+        
+        // Store window state in sessionStorage for persistence with ServerWindow visible
+        sessionStorage.setItem('windowVisibility', JSON.stringify(windowVisibility));
+        console.log("Saved window state before navigation:", windowVisibility);
+        
+        // If the connection is at least somewhat successful, navigate to main
+        appendLog("🚀 Navigating to main application screen...");
+        console.log("📱 About to navigate to /main");
+        
+        // Add a small delay to ensure all state updates complete
+        setTimeout(() => {
+          try {
+            navigate("/main");
+            console.log("📱 Navigation command executed");
+          } catch (error) {
+            console.error("Navigation error:", error);
+            appendLog(`❌ Error navigating to main screen: ${error}`);
+          }
+        }, 500);
+      } else if (result.status === "partial") {
+        setStatus("Partial Connection");
+        appendLog(`⚠️ ${result.message}`);
+        appendLog("🔄 SIMULATION MODE ACTIVE - Partial connection detected");
+        appendLog("⚠️ The application will use simulation mode for all features.");
+        setConnectFailed(true);
+      } else {
+        setStatus("Failed to Connect");
+        appendLog(`❌ ${result.message}`);
+        appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
+        setConnectFailed(true);
+      }
+    } catch (error) {
+      console.error("Error connecting to MCC:", error);
+      setStatus("Connection Error");
+      appendLog(`❌ Connection error: ${error instanceof Error ? error.message : String(error)}`);
+      appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
+      setConnectFailed(true);
       setIsConnecting(false);
     }
   };

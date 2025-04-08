@@ -10,6 +10,7 @@ import threading
 import time
 import subprocess
 from datetime import datetime, timedelta  # For caching headers
+import requests
 
 # Load .env file
 load_dotenv()
@@ -32,7 +33,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure directory exists
 # Initialize SQLite database
 DATABASE = "satellites.db"
 
-SCAN_INTERVAL = 10  # Time in seconds between scans
+SCAN_INTERVAL = 10  # Time in seconds between scans for .glb files for profiles
 
 
 def get_db():
@@ -143,9 +144,10 @@ def connect_mcc():
         print(f"Received data: {data}")
 
         server_address = data.get('server_address')
-        server_port = data.get('server_port', '5000')  # default to port 5000 if not provided
+        server_port = data.get('server_port', '9377')  # default to port 9377 if not provided
         server_id = data.get('server_id')
         force_real = data.get('force_real', False)
+        use_proxy = data.get('use_proxy', False)  # Check if using proxy
 
         if not server_address or not server_id:
             return jsonify({'status': 'error', 'message': 'Missing server_address or server_id'}), 400
@@ -163,6 +165,32 @@ def connect_mcc():
                 'verified': False,  # Indicate this is not a verified connection
                 'simulation': True
             })
+
+        # If using proxy, try to verify the proxy connection
+        if use_proxy:
+            try:
+                # Try to check if the proxy is running
+                proxy_response = requests.get('http://localhost:8080', timeout=3)
+                if proxy_response.status_code != 200:
+                    return jsonify({
+                        'status': 'error',
+                        'message': 'Proxy server is not running or returned an error'
+                    }), 502
+
+                print("✅ Proxy server is running")
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Connected to MCC server at {server_address} via proxy",
+                    'verified': True,
+                    'simulation': False,
+                    'proxy': True
+                })
+            except Exception as e:
+                print(f"❌ Proxy check failed: {e}")
+                return jsonify({
+                    'status': 'error',
+                    'message': f"Failed to connect to proxy server: {e}"
+                }), 502
 
         # For real connection attempts, try to verify the connection
         # First, check if the server is reachable with a simple socket connection

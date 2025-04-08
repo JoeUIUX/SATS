@@ -643,6 +643,7 @@ const MCC_CONFIG = {
     LOG_LEVEL: process.env.REACT_APP_MCC_LOG_LEVEL || 'info'
 };
 // Logger for MCC operations
+// SHOWN IN BROWSER CONSOLE
 const mccLogger = {
     debug: (message, ...args)=>{
         if (MCC_CONFIG.LOG_LEVEL === 'debug') {

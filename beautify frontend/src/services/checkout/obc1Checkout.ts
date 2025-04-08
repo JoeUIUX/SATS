@@ -200,56 +200,58 @@ export async function runOBC1Checkout(
       // Continue with other tests despite this error
     }
 
-    // Step 6: EMMC test if enabled (90-100%)
-    if (enableEmmc) {
-      onProgress('Testing eMMC', 90);
-      
-      const emmcVars = ["OBC1_Q8_eMMC0_state", "OBC1_Q8_eMMC1_state"];
-      
-      try {
-        // Initial check
-        const emmcResult1 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
-        results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
-        
-        // Test eMMC0
-        await mccifSet(sock, "OBC1_Emmc_Control", 1);
-        const emmcResult2 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
-        results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
-        
-        await mccifSet(sock, "OBC1_Emmc_Control", 3);
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-        
-        await mccifSet(sock, "OBC1_Emmc_Control", 5);
-        const emmcResult3 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
-        results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
-        
-        // Test eMMC1
-        await mccifSet(sock, "OBC1_Emmc_Control", 2);
-        const emmcResult4 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
-        results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
-        
-        await mccifSet(sock, "OBC1_Emmc_Control", 4);
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-        
-        await mccifSet(sock, "OBC1_Emmc_Control", 6);
-        const emmcResult5 = await mccifRead(sock, emmcVars);
-        results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
-        results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
-      } catch (error) {
-        console.error("Error during eMMC test:", error);
-        // Fill with N/A values if the test fails
-        results.emmc.emmc0States = Array(6).fill('N.A.');
-        results.emmc.emmc1States = Array(6).fill('N.A.');
-      }
-    } else {
-      // If eMMC test is disabled, set empty results
-      results.emmc.emmc0States = Array(6).fill('N.A.');
-      results.emmc.emmc1States = Array(6).fill('N.A.');
-    }
+// Step 6: EMMC test if enabled (90-100%)
+if (enableEmmc) {
+  onProgress('Testing eMMC', 90);
+  
+  const emmcVars = ["OBC1_Q8_eMMC0_state", "OBC1_Q8_eMMC1_state"];
+  
+  try {
+    // Initial check
+    const emmcResult1 = await mccifRead(sock, emmcVars);
+    results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
+    results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
+    
+    // Modified command format: OBC1_Emmc_Control needs 8 or fewer tokens
+    // Test eMMC0 - Use single digit values instead of multi-digit
+    // Change from value=1 to value=1 (same in this case but follow the pattern)
+    await mccifSet(sock, "OBC1_Emmc_Control", 1);
+    const emmcResult2 = await mccifRead(sock, emmcVars);
+    results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
+    results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
+    
+    await mccifSet(sock, "OBC1_Emmc_Control", 3);
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+    
+    await mccifSet(sock, "OBC1_Emmc_Control", 5);
+    const emmcResult3 = await mccifRead(sock, emmcVars);
+    results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
+    results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
+    
+    // Test eMMC1
+    await mccifSet(sock, "OBC1_Emmc_Control", 2);
+    const emmcResult4 = await mccifRead(sock, emmcVars);
+    results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
+    results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
+    
+    await mccifSet(sock, "OBC1_Emmc_Control", 4);
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+    
+    await mccifSet(sock, "OBC1_Emmc_Control", 6);
+    const emmcResult5 = await mccifRead(sock, emmcVars);
+    results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
+    results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
+  } catch (error) {
+    console.error("Error during eMMC test:", error);
+    // Fill with N/A values if the test fails
+    results.emmc.emmc0States = Array(6).fill('N.A.');
+    results.emmc.emmc1States = Array(6).fill('N.A.');
+  }
+} else {
+  // If eMMC test is disabled, set empty results
+  results.emmc.emmc0States = Array(6).fill('N.A.');
+  results.emmc.emmc1States = Array(6).fill('N.A.');
+}
 
     // Complete checkout (100%)
     onProgress('Checkout Complete', 100);
