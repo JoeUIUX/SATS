@@ -1,3 +1,5 @@
+# Fix the indentation issue with route handlers
+
 from flask import Flask, jsonify, request, send_from_directory, Response
 from flask_cors import CORS
 from flask_compress import Compress  # Add compression
@@ -5,6 +7,7 @@ from mccif import connect_to_mcc
 import os
 import sqlite3
 import json
+import shutil
 from dotenv import load_dotenv
 import threading
 import time
@@ -21,7 +24,7 @@ app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB limit
 # Add compression for better performance
 Compress(app)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins for debugging
 
 # Determine simulation mode from an environment variable
 SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
@@ -29,6 +32,10 @@ SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
 UPLOAD_FOLDER = os.path.join(os.getcwd(), "models")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure directory exists
+
+# Set path for backgrounds folder
+BACKGROUNDS_FOLDER = os.path.join(os.getcwd(), "public", "assets")
+os.makedirs(BACKGROUNDS_FOLDER, exist_ok=True)  # Ensure backgrounds directory exists
 
 # Initialize SQLite database
 DATABASE = "satellites.db"
@@ -68,6 +75,33 @@ def create_table():
         )
         """
     )
+
+    # Create settings table for application-wide settings including backgrounds
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS app_settings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            setting_key TEXT UNIQUE NOT NULL,
+            setting_value TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
+    # Create custom_backgrounds table to track uploaded backgrounds
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS custom_backgrounds (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            path TEXT UNIQUE NOT NULL,
+            is_dark_mode INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+
     db.commit()
     db.close()
 
@@ -576,6 +610,7 @@ def get_model(filename):
 
     return response
 
+
 # Create the test_items table when the server starts
 def create_test_items_table():
     """ Create the test_items table in the database if it doesn't exist. """
@@ -677,6 +712,299 @@ def clear_test_items():
         return jsonify({"error": str(e)}), 500
 
 
+# ===== NEW BACKGROUND SETTINGS ROUTES =====
+
+# Get current app settings including background settings
+@app.route('/settings', methods=['GET'])
+def get_settings():
+    """Get all application settings"""
+    try:
+        db = get_db()
+        cursor = db.execute("SELECT setting_key, setting_value FROM app_settings")
+        settings = {}
+
+        for row in cursor.fetchall():
+            settings[row["setting_key"]] = row["setting_value"]
+
+        # Get default background settings if not found in database
+        if "background" not in settings:
+            settings["background"] = "/assets/curve_background.png"  # Dark mode default
+
+        if "background_light" not in settings:
+            settings["background_light"] = "/assets/lightcurve_background.png"  # Light mode default
+
+        if "backgroundColor" not in settings:
+            settings["backgroundColor"] = "#000000"  # Default background color
+
+        if "font" not in settings:
+            settings["font"] = "Arial, sans-serif"  # Default font
+
+        db.close()
+        return jsonify(settings), 200
+    except Exception as e:
+        print(f"❌ Error getting settings: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+# Save app settings
+@app.route('/settings', methods=['POST'])
+def save_settings():
+    """Save application settings"""
+    try:
+        data = request.json
+
+        if not data:
+            return jsonify({"error": "No settings provided"}), 400
+
+        db = get_db()
+
+        # Process each setting
+        for key, value in data.items():
+            # Skip null or empty values
+            if value is None or value == "":
+                continue
+
+            # For background settings, make special handling
+            if key == "background":
+                # Save the background path - this is the dark mode background
+                db.execute(
+                    """
+                    INSERT INTO app_settings (setting_key, setting_value, updated_at)
+                    VALUES (?, ?, CURRENT_TIMESTAMP)
+                    ON CONFLICT(setting_key) DO UPDATE SET 
+                    setting_value = excluded.setting_value,
+                    updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (key, value)
+                )
+            elif key == "backgroundColor":
+                # Save the background color
+                db.execute(
+                    """
+                    INSERT INTO app_settings (setting_key, setting_value, updated_at)
+                    VALUES (?, ?, CURRENT_TIMESTAMP)
+                    ON CONFLICT(setting_key) DO UPDATE SET 
+                    setting_value = excluded.setting_value,
+                    updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (key, value)
+                )
+            elif key == "font":
+                # Save the font
+                db.execute(
+                    """
+                    INSERT INTO app_settings (setting_key, setting_value, updated_at)
+                    VALUES (?, ?, CURRENT_TIMESTAMP)
+                    ON CONFLICT(setting_key) DO UPDATE SET 
+                    setting_value = excluded.setting_value,
+                    updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (key, value)
+                )
+            else:
+                # Save any other settings
+                db.execute(
+                    """
+                    INSERT INTO app_settings (setting_key, setting_value, updated_at)
+                    VALUES (?, ?, CURRENT_TIMESTAMP)
+                    ON CONFLICT(setting_key) DO UPDATE SET 
+                    setting_value = excluded.setting_value,
+                    updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (key, value)
+                )
+
+        db.commit()
+        db.close()
+
+        return jsonify({
+            "message": "Settings saved successfully",
+            "settings": data
+        }), 200
+    except Exception as e:
+        print(f"❌ Error saving settings: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+# Get available backgrounds
+@app.route('/backgrounds', methods=['GET'])
+def get_backgrounds():
+    """Get all available backgrounds including defaults and custom uploads"""
+    try:
+        # Default backgrounds from assets folder
+        default_backgrounds = [
+            {"name": "Curve Background (Dark)", "path": "/assets/curve_background.png"},
+            {"name": "Light Curve Background", "path": "/assets/lightcurve_background.png"},
+            {"name": "Solid Color", "path": "none"}
+        ]
+
+        # Get custom backgrounds from database
+        db = get_db()
+        cursor = db.execute("SELECT name, path FROM custom_backgrounds ORDER BY created_at DESC")
+
+        custom_backgrounds = []
+        for row in cursor.fetchall():
+            custom_backgrounds.append({
+                "name": row["name"],
+                "path": row["path"]
+            })
+
+        db.close()
+
+        return jsonify({
+            "default_backgrounds": default_backgrounds,
+            "custom_backgrounds": custom_backgrounds
+        }), 200
+    except Exception as e:
+        print(f"❌ Error getting backgrounds: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+# Upload a new background
+@app.route('/upload-background', methods=['POST'])
+def upload_background():
+    """Upload a new background image"""
+    if 'background' not in request.files:
+        return jsonify({"error": "No file provided"}), 400
+
+    file = request.files['background']
+
+    if file.filename == '':
+        return jsonify({"error": "No file selected"}), 400
+
+    # Check if file is an image
+    if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+        return jsonify({"error": "Invalid file format. Only PNG, JPG, JPEG and GIF are allowed."}), 400
+
+    try:
+        # Generate unique filename to avoid overwriting existing files
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        original_filename = file.filename
+        filename = f"custom_bg_{timestamp}_{original_filename}"
+
+        # Save the file to the backgrounds folder
+        file_path = os.path.join(BACKGROUNDS_FOLDER, filename)
+        file.save(file_path)
+
+        # Insert into the database
+        db = get_db()
+        db.execute(
+            """
+            INSERT INTO custom_backgrounds (name, path)
+            VALUES (?, ?)
+            """,
+            (original_filename, f"/assets/{filename}")
+        )
+        db.commit()
+        db.close()
+
+        return jsonify({
+            "message": "Background uploaded successfully",
+            "name": original_filename,
+            "path": f"/assets/{filename}"
+        }), 200
+    except Exception as e:
+        print(f"❌ Error uploading background: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+# Delete a custom background
+@app.route('/backgrounds/<int:background_id>', methods=['DELETE'])
+def delete_background(background_id):
+    """Delete a custom background"""
+    try:
+        db = get_db()
+
+        # Get the background info first
+        row = db.execute("SELECT path FROM custom_backgrounds WHERE id = ?", (background_id,)).fetchone()
+
+        if not row:
+            return jsonify({"error": "Background not found"}), 404
+
+        # Get the file path
+        file_path = row["path"]
+
+        # Delete the record from database
+        db.execute("DELETE FROM custom_backgrounds WHERE id = ?", (background_id,))
+        db.commit()
+        db.close()
+
+        # Delete the actual file
+        try:
+            # Extract filename from path
+            filename = os.path.basename(file_path)
+            full_path = os.path.join(BACKGROUNDS_FOLDER, filename)
+
+            if os.path.exists(full_path):
+                os.remove(full_path)
+                print(f"✅ Deleted background file: {filename}")
+        except Exception as file_error:
+            print(f"⚠️ Error deleting background file: {file_error}")
+            # Continue even if file deletion fails
+
+        return jsonify({"message": "Background deleted successfully"}), 200
+    except Exception as e:
+        print(f"❌ Error deleting background: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+# Serve static assets - this enables access to background images
+@app.route("/assets/<filename>")
+def get_asset(filename):
+    """Serve static assets like background images with proper caching"""
+    response = send_from_directory(BACKGROUNDS_FOLDER, filename)
+
+    # Add caching headers
+    response.headers["Cache-Control"] = "public, max-age=86400"  # 1 day cache
+    response.headers["Expires"] = (datetime.utcnow() + timedelta(days=1)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    # Add ETag for better caching
+    file_path = os.path.join(BACKGROUNDS_FOLDER, filename)
+    if os.path.exists(file_path):
+        file_stat = os.stat(file_path)
+        etag = f'"{file_stat.st_size}-{file_stat.st_mtime}"'
+        response.headers["ETag"] = etag
+
+    return response
+
+
+# Apply a background to CSS
+@app.route('/apply-background', methods=['POST'])
+def apply_background():
+    """Apply a background to the CSS by updating the :root variables"""
+    try:
+        data = request.json
+        background_path = data.get('path')
+        is_dark_mode = data.get('isDarkMode', False)
+
+        if not background_path:
+            return jsonify({"error": "No background path provided"}), 400
+
+        # Save the background setting based on mode
+        setting_key = "background" if is_dark_mode else "background_light"
+
+        db = get_db()
+        db.execute(
+            """
+            INSERT INTO app_settings (setting_key, setting_value, updated_at)
+            VALUES (?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(setting_key) DO UPDATE SET 
+            setting_value = excluded.setting_value,
+            updated_at = CURRENT_TIMESTAMP
+            """,
+            (setting_key, background_path)
+        )
+        db.commit()
+        db.close()
+
+        return jsonify({
+            "message": f"Background applied successfully for {('dark' if is_dark_mode else 'light')} mode",
+            "path": background_path
+        }), 200
+    except Exception as e:
+        print(f"❌ Error applying background: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     port = int(os.getenv("FLASK_PORT", 5000))
-    app.run(debug=True, port=port)
+    app.run(debug=True, port=port, host='0.0.0.0')

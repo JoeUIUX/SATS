@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import { WindowName } from "@/types/types";
 import CheckoutTestProgress from "@/components/CheckoutTestProgress/CheckoutTestProgress";
 import { connectToMcc, setSimulationMode } from "@/utils/mccUtils";
+import SettingsWindow from "@/components/SettingsWindow/SettingsWindow";
 
 const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"; // fall back
 // Ensure this is correct
@@ -85,6 +86,9 @@ interface MainScreenProps {
   bringWindowToFront: (windowName: WindowName) => void;  // ✅ Ensure correct function type
   zIndexCounter: number;  // ✅ Accept counter
   navigateWithState?: (to: string, options?: any) => void;
+  showSettingsWindow: boolean;
+  openSettingsWindow: () => void;
+  closeSettingsWindow: () => void;
 }
 
 const MainScreen: React.FC<MainScreenProps> = ({ 
@@ -98,7 +102,10 @@ const MainScreen: React.FC<MainScreenProps> = ({
   threeDModelProfileId,  // ✅ Use profile ID from props
   windowZIndexes, // ✅ Use windowZIndexes from props
   bringWindowToFront,  // ✅ Use function from props
-  zIndexCounter  // ✅ Use counter from props
+  zIndexCounter,  // ✅ Use counter from props
+  showSettingsWindow,
+  openSettingsWindow,
+  closeSettingsWindow,
 }): React.ReactElement => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -144,6 +151,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
   const [mccSocket, setMccSocket] = useState<any>(null);
   // Add this state to store the real MCC socket
 const [realMccSocket, setRealMccSocket] = useState<any>(null);
+const [settingsWindowVisible, setSettingsWindowVisible] = useState(showSettingsWindow);
   
   // In MainScreen.tsx, add this after your state declarations but before your functions
   const dragTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -1419,6 +1427,11 @@ useEffect(() => {
   }
 }, []);
 
+// Update useEffect to watch for changes from parent
+useEffect(() => {
+  setSettingsWindowVisible(showSettingsWindow);
+}, [showSettingsWindow]);
+
 return (
   <div className={styles.mainScreen}>
     {!isSidebarOpen && (
@@ -1549,7 +1562,12 @@ return (
         )}
       </ul>
       <div className={styles.settingsContainer}>
-        <button className={styles.settingsButton}>
+      <button 
+  className={styles.settingsButton} 
+  onClick={() => {
+    openSettingsWindow();
+  }}
+>
           <FaCog />
         </button>
       </div>

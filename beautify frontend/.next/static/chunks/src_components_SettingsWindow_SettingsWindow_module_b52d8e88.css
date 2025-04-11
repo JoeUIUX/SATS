@@ -1,0 +1,517 @@
+/* [project]/src/components/SettingsWindow/SettingsWindow.module.css [app-client] (css) */
+.SettingsWindow-module__hn1lxq__settingsWindow {
+  width: 700px;
+  max-width: 90vw;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px #00000026;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  top: 0;
+  left: 0;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__settingsWindow {
+  background-color: #1e1e1e;
+  box-shadow: 0 8px 30px #00000080;
+}
+
+.SettingsWindow-module__hn1lxq__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: grab;
+  box-shadow: 0 1px 2px #0000000d;
+  flex-shrink: 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__header {
+  background-color: #2c2c2c;
+  border-bottom: 1px solid #444;
+}
+
+html.light .SettingsWindow-module__hn1lxq__header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.SettingsWindow-module__hn1lxq__header:active {
+  cursor: grabbing;
+}
+
+.SettingsWindow-module__hn1lxq__windowTitle {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.SettingsWindow-module__hn1lxq__titleIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.SettingsWindow-module__hn1lxq__closeButton {
+  background: #0000000d;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.SettingsWindow-module__hn1lxq__closeButton:hover {
+  background: #0000001a;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__closeButton {
+  background: #ffffff1a;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__closeButton:hover {
+  background: #fff3;
+}
+
+.SettingsWindow-module__hn1lxq__contentArea {
+  padding: 16px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.SettingsWindow-module__hn1lxq__tabsContainer {
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__tabsContainer {
+  background-color: #2c2c2c;
+  border-bottom: 1px solid #444;
+}
+
+.SettingsWindow-module__hn1lxq__tabButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 8px 12px;
+  margin-right: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all .2s;
+}
+
+.SettingsWindow-module__hn1lxq__tabButton:hover {
+  background-color: #0000000d;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__tabButton:hover {
+  background-color: #ffffff0d;
+}
+
+.SettingsWindow-module__hn1lxq__activeTab {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__activeTab {
+  background-color: #008c9e;
+}
+
+.SettingsWindow-module__hn1lxq__activeTab:hover {
+  background-color: #00acc1;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__activeTab:hover {
+  background-color: #007c8e;
+}
+
+.SettingsWindow-module__hn1lxq__tabIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+.SettingsWindow-module__hn1lxq__settingsSection {
+  padding: 16px;
+}
+
+.SettingsWindow-module__hn1lxq__settingGroup {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__settingGroup {
+  border-bottom: 1px solid #444;
+}
+
+.SettingsWindow-module__hn1lxq__sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundSelector {
+  margin-top: 12px;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundOption {
+  border: 2px solid #0000;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .2s;
+  position: relative;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundOption:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px #0000001a;
+}
+
+.SettingsWindow-module__hn1lxq__selectedBackground {
+  border-color: #00bcd4;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__selectedBackground {
+  border-color: #00acc1;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundPreview {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f5f5f5;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__backgroundPreview {
+  background-color: #333;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundPreview img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.SettingsWindow-module__hn1lxq__solidColorPreview {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 0 1px 2px #00000080;
+  font-weight: 600;
+}
+
+.SettingsWindow-module__hn1lxq__backgroundName {
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.SettingsWindow-module__hn1lxq__uploadBackground {
+  margin-bottom: 24px;
+}
+
+.SettingsWindow-module__hn1lxq__uploadBackground h4 {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.SettingsWindow-module__hn1lxq__fileInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__fileInput {
+  background-color: #333;
+  border-color: #444;
+  color: #fff;
+}
+
+.SettingsWindow-module__hn1lxq__smallNote {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #666;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__smallNote {
+  color: #aaa;
+}
+
+.SettingsWindow-module__hn1lxq__colorPicker {
+  margin-bottom: 24px;
+}
+
+.SettingsWindow-module__hn1lxq__colorPicker h4 {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.SettingsWindow-module__hn1lxq__colorInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.SettingsWindow-module__hn1lxq__colorInput {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.SettingsWindow-module__hn1lxq__colorText {
+  flex: 1;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__colorText {
+  background-color: #333;
+  border-color: #444;
+  color: #fff;
+}
+
+.SettingsWindow-module__hn1lxq__fontSelector {
+  margin-top: 12px;
+}
+
+.SettingsWindow-module__hn1lxq__select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__select {
+  background-color: #2c2c2c;
+  border-color: #444;
+  color: #fff;
+}
+
+.SettingsWindow-module__hn1lxq__fontPreview {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  min-height: 80px;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__fontPreview {
+  border-color: #444;
+}
+
+.SettingsWindow-module__hn1lxq__buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.SettingsWindow-module__hn1lxq__saveButton {
+  padding: 8px 16px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+}
+
+.SettingsWindow-module__hn1lxq__saveButton:hover {
+  background-color: #00acc1;
+}
+
+.SettingsWindow-module__hn1lxq__saveButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__saveButton:disabled {
+  background-color: #666;
+}
+
+.SettingsWindow-module__hn1lxq__loadingSpinner {
+  display: inline-block;
+  animation: 1s linear infinite SettingsWindow-module__hn1lxq__spin;
+  margin-right: 6px;
+}
+
+@keyframes SettingsWindow-module__hn1lxq__spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.SettingsWindow-module__hn1lxq__savedMessage {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  animation: 3s forwards SettingsWindow-module__hn1lxq__fadeOut;
+}
+
+.SettingsWindow-module__hn1lxq__successMessage {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.SettingsWindow-module__hn1lxq__errorMessage {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__successMessage {
+  background-color: #15572433;
+  color: #5bcc7a;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__errorMessage {
+  background-color: #721c2433;
+  color: #f88c8c;
+}
+
+@keyframes SettingsWindow-module__hn1lxq__fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.SettingsWindow-module__hn1lxq__aboutInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.SettingsWindow-module__hn1lxq__logoContainer {
+  margin-bottom: 20px;
+}
+
+.SettingsWindow-module__hn1lxq__logo {
+  width: 120px;
+  height: auto;
+}
+
+.SettingsWindow-module__hn1lxq__appTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.SettingsWindow-module__hn1lxq__versionInfo {
+  background-color: #f5f5f5;
+  padding: 12px 20px;
+  border-radius: 8px;
+  min-width: 250px;
+  margin-bottom: 24px;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__versionInfo {
+  background-color: #2c2c2c;
+}
+
+.SettingsWindow-module__hn1lxq__versionRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.SettingsWindow-module__hn1lxq__versionLabel {
+  font-weight: 600;
+  color: #666;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__versionLabel {
+  color: #aaa;
+}
+
+.SettingsWindow-module__hn1lxq__versionValue {
+  font-family: Courier New, monospace;
+}
+
+.SettingsWindow-module__hn1lxq__aboutText {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.SettingsWindow-module__hn1lxq__aboutText h4 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.SettingsWindow-module__hn1lxq__aboutText ul {
+  padding-left: 20px;
+}
+
+.SettingsWindow-module__hn1lxq__aboutText li {
+  margin-bottom: 6px;
+}
+
+.SettingsWindow-module__hn1lxq__drag-handle {
+  cursor: grab !important;
+}
+
+.SettingsWindow-module__hn1lxq__drag-handle:active {
+  cursor: grabbing !important;
+}
+
+/*# sourceMappingURL=src_components_SettingsWindow_SettingsWindow_module_b52d8e88.css.map*/

@@ -5,8 +5,8 @@
 (globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
   "path": "static/chunks/src_app_page_tsx_e17ffecf._.js",
   "chunks": [
-    "static/chunks/node_modules_three_84325842._.js",
-    "static/chunks/src_7e56c9f7._.js",
+    "static/chunks/node_modules_three_f069462e._.js",
+    "static/chunks/src_7ff4f641._.js",
     "static/chunks/node_modules_react-router_dist_development_chunk-SYFQ2XB5_mjs_2d9956df._.js",
     "static/chunks/node_modules_react-icons_fa_index_mjs_d2e2d7f5._.js",
     "static/chunks/node_modules_react-icons_lib_74ccc930._.js",
@@ -26,7 +26,7 @@
     "static/chunks/node_modules_@dnd-kit_core_dist_core_esm_deb93fb9.js",
     "static/chunks/node_modules_@tiptap_05a7a47d._.js",
     "static/chunks/node_modules_84158f11._.js",
-    "static/chunks/src_components_896b224d._.css"
+    "static/chunks/src_components_81c19257._.css"
   ],
   "source": "dynamic"
 });

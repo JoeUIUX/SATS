@@ -1245,10 +1245,25 @@ html.dark .OBC1TestPanel-module___sU2RW__infoValue {
   left: 0;
   background-color: var(--bg-color, #fff);
   transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+  transition: all .3s;
   position: fixed !important;
 }
 
-html.dark .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
+.CheckoutTestProgress-module__GtrGZW__minimizedWindow {
+  z-index: 9999;
+  width: auto;
+  min-width: 250px;
+  max-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px #00000026;
+  background-color: var(--bg-color, #fff);
+  transition: all .3s;
+  padding: 10px;
+  position: fixed !important;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__checkoutWindow, html.dark .CheckoutTestProgress-module__GtrGZW__minimizedWindow {
   box-shadow: 0 8px 30px #00000080;
   background-color: #1e1e1e !important;
 }
@@ -1303,7 +1318,7 @@ html.dark .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
   margin-right: 8px;
 }
 
-.CheckoutTestProgress-module__GtrGZW__closeButton {
+.CheckoutTestProgress-module__GtrGZW__closeButton, .CheckoutTestProgress-module__GtrGZW__minimizeButton {
   background: #0000000d;
   border: none;
   border-radius: 50%;
@@ -1316,19 +1331,18 @@ html.dark .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
   cursor: pointer;
   transition: all .2s;
   position: relative;
-  right: 0;
-  margin-left: 16px;
+  margin-left: 8px;
 }
 
-.CheckoutTestProgress-module__GtrGZW__closeButton:hover {
+.CheckoutTestProgress-module__GtrGZW__closeButton:hover, .CheckoutTestProgress-module__GtrGZW__minimizeButton:hover {
   background: #0000001a;
 }
 
-html.dark .CheckoutTestProgress-module__GtrGZW__closeButton {
+html.dark .CheckoutTestProgress-module__GtrGZW__closeButton, html.dark .CheckoutTestProgress-module__GtrGZW__minimizeButton {
   background: #ffffff1a;
 }
 
-html.dark .CheckoutTestProgress-module__GtrGZW__closeButton:hover {
+html.dark .CheckoutTestProgress-module__GtrGZW__closeButton:hover, html.dark .CheckoutTestProgress-module__GtrGZW__minimizeButton:hover {
   background: #fff3;
 }
 
@@ -1618,6 +1632,116 @@ html.dark .CheckoutTestProgress-module__GtrGZW__colorWaiting {
   font-weight: bold;
 }
 
+.CheckoutTestProgress-module__GtrGZW__checkoutWindow, .CheckoutTestProgress-module__GtrGZW__minimizedWindow {
+  transition: width .3s, height .3s, opacity .2s;
+}
+
+.CheckoutTestProgress-module__GtrGZW__minimizeButton {
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusIndicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusIndicator.CheckoutTestProgress-module__GtrGZW__running {
+  background-color: #3b82f6;
+  animation: 1.5s infinite CheckoutTestProgress-module__GtrGZW__pulse;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusIndicator.CheckoutTestProgress-module__GtrGZW__completed {
+  background-color: #10b981;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusIndicator.CheckoutTestProgress-module__GtrGZW__waiting {
+  background-color: #9ca3af;
+}
+
+.CheckoutTestProgress-module__GtrGZW__statusIndicator.CheckoutTestProgress-module__GtrGZW__error {
+  background-color: #ef4444;
+}
+
+.CheckoutTestProgress-module__GtrGZW__miniProgressBar {
+  width: 100%;
+  height: 4px;
+  background-color: #0000001a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.CheckoutTestProgress-module__GtrGZW__miniProgressBarFill {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width .5s ease-in-out;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__miniProgressBar {
+  background-color: #ffffff1a;
+}
+
+.CheckoutTestProgress-module__GtrGZW__componentTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background-color: #3b82f61a;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-right: 4px;
+  color: #3b82f6;
+}
+
+html.dark .CheckoutTestProgress-module__GtrGZW__componentTag {
+  background-color: #3b82f633;
+  color: #93c5fd;
+}
+
+.CheckoutTestProgress-module__GtrGZW__drag-handle {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: grab !important;
+}
+
+.CheckoutTestProgress-module__GtrGZW__drag-handle:active {
+  cursor: grabbing !important;
+}
+
+.CheckoutTestProgress-module__GtrGZW__closeButton:focus, .CheckoutTestProgress-module__GtrGZW__minimizeButton:focus, .CheckoutTestProgress-module__GtrGZW__runAllButton:focus, .CheckoutTestProgress-module__GtrGZW__tabButton:focus {
+  outline: 2px solid #3b82f680;
+  outline-offset: 2px;
+}
+
+@media (width <= 1200px) {
+  .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
+    width: 95vw;
+  }
+}
+
+@media (width <= 768px) {
+  .CheckoutTestProgress-module__GtrGZW__checkoutWindow {
+    max-height: 95vh;
+  }
+
+  .CheckoutTestProgress-module__GtrGZW__minimizedWindow {
+    max-width: 200px;
+  }
+
+  .CheckoutTestProgress-module__GtrGZW__tabButton {
+    min-width: 100px;
+    padding: 6px 10px;
+  }
+}
+
 
 /* [project]/src/components/ToTestList/ToTestList.module.css [app-client] (css) */
 .ToTestList-module__vY2V8W__popup {
@@ -1859,6 +1983,19 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__form input:focu
   visibility: visible !important;
 }
 
+.ServerWindow-module__wfqmlq__minimized {
+  width: auto;
+  min-width: 200px;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px #0003;
+  transition: all .3s;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 @keyframes ServerWindow-module__wfqmlq__popup-show {
   from {
     transform: translate(-50%, -50%)scale(.9);
@@ -1886,15 +2023,24 @@ html.ToTestList-module__vY2V8W__dark .ToTestList-module__vY2V8W__form input:focu
   cursor: grabbing !important;
 }
 
-.ServerWindow-module__wfqmlq__closeButton {
+.ServerWindow-module__wfqmlq__closeButton, .ServerWindow-module__wfqmlq__minimizeButton {
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
   color: #000;
+  padding: 0 5px;
+  line-height: 1;
 }
 
-html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton {
+.ServerWindow-module__wfqmlq__minimizeButton {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton, html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__minimizeButton {
   color: #fff;
 }
 
@@ -1940,6 +2086,14 @@ html.ServerWindow-module__wfqmlq__dark .ServerWindow-module__wfqmlq__closeButton
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+}
+
+.ServerWindow-module__wfqmlq__logs {
+  margin: 10px 0;
+}
+
+.ServerWindow-module__wfqmlq__popup, .ServerWindow-module__wfqmlq__minimized {
+  transition: height .3s, width .3s;
 }
 
 

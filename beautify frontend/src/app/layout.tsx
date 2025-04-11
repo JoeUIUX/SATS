@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./globals.css";
+import { initializeThemeBackgrounds } from "@/utils/themeInitializer";
 
 /* LIGHT DARK MODE SLIDER TOGGLER - START */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       htmlElement.classList.add("light");
       htmlElement.classList.remove("dark");
     }
+    
+    // Initialize theme backgrounds from database settings
+    initializeThemeBackgrounds();
   }, []);
 
   const toggleDarkMode = () => {

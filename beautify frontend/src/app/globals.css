@@ -5,11 +5,12 @@
 
 /* Global Styles */
 body {
+  /* Use CSS variables for dynamic background settings */
   background: var(--page-bg-image) no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
-  transition: background-color 0.4s, color 0.4s;
+  transition: background-color 0.4s, color 0.4s, background-image 0.4s;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -91,7 +92,7 @@ input:checked + .slider:before {
 body { /* Webpage background dynamically changes with theme */
   margin: 0;
   font-family: Arial, sans-serif;
-  transition: background-color 0.4s, color 0.4s;
+  transition: background-color 0.4s, color 0.4s, background-image 0.4s;
   background-color: var(--page-bg-color); /* New variable for webpage background */
   color: var(--text-color);
 }
@@ -100,15 +101,49 @@ body { /* Webpage background dynamically changes with theme */
 
 /* Default styles for all modes */
 :root {
+  /* Default background images and colors - these will be overridden by database settings */
   --page-bg-image: url("/assets/curve_background.png"); /* Default dark mode */
   --page-bg-color: #000; /* Default dark mode background */
   --bg-color: #ffffff; /* WelcomeWindow background (light mode) */
   --border-color: #ccc; /* Default border color */
-  --text-color: #000000; /* Default text color */ --radius: 0.625rem; --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --card: oklch(1 0 0); --card-foreground: oklch(0.145 0 0); --popover: oklch(1 0 0); --popover-foreground: oklch(0.145 0 0); --primary: oklch(0.205 0 0); --primary-foreground: oklch(0.985 0 0); --secondary: oklch(0.97 0 0); --secondary-foreground: oklch(0.205 0 0); --muted: oklch(0.97 0 0); --muted-foreground: oklch(0.556 0 0); --accent: oklch(0.97 0 0); --accent-foreground: oklch(0.205 0 0); --destructive: oklch(0.577 0.245 27.325); --border: oklch(0.922 0 0); --input: oklch(0.922 0 0); --ring: oklch(0.708 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+  --text-color: #000000; /* Default text color */ 
+  --radius: 0.625rem; 
+  --background: oklch(1 0 0); 
+  --foreground: oklch(0.145 0 0); 
+  --card: oklch(1 0 0); 
+  --card-foreground: oklch(0.145 0 0); 
+  --popover: oklch(1 0 0); 
+  --popover-foreground: oklch(0.145 0 0); 
+  --primary: oklch(0.205 0 0); 
+  --primary-foreground: oklch(0.985 0 0); 
+  --secondary: oklch(0.97 0 0); 
+  --secondary-foreground: oklch(0.205 0 0); 
+  --muted: oklch(0.97 0 0); 
+  --muted-foreground: oklch(0.556 0 0); 
+  --accent: oklch(0.97 0 0); 
+  --accent-foreground: oklch(0.205 0 0); 
+  --destructive: oklch(0.577 0.245 27.325); 
+  --border: oklch(0.922 0 0); 
+  --input: oklch(0.922 0 0); 
+  --ring: oklch(0.708 0 0); 
+  --chart-1: oklch(0.646 0.222 41.116); 
+  --chart-2: oklch(0.6 0.118 184.704); 
+  --chart-3: oklch(0.398 0.07 227.392); 
+  --chart-4: oklch(0.828 0.189 84.429); 
+  --chart-5: oklch(0.769 0.188 70.08); 
+  --sidebar: oklch(0.985 0 0); 
+  --sidebar-foreground: oklch(0.145 0 0); 
+  --sidebar-primary: oklch(0.205 0 0); 
+  --sidebar-primary-foreground: oklch(0.985 0 0); 
+  --sidebar-accent: oklch(0.97 0 0); 
+  --sidebar-accent-foreground: oklch(0.205 0 0); 
+  --sidebar-border: oklch(0.922 0 0); 
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 /* Light Mode */
 html.light {
+  /* Theme-specific variables that can be overridden by user settings */
   --page-bg-image: url("/assets/lightcurve_background.png"); /* Light mode background */
   --page-bg-color: #ffffff; /* Webpage background in light mode */
   --bg-color: #ffffff; /* WelcomeWindow background in light mode */
@@ -118,6 +153,7 @@ html.light {
 
 /* Dark Mode */
 html.dark {
+  /* Theme-specific variables that can be overridden by user settings */
   --page-bg-image: url("/assets/curve_background.png"); /* Dark mode background */
   --page-bg-color: gray; /* Webpage background in dark mode */
   --bg-color: #000000; /* WelcomeWindow background in dark mode */
@@ -247,4 +283,3 @@ html.dark {
     @apply bg-background text-foreground;
   }
 }
-

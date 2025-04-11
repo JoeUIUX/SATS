@@ -1,0 +1,511 @@
+/* SettingsWindow.module.css */
+.settingsWindow {
+    width: 700px; /* Increased for background preview grid */
+    max-width: 90vw;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Dark mode adjustments using global classes */
+  :global(html.dark) .settingsWindow {
+    background-color: #1e1e1e;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    cursor: grab;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  :global(html.dark) .header {
+    background-color: #2c2c2c;
+    border-bottom: 1px solid #444;
+  }
+  
+  :global(html.light) .header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .header:active {
+    cursor: grabbing;
+  }
+  
+  .windowTitle {
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .titleIcon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  }
+  
+  .closeButton {
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .closeButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  :global(html.dark) .closeButton {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  :global(html.dark) .closeButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .contentArea {
+    padding: 16px;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  
+  /* Tabs styling */
+  .tabsContainer {
+    display: flex;
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  :global(html.dark) .tabsContainer {
+    background-color: #2c2c2c;
+    border-bottom: 1px solid #444;
+  }
+  
+  .tabButton {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 8px 12px;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .tabButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html.dark) .tabButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .activeTab {
+    background-color: #00bcd4;
+    color: white;
+  }
+  
+  :global(html.dark) .activeTab {
+    background-color: #008c9e;
+  }
+  
+  .activeTab:hover {
+    background-color: #00acc1;
+  }
+  
+  :global(html.dark) .activeTab:hover {
+    background-color: #007c8e;
+  }
+  
+  .tabIcon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+  }
+  
+  /* Settings section */
+  .settingsSection {
+    padding: 16px;
+  }
+  
+  .settingGroup {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  :global(html.dark) .settingGroup {
+    border-bottom: 1px solid #444;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  /* Background selector */
+  .backgroundSelector {
+    margin-top: 12px;
+  }
+  
+  .backgroundGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .backgroundOption {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  .backgroundOption:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .selectedBackground {
+    border-color: #00bcd4;
+  }
+  
+  :global(html.dark) .selectedBackground {
+    border-color: #00acc1;
+  }
+  
+  .backgroundPreview {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    background-color: #f5f5f5;
+  }
+  
+  :global(html.dark) .backgroundPreview {
+    background-color: #333;
+  }
+  
+  .backgroundPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .solidColorPreview {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+  }
+  
+  .backgroundName {
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Upload background */
+  .uploadBackground {
+    margin-bottom: 24px;
+  }
+  
+  .uploadBackground h4 {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  
+  .fileInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  :global(html.dark) .fileInput {
+    background-color: #333;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  .smallNote {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  :global(html.dark) .smallNote {
+    color: #aaa;
+  }
+  
+  /* Color picker */
+  .colorPicker {
+    margin-bottom: 24px;
+  }
+  
+  .colorPicker h4 {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  
+  .colorInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .colorInput {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .colorText {
+    flex: 1;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 14px;
+  }
+  
+  :global(html.dark) .colorText {
+    background-color: #333;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  /* Font selector */
+  .fontSelector {
+    margin-top: 12px;
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+    background-color: #fff;
+  }
+  
+  :global(html.dark) .select {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  .fontPreview {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    min-height: 80px;
+  }
+  
+  :global(html.dark) .fontPreview {
+    border-color: #444;
+  }
+  
+  /* Button styles */
+  .buttonRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 24px;
+    gap: 12px;
+  }
+  
+  .saveButton {
+    padding: 8px 16px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  
+  .saveButton:hover {
+    background-color: #00acc1;
+  }
+  
+  .saveButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  :global(html.dark) .saveButton:disabled {
+    background-color: #666;
+  }
+  
+  .loadingSpinner {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    margin-right: 6px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .savedMessage {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    animation: fadeOut 3s forwards;
+  }
+  
+  .successMessage {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .errorMessage {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  :global(html.dark) .successMessage {
+    background-color: rgba(21, 87, 36, 0.2);
+    color: #5bcc7a;
+  }
+  
+  :global(html.dark) .errorMessage {
+    background-color: rgba(114, 28, 36, 0.2);
+    color: #f88c8c;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* About tab styles */
+  .aboutInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .logoContainer {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 120px;
+    height: auto;
+  }
+  
+  .appTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .versionInfo {
+    background-color: #f5f5f5;
+    padding: 12px 20px;
+    border-radius: 8px;
+    min-width: 250px;
+    margin-bottom: 24px;
+  }
+  
+  :global(html.dark) .versionInfo {
+    background-color: #2c2c2c;
+  }
+  
+  .versionRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .versionLabel {
+    font-weight: 600;
+    color: #666;
+  }
+  
+  :global(html.dark) .versionLabel {
+    color: #aaa;
+  }
+  
+  .versionValue {
+    font-family: 'Courier New', monospace;
+  }
+  
+  .aboutText {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+  
+  .aboutText h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .aboutText ul {
+    padding-left: 20px;
+  }
+  
+  .aboutText li {
+    margin-bottom: 6px;
+  }
+  
+  /* Drag handle */
+  .drag-handle {
+    cursor: grab !important;
+  }
+  
+  .drag-handle:active {
+    cursor: grabbing !important;
+  }

@@ -14,7 +14,7 @@ body {
   background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
-  transition: background-color .4s, color .4s;
+  transition: background-color .4s, color .4s, background-image .4s;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -88,7 +88,7 @@ input:checked + .slider:before {
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  transition: background-color .4s, color .4s;
+  transition: background-color .4s, color .4s, background-image .4s;
   background-color: var(--page-bg-color);
   color: var(--text-color);
 }
@@ -759,6 +759,10 @@ html.dark {
 
 .opacity-25 {
   opacity: .25;
+}
+
+.opacity-60 {
+  opacity: .6;
 }
 
 .opacity-75 {

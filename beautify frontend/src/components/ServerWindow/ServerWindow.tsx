@@ -8,6 +8,7 @@ import { testWebSocketConnection } from "@/utils/mccUtils";
 
 interface ServerWindowProps {
   onClose: () => void;
+  onMinimize: (status: string) => void; // Prop for minimization
   zIndex: number; 
   onMouseDown: () => void; 
   bringWindowToFront: (windowName: WindowName) => void;
@@ -18,18 +19,20 @@ interface ServerWindowProps {
 const ServerWindow: React.FC<ServerWindowProps> = ({ 
   zIndex, 
   onMouseDown, 
-  onClose, 
+  onClose,
+  onMinimize,
   bringWindowToFront, 
   windowZIndexes, 
   zIndexCounter 
 }) => {
   const [serverAddress, setServerAddress] = useState<string>("");
-  const [serverPort, setServerPort] = useState<string>("");
+  const [serverPort, setServerPort] = useState<string>("9377"); // Default MCC port
   const [status, setStatus] = useState<string>("Disconnected");
   const [isConnecting, setIsConnecting] = useState<boolean>(false);
   const [connectFailed, setConnectFailed] = useState<boolean>(false);
   const [logs, setLogs] = useState<{ timestamp: string; message: string }[]>([]);
   const [wsConnectionVerified, setWsConnectionVerified] = useState<boolean>(false);
+  const [shouldAutoMinimize, setShouldAutoMinimize] = useState<boolean>(false);
 
   const logsEndRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
@@ -37,11 +40,34 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
 
   // Create portal element once on mount
   const [portalElement] = useState(() => {
+    const existingPortal = document.getElementById("serverWindow-root");
+    if (existingPortal) {
+      return existingPortal;
+    }
     const element = document.createElement("div");
     element.id = "serverWindow-root";
     document.body.appendChild(element);
     return element;
   });
+
+  // Initialize with previous values from localStorage if available
+  useEffect(() => {
+    try {
+      const socketInfo = localStorage.getItem('mccSocketInfo');
+      if (socketInfo) {
+        const info = JSON.parse(socketInfo);
+        if (info.address) {
+          const parts = info.address.split(':');
+          if (parts.length === 2) {
+            setServerAddress(parts[0]);
+            setServerPort(parts[1]);
+          }
+        }
+      }
+    } catch (e) {
+      console.error("Error loading saved server info:", e);
+    }
+  }, []);
 
   // Important: Store position in sessionStorage to maintain it across renders
   const savedPosition = sessionStorage.getItem('serverWindowPosition');
@@ -53,12 +79,6 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
   const [position, setPosition] = useState(defaultPosition);
   const nodeRef = useRef<HTMLDivElement>(null!);
   
-  // Debug state values being captured
-  useEffect(() => {
-    console.log("Server Address:", serverAddress);
-    console.log("Server Port:", serverPort);
-  }, [serverAddress, serverPort]);
-
   // Auto-scroll logs to bottom when new logs are added
   useEffect(() => {
     if (logsEndRef.current) {
@@ -66,15 +86,33 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
     }
   }, [logs]);
 
+  // Auto-minimize after successful connection and navigation
+  useEffect(() => {
+    // If shouldAutoMinimize flag is set, minimize the window
+    if (shouldAutoMinimize) {
+      console.log("🔄 Auto-minimizing ServerWindow after navigation");
+      onMinimize(status);
+      setShouldAutoMinimize(false);
+    }
+  }, [shouldAutoMinimize, onMinimize, status]);
+
   const appendLog = (message: string) => {
     const timestamp = new Date().toLocaleString();
     setLogs((prevLogs) => [...prevLogs, { timestamp, message }]);
   };
 
-  // When the window is clicked, bring it to front using the passed function
+  // When the window is clicked, bring it to front
   const handleWindowClick = () => {
     console.log(`Clicked ServerWindow, bringing to front`);
     onMouseDown();
+  };
+
+  // Handle minimize button click - call the parent component's onMinimize function
+  const handleMinimize = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("Minimizing ServerWindow, current status:", status);
+    onMinimize(status);
   };
 
   // Directly test WebSocket connectivity
@@ -86,6 +124,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       if (isConnected) {
         appendLog("✅ Direct WebSocket connection successful!");
         appendLog("✅ REAL CONNECTION MODE is possible");
+        setWsConnectionVerified(true);
       } else {
         appendLog("❌ Direct WebSocket connection failed.");
         appendLog("⚠️ This indicates SIMULATION MODE will likely be used");
@@ -99,105 +138,8 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
     }
   };
 
-  const checkServerAccessibility = async (address: string, port: string) => {
-    try {
-      // Create an AbortController to handle the timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
-      
-      // For WebSocket servers, attempting a direct Socket connection is better than HTTP
-      // Try using a basic TCP socket-like approach through the fetch API
-      
-      try {
-        // First attempt: Try connecting via WebSocket directly
-        const wsPromise = new Promise<boolean>((resolve, reject) => {
-          const ws = new WebSocket(`ws://${address}:${port}`);
-          
-          // Connection opened successfully
-          ws.onopen = () => {
-            clearTimeout(timeoutId);
-            ws.close(); // Close the connection
-            resolve(true);
-          };
-          
-          // Connection error
-          ws.onerror = (error) => {
-            // For WebSocket errors, don't immediately reject
-            // Sometimes the server is reachable but not as a WebSocket
-            console.log(`WebSocket connection failed: ${error}`);
-            resolve(false);
-          };
-          
-          // Set a timeout for the WebSocket connection
-          setTimeout(() => {
-            ws.close();
-            resolve(false);
-          }, 2000);
-        });
-        
-        // If the WebSocket connection succeeds, return true
-        const wsResult = await wsPromise;
-        if (wsResult) {
-          return true;
-        }
-      } catch (wsError) {
-        console.log("Error testing WebSocket connection:", wsError);
-        // Continue to other check methods
-      }
-      
-      // Second attempt: Try a fetch request with no-cors mode
-      // This might succeed even if the server doesn't handle HTTP correctly
-      try {
-        const fetchResponse = await fetch(`http://${address}:${port}`, { 
-          method: 'HEAD',
-          mode: 'no-cors', // Allow checking servers that don't support CORS
-          cache: 'no-cache',
-          signal: controller.signal // Use AbortController signal for timeout
-        });
-        
-        // If we get here, some type of server responded (even if invalid HTTP)
-        clearTimeout(timeoutId);
-        return true;
-      } catch (fetchError) {
-        // Fetch failed, but that doesn't necessarily mean the server is unreachable
-        console.log("Fetch check failed:", fetchError);
-        // Continue to the socket check
-      }
-      
-      // Third attempt: If both WebSocket and fetch failed, consider checking port via TCP
-      // For browsers, we can use a simple image load trick as a last resort
-      const imgCheck = new Promise<boolean>((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);  // This probably won't happen for non-HTTP servers
-        img.onerror = () => {
-          // An error means the connection attempt was made but failed
-          // For many server types, this actually means the port is reachable
-          // but the server doesn't respond with a valid image
-          resolve(true);
-        };
-        img.src = `http://${address}:${port}?${new Date().getTime()}`;
-        
-        // Set a timeout for this check as well
-        setTimeout(() => resolve(false), 2000);
-      });
-      
-      return await imgCheck;
-    } catch (error) {
-      // Check if the error is due to timeout (AbortError)
-      if (error instanceof DOMException && error.name === 'AbortError') {
-        console.log(`Server accessibility check timed out for ${address}:${port}`);
-      } else {
-        console.log(`Server accessibility check failed for ${address}:${port}:`, error);
-      }
-      return false;
-    }
-  };
-
-  /*
   const handleConnect = async () => {
     console.log("Connect button pressed");
-    console.log("Server Address:", serverAddress);
-    console.log("Server Port:", serverPort);
     
     // Reset status
     setConnectFailed(false);
@@ -211,43 +153,51 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       alert("Please provide both Server Address and Port.");
       return;
     }
-  
+    
     try {
+      console.log("Starting connection process");
       setIsConnecting(true);
       setStatus("Connecting...");
-      appendLog(`Attempting to connect to MCC server at ${trimmedAddress}:${trimmedPort}...`);
+      appendLog(`Attempting to connect to MCC server at ${trimmedAddress}:${trimmedPort} via proxy...`);
       
-      // Add the server accessibility check here, before the WebSocket test
-      const isServerReachable = await checkServerAccessibility(trimmedAddress, trimmedPort);
-      if (!isServerReachable) {
-        appendLog(`❌ Server at ${trimmedAddress}:${trimmedPort} is not reachable. Check that:`);
-        appendLog("   1. The server is running");
-        appendLog("   2. You're on the same network");
-        appendLog("   3. Any firewalls allow the connection");
-        appendLog("   4. The IP address and port are correct");
-        setStatus("Server Unreachable");
+      // First try to check if the proxy server is running
+      try {
+        appendLog("🔍 Checking if proxy server is running...");
+        
+        const proxyCheck = await fetch("http://localhost:8080", {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Accept': 'text/plain'
+          }
+        });
+        
+        if (proxyCheck.ok) {
+          appendLog("✅ Proxy server is running and accessible");
+        } else {
+          appendLog(`❌ Proxy server returned status ${proxyCheck.status}`);
+          appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
+          setStatus("Proxy Unavailable");
+          setConnectFailed(true);
+          setIsConnecting(false);
+          return;
+        }
+      } catch (error) {
+        console.error("Proxy check error:", error);
+        appendLog("❌ Proxy server is not running or not reachable");
+        appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
+        setStatus("Proxy Unavailable");
         setConnectFailed(true);
         setIsConnecting(false);
         return;
       }
       
-      // First, directly test the WebSocket connection
+      // Perform WebSocket connectivity test - this helps determine if we can use real mode
       const wsConnected = await testDirectWebSocketConnection(trimmedAddress, trimmedPort);
-      setWsConnectionVerified(wsConnected);
       
-      if (!wsConnected) {
-        appendLog("⚠️ WebSocket connection failed. Verifying server status via backend...");
-        appendLog("⚠️ APPLICATION WILL USE SIMULATION MODE FOR SOCKET COMMUNICATIONS");
-      }
-      
+      // Try to connect via the proxy and backend
       console.log(`Sending connection request to ${backendUrl}/connect_mcc`);
-      console.log("Request data:", {
-        server_address: trimmedAddress,
-        server_port: trimmedPort,
-        server_id: "mcc_client", // Add an ID to identify the connection
-        force_real: true
-      });
-  
+      
       const response = await fetch(`${backendUrl}/connect_mcc`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -255,10 +205,11 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           server_address: trimmedAddress,
           server_port: trimmedPort,
           server_id: "mcc_client",
-          force_real: true
+          force_real: wsConnected, // Only force real mode if websocket test succeeded
+          use_proxy: true
         }),
       });
-  
+      
       // Process the response
       let result;
       let errorText = "";
@@ -266,6 +217,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       try {
         // Try to parse the response as JSON
         result = await response.json();
+        console.log("Backend response:", result);
       } catch (error) {
         // If parsing fails, get the raw text
         errorText = await response.text();
@@ -277,10 +229,11 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
         return;
       }
       
-      console.log("Backend response:", result);
-  
+      console.log("Successfully parsed response:", result);
+      
       // Handle different response statuses
       if (result.status === "success") {
+        console.log("Connection successful, handling success case");
         // Verify if this is a fully verified connection or just a simulated success
         if (result.verified === true) {
           setStatus("Connected");
@@ -303,12 +256,12 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           appendLog("🔄 SIMULATION MODE ACTIVE (Unverified Connection)");
           appendLog("⚠️ Connection reported as successful but not fully verified.");
         }
-  
+      
         // Save the socket connection info in localStorage
         const mccSocketInfo = {
           isReal: !result.simulation && (result.verified || wsConnected),
-          address: `${serverAddress}:${serverPort}`,
-          simulation: result.simulation || !wsConnected, // Consider it simulation if WS failed
+          address: `${trimmedAddress}:${trimmedPort}`,
+          simulation: result.simulation || !wsConnected,
           verified: result.verified || wsConnected
         };
         
@@ -345,205 +298,12 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
         sessionStorage.setItem('windowVisibility', JSON.stringify(windowVisibility));
         console.log("Saved window state before navigation:", windowVisibility);
         
-        // If the connection is at least somewhat successful, navigate to main
-        appendLog("🚀 Navigating to main application screen...");
-        setTimeout(() => {
-          navigate("/main");
-        }, 1000);
-      } else if (result.status === "partial") {
-        setStatus("Partial Connection");
-        appendLog(`⚠️ ${result.message}`);
-        appendLog("🔄 SIMULATION MODE ACTIVE - Partial connection detected");
-        appendLog("⚠️ The application will use simulation mode for all features.");
-        setConnectFailed(true);
-      } else {
-        setStatus("Failed to Connect");
-        appendLog(`❌ ${result.message}`);
-        appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
-        setConnectFailed(true);
-      }
-    } catch (error) {
-      console.error("Error connecting to MCC:", error);
-      setStatus("Connection Error");
-      appendLog(`❌ Connection error: ${error instanceof Error ? error.message : String(error)}`);
-      appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
-      setConnectFailed(true);
-    } finally {
-      setIsConnecting(false);
-    }
-  };
-
-  */
-
-  const handleConnect = async () => {
-    console.log("Connect button pressed");
-    console.log("Server Address:", serverAddress);
-    console.log("Server Port:", serverPort);
-    
-    // Reset status
-    setConnectFailed(false);
-    setWsConnectionVerified(false);
-    
-    // Trim any whitespace from inputs
-    const trimmedAddress = serverAddress.trim();
-    const trimmedPort = serverPort.trim();
-    
-    if (!trimmedAddress || !trimmedPort) {
-      alert("Please provide both Server Address and Port.");
-      return;
-    }
-    
-    try {
-      console.log("Starting connection process");
-      setIsConnecting(true);
-      setStatus("Connecting...");
-      appendLog(`Attempting to connect to MCC server at ${trimmedAddress}:${trimmedPort} via proxy...`);
-      
-      // First try to check if the proxy server is running
-      try {
-        appendLog("🔍 Checking if proxy server is running...");
-        
-        const proxyCheck = await fetch("http://localhost:8080", {
-          method: 'GET',
-          mode: 'cors', // Explicitly request CORS
-          headers: {
-            'Accept': 'text/plain'
-          }
-        });
-        
-        if (proxyCheck.ok) {
-          appendLog("✅ Proxy server is running and accessible");
-        } else {
-          appendLog(`❌ Proxy server returned status ${proxyCheck.status}`);
-          appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
-          setStatus("Proxy Unavailable");
-          setConnectFailed(true);
-          setIsConnecting(false);
-          return;
-        }
-      } catch (error) {
-        console.error("Proxy check error:", error);
-        appendLog("❌ Proxy server is not running or not reachable");
-        appendLog("ℹ️ Please start the proxy server using 'node mcc-proxy.js'");
-        setStatus("Proxy Unavailable");
-        setConnectFailed(true);
-        setIsConnecting(false);
-        return;
-      }
-      
-      // Try to connect via the proxy
-      console.log(`Sending connection request to ${backendUrl}/connect_mcc`);
-      console.log("Request data:", {
-        server_address: trimmedAddress,
-        server_port: trimmedPort,
-        server_id: "mcc_client",
-        force_real: true,
-        use_proxy: true
-      });
-      
-      const response = await fetch(`${backendUrl}/connect_mcc`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          server_address: trimmedAddress,
-          server_port: trimmedPort,
-          server_id: "mcc_client",
-          force_real: true,
-          use_proxy: true  // Add a flag to indicate we're using the proxy
-        }),
-      });
-      
-      // Process the response
-      let result;
-      let errorText = "";
-      
-      try {
-        // Try to parse the response as JSON
-        result = await response.json();
-        console.log("Backend response:", result);
-      } catch (error) {
-        // If parsing fails, get the raw text
-        errorText = await response.text();
-        console.error("Non-JSON response:", errorText);
-        appendLog(`HTTP error! Status: ${response.status} - ${errorText}`);
-        setStatus("Connection Error");
-        setConnectFailed(true);
-        setIsConnecting(false);
-        return;
-      }
-      
-      console.log("Successfully parsed response:", result);
-      
-      // Handle different response statuses
-      if (result.status === "success") {
-        console.log("Connection successful, handling success case");
-        // Verify if this is a fully verified connection or just a simulated success
-        if (result.verified === true) {
-          setStatus("Connected");
-          appendLog(`✅ ${result.message}`);
-          if (result.wsConnected) {
-            appendLog("✅ WebSocket and backend connection tests both successful!");
-            appendLog("✅ USING REAL CONNECTION MODE - Test results will use real data");
-          } else {
-            appendLog("⚠️ Backend reports success but WebSocket test failed.");
-            appendLog("🔄 ENTERING SIMULATION MODE - Test results will be simulated");
-          }
-        } else if (result.simulation === true) {
-          setStatus("Connected (Simulation)");
-          appendLog(`ℹ️ ${result.message}`);
-          appendLog("🔄 SIMULATION MODE ACTIVE - All test results will be generated");
-          appendLog("ℹ️ No real hardware communication will occur");
-        } else {
-          setStatus("Connected (Unverified)");
-          appendLog(`⚠️ ${result.message}`);
-          appendLog("🔄 SIMULATION MODE ACTIVE (Unverified Connection)");
-          appendLog("⚠️ Connection reported as successful but not fully verified.");
-        }
-      
-        // Save the socket connection info in localStorage
-        const mccSocketInfo = {
-          isReal: !result.simulation && (result.verified || result.wsConnected),
-          address: `${trimmedAddress}:${trimmedPort}`,
-          simulation: result.simulation || !result.wsConnected, // Consider it simulation if WS failed
-          verified: result.verified || result.wsConnected
-        };
-        
-        // Store in localStorage so it persists across navigation
-        localStorage.setItem('mccSocketInfo', JSON.stringify(mccSocketInfo));
-        appendLog("📦 Connection information saved for use in the application.");
-        
-        // Add explicit simulation status indicator
-        if (mccSocketInfo.simulation) {
-          appendLog("⚠️ SIMULATION MODE will be used for all hardware operations");
-        } else {
-          appendLog("✅ REAL MODE will be used for hardware operations");
-        }
-        
-        // Check if ToTestList is visible from sessionStorage
-        const savedVisibility = sessionStorage.getItem('windowVisibility');
-        let windowVisibility = { 
-          ToTestList: false,
-          ServerWindow: true, // Keep ServerWindow visible
-          ThreeDModelWindow: false
-        };
-        
-        if (savedVisibility) {
-          try {
-            const parsedVisibility = JSON.parse(savedVisibility);
-            windowVisibility.ToTestList = parsedVisibility.ToTestList || false;
-            windowVisibility.ThreeDModelWindow = parsedVisibility.ThreeDModelWindow || false;
-          } catch (e) {
-            console.error("Error parsing window visibility:", e);
-          }
-        }
-        
-        // Store window state in sessionStorage for persistence with ServerWindow visible
-        sessionStorage.setItem('windowVisibility', JSON.stringify(windowVisibility));
-        console.log("Saved window state before navigation:", windowVisibility);
-        
-        // If the connection is at least somewhat successful, navigate to main
+        // Navigate to main screen
         appendLog("🚀 Navigating to main application screen...");
         console.log("📱 About to navigate to /main");
+        
+        // Set flag to auto-minimize after navigation
+        setShouldAutoMinimize(true);
         
         // Add a small delay to ensure all state updates complete
         setTimeout(() => {
@@ -573,12 +333,14 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       appendLog(`❌ Connection error: ${error instanceof Error ? error.message : String(error)}`);
       appendLog("🔄 SIMULATION MODE will be used if you continue to main screen");
       setConnectFailed(true);
+    } finally {
       setIsConnecting(false);
     }
   };
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Check for dark mode
   useEffect(() => {
     const checkDarkMode = () => {
       const isDark = document.documentElement.classList.contains("dark");
@@ -604,11 +366,6 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
     
     return () => observer.disconnect();
   }, []);
-  
-  // Ensure light/dark mode styling is applied on render
-  useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains("dark"));
-  }, []);
 
   // Get the effective z-index value
   const effectiveZIndex = windowZIndexes["ServerWindow"] || zIndex;
@@ -617,6 +374,17 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
   useEffect(() => {
     sessionStorage.setItem('serverWindowPosition', JSON.stringify(position));
   }, [position]);
+
+  // Get status color based on connection state
+  const getStatusColor = () => {
+    if (status === 'Connected') return '#10b981'; // Green
+    if (status === 'Connected (Simulation)') return '#f59e0b'; // Amber
+    if (status === 'Connecting...') return '#3b82f6'; // Blue
+    if (status.includes('Failed') || status.includes('Error') || status === 'Server Unreachable') {
+      return '#ef4444'; // Red
+    }
+    return '#6b7280'; // Gray
+  };
 
   return createPortal(
     <Draggable
@@ -640,24 +408,31 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           color: isDarkMode ? "#fff" : "#000",
           border: `1px solid ${isDarkMode ? "#333" : "#ddd"}`,
           borderRadius: "10px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
-          top: 0,
-          left: 0
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)"
         }}
         onClick={handleWindowClick}
       >
         <div className={`${styles.header} drag-handle`}>
           <h2>Server Connection</h2>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            className={styles.closeButton}
-            style={{ color: isDarkMode ? "white" : "black" }}
-          >
-            ✖
-          </button>
+          <div className={styles.buttonContainer}>
+            <button
+              onClick={handleMinimize}
+              className={styles.minimizeButton}
+              title="Minimize"
+            >
+              —
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onClose();
+              }}
+              className={styles.closeButton}
+              title="Close"
+            >
+              ✖
+            </button>
+          </div>
         </div>
         <div className={styles.form}>
           <input
@@ -692,76 +467,62 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           </button>
         </div>
         
-
-<div style={{ 
-  padding: '8px 0',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center'
-}}>
-  <p style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-    Status: 
-    <span style={{ 
-      fontWeight: 'bold',
-      color: status === 'Connected' ? '#10b981' : 
-            status === 'Connected (Simulation)' ? '#f59e0b' :
-            status === 'Connecting...' ? '#3b82f6' :
-            status.includes('Failed') || status.includes('Error') || status === 'Server Unreachable' ? '#ef4444' : 
-            '#6b7280'
-    }}>
-      {status}
-    </span>
-    
-    {/* Show simulation badge when simulation is likely being used */}
-    {(status.includes('Simulation') || 
-      (status === 'Connected' && serverAddress.toLowerCase() === 'localhost') ||
-      status === 'Partial Connection') && (
-      <span style={{
-        display: 'inline-block',
-        backgroundColor: '#ff9800',
-        color: 'white',
-        fontWeight: 'bold',
-        padding: '2px 8px',
-        borderRadius: '4px',
-        fontSize: '11px'
-      }}>
-        SIMULATION MODE
-      </span>
-    )}
-    
-    {/* Only show real mode badge when verified and not localhost */}
-    {status === 'Connected' && 
-      wsConnectionVerified && 
-      serverAddress.toLowerCase() !== 'localhost' && (
-      <span style={{
-        display: 'inline-block',
-        backgroundColor: '#4caf50',
-        color: 'white',
-        fontWeight: 'bold',
-        padding: '2px 8px',
-        borderRadius: '4px',
-        fontSize: '11px'
-      }}>
-        ACTUAL CONNECTION
-      </span>
-    )}
-  </p>
-  
-  {wsConnectionVerified && (
-    <span style={{
-      backgroundColor: '#10b981', 
-      color: 'white', 
-      padding: '2px 8px', 
-      borderRadius: '9999px', 
-      fontSize: '12px'
-    }}>
-      WebSocket Verified
-    </span>
-  )}
-</div>
+        <div style={{ 
+          padding: '8px 0',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div className={styles.statusIndicator}>
+            Status: 
+            <span style={{ 
+              color: getStatusColor(),
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              {status}
+              
+              {/* Pulse animation for "Connecting..." state */}
+              {status === 'Connecting...' && (
+                <span className={styles.pulse}>⟲</span>
+              )}
+            </span>
+            
+            {/* Show simulation badge when appropriate */}
+            {(status.includes('Simulation') || 
+              (status === 'Connected' && serverAddress.toLowerCase() === 'localhost') ||
+              status === 'Partial Connection') && (
+              <span className={`${styles.statusBadge} ${styles.simulationBadge}`}>
+                SIMULATION MODE
+              </span>
+            )}
+            
+            {/* Only show real mode badge when verified and not localhost */}
+            {status === 'Connected' && 
+              wsConnectionVerified && 
+              serverAddress.toLowerCase() !== 'localhost' && (
+              <span className={`${styles.statusBadge} ${styles.realBadge}`}>
+                REAL CONNECTION
+              </span>
+            )}
+          </div>
+          
+          {wsConnectionVerified && (
+            <span style={{
+              backgroundColor: '#10b981', 
+              color: 'white', 
+              padding: '2px 8px', 
+              borderRadius: '9999px', 
+              fontSize: '12px'
+            }}>
+              WebSocket Verified
+            </span>
+          )}
+        </div>
         
         <div className={styles.logs}>
-          <h3>Logs</h3>
+          <h3>Connection Logs</h3>
           <div
             className={styles.logWindow}
             style={{
@@ -814,8 +575,9 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           <p style={{ margin: '0 0 4px 0', fontWeight: 'bold' }}>Connection Notes:</p>
           <ul style={{ margin: '0', paddingLeft: '20px' }}>
             <li>Ensure the MCC server is running at the specified address/port</li>
-            <li>Check that you are connected to the network</li>
-            <li>To enter simulation mode, connect to localhost:5000</li>
+            <li>Start the proxy with <code>node mcc-proxy.js</code> before connecting</li>
+            <li>To use simulation mode, connect to any other arbitrary server address</li>
+            <li>Minimise this window to keep the connection while working</li>
           </ul>
         </div>
       </div>
