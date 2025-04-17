@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Draggable from "react-draggable";
 import styles from "./SettingsWindow.module.css";
 import { WindowName } from "@/types/types";
+import FontLoader from '../FontLoader/FontLoader';
 
 // Define supported fonts for the application
 const SUPPORTED_FONTS = [
@@ -49,6 +50,7 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
   const [bgColor, setBgColor] = useState<string>("#000000");
   const [lightBgColor, setLightBgColor] = useState<string>("#ffffff");
   const [currentViewMode, setCurrentViewMode] = useState<'dark' | 'light'>('dark');
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
   
   // App version info
   const appVersion = "1.0.0";
@@ -78,6 +80,30 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
     document.body.appendChild(element);
     return element;
   });
+
+// 1. Create a ref for the font preview element
+const fontPreviewRef = useRef<HTMLDivElement>(null);
+
+// 2. Add a function to directly apply the font to the preview element
+const applyFontToPreview = useCallback((fontFamily: string) => {
+  if (fontPreviewRef.current) {
+    fontPreviewRef.current.style.fontFamily = fontFamily;
+    
+    // Force a repaint by briefly modifying another style property
+    fontPreviewRef.current.style.opacity = '0.99';
+    setTimeout(() => {
+      if (fontPreviewRef.current) {
+        fontPreviewRef.current.style.opacity = '1';
+      }
+    }, 10);
+  }
+}, []);
+
+// 3. Add effect to apply the font whenever it changes
+useEffect(() => {
+  const fontValue = SUPPORTED_FONTS.find(f => f.name === selectedFont)?.value || 'Arial, sans-serif';
+  applyFontToPreview(fontValue);
+}, [selectedFont, applyFontToPreview]);
   
   // Check for dark mode
   useEffect(() => {
@@ -182,86 +208,189 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
     }
   };
 
-  // Save settings to the backend
-  const saveSettings = async () => {
-    setIsLoading(true);
-    try {
-      const fontValue = SUPPORTED_FONTS.find(f => f.name === selectedFont)?.value || SUPPORTED_FONTS[0].value;
+  // Save settings to the backend, immediate font preview update
+const saveSettings = async () => {
+  setIsLoading(true);
+  try {
+    const fontValue = SUPPORTED_FONTS.find(f => f.name === selectedFont)?.value || 'Arial, sans-serif';
+    applyFontToPreview(fontValue);
+    
+    // Get the refreshThemeSettings function
+    const { refreshThemeSettings } = await import('@/utils/themeInitializer');
+    
+    const response = await fetch(`${backendUrl}/settings`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        font: fontValue,
+        background: selectedBackground,
+        background_light: selectedLightBackground,
+        backgroundColor: bgColor,
+        backgroundColorLight: lightBgColor
+      }),
+    });
+    
+    if (response.ok) {
+      setIsSaved(true);
+      setSavedMessage("Settings saved successfully!");
       
-      const response = await fetch(`${backendUrl}/settings`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          font: fontValue,
-          background: selectedBackground,        // Dark mode background
-          background_light: selectedLightBackground, // Light mode background
-          backgroundColor: bgColor,              // Dark mode solid color
-          backgroundColorLight: lightBgColor     // Light mode solid color
-        }),
+      // Apply font to document - COMPREHENSIVE APPROACH
+      document.documentElement.style.setProperty('--app-font-family', fontValue);
+      
+      // Force the font preview to update by re-rendering it
+      // This is done by triggering a state change
+      setSelectedFont(prevFont => {
+        // Re-set to the same value, but this will trigger a re-render with the new key
+        return prevFont;
       });
       
-      if (response.ok) {
-        setIsSaved(true);
-        setSavedMessage("Settings saved successfully!");
-        
-        // Apply font to document
-        document.documentElement.style.fontFamily = fontValue;
-        
-        // Apply background to document body based on current theme
-        applyBackground();
-        
-        // After 2 seconds, reset the saved state
-        setTimeout(() => {
-          setIsSaved(false);
-        }, 2000);
-      } else {
-        setSavedMessage("Error saving settings");
+      // Create or update the font style element
+      let fontStyle = document.getElementById('app-font-style');
+      if (!fontStyle) {
+        fontStyle = document.createElement('style');
+        fontStyle.id = 'app-font-style';
+        document.head.appendChild(fontStyle);
       }
-    } catch (error) {
-      console.error("Error saving settings:", error);
-      setSavedMessage("Error: Could not connect to server");
-    } finally {
-      setIsLoading(false);
+      
+      // Enhanced CSS with highest specificity selectors to override component styles
+      // Target all components directly, especially those in the sidebar
+      fontStyle.textContent = `
+        /* General elements */
+        html body,
+        html button,
+        html input,
+        html select,
+        html textarea,
+        html a,
+        html p,
+        html h1, html h2, html h3, html h4, html h5, html h6,
+        html span, html div,
+        
+        /* Application components with direct targeting */
+        html .popup,
+        html .welcomeWindow,
+        html .mainScreen,
+        html .content,
+        html .aboutSection,
+        html .checkoutSection,
+        html .settingsWindow,
+        html .topSection,
+        html .bottomSection,
+        
+        /* Sidebar specific elements - high specificity */
+        html .sidebar,
+        html .sidebar *,
+        html .menu,
+        html .menu *,
+        html .menuItem,
+        html .profilesButton,
+        html .profileContainer,
+        html .profileSidebarItem,
+        html .profileButtonGroup,
+        html .settingsContainer,
+        
+        /* Tabs and interactive elements */
+        html .tabsContainer *,
+        html .activeTab,
+        html .tabButton,
+        
+        /* Force all elements to use the selected font */
+        html * {
+          font-family: ${fontValue} !important;
+        }
+      `;
+      
+      // Apply background to document body based on current theme using the improved refreshThemeSettings
+      if (refreshThemeSettings) {
+        await refreshThemeSettings();
+      } else {
+        // Fallback to direct application if import fails
+        applyBackground();
+      }
+      
+      // After 2 seconds, reset the saved state
+      setTimeout(() => {
+        setIsSaved(false);
+      }, 2000);
+      
+      // Also directly update sidebar elements for immediate effect
+      const sidebarItems = document.querySelectorAll('.sidebar, .menuItem, .profilesButton, .profileSidebarItem');
+      sidebarItems.forEach(el => {
+        (el as HTMLElement).style.fontFamily = fontValue;
+      });
+    } else {
+      setSavedMessage("Error saving settings");
     }
-  };
+  } catch (error) {
+    console.error("Error saving settings:", error);
+    setSavedMessage("Error: Could not connect to server");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // Apply background to the page
-  const applyBackground = () => {
-    // Determine which background to apply based on current theme mode
-    const bgPath = isDarkMode ? selectedBackground : selectedLightBackground;
-    const bgColorValue = isDarkMode ? bgColor : lightBgColor;
-    
-    // Apply background to document body
-    if (bgPath === "none") {
-      document.body.style.backgroundImage = "none";
-      document.body.style.backgroundColor = bgColorValue;
+const applyBackground = async () => {
+  // Import the refreshThemeSettings function dynamically
+  const { refreshThemeSettings, applyBackgroundSettings } = await import('@/utils/themeInitializer');
+  
+  // Determine which background to apply based on current theme mode
+  const bgPath = isDarkMode ? selectedBackground : selectedLightBackground;
+  const bgColorValue = isDarkMode ? bgColor : lightBgColor;
+  
+  try {
+    // First, try to apply using the refreshThemeSettings function which fetches fresh settings
+    if (refreshThemeSettings) {
+      console.log("Using refreshThemeSettings to apply background changes");
+      await refreshThemeSettings();
     } else {
-      document.body.style.backgroundImage = `url(${bgPath})`;
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundPosition = "center";
-      document.body.style.backgroundRepeat = "no-repeat";
+      // Fallback: Apply directly if we couldn't import the function
+      console.log("Using direct method to apply background changes");
+      
+      // Create a settings object that mimics what would come from the server
+      const settings = {
+        background: selectedBackground,
+        background_light: selectedLightBackground,
+        backgroundColor: bgColor,
+        backgroundColorLight: lightBgColor
+      };
+      
+      // If we have the applyBackgroundSettings function, use it
+      if (applyBackgroundSettings) {
+        applyBackgroundSettings(settings, isDarkMode);
+      } else {
+        // Otherwise, fall back to direct DOM manipulation
+        if (bgPath === "none") {
+          document.body.style.backgroundImage = "none";
+          document.body.style.backgroundColor = bgColorValue;
+        } else {
+          document.body.style.backgroundImage = `url(${bgPath})`;
+          document.body.style.backgroundSize = "cover";
+          document.body.style.backgroundPosition = "center";
+          document.body.style.backgroundRepeat = "no-repeat";
+        }
+      }
     }
     
-    // Also update the CSS variables in :root
-    // This ensures the background persists after page refresh
-    try {
-      // Tell the backend to apply the background
-      fetch(`${backendUrl}/apply-background`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          path: bgPath,
-          isDarkMode: isDarkMode
-        }),
-      });
-    } catch (error) {
-      console.error("Error applying background:", error);
-    }
-  };
+    // Tell the backend to apply the background
+    fetch(`${backendUrl}/apply-background`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        path: bgPath,
+        isDarkMode: isDarkMode
+      }),
+    }).catch(error => {
+      console.error("Error notifying backend about background change:", error);
+    });
+  } catch (error) {
+    console.error("Error applying background:", error);
+  }
+};
 
   // Handle background image upload
   const handleBackgroundUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -361,7 +490,27 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
     }
   };
 
-  return createPortal(
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isSelectOpen &&
+        document.querySelector(`.${styles.customSelect}`) && 
+        !(document.querySelector(`.${styles.customSelect}`) as HTMLElement).contains(event.target as Node)
+      ) {
+        setIsSelectOpen(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isSelectOpen, styles.customSelect]);
+
+  return (
+    <>
+      <FontLoader fontFamily={selectedFont} />
+      {createPortal(
     <Draggable
       nodeRef={nodeRef}
       handle=".drag-handle"
@@ -541,25 +690,81 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
               <div className={styles.settingGroup}>
                 <h3 className={styles.sectionTitle}>Font</h3>
                 <div className={styles.fontSelector}>
-                  <select
-                    value={selectedFont}
-                    onChange={(e) => setSelectedFont(e.target.value)}
-                    className={styles.select}
-                  >
-                    {SUPPORTED_FONTS.map((font) => (
-                      <option key={font.name} value={font.name}>
-                        {font.name}
-                      </option>
-                    ))}
-                  </select>
-                  
-                  <div className={styles.fontPreview} style={{ 
-                    fontFamily: SUPPORTED_FONTS.find(f => f.name === selectedFont)?.value 
-                  }}>
-                    <p>The quick brown fox jumps over the lazy dog.</p>
-                    <p>0123456789</p>
-                  </div>
-                </div>
+  {/* Custom select with fonts displayed in their own typeface */}
+  <div className={styles.customSelect}>
+    <button 
+      className={styles.customSelectButton}
+      onClick={() => setIsSelectOpen(!isSelectOpen)}
+      type="button"
+    >
+      <span>{selectedFont}</span>
+      <span>{isSelectOpen ? '▲' : '▼'}</span>
+    </button>
+    
+    {isSelectOpen && (
+      <div className={styles.customSelectOptions}>
+        {SUPPORTED_FONTS.map((font) => (
+          <div 
+            key={font.name} 
+            className={styles.customSelectOption}
+            onClick={() => {
+              setSelectedFont(font.name);
+              setIsSelectOpen(false);
+            }}
+            style={{
+              fontFamily: font.value
+            }}
+          >
+            {font.name}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+  
+  {/* Font preview with iframe that loads all fonts */}
+  <div className={styles.fontPreview}>
+  <h4 style={{ 
+    marginBottom: '8px', 
+    fontSize: '14px', 
+    fontWeight: '500' 
+  }}>Preview</h4>
+    <iframe
+      srcDoc={`
+        <html>
+        <head>
+          <!-- Load all fonts directly in the iframe -->
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+          <style>
+            body {
+              font-family: ${SUPPORTED_FONTS.find(f => f.name === selectedFont)?.value || 'Arial, sans-serif'};
+              margin: 0;
+              padding: 16px;
+              color: ${isDarkMode ? '#fff' : '#000'};
+              background-color: ${isDarkMode ? '#1e1e1e' : '#f5f5f5'};
+            }
+          </style>
+        </head>
+        <body>
+          <p>The quick brown fox jumps over the lazy dog.</p>
+          <p>0123456789</p>
+        </body>
+        </html>
+      `}
+      style={{
+        width: '100%',
+        height: '100px',
+        border: 'none',
+        overflow: 'hidden',
+        backgroundColor: 'transparent'
+      }}
+      title="Font Preview"
+    />
+  </div>
+</div>
               </div>
 
               <div className={styles.buttonRow}>
@@ -649,7 +854,9 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
       </div>
     </Draggable>,
     portalElement
+  )}
+  </>
   );
-};
+}
 
 export default SettingsWindow;

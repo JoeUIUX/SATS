@@ -4,6 +4,11 @@ import { createPortal } from "react-dom";
 import Draggable from "react-draggable";
 import { Button } from "@/components/ui";
 import { OBC1TestPanel } from "./components/OBC1TestPanel";
+import { OBC2TestPanel } from "./components/OBC2TestPanel";
+import { SBandTestPanel } from "./components/SBandTestPanel";
+import { UHFTestPanel } from "./components/UHFTestPanel";
+import { HEPSTestPanel } from "./components/HEPSTestPanel";
+
 import styles from "./CheckoutTestProgress.module.css";
 import { setSimulationMode } from '@/utils/mccUtils';
 
@@ -511,9 +516,109 @@ useEffect(() => {
                       />
                     )}
                     
+                    {item.header === "OBC-2" && (
+  <OBC2TestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "S-Band" && (
+  <SBandTestPanel
+    options={getComponentOptions(item.header)} // Pass only the filtered/checked options
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "UHF" && (
+  <UHFTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "HEPS" && (
+  <HEPSTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
                     {/* Add implementations for other component types here */}
                     {/* For now, show a placeholder for unimplemented components */}
-                    {!["OBC-1"].includes(item.header) && (
+                    {!["OBC-1", "OBC-2", "S-Band","UHF", "HEPS"].includes(item.header) && (
                       <div className="p-6">
                         <div style={{
                           padding: '20px',

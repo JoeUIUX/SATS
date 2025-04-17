@@ -1,0 +1,139 @@
+/* SBandTestPanel.module.css */
+/* Since we're reusing the styles from OBC1TestPanel.module.css, this file can be minimal */
+/* Add any S-Band specific styles here */
+
+.sbandSpecificIcon {
+    color: #6d28d9; /* Purple color for S-Band specific icons */
+  }
+  
+  .frequencyValue {
+    font-family: monospace;
+    font-weight: bold;
+    color: #2563eb;
+  }
+  
+  .frequencyValue.dark {
+    color: #60a5fa;
+  }
+  
+  /* Temperature specific styling */
+  .tempGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+  }
+  
+  .tempCard {
+    background-color: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .tempLabel {
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 8px;
+  }
+  
+  .tempValue {
+    font-size: 18px;
+    font-weight: 600;
+    color: #92400e;
+  }
+  
+  /* Dark mode support */
+  :global(html.dark) .tempCard {
+    background-color: rgba(146, 64, 14, 0.1);
+    border-color: rgba(252, 211, 77, 0.3);
+  }
+  
+  :global(html.dark) .tempLabel {
+    color: #fcd34d;
+  }
+  
+  :global(html.dark) .tempValue {
+    color: #fcd34d;
+  }
+  
+  /* Mode status indicators */
+  .modeIndicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .modeActive {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  
+  .modeInactive {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  :global(html.dark) .modeActive {
+    background-color: rgba(22, 101, 52, 0.2);
+    color: #86efac;
+  }
+  
+  :global(html.dark) .modeInactive {
+    background-color: rgba(185, 28, 28, 0.2);
+    color: #fca5a5;
+  }
+  
+  /* Test result box */
+  .testResultBox {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  .testResultBox.success {
+    background-color: #d1fae5;
+    border: 1px solid #86efac;
+  }
+  
+  .testResultBox.error {
+    background-color: #fee2e2;
+    border: 1px solid #fca5a5;
+  }
+  
+  .testResultTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .testResultBox.success .testResultTitle {
+    color: #059669;
+  }
+  
+  .testResultBox.error .testResultTitle {
+    color: #dc2626;
+  }
+  
+  :global(html.dark) .testResultBox.success {
+    background-color: rgba(5, 150, 105, 0.2);
+    border-color: rgba(134, 239, 172, 0.3);
+  }
+  
+  :global(html.dark) .testResultBox.error {
+    background-color: rgba(220, 38, 38, 0.2);
+    border-color: rgba(252, 165, 165, 0.3);
+  }
+  
+  :global(html.dark) .testResultBox.success .testResultTitle {
+    color: #34d399;
+  }
+  
+  :global(html.dark) .testResultBox.error .testResultTitle {
+    color: #f87171;
+  }

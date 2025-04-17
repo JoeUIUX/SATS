@@ -14,6 +14,15 @@ import time
 import subprocess
 from datetime import datetime, timedelta  # For caching headers
 import requests
+import sys
+import io
+
+# Force stdout and stderr to use UTF-8 encoding
+if sys.platform == 'win32':
+    # Specifically for Windows systems
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 
 # Load .env file
 load_dotenv()
@@ -24,7 +33,15 @@ app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB limit
 # Add compression for better performance
 Compress(app)
 
-CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins for debugging
+# This ensures all routes have the correct headers
+CORS(app,
+     resources={r"/*": {
+         "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+         "allow_headers": ["Content-Type", "Authorization"],
+         "supports_credentials": True,
+         "expose_headers": ["Content-Type", "X-CSRFToken"]
+     }})
 
 # Determine simulation mode from an environment variable
 SIMULATION_MODE = os.getenv("SIMULATION_MODE", "true").lower() == "true"
@@ -42,12 +59,41 @@ DATABASE = "satellites.db"
 
 SCAN_INTERVAL = 10  # Time in seconds between scans for .glb files for profiles
 
+# an OPTIONS handler for checkout/load routes
+@app.route('/checkout/load/<profile_id>', methods=['OPTIONS'])
+def options_checkout_load(profile_id):
+    response = app.make_default_options_response()
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
+
+@app.route('/checkout/save', methods=['OPTIONS'])
+def handle_options_checkout_save():
+    response = app.make_default_options_response()
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
+
 
 def get_db():
     """ Connect to SQLite database and return connection. """
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row  # Enables column access by name
-    return conn
+    try:
+        conn = sqlite3.connect(DATABASE)
+        conn.row_factory = sqlite3.Row  # Enables column access by name
+
+        # Set pragmas for better reliability
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("PRAGMA journal_mode = WAL")
+        conn.execute("PRAGMA synchronous = NORMAL")
+
+        return conn
+    except Exception as e:
+        print(f"❌ Database connection error: {e}")
+        raise
 
 
 def create_table():
@@ -393,13 +439,25 @@ def delete_profile(name):
     return jsonify({"message": "Profile deleted successfully."})
 
 
-@app.route('/checkout/save', methods=['POST'])
+@app.route('/checkout/save', methods=['POST', 'OPTIONS'])
 def save_checkout_items():
     """ Saves the checkout section items for a profile uniquely. """
+    # Handle OPTIONS request for CORS preflight
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
     try:
         data = request.json
         profile_id = data.get("profile_id")
         item_data = json.dumps(data.get("items", []))
+
+        print(f"📝 Attempting to save checkout items for profile: {profile_id}")
+        print(f"📝 Data structure: {item_data[:100]}...")  # Print first 100 chars
 
         if not profile_id:
             return jsonify({"error": "Profile ID is required."}), 400
@@ -423,31 +481,60 @@ def save_checkout_items():
             if 'checkedOptions' in item:
                 print(f"  - {item['header']} has {len(item['checkedOptions'])} checked options")
 
-        return jsonify({"message": "Checkout items saved successfully."}), 200
+        response = jsonify({"message": "Checkout items saved successfully."})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        return response, 200
 
     except Exception as e:
+        import traceback
         print(f"❌ Error in save_checkout_items: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        print(traceback.format_exc())  # Print full stack trace for debugging
+
+        response = jsonify({"error": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        return response, 500
 
 
+# Update the checkout/load/<profile_id> route to also handle OPTIONS
 @app.route('/checkout/load/<profile_id>', methods=['GET'])
 def load_checkout_items(profile_id):
-    """ Loads the saved checkout section items for a profile. """
+    """Loads the saved checkout section items for a profile."""
     try:
+        # Plain text logging without emojis
+        print(f"Loading checkout items for profile {profile_id}")
+
         db = get_db()
         row = db.execute("SELECT item_data FROM checkout_items WHERE profile_id = ?", (profile_id,)).fetchone()
         db.close()
 
         if row:
-            print(f"✅ Checkout items loaded for profile {profile_id}: {row['item_data']}")
-            return jsonify({"items": json.loads(row["item_data"])}), 200
+            print(f"Found checkout items for profile {profile_id}")
+
+            # Create response with proper CORS headers
+            response = jsonify({"items": json.loads(row["item_data"])})
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Credentials', 'true')
+            return response, 200
         else:
-            print(f"ℹ️ No saved checkout items found for profile {profile_id}")
-            return jsonify({"items": []}), 200  # Return empty if no data is found
+            print(f"No saved checkout items found for profile {profile_id}")
+
+            # Create response with proper CORS headers
+            response = jsonify({"items": []})
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Credentials', 'true')
+            return response, 200  # Return empty if no data is found
 
     except Exception as e:
-        print(f"❌ Error in load_checkout_items: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        # Plain text error logging without emojis
+        print(f"Error in load_checkout_items: {str(e)}")
+        import traceback
+        print(traceback.format_exc())  # Print full stack trace for debugging
+
+        # Create error response with proper CORS headers
+        response = jsonify({"error": str(e), "items": []})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
 
 
 @app.route("/api/profile/<int:profile_id>", methods=["GET"])
@@ -1003,6 +1090,38 @@ def apply_background():
     except Exception as e:
         print(f"❌ Error applying background: {str(e)}")
         return jsonify({"error": str(e)}), 500
+
+    # Add this function to backend_server.py
+    def ensure_db_persistence():
+        """Ensure database changes are immediately flushed to disk"""
+        conn = get_db()
+        # Set pragma for immediate disk writes
+        conn.execute('PRAGMA synchronous = FULL')
+        conn.execute('PRAGMA journal_mode = WAL')
+        conn.commit()
+        conn.close()
+
+    # Call this function right after create_table()
+    create_table()
+    ensure_db_persistence()
+
+    # Add after the get_db function
+    def ensure_connection_safety():
+        """Ensures SQLite connections are thread-safe and durable"""
+        try:
+            db = get_db()
+            # Set pragmas to enforce durability
+            db.execute("PRAGMA journal_mode = WAL")
+            db.execute("PRAGMA synchronous = NORMAL")
+            db.execute("PRAGMA busy_timeout = 5000")
+            db.commit()
+            db.close()
+            print("✅ Database connection safety ensured")
+        except Exception as e:
+            print(f"❌ Error configuring database: {e}")
+
+    # Call this early in the script execution
+    ensure_connection_safety()
 
 
 if __name__ == "__main__":

@@ -8,6 +8,24 @@ import styles from './OBC1TestPanel.module.css';
 import { runOBC1Checkout } from '@/services/checkout/obc1Checkout';
 import { generateOBC1Report } from '@/services/reports/obc1Report';
 
+// Create a reusable SimulationBadge component for consistency
+const SimulationBadge: React.FC<SimulationBadgeProps> = ({ isSimulation }) => (
+  <div style={{ 
+    fontSize: '12px', 
+    padding: '2px 8px', 
+    backgroundColor: isSimulation ? 'rgba(245, 158, 11, 0.1)' : 'transparent',
+    color: isSimulation ? '#f59e0b' : 'inherit',
+    borderRadius: '4px',
+    display: isSimulation ? 'block' : 'none'
+  }}>
+    Simulated Data
+  </div>
+);
+
+interface SimulationBadgeProps {
+  isSimulation: boolean;
+}
+
 interface OBC1TestPanelProps {
   options: string[];  // Now contains only the checked options
   sock: any;
@@ -238,13 +256,6 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
             </svg>
             OBC-1 Test Status
           </h3>
-          <span className={`${styles.statusBadge} ${
-            isRunning ? styles.colorRunning : 
-            results ? styles.colorCompleted : 
-            styles.colorWaiting
-          }`}>
-            {isRunning ? 'Running...' : results ? 'Complete' : 'Ready'}
-          </span>
         </div>
         
         <div className={styles.cardContent}>
@@ -324,7 +335,7 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
               </svg>
               Connection Mode
             </div>
-            <span className={`${styles.parameterValue} ${
+            <span className={`${styles.statusBadge} ${
               isForceSimulation ? styles.colorWaiting : styles.colorCompleted
             }`}>
               {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
@@ -344,7 +355,7 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
               </svg>
               eMMC Testing
             </div>
-            <span className={`${styles.parameterValue} ${
+            <span className={`${styles.statusBadge} ${
               enableEmmc ? styles.colorCompleted : styles.colorWaiting
             }`}>
               {enableEmmc ? 'ENABLED' : 'DISABLED'}
@@ -412,6 +423,9 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
                 </svg>
                 Firmware Information
               </h3>
+              
+              {/* Add simulation badge */}
+              <SimulationBadge isSimulation={isForceSimulation} />
             </div>
             
             <div className={styles.cardContent}>
@@ -468,16 +482,8 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
                 Voltage Measurements
               </h3>
               
-              <div style={{ 
-                fontSize: '12px', 
-                padding: '2px 8px', 
-                backgroundColor: isForceSimulation ? 'rgba(245, 158, 11, 0.1)' : 'transparent',
-                color: isForceSimulation ? '#f59e0b' : 'inherit',
-                borderRadius: '4px',
-                display: isForceSimulation ? 'block' : 'none'
-              }}>
-                Simulated Data
-              </div>
+              {/* Add simulation badge */}
+              <SimulationBadge isSimulation={isForceSimulation} />
             </div>
             
             <div className={styles.cardContent}>
@@ -566,16 +572,8 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
                   eMMC Test Results
                 </h3>
                 
-                <div style={{ 
-                  fontSize: '12px', 
-                  padding: '2px 8px', 
-                  backgroundColor: isForceSimulation ? 'rgba(245, 158, 11, 0.1)' : 'transparent',
-                  color: isForceSimulation ? '#f59e0b' : 'inherit',
-                  borderRadius: '4px',
-                  display: isForceSimulation ? 'block' : 'none'
-                }}>
-                  Simulated Data
-                </div>
+                {/* Add simulation badge */}
+                <SimulationBadge isSimulation={isForceSimulation} />
               </div>
               
               <div className={styles.cardContent}>
@@ -592,78 +590,78 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
                         backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
                         color: isDarkMode ? "#d1d5db" : "#6b7280"
                       }}
+                      >
+                        <tr>
+                          <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Test Stage</th>
+                          <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0</th>
+                          <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1</th>
+                        </tr>
+                      </thead>
+                      <tbody className={styles.tableBody}>
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Initial</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[0]}</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[0]}</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0 On</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[1]}</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[1]}</td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0 Off</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[2]}</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[2]}</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1 On</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[3]}</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[3]}</td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1 Off</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[4]}</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[4]}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div 
+                      style={{ 
+                        padding: "16px", 
+                        textAlign: "center", 
+                        color: isDarkMode ? "#d1d5db" : "#6b7280",
+                        fontStyle: "italic"
+                      }}
                     >
-                      <tr>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Test Stage</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1</th>
-                      </tr>
-                    </thead>
-                    <tbody className={styles.tableBody}>
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Initial</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[0]}</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[0]}</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0 On</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[1]}</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[1]}</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-0 Off</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[2]}</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[2]}</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1 On</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[3]}</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[3]}</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>eMMC-1 Off</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc0States[4]}</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.emmc.emmc1States[4]}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                ) : (
-                  <div 
-                    style={{ 
-                      padding: "16px", 
-                      textAlign: "center", 
-                      color: isDarkMode ? "#d1d5db" : "#6b7280",
-                      fontStyle: "italic"
-                    }}
-                  >
-                    eMMC test was not performed
-                  </div>
-                )}
+                      eMMC test was not performed
+                    </div>
+                  )}
+                </div>
               </div>
+            )}
+            
+            <div>
+              <button 
+                onClick={generateReport}
+                className={styles.reportButton}
+                style={{
+                  backgroundColor: "#10b981",
+                  color: "white"
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                </svg>
+                Generate Report
+              </button>
             </div>
-          )}
-          
-          <div>
-            <button 
-              onClick={generateReport}
-              className={styles.reportButton}
-              style={{
-                backgroundColor: "#10b981",
-                color: "white"
-              }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-              </svg>
-              Generate Report
-            </button>
           </div>
-        </div>
-      )}
-    </div>
-  );
-};
+        )}
+      </div>
+    );
+  };

@@ -575,8 +575,8 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           <p style={{ margin: '0 0 4px 0', fontWeight: 'bold' }}>Connection Notes:</p>
           <ul style={{ margin: '0', paddingLeft: '20px' }}>
             <li>Ensure the MCC server is running at the specified address/port</li>
-            <li>Start the proxy with <code>node mcc-proxy.js</code> before connecting</li>
-            <li>To use simulation mode, connect to any other arbitrary server address</li>
+            <li>Verify MCC Proxy <code>mcc-proxy.js</code> is running</li>
+            <li>Simulation mode will be used if there is no connection</li>
             <li>Minimise this window to keep the connection while working</li>
           </ul>
         </div>

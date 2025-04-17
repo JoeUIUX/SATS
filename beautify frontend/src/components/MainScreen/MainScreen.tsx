@@ -750,8 +750,14 @@ const handleProfileSelect = (profileName: string) => {
   setUploadedText(profile.description);
 };
 
-const toggleCheckout = () => {
+const toggleCheckout = async () => {
   if (!selectedProfile) return;
+  
+  if (!showCheckout) {
+    // If opening the checkout section, ensure items are loaded
+    await handleLoadCheckout(selectedProfile);
+  }
+  
   setShowCheckout(!showCheckout);
 };
 
@@ -1179,23 +1185,58 @@ const handleSaveCheckout = async () => {
   try {
     console.log("💾 Saving checkout items with checkbox states:", droppedItems);
     
-    const response = await fetch(`${API_URL}/checkout/save`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        profile_id: selectedProfile,
-        items: droppedItems, // Now includes checkedOptions
-      }),
-    });
+    // Create a complete copy of droppedItems with all necessary properties
+    const itemsToSave = droppedItems.map(item => ({
+      id: item.id,
+      header: item.header,
+      options: item.options,
+      isDropped: true,
+      checkedOptions: item.checkedOptions || {} // Ensure we always have checkedOptions
+    }));
+    
+    // Retry logic for better persistence
+    const saveWithRetry = async (retries = 3) => {
+      try {
+        const response = await fetch(`${API_URL}/checkout/save`, {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            profile_id: selectedProfile,
+            items: itemsToSave,
+          }),
+          mode: 'cors',  // Explicitly use CORS mode
+          credentials: 'omit'  // Don't send credentials
+        });
 
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.status}`);
-    }
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
 
-    const result = await response.json();
+        return await response.json();
+      } catch (error) {
+        if (retries > 0) {
+          console.log(`⚠️ Retry saving (${retries} attempts left)...`);
+          await new Promise(resolve => setTimeout(resolve, 500));
+          return saveWithRetry(retries - 1);
+        }
+        throw error;
+      }
+    };
+
+    const result = await saveWithRetry();
     console.log(`✅ Checkout items saved for profile ${selectedProfile}:`, result);
+    
+    // Also save to localStorage as a backup
+    localStorage.setItem(`checkout_items_${selectedProfile}`, 
+                         JSON.stringify(itemsToSave));
   } catch (error) {
     console.error("❌ Error saving checkout items:", error);
+    
+    // Try to save to localStorage as a fallback
+    localStorage.setItem(`checkout_items_${selectedProfile}`, 
+                       JSON.stringify(droppedItems));
   }
 };
 
@@ -1222,50 +1263,153 @@ const handleCancelCheckout = async () => {
 };
 
 // Update the handleLoadCheckout function with proper typing
+// with better error handling and CORS configuration
+
 const handleLoadCheckout = async (profileId: string) => {
   try {
-    const response = await fetch(`${API_URL}/checkout/load/${profileId}`);
+    console.log(`📝 Loading checkout items for profile: ${profileId}`);
+    
+    // Create AbortController to set a timeout on the fetch
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+    const response = await fetch(`${API_URL}/checkout/load/${profileId}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',       // Explicitly set CORS mode
+      credentials: 'omit', // Don't send credentials
+      signal: controller.signal // Add timeout signal
+    });
+    
+    // Clear the timeout
+    clearTimeout(timeoutId);
+    
+    console.log(`📝 Response status: ${response.status}`);
     
     if (!response.ok) {
+      console.warn(`Server returned error status: ${response.status}`);
       throw new Error(`Server error: ${response.status}`);
     }
 
-    const result = await response.json();
+    // Try to parse the response, with error handling for invalid JSON
+    const result = await response.json().catch(e => {
+      console.error("Error parsing JSON response:", e);
+      return { error: "Invalid JSON response", items: [] };
+    });
     
     if (result.items && Array.isArray(result.items)) {
-      // Ensure each item has a checkedOptions object
+      // Ensure each item has a checkedOptions object and isDropped flag
       const loadedItems = result.items.map((item: any) => ({
         ...item,
+        isDropped: true,
         checkedOptions: item.checkedOptions || {},
       }));
       
+      // Set dropped items first
       setDroppedItems(loadedItems);
       
-      // Update the items array to reflect the dropped state of the loaded items
+      // Make a copy of the original items
       setItems(prevItems => {
-        return prevItems.map(item => {
-          // Fix: Add proper type for the 'loaded' parameter
-          const loadedItem = loadedItems.find((loaded: DraggableItem) => loaded.id === item.id);
-          if (loadedItem) {
-            return {
-              ...item,
-              isDropped: true,
-              checkedOptions: loadedItem.checkedOptions || {}
-            };
+        const updatedItems = [...prevItems];
+        
+        // Mark dropped items in the items array
+        updatedItems.forEach(item => {
+          // Check if this item exists in loadedItems
+          const matchingItem = loadedItems.find((loaded: DraggableItem) => loaded.id === item.id);
+          if (matchingItem) {
+            // Update to match the loaded state
+            item.isDropped = true;
+            item.checkedOptions = {...matchingItem.checkedOptions};
+          } else {
+            // Make sure it's marked as not dropped
+            item.isDropped = false;
           }
-          return item;
         });
+        
+        return updatedItems;
       });
       
       console.log(`✅ Loaded checkout items for profile ${profileId}:`, loadedItems);
     } else {
       console.log(`ℹ️ No saved checkout items found for profile ${profileId}`);
       setDroppedItems([]);
+      
+      // Reset the dropped state in the items array
+      setItems(prevItems => 
+        prevItems.map(item => ({
+          ...item,
+          isDropped: false,
+          checkedOptions: {}
+        }))
+      );
     }
   } catch (error) {
     console.error("❌ Error loading checkout items for profile:", error);
-    setDroppedItems([]);
+    
+    // Try fallback from localStorage
+    tryLocalStorageFallback(profileId);
   }
+};
+
+// Extract the localStorage fallback into a separate function for better readability
+const tryLocalStorageFallback = (profileId: string) => {
+  try {
+    const localStorageKey = `checkout_items_${profileId}`;
+    const savedItems = localStorage.getItem(localStorageKey);
+    
+    if (savedItems) {
+      console.log(`🔄 Falling back to localStorage for profile ${profileId}`);
+      const parsedItems = JSON.parse(savedItems);
+      
+      if (Array.isArray(parsedItems) && parsedItems.length > 0) {
+        setDroppedItems(parsedItems);
+        
+        // Also update the items array with isDropped flags
+        setItems(prevItems => {
+          const updatedItems = [...prevItems];
+          
+          updatedItems.forEach(item => {
+            const matchingItem = parsedItems.find((saved: DraggableItem) => saved.id === item.id);
+            if (matchingItem) {
+              item.isDropped = true;
+              item.checkedOptions = {...matchingItem.checkedOptions};
+            } else {
+              item.isDropped = false;
+            }
+          });
+          
+          return updatedItems;
+        });
+        
+        console.log(`✅ Successfully loaded ${parsedItems.length} items from localStorage`);
+        return; // Exit early since we successfully restored from localStorage
+      }
+    }
+    
+    // If localStorage fallback fails or is empty, reset everything
+    resetItemStates();
+    
+  } catch (localStorageError) {
+    console.error("❌ Error accessing localStorage fallback:", localStorageError);
+    resetItemStates();
+  }
+};
+
+// Extract reset logic to a separate function
+const resetItemStates = () => {
+  setDroppedItems([]);
+  
+  // Reset the items array
+  setItems(prevItems => 
+    prevItems.map(item => ({
+      ...item,
+      isDropped: false,
+      checkedOptions: {}
+    }))
+  );
 };
 
 // Update the profile change handler to load checkout items with their checkbox states
@@ -1275,11 +1419,34 @@ const handleProfileChange = async (profileId: string) => {
   await handleLoadCheckout(profileId);
 };
 
+// useEffect for profile changes to load checkout items immediately
 useEffect(() => {
   if (selectedProfile) {
-    handleProfileChange(selectedProfile); // ✅ Load saved checkout items when profile changes
+    // Add a small delay to ensure database connections are ready
+    const timer = setTimeout(() => {
+      handleLoadCheckout(selectedProfile);
+    }, 50);
+    
+    return () => clearTimeout(timer);
   }
 }, [selectedProfile]);
+
+// Add effect to ensure items and droppedItems stay in sync
+useEffect(() => {
+  // This ensures items marked as dropped appear in droppedItems
+  const droppedIds = droppedItems.map(item => item.id);
+  
+  // Check if there are items that should be in droppedItems but aren't
+  const itemsThatShouldBeDropped = items.filter(item => 
+    item.isDropped && !droppedIds.includes(item.id)
+  );
+  
+  // If we found inconsistencies, fix them
+  if (itemsThatShouldBeDropped.length > 0) {
+    console.log("⚠️ Found inconsistent dropped state, fixing...");
+    setDroppedItems(prev => [...prev, ...itemsThatShouldBeDropped]);
+  }
+}, [items, droppedItems]);
 
 // Update the useEffect in MainScreen.tsx to better initialize the MCC socket
 useEffect(() => {

@@ -983,3 +983,26 @@ body,
 .threeDModelButton:hover {
   background-color: #2980b9;
 }
+
+/* Ensure all sidebar elements use the global font variables */
+.sidebar,
+.menuItem,
+.profilesButton,
+.profileContainer,
+.profileSidebarItem,
+.profileButtonGroup,
+.settingsContainer,
+.profileHeading,
+.profileSubtext {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+/* Fix for profile items */
+.profileSidebarItem {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+/* This makes sure the menu items use the correct font */
+.menu li {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}

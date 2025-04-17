@@ -11492,8 +11492,35 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
             if (response.ok) {
                 setIsSaved(true);
                 setSavedMessage("Settings saved successfully!");
-                // Apply font to document
-                document.documentElement.style.fontFamily = fontValue;
+                // Apply font to document - IMPROVED APPROACH
+                document.documentElement.style.setProperty('--app-font-family', fontValue);
+                // Add a <style> element to ensure font applies to all elements
+                let fontStyle = document.getElementById('app-font-style');
+                if (!fontStyle) {
+                    fontStyle = document.createElement('style');
+                    fontStyle.id = 'app-font-style';
+                    document.head.appendChild(fontStyle);
+                }
+                // Update the style with proper CSS that overrides all other font settings
+                fontStyle.textContent = `
+        body, 
+        button, 
+        input, 
+        select, 
+        textarea,
+        .popup, 
+        .welcomeWindow,
+        .mainScreen,
+        .sidebar,
+        .content,
+        .aboutSection,
+        .checkoutSection,
+        .settingsWindow,
+        .topSection,
+        .bottomSection {
+          font-family: ${fontValue} !important;
+        }
+      `;
                 // Apply background to document body based on current theme
                 applyBackground();
                 // After 2 seconds, reset the saved state
@@ -11670,7 +11697,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             d: "M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 389,
+                                            lineNumber: 419,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -11679,20 +11706,20 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             r: "3"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 390,
+                                            lineNumber: 420,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 388,
+                                    lineNumber: 418,
                                     columnNumber: 13
                                 }, this),
                                 "Settings"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 387,
+                            lineNumber: 417,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -11704,13 +11731,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                             children: "✖"
                         }, void 0, false, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 394,
+                            lineNumber: 424,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                    lineNumber: 386,
+                    lineNumber: 416,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11736,34 +11763,34 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             r: "10"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 412,
+                                            lineNumber: 442,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                             d: "M12 2a10 10 0 1 0 10 10"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 413,
+                                            lineNumber: 443,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                             d: "M12 12h.01"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 414,
+                                            lineNumber: 444,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 411,
+                                    lineNumber: 441,
                                     columnNumber: 13
                                 }, this),
                                 "Appearance"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 407,
+                            lineNumber: 437,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -11786,40 +11813,40 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             r: "10"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 423,
+                                            lineNumber: 453,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                             d: "M12 16v-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 424,
+                                            lineNumber: 454,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                             d: "M12 8h.01"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 425,
+                                            lineNumber: 455,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 422,
+                                    lineNumber: 452,
                                     columnNumber: 13
                                 }, this),
                                 "About"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 418,
+                            lineNumber: 448,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                    lineNumber: 406,
+                    lineNumber: 436,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11836,7 +11863,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             children: "Background"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 437,
+                                            lineNumber: 467,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11855,7 +11882,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 446,
+                                                    lineNumber: 476,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -11876,7 +11903,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: currentViewMode === 'dark' ? '☀️' : '🌙'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 461,
+                                                            lineNumber: 491,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Switch to ",
@@ -11885,13 +11912,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 447,
+                                                    lineNumber: 477,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 440,
+                                            lineNumber: 470,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11913,12 +11940,12 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                             children: "Solid Color"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                            lineNumber: 477,
+                                                                            lineNumber: 507,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                        lineNumber: 476,
+                                                                        lineNumber: 506,
                                                                         columnNumber: 27
                                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].backgroundPreview,
@@ -11927,12 +11954,12 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                             alt: bg.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                            lineNumber: 481,
+                                                                            lineNumber: 511,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                        lineNumber: 480,
+                                                                        lineNumber: 510,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11940,13 +11967,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                         children: bg.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                        lineNumber: 484,
+                                                                        lineNumber: 514,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, bg.path, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                lineNumber: 470,
+                                                                lineNumber: 500,
                                                                 columnNumber: 23
                                                             }, this)),
                                                         customBackgrounds.map((bg)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11960,12 +11987,12 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                             alt: bg.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                            lineNumber: 496,
+                                                                            lineNumber: 526,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                        lineNumber: 495,
+                                                                        lineNumber: 525,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11973,19 +12000,19 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                         children: bg.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                        lineNumber: 498,
+                                                                        lineNumber: 528,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, bg.path, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                lineNumber: 490,
+                                                                lineNumber: 520,
                                                                 columnNumber: 23
                                                             }, this))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 467,
+                                                    lineNumber: 497,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -11995,7 +12022,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: "Upload New Background"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 505,
+                                                            lineNumber: 535,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -12006,7 +12033,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileInput
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 506,
+                                                            lineNumber: 536,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12014,13 +12041,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: "Recommended size: 1920x1080px or larger"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 513,
+                                                            lineNumber: 543,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 504,
+                                                    lineNumber: 534,
                                                     columnNumber: 19
                                                 }, this),
                                                 getCurrentBackground() === "none" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12030,7 +12057,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: "Background Color"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 521,
+                                                            lineNumber: 551,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12043,7 +12070,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorInput
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                    lineNumber: 523,
+                                                                    lineNumber: 553,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -12053,31 +12080,31 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorText
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                    lineNumber: 529,
+                                                                    lineNumber: 559,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 522,
+                                                            lineNumber: 552,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 520,
+                                                    lineNumber: 550,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 466,
+                                            lineNumber: 496,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 436,
+                                    lineNumber: 466,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12088,7 +12115,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             children: "Font"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 542,
+                                            lineNumber: 572,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12103,12 +12130,12 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: font.name
                                                         }, font.name, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 550,
+                                                            lineNumber: 580,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 544,
+                                                    lineNumber: 574,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12121,32 +12148,32 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                             children: "The quick brown fox jumps over the lazy dog."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 559,
+                                                            lineNumber: 589,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "0123456789"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 560,
+                                                            lineNumber: 590,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 556,
+                                                    lineNumber: 586,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 543,
+                                            lineNumber: 573,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 541,
+                                    lineNumber: 571,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12161,24 +12188,24 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                 children: "⟳"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 572,
+                                                lineNumber: 602,
                                                 columnNumber: 21
                                             }, this) : isSaved ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "✓ Saved"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 574,
+                                                lineNumber: 604,
                                                 columnNumber: 21
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "Save Settings"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 576,
+                                                lineNumber: 606,
                                                 columnNumber: 1
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 566,
+                                            lineNumber: 596,
                                             columnNumber: 17
                                         }, this),
                                         savedMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12186,19 +12213,19 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             children: savedMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 581,
+                                            lineNumber: 611,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                    lineNumber: 565,
+                                    lineNumber: 595,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 435,
+                            lineNumber: 465,
                             columnNumber: 13
                         }, this),
                         activeTab === 'about' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12214,12 +12241,12 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].logo
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                            lineNumber: 596,
+                                            lineNumber: 626,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                        lineNumber: 595,
+                                        lineNumber: 625,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -12227,7 +12254,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                         children: "Satellite Automated Testing System"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                        lineNumber: 603,
+                                        lineNumber: 633,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12241,7 +12268,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "Version:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 606,
+                                                        lineNumber: 636,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12249,13 +12276,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: appVersion
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 607,
+                                                        lineNumber: 637,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 605,
+                                                lineNumber: 635,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12266,7 +12293,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "Build Date:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 610,
+                                                        lineNumber: 640,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12274,13 +12301,13 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: buildDate
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 611,
+                                                        lineNumber: 641,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 609,
+                                                lineNumber: 639,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12291,7 +12318,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "Environment:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 614,
+                                                        lineNumber: 644,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12299,19 +12326,19 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: ("TURBOPACK compile-time value", "development")
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 615,
+                                                        lineNumber: 645,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 613,
+                                                lineNumber: 643,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                        lineNumber: 604,
+                                        lineNumber: 634,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12321,14 +12348,14 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                 children: "This application provides a comprehensive interface for automated testing of satellite components and systems. It facilitates test management, execution, and result analysis."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 620,
+                                                lineNumber: 650,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                 children: "Main Features:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 626,
+                                                lineNumber: 656,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -12337,48 +12364,48 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "Checkout Test - Subsystems and Components"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 628,
+                                                        lineNumber: 658,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                         children: "Real-time hardware integration with simulation fallback capability"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 629,
+                                                        lineNumber: 659,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                         children: "Interactive Satellite 3D model Viewer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 630,
+                                                        lineNumber: 660,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                         children: "Comprehensive test result logging and report generation"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 631,
+                                                        lineNumber: 661,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                         children: "Customisability features"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 632,
+                                                        lineNumber: 662,
                                                         columnNumber: 3
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 627,
+                                                lineNumber: 657,
                                                 columnNumber: 1
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                 children: "NTU Professional Internship Project:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 636,
+                                                lineNumber: 666,
                                                 columnNumber: 1
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12386,19 +12413,19 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                     children: "Building Satellite - Development and implementation of Automated Testing System for Satellite"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                    lineNumber: 637,
+                                                    lineNumber: 667,
                                                     columnNumber: 4
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 637,
+                                                lineNumber: 667,
                                                 columnNumber: 1
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: "Developed from January to May 2025"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 638,
+                                                lineNumber: 668,
                                                 columnNumber: 1
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12409,7 +12436,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "For more information: "
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 641,
+                                                        lineNumber: 671,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -12420,47 +12447,47 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         children: "github.com/JoeUIUX"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 642,
+                                                        lineNumber: 672,
                                                         columnNumber: 3
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                lineNumber: 640,
+                                                lineNumber: 670,
                                                 columnNumber: 1
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                        lineNumber: 619,
+                                        lineNumber: 649,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                lineNumber: 594,
+                                lineNumber: 624,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                            lineNumber: 593,
+                            lineNumber: 623,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                    lineNumber: 432,
+                    lineNumber: 462,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-            lineNumber: 374,
+            lineNumber: 404,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-        lineNumber: 365,
+        lineNumber: 395,
         columnNumber: 5
     }, this), portalElement);
 };

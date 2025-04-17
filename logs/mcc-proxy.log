@@ -1,0 +1,111 @@
+[15/04/2025 11:23:37 am] Starting MCC proxy server...
+[15/04/2025 11:23:38 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 11:23:38 am] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 11:27:14 am] Starting MCC proxy server...
+[15/04/2025 11:27:15 am] [MCC Proxy Error] node:events:502
+[15/04/2025 11:27:15 am] [MCC Proxy Error]       throw er; // Unhandled 'error' event
+[15/04/2025 11:27:15 am] [MCC Proxy Error]       ^
+[15/04/2025 11:27:15 am] [MCC Proxy Error] Error: listen EADDRINUSE: address already in use :::8080
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at listenInCluster (node:net:1994:12)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Server.listen (node:net:2099:7)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Object.<anonymous> (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\mcc-proxy\mcc-proxy.js:114:8)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Module._compile (node:internal/modules/cjs/loader:1562:14)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Object..js (node:internal/modules/cjs/loader:1699:10)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Module.load (node:internal/modules/cjs/loader:1313:32)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Function._load (node:internal/modules/cjs/loader:1123:12)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+[15/04/2025 11:27:15 am] [MCC Proxy Error] Emitted 'error' event on WebSocketServer instance at:
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at Server.emit (node:events:524:28)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at emitErrorNT (node:net:1973:8)
+[15/04/2025 11:27:15 am] [MCC Proxy Error]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[15/04/2025 11:27:15 am] [MCC Proxy Error]   code: 'EADDRINUSE',
+[15/04/2025 11:27:15 am] [MCC Proxy Error]   errno: -4091,
+[15/04/2025 11:27:15 am] [MCC Proxy Error]   syscall: 'listen',
+[15/04/2025 11:27:15 am] [MCC Proxy Error]   address: '::',
+[15/04/2025 11:27:15 am] [MCC Proxy Error]   port: 8080
+[15/04/2025 11:27:15 am] [MCC Proxy Error] }
+[15/04/2025 11:27:15 am] [MCC Proxy Error] Node.js v22.13.0
+[15/04/2025 11:27:15 am] MCC Proxy process exited with code 1
+[15/04/2025 11:41:07 am] MCC Proxy process exited with code 1
+[15/04/2025 11:46:32 am] Starting MCC proxy server...
+[15/04/2025 11:46:32 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 11:46:32 am] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 11:46:55 am] MCC Proxy process exited with code 1
+[15/04/2025 12:09:21 pm] Starting MCC proxy server...
+[15/04/2025 12:09:21 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 12:09:21 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 2:35:40 pm] MCC Proxy process exited with code 1
+[15/04/2025 2:36:16 pm] Starting MCC proxy server...
+[15/04/2025 2:36:16 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 2:36:16 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 2:51:14 pm] MCC Proxy process exited with code 1
+[15/04/2025 2:52:02 pm] Starting MCC proxy server...
+[15/04/2025 2:52:03 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 2:52:03 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 2:53:17 pm] MCC Proxy process exited with code 1
+[15/04/2025 3:37:15 pm] Starting MCC proxy server...
+[15/04/2025 3:37:15 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 3:37:15 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 4:00:11 pm] Starting MCC proxy server...
+[15/04/2025 4:00:11 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 4:00:11 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 4:05:55 pm] Starting MCC proxy server...
+[15/04/2025 4:05:55 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 4:05:55 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 4:19:19 pm] Starting MCC proxy server...
+[15/04/2025 4:19:20 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 4:19:20 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 4:49:18 pm] Starting MCC proxy server...
+[15/04/2025 4:49:18 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 4:49:18 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 5:09:50 pm] Starting MCC proxy server...
+[15/04/2025 5:09:51 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 5:09:51 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 5:37:59 pm] Starting MCC proxy server...
+[15/04/2025 5:37:59 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 5:37:59 pm] [MCC Proxy] CORS enabled for all origins
+[15/04/2025 6:00:49 pm] Starting MCC proxy server...
+[15/04/2025 6:00:49 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[15/04/2025 6:00:49 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 9:34:52 am] Starting MCC proxy server...
+[16/04/2025 9:34:52 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 9:34:52 am] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 10:05:26 am] Starting MCC proxy server...
+[16/04/2025 10:05:26 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 10:05:26 am] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 11:26:12 am] Starting MCC proxy server...
+[16/04/2025 11:26:12 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 11:26:12 am] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 12:07:20 pm] Starting MCC proxy server...
+[16/04/2025 12:07:20 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 12:07:20 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 12:32:07 pm] Starting MCC proxy server...
+[16/04/2025 12:32:07 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 12:32:07 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 12:33:59 pm] MCC Proxy process exited with code 1
+[16/04/2025 12:34:42 pm] Starting MCC proxy server...
+[16/04/2025 12:34:42 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 12:34:42 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 12:34:59 pm] MCC Proxy process exited with code 1
+[16/04/2025 12:56:18 pm] Starting MCC proxy server...
+[16/04/2025 12:56:18 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 12:56:18 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 12:57:54 pm] MCC Proxy process exited with code 1
+[16/04/2025 2:40:24 pm] Starting MCC proxy server...
+[16/04/2025 2:40:25 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 2:40:25 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 3:47:06 pm] MCC Proxy process exited with code 1
+[16/04/2025 4:16:15 pm] Starting MCC proxy server...
+[16/04/2025 4:16:16 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[16/04/2025 4:16:16 pm] [MCC Proxy] CORS enabled for all origins
+[16/04/2025 5:16:07 pm] MCC Proxy process exited with code 1
+[17/04/2025 9:36:33 am] Starting MCC proxy server...
+[17/04/2025 9:36:34 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[17/04/2025 9:36:34 am] [MCC Proxy] CORS enabled for all origins
+[17/04/2025 10:55:35 am] MCC Proxy process exited with code 1
+[17/04/2025 1:25:23 pm] Starting MCC proxy server...
+[17/04/2025 1:25:23 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[17/04/2025 1:25:23 pm] [MCC Proxy] CORS enabled for all origins
+[17/04/2025 3:55:57 pm] MCC Proxy process exited with code 1

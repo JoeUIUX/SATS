@@ -887,4 +887,16 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
   background-color: #2980b9;
 }
 
+.MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__menuItem, .MainScreen-module__4v2AYG__profilesButton, .MainScreen-module__4v2AYG__profileContainer, .MainScreen-module__4v2AYG__profileSidebarItem, .MainScreen-module__4v2AYG__profileButtonGroup, .MainScreen-module__4v2AYG__settingsContainer, .MainScreen-module__4v2AYG__profileHeading, .MainScreen-module__4v2AYG__profileSubtext {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+.MainScreen-module__4v2AYG__profileSidebarItem {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+.MainScreen-module__4v2AYG__menu li {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
 /*# sourceMappingURL=src_components_MainScreen_MainScreen_module_b52d8e88.css.map*/

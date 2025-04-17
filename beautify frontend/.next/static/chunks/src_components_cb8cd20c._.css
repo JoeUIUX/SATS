@@ -887,6 +887,18 @@ html.dark .MainScreen-module__4v2AYG__dragItem.MainScreen-module__4v2AYG__isDrop
   background-color: #2980b9;
 }
 
+.MainScreen-module__4v2AYG__sidebar, .MainScreen-module__4v2AYG__menuItem, .MainScreen-module__4v2AYG__profilesButton, .MainScreen-module__4v2AYG__profileContainer, .MainScreen-module__4v2AYG__profileSidebarItem, .MainScreen-module__4v2AYG__profileButtonGroup, .MainScreen-module__4v2AYG__settingsContainer, .MainScreen-module__4v2AYG__profileHeading, .MainScreen-module__4v2AYG__profileSubtext {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+.MainScreen-module__4v2AYG__profileSidebarItem {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
+.MainScreen-module__4v2AYG__menu li {
+  font-family: var(--app-font-family, Arial, sans-serif) !important;
+}
+
 
 /* [project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.module.css [app-client] (css) */
 .OBC1TestPanel-module___sU2RW__testPanel {
@@ -2933,6 +2945,64 @@ html.dark .SettingsWindow-module__hn1lxq__versionLabel {
 
 .SettingsWindow-module__hn1lxq__drag-handle:active {
   cursor: grabbing !important;
+}
+
+.SettingsWindow-module__hn1lxq__customSelect {
+  position: relative;
+  width: 100%;
+}
+
+.SettingsWindow-module__hn1lxq__customSelectButton {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background-color: #fff;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SettingsWindow-module__hn1lxq__customSelectOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.SettingsWindow-module__hn1lxq__customSelectOption {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.SettingsWindow-module__hn1lxq__customSelectOption:hover {
+  background-color: #f3f4f6;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__customSelectButton {
+  background-color: #2c2c2c;
+  border-color: #444;
+  color: #fff;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__customSelectOptions {
+  background-color: #2c2c2c;
+  border-color: #444;
+}
+
+html.dark .SettingsWindow-module__hn1lxq__customSelectOption:hover {
+  background-color: #3c3c3c;
 }
 
 

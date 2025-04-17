@@ -131,6 +131,11 @@ body {
   --sidebar-accent-foreground: oklch(.205 0 0);
   --sidebar-border: oklch(.922 0 0);
   --sidebar-ring: oklch(.708 0 0);
+  --app-font-family: Arial, sans-serif;
+}
+
+body, button, input, select, textarea, .popup, .welcomeWindow, .mainScreen, .sidebar, .content, .aboutSection, .checkoutSection, .settingsWindow {
+  font-family: var(--app-font-family, Arial, sans-serif);
 }
 
 html.light {

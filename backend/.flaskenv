@@ -1,0 +1,7 @@
+
+FLASK_APP=backend_server.py
+FLASK_ENV=development
+FLASK_DEBUG=1
+FLASK_CORS_ENABLED=true
+FLASK_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+PYTHONIOENCODING=utf-8
