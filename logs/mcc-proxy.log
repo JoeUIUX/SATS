@@ -109,3 +109,11 @@
 [17/04/2025 1:25:23 pm] [MCC Proxy] MCC Proxy Server running on port 8080
 [17/04/2025 1:25:23 pm] [MCC Proxy] CORS enabled for all origins
 [17/04/2025 3:55:57 pm] MCC Proxy process exited with code 1
+[17/04/2025 5:35:56 pm] Starting MCC proxy server...
+[17/04/2025 5:35:57 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[17/04/2025 5:35:57 pm] [MCC Proxy] CORS enabled for all origins
+[17/04/2025 5:35:57 pm] MCC Proxy process exited with code 1
+[21/04/2025 10:53:44 am] Starting MCC proxy server...
+[21/04/2025 10:53:44 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[21/04/2025 10:53:44 am] [MCC Proxy] CORS enabled for all origins
+[21/04/2025 11:59:50 am] MCC Proxy process exited with code 1

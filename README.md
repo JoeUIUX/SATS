@@ -1,81 +1,116 @@
 # SATS (Satellite Automated Testing System)
 
 ## Overview
-SATS is a project designed to automate satellite testing processes. It consists of:
-- **Backend**: A Python-based server that handles core functionalities.
-- **Frontend**: A React-based user interface for user interaction.
-  
-This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, automated checkout testing, and 3D model visualization.
+SATS is a comprehensive system designed to automate satellite testing processes. It provides engineers and operators with powerful tools for hardware checkout, system verification, and test execution. The system consists of:
+
+- **Backend**: A Python-based Flask server that handles core functionalities, data management, and hardware communication
+- **Frontend**: A React/TypeScript application with an intuitive user interface for test configuration, execution, and reporting
+- **MCC Proxy**: A Node.js-based proxy for real hardware communication
+
+This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, automated checkout testing, 3D model visualization, and comprehensive reporting.
 
 ---
 
-## Project Structure
+## 🎯 Key Features
+
+### Core Functionality
+- **Profile Management**: Create, read, update, and delete satellite profiles with rich documentation
+- **Test List Management**: Track and manage tests to be conducted with customizable parameters
+- **Floating Window System**: Multi-window interface with draggable, resizable components
+- **Light/Dark Mode**: Comprehensive theming system with persistent preferences
+
+### Testing & Hardware Integration
+- **Automated Testing System**: Component-specific test panels with real-time progress tracking
+- **Multiple Subsystem Support**: OBC-1, OBC-2, S-Band, and UHF test implementations
+- **Test Report Generation**: Generate detailed Word-format test reports for all components
+- **MCC Connection**: Connect to Mission Control Center servers with simulation fallback
+- **Simulation Mode**: Toggle between real and simulated test execution
+
+### Data & Visualization
+- **Rich Document Support**: Upload and process text, docx, and image files
+- **3D Model Visualization**: View and interact with 3D models of satellites
+- **Model Optimization**: Automatic optimization of uploaded 3D models
+- **Drag-and-Drop Interface**: Interactive component selection for testing
+- **Taskbar Integration**: Minimizable windows with status tracking
+
+---
+
+## 📂 Project Structure
 
 ```
 SATS Satellite Automated Testing System/
 │-- backend/
-│   ├── backend_server.py
-│   ├── mccif.py
-│   ├── requirements.txt 
-│   ├── models/             # Directory for uploaded 3D models
+│   ├── backend_server.py     # Flask server and API endpoints
+│   ├── mccif.py              # MCC server communication module
+│   ├── requirements.txt      # Python dependencies
+│   ├── models/               # Directory for uploaded 3D models
+│   ├── satellites.db         # SQLite database
+│
+│-- mcc-proxy/
+│   ├── mcc-proxy.js          # Node.js proxy server for MCC communication
+│
 │-- beautify frontend/
 │   ├── src/
-│   │   ├── app/
-│   │   │   ├── globals.css
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   ├── components/
-│   │   │   ├── MainScreen/
-│   │   │   │   ├── MainScreen.module.css
-│   │   │   │   ├── MainScreen.tsx
-│   │   │   │   ├── DraggableBox.tsx
-│   │   │   ├── ServerWindow/
-│   │   │   │   ├── ServerWindow.module.css
-│   │   │   │   ├── ServerWindow.tsx
-│   │   │   ├── ToTestList/
-│   │   │   │   ├── ToTestList.module.css
-│   │   │   │   ├── ToTestList.tsx
-│   │   │   ├── WelcomeWindow/
-│   │   │   │   ├── WelcomeWindow.module.css
-│   │   │   │   ├── WelcomeWindow.tsx
-│   │   │   ├── ModelWindow/
-│   │   │   │   ├── ThreeDModelWindow.jsx
-│   │   │   │   ├── ThreeDModelWindow.module.css
-│   │   │   ├── CheckoutTestProgress/
-│   │   │   │   ├── CheckoutTestProgress.tsx
-│   │   │   │   ├── CheckoutTestProgress.module.css
+│   │   ├── app/              # Core application structure
+│   │   │   ├── globals.css   # Global styles
+│   │   │   ├── layout.tsx    # Root layout with theme switching
+│   │   │   ├── page.tsx      # Main entry point
+│   │
+│   │   ├── components/       # UI components
+│   │   │   ├── MainScreen/   # Main application screen
+│   │   │   ├── ServerWindow/ # MCC server connection
+│   │   │   ├── ToTestList/   # Test management
+│   │   │   ├── WelcomeWindow/ # Welcome screen
+│   │   │   ├── ModelWindow/  # 3D model visualization
+│   │   │   ├── Taskbar/      # Window management taskbar
+│   │   │   ├── CheckoutTestProgress/ # Test execution
 │   │   │   │   ├── components/
-│   │   │   │       ├── OBC1TestPanel.tsx
-│   │   │   │       ├── OBC1TestPanel.module.css
-│   │   │   ├── ui/
-│   │   │       ├── alert.tsx
-│   │   │       ├── button.tsx
-│   │   │       ├── card.tsx
-│   │   │       ├── progress.tsx
-│   │   │       ├── tabs.tsx
-│   │   │       ├── index.ts
-│   │   ├── services/
-│   │   │   ├── checkout/
+│   │   │   │       ├── OBC1TestPanel.tsx     # OBC-1 tests
+│   │   │   │       ├── OBC2TestPanel.tsx     # OBC-2 tests
+│   │   │   │       ├── SBandTestPanel.tsx    # S-Band tests
+│   │   │   │       ├── UHFTestPanel.tsx      # UHF tests
+│   │   │   ├── ui/           # Core UI components
+│   │
+│   │   ├── services/         # Business logic
+│   │   │   ├── checkout/     # Test execution services
 │   │   │   │   ├── obc1Checkout.ts
-│   │   │   ├── reports/
+│   │   │   │   ├── obc2Checkout.ts
+│   │   │   │   ├── sbandCheckout.ts
+│   │   │   │   ├── uhfCheckout.ts
+│   │   │   ├── reports/      # Report generation
 │   │   │       ├── obc1Report.ts
-│   │   ├── utils/
-│   │   │   ├── mccUtils.ts
-│   │   ├── lib/
-│   │   │   ├── utils.ts
-│   │   ├── types/
-│   │   │   ├── types.ts
-│   │   ├── images.d.ts
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── .env
+│   │   │       ├── obc2Report.ts
+│   │   │       ├── sbandReport.ts
+│   │   │       ├── uhfReport.ts
+│   │
+│   │   ├── utils/            # Utility functions
+│   │   │   ├── mccUtils.ts   # MCC communication
+│   │   │   ├── themeInitializer.ts # Theme management
+│   │   │   ├── themeEvents.ts # Theme event system
+│   │
+│   │   ├── lib/              # Library functions
+│   │   │   ├── utils.ts      # General utilities
+│   │
+│   │   ├── types/            # TypeScript definitions
+│   │       ├── types.ts
+│
+│   ├── package.json          # Node dependencies
+│   ├── tsconfig.json         # TypeScript configuration
+│   ├── .env                  # Environment variables
+│
+│-- logs/                     # Log directory for services
+│
+│-- start-sats.bat            # Windows startup script
+│-- sats-manager.js           # Process management script
+│-- diagnose.js               # System diagnostic tool
 │-- .gitignore
-│-- README.md
+│-- README.md                 # This file
 ```
 
 ---
 
-## Prerequisites
+## 🛠️ Prerequisites
+
 Make sure the following are installed before running the project:
 
 1. **Git**: [Download Git](https://git-scm.com/downloads)
@@ -85,7 +120,7 @@ Make sure the following are installed before running the project:
 
 ---
 
-## Setup Instructions
+## 🚀 Setup Instructions
 
 ### 1️⃣ Clone the Repository
 Run the following commands in your terminal:
@@ -94,7 +129,7 @@ git clone https://github.com/JoeUIUX/SATS.git
 cd "SATS Satellite Automated Testing System"
 ```
 
-## 2️⃣ Backend Setup
+### 2️⃣ Backend Setup
 Follow these steps to set up the backend:
 
 1. **Navigate to the backend folder:**
@@ -126,16 +161,35 @@ Follow these steps to set up the backend:
    REACT_APP_BACKEND_URL=http://127.0.0.1:5000
    FLASK_PORT=5000
    SIMULATION_MODE=true
+   FLASK_CORS_ENABLED=true
    ```
 
-5. **Run the backend server:**
+5. **Run the backend server manually:**
    ```bash
    python backend_server.py
    ```
+   Or continue with the full setup to use the integrated process manager.
 
----
+### 3️⃣ MCC Proxy Setup
+The MCC proxy server enables real hardware communication:
 
-## 3️⃣ Frontend Setup
+1. **Navigate to the mcc-proxy folder:**
+   ```bash
+   cd ../mcc-proxy
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install ws net http
+   ```
+
+3. **Run the proxy server manually:**
+   ```bash
+   node mcc-proxy.js
+   ```
+   Or continue with the full setup to use the integrated process manager.
+
+### 4️⃣ Frontend Setup
 Follow these steps to set up the frontend:
 
 1. **Navigate to the frontend folder:**
@@ -154,39 +208,118 @@ Follow these steps to set up the frontend:
    - Document processing libraries
    - 3D libraries
 
-3. **Run the frontend development server:**
+3. **Run the frontend development server manually:**
    ```bash
    npm run dev
+   ```
+   Or continue with the full setup to use the integrated process manager.
+
+### 5️⃣ Unified System Startup (Recommended)
+SATS includes a process manager that handles all components simultaneously:
+
+1. **From the project root directory**, run:
+   ```bash
+   node sats-manager.js
+   ```
+   
+   Or on Windows, simply use the batch file:
+   ```bash
+   start-sats.bat
+   ```
+
+2. **Command reference** within the process manager:
+   - `q` - Quit all processes
+   - `r` - Restart all processes
+   - `b` - Restart backend only
+   - `p` - Restart proxy only
+   - `f` - Restart frontend only
+   - `s` - Show status of all processes
+   - `l` - Show log paths
+   - `h` - Display help
+   - `c` - Clean/rotate log files
+
+3. **Logs** are stored in the `logs/` directory for debugging.
+
+4. **System diagnosis**: If you encounter issues, use the diagnosis tool:
+   ```bash
+   node diagnose.js
+   ```
+
+5. **Open the Application** in your browser:
+   ```
+   http://localhost:3000
    ```
 
 ---
 
-## 4️⃣ Running the Combined Functionality
-Follow these steps to ensure both backend and frontend run together:
+## 📝 Environment Variables
 
-### **Start the Backend First:**
-```bash
-cd backend
-python backend_server.py
+### Backend Environment Variables
+In the `backend/.env` file:
+```env
+REACT_APP_BACKEND_URL=http://127.0.0.1:5000
+FLASK_PORT=5000
+SIMULATION_MODE=true
+FLASK_CORS_ENABLED=true
+FLASK_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ```
 
-### **Start the Frontend:**
-Open a **new terminal window** and navigate to the `beautify frontend` folder:
-```bash
-cd "../beautify frontend"
-npm run dev
-```
+### Frontend Environment Variables
+In the `beautify frontend/.env` file:
+```env
+# Required: Backend server URL
+REACT_APP_BACKEND_URL=http://127.0.0.1:5000
 
-### **Open the Application in Your Browser:**
-```bash
-http://localhost:3000
+# Optional: Enable simulation mode for MCC
+REACT_APP_MCC_SIMULATION=false
+
+# Optional: Log level for MCC communication
+REACT_APP_MCC_LOG_LEVEL=debug
+
+# Add an explicit CORS configuration flag
+FLASK_CORS_ENABLED=true
 ```
 
 ---
 
-## **Dependencies**
+## 🔌 API Endpoints
 
-### **Backend Dependencies**
+### Profile Management
+- `GET /profiles` - Get all profiles
+- `POST /profiles` - Create a new profile
+- `PUT /profiles/<name>` - Update a profile
+- `DELETE /profiles/<name>` - Delete a profile
+
+### 3D Model Management
+- `GET /api/profile/<profile_id>` - Get profile model path
+- `POST /api/upload-glb` - Upload a GLB model file
+- `GET /models/<filename>` - Serve a 3D model file
+
+### Test Management
+- `GET /test-items` - Get all test items
+- `POST /test-items` - Save test items
+- `DELETE /test-items/<item_id>` - Delete a specific test item
+- `DELETE /test-items/clear` - Clear all test items
+
+### Checkout Management
+- `POST /checkout/save` - Save checkout items for a profile
+- `GET /checkout/load/<profile_id>` - Load checkout items for a profile
+
+### MCC Connection
+- `POST /connect_mcc` - Connect to MCC server
+
+### Theme Management
+- `GET /settings` - Get application settings including theme
+- `POST /settings` - Save application settings
+- `GET /backgrounds` - Get available background options
+- `POST /upload-background` - Upload a custom background
+- `POST /apply-background` - Apply a selected background
+
+---
+
+## 📋 Dependencies
+
+### Backend Dependencies
 The Python backend requires the following dependencies (listed in `requirements.txt`):
 
 - **Flask** – Web framework
@@ -201,16 +334,12 @@ The Python backend requires the following dependencies (listed in `requirements.
 pip install -r requirements.txt
 ```
 
-### **Optional Backend Dependencies**
-For 3D model optimization:
-- **gltf-pipeline** - NodeJS tool for optimizing GLB/GLTF files
-  ```bash
-  npm install -g gltf-pipeline
-  ```
+### MCC Proxy Dependencies
+- **ws** - WebSocket implementation
+- **net** - Network utilities
+- **http** - HTTP server implementation
 
----
-
-### **Frontend Dependencies**
+### Frontend Dependencies
 The React frontend uses the following dependencies (defined in `package.json`):
 
 #### Core Libraries
@@ -225,17 +354,13 @@ The React frontend uses the following dependencies (defined in `package.json`):
 - **`react-draggable`, `react-rnd`** - For draggable and resizable windows
 
 #### Document Processing
-- **`mammoth`, `docx`, `docx-preview`** – `.docx` file processing
-- **`turndown`** - HTML to Markdown conversion
+- **`docx`** – Report generation
 - **`file-saver`** - File download functionality
 - **`papaparse`** - CSV parsing
 - **`sheetjs`** - Excel file processing
 
 #### 3D Visualization
 - **`three`** – 3D model rendering
-
-#### Other
-- **`react-icons`, `@fortawesome/react-fontawesome`** – Icons
 
 🔹 **Install all frontend dependencies with:**
 ```bash
@@ -244,103 +369,14 @@ npm install
 
 ---
 
-## **Technologies Used**
-### **Frontend**
-- **Framework**: Next.js (React with TypeScript)
-- **Styling**: 
-  - CSS Modules
-  - Tailwind CSS (with class-variance-authority)
-- **UI Components**:
-  - Shadcn/UI (custom UI component library)
-  - Radix UI primitives
-- **Drag & Drop**: 
-  - DnD Kit (for interactive drag-and-drop UI)
-  - react-draggable (For draggable UI elements)
-  - react-rnd (For resizable & draggable UI)
-- **Rich Text Editing**: TipTap Editor
-- **Document Processing**:
-  - Mammoth (.docx text extraction)
-  - docx-preview (For rendering .docx previews)
-  - docx (For generating .docx files)
-  - Turndown (Convert HTML to Markdown)
-- **3D Rendering**:
-  - Three.js
-- **Icons**:
-  - React-Icons
-  - Font Awesome (via @fortawesome)
-  - Lucide React
-- **Network Requests**: Fetch API
-- **Backend Communication**: REST API
-- **File Handling**:
-  - File-Saver (for saving generated reports)
-  - PapaParse (for CSV processing)
-  - SheetJS (for Excel file processing)
+## 🔍 Troubleshooting
 
-### **Backend**
-- **Framework**: Flask
-- **Database**: SQLite
-- **CORS Handling**: Flask-CORS
-- **Environment Management**: Python dotenv
-- **Compression**: Flask-Compress
-- **3D Model Optimization**: gltf-pipeline
-- **Response Caching**: Implemented for efficient model delivery
-
----
-
-## **Key Features**
-- **Profile Management**: Create, read, update, and delete satellite profiles
-- **Test List Management**: Track and manage tests to be conducted
-- **Rich Document Support**: Upload and process text, docx, and image files
-- **3D Model Visualization**: View and interact with 3D models of satellites
-- **Model Optimization**: Automatic optimization of uploaded 3D models
-- **Drag-and-Drop Interface**: Interactive component selection for testing
-- **Automated Testing System**: Component-specific test panels with real-time progress tracking
-- **Test Report Generation**: Generate detailed test reports for completed tests
-- **Light/Dark Mode**: Adaptive theming for better usability
-- **Floating Window System**: Multi-window interface with modular components
-- **MCC Connection**: Connect to MCC servers or use simulation mode
-- **Simulation Mode**: Toggle between real and simulated test execution
-- **Responsive Design**: Works across different screen sizes
-
----
-
-## **Environment Variables**
-
-### Backend Environment Variables
-Create a `.env` file in the `backend` folder:
-```env
-REACT_APP_BACKEND_URL=http://127.0.0.1:5000
-FLASK_PORT=5000
-SIMULATION_MODE=true
-```
-
-### Frontend Environment Variables
-Create a `.env` file in the `beautify frontend` folder:
-```env
-# Required: Backend server URL
-REACT_APP_BACKEND_URL=http://127.0.0.1:5000
-
-# Optional: Enable simulation mode for MCC
-REACT_APP_MCC_SIMULATION=true
-
-# Optional: Log level for MCC communication
-REACT_APP_MCC_LOG_LEVEL=info
-```
-
----
-
-## **Notes**
-✔️ **Always start the backend server before running the frontend.**  
-✔️ If you encounter issues, check:
-   - The `.env` file configuration.
-   - That all dependencies are installed correctly.
-   - 3D model file formats (only .glb is supported)
-   - Window visibility - use the browser console to debug window state issues
-   - For testing issues, verify MCC connection status
-
----
-
-## **Troubleshooting**
+### System Startup Issues
+If the entire system doesn't start properly:
+- Run the diagnostic tool: `node diagnose.js`
+- Check all service logs in the `logs/` directory
+- Verify that all ports (3000, 5000, 8080) are available
+- Make sure Node.js and Python are in your PATH
 
 ### Window Visibility Issues
 If windows aren't appearing or showing correctly:
@@ -355,12 +391,68 @@ If 3D models don't load:
 - Ensure backend server is properly configured for file uploads
 - Look for CORS issues in browser console
 
+### Backend Connection Issues
+If the frontend can't communicate with the backend:
+- Verify backend server is running
+- Check that REACT_APP_BACKEND_URL is set correctly
+- Look for network errors in browser console
+- Ensure backend CORS settings allow requests from frontend
+
 ### Test Execution Issues
 If tests aren't running properly:
 - Check MCC connection in the server window
 - Verify the socket connection is established
 - Look for errors in the test console output
 - Ensure proper options are selected for the components being tested
+
+### MCC Proxy Connection Issues
+If the MCC proxy fails to connect:
+- Check if the proxy server is running
+- Verify the port settings are correct
+- Look for any firewall restrictions
+- If using real hardware, confirm the hardware is properly configured
+
+---
+
+## 📦 New Features & Additions
+
+### Latest Feature Additions
+- **Multiple Test Panels**: Added OBC-2, S-Band, and UHF test panels
+- **Comprehensive Report Generation**: Report generators for all subsystems
+- **Taskbar Component**: New taskbar for managing minimized windows
+- **Enhanced Theme System**: Dynamic theme changes with event system
+- **Background Customization**: Upload and manage custom backgrounds
+- **Window State Management**: Persistent window positions and states
+- **Diagnostic Tools**: System diagnosis and troubleshooting utilities
+- **Process Manager**: Unified service management for easier startup
+- **Log Rotation**: Automatic log management to prevent disk space issues
+
+### Upcoming Features
+- Data visualization for test results
+- Additional hardware component support
+- Test sequence automation
+- Advanced 3D model interaction
+- User account management
+- PDF report generation
+- Test history and comparison tools
+
+---
+
+## 🎯 Best Practices
+
+### System Operation
+- Always use the process manager (`sats-manager.js` or `start-sats.bat`) for the most stable operation
+- For development, consider running components individually for better error isolation
+- Check logs regularly for potential issues (`logs/` directory)
+- Use simulation mode for development and testing without hardware
+- Enable real mode only when hardware is properly connected
+
+### Development Guidelines
+- Follow the established component patterns for new features
+- Use TypeScript for type safety
+- Implement proper error handling in all network operations
+- Use CSS modules for component-specific styling
+- Maintain the existing theme compatibility
 
 ---
 

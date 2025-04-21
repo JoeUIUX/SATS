@@ -863,3 +863,20 @@
 [17/04/2025 3:41:55 pm] [Frontend] ✓ Compiled in 613ms
 [17/04/2025 3:42:06 pm] [Frontend] ✓ Compiled in 579ms
 [17/04/2025 3:55:56 pm] Frontend process exited with code 1
+[21/04/2025 10:53:49 am] Starting frontend development server...
+[21/04/2025 10:53:50 am] [Frontend] > beautify@0.1.0 dev
+[21/04/2025 10:53:50 am] [Frontend] > next dev --turbopack
+[21/04/2025 10:54:00 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[21/04/2025 10:54:00 am] [Frontend] - Local:        http://localhost:3000
+[21/04/2025 10:54:00 am] [Frontend]    - Network:      http://10.97.24.204:3000
+[21/04/2025 10:54:00 am] [Frontend]    - Environments: .env
+[21/04/2025 10:54:00 am] [Frontend] ✓ Starting...
+[21/04/2025 10:54:05 am] [Frontend] ✓ Ready in 6s
+[21/04/2025 10:54:08 am] [Frontend] ○ Compiling / ...
+[21/04/2025 10:54:21 am] [Frontend] ✓ Compiled / in 14.2s
+[21/04/2025 10:54:24 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[21/04/2025 10:54:24 am] [Frontend] GET / 500 in 16874ms
+[21/04/2025 10:54:26 am] [Frontend] ○ Compiling /favicon.ico ...
+[21/04/2025 10:54:27 am] [Frontend] ✓ Compiled /favicon.ico in 1376ms
+[21/04/2025 10:54:29 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3253ms
+[21/04/2025 11:59:49 am] Frontend process exited with code 1
