@@ -116,27 +116,28 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
   };
 
   // Directly test WebSocket connectivity
-  const testDirectWebSocketConnection = async (address: string, port: string): Promise<boolean> => {
-    try {
-      appendLog(`Testing direct WebSocket connection to ws://${address}:${port}...`);
-      const isConnected = await testWebSocketConnection(`${address}:${port}`);
-      
-      if (isConnected) {
-        appendLog("✅ Direct WebSocket connection successful!");
-        appendLog("✅ REAL CONNECTION MODE is possible");
-        setWsConnectionVerified(true);
-      } else {
-        appendLog("❌ Direct WebSocket connection failed.");
-        appendLog("⚠️ This indicates SIMULATION MODE will likely be used");
-      }
-      
-      return isConnected;
-    } catch (error) {
-      appendLog(`WebSocket test error: ${error instanceof Error ? error.message : String(error)}`);
-      appendLog("⚠️ Due to test error, SIMULATION MODE will be used");
+// Change this function to test proxy connection instead
+const testProxyConnection = async (): Promise<boolean> => {
+  try {
+    appendLog(`Testing connection to WebSocket proxy at ws://localhost:8080...`);
+    const isConnected = await testWebSocketConnection(`localhost:8080`);
+    
+    if (isConnected) {
+      appendLog("✅ WebSocket proxy connection successful!");
+      appendLog("✅ REAL CONNECTION MODE is possible through proxy");
+      setWsConnectionVerified(true);
+      return true;
+    } else {
+      appendLog("❌ WebSocket proxy connection failed.");
+      appendLog("⚠️ This indicates SIMULATION MODE will likely be used");
       return false;
     }
-  };
+  } catch (error) {
+    appendLog(`WebSocket proxy test error: ${error instanceof Error ? error.message : String(error)}`);
+    appendLog("⚠️ Due to test error, SIMULATION MODE will be used");
+    return false;
+  }
+};
 
   const handleConnect = async () => {
     console.log("Connect button pressed");
@@ -193,7 +194,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       }
       
       // Perform WebSocket connectivity test - this helps determine if we can use real mode
-      const wsConnected = await testDirectWebSocketConnection(trimmedAddress, trimmedPort);
+      const proxyConnected = await testProxyConnection();
       
       // Try to connect via the proxy and backend
       console.log(`Sending connection request to ${backendUrl}/connect_mcc`);
@@ -205,7 +206,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
           server_address: trimmedAddress,
           server_port: trimmedPort,
           server_id: "mcc_client",
-          force_real: wsConnected, // Only force real mode if websocket test succeeded
+  force_real: proxyConnected, // Force real mode if proxy is available
           use_proxy: true
         }),
       });
@@ -238,13 +239,14 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
         if (result.verified === true) {
           setStatus("Connected");
           appendLog(`✅ ${result.message}`);
-          if (wsConnected) {
+          if (proxyConnected) {
             appendLog("✅ WebSocket and backend connection tests both successful!");
             appendLog("✅ USING REAL CONNECTION MODE - Test results will use real data");
           } else {
             appendLog("⚠️ Backend reports success but WebSocket test failed.");
             appendLog("🔄 ENTERING SIMULATION MODE - Test results will be simulated");
           }
+          
         } else if (result.simulation === true) {
           setStatus("Connected (Simulation)");
           appendLog(`ℹ️ ${result.message}`);
@@ -259,10 +261,10 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
       
         // Save the socket connection info in localStorage
         const mccSocketInfo = {
-          isReal: !result.simulation && (result.verified || wsConnected),
+          isReal: !result.simulation && (result.verified || proxyConnected),
           address: `${trimmedAddress}:${trimmedPort}`,
-          simulation: result.simulation || !wsConnected,
-          verified: result.verified || wsConnected
+          simulation: result.simulation || !proxyConnected,
+          verified: result.verified || proxyConnected
         };
         
         // Store in localStorage so it persists across navigation

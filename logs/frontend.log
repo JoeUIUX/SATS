@@ -880,3 +880,277 @@
 [21/04/2025 10:54:27 am] [Frontend] ✓ Compiled /favicon.ico in 1376ms
 [21/04/2025 10:54:29 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3253ms
 [21/04/2025 11:59:49 am] Frontend process exited with code 1
+[21/04/2025 3:18:07 pm] Starting frontend development server...
+[21/04/2025 3:18:09 pm] [Frontend] > beautify@0.1.0 dev
+[21/04/2025 3:18:09 pm] [Frontend] > next dev --turbopack
+[21/04/2025 3:18:18 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[21/04/2025 3:18:18 pm] [Frontend] - Local:        http://localhost:3000
+[21/04/2025 3:18:18 pm] [Frontend]    - Network:      http://10.97.24.204:3000
+[21/04/2025 3:18:18 pm] [Frontend]    - Environments: .env
+[21/04/2025 3:18:18 pm] [Frontend] ✓ Starting...
+[21/04/2025 3:18:22 pm] [Frontend] Slow filesystem detected. If C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next is a network drive, consider moving it to a local folder. If you have an antivirus enabled, consider excluding your project directory.
+[21/04/2025 3:18:23 pm] [Frontend] ✓ Ready in 5.6s
+[21/04/2025 3:18:23 pm] [Frontend] ○ Compiling / ...
+[21/04/2025 3:18:38 pm] [Frontend] ✓ Compiled / in 15s
+[21/04/2025 3:18:40 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[21/04/2025 3:18:40 pm] [Frontend] GET / 500 in 17578ms
+[21/04/2025 3:18:42 pm] [Frontend] ○ Compiling /favicon.ico ...
+[21/04/2025 3:18:43 pm] [Frontend] ✓ Compiled /favicon.ico in 1507ms
+[21/04/2025 3:18:44 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3016ms
+[21/04/2025 3:22:19 pm] [Frontend] ✓ Compiled in 2.9s
+[21/04/2025 3:23:10 pm] [Frontend Error] ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[21/04/2025 3:23:11 pm] [Frontend] ○ Compiling /_not-found/page ...
+[21/04/2025 3:23:12 pm] [Frontend] ✓ Compiled in 1864ms
+[21/04/2025 3:23:13 pm] [Frontend] ✓ Compiled /_not-found/page in 2.5s
+[21/04/2025 3:23:14 pm] [Frontend] GET /main 404 in 4081ms
+[21/04/2025 3:23:17 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1924ms
+[21/04/2025 3:26:36 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[21/04/2025 3:26:36 pm] [Frontend] GET / 500 in 3831ms
+[21/04/2025 3:40:58 pm] [Frontend] ✓ Compiled in 601ms
+[21/04/2025 3:41:30 pm] [Frontend] ✓ Compiled in 3.4s
+[21/04/2025 3:42:18 pm] [Frontend] ✓ Compiled in 604ms
+[21/04/2025 4:05:18 pm] Frontend process exited with code 1
+[22/04/2025 9:35:35 am] Starting frontend development server...
+[22/04/2025 9:35:37 am] [Frontend] > beautify@0.1.0 dev
+[22/04/2025 9:35:37 am] [Frontend] > next dev --turbopack
+[22/04/2025 9:35:47 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/04/2025 9:35:47 am] [Frontend] - Local:        http://localhost:3000
+[22/04/2025 9:35:47 am] [Frontend]    - Network:      http://10.97.24.204:3000
+[22/04/2025 9:35:47 am] [Frontend]    - Environments: .env
+[22/04/2025 9:35:47 am] [Frontend]  ✓ Starting...
+[22/04/2025 9:35:52 am] [Frontend] ✓ Ready in 6.2s
+[22/04/2025 9:39:32 am] [Frontend] ○ Compiling / ...
+[22/04/2025 9:39:46 am] [Frontend] ✓ Compiled / in 14.4s
+[22/04/2025 9:39:49 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 9:39:49 am] [Frontend] GET / 500 in 17339ms
+[22/04/2025 9:39:51 am] [Frontend] ○ Compiling /favicon.ico ...
+[22/04/2025 9:39:52 am] [Frontend] ✓ Compiled /favicon.ico in 1393ms
+[22/04/2025 9:39:53 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3117ms
+[22/04/2025 10:00:28 am] [Frontend] ✓ Compiled in 666ms
+[22/04/2025 10:00:51 am] [Frontend Error] ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[22/04/2025 10:00:51 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/04/2025 10:00:51 am] [Frontend] ✓ Compiled in 1191ms
+[22/04/2025 10:00:52 am] [Frontend] ✓ Compiled /_not-found/page in 1372ms
+[22/04/2025 10:00:53 am] [Frontend] GET /main 404 in 2750ms
+[22/04/2025 10:00:55 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1299ms
+[22/04/2025 10:02:15 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:02:15 am] [Frontend] GET / 500 in 2686ms
+[22/04/2025 10:03:58 am] Frontend process exited with code 1
+[22/04/2025 10:05:03 am] Starting frontend development server...
+[22/04/2025 10:05:05 am] [Frontend] > beautify@0.1.0 dev
+[22/04/2025 10:05:05 am] [Frontend] > next dev --turbopack
+[22/04/2025 10:05:13 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/04/2025 10:05:13 am] [Frontend] - Local:        http://localhost:3000
+[22/04/2025 10:05:13 am] [Frontend]    - Network:      http://10.97.24.204:3000
+[22/04/2025 10:05:13 am] [Frontend]    - Environments: .env
+[22/04/2025 10:05:13 am] [Frontend]  ✓ Starting...
+[22/04/2025 10:05:17 am] [Frontend] ✓ Ready in 5.3s
+[22/04/2025 10:05:37 am] [Frontend] ○ Compiling / ...
+[22/04/2025 10:05:49 am] [Frontend] ✓ Compiled / in 12.7s
+[22/04/2025 10:05:52 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:05:52 am] [Frontend] GET / 500 in 15528ms
+[22/04/2025 10:24:31 am] [Frontend] ✓ Compiled in 792ms
+[22/04/2025 10:25:08 am] [Frontend] ✓ Compiled in 3.1s
+[22/04/2025 10:25:26 am] [Frontend] ✓ Compiled in 647ms
+[22/04/2025 10:32:37 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:32:37 am] [Frontend] GET / 500 in 3063ms
+[22/04/2025 10:32:39 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:32:39 am] [Frontend] GET / 500 in 2086ms
+[22/04/2025 10:46:59 am] [Frontend] ✓ Compiled in 717ms
+[22/04/2025 10:47:14 am] [Frontend] ✓ Compiled in 2.8s
+[22/04/2025 10:47:26 am] [Frontend] ✓ Compiled in 616ms
+[22/04/2025 10:47:47 am] [Frontend] ✓ Compiled in 617ms
+[22/04/2025 10:52:43 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/04/2025 10:52:43 am] [Frontend] ✓ Compiled in 2.7s
+[22/04/2025 10:52:44 am] [Frontend] ✓ Compiled /_not-found/page in 1284ms
+[22/04/2025 10:52:45 am] [Frontend] GET /main 404 in 2718ms
+[22/04/2025 10:52:47 am] [Frontend] GET /main 404 in 1657ms
+[22/04/2025 10:58:11 am] [Frontend] ○ Compiling / ...
+[22/04/2025 10:58:11 am] [Frontend] ✓ Compiled / in 650ms
+[22/04/2025 10:58:13 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:58:13 am] [Frontend] GET / 500 in 2746ms
+[22/04/2025 10:58:15 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[22/04/2025 10:58:15 am] [Frontend] GET / 500 in 1707ms
+[22/04/2025 11:02:02 am] Frontend process exited with code 1
+[24/04/2025 9:35:23 am] Starting frontend development server...
+[24/04/2025 9:35:31 am] [Frontend] > beautify@0.1.0 dev
+[24/04/2025 9:35:31 am] [Frontend] > next dev --turbopack
+[24/04/2025 9:35:42 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[24/04/2025 9:35:42 am] [Frontend] - Local:        http://localhost:3000
+[24/04/2025 9:35:42 am] [Frontend]    - Network:      http://10.97.24.204:3000
+[24/04/2025 9:35:42 am] [Frontend]    - Environments: .env
+[24/04/2025 9:35:42 am] [Frontend] ✓ Starting...
+[24/04/2025 9:35:47 am] [Frontend] ✓ Ready in 6.8s
+[24/04/2025 9:35:48 am] [Frontend] ○ Compiling / ...
+[24/04/2025 9:36:05 am] [Frontend] ✓ Compiled / in 17.9s
+[24/04/2025 9:36:08 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 9:36:08 am] [Frontend] GET / 500 in 21039ms
+[24/04/2025 9:36:10 am] [Frontend] ○ Compiling /favicon.ico ...
+[24/04/2025 9:36:11 am] [Frontend] ✓ Compiled /favicon.ico in 1052ms
+[24/04/2025 9:36:13 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2729ms
+[24/04/2025 9:42:04 am] [Frontend] ✓ Compiled in 824ms
+[24/04/2025 9:51:54 am] [Frontend] ✓ Compiled in 732ms
+[24/04/2025 9:52:40 am] [Frontend] ✓ Compiled in 759ms
+[24/04/2025 9:53:11 am] [Frontend] ✓ Compiled in 648ms
+[24/04/2025 9:55:02 am] [Frontend] ✓ Compiled in 691ms
+[24/04/2025 9:55:15 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 9:55:15 am] [Frontend] GET / 500 in 3837ms
+[24/04/2025 10:11:28 am] [Frontend] ✓ Compiled in 818ms
+[24/04/2025 10:12:11 am] [Frontend] ✓ Compiled in 3.6s
+[24/04/2025 10:18:35 am] [Frontend] ✓ Compiled in 797ms
+[24/04/2025 10:19:24 am] [Frontend Error] ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[24/04/2025 10:19:25 am] [Frontend] ○ Compiling /_not-found/page ...
+[24/04/2025 10:19:26 am] [Frontend] ✓ Compiled in 1408ms
+[24/04/2025 10:19:26 am] [Frontend] ✓ Compiled /_not-found/page in 1425ms
+[24/04/2025 10:19:27 am] [Frontend] GET /main 404 in 2934ms
+[24/04/2025 10:19:29 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1573ms
+[24/04/2025 10:21:14 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 10:21:14 am] [Frontend] GET / 500 in 2981ms
+[24/04/2025 10:21:15 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 10:21:15 am] [Frontend] GET / 500 in 1918ms
+[24/04/2025 10:29:01 am] [Frontend] ✓ Compiled in 839ms
+[24/04/2025 10:29:32 am] [Frontend] ✓ Compiled in 2.6s
+[24/04/2025 10:29:40 am] [Frontend] ✓ Compiled in 758ms
+[24/04/2025 10:32:13 am] [Frontend] ✓ Compiled in 2.5s
+[24/04/2025 10:32:14 am] [Frontend] GET /main 404 in 3274ms
+[24/04/2025 10:32:16 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1680ms
+[24/04/2025 10:34:34 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 10:34:34 am] [Frontend] GET / 500 in 3351ms
+[24/04/2025 10:34:36 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 10:34:36 am] [Frontend] GET / 500 in 2439ms
+[24/04/2025 10:42:20 am] [Frontend] ✓ Compiled in 868ms
+[24/04/2025 10:54:49 am] [Frontend] ✓ Compiled in 791ms
+[24/04/2025 10:55:40 am] [Frontend] ✓ Compiled in 3.3s
+[24/04/2025 10:55:56 am] [Frontend] ✓ Compiled in 723ms
+[24/04/2025 11:01:31 am] [Frontend] ✓ Compiled in 675ms
+[24/04/2025 11:02:34 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 11:02:34 am] [Frontend] GET / 500 in 2843ms
+[24/04/2025 11:02:36 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[24/04/2025 11:02:36 am] [Frontend] GET / 500 in 1864ms
+[24/04/2025 11:12:03 am] Frontend process exited with code 1
+[25/04/2025 9:55:12 am] Starting frontend development server...
+[25/04/2025 9:55:13 am] [Frontend] > beautify@0.1.0 dev
+[25/04/2025 9:55:13 am] [Frontend] > next dev --turbopack
+[25/04/2025 9:55:16 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[25/04/2025 9:55:16 am] [Frontend] - Local:        http://localhost:3000
+[25/04/2025 9:55:16 am] [Frontend]    - Network:      http://10.97.24.204:3000
+[25/04/2025 9:55:16 am] [Frontend]    - Environments: .env
+[25/04/2025 9:55:16 am] [Frontend] ✓ Starting...
+[25/04/2025 9:55:17 am] [Frontend] ✓ Ready in 2.1s
+[25/04/2025 9:55:37 am] [Frontend] ○ Compiling / ...
+[25/04/2025 9:55:44 am] [Frontend] ✓ Compiled / in 7.7s
+[25/04/2025 9:55:46 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 9:55:46 am] [Frontend] GET / 500 in 9330ms
+[25/04/2025 9:55:47 am] [Frontend] ✓ Compiled /favicon.ico in 499ms
+[25/04/2025 9:55:48 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1083ms
+[25/04/2025 9:57:29 am] [Frontend] ✓ Compiled in 462ms
+[25/04/2025 10:13:34 am] [Frontend] ✓ Compiled in 338ms
+[25/04/2025 10:16:27 am] [Frontend] ✓ Compiled in 374ms
+[25/04/2025 10:16:28 am] [Frontend] ○ Compiling /_not-found/page ...
+[25/04/2025 10:16:28 am] [Frontend] ✓ Compiled /_not-found/page in 948ms
+[25/04/2025 10:16:29 am] [Frontend] GET /main 404 in 2018ms
+[25/04/2025 10:16:31 am] [Frontend] GET /main 404 in 1986ms
+[25/04/2025 10:16:34 am] [Frontend] ✓ Compiled / in 89ms
+[25/04/2025 10:16:35 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 10:16:35 am] [Frontend] GET / 500 in 1855ms
+[25/04/2025 10:16:41 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 10:16:41 am] [Frontend] GET / 500 in 1100ms
+[25/04/2025 10:16:44 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1513ms
+[25/04/2025 11:20:19 am] [Frontend] HEAD /models/profile_2.glb 404 in 373ms
+[25/04/2025 11:20:19 am] [Frontend] HEAD /models/profile_2.glb 404 in 593ms
+[25/04/2025 11:20:19 am] [Frontend] HEAD /models/profile_2.glb 404 in 709ms
+[25/04/2025 11:20:42 am] [Frontend] HEAD /models/profile_1.glb 404 in 272ms
+[25/04/2025 11:20:42 am] [Frontend] HEAD /models/profile_1.glb 404 in 500ms
+[25/04/2025 11:20:43 am] [Frontend] HEAD /models/profile_1.glb 404 in 811ms
+[25/04/2025 11:26:37 am] [Frontend] ✓ Compiled in 453ms
+[25/04/2025 11:27:37 am] [Frontend] ✓ Compiled in 211ms
+[25/04/2025 11:30:49 am] [Frontend] ✓ Compiled in 30ms
+[25/04/2025 11:31:14 am] [Frontend] ✓ Compiled in 67ms
+[25/04/2025 11:34:00 am] [Frontend] ✓ Compiled in 339ms
+[25/04/2025 11:34:38 am] [Frontend] ✓ Compiled in 330ms
+[25/04/2025 11:35:47 am] [Frontend] ✓ Compiled in 339ms
+[25/04/2025 11:36:31 am] [Frontend] ✓ Compiled in 310ms
+[25/04/2025 11:37:24 am] [Frontend] ✓ Compiled in 367ms
+[25/04/2025 11:37:24 am] [Frontend Error] ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[25/04/2025 11:37:25 am] [Frontend] GET /main 404 in 750ms
+[25/04/2025 11:37:26 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 224ms
+[25/04/2025 11:49:00 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 11:49:00 am] [Frontend] GET / 500 in 1437ms
+[25/04/2025 11:49:01 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 11:49:01 am] [Frontend] GET / 500 in 714ms
+[25/04/2025 12:06:40 pm] [Frontend] ✓ Compiled in 388ms
+[25/04/2025 12:07:34 pm] [Frontend] ✓ Compiled in 321ms
+[25/04/2025 12:08:33 pm] [Frontend] ✓ Compiled in 312ms
+[25/04/2025 12:08:50 pm] [Frontend] ✓ Compiled in 360ms
+[25/04/2025 12:09:02 pm] [Frontend] ✓ Compiled in 326ms
+[25/04/2025 12:09:15 pm] [Frontend] ✓ Compiled in 350ms
+[25/04/2025 12:09:28 pm] [Frontend] ✓ Compiled in 350ms
+[25/04/2025 12:09:39 pm] [Frontend] ✓ Compiled in 697ms
+[25/04/2025 12:09:47 pm] [Frontend] ✓ Compiled in 319ms
+[25/04/2025 12:09:56 pm] [Frontend] ✓ Compiled in 687ms
+[25/04/2025 12:10:07 pm] [Frontend] ✓ Compiled in 332ms
+[25/04/2025 12:10:15 pm] [Frontend] ✓ Compiled in 703ms
+[25/04/2025 12:10:23 pm] [Frontend] ✓ Compiled in 338ms
+[25/04/2025 12:10:33 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 12:10:33 pm] [Frontend] GET / 500 in 1236ms
+[25/04/2025 12:10:34 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 12:10:34 pm] [Frontend] GET / 500 in 1299ms
+[25/04/2025 12:10:39 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 12:10:39 pm] [Frontend] GET / 500 in 633ms
+[25/04/2025 12:10:40 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 497ms
+[25/04/2025 12:16:04 pm] [Frontend] ✓ Compiled in 478ms
+[25/04/2025 12:16:56 pm] [Frontend] ✓ Compiled in 375ms
+[25/04/2025 12:17:31 pm] [Frontend] ✓ Compiled in 306ms
+[25/04/2025 12:17:50 pm] [Frontend] ✓ Compiled in 362ms
+[25/04/2025 12:21:34 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 12:21:34 pm] [Frontend] GET / 500 in 1434ms
+[25/04/2025 12:33:46 pm] [Frontend] ✓ Compiled in 550ms
+[25/04/2025 12:45:32 pm] Frontend process exited with code 1
+[25/04/2025 1:38:01 pm] Starting frontend development server...
+[25/04/2025 1:38:02 pm] [Frontend] > beautify@0.1.0 dev
+[25/04/2025 1:38:02 pm] [Frontend] > next dev --turbopack
+[25/04/2025 1:38:04 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[25/04/2025 1:38:04 pm] [Frontend] - Local:        http://localhost:3000
+[25/04/2025 1:38:04 pm] [Frontend] - Network:      http://10.97.24.204:3000
+[25/04/2025 1:38:04 pm] [Frontend]    - Environments: .env
+[25/04/2025 1:38:04 pm] [Frontend] ✓ Starting...
+[25/04/2025 1:38:05 pm] [Frontend] ✓ Ready in 1590ms
+[25/04/2025 1:38:06 pm] [Frontend] ○ Compiling / ...
+[25/04/2025 1:38:13 pm] [Frontend] ✓ Compiled / in 7.3s
+[25/04/2025 1:38:15 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 1:38:15 pm] [Frontend] GET / 500 in 9001ms
+[25/04/2025 1:38:17 pm] [Frontend] ○ Compiling /favicon.ico ...
+[25/04/2025 1:38:17 pm] [Frontend] ✓ Compiled /favicon.ico in 687ms
+[25/04/2025 1:38:17 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1275ms
+[25/04/2025 1:39:36 pm] [Frontend] ○ Compiling /_not-found/page ...
+[25/04/2025 1:39:37 pm] [Frontend] ✓ Compiled /_not-found/page in 976ms
+[25/04/2025 1:39:38 pm] [Frontend] HEAD /models/profile_1.glb 404 in 2288ms
+[25/04/2025 1:39:38 pm] [Frontend] HEAD /models/profile_1.glb 404 in 2680ms
+[25/04/2025 1:39:38 pm] [Frontend] HEAD /models/profile_1.glb 404 in 2695ms
+[25/04/2025 1:42:31 pm] Frontend process exited with code 1
+[25/04/2025 2:10:13 pm] Starting frontend development server...
+[25/04/2025 2:10:13 pm] [Frontend] > beautify@0.1.0 dev
+[25/04/2025 2:10:13 pm] [Frontend] > next dev --turbopack
+[25/04/2025 2:10:15 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[25/04/2025 2:10:15 pm] [Frontend] - Local:        http://localhost:3000
+[25/04/2025 2:10:15 pm] [Frontend]    - Network:      http://10.97.24.204:3000
+[25/04/2025 2:10:15 pm] [Frontend]    - Environments: .env
+[25/04/2025 2:10:15 pm] [Frontend]  ✓ Starting...
+[25/04/2025 2:10:16 pm] [Frontend] ✓ Ready in 1478ms
+[25/04/2025 2:10:18 pm] [Frontend] ○ Compiling / ...
+[25/04/2025 2:10:24 pm] [Frontend] ✓ Compiled / in 6.4s
+[25/04/2025 2:10:25 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '1478128338' }
+[25/04/2025 2:10:25 pm] [Frontend] GET / 500 in 7670ms
+[25/04/2025 2:10:27 pm] [Frontend] ○ Compiling /favicon.ico ...
+[25/04/2025 2:10:27 pm] [Frontend] ✓ Compiled /favicon.ico in 529ms
+[25/04/2025 2:10:27 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1196ms
+[25/04/2025 2:15:18 pm] [Frontend] ✓ Compiled in 395ms
+[25/04/2025 2:17:18 pm] [Frontend] ✓ Compiled in 318ms
+[25/04/2025 2:17:52 pm] [Frontend] ✓ Compiled in 435ms
+[25/04/2025 2:19:51 pm] [Frontend] ✓ Compiled in 317ms
+[25/04/2025 2:27:46 pm] [Frontend] ✓ Compiled in 487ms
+[25/04/2025 2:30:35 pm] [Frontend] ✓ Compiled in 313ms
+[25/04/2025 3:03:41 pm] [Frontend] ✓ Compiled in 870ms
+[25/04/2025 3:03:48 pm] [Frontend] ✓ Compiled in 338ms
+[25/04/2025 3:06:45 pm] [Frontend] ✓ Compiled in 419ms
+[25/04/2025 4:47:54 pm] Frontend process exited with code 1

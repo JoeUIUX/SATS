@@ -1165,21 +1165,23 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
         onMinimize(status);
     };
     // Directly test WebSocket connectivity
-    const testDirectWebSocketConnection = async (address, port)=>{
+    // Change this function to test proxy connection instead
+    const testProxyConnection = async ()=>{
         try {
-            appendLog(`Testing direct WebSocket connection to ws://${address}:${port}...`);
-            const isConnected = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["testWebSocketConnection"])(`${address}:${port}`);
+            appendLog(`Testing connection to WebSocket proxy at ws://localhost:8080...`);
+            const isConnected = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["testWebSocketConnection"])(`localhost:8080`);
             if (isConnected) {
-                appendLog("✅ Direct WebSocket connection successful!");
-                appendLog("✅ REAL CONNECTION MODE is possible");
+                appendLog("✅ WebSocket proxy connection successful!");
+                appendLog("✅ REAL CONNECTION MODE is possible through proxy");
                 setWsConnectionVerified(true);
+                return true;
             } else {
-                appendLog("❌ Direct WebSocket connection failed.");
+                appendLog("❌ WebSocket proxy connection failed.");
                 appendLog("⚠️ This indicates SIMULATION MODE will likely be used");
+                return false;
             }
-            return isConnected;
         } catch (error) {
-            appendLog(`WebSocket test error: ${error instanceof Error ? error.message : String(error)}`);
+            appendLog(`WebSocket proxy test error: ${error instanceof Error ? error.message : String(error)}`);
             appendLog("⚠️ Due to test error, SIMULATION MODE will be used");
             return false;
         }
@@ -1231,7 +1233,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                 return;
             }
             // Perform WebSocket connectivity test - this helps determine if we can use real mode
-            const wsConnected = await testDirectWebSocketConnection(trimmedAddress, trimmedPort);
+            const proxyConnected = await testProxyConnection();
             // Try to connect via the proxy and backend
             console.log(`Sending connection request to ${backendUrl}/connect_mcc`);
             const response = await fetch(`${backendUrl}/connect_mcc`, {
@@ -1243,7 +1245,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                     server_address: trimmedAddress,
                     server_port: trimmedPort,
                     server_id: "mcc_client",
-                    force_real: wsConnected,
+                    force_real: proxyConnected,
                     use_proxy: true
                 })
             });
@@ -1272,7 +1274,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                 if (result.verified === true) {
                     setStatus("Connected");
                     appendLog(`✅ ${result.message}`);
-                    if (wsConnected) {
+                    if (proxyConnected) {
                         appendLog("✅ WebSocket and backend connection tests both successful!");
                         appendLog("✅ USING REAL CONNECTION MODE - Test results will use real data");
                     } else {
@@ -1292,10 +1294,10 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                 }
                 // Save the socket connection info in localStorage
                 const mccSocketInfo = {
-                    isReal: !result.simulation && (result.verified || wsConnected),
+                    isReal: !result.simulation && (result.verified || proxyConnected),
                     address: `${trimmedAddress}:${trimmedPort}`,
-                    simulation: result.simulation || !wsConnected,
-                    verified: result.verified || wsConnected
+                    simulation: result.simulation || !proxyConnected,
+                    verified: result.verified || proxyConnected
                 };
                 // Store in localStorage so it persists across navigation
                 localStorage.setItem('mccSocketInfo', JSON.stringify(mccSocketInfo));
@@ -1439,7 +1441,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             children: "Server Connection"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 416,
+                            lineNumber: 418,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1452,7 +1454,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     children: "—"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 418,
+                                    lineNumber: 420,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1465,19 +1467,19 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     children: "✖"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 425,
+                                    lineNumber: 427,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 417,
+                            lineNumber: 419,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                    lineNumber: 415,
+                    lineNumber: 417,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1492,7 +1494,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             onClick: (e)=>e.stopPropagation()
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 438,
+                            lineNumber: 440,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1504,7 +1506,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             onClick: (e)=>e.stopPropagation()
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 446,
+                            lineNumber: 448,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1521,13 +1523,13 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             children: isConnecting ? "Connecting..." : connectFailed ? "Retry" : "Connect"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 454,
+                            lineNumber: 456,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                    lineNumber: 437,
+                    lineNumber: 439,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1556,13 +1558,13 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                             children: "⟲"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                            lineNumber: 488,
+                                            lineNumber: 490,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 478,
+                                    lineNumber: 480,
                                     columnNumber: 13
                                 }, this),
                                 (status.includes('Simulation') || status === 'Connected' && serverAddress.toLowerCase() === 'localhost' || status === 'Partial Connection') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1570,7 +1572,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     children: "SIMULATION MODE"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 496,
+                                    lineNumber: 498,
                                     columnNumber: 15
                                 }, this),
                                 status === 'Connected' && wsConnectionVerified && serverAddress.toLowerCase() !== 'localhost' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1578,13 +1580,13 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     children: "REAL CONNECTION"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 505,
+                                    lineNumber: 507,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 476,
+                            lineNumber: 478,
                             columnNumber: 11
                         }, this),
                         wsConnectionVerified && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1598,13 +1600,13 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             children: "WebSocket Verified"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 512,
+                            lineNumber: 514,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                    lineNumber: 470,
+                    lineNumber: 472,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1614,7 +1616,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             children: "Connection Logs"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 525,
+                            lineNumber: 527,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1649,7 +1651,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                                lineNumber: 537,
+                                                lineNumber: 539,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1661,32 +1663,32 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                                 children: log.message
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                                lineNumber: 549,
+                                                lineNumber: 551,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                        lineNumber: 536,
+                                        lineNumber: 538,
                                         columnNumber: 15
                                     }, this)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: logsEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 563,
+                                    lineNumber: 565,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 526,
+                            lineNumber: 528,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                    lineNumber: 524,
+                    lineNumber: 526,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1706,7 +1708,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                             children: "Connection Notes:"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 575,
+                            lineNumber: 577,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1719,7 +1721,7 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     children: "Ensure the MCC server is running at the specified address/port"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 577,
+                                    lineNumber: 579,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1729,51 +1731,51 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                             children: "mcc-proxy.js"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                            lineNumber: 578,
+                                            lineNumber: 580,
                                             columnNumber: 34
                                         }, this),
                                         " is running"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 578,
+                                    lineNumber: 580,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     children: "Simulation mode will be used if there is no connection"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 579,
+                                    lineNumber: 581,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     children: "Minimise this window to keep the connection while working"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                                    lineNumber: 580,
+                                    lineNumber: 582,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                            lineNumber: 576,
+                            lineNumber: 578,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-                    lineNumber: 568,
+                    lineNumber: 570,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-            lineNumber: 399,
+            lineNumber: 401,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
-        lineNumber: 390,
+        lineNumber: 392,
         columnNumber: 5
     }, this), portalElement);
 };

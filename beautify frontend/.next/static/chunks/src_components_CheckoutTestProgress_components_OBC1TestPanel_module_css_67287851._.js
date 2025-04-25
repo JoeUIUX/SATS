@@ -1,0 +1,47 @@
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/src_components_CheckoutTestProgress_components_OBC1TestPanel_module_css_67287851._.js", {
+
+"[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.module.css [app-client] (css module)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v({
+  "button": "OBC1TestPanel-module___sU2RW__button",
+  "buttonIcon": "OBC1TestPanel-module___sU2RW__buttonIcon",
+  "card": "OBC1TestPanel-module___sU2RW__card",
+  "cardContent": "OBC1TestPanel-module___sU2RW__cardContent",
+  "cardHeader": "OBC1TestPanel-module___sU2RW__cardHeader",
+  "cardIcon": "OBC1TestPanel-module___sU2RW__cardIcon",
+  "cardTitle": "OBC1TestPanel-module___sU2RW__cardTitle",
+  "infoCard": "OBC1TestPanel-module___sU2RW__infoCard",
+  "infoContent": "OBC1TestPanel-module___sU2RW__infoContent",
+  "infoIcon": "OBC1TestPanel-module___sU2RW__infoIcon",
+  "infoLabel": "OBC1TestPanel-module___sU2RW__infoLabel",
+  "infoValue": "OBC1TestPanel-module___sU2RW__infoValue",
+  "parameterBox": "OBC1TestPanel-module___sU2RW__parameterBox",
+  "parameterIcon": "OBC1TestPanel-module___sU2RW__parameterIcon",
+  "parameterLabel": "OBC1TestPanel-module___sU2RW__parameterLabel",
+  "parameterValue": "OBC1TestPanel-module___sU2RW__parameterValue",
+  "progressBar": "OBC1TestPanel-module___sU2RW__progressBar",
+  "progressBarFill": "OBC1TestPanel-module___sU2RW__progressBarFill",
+  "progressContainer": "OBC1TestPanel-module___sU2RW__progressContainer",
+  "progressLabel": "OBC1TestPanel-module___sU2RW__progressLabel",
+  "progressStep": "OBC1TestPanel-module___sU2RW__progressStep",
+  "progressValue": "OBC1TestPanel-module___sU2RW__progressValue",
+  "reportButton": "OBC1TestPanel-module___sU2RW__reportButton",
+  "spin": "OBC1TestPanel-module___sU2RW__spin",
+  "spinnerIcon": "OBC1TestPanel-module___sU2RW__spinnerIcon",
+  "statusBadge": "OBC1TestPanel-module___sU2RW__statusBadge",
+  "table": "OBC1TestPanel-module___sU2RW__table",
+  "tableBody": "OBC1TestPanel-module___sU2RW__tableBody",
+  "tableHeader": "OBC1TestPanel-module___sU2RW__tableHeader",
+  "tableRowAlt": "OBC1TestPanel-module___sU2RW__tableRowAlt",
+  "tempCard": "OBC1TestPanel-module___sU2RW__tempCard",
+  "tempGrid": "OBC1TestPanel-module___sU2RW__tempGrid",
+  "tempLabel": "OBC1TestPanel-module___sU2RW__tempLabel",
+  "tempValue": "OBC1TestPanel-module___sU2RW__tempValue",
+  "testPanel": "OBC1TestPanel-module___sU2RW__testPanel",
+});
+}}),
+}]);
+
+//# sourceMappingURL=src_components_CheckoutTestProgress_components_OBC1TestPanel_module_css_67287851._.js.map

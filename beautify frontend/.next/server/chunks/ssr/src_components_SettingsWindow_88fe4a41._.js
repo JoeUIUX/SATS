@@ -1353,7 +1353,7 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                         columnNumber: 1
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                        children: "NTU Professional Internship Project:"
+                                                        children: "NTU Professional Internship Project - Jan to May 2025:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                         lineNumber: 841,
@@ -1370,41 +1370,6 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                         lineNumber: 842,
-                                                        columnNumber: 1
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        children: "Developed from January to May 2025"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 843,
-                                                        columnNumber: 1
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "mt-4 text-sm",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "opacity-60",
-                                                                children: "For more information: "
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                lineNumber: 846,
-                                                                columnNumber: 3
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                                href: "https://github.com/JoeUIUX",
-                                                                className: "text-blue-500 hover:underline",
-                                                                target: "_blank",
-                                                                rel: "noopener noreferrer",
-                                                                children: "github.com/JoeUIUX"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                                lineNumber: 847,
-                                                                columnNumber: 3
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 845,
                                                         columnNumber: 1
                                                     }, this)
                                                 ]

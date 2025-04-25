@@ -121,10 +121,10 @@ export const SBandTestPanel: React.FC<SBandTestPanelProps> = ({
     }
   }, [sock]);
   
-  // Track if we've run tests at least once
   useEffect(() => {
     // Only run test automatically if this is the initial run and we haven't run it yet
     if (isInitialRun && !hasRunTest && !isRunning) {
+      console.log("Auto-starting test because isInitialRun =", isInitialRun);
       startTest();
     }
   }, [isInitialRun, hasRunTest, isRunning]);

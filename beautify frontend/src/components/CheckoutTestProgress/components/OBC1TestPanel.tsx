@@ -1,5 +1,5 @@
 // src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Button, Alert } from '@/components/ui';
 import { mccifSet, mccifRead, setSimulationMode, debugSocketType } from '@/utils/mccUtils';
 import styles from './OBC1TestPanel.module.css';
@@ -51,6 +51,19 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
   const [hasRunTest, setHasRunTest] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
+  
+  // callback function:
+  const handleTestComplete = useCallback((testResults: any) => {
+    // Immediately set local state
+    setIsRunning(false);
+    setProgress(100);
+    setCurrentStep('Test Complete');
+    
+    // Notify parent after a small delay to ensure local state is updated first
+    setTimeout(() => {
+      onTestComplete(testResults);
+    }, 100);
+  }, [onTestComplete]);
   
   // Determine if eMMC option is enabled - this is now based on the filtered options
   const enableEmmc = options.includes('eMMC');
@@ -120,10 +133,10 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
     }
   }, [sock]);
   
-  // Track if we've run tests at least once
   useEffect(() => {
     // Only run test automatically if this is the initial run and we haven't run it yet
     if (isInitialRun && !hasRunTest && !isRunning) {
+      console.log("Auto-starting test because isInitialRun =", isInitialRun);
       startTest();
     }
   }, [isInitialRun, hasRunTest, isRunning]);
@@ -198,17 +211,21 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
       // Save the results locally
       setResults(results);
       
-      // Notify parent that the test is complete
-      onTestComplete(results);
+      // Instead of updating state and calling onTestComplete directly,
+      // use the handleTestComplete callback to sequence things properly
+      handleTestComplete(results);
       
     } catch (error) {
-      console.error('Error running OBC-1 checkout:', error);
+      console.error('Error running test:', error);
       setError(error instanceof Error ? error.message : String(error));
-      onTestError(error);
-    } finally {
+      
+      // Update local state
       setIsRunning(false);
       setProgress(100);
-      setCurrentStep('Test Complete');
+      setCurrentStep('Test Failed');
+      
+      // Notify parent of error
+      onTestError(error);
     }
   };
   
@@ -227,6 +244,8 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
       setError(error instanceof Error ? error.message : String(error));
     }
   };
+
+  
 
   return (
     <div className={styles.testPanel}>

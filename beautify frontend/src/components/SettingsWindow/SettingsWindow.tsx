@@ -838,14 +838,9 @@ const applyBackground = async () => {
 </ul>
                   
 
-<h4>NTU Professional Internship Project:</h4>
+<h4>NTU Professional Internship Project - Jan to May 2025:</h4>
 <p><em>Building Satellite - Development and implementation of Automated Testing System for Satellite</em></p>
-<p>Developed from January to May 2025</p>
 
-<p className="mt-4 text-sm">
-  <span className="opacity-60">For more information: </span>
-  <a href="https://github.com/JoeUIUX" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">github.com/JoeUIUX</a>
-</p>
                 </div>
               </div>
             </div>

@@ -8,6 +8,12 @@ import { OBC2TestPanel } from "./components/OBC2TestPanel";
 import { SBandTestPanel } from "./components/SBandTestPanel";
 import { UHFTestPanel } from "./components/UHFTestPanel";
 import { HEPSTestPanel } from "./components/HEPSTestPanel";
+import { ADCSTestPanel } from './components/ADCSTestPanel';
+import { GPSTestPanel } from "./components/GPSTestPanel";
+import { PropulsionTestPanel } from "./components/PropulsionTestPanel";
+import { PCSTestPanel } from "./components/PCSTestPanel";
+import { XBandTestPanel } from "./components/XBandTestPanel";
+import { LEOCAMTestPanel } from "./components/LEOCAMTestPanel";
 
 import styles from "./CheckoutTestProgress.module.css";
 import { setSimulationMode } from '@/utils/mccUtils';
@@ -52,9 +58,13 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
   const [currentlyRunningTest, setCurrentlyRunningTest] = useState<string | null>(null);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [filteredDroppedItems, setFilteredDroppedItems] = useState<CheckoutItem[]>([]);
+  const [showScrollButtons, setShowScrollButtons] = useState(false);
   
+  const tabsListRef = useRef<HTMLDivElement>(null);
   // Use non-null assertion to ensure TypeScript knows this ref will be assigned
   const nodeRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const runNextTestTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const [portalElement] = useState(() => {
     const element = document.createElement("div");
     element.id = "checkoutTestProgress-root";
@@ -108,6 +118,29 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
     }
   }, [droppedItems]);
 
+  // Also, let's add a small optimization to make the scroll buttons look better
+// and handle tab overflow more intelligently
+
+// Add these utility functions inside your component
+const canScrollLeft = () => {
+  const tabsList = tabsListRef.current;
+  return tabsList ? tabsList.scrollLeft > 0 : false;
+};
+
+const canScrollRight = () => {
+  const tabsList = tabsListRef.current;
+  return tabsList ? tabsList.scrollLeft + tabsList.clientWidth < tabsList.scrollWidth : false;
+};
+
+const [canScrollStart, setCanScrollStart] = useState(false);
+const [canScrollEnd, setCanScrollEnd] = useState(false);
+
+// Add this function to update scroll button states
+const updateScrollButtonStates = () => {
+  setCanScrollStart(canScrollLeft());
+  setCanScrollEnd(canScrollRight());
+};
+
   // Generate component map for easy lookups
   const componentMap = filteredDroppedItems.reduce((acc, item) => {
     acc[item.header] = item;
@@ -149,27 +182,43 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
   }, [testResults]);
 
   // Run initial tests for all filtered components
-  useEffect(() => {
-    if (!initialRunDone && filteredDroppedItems.length > 0) {
-      // Mark as done
-      setInitialRunDone(true);
+useEffect(() => {
+  if (!initialRunDone && filteredDroppedItems.length > 0) {
+    console.log("Setting up initial tests for:", filteredDroppedItems.map(item => item.header).join(", "));
+    
+    // Mark as done
+    setInitialRunDone(true);
+    
+    // Set up all filtered components with initial waiting status
+    const initialResults: Record<string, TestResult> = {};
+    filteredDroppedItems.forEach(item => {
+      initialResults[item.header] = {
+        component: item.header,
+        status: 'waiting',
+        results: null
+      };
+    });
+    
+    setTestResults(initialResults);
+    
+    // Explicitly start the first test
+    if (filteredDroppedItems.length > 0) {
+      const firstComponent = filteredDroppedItems[0];
+      console.log("Starting first test:", firstComponent.header);
       
-      // Set up all filtered components with initial waiting status
-      const initialResults: Record<string, TestResult> = {};
-      filteredDroppedItems.forEach(item => {
-        initialResults[item.header] = {
-          component: item.header,
-          status: 'waiting',
-          results: null
-        };
-      });
-      
-      setTestResults(initialResults);
-      
-      // Find the first component to test
-      runNextTest(initialResults);
+      // Start the first test
+      setCurrentlyRunningTest(firstComponent.header);
+      setTestResults(prev => ({
+        ...prev,
+        [firstComponent.header]: {
+          ...(prev[firstComponent.header] || { component: firstComponent.header, results: null }),
+          status: 'running'
+        }
+      }));
+      setActiveTab(firstComponent.header);
     }
-  }, [filteredDroppedItems, initialRunDone]);
+  }
+}, [filteredDroppedItems, initialRunDone]);
 
   // Update window size on mount
   useEffect(() => {
@@ -215,62 +264,97 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
     }
   };
 
-  // Update a specific test result
-  const updateTestResult = (component: string, result: Partial<TestResult>) => {
-    setTestResults(prev => {
-      const updatedResults = {
-        ...prev,
-        [component]: {
-          ...(prev[component] || { component, status: 'waiting', results: null }),
-          ...result
-        }
-      };
+const updateTestResult = (component: string, result: Partial<TestResult>) => {
+  console.log(`Updating test result for ${component} with status: ${result.status}`);
+
+  setTestResults(prev => {
+    const updatedResults = {
+      ...prev,
+      [component]: {
+        ...(prev[component] || { component, status: 'waiting', results: null }),
+        ...result
+      }
+    };
+    
+    // If a test just completed, check if we should run the next one
+    if (result.status === 'completed' || result.status === 'error') {
+      console.log(`Test ${component} completed with status: ${result.status}`);
       
-      // If a test just completed, check if we should run the next one
-      if (result.status === 'completed' || result.status === 'error') {
-        // Clear the currently running test
-        if (currentlyRunningTest === component) {
-          setCurrentlyRunningTest(null);
+      // Clear the currently running test
+      if (currentlyRunningTest === component) {
+        console.log(`Clearing currentlyRunningTest: ${component}`);
+        
+        // Clear the current test immediately
+        setCurrentlyRunningTest(null);
+        
+        // Schedule the next test with a delay
+        if (runNextTestTimeoutRef.current) {
+          clearTimeout(runNextTestTimeoutRef.current);
         }
         
-        // Find and run next test (with small delay to allow UI to update)
-        setTimeout(() => {
+        console.log("Scheduling next test to run in 1000ms");
+        runNextTestTimeoutRef.current = setTimeout(() => {
+          console.log("Timeout expired, running next test");
           runNextTest(updatedResults);
-        }, 500);
+          runNextTestTimeoutRef.current = null;
+        }, 1000);
       }
-      
-      return updatedResults;
-    });
-  };
+    }
+    
+    return updatedResults;
+  });
+};
 
   // Find and run the next pending test from filtered items
-  const runNextTest = (currentResults: Record<string, TestResult>) => {
-    // Don't try to run another test if one is already running
-    if (currentlyRunningTest) return;
+// In CheckoutTestProgress.tsx
+const runNextTest = (currentResults: Record<string, TestResult>) => {
+  // Clear any existing timeout to prevent multiple calls
+  if (runNextTestTimeoutRef.current) {
+    clearTimeout(runNextTestTimeoutRef.current);
+    runNextTestTimeoutRef.current = null;
+  }
+  
+  console.log("Attempting to run next test. Current running test:", currentlyRunningTest);
+  
+  // Force a fresh check of the current running test (avoid stale closures)
+  let isTestRunning = false;
+  setCurrentlyRunningTest(current => {
+    isTestRunning = current !== null;
+    return current;
+  });
+  
+  // Don't try to run another test if one is already running
+  if (isTestRunning || currentlyRunningTest) {
+    console.log("Can't run next test - a test is already running:", currentlyRunningTest);
+    return;
+  }
+  
+  // Find the next waiting component from filtered items
+  const nextComponent = filteredDroppedItems.find(item => 
+    currentResults[item.header]?.status === 'waiting'
+  );
+  
+  if (nextComponent) {
+    console.log("Found next test to run:", nextComponent.header);
     
-    // Find the next waiting component from filtered items
-    const nextComponent = filteredDroppedItems.find(item => 
-      currentResults[item.header]?.status === 'waiting'
-    );
+    // Set as currently running
+    setCurrentlyRunningTest(nextComponent.header);
     
-    if (nextComponent) {
-      // Set as currently running
-      setCurrentlyRunningTest(nextComponent.header);
-      
-      // Mark it as running in the results
-      setTestResults(prev => ({
-        ...prev,
-        [nextComponent.header]: {
-          ...(prev[nextComponent.header] || { component: nextComponent.header, results: null }),
-          status: 'running'
-        }
-      }));
-      
-      // Automatically switch to the tab with the running test
-      setActiveTab(nextComponent.header);
-    }
-  };
-
+    // Mark it as running in the results
+    setTestResults(prev => ({
+      ...prev,
+      [nextComponent.header]: {
+        ...(prev[nextComponent.header] || { component: nextComponent.header, results: null }),
+        status: 'running'
+      }
+    }));
+    
+    // Automatically switch to the tab with the running test
+    setActiveTab(nextComponent.header);
+  } else {
+    console.log("No more tests to run.");
+  }
+};
   // Generate and save test report
   const saveTestReport = async () => {
     setIsSavingReport(true);
@@ -400,6 +484,105 @@ useEffect(() => {
   console.log(`🔧 Setting simulation mode to: ${shouldUseSimulation}`);
 }, []);
 
+const scrollTabs = (direction: 'left' | 'right') => {
+  const tabsList = tabsListRef.current;
+  if (!tabsList) return;
+
+  const scrollAmount = 200; // Adjust scroll amount as needed
+  const currentScroll = tabsList.scrollLeft;
+  
+  tabsList.scrollTo({
+    left: direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount,
+    behavior: 'smooth'
+  });
+};
+
+// Add this useEffect to check if scrolling is needed
+useEffect(() => {
+  const checkScrollable = () => {
+    const tabsList = tabsListRef.current;
+    if (!tabsList) return;
+    
+    // Show scroll buttons if content width exceeds container width
+    setShowScrollButtons(tabsList.scrollWidth > tabsList.clientWidth);
+  };
+  
+  // Run on initial render
+  checkScrollable();
+  
+  // Add resize listener
+  window.addEventListener('resize', checkScrollable);
+  
+  // Also check when droppedItems changes as it might affect tab width
+  setTimeout(checkScrollable, 100);
+  
+  return () => {
+    window.removeEventListener('resize', checkScrollable);
+  };
+}, [filteredDroppedItems, activeTab]);
+
+useEffect(() => {
+  // Scroll to active tab when it changes
+  if (activeTab && tabsListRef.current) {
+    const tabsList = tabsListRef.current;
+    const activeTabElement = tabsList.querySelector(`button[class*="tabButtonActive"]`);
+    
+    if (activeTabElement) {
+      // Calculate the position to scroll to
+      const tabRect = activeTabElement.getBoundingClientRect();
+      const containerRect = tabsList.getBoundingClientRect();
+      
+      // Check if the active tab is outside the visible area
+      const isTabVisible = (
+        tabRect.left >= containerRect.left &&
+        tabRect.right <= containerRect.right
+      );
+      
+      if (!isTabVisible) {
+        // Get the center position
+        const centerPosition = 
+          tabRect.left + tabRect.width / 2 - 
+          containerRect.left - 
+          containerRect.width / 2;
+        
+        // Scroll to center the active tab
+        tabsList.scrollBy({
+          left: centerPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+}, [activeTab]);
+
+useEffect(() => {
+  const tabsList = tabsListRef.current;
+  if (!tabsList) return;
+  
+  const handleScroll = () => {
+    updateScrollButtonStates();
+  };
+  
+  // Update scroll button states
+  updateScrollButtonStates();
+  
+  // Add scroll event listener
+  tabsList.addEventListener('scroll', handleScroll);
+  
+  return () => {
+    tabsList.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
+// Add this useEffect to ensure any pending timers are cleaned up
+useEffect(() => {
+  return () => {
+    if (runNextTestTimeoutRef.current) {
+      clearTimeout(runNextTestTimeoutRef.current);
+    }
+  };
+}, []);
+
   // Modified component to specifically pass only checked options to the test panels
   return createPortal(
     <Draggable
@@ -449,7 +632,17 @@ useEffect(() => {
 {/* Test tabs */}
 {filteredDroppedItems.length > 0 ? (
   <div className={styles.tabsContainer}>
-    <div className={styles.tabsList}>
+    <div className={styles.tabsList} ref={tabsListRef}>
+    {showScrollButtons && canScrollStart && (
+  <button 
+    className={`${styles.scrollButton} ${styles.scrollButtonLeft}`}
+    onClick={() => scrollTabs('left')}
+    aria-label="Scroll tabs left"
+  >
+    ←
+  </button>
+)}
+      
       {filteredDroppedItems.map(item => (
         <button
           key={item.header} 
@@ -468,6 +661,16 @@ useEffect(() => {
           )}
         </button>
       ))}
+      
+      {showScrollButtons && canScrollEnd && (
+  <button 
+    className={`${styles.scrollButton} ${styles.scrollButtonRight}`}
+    onClick={() => scrollTabs('right')}
+    aria-label="Scroll tabs right"
+  >
+    →
+  </button>
+)}
     </div>
   </div>
 ) : (
@@ -591,6 +794,31 @@ useEffect(() => {
   />
 )}
 
+{item.header === "LEOCAM" && (
+  <LEOCAMTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
 {item.header === "HEPS" && (
   <HEPSTestPanel
     options={getComponentOptions(item.header)}
@@ -616,9 +844,134 @@ useEffect(() => {
   />
 )}
 
+{item.header === "ADCS" && (
+  <ADCSTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "GPS" && (
+  <GPSTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "Propulsion" && (
+  <PropulsionTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "PCS" && (
+  <PCSTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
+{item.header === "X-Band" && (
+  <XBandTestPanel
+    options={getComponentOptions(item.header)}
+    sock={sock}
+    onTestComplete={(results) => 
+      updateTestResult(item.header, { 
+        status: 'completed', 
+        results 
+      })
+    }
+    onTestError={(error: Error | string | unknown) => 
+      updateTestResult(item.header, { 
+        status: 'error', 
+        message: error instanceof Error ? error.message : String(error) 
+      })
+    }
+    onTestStart={() => 
+      updateTestResult(item.header, { 
+        status: 'running' 
+      })
+    }
+    isInitialRun={currentlyRunningTest === item.header}
+  />
+)}
+
                     {/* Add implementations for other component types here */}
                     {/* For now, show a placeholder for unimplemented components */}
-                    {!["OBC-1", "OBC-2", "S-Band","UHF", "HEPS"].includes(item.header) && (
+                    {!["OBC-1", "OBC-2", "S-Band","UHF", "LEOCAM", "HEPS", "ADCS", "GPS", "Propulsion", "PCS", "X-Band"].includes(item.header) && (
                       <div className="p-6">
                         <div style={{
                           padding: '20px',
@@ -943,15 +1296,6 @@ useEffect(() => {
                     alignItems: 'center'
                   }}>
                     <h3>Test Console Output</h3>
-                    <button style={{ 
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      color: isDarkMode ? '#d1d5db' : '#6b7280',
-                      cursor: 'pointer',
-                      fontSize: '12px'
-                    }}>
-                      Clear
-                    </button>
                   </div>
                   
                   <div style={{ 

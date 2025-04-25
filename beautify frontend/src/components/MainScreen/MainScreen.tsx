@@ -139,8 +139,9 @@ const MainScreen: React.FC<MainScreenProps> = ({
     { id: "7", header: "GPS", options: ["Version Check"], isDropped: false, checkedOptions: {} },
     { id: "8", header: "Propulsion", options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], isDropped: false, checkedOptions: {} },
     { id: "9", header: "PCS", options: ["SD Card"], isDropped: false, checkedOptions: {} },
-    { id: "10", header: "Payload", options: ["LEOCAM", "AOD"], isDropped: false, checkedOptions: {} },
+    { id: "10", header: "LEOCAM", options: ["LEOCAM"], isDropped: false, checkedOptions: {} },
     { id: "11", header: "X-Band", options: ["Telecommand", "Telemetry"], isDropped: false, checkedOptions: {} },
+    { id: "12", header: "AOD", options: ["AOD"], isDropped: false, checkedOptions: {} },
   ]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
