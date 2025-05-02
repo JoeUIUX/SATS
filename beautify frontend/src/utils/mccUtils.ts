@@ -771,6 +771,180 @@ export async function mccifRead(sock: any, parameters: string[]): Promise<string
   return simulateParameterValues(parameters);
 }
 
+/**
+ * Enhanced helper to check if the connection is using simulation
+ * This examines the actual socket to determine if it's falling back to simulation
+ */
+export function isUsingSimulation(sock: any): boolean {
+  if (!sock) return true;
+  
+  // Direct flag check
+  if (typeof sock.isSimulated === 'boolean') {
+    return sock.isSimulated;
+  }
+  
+  // Check for simulation methods
+  if (typeof sock.simulateRead === 'function') {
+    return true;
+  }
+  
+  // If we got a real socket object with no simulation methods,
+  // check if it has the expected real socket properties
+  if (typeof sock.send === 'function' && typeof sock.receive === 'function') {
+    // If it has socket-like properties but is missing expected WebSocket properties,
+    // it might be a simulation wrapper
+    if (typeof sock.close !== 'function' || typeof sock.readyState === 'undefined') {
+      console.log("⚠️ Socket appears to be a simulation wrapper");
+      return true;
+    }
+    
+    // If it's a WebSocket but not connected, treat as simulation
+    if (sock.readyState !== 1) { // 1 = OPEN for WebSocket
+      console.log("⚠️ Socket is not in OPEN state");
+      return true;
+    }
+    
+    // Looks like a real socket
+    return false;
+  }
+  
+  // Default to simulation for any unrecognized socket format
+  return true;
+}
+
+/**
+ * Improved version of mccifRead that accurately reports when simulation is being used
+ */
+export async function mccifReadWithFlag(sock: any, parameters: string[]): Promise<{results: string[], usedSimulation: boolean}> {
+  // Log what's happening
+  console.log(`📡 mccifRead: ${parameters.length} parameters, using ${sock? (sock.isSimulated ? "simulated" : "real") : "no"} socket`);
+  
+  let usedSimulation = isUsingSimulation(sock);
+  
+  // If we have a socket with simulateRead function, use it directly
+  if (sock && typeof sock.simulateRead === 'function') {
+    console.log(`Using simulation to read ${parameters.length} parameters`);
+    usedSimulation = true;
+    return {
+      results: sock.simulateRead(parameters),
+      usedSimulation
+    };
+  }
+    
+  // Check if we have a real socket with send/receive functions
+  if (sock && typeof sock.send === 'function') {
+    console.log(`📡 ${sock.isSimulated ? "SIMULATED" : "REAL"} READ: Reading ${parameters.length} parameters from server`);
+    try {
+      // Construct message to enable logging for each parameter
+      let message = "";
+      for (const param of parameters) {
+        message += `${param}.log=true\n`;
+      }
+      
+      // Send the message
+      await sock.send(message);
+      
+      // Add a small delay to ensure the server has time to process
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Receive the response
+      const response = await sock.receive(4096, 20000);
+      
+      if (!response || response.length === 0) {
+        console.log("⚠️ Empty response from server - falling back to simulation");
+        usedSimulation = true;
+        return {
+          results: simulateParameterValues(parameters),
+          usedSimulation
+        };
+      }
+      
+      // Process the response
+      console.log(`📡 Data received for ${parameters.length} parameters:`, response);
+      
+      // Check if the response is just a string 'simulated response'
+      if (response === 'simulated response') {
+        console.log('⚠️ Received "simulated response" from socket - falling back to simulated values');
+        usedSimulation = true;
+        return {
+          results: simulateParameterValues(parameters),
+          usedSimulation
+        };
+      }
+      
+      // Check if the response contains indicators of simulation
+      if (response.includes('simulated') || response.includes('dummy') || response.includes('mock')) {
+        console.log('⚠️ Response contains simulation indicators');
+        usedSimulation = true;
+      }
+      
+      // Split response into lines and handle partial responses
+      const lines = response.split('\n');
+      
+      // If we don't get enough lines, try to use what we have
+      const result = lines.slice(0, Math.min(parameters.length, lines.length));
+      
+      // If we got fewer lines than expected, pad with simulated values
+      if (result.length < parameters.length) {
+        console.log(`⚠️ Received only ${result.length} of ${parameters.length} parameters - padding with simulations`);
+        usedSimulation = true;
+        
+        // Create a map of received parameters for lookup
+        const receivedParams = new Map();
+        for (const line of result) {
+          const parts = line.split('=');
+          if (parts.length >= 2) {
+            receivedParams.set(parts[0], line);
+          }
+        }
+        
+        // Build final result array with actual or simulated values
+        const finalResult = parameters.map(param => {
+          if (receivedParams.has(param)) {
+            return receivedParams.get(param);
+          } else {
+            return simulateParameter(param);
+          }
+        });
+        
+        return {
+          results: finalResult,
+          usedSimulation
+        };
+      }
+      
+      // Disable logging before returning
+      message = "";
+      for (const param of parameters) {
+        message += `${param}.log=false\n`;
+      }
+      await sock.send(message);
+      
+      return {
+        results: result,
+        usedSimulation
+      };
+    } catch (error) {
+      console.error(`MCC read error: ${error}`);
+      // Fall back to simulation if there's an error
+      console.warn("Falling back to simulation due to error");
+      usedSimulation = true;
+      return {
+        results: simulateParameterValues(parameters),
+        usedSimulation
+      };
+    }
+  }
+
+  // If we're in development mode without a real server or proper simulation, return hardcoded values
+  console.warn("No valid socket connection available, using fallback simulated values");
+  usedSimulation = true;
+  return {
+    results: simulateParameterValues(parameters),
+    usedSimulation
+  };
+}
+
 // Helper function to generate simulated values
 function simulateParameterValues(parameters: string[]): string[] {
   return parameters.map(param => simulateParameter(param));

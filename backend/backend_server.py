@@ -148,9 +148,157 @@ def create_table():
         """
     )
 
+    # To store historical test data with explicit simulation flag
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS test_results (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            profile_id TEXT NOT NULL,
+            component_id TEXT NOT NULL,
+            test_type TEXT NOT NULL,
+            test_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            results TEXT NOT NULL,
+            status TEXT NOT NULL,
+            notes TEXT,
+            is_simulated INTEGER DEFAULT 0
+        )
+        """
+    )
+
     db.commit()
     db.close()
 
+
+def update_database_schema():
+    """Add missing columns to existing tables if needed"""
+    try:
+        db = get_db()
+
+        # Check if is_simulated column exists in test_results table
+        cursor = db.execute("PRAGMA table_info(test_results)")
+        columns = [row["name"] for row in cursor.fetchall()]
+
+        # Add is_simulated column if it doesn't exist
+        if "is_simulated" not in columns:
+            print("Adding is_simulated column to test_results table")
+            db.execute("ALTER TABLE test_results ADD COLUMN is_simulated INTEGER DEFAULT 0")
+            db.commit()
+            print("✅ Schema updated successfully")
+
+        db.close()
+    except Exception as e:
+        print(f"❌ Error updating database schema: {e}")
+
+
+# Call this after create_table() in your initialization code
+update_database_schema()
+
+
+# Also ensure your test_results route has proper CORS headers
+@app.route('/test-results/<profile_id>', methods=['GET', 'OPTIONS'])
+def get_test_results(profile_id):
+    """Get all test results for a specific profile"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    component = request.args.get('component', None)
+
+    db = get_db()
+
+    if component:
+        cursor = db.execute(
+            "SELECT * FROM test_results WHERE profile_id = ? AND component_id = ? ORDER BY test_date DESC",
+            (profile_id, component)
+        )
+    else:
+        cursor = db.execute(
+            "SELECT * FROM test_results WHERE profile_id = ? ORDER BY test_date DESC",
+            (profile_id,)
+        )
+
+    results = []
+    for row in cursor.fetchall():
+        # Convert is_simulated to boolean if it exists, default to false if not
+        is_simulated = bool(row["is_simulated"]) if "is_simulated" in row.keys() else False
+
+        results.append({
+            "id": row["id"],
+            "component_id": row["component_id"],
+            "test_type": row["test_type"],
+            "test_date": row["test_date"],
+            "results": json.loads(row["results"]),
+            "status": row["status"],
+            "notes": row["notes"],
+            "is_simulated": is_simulated
+        })
+
+    db.close()
+
+    # Add explicit CORS headers to the response
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
+
+
+@app.route('/test-results', methods=['POST', 'OPTIONS'])
+def save_test_result():
+    """Save a new test result"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    try:
+        data = request.json
+
+        if not data.get("profile_id") or not data.get("component_id"):
+            return jsonify({"error": "Missing profile_id or component_id"}), 400
+
+        db = get_db()
+
+        # Add is_simulated flag (default to 0/false if not provided)
+        is_simulated = 1 if data.get("is_simulated", False) else 0
+
+        db.execute(
+            """
+            INSERT INTO test_results 
+            (profile_id, component_id, test_type, results, status, notes, is_simulated)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                data["profile_id"],
+                data["component_id"],
+                data.get("test_type", ""),
+                json.dumps(data["results"]),
+                data.get("status", "completed"),
+                data.get("notes", ""),
+                is_simulated
+            )
+        )
+        db.commit()
+        db.close()
+
+        response = jsonify({"message": "Test result saved successfully"})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 201
+    except Exception as e:
+        print(f"Error saving test result: {e}")
+        response = jsonify({"error": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
 
 # Model optimization function
 def optimize_glb_model(file_path):
@@ -1122,6 +1270,256 @@ def apply_background():
 
     # Call this early in the script execution
     ensure_connection_safety()
+
+
+@app.route('/test-results/cleanup-simulated', methods=['POST', 'OPTIONS'])
+def cleanup_simulated_test_results():
+    """Remove all test results marked as simulated from the database"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    try:
+        db = get_db()
+
+        # First, count how many will be deleted
+        count_cursor = db.execute("SELECT COUNT(*) FROM test_results WHERE is_simulated = 1")
+        count = count_cursor.fetchone()[0]
+
+        # Execute the delete
+        cursor = db.execute("DELETE FROM test_results WHERE is_simulated = 1")
+        db.commit()
+
+        # Also delete entries with simulation flag in the JSON results
+        cursor = db.execute("""
+            SELECT id, results FROM test_results
+        """)
+
+        # Process each row to check for simulation flag in JSON
+        to_delete = []
+        for row in cursor.fetchall():
+            try:
+                results = json.loads(row["results"])
+                if results.get("simulated") == True or results.get("_simulationUsed") == True:
+                    to_delete.append(row["id"])
+            except:
+                # Skip if JSON parsing fails
+                pass
+
+        # Delete entries with simulation flags in JSON
+        for id in to_delete:
+            db.execute("DELETE FROM test_results WHERE id = ?", (id,))
+
+        db.commit()
+        db.close()
+
+        # Return success with count of deleted entries
+        response = jsonify({
+            "message": f"Removed {count} simulated test results from database",
+            "additional_removed": len(to_delete)
+        })
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    except Exception as e:
+        print(f"Error cleaning up simulated results: {e}")
+        response = jsonify({"error": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
+
+
+# endpoint to limit test history records
+@app.route('/test-results/limit/<profile_id>', methods=['POST', 'OPTIONS'])
+def limit_test_history(profile_id):
+    """Limit the number of test records for a specific profile"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    try:
+        data = request.json
+        limit = data.get("limit", 30)  # Default to 30 records
+        component = data.get("component", None)  # Optional component filter
+
+        db = get_db()
+
+        # If component is specified, limit records for that component
+        if component:
+            # Get all records for that component
+            cursor = db.execute("""
+                SELECT id FROM test_results 
+                WHERE profile_id = ? AND component_id = ? 
+                ORDER BY test_date DESC
+            """, (profile_id, component))
+        else:
+            # Get all records for that profile
+            cursor = db.execute("""
+                SELECT id FROM test_results 
+                WHERE profile_id = ? 
+                ORDER BY test_date DESC
+            """, (profile_id,))
+
+        all_ids = [row["id"] for row in cursor.fetchall()]
+
+        # If we have more than the limit, delete the oldest ones
+        if len(all_ids) > limit:
+            # Keep the newest 'limit' records, delete the rest
+            ids_to_keep = all_ids[:limit]
+            ids_to_delete = all_ids[limit:]
+
+            # Delete the older records
+            for id_to_delete in ids_to_delete:
+                db.execute("DELETE FROM test_results WHERE id = ?", (id_to_delete,))
+
+            db.commit()
+
+            response = jsonify({
+                "message": f"Limited {profile_id} test history to {limit} most recent records",
+                "removed": len(ids_to_delete)
+            })
+        else:
+            response = jsonify({
+                "message": f"No cleanup needed, only {len(all_ids)} records exist (limit: {limit})"
+            })
+
+        db.close()
+
+        # Add CORS headers
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    except Exception as e:
+        print(f"Error limiting test history: {e}")
+        response = jsonify({"error": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
+
+
+# Add a new route to clear test history for a specific profile and component
+@app.route('/test-results/clear/<profile_id>', methods=['DELETE', 'OPTIONS'])
+def clear_test_history(profile_id):
+    """Clear all test results for a specific profile and optional component"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    try:
+        component = request.args.get('component')
+
+        db = get_db()
+
+        if component:
+            # Delete only records for the specified component
+            cursor = db.execute(
+                "DELETE FROM test_results WHERE profile_id = ? AND component_id = ?",
+                (profile_id, component)
+            )
+            deleted_count = cursor.rowcount
+            message = f"Cleared {deleted_count} test results for {component} in profile {profile_id}"
+        else:
+            # Delete all records for the profile
+            cursor = db.execute(
+                "DELETE FROM test_results WHERE profile_id = ?",
+                (profile_id,)
+            )
+            deleted_count = cursor.rowcount
+            message = f"Cleared {deleted_count} test results for profile {profile_id}"
+
+        db.commit()
+        db.close()
+
+        # Add explicit CORS headers to the response
+        response = jsonify({
+            "status": "success",
+            "message": message,
+            "count": deleted_count
+        })
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    except Exception as e:
+        print(f"Error clearing test history: {e}")
+
+        # Return error with CORS headers
+        response = jsonify({"status": "error", "message": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
+
+
+# Add a route for deleting a single test history item by ID
+@app.route('/test-results/<int:result_id>', methods=['DELETE', 'OPTIONS'])
+def delete_test_result(result_id):
+    """Delete a specific test result by ID"""
+    # Handle OPTIONS preflight request
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    try:
+        db = get_db()
+
+        # Check if the result exists first
+        result = db.execute(
+            "SELECT id FROM test_results WHERE id = ?",
+            (result_id,)
+        ).fetchone()
+
+        if not result:
+            response = jsonify({
+                "status": "error",
+                "message": f"Test result with ID {result_id} not found"
+            })
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            response.headers.add('Access-Control-Allow-Credentials', 'true')
+            return response, 404
+
+        # Delete the specific test result
+        db.execute("DELETE FROM test_results WHERE id = ?", (result_id,))
+        db.commit()
+        db.close()
+
+        # Add explicit CORS headers to the response
+        response = jsonify({
+            "status": "success",
+            "message": f"Test result {result_id} has been deleted"
+        })
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response
+
+    except Exception as e:
+        print(f"Error deleting test result: {e}")
+
+        # Return error with CORS headers
+        response = jsonify({"status": "error", "message": str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        return response, 500
 
 
 if __name__ == "__main__":

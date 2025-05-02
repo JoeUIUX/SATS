@@ -7,9 +7,11 @@ var { g: global, __dirname } = __turbopack_context__;
 {
 // src/services/checkout/obc1Checkout.ts
 __turbopack_context__.s({
-    "runOBC1Checkout": (()=>runOBC1Checkout)
+    "runOBC1Checkout": (()=>runOBC1Checkout),
+    "runOBC1CheckoutWithDetection": (()=>runOBC1CheckoutWithDetection)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/mccUtils.ts [app-ssr] (ecmascript)");
+;
 ;
 /**
  * Helper function to safely parse values from MCC response
@@ -332,6 +334,505 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
     } else {
         // 5V check (typically 4750-5250 mV)
         return numValue >= 4750 && numValue <= 5250;
+    }
+}
+async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{}) {
+    let usedSimulation = false;
+    try {
+        // Initial check for simulation
+        usedSimulation = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isUsingSimulation"])(sock);
+        console.log(`Initial simulation check: ${usedSimulation ? "SIMULATION" : "REAL"} mode`);
+        // Initialize the results object
+        const results = {
+            firmware: {
+                major: '',
+                minor: '',
+                patch: ''
+            },
+            kernel: {
+                uptime: '',
+                loads: {
+                    oneMinute: '',
+                    fiveMinute: '',
+                    fifteenMinute: ''
+                },
+                memory: {
+                    totalRam: '',
+                    freeRam: '',
+                    sharedRam: '',
+                    bufferRam: '',
+                    totalSwap: '',
+                    freeSwap: '',
+                    memUnit: '',
+                    totalHigh: '',
+                    freeHigh: ''
+                },
+                processes: ''
+            },
+            fpga: {
+                voltages: {
+                    vccPspll: '',
+                    vccPsbatt: '',
+                    vccint: '',
+                    vccbram: '',
+                    vccaux: ''
+                },
+                temperatures: {
+                    psTemp: '',
+                    remoteTemp: '',
+                    plTemp: ''
+                }
+            },
+            vi: {
+                d3v3: {
+                    value: '',
+                    pass: false
+                },
+                ps3v3Obc2: {
+                    value: '',
+                    pass: false
+                },
+                ps5vObc2: {
+                    value: '',
+                    pass: false
+                },
+                ps5vObc2I: '',
+                ps3v3Obc2I: ''
+            },
+            temperatures: {
+                thruster1: '',
+                thruster2: '',
+                leocam: [
+                    '',
+                    '',
+                    '',
+                    ''
+                ]
+            },
+            emmc: {
+                emmc0States: [],
+                emmc1States: []
+            },
+            reportGenerated: false,
+            // Add a simulation flag to track if any part used simulation
+            _simulationUsed: usedSimulation
+        };
+        // Step 1: Read firmware version (5%)
+        onProgress('Reading Firmware Version', 5);
+        const fwVars = [
+            "OBC1_FW_Ver_Major",
+            "OBC1_FW_Ver_Minor",
+            "OBC1_FW_Ver_Patch"
+        ];
+        try {
+            // Use enhanced read function that detects simulation
+            const { results: fwResults, usedSimulation: fwSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, fwVars);
+            // Update overall simulation flag if this step used simulation
+            usedSimulation = usedSimulation || fwSimulation;
+            results.firmware.major = safeParseValue(fwResults[0]);
+            results.firmware.minor = safeParseValue(fwResults[1]);
+            results.firmware.patch = safeParseValue(fwResults[2]);
+            // Special check for default simulation values
+            if (results.firmware.major === '1' && results.firmware.minor === '2' && results.firmware.patch === '3') {
+                console.log("🔍 Detected default simulation values in firmware version");
+                usedSimulation = true;
+            }
+        } catch (error) {
+            console.error("Error reading firmware version:", error);
+            // Provide fallback values
+            results.firmware.major = "1";
+            results.firmware.minor = "0";
+            results.firmware.patch = "0";
+            // Mark as simulation since we're using hardcoded values
+            usedSimulation = true;
+        // Continue with other tests despite this error
+        }
+        // Step 2: Read kernel info (20%)
+        onProgress('Reading Kernel Information', 20);
+        const kernelVars = [
+            "OBC1_Sys_uptime",
+            "OBC1_Sys_loads_1m",
+            "OBC1_Sys_loads_5m",
+            "OBC1_Sys_loads_15m",
+            "OBC1_Sys_totalram",
+            "OBC1_Sys_freeram",
+            "OBC1_Sys_sharedram",
+            "OBC1_Sys_bufferram",
+            "OBC1_Sys_totalswap",
+            "OBC1_Sys_freeswap",
+            "OBC1_Sys_procs",
+            "OBC1_Sys_pad",
+            "OBC1_Sys_totalhigh",
+            "OBC1_Sys_freehigh",
+            "OBC1_Sys_mem_unit"
+        ];
+        try {
+            // Use enhanced read function
+            const { results: kernelResults, usedSimulation: kernelSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, kernelVars);
+            // Update overall simulation flag
+            usedSimulation = usedSimulation || kernelSimulation;
+            results.kernel.uptime = safeParseValue(kernelResults[0]);
+            results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
+            results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
+            results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
+            results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
+            results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
+            results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
+            results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
+            results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
+            results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
+            results.kernel.processes = safeParseValue(kernelResults[10]);
+            // Skip pad
+            results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
+            results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
+            results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
+            // Check for simulation indicators in results
+            for (const result of kernelResults){
+                if (result.includes('simulated')) {
+                    console.log("🔍 Detected simulation indicators in kernel values");
+                    usedSimulation = true;
+                    break;
+                }
+            }
+        } catch (error) {
+            console.error("Error reading kernel info:", error);
+            usedSimulation = true; // Failed reads mean simulation
+        // Continue with other tests despite this error
+        }
+        // Step 3: Read FPGA values (40%)
+        onProgress('Reading FPGA Values', 40);
+        const fpgaVars = [
+            "OBC1_vcc_pspll",
+            "OBC1_vcc_psbatt",
+            "OBC1_vccint",
+            "OBC1_vccbram",
+            "OBC1_vccaux",
+            "OBC1_vcc_psddr_pll",
+            "OBC1_vccpsintfp_ddr",
+            "OBC1_vccint1",
+            "OBC1_vccaux1",
+            "OBC1_vccvrefp",
+            "OBC1_vccvrefn",
+            "OBC1_vccbram1",
+            "OBC1_vccplintlp",
+            "OBC1_vccplintfp",
+            "OBC1_vccplaux",
+            "OBC1_vccams",
+            "OBC1_vccpsintlp",
+            "OBC1_vccpsintfp",
+            "OBC1_vccpsaux",
+            "OBC1_vccpsddr",
+            "OBC1_vccpsio3",
+            "OBC1_vccpsio0",
+            "OBC1_vccpsio1",
+            "OBC1_vccpsio2",
+            "OBC1_psmgtravcc",
+            "OBC1_psmgtravtt",
+            "OBC1_vccams1",
+            "OBC1_ps_temp",
+            "OBC1_remote_temp",
+            "OBC1_pl_temp"
+        ];
+        try {
+            // Use enhanced read function
+            const { results: fpgaResults, usedSimulation: fpgaSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, fpgaVars);
+            // Update overall simulation flag
+            usedSimulation = usedSimulation || fpgaSimulation;
+            // First 27 are voltages, last 3 are temperatures
+            results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
+            results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
+            results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
+            results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
+            results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
+            // ... Set other voltages
+            results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
+            results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
+            results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
+            // Check for simulation indicators
+            for (const result of fpgaResults){
+                if (result.includes('simulated')) {
+                    console.log("🔍 Detected simulation indicators in FPGA values");
+                    usedSimulation = true;
+                    break;
+                }
+            }
+        } catch (error) {
+            console.error("Error reading FPGA values:", error);
+            usedSimulation = true; // Failed reads mean simulation
+        // Continue with other tests despite this error
+        }
+        // Step 4: Read voltage and current (60%)
+        onProgress('Reading Voltage and Current', 60);
+        const viVars = [
+            "OBC1_3V3_D",
+            "OBC1_PS_3V3_OBC2_V",
+            "OBC1_PS_5V_OBC2_V",
+            "OBC1_PS_5V_OBC2_I",
+            "OBC1_PS_3V3_OBC2_I"
+        ];
+        try {
+            // Use enhanced read function
+            const { results: viResults, usedSimulation: viSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, viVars);
+            // Update overall simulation flag
+            usedSimulation = usedSimulation || viSimulation;
+            const d3v3Value = safeParseValue(viResults[0]);
+            const ps3v3Obc2Value = safeParseValue(viResults[1]);
+            const ps5vObc2Value = safeParseValue(viResults[2]);
+            results.vi.d3v3 = {
+                value: d3v3Value,
+                pass: checkVoltage(d3v3Value, true)
+            };
+            results.vi.ps3v3Obc2 = {
+                value: ps3v3Obc2Value,
+                pass: checkVoltage(ps3v3Obc2Value, true)
+            };
+            results.vi.ps5vObc2 = {
+                value: ps5vObc2Value,
+                pass: checkVoltage(ps5vObc2Value, false)
+            };
+            results.vi.ps5vObc2I = safeParseValue(viResults[3]);
+            results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
+            // Check for simulation indicators
+            for (const result of viResults){
+                if (result.includes('simulated')) {
+                    console.log("🔍 Detected simulation indicators in voltage/current values");
+                    usedSimulation = true;
+                    break;
+                }
+            }
+        } catch (error) {
+            console.error("Error reading voltage and current:", error);
+            usedSimulation = true; // Failed reads mean simulation
+        // Continue with other tests despite this error
+        }
+        // Step 5: Read temperature sensors (80%)
+        onProgress('Reading Temperature Sensors', 80);
+        const tempVars = [
+            "OBC1_thruster_ch1_T",
+            "OBC1_thruster_ch2_T",
+            "OBC1_leocam_ch1_T",
+            "OBC1_leocam_ch2_T",
+            "OBC1_leocam_ch3_T",
+            "OBC1_leocam_ch4_T"
+        ];
+        try {
+            // Use enhanced read function
+            const { results: tempResults, usedSimulation: tempSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, tempVars);
+            // Update overall simulation flag
+            usedSimulation = usedSimulation || tempSimulation;
+            results.temperatures.thruster1 = safeParseValue(tempResults[0]);
+            results.temperatures.thruster2 = safeParseValue(tempResults[1]);
+            results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
+            results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
+            results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
+            results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
+            // Check for simulation indicators
+            for (const result of tempResults){
+                if (result.includes('simulated')) {
+                    console.log("🔍 Detected simulation indicators in temperature values");
+                    usedSimulation = true;
+                    break;
+                }
+            }
+        } catch (error) {
+            console.error("Error reading temperature sensors:", error);
+            usedSimulation = true; // Failed reads mean simulation
+        // Continue with other tests despite this error
+        }
+        // Step 6: EMMC test if enabled (90-100%)
+        if (enableEmmc) {
+            onProgress('Testing eMMC', 90);
+            const emmcVars = [
+                "OBC1_Q8_eMMC0_state",
+                "OBC1_Q8_eMMC1_state"
+            ];
+            try {
+                // Initial check
+                const initialEmmcCheck = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
+                // Update simulation status
+                usedSimulation = usedSimulation || initialEmmcCheck.usedSimulation;
+                results.emmc.emmc0States.push(safeParseValue(initialEmmcCheck.results[0]));
+                results.emmc.emmc1States.push(safeParseValue(initialEmmcCheck.results[1]));
+                // If mccifSet returns a Promise<boolean> for simulation detection
+                let setSimulation = false;
+                // Modified command format: OBC1_Emmc_Control needs 8 or fewer tokens
+                try {
+                    // Test eMMC0 - Use single digit values instead of multi-digit
+                    // Change from value=1 to value=1 (same in this case but follow the pattern)
+                    if (sock.send) {
+                        // This will set setSimulation true if simulation was used
+                        await sock.send("OBC1_Emmc_Control.value=1\n");
+                        // For sockets that don't return simulation status, check if we can detect it
+                        if (typeof sock.isSimulated === 'boolean') {
+                            setSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            setSimulation = true;
+                        }
+                    } else {
+                        // If there's no send method, use mccifSet and assume simulation
+                        console.log("⚠️ Using mccifSet fallback for OBC1_Emmc_Control");
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 1);
+                        setSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    setSimulation = true;
+                }
+                // Update simulation status based on the set operation
+                usedSimulation = usedSimulation || setSimulation;
+                // Read status after first command
+                const emmcCheck2 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
+                usedSimulation = usedSimulation || emmcCheck2.usedSimulation;
+                results.emmc.emmc0States.push(safeParseValue(emmcCheck2.results[0]));
+                results.emmc.emmc1States.push(safeParseValue(emmcCheck2.results[1]));
+                // Continue with eMMC test sequence, detecting simulation on each step
+                let nextSetSimulation = false;
+                try {
+                    if (sock.send) {
+                        await sock.send("OBC1_Emmc_Control.value=3\n");
+                        if (typeof sock.isSimulated === 'boolean') {
+                            nextSetSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            nextSetSimulation = true;
+                        }
+                    } else {
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 3);
+                        nextSetSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    nextSetSimulation = true;
+                }
+                usedSimulation = usedSimulation || nextSetSimulation;
+                await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
+                nextSetSimulation = false;
+                try {
+                    if (sock.send) {
+                        await sock.send("OBC1_Emmc_Control.value=5\n");
+                        if (typeof sock.isSimulated === 'boolean') {
+                            nextSetSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            nextSetSimulation = true;
+                        }
+                    } else {
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 5);
+                        nextSetSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    nextSetSimulation = true;
+                }
+                usedSimulation = usedSimulation || nextSetSimulation;
+                // Read status after next command
+                const emmcCheck3 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
+                usedSimulation = usedSimulation || emmcCheck3.usedSimulation;
+                results.emmc.emmc0States.push(safeParseValue(emmcCheck3.results[0]));
+                results.emmc.emmc1States.push(safeParseValue(emmcCheck3.results[1]));
+                // Continue with more eMMC tests
+                // Test eMMC1
+                nextSetSimulation = false;
+                try {
+                    if (sock.send) {
+                        await sock.send("OBC1_Emmc_Control.value=2\n");
+                        if (typeof sock.isSimulated === 'boolean') {
+                            nextSetSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            nextSetSimulation = true;
+                        }
+                    } else {
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 2);
+                        nextSetSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    nextSetSimulation = true;
+                }
+                usedSimulation = usedSimulation || nextSetSimulation;
+                // Read status after command
+                const emmcCheck4 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
+                usedSimulation = usedSimulation || emmcCheck4.usedSimulation;
+                results.emmc.emmc0States.push(safeParseValue(emmcCheck4.results[0]));
+                results.emmc.emmc1States.push(safeParseValue(emmcCheck4.results[1]));
+                nextSetSimulation = false;
+                try {
+                    if (sock.send) {
+                        await sock.send("OBC1_Emmc_Control.value=4\n");
+                        if (typeof sock.isSimulated === 'boolean') {
+                            nextSetSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            nextSetSimulation = true;
+                        }
+                    } else {
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 4);
+                        nextSetSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    nextSetSimulation = true;
+                }
+                usedSimulation = usedSimulation || nextSetSimulation;
+                await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
+                nextSetSimulation = false;
+                try {
+                    if (sock.send) {
+                        await sock.send("OBC1_Emmc_Control.value=6\n");
+                        if (typeof sock.isSimulated === 'boolean') {
+                            nextSetSimulation = sock.isSimulated;
+                        } else if (typeof sock.simulateRead === 'function') {
+                            nextSetSimulation = true;
+                        }
+                    } else {
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 6);
+                        nextSetSimulation = true;
+                    }
+                } catch (error) {
+                    console.error("Error setting eMMC control:", error);
+                    nextSetSimulation = true;
+                }
+                usedSimulation = usedSimulation || nextSetSimulation;
+                // Final read status
+                const emmcCheck5 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
+                usedSimulation = usedSimulation || emmcCheck5.usedSimulation;
+                results.emmc.emmc0States.push(safeParseValue(emmcCheck5.results[0]));
+                results.emmc.emmc1States.push(safeParseValue(emmcCheck5.results[1]));
+                // Final check for simulation evidence in the eMMC results
+                // Typical simulation pattern: sequential values like 0,1,0,1,0,1
+                if (results.emmc.emmc0States.every((val)=>val === '0' || val === '1') && results.emmc.emmc1States.every((val)=>val === '0' || val === '1')) {
+                    console.log("🔍 eMMC values match typical simulation pattern");
+                    usedSimulation = true;
+                }
+            } catch (error) {
+                console.error("Error during eMMC test:", error);
+                // Fill with N/A values if the test fails
+                results.emmc.emmc0States = Array(6).fill('N.A.');
+                results.emmc.emmc1States = Array(6).fill('N.A.');
+                // Mark as simulation since we're using hardcoded values
+                usedSimulation = true;
+            }
+        } else {
+            // If eMMC test is disabled, set empty results
+            results.emmc.emmc0States = Array(6).fill('N.A.');
+            results.emmc.emmc1States = Array(6).fill('N.A.');
+        }
+        // Complete checkout (100%)
+        onProgress('Checkout Complete', 100);
+        // Add the final simulation status to the results
+        results._simulationUsed = usedSimulation;
+        // Log the simulation status for debugging
+        console.log(`OBC-1 checkout completed. Simulation used: ${usedSimulation}`);
+        return {
+            results,
+            usedSimulation
+        };
+    } catch (error) {
+        console.error('Error during OBC-1 checkout:', error);
+        // Always return simulation=true if we had an error
+        return {
+            results: {
+                error: error instanceof Error ? error.message : String(error)
+            },
+            usedSimulation: true
+        };
     }
 }
 }}),

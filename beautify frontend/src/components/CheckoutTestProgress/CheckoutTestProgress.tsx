@@ -59,6 +59,7 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [filteredDroppedItems, setFilteredDroppedItems] = useState<CheckoutItem[]>([]);
   const [showScrollButtons, setShowScrollButtons] = useState(false);
+  const [selectedProfile, setSelectedProfile] = useState<string | null>(null);
   
   const tabsListRef = useRef<HTMLDivElement>(null);
   // Use non-null assertion to ensure TypeScript knows this ref will be assigned
@@ -71,6 +72,20 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
     document.body.appendChild(element);
     return element;
   });
+
+useEffect(() => {
+  // Try multiple sources for profile ID
+  const currentProfileId = 
+    localStorage.getItem('currentProfileId') || 
+    sessionStorage.getItem('currentProfileId');
+  
+  if (currentProfileId) {
+    console.log("Found profile ID:", currentProfileId);
+    setSelectedProfile(currentProfileId);
+  } else {
+    console.warn("No profile ID found in storage");
+  }
+}, []);
 
   // Load the filtered items with checked options from localStorage
   useEffect(() => {
@@ -583,6 +598,7 @@ useEffect(() => {
   };
 }, []);
 
+
   // Modified component to specifically pass only checked options to the test panels
   return createPortal(
     <Draggable
@@ -716,6 +732,7 @@ useEffect(() => {
                           })
                         }
                         isInitialRun={currentlyRunningTest === item.header}
+                        profileId={selectedProfile ?? undefined}
                       />
                     )}
                     
@@ -741,6 +758,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -766,6 +784,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -791,6 +810,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -816,6 +836,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    
   />
 )}
 
@@ -841,6 +862,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -866,6 +888,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -891,6 +914,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -916,6 +940,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -941,6 +966,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 

@@ -1414,9 +1414,14 @@ const resetItemStates = () => {
 };
 
 // Update the profile change handler to load checkout items with their checkbox states
+// Inside MainScreen.tsx
 const handleProfileChange = async (profileId: string) => {
   console.log(`🔄 Profile changed: ${profileId}`);
   setSelectedProfile(profileId);
+  
+  // This line should be added:
+  localStorage.setItem('currentProfileId', profileId);
+  
   await handleLoadCheckout(profileId);
 };
 

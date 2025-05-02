@@ -5,6 +5,7 @@
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.v({
+  "chartContainer": "CheckoutTestProgress-module__GtrGZW__chartContainer",
   "checkoutWindow": "CheckoutTestProgress-module__GtrGZW__checkoutWindow",
   "closeButton": "CheckoutTestProgress-module__GtrGZW__closeButton",
   "colorCompleted": "CheckoutTestProgress-module__GtrGZW__colorCompleted",
@@ -15,6 +16,7 @@ __turbopack_context__.v({
   "hasMoreBoth": "CheckoutTestProgress-module__GtrGZW__hasMoreBoth",
   "hasMoreLeft": "CheckoutTestProgress-module__GtrGZW__hasMoreLeft",
   "hasMoreRight": "CheckoutTestProgress-module__GtrGZW__hasMoreRight",
+  "historyPanel": "CheckoutTestProgress-module__GtrGZW__historyPanel",
   "progressBar": "CheckoutTestProgress-module__GtrGZW__progressBar",
   "progressBarFill": "CheckoutTestProgress-module__GtrGZW__progressBarFill",
   "progressContainer": "CheckoutTestProgress-module__GtrGZW__progressContainer",
@@ -25,6 +27,9 @@ __turbopack_context__.v({
   "realBadge": "CheckoutTestProgress-module__GtrGZW__realBadge",
   "realMessage": "CheckoutTestProgress-module__GtrGZW__realMessage",
   "resetButton": "CheckoutTestProgress-module__GtrGZW__resetButton",
+  "resultHeader": "CheckoutTestProgress-module__GtrGZW__resultHeader",
+  "resultItem": "CheckoutTestProgress-module__GtrGZW__resultItem",
+  "resultSummary": "CheckoutTestProgress-module__GtrGZW__resultSummary",
   "runAllButton": "CheckoutTestProgress-module__GtrGZW__runAllButton",
   "runAllButtonIcon": "CheckoutTestProgress-module__GtrGZW__runAllButtonIcon",
   "scrollButton": "CheckoutTestProgress-module__GtrGZW__scrollButton",
@@ -43,7 +48,9 @@ __turbopack_context__.v({
   "tabsContainer": "CheckoutTestProgress-module__GtrGZW__tabsContainer",
   "tabsList": "CheckoutTestProgress-module__GtrGZW__tabsList",
   "tabsWrapper": "CheckoutTestProgress-module__GtrGZW__tabsWrapper",
+  "testResultsList": "CheckoutTestProgress-module__GtrGZW__testResultsList",
   "titleIcon": "CheckoutTestProgress-module__GtrGZW__titleIcon",
+  "viewDetailsButton": "CheckoutTestProgress-module__GtrGZW__viewDetailsButton",
   "windowHeader": "CheckoutTestProgress-module__GtrGZW__windowHeader",
   "windowTitle": "CheckoutTestProgress-module__GtrGZW__windowTitle",
 });

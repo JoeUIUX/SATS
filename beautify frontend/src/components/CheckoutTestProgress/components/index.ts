@@ -12,3 +12,7 @@ export { LEOCAMTestPanel } from './LEOCAMTestPanel';
 export * from './HEPSTestPanel';
 export * from './ADCSTestPanel';
 export * from './GPSTestPanel';
+
+export { TestHistoryChart } from './TestHistoryChart';
+export { TestHistoryTable } from './TestHistoryTable';
+export { TestDetailsModal } from './TestDetailsModal';

@@ -32,7 +32,9 @@ __turbopack_context__.s({
     "createMccSocket": (()=>createMccSocket),
     "debugSocketType": (()=>debugSocketType),
     "isSimulationMode": (()=>isSimulationMode),
+    "isUsingSimulation": (()=>isUsingSimulation),
     "mccifRead": (()=>mccifRead),
+    "mccifReadWithFlag": (()=>mccifReadWithFlag),
     "mccifSet": (()=>mccifSet),
     "setSimulationMode": (()=>setSimulationMode),
     "testWebSocketConnection": (()=>testWebSocketConnection)
@@ -634,6 +636,146 @@ async function mccifRead(sock, parameters) {
     console.warn("No valid socket connection available, using fallback simulated values");
     return simulateParameterValues(parameters);
 }
+function isUsingSimulation(sock) {
+    if (!sock) return true;
+    // Direct flag check
+    if (typeof sock.isSimulated === 'boolean') {
+        return sock.isSimulated;
+    }
+    // Check for simulation methods
+    if (typeof sock.simulateRead === 'function') {
+        return true;
+    }
+    // If we got a real socket object with no simulation methods,
+    // check if it has the expected real socket properties
+    if (typeof sock.send === 'function' && typeof sock.receive === 'function') {
+        // If it has socket-like properties but is missing expected WebSocket properties,
+        // it might be a simulation wrapper
+        if (typeof sock.close !== 'function' || typeof sock.readyState === 'undefined') {
+            console.log("⚠️ Socket appears to be a simulation wrapper");
+            return true;
+        }
+        // If it's a WebSocket but not connected, treat as simulation
+        if (sock.readyState !== 1) {
+            console.log("⚠️ Socket is not in OPEN state");
+            return true;
+        }
+        // Looks like a real socket
+        return false;
+    }
+    // Default to simulation for any unrecognized socket format
+    return true;
+}
+async function mccifReadWithFlag(sock, parameters) {
+    // Log what's happening
+    console.log(`📡 mccifRead: ${parameters.length} parameters, using ${sock ? sock.isSimulated ? "simulated" : "real" : "no"} socket`);
+    let usedSimulation = isUsingSimulation(sock);
+    // If we have a socket with simulateRead function, use it directly
+    if (sock && typeof sock.simulateRead === 'function') {
+        console.log(`Using simulation to read ${parameters.length} parameters`);
+        usedSimulation = true;
+        return {
+            results: sock.simulateRead(parameters),
+            usedSimulation
+        };
+    }
+    // Check if we have a real socket with send/receive functions
+    if (sock && typeof sock.send === 'function') {
+        console.log(`📡 ${sock.isSimulated ? "SIMULATED" : "REAL"} READ: Reading ${parameters.length} parameters from server`);
+        try {
+            // Construct message to enable logging for each parameter
+            let message = "";
+            for (const param of parameters){
+                message += `${param}.log=true\n`;
+            }
+            // Send the message
+            await sock.send(message);
+            // Add a small delay to ensure the server has time to process
+            await new Promise((resolve)=>setTimeout(resolve, 100));
+            // Receive the response
+            const response = await sock.receive(4096, 20000);
+            if (!response || response.length === 0) {
+                console.log("⚠️ Empty response from server - falling back to simulation");
+                usedSimulation = true;
+                return {
+                    results: simulateParameterValues(parameters),
+                    usedSimulation
+                };
+            }
+            // Process the response
+            console.log(`📡 Data received for ${parameters.length} parameters:`, response);
+            // Check if the response is just a string 'simulated response'
+            if (response === 'simulated response') {
+                console.log('⚠️ Received "simulated response" from socket - falling back to simulated values');
+                usedSimulation = true;
+                return {
+                    results: simulateParameterValues(parameters),
+                    usedSimulation
+                };
+            }
+            // Check if the response contains indicators of simulation
+            if (response.includes('simulated') || response.includes('dummy') || response.includes('mock')) {
+                console.log('⚠️ Response contains simulation indicators');
+                usedSimulation = true;
+            }
+            // Split response into lines and handle partial responses
+            const lines = response.split('\n');
+            // If we don't get enough lines, try to use what we have
+            const result = lines.slice(0, Math.min(parameters.length, lines.length));
+            // If we got fewer lines than expected, pad with simulated values
+            if (result.length < parameters.length) {
+                console.log(`⚠️ Received only ${result.length} of ${parameters.length} parameters - padding with simulations`);
+                usedSimulation = true;
+                // Create a map of received parameters for lookup
+                const receivedParams = new Map();
+                for (const line of result){
+                    const parts = line.split('=');
+                    if (parts.length >= 2) {
+                        receivedParams.set(parts[0], line);
+                    }
+                }
+                // Build final result array with actual or simulated values
+                const finalResult = parameters.map((param)=>{
+                    if (receivedParams.has(param)) {
+                        return receivedParams.get(param);
+                    } else {
+                        return simulateParameter(param);
+                    }
+                });
+                return {
+                    results: finalResult,
+                    usedSimulation
+                };
+            }
+            // Disable logging before returning
+            message = "";
+            for (const param of parameters){
+                message += `${param}.log=false\n`;
+            }
+            await sock.send(message);
+            return {
+                results: result,
+                usedSimulation
+            };
+        } catch (error) {
+            console.error(`MCC read error: ${error}`);
+            // Fall back to simulation if there's an error
+            console.warn("Falling back to simulation due to error");
+            usedSimulation = true;
+            return {
+                results: simulateParameterValues(parameters),
+                usedSimulation
+            };
+        }
+    }
+    // If we're in development mode without a real server or proper simulation, return hardcoded values
+    console.warn("No valid socket connection available, using fallback simulated values");
+    usedSimulation = true;
+    return {
+        results: simulateParameterValues(parameters),
+        usedSimulation
+    };
+}
 // Helper function to generate simulated values
 function simulateParameterValues(parameters) {
     return parameters.map((param)=>simulateParameter(param));
@@ -695,7 +837,7 @@ you'll need to transform your page.tsx into an entry point for routing. */ /* np
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-router/dist/development/chunk-SYFQ2XB5.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-router/dist/development/chunk-BAXFHI7N.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/MainScreen/MainScreen.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ToTestList/ToTestList.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ServerWindow/ServerWindow.tsx [app-client] (ecmascript)");
@@ -750,7 +892,7 @@ function Page() {
     // Monitor current route to track if we're on main screen
     const RouteObserver = ()=>{
         _s1();
-        const location = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"])();
+        const location = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"])();
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
             "Page.RouteObserver.useEffect": ()=>{
                 const isMain = location.pathname === '/main';
@@ -782,7 +924,7 @@ function Page() {
     };
     _s1(RouteObserver, "BXcZrDMM76mmm4zA8/QV5UbMNXE=", false, function() {
         return [
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"]
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"]
         ];
     });
     // Load window state from sessionStorage on initial mount
@@ -1246,16 +1388,16 @@ function Page() {
             }["Page.useCallback[closeSettingsWindow]"]);
         }
     }["Page.useCallback[closeSettingsWindow]"], []);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BrowserRouter"], {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BrowserRouter"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RouteObserver, {}, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
                 lineNumber: 483,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Routes"], {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Routes"], {
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Route"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Route"], {
                         path: "/",
                         element: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             openToTestList: openToTestList,
@@ -1270,7 +1412,7 @@ function Page() {
                         lineNumber: 486,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$SYFQ2XB5$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Route"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Route"], {
                         path: "/main",
                         element: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             showSettingsWindow: windowVisibility.SettingsWindow,

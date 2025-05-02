@@ -145,3 +145,402 @@
 [25/04/2025 2:10:08 pm] [MCC Proxy] MCC Proxy Server running on port 8080
 [25/04/2025 2:10:08 pm] [MCC Proxy] CORS enabled for all origins
 [25/04/2025 4:47:55 pm] MCC Proxy process exited with code 1
+[28/04/2025 11:44:06 am] Starting MCC proxy server...
+[28/04/2025 11:44:06 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[28/04/2025 11:44:06 am] [MCC Proxy] CORS enabled for all origins
+[28/04/2025 11:44:44 am] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 11:44:44 am] [MCC Proxy] Browser disconnected
+[28/04/2025 11:44:45 am] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 11:44:45 am] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 11:44:45 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 11:44:45 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 11:44:45 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 11:44:45 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 11:44:55 am] [MCC Proxy] MCC server connection closed
+[28/04/2025 11:44:55 am] [MCC Proxy] MCC server connection closed
+[28/04/2025 12:01:11 pm] MCC Proxy process exited with code 1
+[28/04/2025 4:29:07 pm] Starting MCC proxy server...
+[28/04/2025 4:29:07 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[28/04/2025 4:29:07 pm] [MCC Proxy] CORS enabled for all origins
+[28/04/2025 4:29:35 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 4:29:35 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 4:29:36 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 4:29:36 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 4:29:36 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 4:29:36 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 4:29:36 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 4:29:36 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 4:29:46 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 4:29:46 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:02:49 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:02:49 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:02:58 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:02:58 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:02:59 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:02:59 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:02:59 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:02:59 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:02:59 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:02:59 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:03:09 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:03:09 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:04:48 pm] MCC Proxy process exited with code 1
+[28/04/2025 5:05:12 pm] Starting MCC proxy server...
+[28/04/2025 5:05:12 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[28/04/2025 5:05:12 pm] [MCC Proxy] CORS enabled for all origins
+[28/04/2025 5:06:06 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:06:06 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:06:07 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:06:07 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:06:07 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:06:07 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:06:07 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:06:07 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:06:17 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:06:17 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:16:22 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:16:22 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:16:26 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:16:26 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:16:27 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:16:27 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:16:27 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:16:27 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:16:27 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:16:27 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:16:37 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:16:37 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:21:42 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:21:42 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:21:44 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:21:44 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:21:45 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:21:45 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:21:45 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:21:45 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:21:45 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:21:45 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:21:55 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:21:55 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:29:21 pm] MCC Proxy process exited with code 1
+[28/04/2025 5:34:41 pm] Starting MCC proxy server...
+[28/04/2025 5:34:41 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[28/04/2025 5:34:41 pm] [MCC Proxy] CORS enabled for all origins
+[28/04/2025 5:37:25 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:37:25 pm] [MCC Proxy] Browser disconnected
+[28/04/2025 5:37:26 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:37:26 pm] [MCC Proxy] New WebSocket connection from browser
+[28/04/2025 5:37:26 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:37:26 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:37:26 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[28/04/2025 5:37:26 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[28/04/2025 5:37:36 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:37:36 pm] [MCC Proxy] MCC server connection closed
+[28/04/2025 5:41:01 pm] MCC Proxy process exited with code 1
+[29/04/2025 9:37:40 am] Starting MCC proxy server...
+[29/04/2025 9:37:40 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[29/04/2025 9:37:40 am] [MCC Proxy] CORS enabled for all origins
+[29/04/2025 9:38:05 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 9:38:05 am] [MCC Proxy] Browser disconnected
+[29/04/2025 9:38:06 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 9:38:06 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 9:38:06 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 9:38:06 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 9:38:06 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 9:38:06 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 9:38:16 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 9:38:16 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:24:14 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:24:14 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:24:18 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:24:18 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:24:18 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:24:18 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:24:18 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:24:18 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:24:18 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:24:18 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:24:28 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:24:28 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:48:34 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:48:34 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:48:41 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:48:41 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:48:42 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:48:42 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:48:42 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:48:42 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:48:42 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:48:42 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:48:52 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:48:52 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:51:04 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:51:04 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:51:07 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:51:07 am] [MCC Proxy] Browser disconnected
+[29/04/2025 10:51:08 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:51:08 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 10:51:08 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:51:08 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:51:08 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 10:51:08 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 10:51:18 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 10:51:18 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 11:38:18 am] [MCC Proxy] Browser disconnected
+[29/04/2025 11:38:18 am] [MCC Proxy] Browser disconnected
+[29/04/2025 11:38:21 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 11:38:21 am] [MCC Proxy] Browser disconnected
+[29/04/2025 11:38:22 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 11:38:22 am] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 11:38:22 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 11:38:22 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 11:38:22 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 11:38:22 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 11:38:32 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 11:38:32 am] [MCC Proxy] MCC server connection closed
+[29/04/2025 12:50:06 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:50:06 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:50:10 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:50:10 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:50:10 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:50:10 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:50:10 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 12:50:10 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 12:50:10 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 12:50:10 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 12:50:20 pm] [MCC Proxy] MCC server connection closed
+[29/04/2025 12:50:20 pm] [MCC Proxy] MCC server connection closed
+[29/04/2025 12:53:13 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:53:13 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:53:16 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:53:16 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 12:53:16 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:53:16 pm] [MCC Proxy] New WebSocket connection from browser
+[29/04/2025 12:53:16 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 12:53:16 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 12:53:16 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[29/04/2025 12:53:16 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[29/04/2025 12:53:26 pm] [MCC Proxy] MCC server connection closed
+[29/04/2025 12:53:26 pm] [MCC Proxy] MCC server connection closed
+[29/04/2025 1:05:55 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 1:05:55 pm] [MCC Proxy] Browser disconnected
+[29/04/2025 5:40:47 pm] MCC Proxy process exited with code 1
+[30/04/2025 10:14:15 am] Starting MCC proxy server...
+[30/04/2025 10:14:15 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/04/2025 10:14:15 am] [MCC Proxy] CORS enabled for all origins
+[30/04/2025 10:14:49 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:14:49 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:14:50 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:14:50 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:14:50 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:14:50 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:14:50 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:14:50 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:15:00 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:15:00 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:36:28 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:36:28 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:42:24 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:42:24 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:42:25 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:42:25 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:42:25 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:42:25 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:42:25 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:42:25 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:42:35 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:42:35 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:48:47 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:48:47 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:48:49 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:48:49 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:48:50 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:48:50 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:48:50 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:48:50 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:48:50 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:48:50 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:49:00 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:49:00 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:53:52 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:53:52 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:53:55 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:53:55 am] [MCC Proxy] Browser disconnected
+[30/04/2025 10:53:55 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:53:55 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 10:53:55 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:53:55 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:53:55 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 10:53:55 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 10:54:05 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 10:54:05 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 11:05:50 am] [MCC Proxy] Browser disconnected
+[30/04/2025 11:05:50 am] [MCC Proxy] Browser disconnected
+[30/04/2025 11:05:54 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 11:05:54 am] [MCC Proxy] Browser disconnected
+[30/04/2025 11:05:54 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 11:05:54 am] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 11:05:54 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 11:05:54 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 11:05:54 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 11:05:54 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 11:06:04 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 11:06:04 am] [MCC Proxy] MCC server connection closed
+[30/04/2025 11:25:51 am] [MCC Proxy] Browser disconnected
+[30/04/2025 11:25:51 am] [MCC Proxy] Browser disconnected
+[30/04/2025 11:25:58 am] MCC Proxy process exited with code 1
+[30/04/2025 2:21:16 pm] Starting MCC proxy server...
+[30/04/2025 2:21:16 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/04/2025 2:21:16 pm] [MCC Proxy] CORS enabled for all origins
+[30/04/2025 2:23:56 pm] MCC Proxy process exited with code 1
+[30/04/2025 4:46:47 pm] Starting MCC proxy server...
+[30/04/2025 4:46:47 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/04/2025 4:46:47 pm] [MCC Proxy] CORS enabled for all origins
+[30/04/2025 4:47:16 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:47:16 pm] [MCC Proxy] Browser disconnected
+[30/04/2025 4:47:17 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:47:17 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:47:17 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 4:47:17 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 4:47:17 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 4:47:17 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 4:47:27 pm] [MCC Proxy] MCC server connection closed
+[30/04/2025 4:47:27 pm] [MCC Proxy] MCC server connection closed
+[30/04/2025 4:49:28 pm] [MCC Proxy Error] ^C
+[30/04/2025 4:49:28 pm] MCC Proxy process exited with code 3221225786
+[30/04/2025 4:53:44 pm] Starting MCC proxy server...
+[30/04/2025 4:53:44 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/04/2025 4:53:44 pm] [MCC Proxy] CORS enabled for all origins
+[30/04/2025 4:56:24 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:56:24 pm] [MCC Proxy] Browser disconnected
+[30/04/2025 4:56:24 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:56:24 pm] [MCC Proxy] New WebSocket connection from browser
+[30/04/2025 4:56:24 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 4:56:24 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 4:56:24 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/04/2025 4:56:24 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/04/2025 4:56:34 pm] [MCC Proxy] MCC server connection closed
+[30/04/2025 4:56:34 pm] [MCC Proxy] MCC server connection closed
+[30/04/2025 5:28:17 pm] [MCC Proxy] Browser disconnected
+[30/04/2025 5:28:17 pm] [MCC Proxy] Browser disconnected
+[30/04/2025 5:28:21 pm] MCC Proxy process exited with code 1
+[02/05/2025 9:52:38 am] Starting MCC proxy server...
+[02/05/2025 9:52:39 am] [MCC Proxy] MCC Proxy Server running on port 8080
+[02/05/2025 9:52:39 am] [MCC Proxy] CORS enabled for all origins
+[02/05/2025 9:54:12 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 9:54:12 am] [MCC Proxy] Browser disconnected
+[02/05/2025 9:54:13 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 9:54:13 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 9:54:13 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 9:54:13 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 9:54:13 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 9:54:13 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 9:54:23 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 9:54:23 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 10:22:49 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:22:49 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:22:58 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:22:58 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:22:58 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:22:59 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:22:59 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 10:22:59 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 10:22:59 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 10:22:59 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 10:23:09 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 10:23:09 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 10:56:36 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:56:36 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:56:54 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:56:54 am] [MCC Proxy] Browser disconnected
+[02/05/2025 10:56:54 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:56:54 am] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 10:56:54 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 10:56:54 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 10:56:54 am] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 10:56:54 am] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 10:57:04 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 10:57:04 am] [MCC Proxy] MCC server connection closed
+[02/05/2025 11:03:28 am] MCC Proxy process exited with code 1
+[02/05/2025 2:12:20 pm] Starting MCC proxy server...
+[02/05/2025 2:12:20 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[02/05/2025 2:12:20 pm] [MCC Proxy] CORS enabled for all origins
+[02/05/2025 2:16:51 pm] Starting MCC proxy server...
+[02/05/2025 2:16:51 pm] [MCC Proxy Error] node:events:502
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]       throw er; // Unhandled 'error' event
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]       ^
+[02/05/2025 2:16:51 pm] [MCC Proxy Error] Error: listen EADDRINUSE: address already in use :::8080
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at listenInCluster (node:net:1994:12)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Server.listen (node:net:2099:7)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Object.<anonymous> (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\mcc-proxy\mcc-proxy.js:114:8)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Module._compile (node:internal/modules/cjs/loader:1562:14)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Object..js (node:internal/modules/cjs/loader:1699:10)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Module.load (node:internal/modules/cjs/loader:1313:32)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Function._load (node:internal/modules/cjs/loader:1123:12)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error] Emitted 'error' event on WebSocketServer instance at:
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at Server.emit (node:events:524:28)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at emitErrorNT (node:net:1973:8)
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]   code: 'EADDRINUSE',
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]   errno: -4091,
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]   syscall: 'listen',
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]   address: '::',
+[02/05/2025 2:16:51 pm] [MCC Proxy Error]   port: 8080
+[02/05/2025 2:16:51 pm] [MCC Proxy Error] }
+[02/05/2025 2:16:51 pm] [MCC Proxy Error] Node.js v22.13.0
+[02/05/2025 2:16:51 pm] MCC Proxy process exited with code 1
+[02/05/2025 2:16:52 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:16:52 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:16:53 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:16:53 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:16:53 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:16:53 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:16:53 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:16:53 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:17:03 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:17:03 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:17:08 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:17:08 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:17:15 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:17:15 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:17:16 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:17:16 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:17:16 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:17:16 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:17:16 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:17:16 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:17:26 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:17:26 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:28:53 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:28:53 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:31:11 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:31:11 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 2:31:12 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:31:12 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 2:31:12 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:31:12 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:31:12 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 2:31:12 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 2:31:22 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:31:22 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 2:37:28 pm] [MCC Proxy Error] ^C
+[02/05/2025 2:37:28 pm] MCC Proxy process exited with code 3221225786
+[02/05/2025 3:11:59 pm] Starting MCC proxy server...
+[02/05/2025 3:11:59 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[02/05/2025 3:11:59 pm] [MCC Proxy] CORS enabled for all origins
+[02/05/2025 3:12:30 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 3:12:30 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 3:12:31 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 3:12:31 pm] [MCC Proxy] New WebSocket connection from browser
+[02/05/2025 3:12:31 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 3:12:31 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 3:12:31 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[02/05/2025 3:12:31 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[02/05/2025 3:12:41 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 3:12:41 pm] [MCC Proxy] MCC server connection closed
+[02/05/2025 3:13:06 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 3:13:06 pm] [MCC Proxy] Browser disconnected
+[02/05/2025 3:13:10 pm] MCC Proxy process exited with code 1

@@ -58,6 +58,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
     });
     const [filteredDroppedItems, setFilteredDroppedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [showScrollButtons, setShowScrollButtons] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [selectedProfile, setSelectedProfile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const tabsListRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     // Use non-null assertion to ensure TypeScript knows this ref will be assigned
     const nodeRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -68,6 +69,16 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
         document.body.appendChild(element);
         return element;
     });
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        // Try multiple sources for profile ID
+        const currentProfileId = localStorage.getItem('currentProfileId') || sessionStorage.getItem('currentProfileId');
+        if (currentProfileId) {
+            console.log("Found profile ID:", currentProfileId);
+            setSelectedProfile(currentProfileId);
+        } else {
+            console.warn("No profile ID found in storage");
+        }
+    }, []);
     // Load the filtered items with checked options from localStorage
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const filteredItemsJson = localStorage.getItem('checkoutTestItems');
@@ -547,27 +558,27 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                             d: "M20 6v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 601,
+                                            lineNumber: 617,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                             d: "m10 10 5 3-5 3v-6Z"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 602,
+                                            lineNumber: 618,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                    lineNumber: 600,
+                                    lineNumber: 616,
                                     columnNumber: 13
                                 }, this),
                                 "Satellite Checkout Test Control Centre"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 599,
+                            lineNumber: 615,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -581,7 +592,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                             children: "Reset Position"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 607,
+                            lineNumber: 623,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -593,13 +604,13 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                             children: "✖"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 619,
+                            lineNumber: 635,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                    lineNumber: 598,
+                    lineNumber: 614,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -618,7 +629,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                         children: "←"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                        lineNumber: 637,
+                                        lineNumber: 653,
                                         columnNumber: 3
                                     }, this),
                                     filteredDroppedItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -631,7 +642,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     children: "✓"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 654,
+                                                    lineNumber: 670,
                                                     columnNumber: 13
                                                 }, this),
                                                 testResults[item.header]?.status === 'error' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -639,7 +650,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     children: "✗"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 657,
+                                                    lineNumber: 673,
                                                     columnNumber: 13
                                                 }, this),
                                                 testResults[item.header]?.status === 'running' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -647,13 +658,13 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     children: "⟳"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 660,
+                                                    lineNumber: 676,
                                                     columnNumber: 13
                                                 }, this)
                                             ]
                                         }, item.header, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 647,
+                                            lineNumber: 663,
                                             columnNumber: 9
                                         }, this)),
                                     showScrollButtons && canScrollEnd && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -663,18 +674,18 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                         children: "→"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                        lineNumber: 666,
+                                        lineNumber: 682,
                                         columnNumber: 3
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                lineNumber: 635,
+                                lineNumber: 651,
                                 columnNumber: 5
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 634,
+                            lineNumber: 650,
                             columnNumber: 3
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 text-center",
@@ -682,12 +693,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                 children: "No test items with checked options found. Please check at least one option in the Checkout Section and try again."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                lineNumber: 678,
+                                lineNumber: 694,
                                 columnNumber: 5
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 677,
+                            lineNumber: 693,
                             columnNumber: 3
                         }, this),
                         filteredDroppedItems.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -727,10 +738,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 698,
+                                                    lineNumber: 714,
                                                     columnNumber: 23
                                                 }, this),
                                                 item.header === "OBC-2" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC2TestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["OBC2TestPanel"], {
@@ -747,10 +759,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 723,
+                                                    lineNumber: 740,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "S-Band" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$SBandTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SBandTestPanel"], {
@@ -767,10 +780,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 748,
+                                                    lineNumber: 766,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "UHF" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$UHFTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["UHFTestPanel"], {
@@ -787,10 +801,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 773,
+                                                    lineNumber: 792,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "LEOCAM" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$LEOCAMTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LEOCAMTestPanel"], {
@@ -810,7 +825,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     isInitialRun: currentlyRunningTest === item.header
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 798,
+                                                    lineNumber: 818,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "HEPS" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$HEPSTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HEPSTestPanel"], {
@@ -827,10 +842,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 823,
+                                                    lineNumber: 844,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "ADCS" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$ADCSTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ADCSTestPanel"], {
@@ -847,10 +863,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 848,
+                                                    lineNumber: 870,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "GPS" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$GPSTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GPSTestPanel"], {
@@ -867,10 +884,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 873,
+                                                    lineNumber: 896,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "Propulsion" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$PropulsionTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PropulsionTestPanel"], {
@@ -887,10 +905,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 898,
+                                                    lineNumber: 922,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "PCS" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$PCSTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PCSTestPanel"], {
@@ -907,10 +926,11 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     onTestStart: ()=>updateTestResult(item.header, {
                                                             status: 'running'
                                                         }),
-                                                    isInitialRun: currentlyRunningTest === item.header
+                                                    isInitialRun: currentlyRunningTest === item.header,
+                                                    profileId: selectedProfile ?? undefined
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 923,
+                                                    lineNumber: 948,
                                                     columnNumber: 3
                                                 }, this),
                                                 item.header === "X-Band" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$XBandTestPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XBandTestPanel"], {
@@ -930,7 +950,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                     isInitialRun: currentlyRunningTest === item.header
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 948,
+                                                    lineNumber: 974,
                                                     columnNumber: 3
                                                 }, this),
                                                 ![
@@ -969,7 +989,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 984,
+                                                                    lineNumber: 1010,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -983,7 +1003,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 987,
+                                                                    lineNumber: 1013,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1012,7 +1032,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     children: testResults[item.header]?.status === 'completed' || testResults[item.header]?.status === 'error' ? "Re-run Test" : "Run Test"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 990,
+                                                                    lineNumber: 1016,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 item.options.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1033,7 +1053,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                             children: "Options to be tested:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1027,
+                                                                            lineNumber: 1053,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1046,24 +1066,24 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                                     children: option
                                                                                 }, index, false, {
                                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                                    lineNumber: 1040,
+                                                                                    lineNumber: 1066,
                                                                                     columnNumber: 35
                                                                                 }, this))
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1034,
+                                                                            lineNumber: 1060,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1020,
+                                                                    lineNumber: 1046,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 976,
+                                                            lineNumber: 1002,
                                                             columnNumber: 25
                                                         }, this),
                                                         testResults[item.header]?.status === 'completed' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1097,12 +1117,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                                 d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                                lineNumber: 1063,
+                                                                                lineNumber: 1089,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1062,
+                                                                            lineNumber: 1088,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         item.header,
@@ -1110,7 +1130,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1055,
+                                                                    lineNumber: 1081,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1127,14 +1147,14 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                             children: "✅ All tests completed successfully"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1076,
+                                                                            lineNumber: 1102,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             children: "⏱️ Test duration: 1.24s"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1077,
+                                                                            lineNumber: 1103,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1144,13 +1164,13 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1078,
+                                                                            lineNumber: 1104,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1068,
+                                                                    lineNumber: 1094,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1181,42 +1201,42 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                                 d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                                lineNumber: 1096,
+                                                                                lineNumber: 1122,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1095,
+                                                                            lineNumber: 1121,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         "Generate Report"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1081,
+                                                                    lineNumber: 1107,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1049,
+                                                            lineNumber: 1075,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 975,
+                                                    lineNumber: 1001,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, item.header, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 688,
+                                            lineNumber: 704,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                    lineNumber: 686,
+                                    lineNumber: 702,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1242,19 +1262,19 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                lineNumber: 1114,
+                                                                lineNumber: 1140,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1113,
+                                                            lineNumber: 1139,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Test Progress"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1112,
+                                                    lineNumber: 1138,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1267,7 +1287,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1120,
+                                                            lineNumber: 1146,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1275,13 +1295,13 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                             children: isComplete ? "✅ All Tests Completed" : currentlyRunningTest ? `⚙️ Running: ${currentlyRunningTest}` : "⏳ Preparing Tests..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1121,
+                                                            lineNumber: 1147,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1119,
+                                                    lineNumber: 1145,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1298,12 +1318,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                        lineNumber: 1133,
+                                                        lineNumber: 1159,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1132,
+                                                    lineNumber: 1158,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1328,30 +1348,30 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1156,
+                                                                    lineNumber: 1182,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                lineNumber: 1155,
+                                                                lineNumber: 1181,
                                                                 columnNumber: 23
                                                             }, this),
                                                             "Run All Tests Again"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                        lineNumber: 1146,
+                                                        lineNumber: 1172,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1145,
+                                                    lineNumber: 1171,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 1111,
+                                            lineNumber: 1137,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1370,7 +1390,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     d: "M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1167,
+                                                                    lineNumber: 1193,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1379,20 +1399,20 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1168,
+                                                                    lineNumber: 1194,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1166,
+                                                            lineNumber: 1192,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Test Status Overview"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1165,
+                                                    lineNumber: 1191,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1409,7 +1429,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     children: item.component
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1180,
+                                                                    lineNumber: 1206,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1422,18 +1442,18 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1181,
+                                                                    lineNumber: 1207,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, item.component, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1175,
+                                                            lineNumber: 1201,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1173,
+                                                    lineNumber: 1199,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1462,30 +1482,30 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1204,
+                                                                    lineNumber: 1230,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                lineNumber: 1203,
+                                                                lineNumber: 1229,
                                                                 columnNumber: 23
                                                             }, this),
                                                             isSavingReport ? "Saving..." : "Save Reports"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                        lineNumber: 1193,
+                                                        lineNumber: 1219,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1192,
+                                                    lineNumber: 1218,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 1164,
+                                            lineNumber: 1190,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1511,12 +1531,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                         children: "Selected Options Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                        lineNumber: 1230,
+                                                        lineNumber: 1256,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1221,
+                                                    lineNumber: 1247,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1542,7 +1562,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     children: item.header
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1245,
+                                                                    lineNumber: 1271,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 getComponentOptions(item.header).length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1564,12 +1584,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                             ]
                                                                         }, index, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                            lineNumber: 1256,
+                                                                            lineNumber: 1282,
                                                                             columnNumber: 31
                                                                         }, this))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1254,
+                                                                    lineNumber: 1280,
                                                                     columnNumber: 27
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     style: {
@@ -1580,24 +1600,24 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     children: "No options selected for this component"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1272,
+                                                                    lineNumber: 1298,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, item.header, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1235,
+                                                            lineNumber: 1261,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1233,
+                                                    lineNumber: 1259,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 1212,
+                                            lineNumber: 1238,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1623,12 +1643,12 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                         children: "Test Console Output"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                        lineNumber: 1298,
+                                                        lineNumber: 1324,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1289,
+                                                    lineNumber: 1315,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1656,7 +1676,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1312,
+                                                                    lineNumber: 1338,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1670,7 +1690,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1315,
+                                                                    lineNumber: 1341,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1685,7 +1705,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1318,
+                                                                    lineNumber: 1344,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1700,7 +1720,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                    lineNumber: 1321,
+                                                                    lineNumber: 1347,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
@@ -1715,7 +1735,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1326,
+                                                            lineNumber: 1352,
                                                             columnNumber: 23
                                                         }, this) : filteredDroppedItems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             style: {
@@ -1725,7 +1745,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                             children: "No test items with checked options found. Please check options in the Checkout Section."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1331,
+                                                            lineNumber: 1357,
                                                             columnNumber: 25
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             style: {
@@ -1735,7 +1755,7 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                             children: 'Ready to start tests. Click "Run All Tests Again" to begin.'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                            lineNumber: 1335,
+                                                            lineNumber: 1361,
                                                             columnNumber: 25
                                                         }, this),
                                                         Object.entries(testResults).filter(([_, result])=>result.status === 'completed' || result.status === 'error').map(([component, result])=>{
@@ -1755,49 +1775,49 @@ const CheckoutTestProgress = ({ droppedItems, onClose, zIndex, onMouseDown, sock
                                                                 ]
                                                             }, component, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                                lineNumber: 1347,
+                                                                lineNumber: 1373,
                                                                 columnNumber: 27
                                                             }, this);
                                                         })
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                                    lineNumber: 1301,
+                                                    lineNumber: 1327,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                            lineNumber: 1282,
+                                            lineNumber: 1308,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                                    lineNumber: 1109,
+                                    lineNumber: 1135,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                            lineNumber: 684,
+                            lineNumber: 700,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-                    lineNumber: 631,
+                    lineNumber: 647,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-            lineNumber: 596,
+            lineNumber: 612,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/CheckoutTestProgress/CheckoutTestProgress.tsx",
-        lineNumber: 588,
+        lineNumber: 604,
         columnNumber: 5
     }, this), portalElement);
 };

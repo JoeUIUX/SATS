@@ -1,0 +1,67 @@
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_c46f7552._.js", {
+
+"[project]/node_modules/three/build/three.module.js [app-client] (ecmascript, async loader)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "static/chunks/node_modules_three_build_three_core_df0bde7e.js",
+  "static/chunks/node_modules_three_build_three_module_230a9f89.js",
+  "static/chunks/node_modules_three_build_three_module_90b4155f.js",
+  "static/chunks/node_modules_three_build_three_module_611fbab0.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/node_modules/three/build/three.module.js [app-client] (ecmascript)");
+    });
+});
+}}),
+"[project]/node_modules/three/examples/jsm/loaders/DRACOLoader.js [app-client] (ecmascript, async loader)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "static/chunks/node_modules_three_72a1b309._.js",
+  "static/chunks/node_modules_three_examples_jsm_loaders_DRACOLoader_29167f0c.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/node_modules/three/examples/jsm/loaders/DRACOLoader.js [app-client] (ecmascript)");
+    });
+});
+}}),
+"[project]/node_modules/three/examples/jsm/loaders/GLTFLoader.js [app-client] (ecmascript, async loader)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "static/chunks/node_modules_three_9d54fd7e._.js",
+  "static/chunks/node_modules_three_examples_jsm_loaders_GLTFLoader_29167f0c.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/node_modules/three/examples/jsm/loaders/GLTFLoader.js [app-client] (ecmascript)");
+    });
+});
+}}),
+"[project]/node_modules/three/examples/jsm/controls/OrbitControls.js [app-client] (ecmascript, async loader)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "static/chunks/node_modules_three_ba918533._.js",
+  "static/chunks/node_modules_three_examples_jsm_controls_OrbitControls_29167f0c.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/node_modules/three/examples/jsm/controls/OrbitControls.js [app-client] (ecmascript)");
+    });
+});
+}}),
+"[project]/src/utils/themeInitializer.js [app-client] (ecmascript, async loader)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.v((parentImport) => {
+    return Promise.resolve().then(() => {
+        return parentImport("[project]/src/utils/themeInitializer.js [app-client] (ecmascript)");
+    });
+});
+}}),
+}]);
