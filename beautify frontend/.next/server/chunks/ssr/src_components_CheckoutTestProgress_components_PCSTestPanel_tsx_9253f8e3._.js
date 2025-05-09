@@ -3733,7 +3733,8 @@ const PCSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 color: isDarkMode ? '#e5e7eb' : '#111827'
                                                             },
                                                             children: (()=>{
-                                                                const sdTests = testHistory.filter((item)=>item.results?.sdCard?.enabled).map((item)=>item.results?.sdCard?.pass);
+                                                                const sdTests = testHistory.filter((item)=>item.results?.sdCard?.pass !== undefined) // or another property that definitely exists
+                                                                .map((item)=>item.results?.sdCard?.pass);
                                                                 if (!sdTests.length) return 'N/A';
                                                                 const passCount = sdTests.filter(Boolean).length;
                                                                 const passRate = passCount / sdTests.length * 100;

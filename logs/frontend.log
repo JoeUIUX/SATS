@@ -1608,3 +1608,582 @@
 [02/05/2025 3:12:19 pm] [Frontend] ✓ Compiled /favicon.ico in 563ms
 [02/05/2025 3:12:19 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 800ms
 [02/05/2025 3:13:09 pm] Frontend process exited with code 1
+[05/05/2025 10:09:19 am] Starting frontend development server...
+[05/05/2025 10:09:20 am] [Frontend] > beautify@0.1.0 dev
+[05/05/2025 10:09:20 am] [Frontend] > next dev --turbopack
+[05/05/2025 10:09:23 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[05/05/2025 10:09:23 am] [Frontend] - Local:        http://localhost:3000
+[05/05/2025 10:09:23 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[05/05/2025 10:09:23 am] [Frontend]    - Environments: .env
+[05/05/2025 10:09:23 am] [Frontend] ✓ Starting...
+[05/05/2025 10:09:24 am] [Frontend] ✓ Ready in 1976ms
+[05/05/2025 10:09:51 am] [Frontend] ○ Compiling / ...
+[05/05/2025 10:09:59 am] [Frontend] ✓ Compiled / in 9.1s
+[05/05/2025 10:10:01 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[05/05/2025 10:10:01 am] [Frontend] GET / 500 in 10981ms
+[05/05/2025 10:10:03 am] [Frontend] ○ Compiling /favicon.ico ...
+[05/05/2025 10:10:03 am] [Frontend] ✓ Compiled /favicon.ico in 569ms
+[05/05/2025 10:10:03 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1075ms
+[05/05/2025 10:26:33 am] [Frontend] ✓ Compiled in 432ms
+[05/05/2025 10:27:26 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[05/05/2025 10:27:26 am] [Frontend] GET / 500 in 2086ms
+[05/05/2025 10:27:35 am] Starting frontend development server...
+[05/05/2025 10:27:36 am] [Frontend] > beautify@0.1.0 dev
+[05/05/2025 10:27:36 am] [Frontend] > next dev --turbopack
+[05/05/2025 10:27:37 am] [Frontend Error] ⚠ Port 3000 is in use, trying 3001 instead.
+[05/05/2025 10:27:38 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[05/05/2025 10:27:38 am] [Frontend] - Local:        http://localhost:3001
+[05/05/2025 10:27:38 am] [Frontend]    - Network:      http://10.97.26.35:3001
+[05/05/2025 10:27:38 am] [Frontend]    - Environments: .env
+[05/05/2025 10:27:38 am] [Frontend]  ✓ Starting...
+[05/05/2025 10:27:39 am] [Frontend] ✓ Ready in 2.2s
+[05/05/2025 10:29:05 am] [Frontend] ✓ Compiled in 830ms
+[05/05/2025 10:29:52 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[05/05/2025 10:29:52 am] [Frontend] GET / 500 in 2255ms
+[05/05/2025 10:29:58 am] [Frontend Error] ^C
+[05/05/2025 10:29:58 am] [Frontend Error] ^C
+[05/05/2025 10:29:58 am] Frontend process exited with code 3221225786
+[05/05/2025 10:29:59 am] [Frontend Error] ^C
+[05/05/2025 10:29:59 am] [Frontend Error] ^C
+[05/05/2025 10:29:59 am] Frontend process exited with code 3221225786
+[05/05/2025 10:30:25 am] Starting frontend development server...
+[05/05/2025 10:30:26 am] [Frontend] > beautify@0.1.0 dev
+[05/05/2025 10:30:26 am] [Frontend] > next dev --turbopack
+[05/05/2025 10:30:28 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[05/05/2025 10:30:28 am] [Frontend] - Local:        http://localhost:3000
+[05/05/2025 10:30:28 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[05/05/2025 10:30:28 am] [Frontend]    - Environments: .env
+[05/05/2025 10:30:28 am] [Frontend]  ✓ Starting...
+[05/05/2025 10:30:29 am] [Frontend] ✓ Ready in 1497ms
+[05/05/2025 10:30:31 am] [Frontend] ○ Compiling / ...
+[05/05/2025 10:30:39 am] [Frontend] ✓ Compiled / in 8.1s
+[05/05/2025 10:30:41 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[05/05/2025 10:30:41 am] [Frontend] GET / 500 in 10208ms
+[05/05/2025 10:30:43 am] [Frontend] ○ Compiling /favicon.ico ...
+[05/05/2025 10:30:43 am] [Frontend] ✓ Compiled /favicon.ico in 657ms
+[05/05/2025 10:30:43 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 907ms
+[05/05/2025 10:46:14 am] [Frontend] ✓ Compiled in 509ms
+[05/05/2025 10:46:23 am] Frontend process exited with code 1
+[05/05/2025 10:46:53 am] Starting frontend development server...
+[05/05/2025 10:46:54 am] [Frontend] > beautify@0.1.0 dev
+[05/05/2025 10:46:54 am] [Frontend] > next dev --turbopack
+[05/05/2025 10:46:56 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[05/05/2025 10:46:56 am] [Frontend] - Local:        http://localhost:3000
+[05/05/2025 10:46:56 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[05/05/2025 10:46:56 am] [Frontend]    - Environments: .env
+[05/05/2025 10:46:56 am] [Frontend]  ✓ Starting...
+[05/05/2025 10:46:57 am] [Frontend] ✓ Ready in 1585ms
+[05/05/2025 10:46:57 am] [Frontend] ○ Compiling / ...
+[05/05/2025 10:47:05 am] [Frontend] ✓ Compiled / in 8.5s
+[05/05/2025 10:47:07 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[05/05/2025 10:47:07 am] [Frontend] GET / 500 in 10467ms
+[05/05/2025 11:19:03 am] [Frontend] ○ Compiling /_not-found/page ...
+[05/05/2025 11:19:03 am] [Frontend] ✓ Compiled /_not-found/page in 923ms
+[05/05/2025 11:19:04 am] [Frontend] GET /main 404 in 1689ms
+[05/05/2025 11:19:05 am] [Frontend] ○ Compiling /favicon.ico ...
+[05/05/2025 11:19:05 am] [Frontend] ✓ Compiled /favicon.ico in 714ms
+[05/05/2025 11:19:07 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2115ms
+[05/05/2025 11:25:28 am] [Frontend] ✓ Compiled in 456ms
+[05/05/2025 11:25:29 am] [Frontend] GET /main 404 in 802ms
+[05/05/2025 11:25:29 am] [Frontend] GET /main 404 in 501ms
+[05/05/2025 12:17:26 pm] Frontend process exited with code 1
+[05/05/2025 5:39:59 pm] Starting frontend development server...
+[05/05/2025 5:40:00 pm] [Frontend] > beautify@0.1.0 dev
+[05/05/2025 5:40:00 pm] [Frontend] > next dev --turbopack
+[05/05/2025 5:40:02 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[05/05/2025 5:40:02 pm] [Frontend] - Local:        http://localhost:3000
+[05/05/2025 5:40:02 pm] [Frontend]    - Network:      http://10.97.26.35:3000
+[05/05/2025 5:40:02 pm] [Frontend]    - Environments: .env
+[05/05/2025 5:40:02 pm] [Frontend]  ✓ Starting...
+[05/05/2025 5:40:03 pm] [Frontend] ✓ Ready in 1455ms
+[05/05/2025 5:42:23 pm] Frontend process exited with code 1
+[06/05/2025 11:41:37 am] Starting frontend development server...
+[06/05/2025 11:41:37 am] [Frontend] > beautify@0.1.0 dev
+[06/05/2025 11:41:37 am] [Frontend] > next dev --turbopack
+[06/05/2025 11:41:40 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[06/05/2025 11:41:40 am] [Frontend] - Local:        http://localhost:3000
+[06/05/2025 11:41:40 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[06/05/2025 11:41:40 am] [Frontend]    - Environments: .env
+[06/05/2025 11:41:40 am] [Frontend]  ✓ Starting...
+[06/05/2025 11:41:42 am] [Frontend] ✓ Ready in 2.1s
+[06/05/2025 11:42:02 am] [Frontend] ○ Compiling / ...
+[06/05/2025 11:42:13 am] [Frontend] ✓ Compiled / in 11.5s
+[06/05/2025 11:42:13 am] [Frontend Error] ⨯ ./src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx:1043:6
+[06/05/2025 11:42:13 am] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 1041 |[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 1042 |[39m   [36mreturn[39m ([0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 1043 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m      |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 1044 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 1045 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 1046 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 11:42:13 am] [Frontend Error] ./src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx:787:6
+[06/05/2025 11:42:13 am] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 785 |[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 786 |[39m   [36mreturn[39m ([0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 787 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m     |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 788 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 789 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 790 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 11:42:13 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 11:42:13 am] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 11:42:13 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:42:13 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:42:13 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 11:42:13 am] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 11:42:13 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:42:13 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:42:13 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 11:42:13 am] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 11:42:13 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:42:13 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:42:13 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 11:42:13 am] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:42:13 am] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 11:42:13 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:42:13 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:42:14 am] [Frontend] ○ Compiling /_error ...
+[06/05/2025 11:42:14 am] [Frontend] ✓ Compiled /_error in 958ms
+[06/05/2025 11:42:15 am] [Frontend] GET / 500 in 13285ms
+[06/05/2025 11:42:16 am] [Frontend] ○ Compiling /favicon.ico ...
+[06/05/2025 11:42:16 am] [Frontend] ✓ Compiled /favicon.ico in 615ms
+[06/05/2025 11:42:16 am] [Frontend] GET /favicon.ico 500 in 1367ms
+[06/05/2025 11:42:38 am] [Frontend Error] ^C
+[06/05/2025 11:42:38 am] [Frontend Error] ^C
+[06/05/2025 11:42:38 am] Frontend process exited with code 3221225786
+[06/05/2025 11:43:41 am] Starting frontend development server...
+[06/05/2025 11:43:41 am] [Frontend] > beautify@0.1.0 dev
+[06/05/2025 11:43:41 am] [Frontend] > next dev --turbopack
+[06/05/2025 11:43:43 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[06/05/2025 11:43:43 am] [Frontend] - Local:        http://localhost:3000
+[06/05/2025 11:43:43 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[06/05/2025 11:43:43 am] [Frontend]    - Environments: .env
+[06/05/2025 11:43:43 am] [Frontend] ✓ Starting...
+[06/05/2025 11:43:44 am] [Frontend] ✓ Ready in 1483ms
+[06/05/2025 11:43:55 am] [Frontend] ○ Compiling / ...
+[06/05/2025 11:44:04 am] [Frontend] ✓ Compiled / in 8.9s
+[06/05/2025 11:44:04 am] [Frontend Error] ⨯ ./src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx:1043:6
+[06/05/2025 11:44:04 am] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 1041 |[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 1042 |[39m   [36mreturn[39m ([0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 1043 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m      |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 1044 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 1045 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 1046 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 11:44:04 am] [Frontend Error] ./src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx:787:6
+[06/05/2025 11:44:04 am] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 785 |[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 786 |[39m   [36mreturn[39m ([0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 787 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m     |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 788 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 789 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 790 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 11:44:04 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 11:44:04 am] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 11:44:04 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:44:04 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:44:04 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 11:44:04 am] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 11:44:04 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:44:04 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:44:04 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 11:44:04 am] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 11:44:04 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:44:04 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:44:04 am] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 11:44:04 am] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 11:44:04 am] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 11:44:04 am] [Frontend Error] The module has no exports at all.
+[06/05/2025 11:44:04 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 11:44:04 am] [Frontend] ○ Compiling /_error ...
+[06/05/2025 11:44:05 am] [Frontend] ✓ Compiled /_error in 989ms
+[06/05/2025 11:44:05 am] [Frontend] GET / 500 in 10718ms
+[06/05/2025 11:44:06 am] [Frontend] ○ Compiling /favicon.ico ...
+[06/05/2025 11:44:06 am] [Frontend] ✓ Compiled /favicon.ico in 567ms
+[06/05/2025 11:44:06 am] [Frontend] GET /favicon.ico 500 in 806ms
+[06/05/2025 11:44:42 am] [Frontend Error] ^C
+[06/05/2025 11:44:42 am] [Frontend Error] ^C
+[06/05/2025 11:44:42 am] Frontend process exited with code 3221225786
+[06/05/2025 12:08:51 pm] Starting frontend development server...
+[06/05/2025 12:08:51 pm] [Frontend] > beautify@0.1.0 dev
+[06/05/2025 12:08:51 pm] [Frontend] > next dev --turbopack
+[06/05/2025 12:08:53 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[06/05/2025 12:08:53 pm] [Frontend] - Local:        http://localhost:3000
+[06/05/2025 12:08:53 pm] [Frontend]    - Network:      http://10.97.26.35:3000
+[06/05/2025 12:08:53 pm] [Frontend]    - Environments: .env
+[06/05/2025 12:08:53 pm] [Frontend]  ✓ Starting...
+[06/05/2025 12:08:54 pm] [Frontend] ✓ Ready in 1430ms
+[06/05/2025 12:09:23 pm] [Frontend] ○ Compiling / ...
+[06/05/2025 12:09:32 pm] [Frontend] ✓ Compiled / in 9.4s
+[06/05/2025 12:09:32 pm] [Frontend Error] ⨯ ./src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx:1043:6
+[06/05/2025 12:09:32 pm] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 1041 |[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 1042 |[39m   [36mreturn[39m ([0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 1043 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m      |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 1044 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 1045 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 1046 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 12:09:32 pm] [Frontend Error] ./src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx:787:6
+[06/05/2025 12:09:32 pm] [Frontend Error] Parsing ecmascript source code failed
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 785 |[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 786 |[39m   [36mreturn[39m ([0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 787 |[39m     [33m<[39m[33mdiv[39m className[33m=[39m{styles[33m.[39mtestPanel}[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m     |[39m      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 788 |[39m       {error [33m&&[39m ([0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 789 |[39m         [33m<[39m[33mAlert[39m variant[33m=[39m[32m"destructive"[39m[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 790 |[39m           [33m<[39m[33mp[39m[33m>[39m{error}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] Unexpected token `div`. Expected jsx identifier
+[06/05/2025 12:09:32 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 12:09:32 pm] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 12:09:32 pm] [Frontend Error] The module has no exports at all.
+[06/05/2025 12:09:32 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 12:09:32 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:10:1
+[06/05/2025 12:09:32 pm] [Frontend Error] Export HEPSTestPanel doesn't exist in target module
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { [33mSBandTestPanel[39m } [36mfrom[39m [32m"./components/SBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { [33mUHFTestPanel[39m } [36mfrom[39m [32m"./components/UHFTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mHEPSTestPanel[39m } [36mfrom[39m [32m"./components/HEPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] The export HEPSTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 12:09:32 pm] [Frontend Error] The module has no exports at all.
+[06/05/2025 12:09:32 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 12:09:32 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 12:09:32 pm] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-client] (ecmascript).
+[06/05/2025 12:09:32 pm] [Frontend Error] The module has no exports at all.
+[06/05/2025 12:09:32 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 12:09:32 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:13:1
+[06/05/2025 12:09:32 pm] [Frontend Error] Export PropulsionTestPanel doesn't exist in target module
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 11 |[39m [36mimport[39m { [33mADCSTestPanel[39m } [36mfrom[39m [32m'./components/ADCSTestPanel'[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mGPSTestPanel[39m } [36mfrom[39m [32m"./components/GPSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 13 |[39m [36mimport[39m { [33mPropulsionTestPanel[39m } [36mfrom[39m [32m"./components/PropulsionTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 14 |[39m [36mimport[39m { [33mPCSTestPanel[39m } [36mfrom[39m [32m"./components/PCSTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 15 |[39m [36mimport[39m { [33mXBandTestPanel[39m } [36mfrom[39m [32m"./components/XBandTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] [0m [90m 16 |[39m [36mimport[39m { [33mLEOCAMTestPanel[39m } [36mfrom[39m [32m"./components/LEOCAMTestPanel"[39m[33m;[39m[0m
+[06/05/2025 12:09:32 pm] [Frontend Error] The export PropulsionTestPanel was not found in module [project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx [app-ssr] (ecmascript).
+[06/05/2025 12:09:32 pm] [Frontend Error] The module has no exports at all.
+[06/05/2025 12:09:32 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[06/05/2025 12:09:32 pm] [Frontend] ○ Compiling /_error ...
+[06/05/2025 12:09:33 pm] [Frontend] ✓ Compiled /_error in 1043ms
+[06/05/2025 12:09:34 pm] [Frontend] GET / 500 in 11246ms
+[06/05/2025 12:09:34 pm] [Frontend] ○ Compiling /favicon.ico ...
+[06/05/2025 12:09:34 pm] [Frontend] ✓ Compiled /favicon.ico in 540ms
+[06/05/2025 12:09:35 pm] [Frontend] GET /favicon.ico 500 in 759ms
+[06/05/2025 12:09:44 pm] [Frontend Error] ^C
+[06/05/2025 12:09:44 pm] [Frontend Error] ^C
+[06/05/2025 12:09:44 pm] Frontend process exited with code 3221225786
+[07/05/2025 3:35:56 pm] Starting frontend development server...
+[07/05/2025 3:35:57 pm] [Frontend] > beautify@0.1.0 dev
+[07/05/2025 3:35:57 pm] [Frontend] > next dev --turbopack
+[07/05/2025 3:35:59 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[07/05/2025 3:35:59 pm] [Frontend] - Local:        http://localhost:3000
+[07/05/2025 3:35:59 pm] [Frontend]    - Network:      http://10.97.26.35:3000
+[07/05/2025 3:35:59 pm] [Frontend]    - Environments: .env
+[07/05/2025 3:35:59 pm] [Frontend]  ✓ Starting...
+[07/05/2025 3:36:01 pm] [Frontend] ✓ Ready in 2.1s
+[07/05/2025 3:36:02 pm] [Frontend] ○ Compiling / ...
+[07/05/2025 3:36:11 pm] [Frontend] ✓ Compiled / in 10s
+[07/05/2025 3:36:12 pm] [Frontend Error] Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:12 pm] [Frontend Error] ⨯ unhandledRejection: Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:12 pm] [Frontend Error] ⨯ unhandledRejection:  Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:12 pm] [Frontend Error] Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:12 pm] [Frontend Error] ⨯ unhandledRejection: Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:12 pm] [Frontend Error] ⨯ unhandledRejection:  Error: Failed to load chunk server/chunks/ssr/src_services_77d7dd60._.js from parent module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/page { METADATA_0 => "[project]/src/app/favicon.ico.mjs { IMAGE => \"[project]/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js server component)", MODULE_1 => "[project]/src/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/forbidden-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/unauthorized-error.js [app-rsc] (ecmascript, Next.js server component)", MODULE_5 => "[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component)" } [app-rsc] (ecmascript) <locals>
+[07/05/2025 3:36:12 pm] [Frontend Error]     at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:526:15) {
+[07/05/2025 3:36:12 pm] [Frontend Error]   [cause]: SyntaxError: Missing catch or finally after try
+[07/05/2025 3:36:12 pm] [Frontend Error]       at eval (<anonymous>)
+[07/05/2025 3:36:12 pm] [Frontend Error]       at loadChunkAsync (C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next\server\chunks\ssr\[turbopack]_runtime.js:514:18)
+[07/05/2025 3:36:12 pm] [Frontend Error] }
+[07/05/2025 3:36:13 pm] [Frontend Error] [TypeError: Cannot assign to read only property 'params' of object '#<Object>']
+[07/05/2025 3:36:13 pm] [Frontend Error] ⨯ unhandledRejection: [TypeError: Cannot assign to read only property 'params' of object '#<Object>']
+[07/05/2025 3:36:13 pm] [Frontend Error] ⨯ unhandledRejection:  [TypeError: Cannot assign to read only property 'params' of object '#<Object>']
+[07/05/2025 3:37:07 pm] [Frontend] GET / 200 in 65419ms
+[07/05/2025 4:11:03 pm] [Frontend Error] ⨯ ./src/services/checkout/hepsCheckout.ts:966:1
+[07/05/2025 4:11:03 pm] [Frontend Error] Parsing ecmascript source code failed
+[07/05/2025 4:11:03 pm] [Frontend Error] [0m [90m 964 |[39m   }[0m
+[07/05/2025 4:11:03 pm] [Frontend Error] [0m [90m 965 |[39m }[0m
+[07/05/2025 4:11:03 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 966 |[39m }[0m
+[07/05/2025 4:11:03 pm] [Frontend Error] [0m [90m     |[39m [31m[1m^[22m[39m[0m
+[07/05/2025 4:11:03 pm] [Frontend Error] Expression expected
+[07/05/2025 4:11:03 pm] [Frontend] ○ Compiling /_error ...
+[07/05/2025 4:11:04 pm] [Frontend] ✓ Compiled /_error in 1417ms
+[07/05/2025 4:11:05 pm] [Frontend] GET / 500 in 2516ms
+[07/05/2025 4:11:06 pm] [Frontend] ○ Compiling /favicon.ico ...
+[07/05/2025 4:11:06 pm] [Frontend] ✓ Compiled /favicon.ico in 569ms
+[07/05/2025 4:11:06 pm] [Frontend] GET /favicon.ico 500 in 620ms
+[07/05/2025 4:12:39 pm] [Frontend] ✓ Compiled in 362ms
+[07/05/2025 4:47:31 pm] Frontend process exited with code 1
+[08/05/2025 10:38:18 am] Starting frontend development server...
+[08/05/2025 10:38:19 am] [Frontend] > beautify@0.1.0 dev
+[08/05/2025 10:38:19 am] [Frontend] > next dev --turbopack
+[08/05/2025 10:38:22 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[08/05/2025 10:38:22 am] [Frontend] - Local:        http://localhost:3000
+[08/05/2025 10:38:22 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[08/05/2025 10:38:22 am] [Frontend]    - Environments: .env
+[08/05/2025 10:38:22 am] [Frontend]  ✓ Starting...
+[08/05/2025 10:38:24 am] [Frontend] ✓ Ready in 2.2s
+[08/05/2025 10:38:24 am] [Frontend] ○ Compiling / ...
+[08/05/2025 10:38:39 am] [Frontend] ✓ Compiled / in 15.3s
+[08/05/2025 10:38:41 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 10:38:41 am] [Frontend] GET / 500 in 17536ms
+[08/05/2025 10:38:43 am] [Frontend] ○ Compiling /favicon.ico ...
+[08/05/2025 10:38:43 am] [Frontend] ✓ Compiled /favicon.ico in 549ms
+[08/05/2025 10:38:43 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 790ms
+[08/05/2025 11:20:15 am] [Frontend Error] ^C
+[08/05/2025 11:20:15 am] [Frontend Error] ^C
+[08/05/2025 11:20:15 am] Frontend process exited with code 3221225786
+[08/05/2025 11:20:57 am] Starting frontend development server...
+[08/05/2025 11:20:57 am] [Frontend] > beautify@0.1.0 dev
+[08/05/2025 11:20:57 am] [Frontend] > next dev --turbopack
+[08/05/2025 11:20:59 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[08/05/2025 11:20:59 am] [Frontend] - Local:        http://localhost:3000
+[08/05/2025 11:20:59 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[08/05/2025 11:20:59 am] [Frontend]    - Environments: .env
+[08/05/2025 11:20:59 am] [Frontend]  ✓ Starting...
+[08/05/2025 11:21:01 am] [Frontend] ✓ Ready in 1632ms
+[08/05/2025 11:21:38 am] [Frontend] ○ Compiling / ...
+[08/05/2025 11:21:46 am] [Frontend] ✓ Compiled / in 9.2s
+[08/05/2025 11:21:49 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 11:21:49 am] [Frontend] GET / 500 in 11626ms
+[08/05/2025 11:28:37 am] Frontend process exited with code 1
+[08/05/2025 11:32:22 am] Starting frontend development server...
+[08/05/2025 11:32:22 am] [Frontend] > beautify@0.1.0 dev
+[08/05/2025 11:32:22 am] [Frontend] > next dev --turbopack
+[08/05/2025 11:32:24 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[08/05/2025 11:32:24 am] [Frontend] - Local:        http://localhost:3000
+[08/05/2025 11:32:24 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[08/05/2025 11:32:24 am] [Frontend]    - Environments: .env
+[08/05/2025 11:32:24 am] [Frontend]  ✓ Starting...
+[08/05/2025 11:32:25 am] [Frontend] ✓ Ready in 1435ms
+[08/05/2025 11:32:34 am] [Frontend] ○ Compiling / ...
+[08/05/2025 11:32:43 am] [Frontend] ✓ Compiled / in 8.9s
+[08/05/2025 11:32:45 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 11:32:45 am] [Frontend] GET / 500 in 10820ms
+[08/05/2025 12:09:45 pm] [Frontend Error] ^C
+[08/05/2025 12:09:45 pm] [Frontend Error] ^C
+[08/05/2025 12:09:45 pm] Frontend process exited with code 3221225786
+[08/05/2025 3:14:45 pm] Starting frontend development server...
+[08/05/2025 3:14:45 pm] [Frontend] > beautify@0.1.0 dev
+[08/05/2025 3:14:45 pm] [Frontend] > next dev --turbopack
+[08/05/2025 3:14:47 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[08/05/2025 3:14:47 pm] [Frontend] - Local:        http://localhost:3000
+[08/05/2025 3:14:47 pm] [Frontend]    - Network:      http://10.97.26.35:3000
+[08/05/2025 3:14:47 pm] [Frontend]    - Environments: .env
+[08/05/2025 3:14:47 pm] [Frontend]  ✓ Starting...
+[08/05/2025 3:14:48 pm] [Frontend] ✓ Ready in 1533ms
+[08/05/2025 3:15:15 pm] [Frontend] ○ Compiling / ...
+[08/05/2025 3:15:24 pm] [Frontend] ✓ Compiled / in 9.3s
+[08/05/2025 3:15:26 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 3:15:26 pm] [Frontend] GET / 500 in 11303ms
+[08/05/2025 3:15:29 pm] [Frontend] ○ Compiling /favicon.ico ...
+[08/05/2025 3:15:29 pm] [Frontend] ✓ Compiled /favicon.ico in 1063ms
+[08/05/2025 3:15:30 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1387ms
+[08/05/2025 3:35:30 pm] [Frontend] ✓ Compiled in 477ms
+[08/05/2025 3:37:56 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 3:37:56 pm] [Frontend] GET / 500 in 2222ms
+[08/05/2025 3:42:37 pm] [Frontend] ✓ Compiled in 702ms
+[08/05/2025 3:54:35 pm] [Frontend] ✓ Compiled in 1272ms
+[08/05/2025 3:55:55 pm] [Frontend] ✓ Compiled in 463ms
+[08/05/2025 4:11:33 pm] [Frontend] ✓ Compiled in 493ms
+[08/05/2025 4:11:36 pm] [Frontend] ✓ Compiled in 398ms
+[08/05/2025 4:11:55 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 4:11:55 pm] [Frontend] GET / 500 in 2065ms
+[08/05/2025 4:11:59 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 4:11:59 pm] [Frontend] GET / 500 in 1537ms
+[08/05/2025 4:12:03 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1800ms
+[08/05/2025 4:12:04 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1111ms
+[08/05/2025 4:34:14 pm] [Frontend] ✓ Compiled in 536ms
+[08/05/2025 4:39:24 pm] [Frontend] ✓ Compiled in 421ms
+[08/05/2025 4:39:40 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 4:39:40 pm] [Frontend] GET / 500 in 1722ms
+[08/05/2025 4:40:12 pm] [Frontend] ✓ Compiled in 408ms
+[08/05/2025 5:00:42 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[08/05/2025 5:00:42 pm] [Frontend] GET / 500 in 1850ms
+[08/05/2025 5:00:51 pm] Starting frontend development server...
+[08/05/2025 5:00:52 pm] [Frontend] > beautify@0.1.0 dev
+[08/05/2025 5:00:52 pm] [Frontend] > next dev --turbopack
+[08/05/2025 5:00:54 pm] [Frontend Error] ⚠ Port 3000 is in use, trying 3001 instead.
+[08/05/2025 5:00:55 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[08/05/2025 5:00:55 pm] [Frontend] - Local:        http://localhost:3001
+[08/05/2025 5:00:55 pm] [Frontend]    - Network:      http://10.97.26.35:3001
+[08/05/2025 5:00:55 pm] [Frontend]    - Environments: .env
+[08/05/2025 5:00:55 pm] [Frontend]  ✓ Starting...
+[08/05/2025 5:00:59 pm] [Frontend] ✓ Ready in 4.7s
+[08/05/2025 5:07:49 pm] Frontend process exited with code 1
+[08/05/2025 5:08:18 pm] [Frontend Error] ^C
+[08/05/2025 5:08:18 pm] [Frontend Error] ^C
+[08/05/2025 5:08:18 pm] Frontend process exited with code 3221225786
+[09/05/2025 10:12:54 am] Starting frontend development server...
+[09/05/2025 10:12:55 am] [Frontend] > beautify@0.1.0 dev
+[09/05/2025 10:12:55 am] [Frontend] > next dev --turbopack
+[09/05/2025 10:12:58 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[09/05/2025 10:12:58 am] [Frontend] - Local:        http://localhost:3000
+[09/05/2025 10:12:58 am] [Frontend]    - Network:      http://10.97.26.35:3000
+[09/05/2025 10:12:58 am] [Frontend]    - Environments: .env
+[09/05/2025 10:12:58 am] [Frontend] ✓ Starting...
+[09/05/2025 10:12:59 am] [Frontend] ✓ Ready in 2.1s
+[09/05/2025 10:13:00 am] [Frontend] ○ Compiling / ...
+[09/05/2025 10:13:09 am] [Frontend] ✓ Compiled / in 9.2s
+[09/05/2025 10:13:11 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[09/05/2025 10:13:11 am] [Frontend] GET / 500 in 11253ms
+[09/05/2025 10:13:12 am] [Frontend] ○ Compiling /favicon.ico ...
+[09/05/2025 10:13:12 am] [Frontend] ✓ Compiled /favicon.ico in 526ms
+[09/05/2025 10:13:13 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 793ms
+[09/05/2025 10:13:17 am] [Frontend] ○ Compiling /_not-found/page ...
+[09/05/2025 10:13:19 am] [Frontend] ✓ Compiled /_not-found/page in 2.2s
+[09/05/2025 10:13:20 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3563ms
+[09/05/2025 10:47:44 am] [Frontend] ✓ Compiled in 950ms
+[09/05/2025 10:48:12 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[09/05/2025 10:48:12 am] [Frontend] GET / 500 in 1979ms
+[09/05/2025 10:48:14 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1504ms
+[09/05/2025 11:20:05 am] [Frontend] ✓ Compiled in 441ms
+[09/05/2025 11:34:57 am] [Frontend] ✓ Compiled in 700ms
+[09/05/2025 11:35:19 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[09/05/2025 11:35:19 am] [Frontend] GET / 500 in 1903ms
+[09/05/2025 11:35:22 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2962ms
+[09/05/2025 11:36:22 am] [Frontend] ✓ Compiled in 506ms
+[09/05/2025 11:39:17 am] [Frontend] ✓ Compiled in 561ms
+[09/05/2025 11:39:37 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1605ms
+[09/05/2025 11:39:51 am] [Frontend] ✓ Compiled in 603ms
+[09/05/2025 11:47:00 am] [Frontend] ✓ Compiled in 586ms
+[09/05/2025 11:54:21 am] [Frontend] ✓ Compiled in 485ms
+[09/05/2025 11:58:42 am] [Frontend] ✓ Compiled in 425ms
+[09/05/2025 11:59:02 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2403ms
+[09/05/2025 12:00:54 pm] [Frontend] ✓ Compiled in 549ms
+[09/05/2025 12:12:05 pm] Frontend process exited with code 1
+[09/05/2025 2:39:34 pm] Starting frontend development server...
+[09/05/2025 2:39:34 pm] [Frontend] > beautify@0.1.0 dev
+[09/05/2025 2:39:34 pm] [Frontend] > next dev --turbopack
+[09/05/2025 2:39:36 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[09/05/2025 2:39:36 pm] [Frontend] - Local:        http://localhost:3000
+[09/05/2025 2:39:36 pm] [Frontend]    - Network:      http://10.97.26.35:3000
+[09/05/2025 2:39:36 pm] [Frontend]    - Environments: .env
+[09/05/2025 2:39:36 pm] [Frontend]  ✓ Starting...
+[09/05/2025 2:39:38 pm] [Frontend] ✓ Ready in 1708ms
+[09/05/2025 2:39:38 pm] [Frontend] ○ Compiling / ...
+[09/05/2025 2:39:46 pm] [Frontend] ✓ Compiled / in 8.5s
+[09/05/2025 2:39:48 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[09/05/2025 2:39:48 pm] [Frontend] GET / 500 in 10430ms
+[09/05/2025 2:39:50 pm] [Frontend] ○ Compiling /favicon.ico ...
+[09/05/2025 2:39:50 pm] [Frontend] ✓ Compiled /favicon.ico in 513ms
+[09/05/2025 2:39:50 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 797ms
+[09/05/2025 2:40:16 pm] [Frontend] ○ Compiling /_not-found/page ...
+[09/05/2025 2:40:18 pm] [Frontend] ✓ Compiled /_not-found/page in 2.9s
+[09/05/2025 2:40:20 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4839ms
+[09/05/2025 2:41:36 pm] [Frontend] ✓ Compiled in 441ms
+[09/05/2025 3:06:38 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1960ms
+[09/05/2025 3:08:06 pm] Frontend process exited with code 1

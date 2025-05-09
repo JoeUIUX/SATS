@@ -1,5 +1,5 @@
 // src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Alert } from '@/components/ui';
 import { mccifSet, mccifRead, setSimulationMode, debugSocketType } from '@/utils/mccUtils';
 import { isUsingSimulation } from '@/utils/mccUtils';
@@ -50,10 +50,16 @@ interface TestHistoryItem {
   results: {
     simulated?: boolean;
     ecu1?: any;
+    ecu2?: any;
     ppu1?: any;
+    ppu2?: any;
     temperatures?: any;
+    prop1Tm?: any;
+    prop2Tm?: any;
     pma?: any;
     ppu?: any;
+    propTc?: any;
+    propStat?: any;
     testedOptions?: string[];
   };
   status: string;
@@ -84,7 +90,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
-  const [selectedMetric, setSelectedMetric] = useState<string>('temperatures.Thruster_1');
+  const [selectedMetric, setSelectedMetric] = useState<string>('temperatures.Thruster_1_Temp');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   // Add state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
@@ -96,16 +102,18 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
   const metricOptions = [
     { label: 'ECU-1 Voltage', value: 'ecu1.voltage' },
     { label: 'ECU-1 Current', value: 'ecu1.current' },
+    { label: 'ECU-2 Voltage', value: 'ecu2.voltage' },
+    { label: 'ECU-2 Current', value: 'ecu2.current' },
     { label: 'PPU-1 Voltage', value: 'ppu1.voltage' },
     { label: 'PPU-1 Current', value: 'ppu1.current' },
-    { label: 'Thruster 1 Temp', value: 'temperatures.Thruster_1' },
-    { label: 'Thruster 2 Temp', value: 'temperatures.Thruster_2' },
+    { label: 'Thruster 1 Temp', value: 'temperatures.Thruster_1_Temp' },
+    { label: 'Thruster 2 Temp', value: 'temperatures.Thruster_2_Temp' },
     { label: 'ECU Temp', value: 'temperatures.ECU_Temp' },
     { label: 'Tank Temp 1', value: 'temperatures.Tank_Temperature_1' }
   ];
   
   // Determine test options based on the filtered options
-  // check if any option contains "PMA" or "PPU"
+  // Check if any option contains "PMA" or "PPU"
   const enablePMA = options.some(option => option.includes('PMA'));
   const enablePPU = options.some(option => option.includes('PPU'));
 
@@ -223,7 +231,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
             if (!item.results) return false;
             
             // Must have ECU values to be a legitimate test
-            const hasEcuData = item.results.ecu1;
+            const hasEcuData = item.results.ecu1 || item.results.ecu2;
             
             // Must have some temperature data
             const hasTempData = item.results.temperatures && 
@@ -925,7 +933,14 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               <span className={`${styles.statusBadge} ${
                 isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-              }`}>
+              }`} style={{
+                backgroundColor: isForceSimulation 
+                  ? (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb') 
+                  : (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5'),
+                color: isForceSimulation
+                  ? (isDarkMode ? '#fbbf24' : '#d97706')
+                  : (isDarkMode ? '#34d399' : '#059669')
+              }}>
                 {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
               </span>
             </div>
@@ -945,7 +960,14 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               <span className={`${styles.statusBadge} ${
                 enablePMA ? styles.colorCompleted : styles.colorWaiting
-              }`}>
+              }`} style={{
+                backgroundColor: enablePMA 
+                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5')
+                  : (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb'),
+                color: enablePMA
+                  ? (isDarkMode ? '#34d399' : '#059669')
+                  : (isDarkMode ? '#fbbf24' : '#d97706')
+              }}>
                 {enablePMA ? 'ENABLED' : 'DISABLED'}
               </span>
             </div>
@@ -965,7 +987,14 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               <span className={`${styles.statusBadge} ${
                 enablePPU ? styles.colorCompleted : styles.colorWaiting
-              }`}>
+              }`} style={{
+                backgroundColor: enablePPU 
+                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5')
+                  : (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb'),
+                color: enablePPU
+                  ? (isDarkMode ? '#34d399' : '#059669')
+                  : (isDarkMode ? '#fbbf24' : '#d97706')
+              }}>
                 {enablePPU ? 'ENABLED' : 'DISABLED'}
               </span>
             </div>
@@ -978,7 +1007,8 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               style={{ 
                 backgroundColor: isRunning ? '#9ca3af' :
                   hasRunTest ? '#4f46e5' : '#10b981',
-                color: 'white'
+                color: 'white',
+                marginTop: '16px'
               }}
             >
               {isRunning ? (
@@ -1009,6 +1039,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
         
         {results && (
           <div className="space-y-4 mt-4">
+            {/* ECU-1 Information Card */}
             <div 
               className={styles.card}
               style={{
@@ -1045,7 +1076,9 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                     borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                   }}
                 >
-                  <div className={styles.infoIcon}>
+                  <div className={styles.infoIcon} style={{
+                    backgroundColor: isDarkMode ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.1)'
+                  }}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
                       <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
                     </svg>
@@ -1065,9 +1098,40 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                     </div>
                   </div>
                 </div>
+                
+                {/* ECU-1 Status Badge */}
+                <div style={{ 
+                  marginTop: '12px',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <span style={{
+                    fontSize: '14px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                  }}>
+                    ECU-1 Status:
+                  </span>
+                  <span style={{
+                    padding: '4px 12px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    backgroundColor: results.ecu1?.status === 'PASS' 
+                      ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
+                      : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
+                    color: results.ecu1?.status === 'PASS'
+                      ? (isDarkMode ? '#34d399' : '#059669')
+                      : (isDarkMode ? '#f87171' : '#dc2626')
+                  }}>
+                    {results.ecu1?.status || 'N/A'}
+                  </span>
+                </div>
               </div>
             </div>
             
+            {/* ECU-2 Information Card */}
             <div 
               className={styles.card}
               style={{
@@ -1079,16 +1143,17 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                 className={styles.cardHeader} 
                 style={{ 
                   background: isDarkMode 
-                    ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" 
-                    : "linear-gradient(to right, #eff6ff, #dbeafe)",
-                  color: isDarkMode ? "#dbeafe" : "#1d4ed8"
+                    ? "linear-gradient(to right, #064e3b, #065f46)" 
+                    : "linear-gradient(to right, #ecfdf5, #d1fae5)",
+                  color: isDarkMode ? "#d1fae5" : "#065f46"
                 }}
               >
                 <h3 className={styles.cardTitle}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                    <path d="M13 7H7v6h6V7z" />
+                    <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
                   </svg>
-                  Temperature Measurements
+                  ECU-2 Information
                 </h3>
                 
                 {/* Add simulation badge */}
@@ -1096,19 +1161,132 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               
               <div className={styles.cardContent}>
-                <div className={styles.tempGrid}>
+                <div 
+                  className={styles.infoCard}
+                  style={{
+                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  }}
+                >
+                  <div className={styles.infoIcon} style={{
+                    backgroundColor: isDarkMode ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.1)'
+                  }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
+                      <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className={styles.infoContent}>
+                    <div 
+                      className={styles.infoLabel}
+                      style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
+                    >
+                      ECU-2 Voltage/Current
+                    </div>
+                    <div 
+                      className={styles.infoValue}
+                      style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
+                    >
+                      {results.ecu2?.voltage ? `${parseFloat(results.ecu2.voltage).toFixed(2)} V / ${parseFloat(results.ecu2.current).toFixed(2)} A` : "N/A"}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* ECU-2 Status Badge */}
+                <div style={{ 
+                  marginTop: '12px',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <span style={{
+                    fontSize: '14px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                  }}>
+                    ECU-2 Status:
+                  </span>
+                  <span style={{
+                    padding: '4px 12px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    backgroundColor: results.ecu2?.status === 'PASS' 
+                      ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
+                      : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
+                    color: results.ecu2?.status === 'PASS'
+                      ? (isDarkMode ? '#34d399' : '#059669')
+                      : (isDarkMode ? '#f87171' : '#dc2626')
+                  }}>
+                    {results.ecu2?.status || 'N/A'}
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Temperature Information Card */}
+            <div 
+              className={styles.card}
+              style={{
+                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+              }}
+            >
+              <div 
+                className={styles.cardHeader} 
+                style={{ 
+                  background: isDarkMode 
+                    ? "linear-gradient(to right, #1e40af, #3b82f6)" 
+                    : "linear-gradient(to right, #eff6ff, #dbeafe)",
+                  color: isDarkMode ? "#dbeafe" : "#1e40af"
+                }}
+              >
+                <h3 className={styles.cardTitle}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
+                  </svg>
+                  Temperature Readings
+                </h3>
+                
+                {/* Add simulation badge */}
+                <SimulationBadge isSimulation={detectedSimulation} />
+              </div>
+              
+              <div className={styles.cardContent}>
+                <div className={styles.tempGrid} style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+                  gap: '12px'
+                }}>
                   {results.temperatures && Object.entries(results.temperatures).map(([key, value]: [string, any], index) => (
-                    <div key={index} className={styles.tempCard}>
-                      <div className={styles.tempLabel}>{key.replace(/([A-Z])/g, ' $1').trim()}</div>
-                      <div className={styles.tempValue}>{typeof value === 'string' ? value : `${parseFloat(value).toFixed(1)} °C`}</div>
+                    <div key={index} className={styles.tempCard} style={{
+                      backgroundColor: isDarkMode ? "rgba(219, 234, 254, 0.1)" : "#f0f9ff",
+                      borderColor: isDarkMode ? "rgba(96, 165, 250, 0.3)" : "#93c5fd",
+                      borderRadius: '6px',
+                      padding: '12px',
+                      border: '1px solid'
+                    }}>
+                      <div style={{
+                        fontSize: '12px',
+                        color: isDarkMode ? "#93c5fd" : "#2563eb",
+                        marginBottom: '4px'
+                      }}>
+                        {key.replace(/_/g, ' ')}
+                      </div>
+                      <div style={{
+                        fontSize: '16px',
+                        fontWeight: 600,
+                        color: isDarkMode ? "#93c5fd" : "#2563eb"
+                      }}>
+                        {typeof value === 'string' ? value : `${parseFloat(value).toFixed(1)} °C`}
+                      </div>
                     </div>
                   ))}
-                  {!results.temperatures && (
+                  {!results.temperatures || Object.keys(results.temperatures).length === 0 && (
                     <div style={{ padding: '12px', color: isDarkMode ? '#9ca3af' : '#6b7280' }}>
                       No temperature data available
                     </div>
                   )}
-                </div>
+                  </div>
               </div>
             </div>
             
@@ -1144,8 +1322,10 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                 <div className={styles.cardContent}>
                   {results.pma && results.pma.status !== 'N.A.' ? (
                     <table 
-                    className={styles.table}
+                      className={styles.table}
                       style={{
+                        width: '100%',
+                        borderCollapse: 'collapse',
                         color: isDarkMode ? "#e5e7eb" : "inherit"
                       }}
                     >
@@ -1155,598 +1335,1376 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                           backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
                           color: isDarkMode ? "#d1d5db" : "#6b7280"
                         }}
-                        >
-                          <tr>
-                            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
-                            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
-                          </tr>
-                        </thead>
-                        <tbody className={styles.tableBody}>
-                          <tr>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Init Payload</td>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.pma.initPayl} s</td>
-                          </tr>
-                          
-                          <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Data Get</td>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.pma.dataGet} s</td>
-                          </tr>
-                          
-                          <tr>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Data Send</td>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.pma.dataSend} s</td>
-                          </tr>
-                          
-                          <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>ECU Off</td>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.pma.ecuOff} s</td>
-                          </tr>
-                          
-                          <tr>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Test Duration</td>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.pma.duration} s</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    ) : (
-                      <div 
-                        style={{ 
-                          padding: "16px", 
-                          textAlign: "center", 
-                          color: isDarkMode ? "#d1d5db" : "#6b7280",
-                          fontStyle: "italic"
-                        }}
                       >
-                        PMA test was not performed
-                      </div>
-                    )}
-                  </div>
+                        <tr>
+                          <th style={{ 
+                            padding: '12px 16px',
+                            textAlign: 'left',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Parameter
+                          </th>
+                          <th style={{ 
+                            padding: '12px 16px',
+                            textAlign: 'left',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Value
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className={styles.tableBody}>
+                        <tr>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Init Payload Delay
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            {results.pma.initPayl} s
+                          </td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ 
+                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                        }}>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Data Get Delay
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            {results.pma.dataGet} s
+                          </td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Data Send Delay
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            {results.pma.dataSend} s
+                          </td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ 
+                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                        }}>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            ECU Off Delay
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            {results.pma.ecuOff} s
+                          </td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            Test Duration
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            {results.pma.duration} s
+                          </td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ 
+                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                        }}>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            PMA Status
+                          </td>
+                          <td style={{ 
+                            padding: '12px 16px',
+                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                          }}>
+                            <span style={{
+                              display: 'inline-block',
+                              padding: '4px 8px',
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              fontWeight: 600,
+                              backgroundColor: results.pma.status === 'completed' 
+                                ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
+                                : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
+                              color: results.pma.status === 'completed'
+                                ? (isDarkMode ? '#34d399' : '#059669')
+                                : (isDarkMode ? '#f87171' : '#dc2626')
+                            }}>
+                              {results.pma.status.toUpperCase()}
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div style={{
+                      padding: '20px',
+                      textAlign: 'center',
+                      borderRadius: '6px',
+                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                      color: isDarkMode ? '#9ca3af' : '#6b7280'
+                    }}>
+                      <p>PMA test was not performed.</p>
+                      <p style={{ marginTop: '8px', fontSize: '14px' }}>
+                        Enable the PMA option to perform this test.
+                      </p>
+                    </div>
+                  )}
                 </div>
-              )}
-              
-              {/* Display the PPU section only if the PPU option was checked */}
-              {enablePPU && (
+              </div>
+            )}
+            
+            {/* Display the PPU section only if the PPU option was checked */}
+            {enablePPU && (
+              <div 
+                className={styles.card}
+                style={{
+                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                }}
+              >
                 <div 
-                  className={styles.card}
-                  style={{
-                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  className={styles.cardHeader} 
+                  style={{ 
+                    background: isDarkMode 
+                      ? "linear-gradient(to right, #be185d, #db2777)" 
+                      : "linear-gradient(to right, #fce7f3, #fbcfe8)",
+                    color: isDarkMode ? "#fbcfe8" : "#be185d"
                   }}
                 >
-                  <div 
-                    className={styles.cardHeader} 
-                    style={{ 
-                      background: isDarkMode 
-                        ? "linear-gradient(to right, #4c1d95, #6d28d9)" 
-                        : "linear-gradient(to right, #f5f3ff, #ede9fe)",
-                      color: isDarkMode ? "#ede9fe" : "#6d28d9"
-                    }}
-                  >
-                    <h3 className={styles.cardTitle}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                      </svg>
-                      PPU Test Results
-                    </h3>
-                    
-                    {/* Add simulation badge */}
-                    <SimulationBadge isSimulation={detectedSimulation} />
-                  </div>
+                  <h3 className={styles.cardTitle}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                    </svg>
+                    PPU Test Results
+                  </h3>
                   
-                  <div className={styles.cardContent}>
-                    {results.ppu && results.ppu.status !== 'N.A.' ? (
-                      <table 
-                        className={styles.table}
-                        style={{
-                          color: isDarkMode ? "#e5e7eb" : "inherit"
-                        }}
-                      >
-                        <thead 
-                          className={styles.tableHeader}
+                  {/* Add simulation badge */}
+                  <SimulationBadge isSimulation={detectedSimulation} />
+                </div>
+                
+                <div className={styles.cardContent}>
+                  {results.ppu && results.ppu.status !== 'N.A.' ? (
+                    <>
+                      {/* PPU Timing Table */}
+                      <div style={{ marginBottom: '20px' }}>
+                        <h4 style={{ 
+                          fontSize: '14px',
+                          fontWeight: 600,
+                          marginBottom: '8px',
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          PPU Test Timing
+                        </h4>
+                        
+                        <table 
+                          className={styles.table}
                           style={{
-                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                            width: '100%',
+                            borderCollapse: 'collapse'
                           }}
+                        >
+                          <thead 
+                            className={styles.tableHeader}
+                            style={{
+                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                              color: isDarkMode ? "#d1d5db" : "#6b7280"
+                            }}
                           >
                             <tr>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
+                              <th style={{ 
+                                padding: '12px 16px',
+                                textAlign: 'left',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Parameter
+                              </th>
+                              <th style={{ 
+                                padding: '12px 16px',
+                                textAlign: 'left',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Value
+                              </th>
                             </tr>
                           </thead>
                           <tbody className={styles.tableBody}>
                             <tr>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Init Payload</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.initPayl} s</td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Init Payload Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.initPayl} s
+                              </td>
                             </tr>
                             
-                            <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Data Get 1</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.dataGet1} s</td>
+                            <tr className={styles.tableRowAlt} style={{ 
+                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                            }}>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Data Get 1 Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.dataGet1} s
+                              </td>
                             </tr>
                             
                             <tr>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>PPU On</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.ppuOn} s</td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                PPU On Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.ppuOn} s
+                              </td>
                             </tr>
                             
-                            <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Data Get 2</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.dataGet2} s</td>
+                            <tr className={styles.tableRowAlt} style={{ 
+                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                            }}>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Data Get 2 Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.dataGet2} s
+                              </td>
                             </tr>
                             
                             <tr>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Data Send</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.dataSend} s</td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Data Send Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.dataSend} s
+                              </td>
                             </tr>
                             
-                            <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>PPU Off</td>
-                              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.ppuOff} s</td>
+                            <tr className={styles.tableRowAlt} style={{ 
+                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                            }}>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                PPU Off Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.ppuOff} s
+                              </td>
                             </tr>
                             
                             <tr>
-                            <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>ECU Off</td>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.ecuOff} s</td>
-                              </tr>
-                              
-                              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Test Duration</td>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.ppu.duration} s</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        ) : (
-                          <div 
-                            style={{ 
-                              padding: "16px", 
-                              textAlign: "center", 
-                              color: isDarkMode ? "#d1d5db" : "#6b7280",
-                              fontStyle: "italic"
-                            }}
-                          >
-                            PPU test was not performed
-                          </div>
-                        )}
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                ECU Off Delay
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.ecuOff} s
+                              </td>
+                            </tr>
+                            
+                            <tr className={styles.tableRowAlt} style={{ 
+                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                            }}>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                Test Duration
+                              </td>
+                              <td style={{ 
+                                padding: '12px 16px',
+                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                              }}>
+                                {results.ppu.duration} s
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
+                      
+                      {/* PPU Voltage/Current */}
+                      <div style={{ marginBottom: '20px' }}>
+                        <h4 style={{ 
+                          fontSize: '14px',
+                          fontWeight: 600,
+                          marginBottom: '8px',
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          PPU Power Status
+                        </h4>
+                        
+                        <div 
+                          className={styles.infoCard}
+                          style={{
+                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                          }}
+                        >
+                          <div className={styles.infoIcon} style={{
+                            backgroundColor: isDarkMode ? 'rgba(219, 39, 119, 0.1)' : 'rgba(219, 39, 119, 0.1)'
+                          }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#db2777" width="20" height="20">
+                              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div className={styles.infoContent}>
+                            <div 
+                              className={styles.infoLabel}
+                              style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
+                            >
+                              PPU-1 Voltage/Current
+                            </div>
+                            <div 
+                              className={styles.infoValue}
+                              style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
+                            >
+                              {results.ppu1?.voltage ? `${parseFloat(results.ppu1.voltage).toFixed(2)} V / ${parseFloat(results.ppu1.current).toFixed(2)} A` : "N/A"}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div style={{ 
+                          marginTop: '12px',
+                          display: 'flex',
+                          justifyContent: 'flex-end',
+                          alignItems: 'center',
+                          gap: '8px'
+                        }}>
+                          <span style={{
+                            fontSize: '14px',
+                            color: isDarkMode ? '#9ca3af' : '#6b7280'
+                          }}>
+                            PPU-1 Status:
+                          </span>
+                          <span style={{
+                            padding: '4px 12px',
+                            borderRadius: '9999px',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            backgroundColor: results.ppu1?.status === 'PASS' 
+                              ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
+                              : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
+                            color: results.ppu1?.status === 'PASS'
+                              ? (isDarkMode ? '#34d399' : '#059669')
+                              : (isDarkMode ? '#f87171' : '#dc2626')
+                          }}>
+                            {results.ppu1?.status || 'N/A'}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div style={{
+                      padding: '20px',
+                      textAlign: 'center',
+                      borderRadius: '6px',
+                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                      color: isDarkMode ? '#9ca3af' : '#6b7280'
+                    }}>
+                      <p>PPU test was not performed.</p>
+                      <p style={{ marginTop: '8px', fontSize: '14px' }}>
+                        Enable the PPU option to perform this test.
+                      </p>
                     </div>
                   )}
-                
-                <div>
-                  <button 
-                    onClick={generateReport}
-                    className={styles.reportButton}
-                    style={{
-                      backgroundColor: "#10b981",
-                      color: "white"
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                    </svg>
-                    Generate Report
-                  </button>
                 </div>
               </div>
             )}
-          </>
-        ) : (
-          /* Test History Panel */
-          <div 
-            className={styles.card}
-            style={{
-              backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-              borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-            }}
-          >
-            <div 
-              className={styles.cardHeader}
-              style={{
-                backgroundColor: isDarkMode ? "#111827" : undefined,
-                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                background: isDarkMode 
-                  ? "linear-gradient(to right, #1e40af, #3b82f6)" 
-                  : "linear-gradient(to right, #dbeafe, #eff6ff)"
-              }}
-            >
-              <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                </svg>
-                Propulsion Test History
-              </h3>
-            </div>
             
-            <div className={styles.cardContent}>
-              {historyLoading ? (
-                <div style={{ 
-                  textAlign: 'center',
-                  padding: '20px',
-                  color: isDarkMode ? '#d1d5db' : '#6b7280'
-                }}>
-                  <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 8px' }}>
-                    <path d="M21 12a9 9 0 11-6.219-8.56" />
-                  </svg>
-                  <p>Loading test history...</p>
-                </div>
-              ) : testHistory.length === 0 ? (
-                <div style={{ 
-                  textAlign: 'center',
-                  padding: '20px',
-                  color: isDarkMode ? '#d1d5db' : '#6b7280',
-                  fontStyle: 'italic'
-                }}>
-                  <p>No test history available for this profile.</p>
-                  <p style={{ marginTop: '8px', fontSize: '14px' }}>
-                    Run a test to start building your history.
-                  </p>
+            {/* Propulsion Stats - shown if PMA or PPU is enabled */}
+            {(enablePMA || enablePPU) && results.propStat && (
+              <div 
+                className={styles.card}
+                style={{
+                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                }}
+              >
+                <div 
+                  className={styles.cardHeader} 
+                  style={{ 
+                    background: isDarkMode 
+                      ? "linear-gradient(to right, #0e7490, #06b6d4)" 
+                      : "linear-gradient(to right, #cffafe, #ecfeff)",
+                    color: isDarkMode ? "#cffafe" : "#0e7490"
+                  }}
+                >
+                  <h3 className={styles.cardTitle}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                    </svg>
+                    Propulsion Statistics
+                  </h3>
                   
-                  {!profileId && (
-                    <div style={{
-                      marginTop: '16px',
-                      padding: '12px',
-                      backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
-                      borderRadius: '6px',
-                      color: isDarkMode ? '#f87171' : '#b91c1c',
-                      fontSize: '14px'
-                    }}>
-                      <strong>Note:</strong> No profile ID detected. Test history requires a valid profile selection.
-                    </div>
-                  )}
+                  {/* Add simulation badge */}
+                  <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
-              ) : (
-                <>
-                  {/* Visualization Controls */}
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={{ 
-                      display: 'block',
-                      marginBottom: '8px',
-                      color: isDarkMode ? '#d1d5db' : '#4b5563',
-                      fontWeight: 500
-                    }}>
-                      Select Metric:
-                    </label>
-                    <select
-                      value={selectedMetric}
-                      onChange={(e) => setSelectedMetric(e.target.value)}
-                      style={{
-                        width: '100%',
-                        padding: '8px 12px',
-                        borderRadius: '6px',
-                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                        color: isDarkMode ? '#e5e7eb' : '#111827',
-                        fontSize: '14px'
-                      }}
-                    >
-                      {metricOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  {/* Metric Trend Chart */}
-                  <div style={{
-                    height: '300px',
-                    marginBottom: '20px',
-                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                    padding: '16px',
-                    borderRadius: '8px'
-                  }}>
-                    <h4 style={{ 
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      marginBottom: '12px',
-                      color: isDarkMode ? '#e5e7eb' : '#111827'
-                    }}>
-                      {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
-                    </h4>
-                    
-                    <TestHistoryChart 
-                      data={testHistory}
-                      metricPath={selectedMetric}
-                      metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || selectedMetric}
-                      isDarkMode={isDarkMode}
-                    />
-                  </div>
-
-                  {/* Multi-select controls */}
-                  <div style={{ 
-                    marginTop: '20px', 
-                    marginBottom: '12px', 
-                    display: 'flex', 
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}>
-                    <div>
-                      <h4 style={{ 
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: isDarkMode ? '#e5e7eb' : '#111827',
-                        marginBottom: '6px'
-                      }}>
-                        Test History Records
-                      </h4>
-                    </div>
-                    
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      {/* Toggle button for multi-select mode */}
-                      <button
-                        onClick={toggleMultiSelectMode}
-                        style={{
-                          backgroundColor: isMultiSelectMode 
-                            ? (isDarkMode ? '#4f46e5' : '#6366f1') 
-                            : (isDarkMode ? '#1f2937' : '#f3f4f6'),
-                          color: isMultiSelectMode 
-                            ? 'white' 
-                            : (isDarkMode ? '#e5e7eb' : '#374151'),
-                          border: 'none',
-                          borderRadius: '6px',
-                          padding: '6px 12px',
-                          fontSize: '13px',
-                          fontWeight: 500,
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          transition: 'all 0.2s ease'
-                        }}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                          <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                          <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
-                        </svg>
-                        {isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'}
-                      </button>
-                      
-                      {/* Only show these controls when in multi-select mode */}
-                      {isMultiSelectMode && (
-                        <>
-                          <button
-                            onClick={selectAllItems}
-                            style={{
-                              backgroundColor: 'transparent',
-                              color: isDarkMode ? '#93c5fd' : '#2563eb',
-                              border: 'none',
-                              borderRadius: '6px',
-                              padding: '6px 8px',
-                              fontSize: '13px',
-                              fontWeight: 500,
-                              cursor: 'pointer'
-                            }}
-                          >
-                            Select All
-                          </button>
-                          
-                          <button
-                            onClick={deselectAllItems}
-                            style={{
-                              backgroundColor: 'transparent',
-                              color: isDarkMode ? '#93c5fd' : '#2563eb',
-                              border: 'none',
-                              borderRadius: '6px',
-                              padding: '6px 8px',
-                              fontSize: '13px',
-                              fontWeight: 500,
-                              cursor: 'pointer'
-                            }}
-                          >
-                            Deselect All
-                          </button>
-                          
-                          <button
-                            onClick={deleteSelectedItems}
-                            disabled={selectedItems.length === 0}
-                            style={{
-                              backgroundColor: selectedItems.length === 0 
-                                ? (isDarkMode ? '#6b7280' : '#9ca3af') 
-                                : (isDarkMode ? '#dc2626' : '#ef4444'),
-                              color: 'white',
-                              border: 'none',
-                              borderRadius: '6px',
-                              padding: '6px 12px',
-                              fontSize: '13px',
-                              fontWeight: 500,
-                              cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '6px'
-                            }}
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                            </svg>
-                            Delete Selected ({selectedItems.length})
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </div>
                 
-                  {/* First add the information panel before the table */}
-                  <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
-                    <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                      </svg>
-                      Test History Information
-                    </h4>
-                    <p style={{ fontSize: '14px', color: isDarkMode ? '#cbd5e1' : '#334155' }}>
-                      This chart shows only <strong>real test data</strong> from actual hardware tests. 
-                      Simulated test results are not included in this history or visualization.
-                    </p>
-                    {testHistory.length === 0 && (
-                      <p style={{ marginTop: '10px', fontSize: '14px', color: isDarkMode ? '#fb923c' : '#c2410c', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                        No real test data is available yet. Run tests in real mode (not simulation) to collect actual data.
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Test History Table */}
-                  <TestHistoryTable 
-                    testHistory={testHistory}
-                    isDarkMode={isDarkMode}
-                    onViewDetails={(item) => setSelectedHistoryItem(item)}
-                  />
-                  
-                  {/* Export History Button */}
-                  <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
-                    {/* Clear All History Button */}
-                    <button 
-                      onClick={clearAllTestHistory}
+                <div className={styles.cardContent}>
+                  <table 
+                    className={styles.table}
+                    style={{
+                      width: '100%',
+                      borderCollapse: 'collapse'
+                    }}
+                  >
+                    <thead 
+                      className={styles.tableHeader}
                       style={{
-                        backgroundColor: '#dc2626',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '6px',
-                        padding: '8px 16px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
+                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                        color: isDarkMode ? "#d1d5db" : "#6b7280"
                       }}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                      </svg>
-                      Clear All History
-                    </button>
-                    
-                    {/* Clean Up Simulated Data Button */}
-                    <button 
-                      onClick={() => cleanupSimulatedData()}
-                      style={{
-                        backgroundColor: '#ef4444',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '6px',
-                        padding: '8px 16px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                      </svg>
-                      Clean Up Simulated Data
-                    </button>
-                    
-                    {/* Limit History Button */}
-                    <button 
-                      onClick={() => limitTestHistory(30)}
-                      style={{
-                        backgroundColor: '#3b82f6',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '6px',
-                        padding: '8px 16px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                      </svg>
-                      Limit History (30 Records)
-                    </button>
-                    
-                    <button 
-                      onClick={() => {
-                        // Implement history export functionality
-                        const historyData = JSON.stringify(testHistory, null, 2);
-                        const blob = new Blob([historyData], { type: 'application/json' });
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `propulsion_test_history_${profileId || 'unknown'}.json`;
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                        URL.revokeObjectURL(url);
-                      }}
-                      style={{
-                        backgroundColor: '#10b981',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '6px',
-                        padding: '8px 16px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                      Export Test History
-                    </button>
-                  </div>
-
-                  {/* Status Messages for Cleanup and Limit Operations */}
-                  {(cleanupMessage || limitMessage) && (
-                    <div style={{ 
-                      marginTop: '12px',
-                      padding: '12px',
-                      borderRadius: '6px',
-                      backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                      fontSize: '14px'
-                    }}>
-                      {cleanupMessage && (
-                        <div style={{ 
-                          color: cleanupMessage.includes('✅') ? 
-                            (isDarkMode ? '#34d399' : '#047857') : 
-                            (isDarkMode ? '#f87171' : '#b91c1c'),
-                          marginBottom: limitMessage ? '8px' : '0'
+                      <tr>
+                        <th style={{ 
+                          padding: '12px 16px',
+                          textAlign: 'left',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
                         }}>
-                          {cleanupMessage}
-                        </div>
-                      )}
+                          Statistic
+                        </th>
+                        <th style={{ 
+                          padding: '12px 16px',
+                          textAlign: 'left',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          Value
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className={styles.tableBody}>
+                      <tr>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          Command Count
+                        </td>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          {results.propStat.Cmd_Count || 'N/A'}
+                        </td>
+                      </tr>
                       
-                      {limitMessage && (
-                        <div style={{ 
-                          color: limitMessage.includes('✅') ? 
-                            (isDarkMode ? '#34d399' : '#047857') : 
-                            (isDarkMode ? '#f87171' : '#b91c1c')
+                      <tr className={styles.tableRowAlt} style={{ 
+                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                      }}>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
                         }}>
-                          {limitMessage}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </>
-              )}
+                          Acknowledge Count
+                        </td>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          {results.propStat.Ack_Count || 'N/A'}
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          Timeout Count
+                        </td>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          {results.propStat.Timeout_Count || 'N/A'}
+                        </td>
+                      </tr>
+                      
+                      <tr className={styles.tableRowAlt} style={{ 
+                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                      }}>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          Error Count
+                        </td>
+                        <td style={{ 
+                          padding: '12px 16px',
+                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
+                        }}>
+                          {results.propStat.Error_Count || 'N/A'}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+            
+            {/* Generate Report Button */}
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>
+              <button 
+                onClick={generateReport}
+                className={styles.reportButton}
+                style={{
+                  backgroundColor: "#10b981",
+                  color: "white"
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                </svg>
+                Generate Propulsion Report
+              </button>
             </div>
           </div>
         )}
+      </>
+    ) : (
+      /* Test History Panel */
+      <div 
+        className={styles.card}
+        style={{
+          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+        }}
+      >
+        <div 
+          className={styles.cardHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : undefined,
+            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+            background: isDarkMode 
+              ? "linear-gradient(to right, #1e40af, #3b82f6)" 
+              : "linear-gradient(to right, #dbeafe, #eff6ff)"
+          }}
+        >
+          <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+              <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+            </svg>
+            Propulsion Test History
+          </h3>
+        </div>
         
-        {/* Test Details Modal */}
-        {selectedHistoryItem && (
-          <TestDetailsModal
-            test={selectedHistoryItem}
-            onClose={() => setSelectedHistoryItem(null)}
-            isDarkMode={isDarkMode}
-          />
-        )}
+        <div className={styles.cardContent}>
+          {historyLoading ? (
+            <div style={{ 
+              textAlign: 'center',
+              padding: '20px',
+              color: isDarkMode ? '#d1d5db' : '#6b7280'
+            }}>
+            <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 8px' }}>
+              <path d="M21 12a9 9 0 11-6.219-8.56" />
+            </svg>
+            <p>Loading test history...</p>
+          </div>
+        ) : testHistory.length === 0 ? (
+          <div style={{ 
+            textAlign: 'center',
+            padding: '20px',
+            color: isDarkMode ? '#d1d5db' : '#6b7280',
+            fontStyle: 'italic'
+          }}>
+            <p>No test history available for this profile.</p>
+            <p style={{ marginTop: '8px', fontSize: '14px' }}>
+              Run a test to start building your history.
+            </p>
+            
+            {!profileId && (
+              <div style={{
+                marginTop: '16px',
+                padding: '12px',
+                backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                borderRadius: '6px',
+                color: isDarkMode ? '#f87171' : '#b91c1c',
+                fontSize: '14px'
+              }}>
+                <strong>Note:</strong> No profile ID detected. Test history requires a valid profile selection.
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            {/* Visualization Controls */}
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '8px',
+                color: isDarkMode ? '#d1d5db' : '#4b5563',
+                fontWeight: 500
+              }}>
+                Select Metric:
+              </label>
+              <select
+                value={selectedMetric}
+                onChange={(e) => setSelectedMetric(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '8px 12px',
+                  borderRadius: '6px',
+                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                  color: isDarkMode ? '#e5e7eb' : '#111827',
+                  fontSize: '14px'
+                }}
+              >
+                {metricOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            
+            {/* Metric Trend Chart */}
+            <div style={{
+              height: '300px',
+              marginBottom: '20px',
+              backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+              padding: '16px',
+              borderRadius: '8px'
+            }}>
+              <h4 style={{ 
+                fontSize: '14px',
+                fontWeight: 600,
+                marginBottom: '12px',
+                color: isDarkMode ? '#e5e7eb' : '#111827'
+              }}>
+                {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
+              </h4>
+              
+              <TestHistoryChart
+                data={prepareChartData()}
+                metricPath={selectedMetric}
+                metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || ''}
+                isDarkMode={isDarkMode}
+              />
+            </div>
+
+            {/* Multi-select mode controls */}
+            <div style={{ 
+              marginTop: '20px', 
+              marginBottom: '12px', 
+              display: 'flex', 
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <div>
+                <h4 style={{ 
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: isDarkMode ? '#e5e7eb' : '#111827',
+                  marginBottom: '6px'
+                }}>
+                  Test History Records
+                </h4>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                {/* Toggle button for multi-select mode */}
+                <button
+                  onClick={toggleMultiSelectMode}
+                  style={{
+                    backgroundColor: isMultiSelectMode 
+                      ? (isDarkMode ? '#4f46e5' : '#6366f1') 
+                      : (isDarkMode ? '#1f2937' : '#f3f4f6'),
+                    color: isMultiSelectMode 
+                      ? 'white' 
+                      : (isDarkMode ? '#e5e7eb' : '#374151'),
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '6px 12px',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                    <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
+                  </svg>
+                  {isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'}
+                </button>
+                
+                {/* Only show these controls when in multi-select mode */}
+                {isMultiSelectMode && (
+                  <>
+                    <button
+                      onClick={selectAllItems}
+                      style={{
+                        backgroundColor: 'transparent',
+                        color: isDarkMode ? '#93c5fd' : '#2563eb',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '6px 8px',
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Select All
+                    </button>
+                    
+                    <button
+                      onClick={deselectAllItems}
+                      style={{
+                        backgroundColor: 'transparent',
+                        color: isDarkMode ? '#93c5fd' : '#2563eb',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '6px 8px',
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Deselect All
+                    </button>
+                    
+                    <button
+                      onClick={deleteSelectedItems}
+                      disabled={selectedItems.length === 0}
+                      style={{
+                        backgroundColor: selectedItems.length === 0 
+                          ? (isDarkMode ? '#6b7280' : '#9ca3af') 
+                          : (isDarkMode ? '#dc2626' : '#ef4444'),
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '6px 12px',
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      Delete Selected ({selectedItems.length})
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+            
+            {/* Information panel before the table */}
+            <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
+              <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Test History Information
+              </h4>
+              <p style={{ fontSize: '14px', color: isDarkMode ? '#cbd5e1' : '#334155' }}>
+                This chart shows only <strong>real test data</strong> from actual hardware tests. 
+                Simulated test results are not included in this history or visualization.
+              </p>
+              {testHistory.length === 0 && (
+                <p style={{ marginTop: '10px', fontSize: '14px', color: isDarkMode ? '#fb923c' : '#c2410c', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  No real test data is available yet. Run tests in real mode (not simulation) to collect actual data.
+                </p>
+              )}
+            </div>
+            
+            {/* Test History Table */}
+            <div style={{
+              borderRadius: '8px',
+              overflow: 'hidden',
+              border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+            }}>
+              <table style={{ 
+                width: '100%', 
+                borderCollapse: 'collapse',
+                fontSize: '14px'
+              }}>
+                <thead style={{ 
+                  backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
+                  color: isDarkMode ? '#d1d5db' : '#6b7280',
+                  fontWeight: 500
+                }}>
+                  <tr>
+                    {/* Add a checkbox column when in multi-select mode */}
+                    {isMultiSelectMode && (
+                      <th style={{ 
+                        padding: '12px 12px',
+                        textAlign: 'center',
+                        width: '40px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <input 
+                          type="checkbox"
+                          checked={selectedItems.length === testHistory.length}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              selectAllItems();
+                            } else {
+                              deselectAllItems();
+                            }
+                          }}
+                          style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                        />
+                      </th>
+                    )}
+                    <th style={{ 
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                    }}>
+                      Date/Time
+                    </th>
+                    <th style={{ 
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                    }}>
+                      Test Options
+                    </th>
+                    <th style={{ 
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                    }}>
+                      Status
+                    </th>
+                    {/* Add the Type column */}
+                    <th style={{ 
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                    }}>
+                      Type
+                    </th>
+                    <th style={{ 
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                    }}>
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {testHistory.slice().reverse().map((item, index) => (
+                    <tr key={item.id} style={{ 
+                      backgroundColor: isMultiSelectMode && selectedItems.includes(item.id)
+                        ? (isDarkMode ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)')
+                        : (index % 2 === 0 
+                          ? (isDarkMode ? '#111827' : '#ffffff') 
+                          : (isDarkMode ? '#1f2937' : '#f9fafb')),
+                      transition: 'background-color 0.2s ease'
+                    }}>
+                      {/* Add a checkbox column when in multi-select mode */}
+                      {isMultiSelectMode && (
+                        <td style={{ 
+                          padding: '12px 12px',
+                          textAlign: 'center',
+                          borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                        }}>
+                          <input 
+                            type="checkbox"
+                            checked={selectedItems.includes(item.id)}
+                            onChange={() => toggleItemSelection(item.id)}
+                            style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                          />
+                        </td>
+                      )}
+                      <td style={{ 
+                        padding: '12px 16px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                        color: isDarkMode ? '#e5e7eb' : '#111827'
+                      }}>
+                        {new Date(item.test_date).toLocaleString()}
+                      </td>
+                      <td style={{ 
+                        padding: '12px 16px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                        color: isDarkMode ? '#e5e7eb' : '#111827'
+                      }}>
+                        {item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'}
+                      </td>
+                      <td style={{ 
+                        padding: '12px 16px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <span style={{ 
+                          display: 'inline-block',
+                          padding: '4px 8px',
+                          borderRadius: '9999px',
+                          fontSize: '12px',
+                          fontWeight: 500,
+                          backgroundColor: item.status === 'completed' 
+                            ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
+                            : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
+                          color: item.status === 'completed'
+                            ? (isDarkMode ? '#34d399' : '#047857')
+                            : (isDarkMode ? '#f87171' : '#b91c1c')
+                        }}>
+                          {item.status === 'completed' ? 'SUCCESS' : 'FAILED'}
+                        </span>
+                      </td>
+                      <td style={{ 
+                        padding: '12px 16px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <span style={{ 
+                          display: 'inline-block',
+                          padding: '4px 8px',
+                          borderRadius: '9999px',
+                          fontSize: '12px',
+                          fontWeight: 500,
+                          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                          color: isDarkMode ? '#34d399' : '#047857'
+                        }}>
+                          REAL DATA
+                        </span>
+                      </td>
+                      <td style={{ 
+                        padding: '12px 16px',
+                        borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                        display: 'flex',
+                        gap: '8px'
+                      }}>
+                        <button 
+                          onClick={() => setSelectedHistoryItem(item)}
+                          style={{
+                            backgroundColor: isDarkMode ? '#2563eb' : '#3b82f6',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            padding: '4px 8px',
+                            fontSize: '12px',
+                            cursor: 'pointer',
+                            fontWeight: 500,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                          </svg>
+                          View
+                        </button>
+                        
+                        {/* Only show the delete button when not in multi-select mode */}
+                        {!isMultiSelectMode && (
+                          <button 
+                            onClick={() => deleteTestHistoryItem(item.id)}
+                            style={{
+                              backgroundColor: isDarkMode ? '#dc2626' : '#ef4444',
+                              color: 'white',
+                              border: 'none',
+                              borderRadius: '4px',
+                              padding: '4px 8px',
+                              fontSize: '12px',
+                              cursor: 'pointer',
+                              fontWeight: 500,
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                            Delete
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            {/* Additional Metrics Summary */}
+            <div style={{ marginTop: '20px' }}>
+              <h4 style={{ 
+                fontSize: '14px',
+                fontWeight: 600,
+                marginBottom: '12px',
+                color: isDarkMode ? '#e5e7eb' : '#111827'
+              }}>
+                Key Metrics Summary
+              </h4>
+              
+              <div style={{ 
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                gap: '12px'
+              }}>
+                {/* Metric Card: Average ECU-1 Voltage */}
+                <div style={{
+                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                  borderRadius: '8px',
+                  padding: '12px',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                }}>
+                  <div style={{ 
+                    fontSize: '12px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                    marginBottom: '4px'
+                  }}>
+                    Average ECU-1 Voltage
+                  </div>
+                  <div style={{ 
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                  }}>
+                    {(() => {
+                      const values = testHistory
+                        .map(item => extractValue(item.results, 'ecu1.voltage'))
+                        .filter(v => v !== null) as number[];
+                        
+                      if (values.length === 0) return 'N/A';
+                      
+                      const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
+                      return `${avg.toFixed(2)} V`;
+                    })()}
+                  </div>
+                </div>
+                
+                {/* Metric Card: Average PPU-1 Voltage */}
+                <div style={{
+                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                  borderRadius: '8px',
+                  padding: '12px',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                }}>
+                  <div style={{ 
+                    fontSize: '12px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                    marginBottom: '4px'
+                  }}>
+                    Average PPU-1 Voltage
+                  </div>
+                  <div style={{ 
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                  }}>
+                    {(() => {
+                      const values = testHistory
+                        .map(item => extractValue(item.results, 'ppu1.voltage'))
+                        .filter(v => v !== null) as number[];
+                        
+                      if (values.length === 0) return 'N/A';
+                      
+                      const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
+                      return `${avg.toFixed(2)} V`;
+                    })()}
+                  </div>
+                </div>
+                
+                {/* Metric Card: Average Thruster Temp */}
+                <div style={{
+                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                  borderRadius: '8px',
+                  padding: '12px',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                }}>
+                  <div style={{ 
+                    fontSize: '12px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                    marginBottom: '4px'
+                  }}>
+                    Avg. Thruster Temp
+                  </div>
+                  <div style={{ 
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                  }}>
+                    {(() => {
+                      // Get all Thruster_1 temperatures from history
+                      const temps1 = testHistory
+                        .map(item => extractValue(item.results, 'temperatures.Thruster_1'))
+                        .filter(v => v !== null) as number[];
+                        
+                      // Get all Thruster_2 temperatures from history
+                      const temps2 = testHistory
+                        .map(item => extractValue(item.results, 'temperatures.Thruster_2'))
+                        .filter(v => v !== null) as number[];
+                        
+                      if (temps1.length === 0 && temps2.length === 0) return 'N/A';
+                      
+                      // Calculate average of all readings
+                      const allTemps = [...temps1, ...temps2];
+                      const avg = allTemps.reduce((sum, v) => sum + v, 0) / allTemps.length;
+                      
+                      return `${avg.toFixed(1)} °C`;
+                    })()}
+                  </div>
+                </div>
+                
+                {/* Metric Card: Test Success Rate */}
+                <div style={{
+                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                  borderRadius: '8px',
+                  padding: '12px',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                }}>
+                  <div style={{ 
+                    fontSize: '12px',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                    marginBottom: '4px'
+                  }}>
+                    Overall Success Rate
+                  </div>
+                  <div style={{ 
+                    fontSize: '18px',
+                    fontWeight: 600,
+                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                  }}>
+                    {(() => {
+                      if (testHistory.length === 0) return 'N/A';
+                      
+                      const successes = testHistory.filter(item => item.status === 'completed').length;
+                      const successRate = (successes / testHistory.length) * 100;
+                      
+                      return `${successRate.toFixed(0)}%`;
+                    })()}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Export History Button */}
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
+              {/* Clear All History Button */}
+              <button 
+                onClick={clearAllTestHistory}
+                style={{
+                  backgroundColor: '#dc2626', /* Deeper red for more dangerous action */
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  padding: '8px 16px',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                  <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                Clear All History
+              </button>
+              
+              {/* Clean Up Simulated Data Button */}
+              <button 
+                onClick={() => cleanupSimulatedData()}
+                style={{
+                  backgroundColor: '#ef4444',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  padding: '8px 16px',
+                  fontSize: '14px',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  Clean Up Simulated Data
+                </button>
+                
+                {/* Limit History Button */}
+                <button 
+                  onClick={() => limitTestHistory(30)}
+                  style={{
+                    backgroundColor: '#3b82f6',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '8px 16px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                  </svg>
+                  Limit History (30 Records)
+                </button>
+                
+                <button 
+                  onClick={() => {
+                    // Implement history export functionality
+                    const historyData = JSON.stringify(testHistory, null, 2);
+                    const blob = new Blob([historyData], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `propulsion_test_history_${profileId || 'unknown'}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  }}
+                  style={{
+                    backgroundColor: '#10b981',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '8px 16px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                  Export Test History
+                </button>
+              </div>
+              
+              {/* Status Messages for Cleanup and Limit Operations */}
+              {(cleanupMessage || limitMessage) && (
+                <div style={{ 
+                  marginTop: '12px',
+                  padding: '12px',
+                  borderRadius: '6px',
+                  backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                  fontSize: '14px'
+                }}>
+                  {cleanupMessage && (
+                    <div style={{ 
+                      color: cleanupMessage.includes('✅') ? 
+                        (isDarkMode ? '#34d399' : '#047857') : 
+                        (isDarkMode ? '#f87171' : '#b91c1c'),
+                      marginBottom: limitMessage ? '8px' : '0'
+                    }}>
+                      {cleanupMessage}
+                    </div>
+                  )}
+                  
+                  {limitMessage && (
+                    <div style={{ 
+                      color: limitMessage.includes('✅') ? 
+                        (isDarkMode ? '#34d399' : '#047857') : 
+                        (isDarkMode ? '#f87171' : '#b91c1c')
+                    }}>
+                      {limitMessage}
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
-    );
-  };
+    )}
+    
+    {/* Test Details Modal */}
+    {selectedHistoryItem && (
+      <TestDetailsModal
+        test={selectedHistoryItem}
+        onClose={() => setSelectedHistoryItem(null)}
+        isDarkMode={isDarkMode}
+      />
+    )}
+  </div>
+);
+};

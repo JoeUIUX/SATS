@@ -91,9 +91,43 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isMultiSelectMode, setIsMultiSelectMode] = useState(false);
   
-  // Determine if transmitter/receiver options are enabled
-  const enableTransmitter = options.includes('Transmitter Test');
-  const enableReceiver = options.includes('Receiver Test');
+  // Map options to capabilities
+  const mapOptionsToCapabilities = () => {
+    // Default both to false
+    let shouldEnableTransmitter = false;
+    let shouldEnableReceiver = false;
+    
+    // Check for specific options and map them to capabilities
+    if (options.includes('Telemetry')) {
+      // Telemetry typically involves receiving data, so enable receiver
+      shouldEnableReceiver = true;
+    }
+    
+    if (options.includes('Ground Pass')) {
+      // Ground Pass typically involves both transmitting commands and receiving telemetry
+      shouldEnableTransmitter = true;
+      shouldEnableReceiver = true;
+    }
+    
+    // Add other mappings based on your specific test options
+    // For example:
+    if (options.includes('Uplink Test')) {
+      shouldEnableTransmitter = true;
+    }
+    
+    if (options.includes('Downlink Test')) {
+      shouldEnableReceiver = true;
+    }
+    
+    return { shouldEnableTransmitter, shouldEnableReceiver };
+  };
+  
+  // Get the capabilities based on selected options
+  const { shouldEnableTransmitter, shouldEnableReceiver } = mapOptionsToCapabilities();
+  
+  // Use these for conditional rendering and UI display
+  const enableTransmitter = shouldEnableTransmitter;
+  const enableReceiver = shouldEnableReceiver;
   
   // API URL
   const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
@@ -795,240 +829,403 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     }
   };
   
-  // Optionally add automatic cleanup on component mount
-  useEffect(() => {
-    if (profileId) {
-      // Automatically limit history to 30 records when the component mounts
-      limitTestHistory(30);
-    }
-  }, [profileId]); // Only run when profileId changes
+// Optionally add automatic cleanup on component mount
+useEffect(() => {
+  if (profileId) {
+    // Automatically limit history to 30 records when the component mounts
+    limitTestHistory(30);
+  }
+}, [profileId]); // Only run when profileId changes
 
+// Function to format table data for UHF parameters
+const createParameterRow = (label: string, value: string) => {
   return (
-    <div className={styles.testPanel}>
-      {error && (
-        <Alert variant="destructive">
-          <p>{error}</p>
-        </Alert>
-      )}
-      
-      <div className={styles.tabsContainer} style={{
-        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-        padding: '8px',
-        borderRadius: '8px',
-        marginBottom: '16px',
-      }}>
-<button
-  onClick={() => setShowHistory(false)}
-  className={`${styles.tabButton} ${!showHistory ? styles.tabButtonActive : ''}`}
-  style={{
-    padding: '8px 16px',
-    borderRadius: '6px',
-    backgroundColor: !showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
-    color: !showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
-    border: 'none',
-    fontWeight: 500,
-    cursor: 'pointer'
-  }}
->
-  Current Test
-</button>
-        <button
-          onClick={() => setShowHistory(true)}
-          className={`${styles.tabButton} ${showHistory ? styles.tabButtonActive : ''}`}
+    <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+      <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{label}</td>
+      <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{value}</td>
+    </tr>
+  );
+};
+
+return (
+  <div className={styles.testPanel}>
+    {error && (
+      <Alert variant="destructive">
+        <p>{error}</p>
+      </Alert>
+    )}
+    
+    <div className={styles.tabsContainer} style={{
+      backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+      padding: '8px',
+      borderRadius: '8px',
+      marginBottom: '16px',
+    }}>
+      <button
+        onClick={() => setShowHistory(false)}
+        className={`${styles.tabButton} ${!showHistory ? styles.tabButtonActive : ''}`}
+        style={{
+          padding: '8px 16px',
+          borderRadius: '6px',
+          backgroundColor: !showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
+          color: !showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
+          border: 'none',
+          fontWeight: 500,
+          cursor: 'pointer'
+        }}
+      >
+        Current Test
+      </button>
+      <button
+        onClick={() => setShowHistory(true)}
+        className={`${styles.tabButton} ${showHistory ? styles.tabButtonActive : ''}`}
+        style={{
+          padding: '8px 16px',
+          borderRadius: '6px',
+          backgroundColor: showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
+          color: showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
+          border: 'none',
+          fontWeight: 500,
+          cursor: 'pointer'
+        }}
+      >
+        Test History
+      </button>
+    </div>
+    
+    {/* Current Test Panel */}
+    {!showHistory ? (
+      <>
+        <div 
+          className={styles.card}
           style={{
-            padding: '8px 16px',
-            borderRadius: '6px',
-            backgroundColor: showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
-            color: showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
-            border: 'none',
-            fontWeight: 500,
-            cursor: 'pointer'
+            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
           }}
         >
-          Test History
-        </button>
-      </div>
-      
-      {/* Current Test Panel */}
-      {!showHistory ? (
-        <>
           <div 
-            className={styles.card}
+            className={styles.cardHeader}
             style={{
-              backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+              backgroundColor: isDarkMode ? "#111827" : undefined,
               borderColor: isDarkMode ? "#374151" : "#e5e7eb"
             }}
           >
+            <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                <path fillRule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414z" clipRule="evenodd" />
+                <path d="M7.879 6.464a1 1 0 01-1.414 1.414 3 3 0 000 4.243 1 1 0 11-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a1 1 0 011.414 0 5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.244 1 1 0 010-1.414z" />
+              </svg>
+              UHF Test Status
+            </h3>
+          </div>
+          
+          <div className={styles.cardContent}>
+            <div className={styles.progressContainer}>
+              <div className={styles.progressLabel}>
+                <span className={styles.progressStep} style={{ color: isDarkMode ? "#d1d5db" : "#4b5563" }}>
+                  {currentStep || 'Waiting to start test...'}
+                </span>
+                <span className={styles.progressValue} style={{ color: isDarkMode ? "#93c5fd" : "#1d4ed8" }}>
+                  {progress}%
+                </span>
+              </div>
+              <div 
+                className={styles.progressBar}
+                style={{ backgroundColor: isDarkMode ? "#374151" : "#e5e7eb" }}
+              >
+                <div 
+                  className={styles.progressBarFill}
+                  style={{ 
+                    width: `${progress}%`,
+                    background: 'linear-gradient(to right, #3b82f6, #4f46e5)'
+                  }}
+                ></div>
+              </div>
+            </div>
+            
+            {/* Display the testing options */}
+            <div style={{ marginBottom: '20px' }}>
+              <h4 style={{ 
+                fontSize: '14px', 
+                marginBottom: '10px',
+                color: isDarkMode ? "#d1d5db" : "#374151"
+              }}>
+                Selected Test Options:
+              </h4>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {options.map((option, index) => (
+                  <div key={index} style={{ 
+                    padding: '6px 10px', 
+                    backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    color: isDarkMode ? '#93c5fd' : '#3b82f6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {option}
+                  </div>
+                ))}
+                {options.length === 0 && (
+                  <div style={{ 
+                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                    fontStyle: 'italic',
+                    fontSize: '13px'
+                  }}>
+                    No specific options selected. Running with defaults.
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            {/* Connection Status */}
             <div 
-              className={styles.cardHeader}
+              className={styles.parameterBox}
               style={{
-                backgroundColor: isDarkMode ? "#111827" : undefined,
+                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
                 borderColor: isDarkMode ? "#374151" : "#e5e7eb"
               }}
             >
-              <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                  <path fillRule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414z" clipRule="evenodd" />
-                  <path d="M7.879 6.464a1 1 0 01-1.414 1.414 3 3 0 000 4.243 1 1 0 11-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a1 1 0 011.414 0 5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.244 1 1 0 010-1.414z" />
+              <div className={styles.parameterLabel}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                 </svg>
-                UHF Test Status
-              </h3>
+                Connection Mode
+              </div>
+              <span className={`${styles.statusBadge} ${
+                isForceSimulation ? styles.colorWaiting : styles.colorCompleted
+              }`}>
+                {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+              </span>
             </div>
             
-            <div className={styles.cardContent}>
-              <div className={styles.progressContainer}>
-                <div className={styles.progressLabel}>
-                  <span className={styles.progressStep} style={{ color: isDarkMode ? "#d1d5db" : "#4b5563" }}>
-                    {currentStep || 'Waiting to start test...'}
-                  </span>
-                  <span className={styles.progressValue} style={{ color: isDarkMode ? "#93c5fd" : "#1d4ed8" }}>
-                    {progress}%
-                  </span>
-                </div>
-                <div 
-                  className={styles.progressBar}
-                  style={{ backgroundColor: isDarkMode ? "#374151" : "#e5e7eb" }}
-                >
-                  <div 
-                    className={styles.progressBarFill}
-                    style={{ 
-                      width: `${progress}%`,
-                      background: 'linear-gradient(to right, #3b82f6, #4f46e5)'
-                    }}
-                  ></div>
-                </div>
+            <div 
+              className={styles.parameterBox}
+              style={{
+                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                marginTop: '10px'
+              }}
+            >
+              <div className={styles.parameterLabel}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+                  <path fillRule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                UHF Testing
               </div>
-              
-              {/* Display the testing options */}
-              <div style={{ marginBottom: '20px' }}>
-                <h4 style={{ 
-                  fontSize: '14px', 
-                  marginBottom: '10px',
-                  color: isDarkMode ? "#d1d5db" : "#374151"
-                }}>
-                  Selected Test Options:
-                </h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {options.map((option, index) => (
-                    <div key={index} style={{ 
-                      padding: '6px 10px', 
-                      backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
-                      borderRadius: '4px',
-                      fontSize: '13px',
-                      color: isDarkMode ? '#93c5fd' : '#3b82f6',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {option}
-                    </div>
-                  ))}
-                  {options.length === 0 && (
-                    <div style={{ 
-                      color: isDarkMode ? '#9ca3af' : '#6b7280',
-                      fontStyle: 'italic',
-                      fontSize: '13px'
-                    }}>
-                      No specific options selected. Running with defaults.
-                    </div>
-                  )}
-                </div>
-              </div>
-              
-              {/* Connection Status */}
-              <div 
-                className={styles.parameterBox}
-                style={{
-                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div className={styles.parameterLabel}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                  </svg>
-                  Connection Mode
-                </div>
-                <span className={`${styles.statusBadge} ${
-                  isForceSimulation ? styles.colorWaiting : styles.colorCompleted
+              <span style={{ display: 'flex', gap: '8px' }}>
+                <span className={`${styles.parameterValue} ${
+                  enableTransmitter ? styles.colorCompleted : styles.colorWaiting
                 }`}>
-                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+                  TX: {enableTransmitter ? 'ENABLED' : 'DISABLED'}
                 </span>
-              </div>
-              
-              <div 
-                className={styles.parameterBox}
-                style={{
-                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                  marginTop: '10px'
-                }}
-              >
-                <div className={styles.parameterLabel}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-                    <path fillRule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a1 1 0 011.414 0 9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                  UHF Testing
-                </div>
-                <span style={{ display: 'flex', gap: '8px' }}>
-                  <span className={`${styles.parameterValue} ${
-                    enableTransmitter ? styles.colorCompleted : styles.colorWaiting
-                  }`}>
-                    TX: {enableTransmitter ? 'ENABLED' : 'DISABLED'}
-                  </span>
-                  <span className={`${styles.parameterValue} ${
-                    enableReceiver ? styles.colorCompleted : styles.colorWaiting
-                  }`}>
-                    RX: {enableReceiver ? 'ENABLED' : 'DISABLED'}
-                  </span>
+                <span className={`${styles.parameterValue} ${
+                  enableReceiver ? styles.colorCompleted : styles.colorWaiting
+                }`}>
+                  RX: {enableReceiver ? 'ENABLED' : 'DISABLED'}
                 </span>
-              </div>
-              
-              {/* Run/Re-run Test Button */}
-              <button 
-                onClick={startTest} 
-                className={styles.button}
-                disabled={isRunning}
-                style={{ 
-                  backgroundColor: isRunning ? '#9ca3af' :
-                    hasRunTest ? '#4f46e5' : '#10b981',
-                  color: 'white',
-                  marginTop: '20px'
-                }}
-              >
-                {isRunning ? (
-                  <>
-                    <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 12a9 9 0 11-6.219-8.56" />
-                    </svg>
-                    Running Test...
-                  </>
-                ) : hasRunTest ? (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                    <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z" clipRule="evenodd" />
-                    </svg>
-                    Re-run Test
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                    </svg>
-                    Run Test
-                  </>
-                )}
-              </button>
+              </span>
             </div>
+            
+            {/* Run/Re-run Test Button */}
+            <button 
+              onClick={startTest} 
+              className={styles.button}
+              disabled={isRunning}
+              style={{ 
+                backgroundColor: isRunning ? '#9ca3af' :
+                  hasRunTest ? '#4f46e5' : '#10b981',
+                color: 'white',
+                marginTop: '20px'
+              }}
+            >
+              {isRunning ? (
+                <>
+                  <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 12a9 9 0 11-6.219-8.56" />
+                  </svg>
+                  Running Test...
+                </>
+              ) : hasRunTest ? (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                  <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z" clipRule="evenodd" />
+                  </svg>
+                  Re-run Test
+                </>
+              ) : (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                  </svg>
+                  Run Test
+                </>
+              )}
+            </button>
           </div>
-          
-          {/* Test Results (only shown if we have results) */}
-          {results && (
-            <div className="space-y-4 mt-4">
-              {/* UHF Telemetry Card */}
+        </div>
+        
+        {/* Test Results (only shown if we have results) */}
+        {results && (
+          <div className="space-y-4 mt-4">
+            {/* UHF Telemetry Card */}
+            <div 
+              className={styles.card}
+              style={{
+                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+              }}
+            >
+              <div 
+                className={styles.cardHeader} 
+                style={{ 
+                  background: isDarkMode 
+                    ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" 
+                    : "linear-gradient(to right, #eff6ff, #dbeafe)",
+                  color: isDarkMode ? "#dbeafe" : "#1d4ed8"
+                }}
+              >
+                <h3 className={styles.cardTitle}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                    <path d="M13 7H7v6h6V7z" />
+                    <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
+                  </svg>
+                  UHF Telemetry
+                </h3>
+                
+                {/* Add simulation badge */}
+                <SimulationBadge isSimulation={isForceSimulation} />
+              </div>
+              
+              <div className={styles.cardContent}>
+                <table 
+                  className={styles.table}
+                  style={{
+                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                    width: '100%',
+                    borderCollapse: 'collapse',
+                    fontSize: '14px'
+                  }}
+                >
+                  <thead 
+                    className={styles.tableHeader}
+                    style={{
+                      backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                      color: isDarkMode ? "#d1d5db" : "#6b7280"
+                    }}
+                  >
+                    <tr>
+                      <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                      <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody className={styles.tableBody}>
+                    {/* Display all telemetry parameters */}
+                    {createParameterRow("Board Temperature", `${results.telemetry.boardTemperature} °C`)}
+                    {createParameterRow("PA Temperature", `${results.telemetry.paTemperature} °C`)}
+                    {createParameterRow("Last RSSI", results.telemetry.lastRssi)}
+                    {createParameterRow("Last RF Error", results.telemetry.lastRferr)}
+                    {createParameterRow("TX Count (Current)", `${results.telemetry.txCount} packets`)}
+                    {createParameterRow("RX Count (Current)", `${results.telemetry.rxCount} packets`)}
+                    {createParameterRow("TX Bytes (Current)", `${results.telemetry.txBytes} bytes`)}
+                    {createParameterRow("RX Bytes (Current)", `${results.telemetry.rxBytes} bytes`)}
+                    {createParameterRow("Active Configuration", results.telemetry.activeConf)}
+                    {createParameterRow("Boot Count", results.telemetry.bootCount)}
+                    {createParameterRow("Boot Cause", results.telemetry.bootCause)}
+                    {createParameterRow("Last Contact", results.telemetry.lastContact)}
+                    {createParameterRow("Background RSSI", results.telemetry.bgndRssi)}
+                    {createParameterRow("TX Duty", results.telemetry.txDuty)}
+                    {createParameterRow("Total TX Count", `${results.telemetry.totalTxCount} packets`)}
+                    {createParameterRow("Total RX Count", `${results.telemetry.totalRxCount} packets`)}
+                    {createParameterRow("Total TX Bytes", `${results.telemetry.totalTxBytes} bytes`)}
+                    {createParameterRow("Total RX Bytes", `${results.telemetry.totalRxBytes} bytes`)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* UHF System Configuration Card */}
+            <div 
+              className={styles.card}
+              style={{
+                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+              }}
+            >
+              <div 
+                className={styles.cardHeader} 
+                style={{ 
+                  background: isDarkMode 
+                    ? "linear-gradient(to right, #1f2937, #374151)" 
+                    : "linear-gradient(to right, #f3f4f6, #e5e7eb)",
+                  color: isDarkMode ? "#e5e7eb" : "#374151"
+                }}
+              >
+                <h3 className={styles.cardTitle}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                    <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                  </svg>
+                  UHF System Configuration
+                </h3>
+                
+                {/* Add simulation badge */}
+                <SimulationBadge isSimulation={isForceSimulation} />
+              </div>
+              
+              <div className={styles.cardContent}>
+                <table 
+                  className={styles.table}
+                  style={{
+                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                    width: '100%',
+                    borderCollapse: 'collapse',
+                    fontSize: '14px'
+                  }}
+                >
+                  <thead 
+                    className={styles.tableHeader}
+                    style={{
+                      backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                      color: isDarkMode ? "#d1d5db" : "#6b7280"
+                    }}
+                  >
+                    <tr>
+                      <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                      <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody className={styles.tableBody}>
+                    {/* Display all system parameters */}
+                    {createParameterRow("RSSI Indicator Offset", results.system.rssiOffset)}
+                    {createParameterRow("Maximum Temperature", `${results.system.maxTemp} °C`)}
+                    {createParameterRow("Background RSSI EMA", results.system.bgndrssiEma)}
+                    {createParameterRow("CSP Node", results.system.cspNode)}
+                    {createParameterRow("I2C Enabled", results.system.i2cEn)}
+                    {createParameterRow("CAN Enabled", results.system.canEn)}
+                    {createParameterRow("Push-to-talk Enabled", results.system.extpptEn)}
+                    {createParameterRow("LED Enabled", results.system.ledEn)}
+                    {createParameterRow("KISS USART", results.system.kissUsart)}
+                    {createParameterRow("GOSH USART", results.system.goshUsart)}
+                    {createParameterRow("I2C Address", results.system.i2cAddr)}
+                    {createParameterRow("I2C Speed", `${results.system.i2cKhz} kHz`)}
+                    {createParameterRow("CAN Speed", `${results.system.canKhz} kHz`)}
+                    {createParameterRow("Reboot Timer", `${results.system.rebootIn} seconds`)}
+                    {createParameterRow("TX Inhibit", `${results.system.txInhibit} seconds`)}
+                    {createParameterRow("Log Store", results.system.logStore)}
+                    {createParameterRow("TX Power Level", results.system.txPwr)}
+                    {createParameterRow("Max TX Time", `${results.system.maxTxTime} seconds`)}
+                    {createParameterRow("Max Idle Time", `${results.system.maxIdleTime} seconds`)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* UHF Receiver Configuration Card */}
+            {enableReceiver && (
               <div 
                 className={styles.card}
                 style={{
@@ -1040,17 +1237,16 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                   className={styles.cardHeader} 
                   style={{ 
                     background: isDarkMode 
-                      ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" 
-                      : "linear-gradient(to right, #eff6ff, #dbeafe)",
-                    color: isDarkMode ? "#dbeafe" : "#1d4ed8"
+                      ? "linear-gradient(to right, #1e3a8a, #2563eb)" 
+                      : "linear-gradient(to right, #dbeafe, #bfdbfe)",
+                    color: isDarkMode ? "#bfdbfe" : "#2563eb"
                   }}
                 >
                   <h3 className={styles.cardTitle}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path d="M13 7H7v6h6V7z" />
-                      <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
                     </svg>
-                    UHF Telemetry
+                    UHF Receiver Configuration
                   </h3>
                   
                   {/* Add simulation badge */}
@@ -1061,7 +1257,10 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                   <table 
                     className={styles.table}
                     style={{
-                      color: isDarkMode ? "#e5e7eb" : "inherit"
+                      color: isDarkMode ? "#e5e7eb" : "inherit",
+                      width: '100%',
+                      borderCollapse: 'collapse',
+                      fontSize: '14px'
                     }}
                   >
                     <thead 
@@ -1072,74 +1271,122 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                       }}
                     >
                       <tr>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
+                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
                       </tr>
                     </thead>
                     <tbody className={styles.tableBody}>
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Board Temperature</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.boardTemperature} °C</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>PA Temperature</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.paTemperature} °C</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Last RSSI</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.lastRssi}</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Last RF Error</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.lastRferr}</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>TX Count (Current)</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.txCount} packets</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>RX Count (Current)</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.rxCount} packets</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>TX Bytes (Current)</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.txBytes} bytes</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>RX Bytes (Current)</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.rxBytes} bytes</td>
-                      </tr>
-
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Active Configuration</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.activeConf}</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Boot Count</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.bootCount}</td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Background RSSI</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.bgndRssi}</td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>TX Duty</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.telemetry.txDuty}</td>
-                      </tr>
+                      {/* Display all receiver parameters exactly as in uhfCheckout.ts */}
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_freq</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.frequency} Hz</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_baud</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.baudrate} bps</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_modindex</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.modindex}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_guard</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.guard} ms</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_pllrang</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.pllrang}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_mode</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.mode}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_hmac</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.cspHmac}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_rs</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.cspRs}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_crc</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.cspCrc}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_rand</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.cspRand}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_hmac_key_0</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.hmacKeys[0]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_hmac_key_1</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.hmacKeys[1]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_hmac_key_2</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.hmacKeys[2]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_csp_hmac_key_3</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.hmacKeys[3]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_ax25_call_0</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.ax25Call[0]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_ax25_call_1</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.ax25Call[1]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_ax25_call_2</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.ax25Call[2]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_bw</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.bandwidth} Hz</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_rx_afcrange</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.receiver.afcrange} Hz</td></tr>
                     </tbody>
                   </table>
                 </div>
               </div>
+            )}
+
+            {/* UHF Transmitter Configuration Card */}
+            {enableTransmitter && (
+              <div 
+                className={styles.card}
+                style={{
+                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                }}
+              >
+                <div 
+                  className={styles.cardHeader} 
+                  style={{ 
+                    background: isDarkMode 
+                      ? "linear-gradient(to right, #7c2d12, #c2410c)" 
+                      : "linear-gradient(to right, #ffedd5, #fed7aa)",
+                    color: isDarkMode ? "#fed7aa" : "#c2410c"
+                  }}
+                >
+                  <h3 className={styles.cardTitle}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                      <path fillRule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm2 4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm-3 8a2 2 0 012-2h4a2 2 0 012 2v.5a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5V14z" clipRule="evenodd" />
+                    </svg>
+                    UHF Transmitter Configuration
+                  </h3>
+                  
+                  {/* Add simulation badge */}
+                  <SimulationBadge isSimulation={isForceSimulation} />
+                </div>
+                
+                <div className={styles.cardContent}>
+                  <table 
+                    className={styles.table}
+                    style={{
+                      color: isDarkMode ? "#e5e7eb" : "inherit",
+                      width: '100%',
+                      borderCollapse: 'collapse',
+                      fontSize: '14px'
+                    }}
+                  >
+                    <thead 
+                      className={styles.tableHeader}
+                      style={{
+                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                        color: isDarkMode ? "#d1d5db" : "#6b7280"
+                      }}
+                    >
+                      <tr>
+                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+                      </tr>
+                    </thead>
+                    <tbody className={styles.tableBody}>
+                      {/* Display all transmitter parameters exactly as in uhfCheckout.ts */}
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_freq</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.frequency} Hz</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_baud</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.baudrate} bps</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_modindex</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.modindex}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_guard</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.guard} ms</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_pllrang</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.pllrang}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_mode</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.mode}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_hmac</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.cspHmac}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_rs</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.cspRs}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_crc</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.cspCrc}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_rand</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.cspRand}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_hmac_key_0</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.hmacKeys[0]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_hmac_key_1</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.hmacKeys[1]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_hmac_key_2</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.hmacKeys[2]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_csp_hmac_key_3</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.hmacKeys[3]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_ax25_call_0</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.ax25Call[0]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_ax25_call_1</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.ax25Call[1]}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_ax25_call_2</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.ax25Call[2]}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_preamb</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.preamb}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_preamblen</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.preamblen} bytes</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_preambflags</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.preambflags}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_intfrm</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.intfrm}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_intfrmlen</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.intfrmlen} bytes</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_intfrmflags</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.intfrmflags}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_rssibusy</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.rssibusy}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_kup_delay</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.kupDelay}</td></tr>
+                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_pa_level</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.paLevel}</td></tr>
+                      <tr><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>UHF_tx_ber</td><td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.transmitter.ber}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
 
               {/* Generate Report Button */}
               <div>
@@ -1257,7 +1504,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                   </select>
                 </div>
                 
-                {/* Metric Trend Chart */}
+                {/* Use TestHistoryChart component */}
                 <div style={{
                   height: '300px',
                   marginBottom: '20px',
@@ -1274,44 +1521,12 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                     {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
                   </h4>
                   
-                  <ResponsiveContainer width="100%" height={240}>
-                    <LineChart
-                      data={prepareChartData()}
-                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke={isDarkMode ? "#374151" : "#e5e7eb"} />
-                      <XAxis 
-                        dataKey="date" 
-                        stroke={isDarkMode ? "#9ca3af" : "#6b7280"}
-                        tick={{ fill: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                      />
-                      <YAxis 
-                        stroke={isDarkMode ? "#9ca3af" : "#6b7280"} 
-                        tick={{ fill: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                      />
-                      <Tooltip 
-                        labelFormatter={(label, items) => { 
-                          const item = items[0]?.payload;
-                          return item?.tooltipLabel || label;
-                        }}
-                        contentStyle={{
-                          backgroundColor: isDarkMode ? '#1f2937' : '#ffffff',
-                          borderColor: isDarkMode ? '#374151' : '#e5e7eb',
-                          color: isDarkMode ? '#e5e7eb' : '#111827'
-                        }}
-                      />
-                      <Legend />
-                      <Line 
-                        type="monotone" 
-                        dataKey={selectedMetric.split('.').pop() || 'value'} 
-                        name={metricOptions.find(m => m.value === selectedMetric)?.label || selectedMetric}
-                        stroke="#3b82f6" 
-                        strokeWidth={2}
-                        dot={{ r: 4, stroke: '#3b82f6', fill: 'white' }}
-                        activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2, fill: 'white' }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                  <TestHistoryChart
+                    data={testHistory}
+                    metricPath={selectedMetric}
+                    metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || ''}
+                    isDarkMode={isDarkMode}
+                  />
                 </div>
 
                 {/* Multi-select controls */}
@@ -1340,8 +1555,8 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                       style={{
                         backgroundColor: isMultiSelectMode 
                           ? (isDarkMode ? '#4f46e5' : '#6366f1') 
-                          : (isDarkMode? '#1f2937' : '#f3f4f6'),
-                          color: isMultiSelectMode 
+                          : (isDarkMode ? '#1f2937' : '#f3f4f6'),
+                        color: isMultiSelectMode 
                           ? 'white' 
                           : (isDarkMode ? '#e5e7eb' : '#374151'),
                         border: 'none',
@@ -1451,233 +1666,13 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
                   )}
                 </div>
                 
-                {/* Test history table */}
-                <div style={{
-                  marginTop: '12px',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                }}>
-                  {testHistory.length > 0 ? (
-                    <table style={{ 
-                      width: '100%', 
-                      borderCollapse: 'collapse',
-                      fontSize: '14px'
-                    }}>
-                      <thead style={{ 
-                        backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
-                        color: isDarkMode ? '#d1d5db' : '#6b7280',
-                        fontWeight: 500
-                      }}>
-                        <tr>
-                          {/* Add a checkbox column when in multi-select mode */}
-                          {isMultiSelectMode && (
-                            <th style={{ 
-                              padding: '12px 12px',
-                              textAlign: 'center',
-                              width: '40px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <input 
-                                type="checkbox"
-                                checked={selectedItems.length === testHistory.length}
-                                onChange={(e) => {
-                                  if (e.target.checked) {
-                                    selectAllItems();
-                                  } else {
-                                    deselectAllItems();
-                                  }
-                                }}
-                                style={{ cursor: 'pointer', width: '16px', height: '16px' }}
-                              />
-                            </th>
-                          )}
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Date/Time
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Test Options
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Status
-                          </th>
-                          {/* Add the Type column */}
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Type
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Actions
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {testHistory.slice().reverse().map((item, index) => (
-                          <tr key={item.id} style={{ 
-                            backgroundColor: isMultiSelectMode && selectedItems.includes(item.id)
-                              ? (isDarkMode ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)')
-                              : (index % 2 === 0 
-                                ? (isDarkMode ? '#111827' : '#ffffff') 
-                                : (isDarkMode ? '#1f2937' : '#f9fafb')),
-                            transition: 'background-color 0.2s ease'
-                          }}>
-                            {/* Add a checkbox column when in multi-select mode */}
-                            {isMultiSelectMode && (
-                              <td style={{ 
-                                padding: '12px 12px',
-                                textAlign: 'center',
-                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                              }}>
-                                <input 
-                                  type="checkbox"
-                                  checked={selectedItems.includes(item.id)}
-                                  onChange={() => toggleItemSelection(item.id)}
-                                  style={{ cursor: 'pointer', width: '16px', height: '16px' }}
-                                />
-                              </td>
-                            )}
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              color: isDarkMode ? '#e5e7eb' : '#111827'
-                            }}>
-                              {new Date(item.test_date).toLocaleString()}
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              color: isDarkMode ? '#e5e7eb' : '#111827'
-                            }}>
-                              {item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'}
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <span style={{ 
-                                display: 'inline-block',
-                                padding: '4px 8px',
-                                borderRadius: '9999px',
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                backgroundColor: item.status === 'completed' 
-                                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                                  : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                                color: item.status === 'completed'
-                                  ? (isDarkMode ? '#34d399' : '#047857')
-                                  : (isDarkMode ? '#f87171' : '#b91c1c')
-                              }}>
-                                {item.status === 'completed' ? 'SUCCESS' : 'FAILED'}
-                              </span>
-                            </td>
-                            {/* Add the Type column cell */}
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <span style={{ 
-                                display: 'inline-block',
-                                padding: '4px 8px',
-                                borderRadius: '9999px',
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                                color: isDarkMode ? '#34d399' : '#047857'
-                              }}>
-                                REAL DATA
-                              </span>
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              display: 'flex',
-                              gap: '8px'
-                            }}>
-                              <button 
-                                onClick={() => setSelectedHistoryItem(item)}
-                                style={{
-                                  backgroundColor: isDarkMode ? '#2563eb' : '#3b82f6',
-                                  color: 'white',
-                                  border: 'none',
-                                  borderRadius: '4px',
-                                  padding: '4px 8px',
-                                  fontSize: '12px',
-                                  cursor: 'pointer',
-                                  fontWeight: 500,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '4px'
-                                }}
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                                </svg>
-                                View
-                              </button>
-                              
-                              {/* Only show the delete button when not in multi-select mode */}
-                              {!isMultiSelectMode && (
-                                <button 
-                                  onClick={() => deleteTestHistoryItem(item.id)}
-                                  style={{
-                                    backgroundColor: isDarkMode ? '#dc2626' : '#ef4444',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px',
-                                    fontSize: '12px',
-                                    cursor: 'pointer',
-                                    fontWeight: 500,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '4px'
-                                  }}
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                                  </svg>
-                                  Delete
-                                </button>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div style={{
-                      padding: '20px',
-                      textAlign: 'center',
-                      color: isDarkMode ? '#9ca3af' : '#6b7280'
-                    }}>
-                      <p>No real test data available. Run tests with real hardware connections to collect data.</p>
-                      <p style={{ marginTop: '10px', fontSize: '14px' }}>
-                        Test data from simulation mode is not stored in the history database.
-                      </p>
-                    </div>
-                  )}
-                </div>
-                
+                {/* Use TestHistoryTable component */}
+                <TestHistoryTable
+                  testHistory={testHistory}
+                  isDarkMode={isDarkMode}
+                  onViewDetails={(item) => setSelectedHistoryItem(item)}
+                />
+
                 {/* Additional UHF Metrics Summary */}
                 <div style={{ marginTop: '20px' }}>
                   <h4 style={{ 

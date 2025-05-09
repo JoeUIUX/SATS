@@ -15,9 +15,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$i
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/alert.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/mccUtils.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.module.css [app-ssr] (css module)"); // Reuse the same styles as OBC1TestPanel
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$LineChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/chart/LineChart.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Line.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/XAxis.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/YAxis.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/CartesianGrid.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/Tooltip.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/Legend.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/ResponsiveContainer.js [app-ssr] (ecmascript)");
 // Import the HEPS-specific functions
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$hepsCheckout$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/checkout/hepsCheckout.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$reports$2f$hepsReport$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/reports/hepsReport.ts [app-ssr] (ecmascript)");
+;
 ;
 ;
 ;
@@ -62,14 +71,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
     const [limitMessage, setLimitMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isMultiSelectMode, setIsMultiSelectMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Determine if heater test options are enabled
+    // Determine if test options are enabled
     const enableHeaterTest = options.includes('Heater Test');
     const enableCurrentTest = options.includes('Current Measurement');
     const enablePowerCycle = options.includes('Power Cycle Test');
+    const enableCANTest = options.includes('CAN Test');
+    const enableBatteryTest = options.includes('Battery Test');
+    const enableConverterTest = options.includes('Converter Test');
     // API URL
     const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
-    // Available metrics for visualization
+    // Available metrics for visualization - enhanced with all possible metrics
     const metricOptions = [
+        // System metrics
         {
             label: 'System Voltage',
             value: 'system.voltage'
@@ -78,6 +91,100 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
             label: 'System Current',
             value: 'system.current'
         },
+        {
+            label: 'System Power',
+            value: 'system.power'
+        },
+        // Battery metrics
+        {
+            label: 'Battery 1 Voltage',
+            value: 'battery.voltage1'
+        },
+        {
+            label: 'Battery 2 Voltage',
+            value: 'battery.voltage2'
+        },
+        {
+            label: 'Battery 3 Voltage',
+            value: 'battery.voltage3'
+        },
+        {
+            label: 'Battery 1 Temperature',
+            value: 'battery.temperature1'
+        },
+        {
+            label: 'Battery 2 Temperature',
+            value: 'battery.temperature2'
+        },
+        {
+            label: 'Battery 3 Temperature',
+            value: 'battery.temperature3'
+        },
+        // Solar Array metrics
+        {
+            label: 'Solar Array 1 Voltage',
+            value: 'solarArray.voltage1'
+        },
+        {
+            label: 'Solar Array 2 Voltage',
+            value: 'solarArray.voltage2'
+        },
+        {
+            label: 'Solar Array 3 Voltage',
+            value: 'solarArray.voltage3'
+        },
+        // OBN metrics
+        {
+            label: 'OBN 1 Voltage',
+            value: 'obn.voltage1'
+        },
+        {
+            label: 'OBN 2 Voltage',
+            value: 'obn.voltage2'
+        },
+        {
+            label: 'OBN 1 Current',
+            value: 'obn.current1'
+        },
+        {
+            label: 'OBN 2 Current',
+            value: 'obn.current2'
+        },
+        // BCR metrics
+        {
+            label: 'BCR 1 Current',
+            value: 'bcr.current1'
+        },
+        {
+            label: 'BCR 2 Current',
+            value: 'bcr.current2'
+        },
+        {
+            label: 'BCR 3 Current',
+            value: 'bcr.current3'
+        },
+        {
+            label: 'BCR 1 Temperature',
+            value: 'bcr.temp1'
+        },
+        {
+            label: 'BCR 2 Temperature',
+            value: 'bcr.temp2'
+        },
+        {
+            label: 'BCR 3 Temperature',
+            value: 'bcr.temp3'
+        },
+        // PDM Temperature
+        {
+            label: 'PDM 1 Temperature',
+            value: 'pdmTemperature.pdm1'
+        },
+        {
+            label: 'PDM 2 Temperature',
+            value: 'pdmTemperature.pdm2'
+        },
+        // Heater metrics
         {
             label: 'Heater 1 Temperature',
             value: 'heaters[0].temperature'
@@ -165,7 +272,6 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
         isRunning
     ]);
     // Add function to fetch test history
-    // Update fetchTestHistory to include a limit parameter for client-side filtering
     const fetchTestHistory = async (limit = 30)=>{
         if (!profileId) {
             console.log("Cannot fetch history: No profile ID provided");
@@ -196,10 +302,10 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                     if (!item.results) return false;
                     // Must have system values to be a legitimate test
                     const hasSystemData = item.results.system && (item.results.system.voltage || item.results.system.current || item.results.system.powerStatus);
-                    // Must have some heater data
-                    const hasHeaterData = item.results.heaters && item.results.heaters.length > 0;
-                    // Consider it a real test if it has both system and heater data
-                    return hasSystemData && hasHeaterData;
+                    // Must have some component data - check for any primary component data
+                    const hasComponentData = item.results.battery && Object.values(item.results.battery).some((val)=>val) || item.results.solarArray && Object.values(item.results.solarArray).some((val)=>val) || item.results.obn && Object.values(item.results.obn).some((val)=>val) || item.results.bcr && Object.values(item.results.bcr).some((val)=>val) || item.results.converters && Object.values(item.results.converters).some((val)=>val) || item.results.loads && Object.values(item.results.loads).some((val)=>val) || item.results.heaters && item.results.heaters.length > 0;
+                    // Consider it a real test if it has both system and component data
+                    return hasSystemData && hasComponentData;
                 })// Limit to the most recent 'limit' entries (typically 30)
                 .slice(0, limit);
                 console.log(`Filtered from ${data.length} to ${filteredData.length} actual test results`);
@@ -236,8 +342,6 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
         profileId
     ]);
     // Add function to save test result to history
-    // When saving test results, add a flag to indicate if it's a real test
-    // saveTestResult function to accept the simulation flag directly
     const saveTestResult = async (testResults, status, wasSimulated)=>{
         if (!profileId) {
             console.log("Cannot save history: No profile ID provided");
@@ -275,7 +379,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         test_type: options.join(','),
                         results: resultsWithFlag,
                         status: status,
-                        notes: enableHeaterTest ? "Heater Test Enabled" : "Heater Test Disabled",
+                        notes: `Test options: ${options.join(', ')}`,
                         is_simulated: false
                     }),
                     mode: 'cors'
@@ -383,21 +487,33 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
             // Validate socket before proceeding
             if (!sock || typeof sock.simulateRead !== 'function' && typeof sock.send !== 'function') {
                 console.warn("No valid socket found, creating simulation fallback");
-                // Create a minimal simulation object
+                // Create a minimal simulation object for HEPS
                 const simulatedSock = {
                     simulateRead: (parameters)=>{
                         // Generate simulated values for common HEPS parameters
                         return parameters.map((param)=>{
                             // Return specific values for different HEPS parameters
-                            if (param.includes("HEPS_Heater")) {
-                                if (param.includes("Status")) {
+                            if (param.includes("HEPS") || param.includes("Heps")) {
+                                if (param.includes("Status") || param.includes("state")) {
                                     return `${param}=${Math.round(Math.random())}`; // 0 or 1
-                                } else if (param.includes("Temperature")) {
+                                } else if (param.includes("Temp") || param.includes("temp") || param.includes("_T")) {
                                     return `${param}=${20 + Math.floor(Math.random() * 30)}`; // 20-50°C
-                                } else if (param.includes("Current")) {
+                                } else if (param.includes("Current") || param.includes("_I") || param.includes("_I_")) {
                                     return `${param}=${500 + Math.floor(Math.random() * 500)}`; // 500-1000mA
-                                } else if (param.includes("Voltage")) {
-                                    return `${param}=${28 + Math.random() * 2}`; // 28-30V
+                                } else if (param.includes("Voltage") || param.includes("_V") || param.includes("_V_")) {
+                                    if (param.includes("BAT")) {
+                                        return `${param}=${12 + Math.random() * 2}`; // 12-14V for batteries
+                                    } else if (param.includes("5V")) {
+                                        return `${param}=${5 + (Math.random() * 0.2 - 0.1)}`; // 4.9-5.1V
+                                    } else if (param.includes("12V") || param.includes("HDRM")) {
+                                        return `${param}=${12 + (Math.random() * 0.4 - 0.2)}`; // 11.8-12.2V
+                                    } else if (param.includes("15V")) {
+                                        return `${param}=${15 + (Math.random() * 0.5 - 0.25)}`; // 14.75-15.25V
+                                    } else if (param.includes("3V3")) {
+                                        return `${param}=${3.3 + (Math.random() * 0.1 - 0.05)}`; // 3.25-3.35V
+                                    } else {
+                                        return `${param}=${28 + Math.random() * 2}`; // 28-30V
+                                    }
                                 } else if (param.includes("Power")) {
                                     return `${param}=${15 + Math.floor(Math.random() * 10)}`; // 15-25W
                                 } else if (param.includes("Count")) {
@@ -413,12 +529,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 } else {
                                     return `${param}=${Math.floor(Math.random() * 100)}`; // Generic value
                                 }
-                            } else if (param.includes("HEPS_Power")) {
-                                if (param.includes("Status")) {
-                                    return `${param}=1`; // Power on
-                                } else {
-                                    return `${param}=${Math.floor(Math.random() * 100)}`; // Generic value
-                                }
+                            } else if (param.includes("OBC1_InterComm")) {
+                                // CAN communication variables
+                                return `${param}=${Math.floor(Math.random() * 1000)}`;
+                            } else if (param.includes("OBC1_Intercomm_PriSec_Cfg")) {
+                                return `${param}=0`; // CAN configuration
+                            } else if (param.includes("OBC1_Ch_")) {
+                                return `${param}=1`; // Channel setting
                             } else {
                                 return `${param}=simulated`;
                             }
@@ -438,8 +555,8 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                 sock = simulatedSock;
                 setDetectedSimulation(true);
             }
-            // Run the HEPS checkout test with progress updates
-            const results = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$hepsCheckout$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["runHEPSCheckout"])(sock, {
+            // Run the HEPS checkout test
+            const testResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$hepsCheckout$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["runHEPSCheckout"])(sock, {
                 testHeaters: enableHeaterTest,
                 testCurrent: enableCurrentTest,
                 testPowerCycle: enablePowerCycle
@@ -448,15 +565,16 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                 setProgress(percent);
             });
             // Add the list of tested options to the results
-            results.testedOptions = options;
+            testResults.testedOptions = options;
             // Save the results locally
-            setResults(results);
+            setResults(testResults);
             // Save result to history - detect if simulation was used
-            await saveTestResult(results, 'completed', isForceSimulation);
+            const wasSimulated = isForceSimulation || sock && sock.isSimulated;
+            await saveTestResult(testResults, 'completed', wasSimulated);
             // Notify parent that the test is complete
-            onTestComplete(results);
+            onTestComplete(testResults);
         } catch (error) {
-            console.error('Error running HEPS checkout:', error);
+            console.error('Error running test:', error);
             setError(error instanceof Error ? error.message : String(error));
             // Save failed result to history
             if (results) {
@@ -485,7 +603,6 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
     };
     /**
    * Clean up simulated test results from the database
-   * This will remove any test results that were incorrectly saved as real but were actually simulated
    */ const cleanupSimulatedData = async ()=>{
         try {
             const response = await fetch(`${API_URL}/test-results/cleanup-simulated`, {
@@ -769,7 +886,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
     }, [
         profileId
     ]); // Only run when profileId changes
-    // Helper function to render the temperature trend chart
+    // Helper function to render temperature trend chart for heater test results
     const renderTemperatureTrend = (heaterData, index)=>{
         if (!heaterData || !heaterData.tempReadings || heaterData.tempReadings.length === 0) {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -782,7 +899,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                 children: "No temperature data available"
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 896,
+                lineNumber: 1029,
                 columnNumber: 9
             }, this);
         }
@@ -814,7 +931,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 922,
+                            lineNumber: 1055,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -825,7 +942,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 923,
+                            lineNumber: 1056,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -836,13 +953,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 924,
+                            lineNumber: 1057,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                    lineNumber: 915,
+                    lineNumber: 1048,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -855,67 +972,89 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         padding: '8px',
                         overflow: 'hidden'
                     },
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            style: {
-                                position: 'absolute',
-                                bottom: '8px',
-                                left: '8px',
-                                right: '8px',
-                                height: '130px'
-                            },
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                width: "100%",
-                                height: "100%",
-                                viewBox: `0 0 ${tempPoints.length} 100`,
-                                preserveAspectRatio: "none",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
-                                    points: tempPoints.map((point, i)=>`${i * (100 / (tempPoints.length - 1))},${100 - (point.temp - Math.min(...heaterData.tempReadings)) / (Math.max(...heaterData.tempReadings) - Math.min(...heaterData.tempReadings)) * 100}`).join(' '),
-                                    stroke: isDarkMode ? '#3b82f6' : '#2563eb',
-                                    strokeWidth: "2",
-                                    fill: "none"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 944,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 943,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 935,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            style: {
-                                position: 'absolute',
-                                bottom: '0',
-                                right: '8px',
-                                fontSize: '10px',
-                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
+                        width: "100%",
+                        height: 140,
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$LineChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LineChart"], {
+                            data: tempPoints,
+                            margin: {
+                                top: 5,
+                                right: 20,
+                                left: 10,
+                                bottom: 5
                             },
                             children: [
-                                heaterData.testDuration,
-                                "s"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CartesianGrid"], {
+                                    strokeDasharray: "3 3",
+                                    stroke: isDarkMode ? "#374151" : "#e5e7eb"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 1073,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XAxis"], {
+                                    dataKey: "time",
+                                    label: {
+                                        value: 'Time (s)',
+                                        position: 'bottom'
+                                    },
+                                    stroke: isDarkMode ? "#9ca3af" : "#6b7280"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 1074,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
+                                    dataKey: "temp",
+                                    label: {
+                                        value: 'Temp (°C)',
+                                        angle: -90,
+                                        position: 'left'
+                                    },
+                                    stroke: isDarkMode ? "#9ca3af" : "#6b7280"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 1079,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tooltip"], {}, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 1084,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Line"], {
+                                    type: "monotone",
+                                    dataKey: "temp",
+                                    stroke: isDarkMode ? "#3b82f6" : "#2563eb",
+                                    strokeWidth: 2,
+                                    activeDot: {
+                                        r: 8
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 1085,
+                                    columnNumber: 15
+                                }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 956,
-                            columnNumber: 11
+                            lineNumber: 1069,
+                            columnNumber: 13
                         }, this)
-                    ]
-                }, void 0, true, {
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                        lineNumber: 1068,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                    lineNumber: 926,
+                    lineNumber: 1059,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-            lineNumber: 914,
+            lineNumber: 1047,
             columnNumber: 7
         }, this);
     };
@@ -951,7 +1090,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Temperature Rise:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 986,
+                                lineNumber: 1115,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -961,13 +1100,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 987,
+                                lineNumber: 1116,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 985,
+                        lineNumber: 1114,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -981,7 +1120,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Rise Rate:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 991,
+                                lineNumber: 1120,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -991,13 +1130,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 992,
+                                lineNumber: 1121,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 990,
+                        lineNumber: 1119,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1011,7 +1150,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Time to 5°C Rise:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 996,
+                                lineNumber: 1125,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1021,13 +1160,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 997,
+                                lineNumber: 1126,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 995,
+                        lineNumber: 1124,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,31 +1179,31 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Time to 10°C Rise:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1001,
+                                lineNumber: 1130,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: heaterData.thermalRise.timeTo10C ? heaterData.thermalRise.timeTo10C.toFixed(1) + 's' : 'N/A'
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1002,
+                                lineNumber: 1131,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1000,
+                        lineNumber: 1129,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 978,
+                lineNumber: 1107,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-            lineNumber: 977,
+            lineNumber: 1106,
             columnNumber: 7
         }, this);
     };
@@ -1100,7 +1239,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Average Current:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1025,
+                                lineNumber: 1154,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1110,13 +1249,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1026,
+                                lineNumber: 1155,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1024,
+                        lineNumber: 1153,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1130,7 +1269,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Max Current:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1030,
+                                lineNumber: 1159,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1140,13 +1279,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1031,
+                                lineNumber: 1160,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1029,
+                        lineNumber: 1158,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1160,7 +1299,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Average Power:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1035,
+                                lineNumber: 1164,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1170,13 +1309,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1036,
+                                lineNumber: 1165,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1034,
+                        lineNumber: 1163,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1189,7 +1328,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 children: "Total Energy:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1040,
+                                lineNumber: 1169,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1199,24 +1338,56 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1041,
+                                lineNumber: 1170,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1039,
+                        lineNumber: 1168,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 1017,
+                lineNumber: 1146,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-            lineNumber: 1016,
+            lineNumber: 1145,
+            columnNumber: 7
+        }, this);
+    };
+    // Function to render a parameter box with a status indicator
+    const renderParameterBox = (label, value, passFailStatus)=>{
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+            style: {
+                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                    children: label
+                }, void 0, false, {
+                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                    lineNumber: 1184,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${passFailStatus === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : passFailStatus === "[FAIL]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError : ''}`,
+                    children: value
+                }, void 0, false, {
+                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                    lineNumber: 1187,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+            lineNumber: 1180,
             columnNumber: 7
         }, this);
     };
@@ -1229,12 +1400,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                    lineNumber: 1052,
+                    lineNumber: 1202,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 1051,
+                lineNumber: 1201,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1261,7 +1432,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         children: "Current Test"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1062,
+                        lineNumber: 1212,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1279,13 +1450,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         children: "Test History"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1077,
+                        lineNumber: 1227,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 1056,
+                lineNumber: 1206,
                 columnNumber: 7
             }, this),
             !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1320,24 +1491,24 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1113,
+                                                lineNumber: 1263,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 1112,
+                                            lineNumber: 1262,
                                             columnNumber: 17
                                         }, this),
                                         "HEPS Test Status"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 1111,
+                                    lineNumber: 1261,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1104,
+                                lineNumber: 1254,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1357,7 +1528,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: currentStep || 'Waiting to start test...'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1122,
+                                                        lineNumber: 1272,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1371,13 +1542,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1125,
+                                                        lineNumber: 1275,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1121,
+                                                lineNumber: 1271,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1393,18 +1564,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1133,
+                                                    lineNumber: 1283,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1129,
+                                                lineNumber: 1279,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1120,
+                                        lineNumber: 1270,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1421,7 +1592,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Selected Test Options:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1145,
+                                                lineNumber: 1295,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1455,19 +1626,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1165,
+                                                                        lineNumber: 1315,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1164,
+                                                                    lineNumber: 1314,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 option
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1154,
+                                                            lineNumber: 1304,
                                                             columnNumber: 21
                                                         }, this)),
                                                     options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1479,19 +1650,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "No specific options selected. Running with defaults."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1171,
+                                                        lineNumber: 1321,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1152,
+                                                lineNumber: 1302,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1144,
+                                        lineNumber: 1294,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1513,19 +1684,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1192,
+                                                            lineNumber: 1342,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1191,
+                                                        lineNumber: 1341,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Connection Mode"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1190,
+                                                lineNumber: 1340,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1533,13 +1704,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1196,
+                                                lineNumber: 1346,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1183,
+                                        lineNumber: 1333,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1564,19 +1735,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1213,
+                                                            lineNumber: 1363,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1212,
+                                                        lineNumber: 1362,
                                                         columnNumber: 17
                                                     }, this),
                                                     "HEPS Testing"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1211,
+                                                lineNumber: 1361,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1585,49 +1756,64 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     gap: '8px'
                                                 },
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${enableHeaterTest ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorWaiting}`,
-                                                        children: [
-                                                            "Heaters: ",
-                                                            enableHeaterTest ? 'ENABLED' : 'DISABLED'
-                                                        ]
-                                                    }, void 0, true, {
+                                                    enableCANTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "CAN"
+                                                    }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1218,
-                                                        columnNumber: 19
+                                                        lineNumber: 1369,
+                                                        columnNumber: 21
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${enableCurrentTest ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorWaiting}`,
-                                                        children: [
-                                                            "Current: ",
-                                                            enableCurrentTest ? 'ENABLED' : 'DISABLED'
-                                                        ]
-                                                    }, void 0, true, {
+                                                    enableBatteryTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "Battery"
+                                                    }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1223,
-                                                        columnNumber: 19
+                                                        lineNumber: 1374,
+                                                        columnNumber: 21
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${enablePowerCycle ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorWaiting}`,
-                                                        children: [
-                                                            "Power Cycle: ",
-                                                            enablePowerCycle ? 'ENABLED' : 'DISABLED'
-                                                        ]
-                                                    }, void 0, true, {
+                                                    enableHeaterTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "Heaters"
+                                                    }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1228,
-                                                        columnNumber: 19
+                                                        lineNumber: 1379,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    enableCurrentTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "Current"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1384,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    enablePowerCycle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "Power Cycle"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1389,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    enableConverterTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                        children: "Converters"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1394,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1217,
+                                                lineNumber: 1367,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1203,
+                                        lineNumber: 1353,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1656,12 +1842,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1251,
+                                                        lineNumber: 1416,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1250,
+                                                    lineNumber: 1415,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Running Test..."
@@ -1679,12 +1865,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1258,
+                                                        lineNumber: 1423,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1257,
+                                                    lineNumber: 1422,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Re-run Test"
@@ -1702,12 +1888,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1265,
+                                                        lineNumber: 1430,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1264,
+                                                    lineNumber: 1429,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Run Test"
@@ -1715,19 +1901,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1237,
+                                        lineNumber: 1402,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1119,
+                                lineNumber: 1269,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1097,
+                        lineNumber: 1247,
                         columnNumber: 11
                     }, this),
                     results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1761,32 +1947,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1295,
+                                                            lineNumber: 1461,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1294,
+                                                        lineNumber: 1460,
                                                         columnNumber: 21
                                                     }, this),
                                                     "HEPS System Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1293,
+                                                lineNumber: 1459,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1301,
+                                                lineNumber: 1467,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1284,
+                                        lineNumber: 1450,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1819,7 +2005,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "Power Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1316,
+                                                                lineNumber: 1482,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1837,7 +2023,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.system.powerStatus === "1" ? "POWERED" : "OFF"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1330,
+                                                                        lineNumber: 1496,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1849,19 +2035,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Current State"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1339,
+                                                                        lineNumber: 1505,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1326,
+                                                                lineNumber: 1492,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1311,
+                                                        lineNumber: 1477,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1883,7 +2069,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "System Voltage"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1354,
+                                                                lineNumber: 1520,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1904,7 +2090,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1368,
+                                                                        lineNumber: 1534,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1916,19 +2102,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Bus Voltage"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1375,
+                                                                        lineNumber: 1541,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1364,
+                                                                lineNumber: 1530,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1349,
+                                                        lineNumber: 1515,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1950,7 +2136,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "System Current"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1390,
+                                                                lineNumber: 1556,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1971,7 +2157,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1404,
+                                                                        lineNumber: 1570,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1983,25 +2169,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Total Current"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1411,
+                                                                        lineNumber: 1577,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1400,
+                                                                lineNumber: 1566,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1385,
+                                                        lineNumber: 1551,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1305,
+                                                lineNumber: 1471,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2025,7 +2211,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1436,
+                                                                    lineNumber: 1602,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2035,18 +2221,28 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1437,
+                                                                    lineNumber: 1603,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "Status"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 1604,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1435,
+                                                            lineNumber: 1601,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1428,
+                                                        lineNumber: 1594,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2061,7 +2257,17 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Power Status"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1442,
+                                                                        lineNumber: 1609,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: results.system.powerStatus === "1" ? "ON" : "OFF"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1610,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2070,21 +2276,21 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         },
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${results.system.powerStatus === "1" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                            children: results.system.powerStatus === "1" ? "ON" : "OFF"
+                                                                            children: results.system.powerStatus === "1" ? "ONLINE" : "OFFLINE"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1444,
+                                                                            lineNumber: 1614,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1443,
+                                                                        lineNumber: 1613,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1441,
+                                                                lineNumber: 1608,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2100,7 +2306,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "System Voltage"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1453,
+                                                                        lineNumber: 1623,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2113,13 +2319,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1454,
+                                                                        lineNumber: 1624,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${parseFloat(results.system.voltage) > 27 && parseFloat(results.system.voltage) < 30 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                            children: parseFloat(results.system.voltage) > 27 && parseFloat(results.system.voltage) < 30 ? "NORMAL" : "CHECK"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 1626,
+                                                                            columnNumber: 27
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1625,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1452,
+                                                                lineNumber: 1622,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2131,7 +2354,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "System Current"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1458,
+                                                                        lineNumber: 1637,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2144,13 +2367,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1459,
+                                                                        lineNumber: 1638,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${parseFloat(results.system.current) < 1500 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                            children: parseFloat(results.system.current) < 1500 ? "NORMAL" : "HIGH"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 1640,
+                                                                            columnNumber: 27
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1639,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1457,
+                                                                lineNumber: 1636,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2166,7 +2406,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "System Power"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1463,
+                                                                        lineNumber: 1651,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2179,13 +2419,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1464,
+                                                                        lineNumber: 1652,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${parseFloat(results.system.power) < 50 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                            children: parseFloat(results.system.power) < 50 ? "NORMAL" : "HIGH"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 1654,
+                                                                            columnNumber: 27
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1653,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1462,
+                                                                lineNumber: 1650,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2197,7 +2454,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Power Cycle Count"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1468,
+                                                                        lineNumber: 1665,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2207,13 +2464,23 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.system.powerCycleCount
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1469,
+                                                                        lineNumber: 1666,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "-"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1667,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1467,
+                                                                lineNumber: 1664,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2229,7 +2496,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Operating Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1473,
+                                                                        lineNumber: 1671,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2242,37 +2509,3651 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1474,
+                                                                        lineNumber: 1672,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "-"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1673,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1472,
+                                                                lineNumber: 1670,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1440,
+                                                        lineNumber: 1607,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1422,
+                                                lineNumber: 1588,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1304,
+                                        lineNumber: 1470,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1277,
+                                lineNumber: 1443,
+                                columnNumber: 15
+                            }, this),
+                            (enableCANTest || results.canTest) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #7c2d12, #9a3412)" : "linear-gradient(to right, #ffedd5, #fed7aa)",
+                                            color: isDarkMode ? "#fed7aa" : "#9a3412"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 1700,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1699,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "CAN Communication Test"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1698,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1706,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 1689,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Primary CAN Status"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1721,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px',
+                                                                    textAlign: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '24px',
+                                                                            fontWeight: 'bold',
+                                                                            color: results.canTest?.primaryResult === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                        },
+                                                                        children: results.canTest?.primaryResult === "[PASS]" ? "CONNECTED" : "FAILED"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1735,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '13px',
+                                                                            color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                            marginTop: '4px'
+                                                                        },
+                                                                        children: "Primary Bus"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1744,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1731,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1716,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Secondary CAN Status"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1759,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px',
+                                                                    textAlign: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '24px',
+                                                                            fontWeight: 'bold',
+                                                                            color: results.canTest?.secondaryResult === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                        },
+                                                                        children: results.canTest?.secondaryResult === "[PASS]" ? "CONNECTED" : "FAILED"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1773,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '13px',
+                                                                            color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                            marginTop: '4px'
+                                                                        },
+                                                                        children: "Secondary Bus"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1782,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1769,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1754,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1710,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "CAN Communication Summary"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1799,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563',
+                                                            marginBottom: '8px'
+                                                        },
+                                                        children: [
+                                                            "Primary CAN: ",
+                                                            results.canTest?.primaryResult === "[PASS]" ? "Communication established with all controllers. Packet exchange successful." : "Communication error detected. Check connections and retry."
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1808,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: [
+                                                            "Secondary CAN: ",
+                                                            results.canTest?.secondaryResult === "[PASS]" ? "Redundant bus operational. Failover capability confirmed." : "Secondary bus failure. Redundancy compromised."
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1818,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1793,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 1709,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 1682,
+                                columnNumber: 17
+                            }, this),
+                            results.battery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" : "linear-gradient(to right, #eff6ff, #dbeafe)",
+                                            color: isDarkMode ? "#dbeafe" : "#1d4ed8"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                d: "M13 7H7v6h6V7z"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1851,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                fillRule: "evenodd",
+                                                                d: "M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z",
+                                                                clipRule: "evenodd"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1852,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1850,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "Battery Status"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1849,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1858,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 1840,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Battery 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1874,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1892,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.battery1 === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.voltage1,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1893,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1887,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1907,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.current1,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1908,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1902,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Temperature:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1916,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.temperature1,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1917,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1912,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1884,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1869,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Battery 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1930,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1948,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.battery2 === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.voltage2,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1949,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1943,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1963,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.current2,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1964,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1958,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Temperature:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1972,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.temperature2,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 1973,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1968,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1940,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1925,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Battery 3"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1986,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2004,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.battery3 === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.voltage3,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2005,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 1999,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2019,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.current3,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2020,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2014,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Temperature:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2028,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.battery.temperature3,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2029,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2024,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 1996,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 1981,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 1862,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "Battery Status Summary"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2043,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: results.passFailStatus && results.passFailStatus.battery1 === "[PASS]" && results.passFailStatus.battery2 === "[PASS]" && results.passFailStatus.battery3 === "[PASS]" ? "All batteries are within nominal voltage range (11-16V) and operating at expected temperature." : "One or more batteries are outside nominal voltage range. Check battery health and charging circuit."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2052,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2037,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 1861,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 1833,
+                                columnNumber: 17
+                            }, this),
+                            results.solarArray && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #b45309, #d97706)" : "linear-gradient(to right, #fef3c7, #fde68a)",
+                                            color: isDarkMode ? "#fef3c7" : "#b45309"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2088,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2087,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "Solar Array Status"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2086,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2094,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2077,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Solar Array 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2110,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2128,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.voltage1,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2129,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2123,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y- Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2138,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYNeg1,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2139,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2133,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y+ Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2147,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYPos1,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2148,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2143,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2120,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2105,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Solar Array 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2161,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2179,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.voltage2,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2180,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2174,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y- Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2189,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYNeg2,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2190,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2184,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y+ Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2198,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYPos2,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2199,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2194,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2171,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2156,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "Solar Array 3"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2212,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2230,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.voltage3,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2231,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2225,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y- Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2240,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYNeg3,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2241,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2235,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Y+ Temp:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2249,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.solarArray.tempYPos3,
+                                                                                    " °C"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2250,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2245,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2222,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2207,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2098,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "Body Mount Temperature"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2265,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                style: {
+                                                                    fontSize: '14px',
+                                                                    color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                                },
+                                                                children: "Solar Array Body Mount:"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2275,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                style: {
+                                                                    fontWeight: 'bold',
+                                                                    fontSize: '16px',
+                                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                                },
+                                                                children: [
+                                                                    results.solarArray.tempBodyMount,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2281,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2274,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2259,
+                                                columnNumber: 21
+                                            }, this),
+                                            results.hdrmStatus && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? results.hdrmStatus.deploy1 === "1" && results.hdrmStatus.deploy2 === "1" ? 'rgba(5, 150, 105, 0.1)' : 'rgba(239, 68, 68, 0.1)' : results.hdrmStatus.deploy1 === "1" && results.hdrmStatus.deploy2 === "1" ? '#d1fae5' : '#fee2e2',
+                                                    borderRadius: '6px',
+                                                    border: `1px solid ${isDarkMode ? results.hdrmStatus.deploy1 === "1" && results.hdrmStatus.deploy2 === "1" ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)' : results.hdrmStatus.deploy1 === "1" && results.hdrmStatus.deploy2 === "1" ? '#a7f3d0' : '#fecaca'}`
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "HDRM Deployment Status"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2307,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            marginBottom: '8px'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: 'flex',
+                                                                    flexDirection: 'column',
+                                                                    alignItems: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            color: isDarkMode ? '#d1d5db' : '#4b5563',
+                                                                            marginBottom: '4px'
+                                                                        },
+                                                                        children: "HDRM 1"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2326,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            fontWeight: 'bold',
+                                                                            color: results.hdrmStatus.deploy1 === "1" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                        },
+                                                                        children: results.hdrmStatus.deploy1 === "1" ? "DEPLOYED" : "NOT DEPLOYED"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2332,
+                                                                        columnNumber: 29
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2321,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: 'flex',
+                                                                    flexDirection: 'column',
+                                                                    alignItems: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            color: isDarkMode ? '#d1d5db' : '#4b5563',
+                                                                            marginBottom: '4px'
+                                                                        },
+                                                                        children: "HDRM 2"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2347,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            fontWeight: 'bold',
+                                                                            color: results.hdrmStatus.deploy2 === "1" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                        },
+                                                                        children: results.hdrmStatus.deploy2 === "1" ? "DEPLOYED" : "NOT DEPLOYED"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2353,
+                                                                        columnNumber: 29
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2342,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2316,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2293,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2097,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 2070,
+                                columnNumber: 17
+                            }, this),
+                            results.obn && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #6d28d9, #7c3aed)" : "linear-gradient(to right, #f5f3ff, #ede9fe)",
+                                            color: isDarkMode ? "#ede9fe" : "#6d28d9"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2389,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2388,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "OBN (On-Board Network) Status"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2387,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2395,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2378,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "OBN 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2411,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2429,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.obn1Voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.obn.voltage1,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2430,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2424,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2443,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.obn.current1,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2444,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2439,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2421,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2406,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "OBN 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2457,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2475,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.obn2Voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.obn.voltage2,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2476,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2470,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2489,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.obn.current2,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 2490,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2485,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2467,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2452,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "AUX 12V"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2503,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Voltage:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2520,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold',
+                                                                                color: results.passFailStatus?.auxVoltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                            },
+                                                                            children: [
+                                                                                results.obn.auxVoltage,
+                                                                                " V"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2521,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2516,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2513,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2498,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2399,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "OBN Status Summary"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2540,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: results.passFailStatus && results.passFailStatus.obn1Voltage === "[PASS]" && results.passFailStatus.obn2Voltage === "[PASS]" && results.passFailStatus.auxVoltage === "[PASS]" ? "All OBN voltages are within nominal range. Network communication links operational." : "One or more OBN voltages are outside nominal range. Check power supply and network connections."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2549,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2534,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2398,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 2371,
+                                columnNumber: 17
+                            }, this),
+                            results.bcr && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #0f766e, #0d9488)" : "linear-gradient(to right, #ccfbf1, #99f6e4)",
+                                            color: isDarkMode ? "#99f6e4" : "#0f766e"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2585,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2584,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "BCR (Battery Charging Regulator)"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2583,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2591,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2574,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                                gap: '16px',
+                                                marginBottom: '16px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        borderRadius: '8px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                        overflow: 'hidden'
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '10px',
+                                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                fontSize: '14px',
+                                                                fontWeight: 'bold',
+                                                                color: isDarkMode ? '#d1d5db' : '#374151'
+                                                            },
+                                                            children: "BCR 1"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2607,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '12px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between',
+                                                                        marginBottom: '8px'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Current:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2625,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.current1,
+                                                                                " mA"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2626,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2620,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Temperature:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2634,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.temp1,
+                                                                                " °C"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2635,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2630,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2617,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 2602,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        borderRadius: '8px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                        overflow: 'hidden'
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '10px',
+                                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                fontSize: '14px',
+                                                                fontWeight: 'bold',
+                                                                color: isDarkMode ? '#d1d5db' : '#374151'
+                                                            },
+                                                            children: "BCR 2"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2648,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '12px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between',
+                                                                        marginBottom: '8px'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Current:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2666,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.current2,
+                                                                                " mA"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2667,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2661,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Temperature:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2675,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.temp2,
+                                                                                " °C"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2676,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2671,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2658,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 2643,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        borderRadius: '8px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                        overflow: 'hidden'
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '10px',
+                                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                fontSize: '14px',
+                                                                fontWeight: 'bold',
+                                                                color: isDarkMode ? '#d1d5db' : '#374151'
+                                                            },
+                                                            children: "BCR 3"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2689,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '12px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between',
+                                                                        marginBottom: '8px'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Current:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2707,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.current3,
+                                                                                " mA"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2708,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2702,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    style: {
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-between'
+                                                                    },
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                            },
+                                                                            children: "Temperature:"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2716,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            style: {
+                                                                                fontWeight: 'bold'
+                                                                            },
+                                                                            children: [
+                                                                                results.bcr.temp3,
+                                                                                " °C"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 2717,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 2712,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2699,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 2684,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 2595,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2594,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 2567,
+                                columnNumber: 17
+                            }, this),
+                            results.pdmTemperature && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #4f46e5, #4338ca)" : "linear-gradient(to right, #e0e7ff, #c7d2fe)",
+                                            color: isDarkMode ? "#c7d2fe" : "#4338ca"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2748,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2747,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "PDM Temperature"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2746,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2754,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2737,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "PDM 1 Temperature"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2770,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px',
+                                                                    textAlign: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '24px',
+                                                                            fontWeight: 'bold',
+                                                                            color: isDarkMode ? '#d1d5db' : '#111827'
+                                                                        },
+                                                                        children: [
+                                                                            results.pdmTemperature.pdm1,
+                                                                            " °C"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2784,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '13px',
+                                                                            color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                            marginTop: '4px'
+                                                                        },
+                                                                        children: "PCB Temperature"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2791,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2780,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2765,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "PDM 2 Temperature"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2807,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px',
+                                                                    textAlign: 'center'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '24px',
+                                                                            fontWeight: 'bold',
+                                                                            color: isDarkMode ? '#d1d5db' : '#111827'
+                                                                        },
+                                                                        children: [
+                                                                            results.pdmTemperature.pdm2,
+                                                                            " °C"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2821,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            fontSize: '13px',
+                                                                            color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                            marginTop: '4px'
+                                                                        },
+                                                                        children: "PCB Temperature"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 2828,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2817,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2802,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2758,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "PDM Temperature Status"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2845,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: parseFloat(results.pdmTemperature.pdm1) < 60 && parseFloat(results.pdmTemperature.pdm2) < 60 ? "PDM temperatures are within normal operating range (< 60°C)." : "One or more PDM temperatures exceeded nominal range. Check thermal conditions."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2854,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2839,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2757,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 2730,
+                                columnNumber: 17
+                            }, this),
+                            results.converters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #0f766e, #0d9488)" : "linear-gradient(to right, #ccfbf1, #99f6e4)",
+                                            color: isDarkMode ? "#99f6e4" : "#0f766e"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 2887,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2886,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "Converters"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2885,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2893,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2876,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '16px',
+                                                    fontWeight: 'bold',
+                                                    marginBottom: '12px',
+                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                },
+                                                children: "Converter 1 (PSM1)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2897,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '24px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "HDRM 12V Converter 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2917,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.hdrm12v1_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.hdrm12v1_voltage,
+                                                                    " V / ",
+                                                                    results.converters.hdrm12v1_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2920,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2913,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "5V Converter 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2932,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.v5_1_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.v5_1_voltage,
+                                                                    " V / ",
+                                                                    results.converters.v5_1_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2935,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2928,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "12V Converter 1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2947,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.v12_1_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.v12_1_voltage,
+                                                                    " V / ",
+                                                                    results.converters.v12_1_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2950,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2943,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "15V Converter"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2962,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.v15_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.v15_voltage,
+                                                                    " V / ",
+                                                                    results.converters.v15_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2965,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2958,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2906,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '16px',
+                                                    fontWeight: 'bold',
+                                                    marginBottom: '12px',
+                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                },
+                                                children: "Converter 2 (PSM2)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2973,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "HDRM 12V Converter 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2993,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.hdrm12v2_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.hdrm12v2_voltage,
+                                                                    " V / ",
+                                                                    results.converters.hdrm12v2_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 2996,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 2989,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "5V Converter 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3008,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.v5_2_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.v5_2_voltage,
+                                                                    " V / ",
+                                                                    results.converters.v5_2_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3011,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3004,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "12V Converter 2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3023,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].parameterValue} ${results.passFailStatus?.v12_2_voltage === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                children: [
+                                                                    results.converters.v12_2_voltage,
+                                                                    " V / ",
+                                                                    results.converters.v12_2_temp,
+                                                                    " °C"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3026,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3019,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 2982,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "Converter Status Summary"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3040,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: Object.entries(results.passFailStatus || {}).filter(([key])=>key.includes('voltage')).every(([, value])=>value === "[PASS]") ? "All converters operating within voltage specifications. Temperature readings normal." : "One or more converters outside voltage specifications. Check power supply and load conditions."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3049,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3034,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 2896,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 2869,
+                                columnNumber: 15
+                            }, this),
+                            results.loads && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #be123c, #e11d48)" : "linear-gradient(to right, #ffe4e6, #fecdd3)",
+                                            color: isDarkMode ? "#fecdd3" : "#be123c"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                d: "M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3084,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                d: "M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3085,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3083,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "Load Status"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3082,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3091,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 3073,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '24px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "OBC-1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3107,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3125,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.obc1_voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.obc1_voltage,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3126,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3120,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3139,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.obc1_current,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3140,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3135,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3117,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3102,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "OBC-2"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3153,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3171,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.obc2_voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.obc2_voltage,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3172,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3166,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3185,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.obc2_current,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3186,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3181,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3163,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3148,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "S-Band"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3199,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3217,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.sband_voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.sband_voltage,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3218,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3212,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3231,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.sband_current,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3232,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3227,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3209,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3194,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            borderRadius: '8px',
+                                                            border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                            overflow: 'hidden'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '10px',
+                                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    fontSize: '14px',
+                                                                    fontWeight: 'bold',
+                                                                    color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                },
+                                                                children: "UHF"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3245,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    padding: '12px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between',
+                                                                            marginBottom: '8px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Voltage:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3263,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold',
+                                                                                    color: results.passFailStatus?.uhf_voltage === "[PASS]" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.uhf_voltage,
+                                                                                    " V"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3264,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3258,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            display: 'flex',
+                                                                            justifyContent: 'space-between'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                                                                },
+                                                                                children: "Current:"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3277,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                style: {
+                                                                                    fontWeight: 'bold'
+                                                                                },
+                                                                                children: [
+                                                                                    results.loads.uhf_current,
+                                                                                    " mA"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3278,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3273,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3255,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3240,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3095,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "Load Status Summary"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3292,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                        },
+                                                        children: results.passFailStatus?.obc1_voltage === "[PASS]" && results.passFailStatus?.obc2_voltage === "[PASS]" && results.passFailStatus?.sband_voltage === "[PASS]" && results.passFailStatus?.uhf_voltage === "[PASS]" ? "All loads receiving correct voltage. Current consumption within expected ranges." : "One or more loads receiving incorrect voltage. Check power distribution system."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3301,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3286,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 3094,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 3066,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2303,33 +6184,33 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1500,
-                                                            columnNumber: 23
+                                                            lineNumber: 3336,
+                                                            columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1499,
-                                                        columnNumber: 21
+                                                        lineNumber: 3335,
+                                                        columnNumber: 19
                                                     }, this),
                                                     "Heater Status Summary"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1498,
-                                                columnNumber: 19
+                                                lineNumber: 3334,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1506,
-                                                columnNumber: 19
+                                                lineNumber: 3342,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1489,
-                                        columnNumber: 17
+                                        lineNumber: 3325,
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
@@ -2363,7 +6244,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1522,
+                                                                lineNumber: 3358,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2384,7 +6265,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1540,
+                                                                        lineNumber: 3376,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2399,25 +6280,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1547,
+                                                                        lineNumber: 3383,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1536,
+                                                                lineNumber: 3372,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, index, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1517,
-                                                        columnNumber: 23
+                                                        lineNumber: 3353,
+                                                        columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1510,
-                                                columnNumber: 19
+                                                lineNumber: 3346,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
@@ -2440,7 +6321,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Heater"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1573,
+                                                                    lineNumber: 3409,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2450,7 +6331,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Status"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1574,
+                                                                    lineNumber: 3410,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2460,7 +6341,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Temperature"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1575,
+                                                                    lineNumber: 3411,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2470,7 +6351,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1576,
+                                                                    lineNumber: 3412,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2480,18 +6361,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Power"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1577,
+                                                                    lineNumber: 3413,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1572,
+                                                            lineNumber: 3408,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1565,
+                                                        lineNumber: 3401,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2512,7 +6393,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1583,
+                                                                        lineNumber: 3419,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2524,12 +6405,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: heater.status === "1" ? "ON" : "OFF"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1585,
+                                                                            lineNumber: 3421,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1584,
+                                                                        lineNumber: 3420,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2542,7 +6423,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1591,
+                                                                        lineNumber: 3427,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2555,7 +6436,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1592,
+                                                                        lineNumber: 3428,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2568,37 +6449,37 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1593,
+                                                                        lineNumber: 3429,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, index, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1582,
+                                                                lineNumber: 3418,
                                                                 columnNumber: 25
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1580,
+                                                        lineNumber: 3416,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1559,
+                                                lineNumber: 3395,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1509,
-                                        columnNumber: 17
+                                        lineNumber: 3345,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1482,
-                                columnNumber: 15
+                                lineNumber: 3318,
+                                columnNumber: 13
                             }, this),
                             enableHeaterTest && results.heaterTests && results.heaterTests.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
@@ -2628,32 +6509,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1621,
+                                                            lineNumber: 3457,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1620,
+                                                        lineNumber: 3456,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Heater Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1619,
+                                                lineNumber: 3455,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1627,
+                                                lineNumber: 3463,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1610,
+                                        lineNumber: 3446,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2689,7 +6570,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1645,
+                                                                lineNumber: 3481,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2697,13 +6578,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: heaterTest.testResult
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1653,
+                                                                lineNumber: 3489,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1639,
+                                                        lineNumber: 3475,
                                                         columnNumber: 25
                                                     }, this),
                                                     renderTemperatureTrend(heaterTest, index),
@@ -2712,21 +6593,21 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 ]
                                             }, index, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1632,
+                                                lineNumber: 3468,
                                                 columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1630,
+                                        lineNumber: 3466,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1603,
+                                lineNumber: 3439,
                                 columnNumber: 17
                             }, this),
-                            enablePowerCycle && results.powerCycleTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            enableCurrentTest && results.currentTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
                                 style: {
                                     backgroundColor: isDarkMode ? "#1e1e1e" : "white",
@@ -2754,32 +6635,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1694,
+                                                            lineNumber: 3530,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1693,
+                                                        lineNumber: 3529,
                                                         columnNumber: 23
                                                     }, this),
-                                                    "Power Cycle Test Results"
+                                                    "Current Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1692,
+                                                lineNumber: 3528,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1700,
+                                                lineNumber: 3536,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1683,
+                                        lineNumber: 3519,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2789,7 +6670,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 style: {
                                                     marginBottom: '20px',
                                                     padding: '16px',
-                                                    backgroundColor: results.powerCycleTest.testResult === "PASS" ? isDarkMode ? 'rgba(5, 150, 105, 0.1)' : '#d1fae5' : isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                                                    backgroundColor: results.currentTest.testResult === "PASS" ? isDarkMode ? 'rgba(5, 150, 105, 0.1)' : '#d1fae5' : isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
                                                     borderRadius: '8px',
                                                     textAlign: 'center'
                                                 },
@@ -2798,13 +6679,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         style: {
                                                             fontSize: '20px',
                                                             fontWeight: 'bold',
-                                                            color: results.powerCycleTest.testResult === "PASS" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626',
+                                                            color: results.currentTest.testResult === "PASS" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626',
                                                             marginBottom: '8px'
                                                         },
-                                                        children: results.powerCycleTest.testResult
+                                                        children: results.currentTest.testResult
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1713,
+                                                        lineNumber: 3549,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2813,21 +6694,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             fontSize: '14px'
                                                         },
                                                         children: [
-                                                            "Power Cycle Test ",
-                                                            results.powerCycleTest.cyclesCompleted,
-                                                            " of ",
-                                                            results.powerCycleTest.totalCycles,
-                                                            " cycles completed"
+                                                            "Current measurements ",
+                                                            results.currentTest.testResult === "PASS" ? "within" : "outside",
+                                                            " expected range"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1723,
+                                                        lineNumber: 3559,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1704,
+                                                lineNumber: 3540,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2848,257 +6727,234 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     style: {
                                                                         borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                     },
-                                                                    children: "Parameter"
+                                                                    children: "Heater"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1745,
+                                                                    lineNumber: 3581,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                     style: {
                                                                         borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                     },
-                                                                    children: "Value"
+                                                                    children: "Expected (mA)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1746,
+                                                                    lineNumber: 3582,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "Measured (mA)"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 3583,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "Deviation (%)"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 3584,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "Result"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 3585,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1744,
+                                                            lineNumber: 3580,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1737,
+                                                        lineNumber: 3573,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableBody,
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: "Cycles Completed"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1751,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: [
-                                                                            results.powerCycleTest.cyclesCompleted,
-                                                                            " of ",
-                                                                            results.powerCycleTest.totalCycles
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1752,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1750,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                        children: results.currentTest.heaterResults && results.currentTest.heaterResults.map((result, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : undefined,
                                                                 style: {
-                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                                    backgroundColor: index % 2 === 1 ? isDarkMode ? "#111827" : "#f9fafb" : undefined
                                                                 },
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                         style: {
                                                                             borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                         },
-                                                                        children: "Cycle Time"
+                                                                        children: [
+                                                                            "Heater ",
+                                                                            index + 1
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3591,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: result.expectedCurrent
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1758,
-                                                                        columnNumber: 27
+                                                                        lineNumber: 3592,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: result.measuredCurrent
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3593,
+                                                                        columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                         style: {
                                                                             borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                         },
                                                                         children: [
-                                                                            results.powerCycleTest.cycleTime,
-                                                                            " s"
+                                                                            result.deviation.toFixed(2),
+                                                                            "%"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1759,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1757,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: "Power On Time"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1763,
-                                                                        columnNumber: 27
+                                                                        lineNumber: 3594,
+                                                                        columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                         style: {
                                                                             borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                         },
-                                                                        children: [
-                                                                            results.powerCycleTest.powerOnTime,
-                                                                            " s"
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1764,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1762,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
-                                                                style: {
-                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                                                                },
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: "Power Off Time"
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${result.inRange ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                            children: result.inRange ? "PASS" : "FAIL"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                            lineNumber: 3596,
+                                                                            columnNumber: 31
+                                                                        }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1768,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: [
-                                                                            results.powerCycleTest.powerOffTime,
-                                                                            " s"
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1769,
-                                                                        columnNumber: 27
+                                                                        lineNumber: 3595,
+                                                                        columnNumber: 29
                                                                     }, this)
                                                                 ]
-                                                            }, void 0, true, {
+                                                            }, index, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1767,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: "Total Test Time"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1773,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: [
-                                                                            results.powerCycleTest.totalTestTime,
-                                                                            " s"
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1774,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1772,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
-                                                                style: {
-                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                                                                },
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: "Failures"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1778,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: results.powerCycleTest.failures
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1779,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1777,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
+                                                                lineNumber: 3590,
+                                                                columnNumber: 27
+                                                            }, this))
+                                                    }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1749,
+                                                        lineNumber: 3588,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1731,
+                                                lineNumber: 3567,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    marginTop: '16px',
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.5)' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    fontSize: '14px',
+                                                    color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px'
+                                                        },
+                                                        children: "Test Summary:"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3615,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            "• Test Duration: ",
+                                                            results.currentTest.testDuration,
+                                                            " s"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3616,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            "• Samples Collected: ",
+                                                            results.currentTest.sampleCount
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3617,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            "• Maximum Deviation: ",
+                                                            results.currentTest.maxDeviation.toFixed(2),
+                                                            "%"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3618,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            "• Tolerance Range: ±",
+                                                            results.currentTest.tolerance,
+                                                            "%"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3619,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3607,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1703,
+                                        lineNumber: 3539,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1676,
+                                lineNumber: 3512,
                                 columnNumber: 17
                             }, this),
-                            enableCurrentTest && results.currentTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            enablePowerCycle && results.powerCycleTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
                                 style: {
                                     backgroundColor: isDarkMode ? "#1e1e1e" : "white",
@@ -3125,7 +6981,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1807,
+                                                                lineNumber: 3645,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -3134,33 +6990,33 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1808,
+                                                                lineNumber: 3646,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1806,
+                                                        lineNumber: 3644,
                                                         columnNumber: 23
                                                     }, this),
-                                                    "Current Measurement Test Results"
+                                                    "Power Cycle Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1805,
+                                                lineNumber: 3643,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1814,
+                                                lineNumber: 3652,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1796,
+                                        lineNumber: 3634,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3170,7 +7026,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 style: {
                                                     marginBottom: '20px',
                                                     padding: '16px',
-                                                    backgroundColor: results.currentTest.testResult === "PASS" ? isDarkMode ? 'rgba(5, 150, 105, 0.1)' : '#d1fae5' : isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                                                    backgroundColor: results.powerCycleTest.testResult === "PASS" ? isDarkMode ? 'rgba(5, 150, 105, 0.1)' : '#d1fae5' : isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
                                                     borderRadius: '8px',
                                                     textAlign: 'center'
                                                 },
@@ -3179,13 +7035,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         style: {
                                                             fontSize: '20px',
                                                             fontWeight: 'bold',
-                                                            color: results.currentTest.testResult === "PASS" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626',
+                                                            color: results.powerCycleTest.testResult === "PASS" ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626',
                                                             marginBottom: '8px'
                                                         },
-                                                        children: results.currentTest.testResult
+                                                        children: results.powerCycleTest.testResult
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1827,
+                                                        lineNumber: 3665,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3194,19 +7050,21 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             fontSize: '14px'
                                                         },
                                                         children: [
-                                                            "Current measurements ",
-                                                            results.currentTest.testResult === "PASS" ? "within" : "outside",
-                                                            " expected range"
+                                                            "Power Cycle Test ",
+                                                            results.powerCycleTest.cyclesCompleted,
+                                                            " of ",
+                                                            results.powerCycleTest.totalCycles,
+                                                            " cycles completed"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1837,
+                                                        lineNumber: 3675,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1818,
+                                                lineNumber: 3656,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -3227,234 +7085,627 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     style: {
                                                                         borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                     },
-                                                                    children: "Heater"
+                                                                    children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1859,
+                                                                    lineNumber: 3697,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                     style: {
                                                                         borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                     },
-                                                                    children: "Expected (mA)"
+                                                                    children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1860,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Measured (mA)"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1861,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Deviation (%)"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1862,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Result"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1863,
+                                                                    lineNumber: 3698,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1858,
+                                                            lineNumber: 3696,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1851,
+                                                        lineNumber: 3689,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableBody,
-                                                        children: results.currentTest.heaterResults && results.currentTest.heaterResults.map((result, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : undefined,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "Cycles Completed"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3703,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: [
+                                                                            results.powerCycleTest.cyclesCompleted,
+                                                                            " of ",
+                                                                            results.powerCycleTest.totalCycles
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3704,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3702,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
                                                                 style: {
-                                                                    backgroundColor: index % 2 === 1 ? isDarkMode ? "#111827" : "#f9fafb" : undefined
+                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
                                                                 },
                                                                 children: [
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                         style: {
                                                                             borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                         },
-                                                                        children: [
-                                                                            "Heater ",
-                                                                            index + 1
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1869,
-                                                                        columnNumber: 29
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: result.expectedCurrent
+                                                                        children: "Cycle Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1870,
-                                                                        columnNumber: 29
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: result.measuredCurrent
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1871,
-                                                                        columnNumber: 29
+                                                                        lineNumber: 3710,
+                                                                        columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                         style: {
                                                                             borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                                                                         },
                                                                         children: [
-                                                                            result.deviation.toFixed(2),
-                                                                            "%"
+                                                                            results.powerCycleTest.cycleTime,
+                                                                            " s"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1872,
-                                                                        columnNumber: 29
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${result.inRange ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                            children: result.inRange ? "PASS" : "FAIL"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1874,
-                                                                            columnNumber: 31
-                                                                        }, this)
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1873,
-                                                                        columnNumber: 29
+                                                                        lineNumber: 3711,
+                                                                        columnNumber: 27
                                                                     }, this)
                                                                 ]
-                                                            }, index, true, {
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1868,
-                                                                columnNumber: 27
-                                                            }, this))
-                                                    }, void 0, false, {
+                                                                lineNumber: 3709,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "Power On Time"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3715,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: [
+                                                                            results.powerCycleTest.powerOnTime,
+                                                                            " s"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3716,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3714,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                                style: {
+                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "Power Off Time"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3720,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: [
+                                                                            results.powerCycleTest.powerOffTime,
+                                                                            " s"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3721,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3719,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "Total Test Time"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3725,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: [
+                                                                            results.powerCycleTest.totalTestTime,
+                                                                            " s"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3726,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3724,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                                style: {
+                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: "Failures"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3730,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        },
+                                                                        children: results.powerCycleTest.failures
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3731,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3729,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1866,
+                                                        lineNumber: 3701,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1845,
-                                                columnNumber: 21
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                style: {
-                                                    marginTop: '16px',
-                                                    padding: '12px',
-                                                    backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.5)' : '#f9fafb',
-                                                    borderRadius: '6px',
-                                                    fontSize: '14px',
-                                                    color: isDarkMode ? '#d1d5db' : '#4b5563'
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        style: {
-                                                            fontWeight: 'bold',
-                                                            marginBottom: '8px'
-                                                        },
-                                                        children: "Test Summary:"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1893,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            "• Test Duration: ",
-                                                            results.currentTest.testDuration,
-                                                            " s"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1894,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            "• Samples Collected: ",
-                                                            results.currentTest.sampleCount
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1895,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            "• Maximum Deviation: ",
-                                                            results.currentTest.maxDeviation.toFixed(2),
-                                                            "%"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1896,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            "• Tolerance Range: ±",
-                                                            results.currentTest.tolerance,
-                                                            "%"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1897,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1885,
+                                                lineNumber: 3683,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1817,
+                                        lineNumber: 3655,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1789,
+                                lineNumber: 3627,
+                                columnNumber: 17
+                            }, this),
+                            results.passFailStatus && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #064e3b, #065f46)" : "linear-gradient(to right, #ecfdf5, #d1fae5)",
+                                            color: isDarkMode ? "#d1fae5" : "#065f46"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 3759,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3758,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    "Pass/Fail Status Summary"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3757,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation || detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3765,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 3748,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                                                    gap: '16px',
+                                                    marginBottom: '24px'
+                                                },
+                                                children: (()=>{
+                                                    const totalTests = Object.values(results.passFailStatus).length;
+                                                    const passedTests = Object.values(results.passFailStatus).filter((status)=>status === "[PASS]").length;
+                                                    const failedTests = totalTests - passedTests;
+                                                    const passRate = totalTests > 0 ? passedTests / totalTests * 100 : 0;
+                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    borderRadius: '8px',
+                                                                    border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    overflow: 'hidden'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '10px',
+                                                                            backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: 'bold',
+                                                                            color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                        },
+                                                                        children: "Test Results Summary"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3789,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '12px',
+                                                                            textAlign: 'center'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '24px',
+                                                                                    fontWeight: 'bold',
+                                                                                    color: passRate >= 90 ? isDarkMode ? '#34d399' : '#059669' : passRate >= 70 ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: [
+                                                                                    passRate.toFixed(1),
+                                                                                    "%"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3803,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '13px',
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                                    marginTop: '4px'
+                                                                                },
+                                                                                children: "Pass Rate"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3814,
+                                                                                columnNumber: 33
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3799,
+                                                                        columnNumber: 31
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3784,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    borderRadius: '8px',
+                                                                    border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    overflow: 'hidden'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '10px',
+                                                                            backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: 'bold',
+                                                                            color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                        },
+                                                                        children: "Passed Tests"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3829,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '12px',
+                                                                            textAlign: 'center'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '24px',
+                                                                                    fontWeight: 'bold',
+                                                                                    color: isDarkMode ? '#34d399' : '#059669'
+                                                                                },
+                                                                                children: passedTests
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3843,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '13px',
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                                    marginTop: '4px'
+                                                                                },
+                                                                                children: [
+                                                                                    "of ",
+                                                                                    totalTests,
+                                                                                    " tests"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3850,
+                                                                                columnNumber: 33
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3839,
+                                                                        columnNumber: 31
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3824,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    borderRadius: '8px',
+                                                                    border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    overflow: 'hidden'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '10px',
+                                                                            backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                            fontSize: '14px',
+                                                                            fontWeight: 'bold',
+                                                                            color: isDarkMode ? '#d1d5db' : '#374151'
+                                                                        },
+                                                                        children: "Failed Tests"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3865,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            padding: '12px',
+                                                                            textAlign: 'center'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '24px',
+                                                                                    fontWeight: 'bold',
+                                                                                    color: failedTests === 0 ? isDarkMode ? '#34d399' : '#059669' : isDarkMode ? '#f87171' : '#dc2626'
+                                                                                },
+                                                                                children: failedTests
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3879,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                style: {
+                                                                                    fontSize: '13px',
+                                                                                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                                    marginTop: '4px'
+                                                                                },
+                                                                                children: [
+                                                                                    "of ",
+                                                                                    totalTests,
+                                                                                    " tests"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 3888,
+                                                                                columnNumber: 33
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3875,
+                                                                        columnNumber: 31
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3860,
+                                                                columnNumber: 29
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true);
+                                                })()
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3769,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    padding: '12px',
+                                                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                    borderRadius: '6px',
+                                                    marginBottom: '16px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            marginBottom: '8px',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        },
+                                                        children: "Test Status Details"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3908,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: 'grid',
+                                                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                                                            gap: '16px'
+                                                        },
+                                                        children: Object.entries(results.passFailStatus).map(([key, value])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: 'flex',
+                                                                    justifyContent: 'space-between',
+                                                                    alignItems: 'center',
+                                                                    padding: '8px 12px',
+                                                                    backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.3)' : 'rgba(249, 250, 251, 0.5)',
+                                                                    borderRadius: '4px',
+                                                                    marginBottom: '8px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            color: isDarkMode ? '#d1d5db' : '#4b5563'
+                                                                        },
+                                                                        children: key.split('_').join(' ').replace(/([A-Z])/g, ' $1').trim()
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3932,
+                                                                        columnNumber: 5
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].statusBadge} ${value === "[PASS]" ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: value === "[PASS]" ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 3937,
+                                                                        columnNumber: 5
+                                                                    }, this)
+                                                                ]
+                                                            }, key, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 3923,
+                                                                columnNumber: 3
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 3917,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 3902,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 3768,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                lineNumber: 3741,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex justify-end mt-6",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: generateReport,
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].reportButton,
@@ -3474,30 +7725,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1914,
+                                                lineNumber: 3961,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 1913,
+                                            lineNumber: 3960,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 1905,
+                                    lineNumber: 3952,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1904,
+                                lineNumber: 3951,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1275,
+                        lineNumber: 1441,
                         columnNumber: 13
                     }, this)
                 ]
@@ -3532,397 +7783,1960 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1937,
+                                        lineNumber: 3990,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 1936,
+                                    lineNumber: 3989,
                                     columnNumber: 15
                                 }, this),
                                 "HEPS Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 1935,
+                            lineNumber: 3988,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1928,
+                        lineNumber: 3978,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
-                        children: [
-                            historyLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    textAlign: 'center',
-                                    padding: '20px',
-                                    color: isDarkMode ? '#d1d5db' : '#6b7280'
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].spinnerIcon,
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        strokeWidth: "2",
-                                        strokeLinecap: "round",
-                                        strokeLinejoin: "round",
-                                        style: {
-                                            margin: '0 auto 8px'
-                                        },
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M21 12a9 9 0 11-6.219-8.56"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 1951,
-                                            columnNumber: 19
-                                        }, this)
+                        children: historyLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                textAlign: 'center',
+                                padding: '20px',
+                                color: isDarkMode ? '#d1d5db' : '#6b7280'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].spinnerIcon,
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    strokeWidth: "2",
+                                    strokeLinecap: "round",
+                                    strokeLinejoin: "round",
+                                    style: {
+                                        margin: '0 auto 8px'
+                                    },
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1950,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        children: "Loading test history..."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1953,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1945,
-                                columnNumber: 15
-                            }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    textAlign: 'center',
-                                    padding: '20px',
-                                    color: isDarkMode ? '#d1d5db' : '#6b7280',
-                                    fontStyle: 'italic'
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        children: "No test history available for this profile."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1962,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        style: {
-                                            marginTop: '8px',
-                                            fontSize: '14px'
-                                        },
-                                        children: "Run a test to start building your history."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1963,
-                                        columnNumber: 17
-                                    }, this),
-                                    !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            marginTop: '16px',
-                                            padding: '12px',
-                                            backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
-                                            borderRadius: '6px',
-                                            color: isDarkMode ? '#f87171' : '#b91c1c',
-                                            fontSize: '14px'
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                                children: "Note:"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1976,
-                                                columnNumber: 21
-                                            }, this),
-                                            " No profile ID detected. Test history requires a valid profile selection."
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1968,
+                                        lineNumber: 4004,
                                         columnNumber: 19
                                     }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1956,
-                                columnNumber: 15
-                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    borderRadius: '8px',
-                                    overflow: 'hidden',
-                                    border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                },
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4003,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: "Loading test history..."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4006,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                            lineNumber: 3998,
+                            columnNumber: 15
+                        }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                textAlign: 'center',
+                                padding: '20px',
+                                color: isDarkMode ? '#d1d5db' : '#6b7280',
+                                fontStyle: 'italic'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: "No test history available for this profile."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4015,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     style: {
-                                        width: '100%',
-                                        borderCollapse: 'collapse',
+                                        marginTop: '8px',
+                                        fontSize: '14px'
+                                    },
+                                    children: "Run a test to start building your history."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4016,
+                                    columnNumber: 17
+                                }, this),
+                                !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '16px',
+                                        padding: '12px',
+                                        backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                                        borderRadius: '6px',
+                                        color: isDarkMode ? '#f87171' : '#b91c1c',
                                         fontSize: '14px'
                                     },
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Note:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4029,
+                                            columnNumber: 21
+                                        }, this),
+                                        " No profile ID detected. Test history requires a valid profile selection."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4021,
+                                    columnNumber: 19
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                            lineNumber: 4009,
+                            columnNumber: 15
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '16px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                             style: {
-                                                backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
-                                                color: isDarkMode ? '#d1d5db' : '#6b7280',
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                color: isDarkMode ? '#d1d5db' : '#4b5563',
                                                 fontWeight: 500
                                             },
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                            children: "Select Metric:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4037,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                            value: selectedMetric,
+                                            onChange: (e)=>setSelectedMetric(e.target.value),
+                                            style: {
+                                                width: '100%',
+                                                padding: '8px 12px',
+                                                borderRadius: '6px',
+                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                color: isDarkMode ? '#e5e7eb' : '#111827',
+                                                fontSize: '14px'
+                                            },
+                                            children: metricOptions.map((option)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                    value: option.value,
+                                                    children: option.label
+                                                }, option.value, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4059,
+                                                    columnNumber: 23
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4045,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4036,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        height: '300px',
+                                        marginBottom: '20px',
+                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                        padding: '16px',
+                                        borderRadius: '8px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '14px',
+                                                fontWeight: 600,
+                                                marginBottom: '12px',
+                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                            },
+                                            children: [
+                                                metricOptions.find((m)=>m.value === selectedMetric)?.label,
+                                                " Trend"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4074,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
+                                            width: "100%",
+                                            height: 240,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$LineChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LineChart"], {
+                                                data: prepareChartData(),
+                                                margin: {
+                                                    top: 5,
+                                                    right: 30,
+                                                    left: 20,
+                                                    bottom: 5
+                                                },
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            padding: '12px 16px',
-                                                            textAlign: 'left',
-                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                        },
-                                                        children: "Date/Time"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CartesianGrid"], {
+                                                        strokeDasharray: "3 3",
+                                                        stroke: isDarkMode ? "#374151" : "#e5e7eb"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1997,
+                                                        lineNumber: 4088,
                                                         columnNumber: 23
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            padding: '12px 16px',
-                                                            textAlign: 'left',
-                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                        },
-                                                        children: "Test Options"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XAxis"], {
+                                                        dataKey: "date",
+                                                        stroke: isDarkMode ? "#9ca3af" : "#6b7280",
+                                                        tick: {
+                                                            fill: isDarkMode ? "#9ca3af" : "#6b7280"
+                                                        }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2004,
+                                                        lineNumber: 4089,
                                                         columnNumber: 23
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            padding: '12px 16px',
-                                                            textAlign: 'left',
-                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                        },
-                                                        children: "Status"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
+                                                        stroke: isDarkMode ? "#9ca3af" : "#6b7280",
+                                                        tick: {
+                                                            fill: isDarkMode ? "#9ca3af" : "#6b7280"
+                                                        }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2011,
+                                                        lineNumber: 4094,
                                                         columnNumber: 23
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            padding: '12px 16px',
-                                                            textAlign: 'left',
-                                                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                                        labelFormatter: (label, items)=>{
+                                                            const item = items[0]?.payload;
+                                                            return item?.tooltipLabel || label;
                                                         },
-                                                        children: "Type"
+                                                        contentStyle: {
+                                                            backgroundColor: isDarkMode ? '#1f2937' : '#ffffff',
+                                                            borderColor: isDarkMode ? '#374151' : '#e5e7eb',
+                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                        }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2018,
+                                                        lineNumber: 4098,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4109,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Line"], {
+                                                        type: "monotone",
+                                                        dataKey: selectedMetric.split('.').pop() || 'value',
+                                                        name: metricOptions.find((m)=>m.value === selectedMetric)?.label || selectedMetric,
+                                                        stroke: "#3b82f6",
+                                                        strokeWidth: 2,
+                                                        dot: {
+                                                            r: 4,
+                                                            stroke: '#3b82f6',
+                                                            fill: 'white'
+                                                        },
+                                                        activeDot: {
+                                                            r: 6,
+                                                            stroke: '#3b82f6',
+                                                            strokeWidth: 2,
+                                                            fill: 'white'
+                                                        }
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4110,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1996,
+                                                lineNumber: 4084,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 1991,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                            children: testHistory.slice().reverse().map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    style: {
-                                                        backgroundColor: index % 2 === 0 ? isDarkMode ? '#111827' : '#ffffff' : isDarkMode ? '#1f2937' : '#f9fafb'
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
-                                                            },
-                                                            children: new Date(item.test_date).toLocaleString()
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2034,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
-                                                            },
-                                                            children: item.results.testedOptions ? item.results.testedOptions.join(', ') : item.test_type
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2041,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                style: {
-                                                                    display: 'inline-block',
-                                                                    padding: '4px 8px',
-                                                                    borderRadius: '9999px',
-                                                                    fontSize: '12px',
-                                                                    fontWeight: 500,
-                                                                    backgroundColor: item.status === 'completed' ? isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5' : isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2',
-                                                                    color: item.status === 'completed' ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
-                                                                },
-                                                                children: item.status === 'completed' ? 'SUCCESS' : 'FAILED'
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2052,
-                                                                columnNumber: 27
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2048,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                style: {
-                                                                    display: 'inline-block',
-                                                                    padding: '4px 8px',
-                                                                    borderRadius: '9999px',
-                                                                    fontSize: '12px',
-                                                                    fontWeight: 500,
-                                                                    backgroundColor: item.is_simulated || item.results.simulated ? isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb' : isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5',
-                                                                    color: item.is_simulated || item.results.simulated ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#34d399' : '#047857'
-                                                                },
-                                                                children: item.is_simulated || item.results.simulated ? 'SIMULATION' : 'REAL DATA'
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2072,
-                                                                columnNumber: 27
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2068,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    ]
-                                                }, item.id, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 2029,
-                                                    columnNumber: 23
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 2027,
+                                            lineNumber: 4083,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 1986,
+                                    lineNumber: 4067,
                                     columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1981,
-                                columnNumber: 15
-                            }, this),
-                            testHistory.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    marginTop: '20px'
-                                },
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>{
-                                        // Export the test history
-                                        const historyData = JSON.stringify(testHistory, null, 2);
-                                        const blob = new Blob([
-                                            historyData
-                                        ], {
-                                            type: 'application/json'
-                                        });
-                                        const url = URL.createObjectURL(blob);
-                                        const a = document.createElement('a');
-                                        a.href = url;
-                                        a.download = `heps_test_history_${profileId || 'unknown'}.json`;
-                                        document.body.appendChild(a);
-                                        a.click();
-                                        document.body.removeChild(a);
-                                        URL.revokeObjectURL(url);
-                                    },
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     style: {
-                                        backgroundColor: '#10b981',
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '6px',
-                                        padding: '8px 16px',
-                                        fontSize: '14px',
-                                        fontWeight: 500,
-                                        cursor: 'pointer',
+                                        marginTop: '20px',
+                                        marginBottom: '12px',
                                         display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '8px'
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
                                     },
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            width: "16",
-                                            height: "16",
-                                            viewBox: "0 0 20 20",
-                                            fill: "currentColor",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                fillRule: "evenodd",
-                                                d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
-                                                clipRule: "evenodd"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 600,
+                                                    color: isDarkMode ? '#e5e7eb' : '#111827',
+                                                    marginBottom: '6px'
+                                                },
+                                                children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2127,
+                                                lineNumber: 4132,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 2126,
+                                            lineNumber: 4131,
                                             columnNumber: 19
                                         }, this),
-                                        "Export Test History"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '12px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: toggleMultiSelectMode,
+                                                    style: {
+                                                        backgroundColor: isMultiSelectMode ? isDarkMode ? '#4f46e5' : '#6366f1' : isDarkMode ? '#1f2937' : '#f3f4f6',
+                                                        color: isMultiSelectMode ? 'white' : isDarkMode ? '#e5e7eb' : '#374151',
+                                                        border: 'none',
+                                                        borderRadius: '6px',
+                                                        padding: '6px 12px',
+                                                        fontSize: '13px',
+                                                        fontWeight: 500,
+                                                        cursor: 'pointer',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        transition: 'all 0.2s ease'
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                            xmlns: "http://www.w3.org/2000/svg",
+                                                            width: "14",
+                                                            height: "14",
+                                                            viewBox: "0 0 20 20",
+                                                            fill: "currentColor",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                    d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4166,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                    fillRule: "evenodd",
+                                                                    d: "M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z",
+                                                                    clipRule: "evenodd"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4167,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4165,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4144,
+                                                    columnNumber: 21
+                                                }, this),
+                                                isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: selectAllItems,
+                                                            style: {
+                                                                backgroundColor: 'transparent',
+                                                                color: isDarkMode ? '#93c5fd' : '#2563eb',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 8px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: 'pointer'
+                                                            },
+                                                            children: "Select All"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4175,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: deselectAllItems,
+                                                            style: {
+                                                                backgroundColor: 'transparent',
+                                                                color: isDarkMode ? '#93c5fd' : '#2563eb',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 8px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: 'pointer'
+                                                            },
+                                                            children: "Deselect All"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4191,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: deleteSelectedItems,
+                                                            disabled: selectedItems.length === 0,
+                                                            style: {
+                                                                backgroundColor: selectedItems.length === 0 ? isDarkMode ? '#6b7280' : '#9ca3af' : isDarkMode ? '#dc2626' : '#ef4444',
+                                                                color: 'white',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 12px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                gap: '6px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                                    width: "14",
+                                                                    height: "14",
+                                                                    viewBox: "0 0 20 20",
+                                                                    fill: "currentColor",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                        fillRule: "evenodd",
+                                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                                        clipRule: "evenodd"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 4227,
+                                                                        columnNumber: 29
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4226,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                "Delete Selected (",
+                                                                selectedItems.length,
+                                                                ")"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4207,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4142,
+                                            columnNumber: 19
+                                        }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 2098,
+                                    lineNumber: 4124,
                                     columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '20px',
+                                        padding: '12px',
+                                        borderRadius: '8px',
+                                        backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+                                        border: '1px solid',
+                                        borderColor: isDarkMode ? '#475569' : '#bfdbfe'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                marginBottom: '8px',
+                                                color: isDarkMode ? '#e5e7eb' : '#1e40af',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    width: "16",
+                                                    height: "16",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: "2",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4240,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4239,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Test History Information"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4238,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                fontSize: '14px',
+                                                color: isDarkMode ? '#cbd5e1' : '#334155'
+                                            },
+                                            children: [
+                                                "This chart shows only ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                    children: "real test data"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4245,
+                                                    columnNumber: 43
+                                                }, this),
+                                                " from actual hardware tests. Simulated test results are not included in this history or visualization."
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4244,
+                                            columnNumber: 19
+                                        }, this),
+                                        testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                marginTop: '10px',
+                                                fontSize: '14px',
+                                                color: isDarkMode ? '#fb923c' : '#c2410c',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    width: "16",
+                                                    height: "16",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: "2",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                            cx: "12",
+                                                            cy: "12",
+                                                            r: "10"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4251,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                                                            x1: "12",
+                                                            y1: "8",
+                                                            x2: "12",
+                                                            y2: "12"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4252,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                                                            x1: "12",
+                                                            y1: "16",
+                                                            x2: "12.01",
+                                                            y2: "16"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4253,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4250,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4249,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4237,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '12px',
+                                        borderRadius: '8px',
+                                        overflow: 'hidden',
+                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                    },
+                                    children: testHistory.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                        style: {
+                                            width: '100%',
+                                            borderCollapse: 'collapse',
+                                            fontSize: '14px'
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                style: {
+                                                    backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
+                                                    color: isDarkMode ? '#d1d5db' : '#6b7280',
+                                                    fontWeight: 500
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                    children: [
+                                                        isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 12px',
+                                                                textAlign: 'center',
+                                                                width: '40px',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "checkbox",
+                                                                checked: selectedItems.length === testHistory.length,
+                                                                onChange: (e)=>{
+                                                                    if (e.target.checked) {
+                                                                        selectAllItems();
+                                                                    } else {
+                                                                        deselectAllItems();
+                                                                    }
+                                                                },
+                                                                style: {
+                                                                    cursor: 'pointer',
+                                                                    width: '16px',
+                                                                    height: '16px'
+                                                                }
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4287,
+                                                                columnNumber: 31
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4281,
+                                                            columnNumber: 29
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 16px',
+                                                                textAlign: 'left',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: "Date/Time"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4301,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 16px',
+                                                                textAlign: 'left',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: "Test Options"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4308,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 16px',
+                                                                textAlign: 'left',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: "Status"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4315,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 16px',
+                                                                textAlign: 'left',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: "Type"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4323,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                            style: {
+                                                                padding: '12px 16px',
+                                                                textAlign: 'left',
+                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                            },
+                                                            children: "Actions"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4330,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4278,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4273,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                children: testHistory.slice().reverse().map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        style: {
+                                                            backgroundColor: isMultiSelectMode && selectedItems.includes(item.id) ? isDarkMode ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)' : index % 2 === 0 ? isDarkMode ? '#111827' : '#ffffff' : isDarkMode ? '#1f2937' : '#f9fafb',
+                                                            transition: 'background-color 0.2s ease'
+                                                        },
+                                                        children: [
+                                                            isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 12px',
+                                                                    textAlign: 'center',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                    type: "checkbox",
+                                                                    checked: selectedItems.includes(item.id),
+                                                                    onChange: ()=>toggleItemSelection(item.id),
+                                                                    style: {
+                                                                        cursor: 'pointer',
+                                                                        width: '16px',
+                                                                        height: '16px'
+                                                                    }
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4356,
+                                                                    columnNumber: 33
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4351,
+                                                                columnNumber: 31
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 16px',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                                },
+                                                                children: new Date(item.test_date).toLocaleString()
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4364,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 16px',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                                },
+                                                                children: item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4371,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 16px',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    style: {
+                                                                        display: 'inline-block',
+                                                                        padding: '4px 8px',
+                                                                        borderRadius: '9999px',
+                                                                        fontSize: '12px',
+                                                                        fontWeight: 500,
+                                                                        backgroundColor: item.status === 'completed' ? isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5' : isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2',
+                                                                        color: item.status === 'completed' ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
+                                                                    },
+                                                                    children: item.status === 'completed' ? 'SUCCESS' : 'FAILED'
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4382,
+                                                                    columnNumber: 31
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4378,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 16px',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    style: {
+                                                                        display: 'inline-block',
+                                                                        padding: '4px 8px',
+                                                                        borderRadius: '9999px',
+                                                                        fontSize: '12px',
+                                                                        fontWeight: 500,
+                                                                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                                                                        color: isDarkMode ? '#34d399' : '#047857'
+                                                                    },
+                                                                    children: "REAL DATA"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                    lineNumber: 4403,
+                                                                    columnNumber: 31
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4399,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                style: {
+                                                                    padding: '12px 16px',
+                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                                    display: 'flex',
+                                                                    gap: '8px'
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        onClick: ()=>setSelectedHistoryItem(item),
+                                                                        style: {
+                                                                            backgroundColor: isDarkMode ? '#2563eb' : '#3b82f6',
+                                                                            color: 'white',
+                                                                            border: 'none',
+                                                                            borderRadius: '4px',
+                                                                            padding: '4px 8px',
+                                                                            fontSize: '12px',
+                                                                            cursor: 'pointer',
+                                                                            fontWeight: 500,
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            gap: '4px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                                xmlns: "http://www.w3.org/2000/svg",
+                                                                                width: "12",
+                                                                                height: "12",
+                                                                                viewBox: "0 0 20 20",
+                                                                                fill: "currentColor",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                                        d: "M10 12a2 2 0 100-4 2 2 0 000 4z"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                        lineNumber: 4438,
+                                                                                        columnNumber: 35
+                                                                                    }, this),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                                        fillRule: "evenodd",
+                                                                                        d: "M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z",
+                                                                                        clipRule: "evenodd"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                        lineNumber: 4439,
+                                                                                        columnNumber: 35
+                                                                                    }, this)
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 4437,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            "View"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 4421,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    !isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        onClick: ()=>deleteTestHistoryItem(item.id),
+                                                                        style: {
+                                                                            backgroundColor: isDarkMode ? '#dc2626' : '#ef4444',
+                                                                            color: 'white',
+                                                                            border: 'none',
+                                                                            borderRadius: '4px',
+                                                                            padding: '4px 8px',
+                                                                            fontSize: '12px',
+                                                                            cursor: 'pointer',
+                                                                            fontWeight: 500,
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            gap: '4px'
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                                xmlns: "http://www.w3.org/2000/svg",
+                                                                                width: "12",
+                                                                                height: "12",
+                                                                                viewBox: "0 0 20 20",
+                                                                                fill: "currentColor",
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                                    fillRule: "evenodd",
+                                                                                    d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                                                    clipRule: "evenodd"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                    lineNumber: 4463,
+                                                                                    columnNumber: 37
+                                                                                }, this)
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                                lineNumber: 4462,
+                                                                                columnNumber: 35
+                                                                            }, this),
+                                                                            "Delete"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                        lineNumber: 4446,
+                                                                        columnNumber: 33
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                                lineNumber: 4415,
+                                                                columnNumber: 29
+                                                            }, this)
+                                                        ]
+                                                    }, item.id, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4341,
+                                                        columnNumber: 27
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4339,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 4268,
+                                        columnNumber: 21
+                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            padding: '20px',
+                                            textAlign: 'center',
+                                            color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                children: "No real test data available. Run tests with real hardware connections to collect data."
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4479,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                style: {
+                                                    marginTop: '10px',
+                                                    fontSize: '14px'
+                                                },
+                                                children: "Test data from simulation mode is not stored in the history database."
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4480,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 4474,
+                                        columnNumber: 21
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4261,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '20px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '14px',
+                                                fontWeight: 600,
+                                                marginBottom: '12px',
+                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                            },
+                                            children: "Key Metrics Summary"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4489,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                                                gap: '12px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                        borderRadius: '8px',
+                                                        padding: '12px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '12px',
+                                                                color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                marginBottom: '4px'
+                                                            },
+                                                            children: "Average System Voltage"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4510,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '18px',
+                                                                fontWeight: 600,
+                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                            },
+                                                            children: (()=>{
+                                                                // Calculate average system voltage from history
+                                                                const voltages = testHistory.map((item)=>extractValue(item.results, 'system.voltage')).filter((v)=>v !== null);
+                                                                if (voltages.length === 0) return 'N/A';
+                                                                const avg = voltages.reduce((sum, v)=>sum + v, 0) / voltages.length;
+                                                                return `${avg.toFixed(2)} V`;
+                                                            })()
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4517,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4504,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                        borderRadius: '8px',
+                                                        padding: '12px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '12px',
+                                                                color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                marginBottom: '4px'
+                                                            },
+                                                            children: "Average Battery Voltage"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4543,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '18px',
+                                                                fontWeight: 600,
+                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                            },
+                                                            children: (()=>{
+                                                                // Calculate average battery voltage from history
+                                                                const batteryVoltages = testHistory.map((item)=>{
+                                                                    const v1 = extractValue(item.results, 'battery.voltage1');
+                                                                    const v2 = extractValue(item.results, 'battery.voltage2');
+                                                                    const v3 = extractValue(item.results, 'battery.voltage3');
+                                                                    // Return average of available battery voltages
+                                                                    const values = [
+                                                                        v1,
+                                                                        v2,
+                                                                        v3
+                                                                    ].filter((v)=>v !== null);
+                                                                    if (values.length === 0) return null;
+                                                                    return values.reduce((sum, v)=>sum + v, 0) / values.length;
+                                                                }).filter((v)=>v !== null);
+                                                                if (batteryVoltages.length === 0) return 'N/A';
+                                                                const avg = batteryVoltages.reduce((sum, v)=>sum + v, 0) / batteryVoltages.length;
+                                                                return `${avg.toFixed(2)} V`;
+                                                            })()
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4550,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4537,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                        borderRadius: '8px',
+                                                        padding: '12px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '12px',
+                                                                color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                marginBottom: '4px'
+                                                            },
+                                                            children: "Overall Pass Rate"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4584,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '18px',
+                                                                fontWeight: 600,
+                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                            },
+                                                            children: (()=>{
+                                                                if (testHistory.length === 0) return 'N/A';
+                                                                const passedTests = testHistory.filter((item)=>item.status === 'completed').length;
+                                                                const passRate = passedTests / testHistory.length * 100;
+                                                                return `${passRate.toFixed(1)}%`;
+                                                            })()
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4591,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4578,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                        borderRadius: '8px',
+                                                        padding: '12px',
+                                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '12px',
+                                                                color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                                marginBottom: '4px'
+                                                            },
+                                                            children: "Average System Power"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4614,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                fontSize: '18px',
+                                                                fontWeight: 600,
+                                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                                            },
+                                                            children: (()=>{
+                                                                // Calculate average power from history
+                                                                const powers = testHistory.map((item)=>extractValue(item.results, 'system.power')).filter((v)=>v !== null);
+                                                                if (powers.length === 0) return 'N/A';
+                                                                const avg = powers.reduce((sum, v)=>sum + v, 0) / powers.length;
+                                                                return `${avg.toFixed(2)} W`;
+                                                            })()
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                            lineNumber: 4621,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4608,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4498,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4488,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '20px',
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        gap: '10px',
+                                        flexWrap: 'wrap'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: clearAllTestHistory,
+                                            style: {
+                                                backgroundColor: '#dc2626',
+                                                /* Deeper red for more dangerous action */ color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4662,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4661,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Clear All History"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4645,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>cleanupSimulatedData(),
+                                            style: {
+                                                backgroundColor: '#ef4444',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4685,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4684,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Clean Up Simulated Data"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4668,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>limitTestHistory(30),
+                                            style: {
+                                                backgroundColor: '#3b82f6',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4708,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4707,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Limit History (30 Records)"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4691,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>{
+                                                // Implement history export functionality
+                                                const historyData = JSON.stringify(testHistory, null, 2);
+                                                const blob = new Blob([
+                                                    historyData
+                                                ], {
+                                                    type: 'application/json'
+                                                });
+                                                const url = URL.createObjectURL(blob);
+                                                const a = document.createElement('a');
+                                                a.href = url;
+                                                a.download = `heps_test_history_${profileId || 'unknown'}.json`;
+                                                document.body.appendChild(a);
+                                                a.click();
+                                                document.body.removeChild(a);
+                                                URL.revokeObjectURL(url);
+                                            },
+                                            style: {
+                                                backgroundColor: '#10b981',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                        lineNumber: 4742,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4741,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Export Test History"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4713,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4643,
+                                    columnNumber: 17
+                                }, this),
+                                (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '12px',
+                                        padding: '12px',
+                                        borderRadius: '6px',
+                                        backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
+                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                        fontSize: '14px'
+                                    },
+                                    children: [
+                                        cleanupMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                color: cleanupMessage.includes('✅') ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c',
+                                                marginBottom: limitMessage ? '8px' : '0'
+                                            },
+                                            children: cleanupMessage
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4759,
+                                            columnNumber: 23
+                                        }, this),
+                                        limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                color: limitMessage.includes('✅') ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
+                                            },
+                                            children: limitMessage
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4770,
+                                            columnNumber: 23
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4750,
+                                    columnNumber: 19
                                 }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2097,
-                                columnNumber: 15
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1943,
+                        lineNumber: 3996,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 1924,
+                lineNumber: 3971,
+                columnNumber: 9
+            }, this),
+            selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        backgroundColor: isDarkMode ? '#1e1e1e' : 'white',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        width: '90%',
+                        maxWidth: '800px',
+                        maxHeight: '90vh',
+                        overflow: 'auto',
+                        position: 'relative'
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                padding: '16px',
+                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    style: {
+                                        fontSize: '18px',
+                                        fontWeight: 600,
+                                        color: isDarkMode ? '#f3f4f6' : '#111827',
+                                        margin: 0
+                                    },
+                                    children: [
+                                        "Test Details - ",
+                                        new Date(selectedHistoryItem.test_date).toLocaleString()
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4817,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>setSelectedHistoryItem(null),
+                                    style: {
+                                        backgroundColor: 'transparent',
+                                        border: 'none',
+                                        fontSize: '24px',
+                                        cursor: 'pointer',
+                                        color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                    },
+                                    children: "×"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4825,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                            lineNumber: 4810,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                padding: '16px'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(2, 1fr)',
+                                        gap: '16px',
+                                        marginBottom: '16px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        fontWeight: 500,
+                                                        color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                        marginBottom: '4px'
+                                                    },
+                                                    children: "Component"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4847,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        color: isDarkMode ? '#f3f4f6' : '#111827'
+                                                    },
+                                                    children: selectedHistoryItem.component_id
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4855,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4846,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        fontWeight: 500,
+                                                        color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                        marginBottom: '4px'
+                                                    },
+                                                    children: "Test Type"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4864,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        color: isDarkMode ? '#f3f4f6' : '#111827'
+                                                    },
+                                                    children: selectedHistoryItem.test_type || 'Standard Test'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4872,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4863,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        fontWeight: 500,
+                                                        color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                        marginBottom: '4px'
+                                                    },
+                                                    children: "Status"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4881,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        display: 'inline-block',
+                                                        padding: '4px 8px',
+                                                        borderRadius: '4px',
+                                                        fontSize: '14px',
+                                                        backgroundColor: selectedHistoryItem.status === 'completed' ? isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5' : isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2',
+                                                        color: selectedHistoryItem.status === 'completed' ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
+                                                    },
+                                                    children: selectedHistoryItem.status === 'completed' ? 'SUCCESS' : 'FAILED'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4889,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4880,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        fontWeight: 500,
+                                                        color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                        marginBottom: '4px'
+                                                    },
+                                                    children: "Test Date"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4906,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        color: isDarkMode ? '#f3f4f6' : '#111827'
+                                                    },
+                                                    children: new Date(selectedHistoryItem.test_date).toLocaleString()
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4914,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4905,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4840,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '16px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                color: isDarkMode ? '#f3f4f6' : '#111827',
+                                                marginBottom: '8px'
+                                            },
+                                            children: "Options Tested"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4925,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: '8px',
+                                                marginBottom: '16px'
+                                            },
+                                            children: selectedHistoryItem.results.testedOptions ? selectedHistoryItem.results.testedOptions.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        display: 'inline-block',
+                                                        padding: '4px 8px',
+                                                        backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
+                                                        borderRadius: '4px',
+                                                        fontSize: '12px',
+                                                        color: isDarkMode ? '#93c5fd' : '#3b82f6'
+                                                    },
+                                                    children: option
+                                                }, index, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 4942,
+                                                    columnNumber: 23
+                                                }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                    fontStyle: 'italic'
+                                                },
+                                                children: "No specific options recorded"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4954,
+                                                columnNumber: 21
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4934,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4924,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '24px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                color: isDarkMode ? '#f3f4f6' : '#111827',
+                                                marginBottom: '12px'
+                                            },
+                                            children: "Test Results"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4965,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                borderRadius: '6px',
+                                                padding: '16px',
+                                                overflow: 'auto',
+                                                maxHeight: '400px',
+                                                fontFamily: 'monospace',
+                                                fontSize: '14px',
+                                                color: isDarkMode ? '#f3f4f6' : '#111827',
+                                                whiteSpace: 'pre-wrap'
+                                            },
+                                            children: JSON.stringify(selectedHistoryItem.results, null, 2)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4974,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4964,
+                                    columnNumber: 15
+                                }, this),
+                                selectedHistoryItem.notes && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '24px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                color: isDarkMode ? '#f3f4f6' : '#111827',
+                                                marginBottom: '12px'
+                                            },
+                                            children: "Notes"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4991,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                padding: '12px',
+                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                borderRadius: '6px',
+                                                color: isDarkMode ? '#f3f4f6' : '#111827'
+                                            },
+                                            children: selectedHistoryItem.notes
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                            lineNumber: 4999,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 4990,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '24px',
+                                        display: 'flex',
+                                        justifyContent: 'flex-end'
+                                    },
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>{
+                                            // Export the test details
+                                            const detailsJson = JSON.stringify(selectedHistoryItem, null, 2);
+                                            const blob = new Blob([
+                                                detailsJson
+                                            ], {
+                                                type: 'application/json'
+                                            });
+                                            const url = URL.createObjectURL(blob);
+                                            const a = document.createElement('a');
+                                            a.href = url;
+                                            a.download = `test_details_${selectedHistoryItem.id}.json`;
+                                            document.body.appendChild(a);
+                                            a.click();
+                                            document.body.removeChild(a);
+                                            URL.revokeObjectURL(url);
+                                        },
+                                        style: {
+                                            backgroundColor: '#3b82f6',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '6px',
+                                            padding: '8px 16px',
+                                            fontSize: '14px',
+                                            fontWeight: 500,
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                xmlns: "http://www.w3.org/2000/svg",
+                                                width: "16",
+                                                height: "16",
+                                                viewBox: "0 0 20 20",
+                                                fill: "currentColor",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                    fillRule: "evenodd",
+                                                    d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+                                                    clipRule: "evenodd"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                    lineNumber: 5045,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 5044,
+                                                columnNumber: 19
+                                            }, this),
+                                            "Export Details"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                        lineNumber: 5015,
+                                        columnNumber: 17
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                    lineNumber: 5010,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                            lineNumber: 4839,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                    lineNumber: 4800,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                lineNumber: 4788,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-        lineNumber: 1049,
+        lineNumber: 1199,
         columnNumber: 5
     }, this);
 };

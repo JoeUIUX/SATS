@@ -16,18 +16,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$i
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/alert.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/mccUtils.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.module.css [app-client] (css module)"); // Reuse the same styles as OBC1TestPanel
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$LineChart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/chart/LineChart.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Line.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/XAxis.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/YAxis.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/CartesianGrid.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/Tooltip.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/Legend.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/ResponsiveContainer.js [app-client] (ecmascript)");
 // Import the UHF-specific functions
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$uhfCheckout$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/checkout/uhfCheckout.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$reports$2f$uhfReport$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/reports/uhfReport.ts [app-client] (ecmascript)");
+// Import test history components
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/index.ts [app-client] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestHistoryChart.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestHistoryTable.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestDetailsModal.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -77,9 +72,39 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
     const [limitMessage, setLimitMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isMultiSelectMode, setIsMultiSelectMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Determine if transmitter/receiver options are enabled
-    const enableTransmitter = options.includes('Transmitter Test');
-    const enableReceiver = options.includes('Receiver Test');
+    // Map options to capabilities
+    const mapOptionsToCapabilities = ()=>{
+        // Default both to false
+        let shouldEnableTransmitter = false;
+        let shouldEnableReceiver = false;
+        // Check for specific options and map them to capabilities
+        if (options.includes('Telemetry')) {
+            // Telemetry typically involves receiving data, so enable receiver
+            shouldEnableReceiver = true;
+        }
+        if (options.includes('Ground Pass')) {
+            // Ground Pass typically involves both transmitting commands and receiving telemetry
+            shouldEnableTransmitter = true;
+            shouldEnableReceiver = true;
+        }
+        // Add other mappings based on your specific test options
+        // For example:
+        if (options.includes('Uplink Test')) {
+            shouldEnableTransmitter = true;
+        }
+        if (options.includes('Downlink Test')) {
+            shouldEnableReceiver = true;
+        }
+        return {
+            shouldEnableTransmitter,
+            shouldEnableReceiver
+        };
+    };
+    // Get the capabilities based on selected options
+    const { shouldEnableTransmitter, shouldEnableReceiver } = mapOptionsToCapabilities();
+    // Use these for conditional rendering and UI display
+    const enableTransmitter = shouldEnableTransmitter;
+    const enableReceiver = shouldEnableReceiver;
     // API URL
     const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
     // Available metrics for visualization
@@ -726,6 +751,43 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
     }["UHFTestPanel.useEffect"], [
         profileId
     ]); // Only run when profileId changes
+    // Function to format table data for UHF parameters
+    const createParameterRow = (label, value)=>{
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+            style: {
+                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                    style: {
+                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                        padding: '8px 12px'
+                    },
+                    children: label
+                }, void 0, false, {
+                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                    lineNumber: 844,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                    style: {
+                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                        padding: '8px 12px'
+                    },
+                    children: value
+                }, void 0, false, {
+                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                    lineNumber: 845,
+                    columnNumber: 7
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+            lineNumber: 843,
+            columnNumber: 5
+        }, this);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].testPanel,
         children: [
@@ -735,13 +797,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                    lineNumber: 810,
-                    columnNumber: 11
+                    lineNumber: 854,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 809,
-                columnNumber: 9
+                lineNumber: 853,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabsContainer,
@@ -767,8 +829,8 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                         children: "Current Test"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 820,
-                        columnNumber: 1
+                        lineNumber: 864,
+                        columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>setShowHistory(true),
@@ -785,14 +847,14 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                         children: "Test History"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 835,
-                        columnNumber: 9
+                        lineNumber: 879,
+                        columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 814,
-                columnNumber: 7
+                lineNumber: 858,
+                columnNumber: 5
             }, this),
             !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                 children: [
@@ -827,33 +889,33 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     clipRule: "evenodd"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 871,
-                                                    columnNumber: 19
+                                                    lineNumber: 915,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                     d: "M7.879 6.464a1 1 0 01-1.414 1.414 3 3 0 000 4.243 1 1 0 11-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a1 1 0 011.414 0 5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.244 1 1 0 010-1.414z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 872,
-                                                    columnNumber: 19
+                                                    lineNumber: 916,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 870,
-                                            columnNumber: 17
+                                            lineNumber: 914,
+                                            columnNumber: 15
                                         }, this),
                                         "UHF Test Status"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 869,
-                                    columnNumber: 15
+                                    lineNumber: 913,
+                                    columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 862,
-                                columnNumber: 13
+                                lineNumber: 906,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
@@ -872,8 +934,8 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: currentStep || 'Waiting to start test...'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 881,
-                                                        columnNumber: 19
+                                                        lineNumber: 925,
+                                                        columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressValue,
@@ -886,14 +948,14 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 884,
-                                                        columnNumber: 19
+                                                        lineNumber: 928,
+                                                        columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 880,
-                                                columnNumber: 17
+                                                lineNumber: 924,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressBar,
@@ -908,19 +970,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 892,
-                                                    columnNumber: 19
+                                                    lineNumber: 936,
+                                                    columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 888,
-                                                columnNumber: 17
+                                                lineNumber: 932,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 879,
-                                        columnNumber: 15
+                                        lineNumber: 923,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         style: {
@@ -936,8 +998,8 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: "Selected Test Options:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 904,
-                                                columnNumber: 17
+                                                lineNumber: 948,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
@@ -970,20 +1032,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 924,
-                                                                        columnNumber: 25
+                                                                        lineNumber: 968,
+                                                                        columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 923,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 967,
+                                                                    columnNumber: 21
                                                                 }, this),
                                                                 option
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 913,
-                                                            columnNumber: 21
+                                                            lineNumber: 957,
+                                                            columnNumber: 19
                                                         }, this)),
                                                     options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         style: {
@@ -994,20 +1056,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: "No specific options selected. Running with defaults."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 930,
-                                                        columnNumber: 21
+                                                        lineNumber: 974,
+                                                        columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 911,
-                                                columnNumber: 17
+                                                lineNumber: 955,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 903,
-                                        columnNumber: 15
+                                        lineNumber: 947,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
@@ -1028,34 +1090,34 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 951,
-                                                            columnNumber: 19
+                                                            lineNumber: 995,
+                                                            columnNumber: 17
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 950,
-                                                        columnNumber: 19
+                                                        lineNumber: 994,
+                                                        columnNumber: 17
                                                     }, this),
                                                     "Connection Mode"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 949,
-                                                columnNumber: 17
+                                                lineNumber: 993,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${isForceSimulation ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorWaiting : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
                                                 children: isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 955,
-                                                columnNumber: 17
+                                                lineNumber: 999,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 942,
-                                        columnNumber: 15
+                                        lineNumber: 986,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
@@ -1079,20 +1141,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 972,
-                                                            columnNumber: 21
+                                                            lineNumber: 1016,
+                                                            columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 971,
-                                                        columnNumber: 19
+                                                        lineNumber: 1015,
+                                                        columnNumber: 17
                                                     }, this),
                                                     "UHF Testing"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 970,
-                                                columnNumber: 17
+                                                lineNumber: 1014,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 style: {
@@ -1108,8 +1170,8 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 977,
-                                                        columnNumber: 19
+                                                        lineNumber: 1021,
+                                                        columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterValue} ${enableReceiver ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorWaiting}`,
@@ -1119,20 +1181,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 982,
-                                                        columnNumber: 19
+                                                        lineNumber: 1026,
+                                                        columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 976,
-                                                columnNumber: 17
+                                                lineNumber: 1020,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 962,
-                                        columnNumber: 15
+                                        lineNumber: 1006,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: startTest,
@@ -1160,13 +1222,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1005,
-                                                        columnNumber: 23
+                                                        lineNumber: 1049,
+                                                        columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1004,
-                                                    columnNumber: 21
+                                                    lineNumber: 1048,
+                                                    columnNumber: 19
                                                 }, this),
                                                 "Running Test..."
                                             ]
@@ -1183,13 +1245,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1012,
-                                                        columnNumber: 21
+                                                        lineNumber: 1056,
+                                                        columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1011,
-                                                    columnNumber: 21
+                                                    lineNumber: 1055,
+                                                    columnNumber: 19
                                                 }, this),
                                                 "Re-run Test"
                                             ]
@@ -1206,33 +1268,33 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1019,
-                                                        columnNumber: 23
+                                                        lineNumber: 1063,
+                                                        columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1018,
-                                                    columnNumber: 21
+                                                    lineNumber: 1062,
+                                                    columnNumber: 19
                                                 }, this),
                                                 "Run Test"
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 991,
-                                        columnNumber: 15
+                                        lineNumber: 1035,
+                                        columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 878,
-                                columnNumber: 13
+                                lineNumber: 922,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 855,
-                        columnNumber: 11
+                        lineNumber: 899,
+                        columnNumber: 9
                     }, this),
                     results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-4 mt-4",
@@ -1264,8 +1326,8 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1050,
-                                                                columnNumber: 23
+                                                                lineNumber: 1094,
+                                                                columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                                 fillRule: "evenodd",
@@ -1273,41 +1335,44 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1051,
-                                                                columnNumber: 23
+                                                                lineNumber: 1095,
+                                                                columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1049,
-                                                        columnNumber: 21
+                                                        lineNumber: 1093,
+                                                        columnNumber: 19
                                                     }, this),
                                                     "UHF Telemetry"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1048,
-                                                columnNumber: 19
+                                                lineNumber: 1092,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1057,
-                                                columnNumber: 19
+                                                lineNumber: 1101,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1039,
-                                        columnNumber: 17
+                                        lineNumber: 1083,
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
                                             style: {
-                                                color: isDarkMode ? "#e5e7eb" : "inherit"
+                                                color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                fontSize: '14px'
                                             },
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
@@ -1320,33 +1385,346 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                 style: {
-                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
                                                                 },
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1075,
-                                                                columnNumber: 25
+                                                                lineNumber: 1122,
+                                                                columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                                 style: {
-                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
                                                                 },
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1076,
+                                                                lineNumber: 1123,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1121,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1114,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
+                                                    children: [
+                                                        createParameterRow("Board Temperature", `${results.telemetry.boardTemperature} °C`),
+                                                        createParameterRow("PA Temperature", `${results.telemetry.paTemperature} °C`),
+                                                        createParameterRow("Last RSSI", results.telemetry.lastRssi),
+                                                        createParameterRow("Last RF Error", results.telemetry.lastRferr),
+                                                        createParameterRow("TX Count (Current)", `${results.telemetry.txCount} packets`),
+                                                        createParameterRow("RX Count (Current)", `${results.telemetry.rxCount} packets`),
+                                                        createParameterRow("TX Bytes (Current)", `${results.telemetry.txBytes} bytes`),
+                                                        createParameterRow("RX Bytes (Current)", `${results.telemetry.rxBytes} bytes`),
+                                                        createParameterRow("Active Configuration", results.telemetry.activeConf),
+                                                        createParameterRow("Boot Count", results.telemetry.bootCount),
+                                                        createParameterRow("Boot Cause", results.telemetry.bootCause),
+                                                        createParameterRow("Last Contact", results.telemetry.lastContact),
+                                                        createParameterRow("Background RSSI", results.telemetry.bgndRssi),
+                                                        createParameterRow("TX Duty", results.telemetry.txDuty),
+                                                        createParameterRow("Total TX Count", `${results.telemetry.totalTxCount} packets`),
+                                                        createParameterRow("Total RX Count", `${results.telemetry.totalRxCount} packets`),
+                                                        createParameterRow("Total TX Bytes", `${results.telemetry.totalTxBytes} bytes`),
+                                                        createParameterRow("Total RX Bytes", `${results.telemetry.totalRxBytes} bytes`)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1126,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                            lineNumber: 1105,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1104,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                lineNumber: 1076,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #1f2937, #374151)" : "linear-gradient(to right, #f3f4f6, #e5e7eb)",
+                                            color: isDarkMode ? "#e5e7eb" : "#374151"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1170,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1169,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    "UHF System Configuration"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1168,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1176,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1159,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
+                                            style: {
+                                                color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                fontSize: '14px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Parameter"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1197,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Value"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1198,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1196,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1189,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
+                                                    children: [
+                                                        createParameterRow("RSSI Indicator Offset", results.system.rssiOffset),
+                                                        createParameterRow("Maximum Temperature", `${results.system.maxTemp} °C`),
+                                                        createParameterRow("Background RSSI EMA", results.system.bgndrssiEma),
+                                                        createParameterRow("CSP Node", results.system.cspNode),
+                                                        createParameterRow("I2C Enabled", results.system.i2cEn),
+                                                        createParameterRow("CAN Enabled", results.system.canEn),
+                                                        createParameterRow("Push-to-talk Enabled", results.system.extpptEn),
+                                                        createParameterRow("LED Enabled", results.system.ledEn),
+                                                        createParameterRow("KISS USART", results.system.kissUsart),
+                                                        createParameterRow("GOSH USART", results.system.goshUsart),
+                                                        createParameterRow("I2C Address", results.system.i2cAddr),
+                                                        createParameterRow("I2C Speed", `${results.system.i2cKhz} kHz`),
+                                                        createParameterRow("CAN Speed", `${results.system.canKhz} kHz`),
+                                                        createParameterRow("Reboot Timer", `${results.system.rebootIn} seconds`),
+                                                        createParameterRow("TX Inhibit", `${results.system.txInhibit} seconds`),
+                                                        createParameterRow("Log Store", results.system.logStore),
+                                                        createParameterRow("TX Power Level", results.system.txPwr),
+                                                        createParameterRow("Max TX Time", `${results.system.maxTxTime} seconds`),
+                                                        createParameterRow("Max Idle Time", `${results.system.maxIdleTime} seconds`)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1201,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                            lineNumber: 1180,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1179,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                lineNumber: 1152,
+                                columnNumber: 13
+                            }, this),
+                            enableReceiver && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #1e3a8a, #2563eb)" : "linear-gradient(to right, #dbeafe, #bfdbfe)",
+                                            color: isDarkMode ? "#bfdbfe" : "#2563eb"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1247,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1246,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "UHF Receiver Configuration"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1245,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1253,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1236,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
+                                            style: {
+                                                color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                fontSize: '14px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Parameter"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1274,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Value"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1275,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1074,
+                                                        lineNumber: 1273,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1067,
+                                                    lineNumber: 1266,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1356,31 +1734,33 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "Board Temperature"
+                                                                    children: "UHF_rx_freq"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1081,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1280,
+                                                                    columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
                                                                     children: [
-                                                                        results.telemetry.boardTemperature,
-                                                                        " °C"
+                                                                        results.receiver.frequency,
+                                                                        " Hz"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1082,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1280,
+                                                                    columnNumber: 128
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1080,
+                                                            lineNumber: 1280,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1391,59 +1771,63 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "PA Temperature"
+                                                                    children: "UHF_rx_baud"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1086,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1281,
+                                                                    columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
                                                                     children: [
-                                                                        results.telemetry.paTemperature,
-                                                                        " °C"
+                                                                        results.receiver.baudrate,
+                                                                        " bps"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1087,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1281,
+                                                                    columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1085,
+                                                            lineNumber: 1281,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "Last RSSI"
+                                                                    children: "UHF_rx_modindex"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1091,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1282,
+                                                                    columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: results.telemetry.lastRssi
+                                                                    children: results.receiver.modindex
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1092,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1282,
+                                                                    columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1090,
+                                                            lineNumber: 1282,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1454,59 +1838,63 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "Last RF Error"
+                                                                    children: "UHF_rx_guard"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1096,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1283,
+                                                                    columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: results.telemetry.lastRferr
-                                                                }, void 0, false, {
+                                                                    children: [
+                                                                        results.receiver.guard,
+                                                                        " ms"
+                                                                    ]
+                                                                }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1097,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1283,
+                                                                    columnNumber: 224
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1095,
+                                                            lineNumber: 1283,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "TX Count (Current)"
+                                                                    children: "UHF_rx_pllrang"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1101,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1284,
+                                                                    columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: [
-                                                                        results.telemetry.txCount,
-                                                                        " packets"
-                                                                    ]
-                                                                }, void 0, true, {
+                                                                    children: results.receiver.pllrang
+                                                                }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1102,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1284,
+                                                                    columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1100,
+                                                            lineNumber: 1284,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1517,125 +1905,60 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "RX Count (Current)"
+                                                                    children: "UHF_rx_mode"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1106,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1285,
+                                                                    columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: [
-                                                                        results.telemetry.rxCount,
-                                                                        " packets"
-                                                                    ]
-                                                                }, void 0, true, {
+                                                                    children: results.receiver.mode
+                                                                }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1107,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1285,
+                                                                    columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1105,
+                                                            lineNumber: 1285,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "TX Bytes (Current)"
+                                                                    children: "UHF_rx_csp_hmac"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1111,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1286,
+                                                                    columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: [
-                                                                        results.telemetry.txBytes,
-                                                                        " bytes"
-                                                                    ]
-                                                                }, void 0, true, {
+                                                                    children: results.receiver.cspHmac
+                                                                }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1112,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1286,
+                                                                    columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1110,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
-                                                            style: {
-                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                                                            },
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "RX Bytes (Current)"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1116,
-                                                                    columnNumber: 25
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: [
-                                                                        results.telemetry.rxBytes,
-                                                                        " bytes"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1117,
-                                                                    columnNumber: 25
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1115,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Active Configuration"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1121,
-                                                                    columnNumber: 25
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: results.telemetry.activeConf
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1122,
-                                                                    columnNumber: 25
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1120,
+                                                            lineNumber: 1286,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1646,56 +1969,60 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "Boot Count"
+                                                                    children: "UHF_rx_csp_rs"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1126,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1287,
+                                                                    columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: results.telemetry.bootCount
+                                                                    children: results.receiver.cspRs
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1127,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1287,
+                                                                    columnNumber: 225
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1125,
+                                                            lineNumber: 1287,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "Background RSSI"
+                                                                    children: "UHF_rx_csp_crc"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1131,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1288,
+                                                                    columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: results.telemetry.bgndRssi
+                                                                    children: results.receiver.cspCrc
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1132,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1288,
+                                                                    columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1130,
+                                                            lineNumber: 1288,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1706,51 +2033,1358 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: "TX Duty"
+                                                                    children: "UHF_rx_csp_rand"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1136,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1289,
+                                                                    columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                                     style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
                                                                     },
-                                                                    children: results.telemetry.txDuty
+                                                                    children: results.receiver.cspRand
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1137,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1289,
+                                                                    columnNumber: 227
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1135,
+                                                            lineNumber: 1289,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_csp_hmac_key_0"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1290,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.hmacKeys[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1290,
+                                                                    columnNumber: 138
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1290,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_csp_hmac_key_1"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1291,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.hmacKeys[1]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1291,
+                                                                    columnNumber: 233
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1291,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_csp_hmac_key_2"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1292,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.hmacKeys[2]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1292,
+                                                                    columnNumber: 138
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1292,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_csp_hmac_key_3"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1293,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.hmacKeys[3]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1293,
+                                                                    columnNumber: 233
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1293,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_ax25_call_0"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1294,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.ax25Call[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1294,
+                                                                    columnNumber: 135
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1294,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_ax25_call_1"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1295,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.ax25Call[1]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1295,
+                                                                    columnNumber: 230
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1295,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_ax25_call_2"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1296,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.receiver.ax25Call[2]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1296,
+                                                                    columnNumber: 135
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1296,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_bw"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1297,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.receiver.bandwidth,
+                                                                        " Hz"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1297,
+                                                                    columnNumber: 221
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1297,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_rx_afcrange"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1298,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.receiver.afcrange,
+                                                                        " Hz"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1298,
+                                                                    columnNumber: 132
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1298,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1079,
+                                                    lineNumber: 1278,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1061,
+                                            lineNumber: 1257,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1060,
+                                        lineNumber: 1256,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1032,
+                                lineNumber: 1229,
+                                columnNumber: 15
+                            }, this),
+                            enableTransmitter && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #7c2d12, #c2410c)" : "linear-gradient(to right, #ffedd5, #fed7aa)",
+                                            color: isDarkMode ? "#fed7aa" : "#c2410c"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm2 4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm-3 8a2 2 0 012-2h4a2 2 0 012 2v.5a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5V14z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1325,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1324,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "UHF Transmitter Configuration"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1323,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                lineNumber: 1331,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1314,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
+                                            style: {
+                                                color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                width: '100%',
+                                                borderCollapse: 'collapse',
+                                                fontSize: '14px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Parameter"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1352,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                    padding: '8px 12px',
+                                                                    textAlign: 'left'
+                                                                },
+                                                                children: "Value"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                lineNumber: 1353,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                        lineNumber: 1351,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1344,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_freq"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1358,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.transmitter.frequency,
+                                                                        " Hz"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1358,
+                                                                    columnNumber: 128
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1358,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_baud"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1359,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.transmitter.baudrate,
+                                                                        " bps"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1359,
+                                                                    columnNumber: 223
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1359,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_modindex"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1360,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.modindex
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1360,
+                                                                    columnNumber: 132
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1360,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_guard"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1361,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.transmitter.guard,
+                                                                        " ms"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1361,
+                                                                    columnNumber: 224
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1361,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_pllrang"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1362,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.pllrang
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1362,
+                                                                    columnNumber: 131
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1362,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_mode"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1363,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.mode
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1363,
+                                                                    columnNumber: 223
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1363,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_hmac"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1364,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.cspHmac
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1364,
+                                                                    columnNumber: 132
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1364,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_rs"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1365,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.cspRs
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1365,
+                                                                    columnNumber: 225
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1365,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_crc"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1366,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.cspCrc
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1366,
+                                                                    columnNumber: 131
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1366,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_rand"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1367,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.cspRand
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1367,
+                                                                    columnNumber: 227
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1367,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_hmac_key_0"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1368,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.hmacKeys[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1368,
+                                                                    columnNumber: 138
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1368,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_hmac_key_1"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1369,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.hmacKeys[1]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1369,
+                                                                    columnNumber: 233
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1369,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_hmac_key_2"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1370,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.hmacKeys[2]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1370,
+                                                                    columnNumber: 138
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1370,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_csp_hmac_key_3"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1371,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.hmacKeys[3]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1371,
+                                                                    columnNumber: 233
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1371,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_ax25_call_0"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1372,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.ax25Call[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1372,
+                                                                    columnNumber: 135
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1372,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_ax25_call_1"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1373,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.ax25Call[1]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1373,
+                                                                    columnNumber: 230
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1373,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_ax25_call_2"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1374,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.ax25Call[2]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1374,
+                                                                    columnNumber: 135
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1374,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_preamb"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1375,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.preamb
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1375,
+                                                                    columnNumber: 225
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1375,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_preamblen"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1376,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.transmitter.preamblen,
+                                                                        " bytes"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1376,
+                                                                    columnNumber: 133
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1376,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_preambflags"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1377,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.preambflags
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1377,
+                                                                    columnNumber: 230
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1377,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_intfrm"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1378,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.intfrm
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1378,
+                                                                    columnNumber: 130
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1378,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_intfrmlen"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1379,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: [
+                                                                        results.transmitter.intfrmlen,
+                                                                        " bytes"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1379,
+                                                                    columnNumber: 228
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1379,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_intfrmflags"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1380,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.intfrmflags
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1380,
+                                                                    columnNumber: 135
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1380,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_rssibusy"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1381,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.rssibusy
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1381,
+                                                                    columnNumber: 227
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1381,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_kup_delay"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1382,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.kupDelay
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1382,
+                                                                    columnNumber: 133
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1382,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_pa_level"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1383,
+                                                                    columnNumber: 122
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.paLevel
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1383,
+                                                                    columnNumber: 227
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1383,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: "UHF_tx_ber"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1384,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px'
+                                                                    },
+                                                                    children: results.transmitter.ber
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                                    lineNumber: 1384,
+                                                                    columnNumber: 127
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                            lineNumber: 1384,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                                    lineNumber: 1356,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                            lineNumber: 1335,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                        lineNumber: 1334,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
+                                lineNumber: 1307,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1773,31 +3407,31 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1155,
+                                                lineNumber: 1402,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1154,
+                                            lineNumber: 1401,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1146,
+                                    lineNumber: 1393,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1145,
+                                lineNumber: 1392,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1030,
-                        columnNumber: 13
+                        lineNumber: 1074,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true) : /* Test History Panel */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1831,24 +3465,24 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1184,
+                                        lineNumber: 1431,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1183,
+                                    lineNumber: 1430,
                                     columnNumber: 15
                                 }, this),
                                 "UHF Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1182,
+                            lineNumber: 1429,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1172,
+                        lineNumber: 1419,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1878,25 +3512,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1198,
+                                        lineNumber: 1445,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1197,
+                                    lineNumber: 1444,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1200,
+                                    lineNumber: 1447,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1192,
+                            lineNumber: 1439,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -1910,7 +3544,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1209,
+                                    lineNumber: 1456,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1921,7 +3555,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1210,
+                                    lineNumber: 1457,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1938,20 +3572,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1223,
+                                            lineNumber: 1470,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1215,
+                                    lineNumber: 1462,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1203,
+                            lineNumber: 1450,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -1970,7 +3604,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1231,
+                                            lineNumber: 1478,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1990,18 +3624,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1253,
+                                                    lineNumber: 1500,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1239,
+                                            lineNumber: 1486,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1230,
+                                    lineNumber: 1477,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2026,107 +3660,23 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1268,
+                                            lineNumber: 1515,
                                             columnNumber: 19
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
-                                            width: "100%",
-                                            height: 240,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$LineChart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LineChart"], {
-                                                data: prepareChartData(),
-                                                margin: {
-                                                    top: 5,
-                                                    right: 30,
-                                                    left: 20,
-                                                    bottom: 5
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartesianGrid"], {
-                                                        strokeDasharray: "3 3",
-                                                        stroke: isDarkMode ? "#374151" : "#e5e7eb"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1282,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
-                                                        dataKey: "date",
-                                                        stroke: isDarkMode ? "#9ca3af" : "#6b7280",
-                                                        tick: {
-                                                            fill: isDarkMode ? "#9ca3af" : "#6b7280"
-                                                        }
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1283,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
-                                                        stroke: isDarkMode ? "#9ca3af" : "#6b7280",
-                                                        tick: {
-                                                            fill: isDarkMode ? "#9ca3af" : "#6b7280"
-                                                        }
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1288,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
-                                                        labelFormatter: (label, items)=>{
-                                                            const item = items[0]?.payload;
-                                                            return item?.tooltipLabel || label;
-                                                        },
-                                                        contentStyle: {
-                                                            backgroundColor: isDarkMode ? '#1f2937' : '#ffffff',
-                                                            borderColor: isDarkMode ? '#374151' : '#e5e7eb',
-                                                            color: isDarkMode ? '#e5e7eb' : '#111827'
-                                                        }
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1292,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1303,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
-                                                        type: "monotone",
-                                                        dataKey: selectedMetric.split('.').pop() || 'value',
-                                                        name: metricOptions.find((m)=>m.value === selectedMetric)?.label || selectedMetric,
-                                                        stroke: "#3b82f6",
-                                                        strokeWidth: 2,
-                                                        dot: {
-                                                            r: 4,
-                                                            stroke: '#3b82f6',
-                                                            fill: 'white'
-                                                        },
-                                                        activeDot: {
-                                                            r: 6,
-                                                            stroke: '#3b82f6',
-                                                            strokeWidth: 2,
-                                                            fill: 'white'
-                                                        }
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1304,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1278,
-                                                columnNumber: 21
-                                            }, this)
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
+                                            data: testHistory,
+                                            metricPath: selectedMetric,
+                                            metricLabel: metricOptions.find((m)=>m.value === selectedMetric)?.label || '',
+                                            isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1277,
+                                            lineNumber: 1524,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1261,
+                                    lineNumber: 1508,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2149,12 +3699,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1326,
+                                                lineNumber: 1541,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1325,
+                                            lineNumber: 1540,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2192,7 +3742,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1360,
+                                                                    lineNumber: 1575,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2201,20 +3751,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1361,
+                                                                    lineNumber: 1576,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1359,
+                                                            lineNumber: 1574,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1338,
+                                                    lineNumber: 1553,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2234,7 +3784,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1369,
+                                                            lineNumber: 1584,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2252,7 +3802,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1385,
+                                                            lineNumber: 1600,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2284,12 +3834,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 1421,
+                                                                        lineNumber: 1636,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1420,
+                                                                    lineNumber: 1635,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -2298,7 +3848,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1401,
+                                                            lineNumber: 1616,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -2306,13 +3856,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1336,
+                                            lineNumber: 1551,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1318,
+                                    lineNumber: 1533,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2348,19 +3898,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1434,
+                                                        lineNumber: 1649,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1433,
+                                                    lineNumber: 1648,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1432,
+                                            lineNumber: 1647,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2374,14 +3924,14 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1439,
+                                                    lineNumber: 1654,
                                                     columnNumber: 43
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1438,
+                                            lineNumber: 1653,
                                             columnNumber: 19
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2411,7 +3961,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1445,
+                                                            lineNumber: 1660,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2421,7 +3971,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1446,
+                                                            lineNumber: 1661,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2431,420 +3981,35 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1447,
+                                                            lineNumber: 1662,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1444,
+                                                    lineNumber: 1659,
                                                     columnNumber: 23
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1443,
+                                            lineNumber: 1658,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1431,
+                                    lineNumber: 1646,
                                     columnNumber: 17
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        marginTop: '12px',
-                                        borderRadius: '8px',
-                                        overflow: 'hidden',
-                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                    },
-                                    children: testHistory.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                        style: {
-                                            width: '100%',
-                                            borderCollapse: 'collapse',
-                                            fontSize: '14px'
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                                style: {
-                                                    backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
-                                                    color: isDarkMode ? '#d1d5db' : '#6b7280',
-                                                    fontWeight: 500
-                                                },
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    children: [
-                                                        isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 12px',
-                                                                textAlign: 'center',
-                                                                width: '40px',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                type: "checkbox",
-                                                                checked: selectedItems.length === testHistory.length,
-                                                                onChange: (e)=>{
-                                                                    if (e.target.checked) {
-                                                                        selectAllItems();
-                                                                    } else {
-                                                                        deselectAllItems();
-                                                                    }
-                                                                },
-                                                                style: {
-                                                                    cursor: 'pointer',
-                                                                    width: '16px',
-                                                                    height: '16px'
-                                                                }
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1481,
-                                                                columnNumber: 31
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1475,
-                                                            columnNumber: 29
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                textAlign: 'left',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: "Date/Time"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1495,
-                                                            columnNumber: 27
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                textAlign: 'left',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: "Test Options"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1502,
-                                                            columnNumber: 27
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                textAlign: 'left',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: "Status"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1509,
-                                                            columnNumber: 27
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                textAlign: 'left',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: "Type"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1517,
-                                                            columnNumber: 27
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                            style: {
-                                                                padding: '12px 16px',
-                                                                textAlign: 'left',
-                                                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                            },
-                                                            children: "Actions"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1524,
-                                                            columnNumber: 27
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1472,
-                                                    columnNumber: 25
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1467,
-                                                columnNumber: 23
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                                children: testHistory.slice().reverse().map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                        style: {
-                                                            backgroundColor: isMultiSelectMode && selectedItems.includes(item.id) ? isDarkMode ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)' : index % 2 === 0 ? isDarkMode ? '#111827' : '#ffffff' : isDarkMode ? '#1f2937' : '#f9fafb',
-                                                            transition: 'background-color 0.2s ease'
-                                                        },
-                                                        children: [
-                                                            isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 12px',
-                                                                    textAlign: 'center',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                                },
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    type: "checkbox",
-                                                                    checked: selectedItems.includes(item.id),
-                                                                    onChange: ()=>toggleItemSelection(item.id),
-                                                                    style: {
-                                                                        cursor: 'pointer',
-                                                                        width: '16px',
-                                                                        height: '16px'
-                                                                    }
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1550,
-                                                                    columnNumber: 33
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1545,
-                                                                columnNumber: 31
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 16px',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
-                                                                },
-                                                                children: new Date(item.test_date).toLocaleString()
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1558,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 16px',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                                                                    color: isDarkMode ? '#e5e7eb' : '#111827'
-                                                                },
-                                                                children: item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1565,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 16px',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                                },
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    style: {
-                                                                        display: 'inline-block',
-                                                                        padding: '4px 8px',
-                                                                        borderRadius: '9999px',
-                                                                        fontSize: '12px',
-                                                                        fontWeight: 500,
-                                                                        backgroundColor: item.status === 'completed' ? isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5' : isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2',
-                                                                        color: item.status === 'completed' ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
-                                                                    },
-                                                                    children: item.status === 'completed' ? 'SUCCESS' : 'FAILED'
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1576,
-                                                                    columnNumber: 31
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1572,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 16px',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                                                                },
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    style: {
-                                                                        display: 'inline-block',
-                                                                        padding: '4px 8px',
-                                                                        borderRadius: '9999px',
-                                                                        fontSize: '12px',
-                                                                        fontWeight: 500,
-                                                                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                                                                        color: isDarkMode ? '#34d399' : '#047857'
-                                                                    },
-                                                                    children: "REAL DATA"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1597,
-                                                                    columnNumber: 31
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1593,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                style: {
-                                                                    padding: '12px 16px',
-                                                                    borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                                                                    display: 'flex',
-                                                                    gap: '8px'
-                                                                },
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                        onClick: ()=>setSelectedHistoryItem(item),
-                                                                        style: {
-                                                                            backgroundColor: isDarkMode ? '#2563eb' : '#3b82f6',
-                                                                            color: 'white',
-                                                                            border: 'none',
-                                                                            borderRadius: '4px',
-                                                                            padding: '4px 8px',
-                                                                            fontSize: '12px',
-                                                                            cursor: 'pointer',
-                                                                            fontWeight: 500,
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            gap: '4px'
-                                                                        },
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                                xmlns: "http://www.w3.org/2000/svg",
-                                                                                width: "12",
-                                                                                height: "12",
-                                                                                viewBox: "0 0 20 20",
-                                                                                fill: "currentColor",
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                                        d: "M10 12a2 2 0 100-4 2 2 0 000 4z"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                                        lineNumber: 1632,
-                                                                                        columnNumber: 35
-                                                                                    }, this),
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                                        fillRule: "evenodd",
-                                                                                        d: "M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z",
-                                                                                        clipRule: "evenodd"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                                        lineNumber: 1633,
-                                                                                        columnNumber: 35
-                                                                                    }, this)
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                                lineNumber: 1631,
-                                                                                columnNumber: 33
-                                                                            }, this),
-                                                                            "View"
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 1615,
-                                                                        columnNumber: 31
-                                                                    }, this),
-                                                                    !isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                        onClick: ()=>deleteTestHistoryItem(item.id),
-                                                                        style: {
-                                                                            backgroundColor: isDarkMode ? '#dc2626' : '#ef4444',
-                                                                            color: 'white',
-                                                                            border: 'none',
-                                                                            borderRadius: '4px',
-                                                                            padding: '4px 8px',
-                                                                            fontSize: '12px',
-                                                                            cursor: 'pointer',
-                                                                            fontWeight: 500,
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            gap: '4px'
-                                                                        },
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                                xmlns: "http://www.w3.org/2000/svg",
-                                                                                width: "12",
-                                                                                height: "12",
-                                                                                viewBox: "0 0 20 20",
-                                                                                fill: "currentColor",
-                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                                    fillRule: "evenodd",
-                                                                                    d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
-                                                                                    clipRule: "evenodd"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                                    lineNumber: 1657,
-                                                                                    columnNumber: 37
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                                lineNumber: 1656,
-                                                                                columnNumber: 35
-                                                                            }, this),
-                                                                            "Delete"
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 1640,
-                                                                        columnNumber: 33
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1609,
-                                                                columnNumber: 29
-                                                            }, this)
-                                                        ]
-                                                    }, item.id, true, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1535,
-                                                        columnNumber: 27
-                                                    }, this))
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1533,
-                                                columnNumber: 23
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1462,
-                                        columnNumber: 21
-                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            padding: '20px',
-                                            textAlign: 'center',
-                                            color: isDarkMode ? '#9ca3af' : '#6b7280'
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                children: "No real test data available. Run tests with real hardware connections to collect data."
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1673,
-                                                columnNumber: 23
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                style: {
-                                                    marginTop: '10px',
-                                                    fontSize: '14px'
-                                                },
-                                                children: "Test data from simulation mode is not stored in the history database."
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1674,
-                                                columnNumber: 23
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1668,
-                                        columnNumber: 21
-                                    }, this)
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
+                                    testHistory: testHistory,
+                                    isDarkMode: isDarkMode,
+                                    onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1455,
+                                    lineNumber: 1670,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2862,7 +4027,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1683,
+                                            lineNumber: 1678,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2889,7 +4054,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average Board Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1704,
+                                                            lineNumber: 1699,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2906,13 +4071,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1711,
+                                                            lineNumber: 1706,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1698,
+                                                    lineNumber: 1693,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2932,7 +4097,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average PA Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1736,
+                                                            lineNumber: 1731,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2949,13 +4114,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1743,
+                                                            lineNumber: 1738,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1730,
+                                                    lineNumber: 1725,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2975,7 +4140,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average RSSI"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1768,
+                                                            lineNumber: 1763,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2992,13 +4157,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1775,
+                                                            lineNumber: 1770,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1762,
+                                                    lineNumber: 1757,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3018,7 +4183,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1800,
+                                                            lineNumber: 1795,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3035,25 +4200,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1807,
+                                                            lineNumber: 1802,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1794,
+                                                    lineNumber: 1789,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1692,
+                                            lineNumber: 1687,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1682,
+                                    lineNumber: 1677,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3095,19 +4260,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1845,
+                                                        lineNumber: 1840,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1844,
+                                                    lineNumber: 1839,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1828,
+                                            lineNumber: 1823,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3140,19 +4305,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1868,
+                                                        lineNumber: 1863,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1867,
+                                                    lineNumber: 1862,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1851,
+                                            lineNumber: 1846,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3185,19 +4350,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1891,
+                                                        lineNumber: 1886,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1890,
+                                                    lineNumber: 1885,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1874,
+                                            lineNumber: 1869,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3246,25 +4411,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1925,
+                                                        lineNumber: 1920,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1924,
+                                                    lineNumber: 1919,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1896,
+                                            lineNumber: 1891,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1826,
+                                    lineNumber: 1821,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3285,7 +4450,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1942,
+                                            lineNumber: 1937,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3295,26 +4460,26 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1953,
+                                            lineNumber: 1948,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1933,
+                                    lineNumber: 1928,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1190,
+                        lineNumber: 1437,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 1165,
+                lineNumber: 1412,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -3323,14 +4488,14 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 1971,
+                lineNumber: 1966,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-        lineNumber: 807,
-        columnNumber: 5
+        lineNumber: 851,
+        columnNumber: 3
     }, this);
 };
 _s(UHFTestPanel, "+v7N6OZasJoBQI79LbyKqH0jaGQ=");

@@ -836,7 +836,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
-    
+    profileId={selectedProfile ?? undefined}
   />
 )}
 
@@ -992,6 +992,7 @@ useEffect(() => {
       })
     }
     isInitialRun={currentlyRunningTest === item.header}
+    profileId={selectedProfile ?? undefined}
   />
 )}
 

@@ -7,8 +7,10 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 {
 // src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx
 __turbopack_context__.s({
-    "LEOCAMTestPanel": (()=>LEOCAMTestPanel)
+    "LEOCAMTestPanel": (()=>LEOCAMTestPanel),
+    "default": (()=>__TURBOPACK__default__export__)
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/src/components/ui/index.ts [app-client] (ecmascript) <module evaluation>");
@@ -18,6 +20,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Checkou
 // Import the LEOCAM-specific functions
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$leocamCheckout$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/checkout/leocamCheckout.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$reports$2f$leocamReport$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/reports/leocamReport.ts [app-client] (ecmascript)");
+// Import test history components
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/index.ts [app-client] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestHistoryChart.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestHistoryTable.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/CheckoutTestProgress/components/TestDetailsModal.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 ;
@@ -26,7 +33,9 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// Reuse the SimulationBadge component for consistency
+;
+;
+// Create a reusable SimulationBadge component for consistency
 const SimulationBadge = ({ isSimulation })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
             fontSize: '12px',
@@ -39,11 +48,11 @@ const SimulationBadge = ({ isSimulation })=>/*#__PURE__*/ (0, __TURBOPACK__impor
         children: "Simulated Data"
     }, void 0, false, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-        lineNumber: 13,
+        lineNumber: 17,
         columnNumber: 3
     }, this);
 _c = SimulationBadge;
-const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart, isInitialRun })=>{
+const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart, isInitialRun, profileId })=>{
     _s();
     const [isRunning, setIsRunning] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [progress, setProgress] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
@@ -53,6 +62,51 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
     const [hasRunTest, setHasRunTest] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isDarkMode, setIsDarkMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isForceSimulation, setIsForceSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Add new states for test history
+    const [showHistory, setShowHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [testHistory, setTestHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [historyLoading, setHistoryLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [selectedMetric, setSelectedMetric] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('voltageTests.gps.voltage');
+    const [selectedHistoryItem, setSelectedHistoryItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [detectedSimulation, setDetectedSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Add state variables for messages
+    const [cleanupMessage, setCleanupMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [limitMessage, setLimitMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [isMultiSelectMode, setIsMultiSelectMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Available metrics for visualization
+    const metricOptions = [
+        {
+            label: 'GPS Voltage',
+            value: 'voltageTests.gps.voltage'
+        },
+        {
+            label: 'PCS Voltage',
+            value: 'voltageTests.pcs.voltage'
+        },
+        {
+            label: 'LEOCAM Voltage',
+            value: 'voltageTests.leocam.voltage'
+        },
+        {
+            label: 'CPU Temperature 1',
+            value: 'leocamTelemetry.cpuTemperatures[0]'
+        },
+        {
+            label: 'CPU Temperature 2',
+            value: 'leocamTelemetry.cpuTemperatures[1]'
+        },
+        {
+            label: 'Sensor Temperature 1',
+            value: 'leocamTelemetry.sensorTemperatures[0]'
+        }
+    ];
+    // Determine if various test options are enabled
+    const enableVoltageTests = options.includes('Voltage Tests');
+    const enableSensorOperations = options.includes('Sensor Operations');
+    const enableDiskOperations = options.includes('Disk Operations');
+    // API URL
+    const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
     // Check for dark mode
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "LEOCAMTestPanel.useEffect": ()=>{
@@ -134,6 +188,210 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
         hasRunTest,
         isRunning
     ]);
+    // Add function to fetch test history
+    const fetchTestHistory = async (limit = 30)=>{
+        if (!profileId) {
+            console.log("Cannot fetch history: No profile ID provided");
+            return;
+        }
+        setHistoryLoading(true);
+        try {
+            console.log(`Fetching test history for profile ${profileId} and component LEOCAM`);
+            const response = await fetch(`${API_URL}/test-results/${profileId}?component=LEOCAM`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Received test history:", data);
+                // Filter only non-simulated data
+                const filteredData = data.filter((item)=>{
+                    // Skip any simulated data
+                    if (item.is_simulated === true || item.results?.simulated === true) {
+                        console.log(`Filtering out simulated test result: ${item.id}`);
+                        return false;
+                    }
+                    // Check if results object has essential properties
+                    if (!item.results) return false;
+                    // Must have voltage values to be a legitimate test
+                    const hasVoltageData = item.results.voltageTests && (item.results.voltageTests.gps || item.results.voltageTests.pcs || item.results.voltageTests.leocam);
+                    // Must have some telemetry data
+                    const hasTelemetryData = item.results.leocamTelemetry && (item.results.leocamTelemetry.healthStatus || item.results.leocamTelemetry.cpuTemperatures && item.results.leocamTelemetry.cpuTemperatures.length > 0 || item.results.leocamTelemetry.sensorTemperatures && item.results.leocamTelemetry.sensorTemperatures.length > 0);
+                    // Consider it a real test if it has both voltage and temperature data
+                    return hasVoltageData && hasTelemetryData;
+                })// Limit to the most recent 'limit' entries (typically 30)
+                .slice(0, limit);
+                console.log(`Filtered from ${data.length} to ${filteredData.length} actual test results`);
+                setTestHistory(filteredData);
+            } else {
+                console.error("Failed to fetch test history:", await response.text());
+            }
+        } catch (error) {
+            console.error("Error fetching test history:", error);
+            // If the fetch fails, try to use data from localStorage as fallback
+            try {
+                const localHistoryKey = `leocam_real_history_${profileId}`;
+                const localData = localStorage.getItem(localHistoryKey);
+                if (localData) {
+                    const parsedData = JSON.parse(localData);
+                    console.log("Using cached test history from localStorage:", parsedData);
+                    // Apply the same limit to localStorage data
+                    setTestHistory(parsedData.slice(0, limit));
+                }
+            } catch (e) {
+                console.error("Error reading from localStorage:", e);
+            }
+        } finally{
+            setHistoryLoading(false);
+        }
+    };
+    // Fetch history when showHistory is toggled
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "LEOCAMTestPanel.useEffect": ()=>{
+            if (showHistory) {
+                fetchTestHistory();
+            }
+        }
+    }["LEOCAMTestPanel.useEffect"], [
+        showHistory,
+        profileId
+    ]);
+    // Add function to save test result to history
+    const saveTestResult = async (testResults, status, wasSimulated)=>{
+        if (!profileId) {
+            console.log("Cannot save history: No profile ID provided");
+            return;
+        }
+        // Use the passed simulation flag, but also perform our standard checks as a backup
+        const detectedSim = detectedSimulation || isForceSimulation || sock && typeof sock.isSimulated === 'boolean' && sock.isSimulated;
+        // Final simulation determination with priority to the wasSimulated flag
+        const finalSimulationStatus = wasSimulated || detectedSim;
+        console.log(`Saving test result: simulation=${finalSimulationStatus} (wasSimulated=${wasSimulated}, detected=${detectedSimulation}, config=${isForceSimulation})`);
+        try {
+            // Add simulation flag to the results
+            const resultsWithFlag = {
+                ...testResults,
+                simulated: finalSimulationStatus,
+                timestamp: new Date().toISOString(),
+                testedOptions: options,
+                _debug_info: {
+                    explicit_simulation: wasSimulated,
+                    detected_simulation: detectedSimulation,
+                    configured_simulation: isForceSimulation
+                }
+            };
+            // Only save to database if NOT simulated
+            if (!finalSimulationStatus) {
+                console.log("✅ Saving REAL test data to database");
+                const response = await fetch(`${API_URL}/test-results`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        profile_id: profileId,
+                        component_id: "LEOCAM",
+                        test_type: options.join(','),
+                        results: resultsWithFlag,
+                        status: status,
+                        notes: `Voltage Tests: ${enableVoltageTests}, Sensor Operations: ${enableSensorOperations}, Disk Operations: ${enableDiskOperations}`,
+                        is_simulated: false
+                    }),
+                    mode: 'cors'
+                });
+                if (response.ok) {
+                    console.log("Real test result saved to history database");
+                } else {
+                    console.error("Failed to save test result:", await response.text());
+                }
+            } else {
+                console.log("❌ Detected SIMULATED data - storing in localStorage only");
+                // Save to localStorage instead
+                const localHistoryKey = `leocam_sim_history_${profileId}`;
+                try {
+                    const existingHistory = JSON.parse(localStorage.getItem(localHistoryKey) || '[]');
+                    existingHistory.push({
+                        id: Date.now(),
+                        component_id: "LEOCAM",
+                        test_type: options.join(','),
+                        test_date: new Date().toISOString(),
+                        results: resultsWithFlag,
+                        status: status,
+                        notes: "Simulated Test",
+                        is_simulated: true
+                    });
+                    localStorage.setItem(localHistoryKey, JSON.stringify(existingHistory));
+                } catch (e) {
+                    console.error("Error saving to localStorage:", e);
+                }
+            }
+            // Refresh test history if the history panel is open
+            if (showHistory) {
+                fetchTestHistory();
+            }
+        } catch (error) {
+            console.error("Error saving test result:", error);
+        }
+    };
+    // Function to extract a value from nested result objects
+    const extractValue = (results, path)=>{
+        if (!results) return null;
+        const parts = path.split('.');
+        let value = results;
+        for (const part of parts){
+            if (part.includes('[') && part.includes(']')) {
+                // Handle array access
+                const arrayNameEndIndex = part.indexOf('[');
+                const indexEndIndex = part.indexOf(']');
+                const arrayName = part.substring(0, arrayNameEndIndex);
+                const index = parseInt(part.substring(arrayNameEndIndex + 1, indexEndIndex));
+                if (value && typeof value === 'object' && arrayName in value) {
+                    const array = value[arrayName];
+                    if (Array.isArray(array) && index >= 0 && index < array.length) {
+                        value = array[index];
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            } else if (value && typeof value === 'object' && part in value) {
+                value = value[part];
+            } else {
+                return null;
+            }
+        }
+        // Try to parse as number
+        const numValue = parseFloat(value);
+        return isNaN(numValue) ? null : numValue;
+    };
+    // Format chart data for test history - ensure we only use real data
+    const prepareChartData = ()=>{
+        return testHistory.filter((item)=>{
+            // Ensure we only use real (non-simulated) data for charts
+            if (item.is_simulated || item.results?.simulated) {
+                return false;
+            }
+            // Make sure the data point has a value for the selected metric
+            const metricValue = extractValue(item.results, selectedMetric);
+            return metricValue !== null && metricValue !== undefined && !isNaN(metricValue);
+        }).map((item)=>{
+            const metricValue = extractValue(item.results, selectedMetric);
+            return {
+                date: new Date(item.test_date).toLocaleDateString(),
+                [selectedMetric.split('.').pop() || 'value']: metricValue,
+                tooltipLabel: new Date(item.test_date).toLocaleString(),
+                // Add more context to tooltip
+                componentId: item.component_id,
+                testType: item.test_type,
+                dataType: 'Real Data'
+            };
+        });
+    };
     const startTest = async ()=>{
         if (isRunning) return;
         setIsRunning(true);
@@ -189,6 +447,9 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                 // Use the simulated socket
                 sock = simulatedSock;
             }
+            // Determine if we're using simulation
+            const usingSimulation = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isUsingSimulation"])(sock);
+            setDetectedSimulation(usingSimulation);
             // Run the LEOCAM checkout test with progress updates
             const results = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$checkout$2f$leocamCheckout$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["runLEOCAMCheckout"])(sock, options, (step, percent)=>{
                 setCurrentStep(step);
@@ -198,11 +459,17 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
             results.testedOptions = options;
             // Save the results locally
             setResults(results);
+            // Save result to history - use the accurate simulation detection
+            await saveTestResult(results, 'completed', usingSimulation);
             // Notify parent that the test is complete
             onTestComplete(results);
         } catch (error) {
             console.error('Error running LEOCAM checkout:', error);
             setError(error instanceof Error ? error.message : String(error));
+            // Save failed result to history - any error means simulation was likely used
+            if (results) {
+                await saveTestResult(results, 'error', true);
+            }
             onTestError(error);
         } finally{
             setIsRunning(false);
@@ -224,6 +491,296 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
             setError(error instanceof Error ? error.message : String(error));
         }
     };
+    /**
+   * Clean up simulated test results from the database
+   * This will remove any test results that were incorrectly saved as real but were actually simulated
+   */ const cleanupSimulatedData = async ()=>{
+        try {
+            const response = await fetch(`${API_URL}/test-results/cleanup-simulated`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+            if (response.ok) {
+                const result = await response.json();
+                console.log(`Cleanup complete: ${result.message}`);
+                // Show a success message to the user
+                setCleanupMessage(`✅ ${result.message}`);
+                // Refresh the history after cleanup
+                if (showHistory) {
+                    fetchTestHistory();
+                }
+            } else {
+                console.error('Failed to clean up simulated data:', await response.text());
+                setCleanupMessage('❌ Failed to clean up simulated data');
+            }
+        } catch (error) {
+            console.error('Error cleaning up simulated data:', error);
+            setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+        }
+    };
+    /**
+   * Limit test history to a certain number of records
+   * @param limit Number of records to keep (default: 30)
+   */ const limitTestHistory = async (limit = 30)=>{
+        if (!profileId) {
+            console.log("Cannot limit history: No profile ID provided");
+            return;
+        }
+        try {
+            const response = await fetch(`${API_URL}/test-results/limit/${profileId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    limit,
+                    component: 'LEOCAM' // Limit only LEOCAM records
+                }),
+                mode: 'cors'
+            });
+            if (response.ok) {
+                const result = await response.json();
+                console.log(`History limit applied: ${result.message}`);
+                // Show a success message to the user
+                setLimitMessage(`✅ ${result.message}`);
+                // Refresh the history after limiting
+                if (showHistory) {
+                    fetchTestHistory();
+                }
+            } else {
+                console.error('Failed to limit test history:', await response.text());
+                setLimitMessage('❌ Failed to limit test history');
+            }
+        } catch (error) {
+            console.error('Error limiting test history:', error);
+            setLimitMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+        }
+    };
+    /**
+   * Clear all test history for this profile and component
+   */ const clearAllTestHistory = async ()=>{
+        if (!profileId) {
+            console.log("Cannot clear history: No profile ID provided");
+            return;
+        }
+        // First confirm with the user
+        if (!window.confirm("Are you sure you want to clear ALL test history for LEOCAM?\nThis action cannot be undone.")) {
+            return;
+        }
+        setHistoryLoading(true);
+        try {
+            const response = await fetch(`${API_URL}/test-results/clear/${profileId}?component=LEOCAM`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+            if (response.ok) {
+                const result = await response.json();
+                console.log(`Cleared test history: ${result.message}`);
+                // Show success message
+                setCleanupMessage(`✅ ${result.message}`);
+                // Clear the local state
+                setTestHistory([]);
+                // Also clear the localStorage cache
+                localStorage.removeItem(`leocam_real_history_${profileId}`);
+                localStorage.removeItem(`leocam_sim_history_${profileId}`);
+            } else {
+                console.error("Failed to clear test history:", await response.text());
+                setCleanupMessage(`❌ Failed to clear test history: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error("Error clearing test history:", error);
+            setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+        } finally{
+            setHistoryLoading(false);
+        }
+    };
+    /**
+   * Delete a single test history item
+   */ const deleteTestHistoryItem = async (itemId)=>{
+        // Confirm with the user
+        if (!window.confirm("Are you sure you want to delete this test history item?\nThis action cannot be undone.")) {
+            return;
+        }
+        try {
+            const response = await fetch(`${API_URL}/test-results/${itemId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+            if (response.ok) {
+                const result = await response.json();
+                console.log(`Deleted test history item: ${result.message}`);
+                // Update the local state by removing the deleted item
+                setTestHistory((prev)=>prev.filter((item)=>item.id !== itemId));
+                // Show a temporary message
+                setCleanupMessage(`✅ Test result ${itemId} has been deleted`);
+                // Hide the message after a few seconds
+                setTimeout(()=>{
+                    setCleanupMessage(null);
+                }, 3000);
+            } else {
+                console.error("Failed to delete test history item:", await response.text());
+                setCleanupMessage(`❌ Failed to delete test history item: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error("Error deleting test history item:", error);
+            setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+        }
+    };
+    // Add these functions for multi-select mode
+    /**
+   * Toggle multi-select mode
+   */ const toggleMultiSelectMode = ()=>{
+        setIsMultiSelectMode(!isMultiSelectMode);
+        if (isMultiSelectMode) {
+            // If turning off multi-select mode, clear all selections
+            setSelectedItems([]);
+        }
+    };
+    /**
+   * Toggle selection of a single history item
+   */ const toggleItemSelection = (itemId)=>{
+        setSelectedItems((prev)=>{
+            if (prev.includes(itemId)) {
+                return prev.filter((id)=>id !== itemId);
+            } else {
+                return [
+                    ...prev,
+                    itemId
+                ];
+            }
+        });
+    };
+    /**
+   * Select all visible history items
+   */ const selectAllItems = ()=>{
+        setSelectedItems(testHistory.map((item)=>item.id));
+    };
+    /**
+   * Deselect all history items
+   */ const deselectAllItems = ()=>{
+        setSelectedItems([]);
+    };
+    /**
+   * Delete all selected items
+   */ const deleteSelectedItems = async ()=>{
+        if (selectedItems.length === 0) {
+            return;
+        }
+        // Confirm the deletion
+        if (!window.confirm(`Are you sure you want to delete ${selectedItems.length} selected items? This action cannot be undone.`)) {
+            return;
+        }
+        setHistoryLoading(true);
+        let successCount = 0;
+        let errorCount = 0;
+        try {
+            // Process each selected item with individual API calls
+            for (const itemId of selectedItems){
+                try {
+                    const response = await fetch(`${API_URL}/test-results/${itemId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        mode: 'cors'
+                    });
+                    if (response.ok) {
+                        successCount++;
+                    } else {
+                        errorCount++;
+                        console.error(`Failed to delete item ${itemId}:`, await response.text());
+                    }
+                } catch (error) {
+                    errorCount++;
+                    console.error(`Error deleting item ${itemId}:`, error);
+                }
+            }
+            // Update the message about success/failure
+            if (successCount > 0 && errorCount === 0) {
+                setCleanupMessage(`✅ Successfully deleted ${successCount} items`);
+            } else if (successCount > 0 && errorCount > 0) {
+                setCleanupMessage(`⚠️ Partially successful: Deleted ${successCount} items, but failed to delete ${errorCount} items`);
+            } else {
+                setCleanupMessage(`❌ Failed to delete any of the ${selectedItems.length} selected items`);
+            }
+            // Update the test history if any items were successfully deleted
+            if (successCount > 0) {
+                setTestHistory((prev)=>prev.filter((item)=>!selectedItems.includes(item.id)));
+            }
+            // Clear the selection after deletion
+            setSelectedItems([]);
+        } catch (error) {
+            console.error("Error during bulk deletion:", error);
+            setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
+        } finally{
+            setHistoryLoading(false);
+        }
+    };
+    // Modify the useEffect for socket detection to watch for simulation indicators
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "LEOCAMTestPanel.useEffect": ()=>{
+            // Check if we have real socket info saved
+            const socketInfo = localStorage.getItem('mccSocketInfo');
+            let shouldUseSimulation = true; // Default to simulation
+            if (socketInfo) {
+                try {
+                    const parsed = JSON.parse(socketInfo);
+                    if (parsed && parsed.isReal) {
+                        console.log("📡 Using real socket based on stored configuration");
+                        shouldUseSimulation = false;
+                    }
+                } catch (e) {
+                    console.error("Error parsing socket info:", e);
+                }
+            }
+            // Check the actual socket type more thoroughly
+            let isActuallySimulated = true;
+            if (sock) {
+                // Direct simulation flag check
+                if (typeof sock.isSimulated === 'boolean') {
+                    isActuallySimulated = sock.isSimulated;
+                } else if (typeof sock.simulateRead === 'function') {
+                    isActuallySimulated = true;
+                } else if (typeof sock.send === 'function' && typeof sock.receive === 'function' && typeof sock.simulateRead === 'undefined') {
+                    // Additional check to see if it's been correctly initialized
+                    if (sock.readyState === undefined || sock.readyState === 1) {
+                        isActuallySimulated = false;
+                    }
+                }
+            }
+            // Set both states
+            setIsForceSimulation(shouldUseSimulation);
+            setDetectedSimulation(isActuallySimulated);
+            console.log(`🔧 Socket analysis: Config says simulation=${shouldUseSimulation}, actual detection=${isActuallySimulated}`);
+            // Set global simulation mode based on the most accurate information
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSimulationMode"])(isActuallySimulated);
+        }
+    }["LEOCAMTestPanel.useEffect"], [
+        sock
+    ]);
+    // Optionally add automatic cleanup on component mount
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "LEOCAMTestPanel.useEffect": ()=>{
+            if (profileId) {
+                // Automatically limit history to 30 records when the component mounts
+                limitTestHistory(30);
+            }
+        }
+    }["LEOCAMTestPanel.useEffect"], [
+        profileId
+    ]); // Only run when profileId changes
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].testPanel,
         children: [
@@ -233,15 +790,1721 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                    lineNumber: 237,
+                    lineNumber: 884,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                lineNumber: 236,
+                lineNumber: 883,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabsContainer,
+                style: {
+                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                    padding: '8px',
+                    borderRadius: '8px',
+                    marginBottom: '16px'
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: ()=>setShowHistory(false),
+                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabButton} ${!showHistory ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabButtonActive : ''}`,
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '6px',
+                            backgroundColor: !showHistory ? isDarkMode ? '#4f46e5' : '#3b82f6' : 'transparent',
+                            color: !showHistory ? 'white' : isDarkMode ? '#e5e7eb' : '#374151',
+                            border: 'none',
+                            fontWeight: 500,
+                            cursor: 'pointer'
+                        },
+                        children: "Current Test"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                        lineNumber: 894,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: ()=>setShowHistory(true),
+                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabButton} ${showHistory ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tabButtonActive : ''}`,
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '6px',
+                            backgroundColor: showHistory ? isDarkMode ? '#4f46e5' : '#3b82f6' : 'transparent',
+                            color: showHistory ? 'white' : isDarkMode ? '#e5e7eb' : '#374151',
+                            border: 'none',
+                            fontWeight: 500,
+                            cursor: 'pointer'
+                        },
+                        children: "Test History"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                        lineNumber: 909,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                lineNumber: 888,
+                columnNumber: 7
+            }, this),
+            !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                        style: {
+                            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#111827" : undefined,
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                    style: {
+                                        color: isDarkMode ? "#f3f4f6" : "#111827"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            viewBox: "0 0 20 20",
+                                            fill: "currentColor",
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                fillRule: "evenodd",
+                                                d: "M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z",
+                                                clipRule: "evenodd"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 945,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 944,
+                                            columnNumber: 17
+                                        }, this),
+                                        "LEOCAM Test Status"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 943,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 936,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressContainer,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressLabel,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressStep,
+                                                        style: {
+                                                            color: isDarkMode ? "#d1d5db" : "#4b5563"
+                                                        },
+                                                        children: currentStep || 'Waiting to start test...'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 954,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressValue,
+                                                        style: {
+                                                            color: isDarkMode ? "#93c5fd" : "#1d4ed8"
+                                                        },
+                                                        children: [
+                                                            progress,
+                                                            "%"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 957,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 953,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressBar,
+                                                style: {
+                                                    backgroundColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressBarFill,
+                                                    style: {
+                                                        width: `${progress}%`,
+                                                        background: 'linear-gradient(to right, #10b981, #059669)'
+                                                    }
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 965,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 961,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 952,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            marginBottom: '20px'
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    marginBottom: '10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Selected Test Options:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 977,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'flex',
+                                                    flexWrap: 'wrap',
+                                                    gap: '8px'
+                                                },
+                                                children: [
+                                                    options.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                padding: '6px 10px',
+                                                                backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
+                                                                borderRadius: '4px',
+                                                                fontSize: '13px',
+                                                                color: isDarkMode ? '#34d399' : '#059669',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                gap: '6px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                                    width: "12",
+                                                                    height: "12",
+                                                                    viewBox: "0 0 20 20",
+                                                                    fill: "currentColor",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                        fillRule: "evenodd",
+                                                                        d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
+                                                                        clipRule: "evenodd"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 997,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 996,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                option
+                                                            ]
+                                                        }, index, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 986,
+                                                            columnNumber: 21
+                                                        }, this)),
+                                                    options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            color: isDarkMode ? '#9ca3af' : '#6b7280',
+                                                            fontStyle: 'italic',
+                                                            fontSize: '13px'
+                                                        },
+                                                        children: "No specific options selected. Running with defaults."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1003,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 984,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 976,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                        style: {
+                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1024,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1023,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    "Connection Mode"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1022,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${isForceSimulation ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorWaiting : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                children: isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1028,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1015,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                        style: {
+                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            d: "M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1044,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1043,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    "Test Options"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1042,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
+                                                children: options.length > 0 ? `LEOCAM TEST ENABLED` : 'LEOCAM TEST DISABLED'
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1048,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1035,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: startTest,
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].button,
+                                        disabled: isRunning,
+                                        style: {
+                                            backgroundColor: isRunning ? '#9ca3af' : hasRunTest ? '#059669' : '#10b981',
+                                            color: 'white'
+                                        },
+                                        children: isRunning ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].spinnerIcon,
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    width: "14",
+                                                    height: "14",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: "2",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        d: "M21 12a9 9 0 11-6.219-8.56"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1067,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1066,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Running Test..."
+                                            ]
+                                        }, void 0, true) : hasRunTest ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1074,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1073,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Re-run Test"
+                                            ]
+                                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1081,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1080,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Run Test"
+                                            ]
+                                        }, void 0, true)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1054,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 951,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                        lineNumber: 929,
+                        columnNumber: 11
+                    }, this),
+                    results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-4 mt-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #064e3b, #065f46)" : "linear-gradient(to right, #ecfdf5, #d1fae5)",
+                                            color: isDarkMode ? "#d1fae5" : "#065f46"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1110,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1109,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "LEOCAM Voltage Test Results"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1108,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1116,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1099,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
+                                            style: {
+                                                color: isDarkMode ? "#e5e7eb" : "inherit"
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                },
+                                                                children: "Device"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1134,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                },
+                                                                children: "Voltage"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1135,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                },
+                                                                children: "Current"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1136,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                },
+                                                                children: "Initial Status"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1137,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                style: {
+                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                },
+                                                                children: "Final Status"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1138,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1133,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1126,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "GPS"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1143,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.gps.voltage,
+                                                                        " V"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1144,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.gps.current,
+                                                                        " A"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1145,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.gps.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.gps.passInitial ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1147,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1146,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.gps.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.gps.passFinal ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1154,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1153,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1142,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "PCS"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1163,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.pcs.voltage,
+                                                                        " V"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1164,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.pcs.current,
+                                                                        " A"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1165,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.pcs.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.pcs.passInitial ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1167,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1166,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.pcs.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.pcs.passFinal ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1174,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1173,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1162,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: "LEOCAM"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1183,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.leocam.voltage,
+                                                                        " V"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1184,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: [
+                                                                        results.voltageTests.leocam.current,
+                                                                        " A"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1185,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.leocam.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.leocam.passInitial ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1187,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1186,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                    },
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.leocam.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                                        children: results.voltageTests.leocam.passFinal ? "PASS" : "FAIL"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1194,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1193,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1182,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1141,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1120,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1119,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 1092,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #064e3b, #065f46)" : "linear-gradient(to right, #ecfdf5, #d1fae5)",
+                                            color: isDarkMode ? "#d1fae5" : "#065f46"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1224,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1223,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "LEOCAM Configuration"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1222,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1230,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1213,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "grid grid-cols-2 gap-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Sensor Mode"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1242,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorMode || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1243,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1235,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Sensor Power"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1253,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorPower || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1254,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1246,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Frame Rate"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1264,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorLineFrameRate || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1265,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1257,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Bit Depth"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1275,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorBitDepth || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1276,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1268,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                        gridColumn: "span 2"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "ROI Settings"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1287,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorRoi.join(', ') || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1288,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1279,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Gain Analog"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1298,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorGainAnalog || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1299,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1291,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                    style: {
+                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                    },
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                            children: "Scan Direction"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1309,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: results.leocamConfig.sensorScanDirection || 'N/A'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1310,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1302,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1234,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1233,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 1206,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #075985, #0369a1)" : "linear-gradient(to right, #e0f2fe, #bae6fd)",
+                                            color: isDarkMode ? "#bae6fd" : "#0369a1"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8l4-2 4 2V6z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1334,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1333,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "LEOCAM Telemetry Data"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1332,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1340,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1323,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                style: {
+                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                    marginBottom: "16px"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                        children: "Health Status"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1352,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
+                                                        children: results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? "HEALTHY" : "ERROR"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1353,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1344,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    marginBottom: '10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Temperature Readings"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1362,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempGrid,
+                                                children: [
+                                                    results.leocamTelemetry.cpuTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
+                                                                borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        "CPU ",
+                                                                        index + 1
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1381,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        temp,
+                                                                        "°C"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1389,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, `cpu-temp-${index}`, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1374,
+                                                            columnNumber: 23
+                                                        }, this)),
+                                                    results.leocamTelemetry.internalTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
+                                                                borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        "Internal ",
+                                                                        index + 1
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1410,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        temp,
+                                                                        "°C"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1418,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, `int-temp-${index}`, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1402,
+                                                            columnNumber: 25
+                                                        }, this)),
+                                                    results.leocamTelemetry.sensorTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
+                                                            style: {
+                                                                backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
+                                                                borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        "Sensor ",
+                                                                        index + 1
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1439,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
+                                                                    style: {
+                                                                        color: isDarkMode ? "#fcd34d" : "#92400e"
+                                                                    },
+                                                                    children: [
+                                                                        temp,
+                                                                        "°C"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1447,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, `sensor-temp-${index}`, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1431,
+                                                            columnNumber: 25
+                                                        }, this))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1371,
+                                                columnNumber: 19
+                                            }, this),
+                                            (options.includes('Disk Operations') || results.leocamTelemetry.diskUsed.length > 0) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            margin: '16px 0 10px',
+                                                            color: isDarkMode ? "#d1d5db" : "#374151"
+                                                        },
+                                                        children: "Storage Information"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1462,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
+                                                        style: {
+                                                            color: isDarkMode ? "#e5e7eb" : "inherit"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                                style: {
+                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                                    color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                            },
+                                                                            children: "Disk"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                            lineNumber: 1485,
+                                                                            columnNumber: 31
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                            },
+                                                                            children: "Usage (KB)"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                            lineNumber: 1486,
+                                                                            columnNumber: 31
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                            },
+                                                                            children: "Temp (°C)"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                            lineNumber: 1487,
+                                                                            columnNumber: 31
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                            },
+                                                                            children: "Lifetime (h)"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                            lineNumber: 1488,
+                                                                            columnNumber: 31
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1484,
+                                                                    columnNumber: 29
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1477,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
+                                                                children: results.leocamTelemetry.diskUsed.map((usage, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                        className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                        style: {
+                                                                            backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                                },
+                                                                                children: [
+                                                                                    "Disk ",
+                                                                                    index + 1
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                                lineNumber: 1498,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                                },
+                                                                                children: usage
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                                lineNumber: 1499,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                                },
+                                                                                children: results.leocamTelemetry.diskTemperatures[index] || 'N/A'
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                                lineNumber: 1500,
+                                                                                columnNumber: 33
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                                                },
+                                                                                children: results.leocamTelemetry.diskLifetimes[index] || 'N/A'
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                                lineNumber: 1503,
+                                                                                columnNumber: 33
+                                                                            }, this)
+                                                                        ]
+                                                                    }, `disk-${index}`, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                        lineNumber: 1493,
+                                                                        columnNumber: 31
+                                                                    }, this))
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1491,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1471,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, void 0, true),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '16px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Command Statistics"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1514,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "grid grid-cols-2 md:grid-cols-4 gap-4",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "Commands"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1531,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                children: results.leocamStatistics.commandCount || '0'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1532,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1524,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "Acknowledges"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1542,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                children: results.leocamStatistics.acknowledgeCount || '0'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1543,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1535,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "Timeouts"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1553,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: parseInt(results.leocamStatistics.timeoutCount || '0') > 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError : '',
+                                                                children: results.leocamStatistics.timeoutCount || '0'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1554,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1546,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
+                                                                children: "Errors"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1566,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: parseInt(results.leocamStatistics.errorCount || '0') > 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError : '',
+                                                                children: results.leocamStatistics.errorCount || '0'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                lineNumber: 1567,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1559,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1523,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                        lineNumber: 1343,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 1316,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: generateReport,
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].reportButton,
+                                    style: {
+                                        backgroundColor: "#10b981",
+                                        color: "white"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            viewBox: "0 0 20 20",
+                                            fill: "currentColor",
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                fillRule: "evenodd",
+                                                d: "M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z",
+                                                clipRule: "evenodd"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1585,
+                                                columnNumber: 23
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1584,
+                                            columnNumber: 21
+                                        }, this),
+                                        "Generate Report"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1576,
+                                    columnNumber: 19
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                lineNumber: 1575,
+                                columnNumber: 17
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                        lineNumber: 1091,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true) : /* Test History Panel */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
                 style: {
                     backgroundColor: isDarkMode ? "#1e1e1e" : "white",
@@ -252,7 +2515,8 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
                         style: {
                             backgroundColor: isDarkMode ? "#111827" : undefined,
-                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                            background: isDarkMode ? "linear-gradient(to right, #1e40af, #3b82f6)" : "linear-gradient(to right, #dbeafe, #eff6ff)"
                         },
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
@@ -267,1641 +2531,837 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                         fillRule: "evenodd",
-                                        d: "M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z",
+                                        d: "M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z",
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 257,
-                                        columnNumber: 15
+                                        lineNumber: 1614,
+                                        columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 256,
-                                    columnNumber: 13
+                                    lineNumber: 1613,
+                                    columnNumber: 17
                                 }, this),
-                                "LEOCAM Test Status"
+                                "LEOCAM Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                            lineNumber: 255,
-                            columnNumber: 11
+                            lineNumber: 1612,
+                            columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 248,
-                        columnNumber: 9
+                        lineNumber: 1602,
+                        columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressContainer,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressLabel,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressStep,
-                                                style: {
-                                                    color: isDarkMode ? "#d1d5db" : "#4b5563"
-                                                },
-                                                children: currentStep || 'Waiting to start test...'
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 266,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressValue,
-                                                style: {
-                                                    color: isDarkMode ? "#93c5fd" : "#1d4ed8"
-                                                },
-                                                children: [
-                                                    progress,
-                                                    "%"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 269,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
+                        children: historyLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                textAlign: 'center',
+                                padding: '20px',
+                                color: isDarkMode ? '#d1d5db' : '#6b7280'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].spinnerIcon,
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    strokeWidth: "2",
+                                    strokeLinecap: "round",
+                                    strokeLinejoin: "round",
+                                    style: {
+                                        margin: '0 auto 8px'
+                                    },
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        d: "M21 12a9 9 0 11-6.219-8.56"
+                                    }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 265,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressBar,
-                                        style: {
-                                            backgroundColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                        },
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].progressBarFill,
-                                            style: {
-                                                width: `${progress}%`,
-                                                background: 'linear-gradient(to right, #10b981, #059669)'
-                                            }
+                                        lineNumber: 1628,
+                                        columnNumber: 21
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1627,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: "Loading test history..."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1630,
+                                    columnNumber: 19
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                            lineNumber: 1622,
+                            columnNumber: 17
+                        }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                textAlign: 'center',
+                                padding: '20px',
+                                color: isDarkMode ? '#d1d5db' : '#6b7280',
+                                fontStyle: 'italic'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: "No test history available for this profile."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1639,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    style: {
+                                        marginTop: '8px',
+                                        fontSize: '14px'
+                                    },
+                                    children: "Run a test to start building your history."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1640,
+                                    columnNumber: 19
+                                }, this),
+                                !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '16px',
+                                        padding: '12px',
+                                        backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                                        borderRadius: '6px',
+                                        color: isDarkMode ? '#f87171' : '#b91c1c',
+                                        fontSize: '14px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 277,
-                                            columnNumber: 15
+                                            lineNumber: 1653,
+                                            columnNumber: 23
+                                        }, this),
+                                        " No profile ID detected. Test history requires a valid profile selection."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1645,
+                                    columnNumber: 21
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                            lineNumber: 1633,
+                            columnNumber: 17
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '16px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            style: {
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                color: isDarkMode ? '#d1d5db' : '#4b5563',
+                                                fontWeight: 500
+                                            },
+                                            children: "Select Metric:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1661,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                            value: selectedMetric,
+                                            onChange: (e)=>setSelectedMetric(e.target.value),
+                                            style: {
+                                                width: '100%',
+                                                padding: '8px 12px',
+                                                borderRadius: '6px',
+                                                backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                                border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                                color: isDarkMode ? '#e5e7eb' : '#111827',
+                                                fontSize: '14px'
+                                            },
+                                            children: metricOptions.map((option)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                    value: option.value,
+                                                    children: option.label
+                                                }, option.value, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1683,
+                                                    columnNumber: 25
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1669,
+                                            columnNumber: 21
                                         }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 273,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 264,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    marginBottom: '20px'
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        style: {
-                                            fontSize: '14px',
-                                            marginBottom: '10px',
-                                            color: isDarkMode ? "#d1d5db" : "#374151"
-                                        },
-                                        children: "Selected Test Options:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 289,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            display: 'flex',
-                                            flexWrap: 'wrap',
-                                            gap: '8px'
-                                        },
-                                        children: [
-                                            options.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1660,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        height: '300px',
+                                        marginBottom: '20px',
+                                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                                        padding: '16px',
+                                        borderRadius: '8px'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                fontSize: '14px',
+                                                fontWeight: 600,
+                                                marginBottom: '12px',
+                                                color: isDarkMode ? '#e5e7eb' : '#111827'
+                                            },
+                                            children: [
+                                                metricOptions.find((m)=>m.value === selectedMetric)?.label,
+                                                " Trend"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1698,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
+                                            data: testHistory,
+                                            metricPath: selectedMetric,
+                                            metricLabel: metricOptions.find((m)=>m.value === selectedMetric)?.label || selectedMetric,
+                                            isDarkMode: isDarkMode
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1707,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1691,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '20px',
+                                        marginBottom: '12px',
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 600,
+                                                    color: isDarkMode ? '#e5e7eb' : '#111827',
+                                                    marginBottom: '6px'
+                                                },
+                                                children: "Test History Records"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                lineNumber: 1724,
+                                                columnNumber: 23
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1723,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '12px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: toggleMultiSelectMode,
                                                     style: {
-                                                        padding: '6px 10px',
-                                                        backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
-                                                        borderRadius: '4px',
+                                                        backgroundColor: isMultiSelectMode ? isDarkMode ? '#4f46e5' : '#6366f1' : isDarkMode ? '#1f2937' : '#f3f4f6',
+                                                        color: isMultiSelectMode ? 'white' : isDarkMode ? '#e5e7eb' : '#374151',
+                                                        border: 'none',
+                                                        borderRadius: '6px',
+                                                        padding: '6px 12px',
                                                         fontSize: '13px',
-                                                        color: isDarkMode ? '#34d399' : '#059669',
+                                                        fontWeight: 500,
+                                                        cursor: 'pointer',
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        gap: '6px'
+                                                        gap: '6px',
+                                                        transition: 'all 0.2s ease'
                                                     },
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                             xmlns: "http://www.w3.org/2000/svg",
-                                                            width: "12",
-                                                            height: "12",
+                                                            width: "14",
+                                                            height: "14",
                                                             viewBox: "0 0 20 20",
                                                             fill: "currentColor",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                fillRule: "evenodd",
-                                                                d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
-                                                                clipRule: "evenodd"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 309,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 308,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        option
-                                                    ]
-                                                }, index, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 298,
-                                                    columnNumber: 17
-                                                }, this)),
-                                            options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                style: {
-                                                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                                                    fontStyle: 'italic',
-                                                    fontSize: '13px'
-                                                },
-                                                children: "No specific options selected. Running with defaults."
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 315,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 296,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 288,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                style: {
-                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                xmlns: "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 20 20",
-                                                fill: "currentColor",
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterIcon,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 336,
-                                                    columnNumber: 15
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 335,
-                                                columnNumber: 15
-                                            }, this),
-                                            "Connection Mode"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 334,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${isForceSimulation ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorWaiting : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
-                                        children: isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 340,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 327,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                style: {
-                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                xmlns: "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 20 20",
-                                                fill: "currentColor",
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterIcon,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 356,
-                                                    columnNumber: 17
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 355,
-                                                columnNumber: 15
-                                            }, this),
-                                            "Test Options"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 354,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
-                                        children: options.length > 0 ? `LEOCAM TEST ENABLED` : 'LEOCAM TEST DISABLED'
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 360,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 347,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: startTest,
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].button,
-                                disabled: isRunning,
-                                style: {
-                                    backgroundColor: isRunning ? '#9ca3af' : hasRunTest ? '#059669' : '#10b981',
-                                    color: 'white'
-                                },
-                                children: isRunning ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].spinnerIcon,
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            width: "14",
-                                            height: "14",
-                                            viewBox: "0 0 24 24",
-                                            fill: "none",
-                                            stroke: "currentColor",
-                                            strokeWidth: "2",
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                d: "M21 12a9 9 0 11-6.219-8.56"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 379,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 378,
-                                            columnNumber: 17
-                                        }, this),
-                                        "Running Test..."
-                                    ]
-                                }, void 0, true) : hasRunTest ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            viewBox: "0 0 20 20",
-                                            fill: "currentColor",
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                fillRule: "evenodd",
-                                                d: "M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z",
-                                                clipRule: "evenodd"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 386,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 385,
-                                            columnNumber: 17
-                                        }, this),
-                                        "Re-run Test"
-                                    ]
-                                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            viewBox: "0 0 20 20",
-                                            fill: "currentColor",
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                fillRule: "evenodd",
-                                                d: "M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z",
-                                                clipRule: "evenodd"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 393,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 392,
-                                            columnNumber: 17
-                                        }, this),
-                                        "Run Test"
-                                    ]
-                                }, void 0, true)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 366,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 263,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                lineNumber: 241,
-                columnNumber: 7
-            }, this),
-            results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-4 mt-4",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
-                        style: {
-                            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
-                                style: {
-                                    background: isDarkMode ? "linear-gradient(to right, #064e3b, #065f46)" : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                                    color: isDarkMode ? "#d1fae5" : "#065f46"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                xmlns: "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 20 20",
-                                                fill: "currentColor",
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    fillRule: "evenodd",
-                                                    d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
-                                                    clipRule: "evenodd"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 422,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 421,
-                                                columnNumber: 17
-                                            }, this),
-                                            "LEOCAM Voltage Test Results"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 420,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
-                                        isSimulation: isForceSimulation
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 428,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 411,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
-                                    style: {
-                                        color: isDarkMode ? "#e5e7eb" : "inherit"
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                color: isDarkMode ? "#d1d5db" : "#6b7280"
-                                            },
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                        },
-                                                        children: "Device"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 446,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                        },
-                                                        children: "Voltage"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 447,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                        },
-                                                        children: "Current"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 448,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                        },
-                                                        children: "Initial Status"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 449,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        style: {
-                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                        },
-                                                        children: "Final Status"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 450,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 445,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 438,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: "GPS"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 455,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
                                                             children: [
-                                                                results.voltageTests.gps.voltage,
-                                                                " V"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 456,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: [
-                                                                results.voltageTests.gps.current,
-                                                                " A"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 457,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.gps.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.gps.passInitial ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 459,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 458,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.gps.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.gps.passFinal ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 466,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 465,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 454,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt,
-                                                    style: {
-                                                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: "PCS"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 475,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: [
-                                                                results.voltageTests.pcs.voltage,
-                                                                " V"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 476,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: [
-                                                                results.voltageTests.pcs.current,
-                                                                " A"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 477,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.pcs.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.pcs.passInitial ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 479,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 478,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.pcs.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.pcs.passFinal ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 486,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 485,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 474,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: "LEOCAM"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 495,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: [
-                                                                results.voltageTests.leocam.voltage,
-                                                                " V"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 496,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: [
-                                                                results.voltageTests.leocam.current,
-                                                                " A"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 497,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.leocam.passInitial ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.leocam.passInitial ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 499,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 498,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            style: {
-                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                            },
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.voltageTests.leocam.passFinal ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                                children: results.voltageTests.leocam.passFinal ? "PASS" : "FAIL"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 506,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 505,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 494,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 453,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 432,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 431,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 404,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
-                        style: {
-                            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
-                                style: {
-                                    background: isDarkMode ? "linear-gradient(to right, #064e3b, #065f46)" : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                                    color: isDarkMode ? "#d1fae5" : "#065f46"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                xmlns: "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 20 20",
-                                                fill: "currentColor",
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    fillRule: "evenodd",
-                                                    d: "M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z",
-                                                    clipRule: "evenodd"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 536,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 535,
-                                                columnNumber: 17
-                                            }, this),
-                                            "LEOCAM Configuration"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 534,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
-                                        isSimulation: isForceSimulation
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 542,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 525,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "grid grid-cols-2 gap-4",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Sensor Mode"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 554,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorMode || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 555,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 547,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Sensor Power"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 565,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorPower || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 566,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 558,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Frame Rate"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 576,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorLineFrameRate || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 577,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 569,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Bit Depth"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 587,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorBitDepth || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 588,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 580,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                                                gridColumn: "span 2"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "ROI Settings"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 599,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorRoi.join(', ') || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 600,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 591,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Gain Analog"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 610,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorGainAnalog || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 611,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 603,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                            style: {
-                                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                    children: "Scan Direction"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 621,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    children: results.leocamConfig.sensorScanDirection || 'N/A'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 622,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 614,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 546,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 545,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 518,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
-                        style: {
-                            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardHeader,
-                                style: {
-                                    background: isDarkMode ? "linear-gradient(to right, #075985, #0369a1)" : "linear-gradient(to right, #e0f2fe, #bae6fd)",
-                                    color: isDarkMode ? "#bae6fd" : "#0369a1"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardTitle,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                xmlns: "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 20 20",
-                                                fill: "currentColor",
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardIcon,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    fillRule: "evenodd",
-                                                    d: "M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8l4-2 4 2V6z",
-                                                    clipRule: "evenodd"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 646,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 645,
-                                                columnNumber: 17
-                                            }, this),
-                                            "LEOCAM Telemetry Data"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 644,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
-                                        isSimulation: isForceSimulation
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 652,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 635,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].cardContent,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                        style: {
-                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                                            marginBottom: "16px"
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                children: "Health Status"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 664,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError}`,
-                                                children: results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? "HEALTHY" : "ERROR"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 665,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 656,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        style: {
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                            marginBottom: '10px',
-                                            color: isDarkMode ? "#d1d5db" : "#374151"
-                                        },
-                                        children: "Temperature Readings"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 674,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempGrid,
-                                        children: [
-                                            results.leocamTelemetry.cpuTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
-                                                    style: {
-                                                        backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                                                        borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                "CPU ",
-                                                                index + 1
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 694,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                temp,
-                                                                "°C"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 702,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, `cpu-temp-${index}`, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 686,
-                                                    columnNumber: 19
-                                                }, this)),
-                                            results.leocamTelemetry.internalTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
-                                                    style: {
-                                                        backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                                                        borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                "Internal ",
-                                                                index + 1
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 723,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                temp,
-                                                                "°C"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 731,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, `int-temp-${index}`, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 715,
-                                                    columnNumber: 19
-                                                }, this)),
-                                            results.leocamTelemetry.sensorTemperatures.map((temp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempCard,
-                                                    style: {
-                                                        backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                                                        borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempLabel,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                "Sensor ",
-                                                                index + 1
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 752,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tempValue,
-                                                            style: {
-                                                                color: isDarkMode ? "#fcd34d" : "#92400e"
-                                                            },
-                                                            children: [
-                                                                temp,
-                                                                "°C"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 760,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, `sensor-temp-${index}`, true, {
-                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 744,
-                                                    columnNumber: 19
-                                                }, this))
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 683,
-                                        columnNumber: 15
-                                    }, this),
-                                    (options.includes('Disk Operations') || results.leocamTelemetry.diskUsed.length > 0) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                style: {
-                                                    fontSize: '14px',
-                                                    fontWeight: 'bold',
-                                                    margin: '16px 0 10px',
-                                                    color: isDarkMode ? "#d1d5db" : "#374151"
-                                                },
-                                                children: "Storage Information"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 775,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].table,
-                                                style: {
-                                                    color: isDarkMode ? "#e5e7eb" : "inherit"
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableHeader,
-                                                        style: {
-                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
-                                                        },
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Disk"
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                    d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 798,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1758,
+                                                                    columnNumber: 27
                                                                 }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Usage (KB)"
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                    fillRule: "evenodd",
+                                                                    d: "M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z",
+                                                                    clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 799,
-                                                                    columnNumber: 25
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Temp (°C)"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 800,
-                                                                    columnNumber: 25
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                                    style: {
-                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                    },
-                                                                    children: "Lifetime (h)"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 801,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 1759,
+                                                                    columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 797,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 790,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableBody,
-                                                        children: results.leocamTelemetry.diskUsed.map((usage, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
-                                                                style: {
-                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
-                                                                },
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: [
-                                                                            "Disk ",
-                                                                            index + 1
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 811,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: usage
+                                                            lineNumber: 1757,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1736,
+                                                    columnNumber: 23
+                                                }, this),
+                                                isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: selectAllItems,
+                                                            style: {
+                                                                backgroundColor: 'transparent',
+                                                                color: isDarkMode ? '#93c5fd' : '#2563eb',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 8px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: 'pointer'
+                                                            },
+                                                            children: "Select All"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1767,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: deselectAllItems,
+                                                            style: {
+                                                                backgroundColor: 'transparent',
+                                                                color: isDarkMode ? '#93c5fd' : '#2563eb',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 8px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: 'pointer'
+                                                            },
+                                                            children: "Deselect All"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1783,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: deleteSelectedItems,
+                                                            disabled: selectedItems.length === 0,
+                                                            style: {
+                                                                backgroundColor: selectedItems.length === 0 ? isDarkMode ? '#6b7280' : '#9ca3af' : isDarkMode ? '#dc2626' : '#ef4444',
+                                                                color: 'white',
+                                                                border: 'none',
+                                                                borderRadius: '6px',
+                                                                padding: '6px 12px',
+                                                                fontSize: '13px',
+                                                                fontWeight: 500,
+                                                                cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                gap: '6px'
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                                    width: "14",
+                                                                    height: "14",
+                                                                    viewBox: "0 0 20 20",
+                                                                    fill: "currentColor",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                        fillRule: "evenodd",
+                                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                                        clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 812,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: results.leocamTelemetry.diskTemperatures[index] || 'N/A'
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 813,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                                        style: {
-                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                                        },
-                                                                        children: results.leocamTelemetry.diskLifetimes[index] || 'N/A'
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 816,
-                                                                        columnNumber: 27
+                                                                        lineNumber: 1819,
+                                                                        columnNumber: 31
                                                                     }, this)
-                                                                ]
-                                                            }, `disk-${index}`, true, {
-                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 806,
-                                                                columnNumber: 25
-                                                            }, this))
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                                    lineNumber: 1818,
+                                                                    columnNumber: 29
+                                                                }, this),
+                                                                "Delete Selected (",
+                                                                selectedItems.length,
+                                                                ")"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1799,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1734,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1716,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '20px',
+                                        padding: '12px',
+                                        borderRadius: '8px',
+                                        backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+                                        border: '1px solid',
+                                        borderColor: isDarkMode ? '#475569' : '#bfdbfe'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            style: {
+                                                marginBottom: '8px',
+                                                color: isDarkMode ? '#e5e7eb' : '#1e40af',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    width: "16",
+                                                    height: "16",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: "2",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 804,
-                                                        columnNumber: 21
+                                                        lineNumber: 1832,
+                                                        columnNumber: 25
                                                     }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 784,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        style: {
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                            margin: '16px 0 10px',
-                                            color: isDarkMode ? "#d1d5db" : "#374151"
-                                        },
-                                        children: "Command Statistics"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 827,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid grid-cols-2 md:grid-cols-4 gap-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                                style: {
-                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                        children: "Commands"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 844,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: results.leocamStatistics.commandCount || '0'
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 845,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 837,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                                style: {
-                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                        children: "Acknowledges"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 855,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: results.leocamStatistics.acknowledgeCount || '0'
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 856,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 848,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                                style: {
-                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                        children: "Timeouts"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 866,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: parseInt(results.leocamStatistics.timeoutCount || '0') > 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError : '',
-                                                        children: results.leocamStatistics.timeoutCount || '0'
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 867,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 859,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterBox,
-                                                style: {
-                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].parameterLabel,
-                                                        children: "Errors"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 879,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: parseInt(results.leocamStatistics.errorCount || '0') > 0 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorError : '',
-                                                        children: results.leocamStatistics.errorCount || '0'
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 880,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 872,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 836,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 655,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 628,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: generateReport,
-                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].reportButton,
-                            style: {
-                                backgroundColor: "#10b981",
-                                color: "white"
-                            },
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 20 20",
-                                    fill: "currentColor",
-                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].buttonIcon,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        fillRule: "evenodd",
-                                        d: "M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z",
-                                        clipRule: "evenodd"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 898,
-                                        columnNumber: 17
-                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1831,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "Test History Information"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1830,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                fontSize: '14px',
+                                                color: isDarkMode ? '#cbd5e1' : '#334155'
+                                            },
+                                            children: [
+                                                "This chart shows only ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                    children: "real test data"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1837,
+                                                    columnNumber: 45
+                                                }, this),
+                                                " from actual hardware tests. Simulated test results are not included in this history or visualization."
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1836,
+                                            columnNumber: 21
+                                        }, this),
+                                        testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                marginTop: '10px',
+                                                fontSize: '14px',
+                                                color: isDarkMode ? '#fb923c' : '#c2410c',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    width: "16",
+                                                    height: "16",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: "2",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                            cx: "12",
+                                                            cy: "12",
+                                                            r: "10"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1843,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                                                            x1: "12",
+                                                            y1: "8",
+                                                            x2: "12",
+                                                            y2: "12"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1844,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                                                            x1: "12",
+                                                            y1: "16",
+                                                            x2: "12.01",
+                                                            y2: "16"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                            lineNumber: 1845,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1842,
+                                                    columnNumber: 25
+                                                }, this),
+                                                "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1841,
+                                            columnNumber: 23
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1829,
+                                    columnNumber: 19
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
+                                    testHistory: testHistory,
+                                    isDarkMode: isDarkMode,
+                                    onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 897,
-                                    columnNumber: 15
+                                    lineNumber: 1853,
+                                    columnNumber: 19
                                 }, this),
-                                "Generate Report"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '20px',
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        gap: '10px',
+                                        flexWrap: 'wrap'
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: clearAllTestHistory,
+                                            style: {
+                                                backgroundColor: '#dc2626',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1879,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1878,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "Clear All History"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1862,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>cleanupSimulatedData(),
+                                            style: {
+                                                backgroundColor: '#ef4444',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1902,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1901,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "Clean Up Simulated Data"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1885,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>limitTestHistory(30),
+                                            style: {
+                                                backgroundColor: '#3b82f6',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1925,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1924,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "Limit History (30 Records)"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1908,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>{
+                                                // Implement history export functionality
+                                                const historyData = JSON.stringify(testHistory, null, 2);
+                                                const blob = new Blob([
+                                                    historyData
+                                                ], {
+                                                    type: 'application/json'
+                                                });
+                                                const url = URL.createObjectURL(blob);
+                                                const a = document.createElement('a');
+                                                a.href = url;
+                                                a.download = `leocam_test_history_${profileId || 'unknown'}.json`;
+                                                document.body.appendChild(a);
+                                                a.click();
+                                                document.body.removeChild(a);
+                                                URL.revokeObjectURL(url);
+                                            },
+                                            style: {
+                                                backgroundColor: '#10b981',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                padding: '8px 16px',
+                                                fontSize: '14px',
+                                                fontWeight: 500,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20",
+                                                    fill: "currentColor",
+                                                    style: {
+                                                        width: '16px',
+                                                        height: '16px'
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        fillRule: "evenodd",
+                                                        d: "M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+                                                        clipRule: "evenodd"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                        lineNumber: 1960,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                                    lineNumber: 1959,
+                                                    columnNumber: 23
+                                                }, this),
+                                                "Export Test History"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1931,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1860,
+                                    columnNumber: 19
+                                }, this),
+                                (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginTop: '12px',
+                                        padding: '12px',
+                                        borderRadius: '6px',
+                                        backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
+                                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                                        fontSize: '14px'
+                                    },
+                                    children: [
+                                        cleanupMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                color: cleanupMessage.includes('✅') ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c',
+                                                marginBottom: limitMessage ? '8px' : '0'
+                                            },
+                                            children: cleanupMessage
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1977,
+                                            columnNumber: 23
+                                        }, this),
+                                        limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                color: limitMessage.includes('✅') ? isDarkMode ? '#34d399' : '#047857' : isDarkMode ? '#f87171' : '#b91c1c'
+                                            },
+                                            children: limitMessage
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                            lineNumber: 1988,
+                                            columnNumber: 23
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                                    lineNumber: 1968,
+                                    columnNumber: 19
+                                }, this)
                             ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                            lineNumber: 889,
-                            columnNumber: 13
-                        }, this)
+                        }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 888,
-                        columnNumber: 11
+                        lineNumber: 1620,
+                        columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                lineNumber: 403,
+                lineNumber: 1595,
+                columnNumber: 11
+            }, this),
+            selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
+                test: selectedHistoryItem,
+                onClose: ()=>setSelectedHistoryItem(null),
+                isDarkMode: isDarkMode
+            }, void 0, false, {
+                fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
+                lineNumber: 2006,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-        lineNumber: 234,
+        lineNumber: 881,
         columnNumber: 5
     }, this);
 };
-_s(LEOCAMTestPanel, "cUn6ZpYkX41aD7ftCvUBMzFN1a8=");
+_s(LEOCAMTestPanel, "iDbTCMxl3YhwCkmCF2ocfVs4n3Q=");
 _c1 = LEOCAMTestPanel;
+const __TURBOPACK__default__export__ = LEOCAMTestPanel;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "SimulationBadge");
 __turbopack_context__.k.register(_c1, "LEOCAMTestPanel");

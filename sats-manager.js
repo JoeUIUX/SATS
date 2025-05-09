@@ -19,6 +19,7 @@ const CONFIG = {
   frontendArgs: ['run', 'dev'],
   logPath: path.resolve(process.cwd(), 'logs'),
   logToFile: true,
+  venvPath: path.resolve(process.cwd(), 'backend', 'venv'),
   backendEnv: { 
     ...process.env, 
     PYTHONUNBUFFERED: '1',
@@ -159,6 +160,32 @@ PYTHONIOENCODING=utf-8
   }
 };
 
+// Function to check if virtual environment exists and is valid
+const checkVirtualEnv = () => {
+  const isWindows = os.platform() === 'win32';
+  const activateScript = isWindows 
+    ? path.join(CONFIG.venvPath, 'Scripts', 'activate.bat')
+    : path.join(CONFIG.venvPath, 'bin', 'activate');
+  
+  const pythonExe = isWindows
+    ? path.join(CONFIG.venvPath, 'Scripts', 'python.exe')
+    : path.join(CONFIG.venvPath, 'bin', 'python');
+  
+  const valid = fs.existsSync(activateScript) && fs.existsSync(pythonExe);
+  
+  if (!valid) {
+    log(`Virtual environment not found or invalid at: ${CONFIG.venvPath}`, null);
+    log(`Expected activation script: ${activateScript}`, null);
+    log(`Expected Python executable: ${pythonExe}`, null);
+  }
+  
+  return {
+    valid,
+    activateScript,
+    pythonExe
+  };
+};
+
 // Create logs directory if it doesn't exist
 if (CONFIG.logToFile && !fs.existsSync(CONFIG.logPath)) {
   fs.mkdirSync(CONFIG.logPath, { recursive: true });
@@ -257,7 +284,7 @@ const killProcessOnPort = (port) => {
   }
 };
 
-// Start backend process
+// Start backend process with virtual environment
 const startBackend = () => {
   log('Starting backend server...', backendLog);
 
@@ -266,6 +293,186 @@ const startBackend = () => {
   
   // Initialize files with proper encoding settings
   initializeForEncoding();
+  
+  // Check virtual environment
+  const venv = checkVirtualEnv();
+  if (!venv.valid) {
+    log('WARNING: Virtual environment is not valid or missing', backendLog);
+    log('Will attempt to create virtual environment...', backendLog);
+    
+    // Create virtual environment
+    const isWindows = os.platform() === 'win32';
+    const createVenvCmd = isWindows ? 'python' : 'python3';
+    const createVenvArgs = ['-m', 'venv', CONFIG.venvPath];
+    
+    try {
+      log(`Creating virtual environment at: ${CONFIG.venvPath}`, backendLog);
+      const createVenvProcess = spawn(createVenvCmd, createVenvArgs, {
+        cwd: CONFIG.backendPath,
+        shell: true
+      });
+      
+      createVenvProcess.on('close', (code) => {
+        if (code === 0) {
+          log('Virtual environment created successfully', backendLog);
+          // Attempt to install requirements
+          installRequirements();
+        } else {
+          log(`Failed to create virtual environment (exit code: ${code})`, backendLog);
+          startBackendFallback();
+        }
+      });
+    } catch (error) {
+      log(`Error creating virtual environment: ${error.message}`, backendLog);
+      startBackendFallback();
+    }
+  } else {
+    // Virtual environment exists, proceed to start Flask
+    startBackendWithVenv();
+  }
+};
+
+// Install requirements in the virtual environment
+const installRequirements = () => {
+  const isWindows = os.platform() === 'win32';
+  const pipExe = isWindows
+    ? path.join(CONFIG.venvPath, 'Scripts', 'pip.exe')
+    : path.join(CONFIG.venvPath, 'bin', 'pip');
+  
+  const requirementsPath = path.join(CONFIG.backendPath, 'requirements.txt');
+  
+  if (!fs.existsSync(requirementsPath)) {
+    log(`Requirements file not found at: ${requirementsPath}`, backendLog);
+    log('Continuing without installing requirements', backendLog);
+    startBackendWithVenv();
+    return;
+  }
+  
+  log('Installing requirements in virtual environment...', backendLog);
+  
+  let installProcess;
+  
+  if (isWindows) {
+    // On Windows, use the pip.exe directly
+    installProcess = spawn(pipExe, ['install', '-r', requirementsPath], {
+      cwd: CONFIG.backendPath,
+      shell: true
+    });
+  } else {
+    // On Unix/Mac, source the activation script
+    installProcess = spawn('sh', ['-c', `source "${path.join(CONFIG.venvPath, 'bin', 'activate')}" && pip install -r requirements.txt`], {
+      cwd: CONFIG.backendPath,
+      shell: true
+    });
+  }
+  
+  installProcess.stdout.on('data', (data) => {
+    handleProcessOutput(data, 'PIP Install', backendLog);
+  });
+  
+  installProcess.stderr.on('data', (data) => {
+    handleProcessOutput(data, 'PIP Install Error', backendLog);
+  });
+  
+  installProcess.on('close', (code) => {
+    if (code === 0) {
+      log('Requirements installed successfully', backendLog);
+    } else {
+      log(`Failed to install requirements (exit code: ${code})`, backendLog);
+    }
+    
+    // Proceed to start Flask regardless of requirements install result
+    startBackendWithVenv();
+  });
+};
+
+// Start backend with virtual environment - Alternative approach for Windows
+const startBackendWithVenv = () => {
+  const isWindows = os.platform() === 'win32';
+  
+  if (isWindows) {
+    // On Windows, use a batch file approach 
+    // Create a temporary batch file to handle the virtual environment activation
+    const tempBatPath = path.join(os.tmpdir(), 'run_flask_venv.bat');
+    const venvActivatePath = path.join(CONFIG.venvPath, 'Scripts', 'activate.bat');
+    
+    // Build batch file content
+    const batchContent = `
+@echo off
+call "${venvActivatePath}"
+cd /d "${CONFIG.backendPath}"
+python -m flask run --host=0.0.0.0 --port=5000
+`;
+    
+    // Write the batch file
+    try {
+      fs.writeFileSync(tempBatPath, batchContent);
+      log(`Created temporary batch file at ${tempBatPath}`, backendLog);
+      
+      // Run the batch file
+      processes.backend = spawn('cmd', ['/c', tempBatPath], {
+        env: CONFIG.backendEnv,
+        shell: true
+      });
+      
+      // Auto-delete the batch file when the process exits
+      processes.backend.on('close', () => {
+        try {
+          fs.unlinkSync(tempBatPath);
+          log('Deleted temporary batch file', backendLog);
+        } catch (err) {
+          log(`Error deleting temporary batch file: ${err.message}`, backendLog);
+        }
+      });
+    } catch (err) {
+      log(`Error creating temporary batch file: ${err.message}`, backendLog);
+      startBackendFallback();
+      return;
+    }
+  } else {
+    // Unix/Mac approach remains the same
+    const pythonExe = path.join(CONFIG.venvPath, 'bin', 'python');
+    const activateCmd = `source "${path.join(CONFIG.venvPath, 'bin', 'activate')}" && "${pythonExe}" -m flask run --host=0.0.0.0 --port=5000`;
+    
+    processes.backend = spawn('sh', ['-c', activateCmd], {
+      cwd: CONFIG.backendPath,
+      shell: true,
+      env: CONFIG.backendEnv
+    });
+  }
+  
+  // Handle stdout
+  processes.backend.stdout.on('data', (data) => {
+    handleProcessOutput(data, 'Backend', backendLog);
+  });
+
+  // Handle stderr
+  processes.backend.stderr.on('data', (data) => {
+    handleProcessOutput(data, 'Backend Error', backendLog);
+  });
+
+  // Handle process exit
+  processes.backend.on('close', (code) => {
+    log(`Backend process exited with code ${code}`, backendLog);
+    processes.backend = null;
+    
+    // If process exit was due to error, fall back to system Python
+    if (code !== 0) {
+      log('Falling back to system Python due to error...', backendLog);
+      startBackendFallback();
+    }
+  });
+
+  processes.backend.on('error', (err) => {
+    log(`Backend process error: ${err.message}`, backendLog);
+    log('Falling back to system Python...', backendLog);
+    startBackendFallback();
+  });
+};
+
+// Fallback to starting backend without virtual environment
+const startBackendFallback = () => {
+  log('Falling back to system Python for Flask server', backendLog);
   
   // For Windows: Create explicit command for running Python correctly
   const isWindows = os.platform() === 'win32';
@@ -277,16 +484,7 @@ const startBackend = () => {
   processes.backend = spawn(command, args, {
     cwd: CONFIG.backendPath,
     shell: true,
-    env: {
-      ...process.env,
-      PYTHONUNBUFFERED: '1',
-      FLASK_APP: 'backend_server.py',
-      FLASK_ENV: 'development',
-      FLASK_DEBUG: '1',
-      PYTHONIOENCODING: 'utf-8',
-      FLASK_CORS_ENABLED: 'true',
-      FLASK_CORS_ORIGINS: 'http://localhost:3000,http://127.0.0.1:3000'
-    }
+    env: CONFIG.backendEnv
   });
 
   // Handle stdout

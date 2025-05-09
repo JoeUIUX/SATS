@@ -1,0 +1,301 @@
+/* [project]/src/components/CheckoutTestProgress/components/SBandTestPanel.module.css [app-client] (css) */
+.SBandTestPanel-module__sHVpCa__sbandSpecificIcon {
+  color: #6d28d9;
+}
+
+.SBandTestPanel-module__sHVpCa__frequencyValue {
+  font-family: monospace;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.SBandTestPanel-module__sHVpCa__frequencyValue.SBandTestPanel-module__sHVpCa__dark {
+  color: #60a5fa;
+}
+
+.SBandTestPanel-module__sHVpCa__tempGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.SBandTestPanel-module__sHVpCa__tempCard {
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.SBandTestPanel-module__sHVpCa__tempLabel {
+  font-size: 14px;
+  color: #92400e;
+  margin-bottom: 8px;
+}
+
+.SBandTestPanel-module__sHVpCa__tempValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #92400e;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempCard {
+  background-color: #92400e1a;
+  border-color: #fcd34d4d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempLabel {
+  color: #fcd34d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempValue {
+  color: #fcd34d;
+}
+
+.SBandTestPanel-module__sHVpCa__modeIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.SBandTestPanel-module__sHVpCa__modeActive {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.SBandTestPanel-module__sHVpCa__modeInactive {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__modeActive {
+  background-color: #16653433;
+  color: #86efac;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__modeInactive {
+  background-color: #b91c1c33;
+  color: #fca5a5;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultBox {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__success {
+  background-color: #d1fae5;
+  border: 1px solid #86efac;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__error {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__success .SBandTestPanel-module__sHVpCa__testResultTitle {
+  color: #059669;
+}
+
+.SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__error .SBandTestPanel-module__sHVpCa__testResultTitle {
+  color: #dc2626;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__success {
+  background-color: #05966933;
+  border-color: #86efac4d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__error {
+  background-color: #dc262633;
+  border-color: #fca5a54d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__success .SBandTestPanel-module__sHVpCa__testResultTitle {
+  color: #34d399;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__testResultBox.SBandTestPanel-module__sHVpCa__error .SBandTestPanel-module__sHVpCa__testResultTitle {
+  color: #f87171;
+}
+
+.SBandTestPanel-module__sHVpCa__parameterBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  margin-bottom: 12px;
+  min-height: 44px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (width <= 400px) {
+  .SBandTestPanel-module__sHVpCa__parameterBox {
+    flex-direction: column;
+  }
+}
+
+.SBandTestPanel-module__sHVpCa__parameterLabel {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+  min-width: 150px;
+  word-break: break-word;
+}
+
+.SBandTestPanel-module__sHVpCa__parameterIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.SBandTestPanel-module__sHVpCa__parameterValue {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  text-align: right;
+  word-break: break-word;
+  max-width: 180px;
+}
+
+.SBandTestPanel-module__sHVpCa__statusBadge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  word-break: break-word;
+  text-align: center;
+}
+
+.SBandTestPanel-module__sHVpCa__colorCompleted {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.SBandTestPanel-module__sHVpCa__colorError {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.SBandTestPanel-module__sHVpCa__colorWaiting {
+  background-color: #fffbeb;
+  color: #92400e;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__parameterBox {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__parameterLabel {
+  color: #d1d5db;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__parameterIcon {
+  color: #9ca3af;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__colorCompleted {
+  background-color: #10b98133;
+  color: #34d399;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__colorError {
+  background-color: #ef444433;
+  color: #f87171;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__colorWaiting {
+  background-color: #92400e1a;
+  color: #fcd34d;
+}
+
+.SBandTestPanel-module__sHVpCa__tempGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.SBandTestPanel-module__sHVpCa__tempCard {
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.SBandTestPanel-module__sHVpCa__tempLabel {
+  font-size: 14px;
+  color: #92400e;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.SBandTestPanel-module__sHVpCa__tempValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #92400e;
+  margin-top: auto;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempCard {
+  background-color: #92400e1a;
+  border-color: #fcd34d4d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempLabel {
+  color: #fcd34d;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__tempValue {
+  color: #fcd34d;
+}
+
+.SBandTestPanel-module__sHVpCa__parameterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.SBandTestPanel-module__sHVpCa__card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: visible;
+  box-shadow: 0 1px 3px #0000001a;
+  margin-bottom: 16px;
+}
+
+html.dark .SBandTestPanel-module__sHVpCa__card {
+  background-color: #1e1e1e;
+  border-color: #374151;
+}
+
+/*# sourceMappingURL=src_components_CheckoutTestProgress_components_SBandTestPanel_module_b52d8e88.css.map*/

@@ -48,18 +48,46 @@ interface TestHistoryItem {
   test_date: string;
   results: {
     simulated?: boolean;
+    firmware?: {
+      major?: string;
+      minor?: string;
+      patch?: string;
+    };
+    time?: {
+      before?: string;
+      after?: string;
+      current?: string;
+      uptime?: {
+        total?: string;
+        session?: string;
+      };
+      storePeriod?: string;
+      resetCount?: string;
+      resetSource?: string;
+    };
+    can?: {
+      primary?: {
+        before?: any;
+        after?: any;
+        result?: string;
+      };
+      secondary?: {
+        before?: any;
+        after?: any;
+        result?: string;
+      };
+    };
     voltage?: {
       sdCard?: any;
       flash?: any;
       eeprom?: any;
       payload?: any;
       uhf?: any;
+      pp?: any;
+      gps?: any;
+      lna?: any;
     };
-    can?: {
-      primary?: any;
-      secondary?: any;
-    };
-    memory?: {  // Add memory property to the interface
+    memory?: {  
       sdCard?: {
         result?: string;
         before?: any;
@@ -117,13 +145,20 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
   // API URL
   const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
   
-  // Available metrics for visualization
+  // Available metrics for visualization - expanded based on OBC2Checkout.ts
   const metricOptions = [
     { label: 'SD Card Voltage', value: 'voltage.sdCard.value' },
     { label: 'Flash Voltage', value: 'voltage.flash.value' },
     { label: 'EEPROM Voltage', value: 'voltage.eeprom.value' },
     { label: 'Payload Voltage', value: 'voltage.payload.value' },
-    { label: 'UHF Voltage', value: 'voltage.uhf.value' }
+    { label: 'UHF Voltage', value: 'voltage.uhf.value' },
+    { label: 'PP Voltage', value: 'voltage.pp.value' },
+    { label: 'GPS Voltage', value: 'voltage.gps.value' },
+    { label: 'LNA Voltage', value: 'voltage.lna.value' },
+    { label: 'Payload Current', value: 'voltage.payload.current' },
+    { label: 'UHF Current', value: 'voltage.uhf.current' },
+    { label: 'PP Current', value: 'voltage.pp.current' },
+    { label: 'LNA Current', value: 'voltage.lna.current' },
   ];
   
   // Check for dark mode
@@ -242,12 +277,14 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
                item.results.voltage.eeprom || item.results.voltage.payload || 
                item.results.voltage.uhf);
             
-            // Must have some CAN data
+            // Must have some CAN data or time data
             const hasCanData = item.results.can && 
               (item.results.can.primary || item.results.can.secondary);
+            const hasTimeData = item.results.time && 
+              (item.results.time.before || item.results.time.current);
             
-            // Consider it a real test if it has both voltage and CAN data
-            return hasVoltageData && hasCanData;
+            // Consider it a real test if it has voltage data AND (can data OR time data)
+            return hasVoltageData && (hasCanData || hasTimeData);
           })
           // Limit to the most recent 'limit' entries (typically 30)
           .slice(0, limit);
@@ -844,1298 +881,1659 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
         marginBottom: '16px',
       }}>
         <button
-onClick={() => setShowHistory(false)}
-className={`${styles.tabButton} ${!showHistory ? styles.tabButtonActive : ''}`}
-style={{
-  padding: '8px 16px',
-  borderRadius: '6px',
-  backgroundColor: !showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
-  color: !showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
-  border: 'none',
-  fontWeight: 500,
-  cursor: 'pointer'
-}}
->
-Current Test
-</button>
-<button
-onClick={() => setShowHistory(true)}
-className={`${styles.tabButton} ${showHistory ? styles.tabButtonActive : ''}`}
-style={{
-  padding: '8px 16px',
-  borderRadius: '6px',
-  backgroundColor: showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
-  color: showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
-  border: 'none',
-  fontWeight: 500,
-  cursor: 'pointer'
-}}
->
-Test History
-</button>
-</div>
-
-{/* Current Test Panel */}
-{!showHistory ? (
-<>
-<div 
-  className={styles.card}
-  style={{
-    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-  }}
->
-  <div 
-    className={styles.cardHeader}
-    style={{
-      backgroundColor: isDarkMode ? "#111827" : undefined,
-      borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-    }}
-  >
-    <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-        <path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clipRule="evenodd" />
-      </svg>
-      OBC-2 Test Status
-    </h3>
-  </div>
-  
-  <div className={styles.cardContent}>
-    <div className={styles.progressContainer}>
-      <div className={styles.progressLabel}>
-        <span className={styles.progressStep} style={{ color: isDarkMode ? "#d1d5db" : "#4b5563" }}>
-          {currentStep || 'Waiting to start test...'}
-        </span>
-        <span className={styles.progressValue} style={{ color: isDarkMode ? "#93c5fd" : "#1d4ed8" }}>
-          {progress}%
-        </span>
-      </div>
-      <div 
-        className={styles.progressBar}
-        style={{ backgroundColor: isDarkMode ? "#374151" : "#e5e7eb" }}
-      >
-        <div 
-          className={styles.progressBarFill}
-          style={{ 
-            width: `${progress}%`,
-            background: 'linear-gradient(to right, #3b82f6, #4f46e5)'
-          }}
-        ></div>
-      </div>
-    </div>
-    
-    {/* Display the testing options */}
-    <div style={{ marginBottom: '20px' }}>
-      <h4 style={{ 
-        fontSize: '14px', 
-        marginBottom: '10px',
-        color: isDarkMode ? "#d1d5db" : "#374151"
-      }}>
-        Selected Test Options:
-      </h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-        {options.map((option, index) => (
-          <div key={index} style={{ 
-            padding: '6px 10px', 
-            backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
-            borderRadius: '4px',
-            fontSize: '13px',
-            color: isDarkMode ? '#93c5fd' : '#3b82f6',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px'
-          }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-            {option}
-          </div>
-        ))}
-        {options.length === 0 && (
-          <div style={{ 
-            color: isDarkMode ? '#9ca3af' : '#6b7280',
-            fontStyle: 'italic',
-            fontSize: '13px'
-          }}>
-            No specific options selected. Running with defaults.
-          </div>
-        )}
-      </div>
-    </div>
-    
-    {/* Connection Status */}
-    <div 
-      className={styles.parameterBox}
-      style={{
-        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-      }}
-    >
-      <div className={styles.parameterLabel}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-        </svg>
-        Connection Mode
-      </div>
-      <span className={`${styles.statusBadge} ${
-        isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-      }`}>
-        {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-      </span>
-    </div>
-    
-    <div 
-      className={styles.parameterBox}
-      style={{
-        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-        marginTop: '10px'
-      }}
-    >
-      <div className={styles.parameterLabel}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-          <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
-        </svg>
-        Memory Testing
-      </div>
-      <span style={{ display: 'flex', gap: '8px' }}>
-        <span className={`${styles.parameterValue} ${
-          enableSdCard ? styles.colorCompleted : styles.colorWaiting
-        }`}>
-          SD CARD: {enableSdCard ? 'ENABLED' : 'DISABLED'}
-        </span>
-        <span className={`${styles.parameterValue} ${
-          enableEeprom ? styles.colorCompleted : styles.colorWaiting
-        }`}>
-          EEPROM: {enableEeprom ? 'ENABLED' : 'DISABLED'}
-        </span>
-      </span>
-    </div>
-    
-    {/* Run/Re-run Test Button */}
-    <button 
-      onClick={startTest} 
-      className={styles.button}
-      disabled={isRunning}
-      style={{ 
-          backgroundColor: isRunning ? '#9ca3af' :
-            hasRunTest ? '#4f46e5' : '#10b981',
-          color: 'white',
-          marginTop: '20px'
-        }}
-      >
-        {isRunning ? (
-          <>
-            <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 12a9 9 0 11-6.219-8.56" />
-            </svg>
-            Running Test...
-          </>
-        ) : hasRunTest ? (
-          <>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-            <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z" clipRule="evenodd" />
-            </svg>
-            Re-run Test
-          </>
-        ) : (
-          <>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-            </svg>
-            Run Test
-          </>
-        )}
-      </button>
-    </div>
-  </div>
-  
-  {results && (
-    <div className="space-y-4 mt-4">
-      <div 
-        className={styles.card}
-        style={{
-          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-        }}
-      >
-        <div 
-          className={styles.cardHeader} 
-          style={{ 
-            background: isDarkMode 
-              ? "linear-gradient(to right, #064e3b, #065f46)" 
-              : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-            color: isDarkMode ? "#d1fae5" : "#065f46"
+          onClick={() => setShowHistory(false)}
+          className={`${styles.tabButton} ${!showHistory ? styles.tabButtonActive : ''}`}
+          style={{
+            padding: '8px 16px',
+            borderRadius: '6px',
+            backgroundColor: !showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
+            color: !showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
+            border: 'none',
+            fontWeight: 500,
+            cursor: 'pointer'
           }}
         >
-          <h3 className={styles.cardTitle}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-            </svg>
-            Firmware Information
-          </h3>
-          
-          {/* Add simulation badge */}
-          <SimulationBadge isSimulation={isForceSimulation} />
-        </div>
-        
-        <div className={styles.cardContent}>
+          Current Test
+        </button>
+        <button
+          onClick={() => setShowHistory(true)}
+          className={`${styles.tabButton} ${showHistory ? styles.tabButtonActive : ''}`}
+          style={{
+            padding: '8px 16px',
+            borderRadius: '6px',
+            backgroundColor: showHistory ? (isDarkMode ? '#4f46e5' : '#3b82f6') : 'transparent',
+            color: showHistory ? 'white' : (isDarkMode ? '#e5e7eb' : '#374151'),
+            border: 'none',
+            fontWeight: 500,
+            cursor: 'pointer'
+          }}
+        >
+          Test History
+        </button>
+      </div>
+
+      {/* Current Test Panel */}
+      {!showHistory ? (
+        <>
           <div 
-            className={styles.infoCard}
+            className={styles.card}
             style={{
-              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              backgroundColor: isDarkMode ? "#1e1e1e" : "white",
               borderColor: isDarkMode ? "#374151" : "#e5e7eb"
             }}
           >
-            <div className={styles.infoIcon}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
-                <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
+            <div 
+              className={styles.cardHeader}
+              style={{
+                backgroundColor: isDarkMode ? "#111827" : undefined,
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+              }}
+            >
+              <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                  <path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clipRule="evenodd" />
+                </svg>
+                OBC-2 Test Status
+              </h3>
             </div>
-            <div className={styles.infoContent}>
-              <div 
-                className={styles.infoLabel}
-                style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
-              >
-                OBC-2 Firmware Version
-              </div>
-              <div 
-                className={styles.infoValue}
-                style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
-              >
-                {results.firmware.major}.{results.firmware.minor}.{results.firmware.patch}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div 
-        className={styles.card}
-        style={{
-          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-        }}
-      >
-        <div 
-          className={styles.cardHeader} 
-          style={{ 
-            background: isDarkMode 
-              ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" 
-              : "linear-gradient(to right, #eff6ff, #dbeafe)",
-            color: isDarkMode ? "#dbeafe" : "#1d4ed8"
-          }}
-          >
-            <h3 className={styles.cardTitle}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-            </svg>
-            Time Synchronization
-          </h3>
-          
-          {/* Add simulation badge */}
-          <SimulationBadge isSimulation={isForceSimulation} />
-        </div>
-        
-        <div className={styles.cardContent}>
-          <table 
-            className={styles.table}
-            style={{
-              color: isDarkMode ? "#e5e7eb" : "inherit"
-            }}
-          >
-            <thead 
-              className={styles.tableHeader}
-              style={{
-                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                color: isDarkMode ? "#d1d5db" : "#6b7280"
-              }}
-            >
-              <tr>
-                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
-                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
-              </tr>
-            </thead>
-            <tbody className={styles.tableBody}>
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Before Update</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.before} UTC</td>
-              </tr>
-              
-              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>After Update</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.after} UTC</td>
-              </tr>
-              
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Current Time</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.current} UTC</td>
-              </tr>
-              
-              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Uptime Total</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.uptime.total} sec</td>
-              </tr>
-              
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Uptime Session</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.uptime.session} sec</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      
-      <div 
-        className={styles.card}
-        style={{
-          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-        }}
-      >
-        <div 
-          className={styles.cardHeader} 
-          style={{ 
-            background: isDarkMode 
-              ? "linear-gradient(to right, #4c1d95, #6d28d9)" 
-              : "linear-gradient(to right, #f5f3ff, #ede9fe)",
-            color: isDarkMode ? "#ede9fe" : "#6d28d9"
-          }}
-        >
-          <h3 className={styles.cardTitle}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-            </svg>
-            Voltage Measurements
-          </h3>
-          
-          {/* Add simulation badge */}
-          <SimulationBadge isSimulation={isForceSimulation} />
-        </div>
-        
-        <div className={styles.cardContent}>
-          <table 
-            className={styles.table}
-            style={{
-              color: isDarkMode ? "#e5e7eb" : "inherit"
-            }}
-          >
-            <thead 
-              className={styles.tableHeader}
-              style={{
-                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                color: isDarkMode ? "#d1d5db" : "#6b7280"
-              }}
-            >
-              <tr>
-                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
-                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
-                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Status</th>
-              </tr>
-            </thead>
-            <tbody className={styles.tableBody}>
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>SD Card 3V3</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.sdCard.value} mV</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                  <span className={`${styles.statusBadge} ${
-                    results.voltage.sdCard.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                  }`}>
-                    {results.voltage.sdCard.result}
+            
+            <div className={styles.cardContent}>
+              <div className={styles.progressContainer}>
+                <div className={styles.progressLabel}>
+                  <span className={styles.progressStep} style={{ color: isDarkMode ? "#d1d5db" : "#4b5563" }}>
+                    {currentStep || 'Waiting to start test...'}
                   </span>
-                </td>
-              </tr>
-              
-              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Flash 3V3</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.flash.value} mV</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                  <span className={`${styles.statusBadge} ${
-                    results.voltage.flash.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                  }`}>
-                    {results.voltage.flash.result}
+                  <span className={styles.progressValue} style={{ color: isDarkMode ? "#93c5fd" : "#1d4ed8" }}>
+                    {progress}%
                   </span>
-                </td>
-              </tr>
-              
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>EEPROM 3V3</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.eeprom.value} mV</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                  <span className={`${styles.statusBadge} ${
-                    results.voltage.eeprom.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                  }`}>
-                    {results.voltage.eeprom.result}
-                  </span>
-                </td>
-              </tr>
-              
-              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Payload 3V3</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.payload.value} mV</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                  <span className={`${styles.statusBadge} ${
-                    results.voltage.payload.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                  }`}>
-                    {results.voltage.payload.result}
-                  </span>
-                </td>
-              </tr>
-              
-              <tr>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>UHF 3V3</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.uhf.value} mV</td>
-                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                  <span className={`${styles.statusBadge} ${
-                    results.voltage.uhf.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                  }`}>
-                    {results.voltage.uhf.result}
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* CAN Communication Test Results */}
-      <div 
-        className={styles.card}
-        style={{
-          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-        }}
-      >
-        <div 
-          className={styles.cardHeader} 
-          style={{ 
-            background: isDarkMode 
-              ? "linear-gradient(to right, #164e63, #0e7490)" 
-              : "linear-gradient(to right, #ecfeff, #cffafe)",
-            color: isDarkMode ? "#cffafe" : "#0e7490"
-          }}
-        >
-          <h3 className={styles.cardTitle}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-              <path d="M13 7H7v6h6V7z" />
-              <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
-            </svg>
-            CAN Communication Test
-          </h3>
-          
-          {/* Add simulation badge */}
-          <SimulationBadge isSimulation={isForceSimulation} />
-        </div>
-        
-        <div className={styles.cardContent}>
-          <div style={{ display: 'flex', gap: '20px', marginBottom: '15px' }}>
-            <div
-              style={{
-                flex: 1,
-                padding: '10px',
-                backgroundColor: isDarkMode ? '#0c4a6e' : '#e0f2fe',
-                borderRadius: '8px',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Primary CAN</div>
-              <span className={`${styles.statusBadge} ${results.can.primary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                    }`} style={{ fontSize: '14px', padding: '5px 10px' }}>
-                      {results.can.primary.result}
-                    </span>
-                  </div>
-
-                  <div
-                    style={{
-                      flex: 1,
-                      padding: '10px',
-                      backgroundColor: isDarkMode ? '#0c4a6e' : '#e0f2fe',
-                      borderRadius: '8px',
-                      textAlign: 'center'
+                </div>
+                <div 
+                  className={styles.progressBar}
+                  style={{ backgroundColor: isDarkMode ? "#374151" : "#e5e7eb" }}
+                >
+                  <div 
+                    className={styles.progressBarFill}
+                    style={{ 
+                      width: `${progress}%`,
+                      background: 'linear-gradient(to right, #3b82f6, #4f46e5)'
                     }}
-                  >
-                    <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Secondary CAN</div>
-                    <span className={`${styles.statusBadge} ${
-                      results.can.secondary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
-                    }`} style={{ fontSize: '14px', padding: '5px 10px' }}>
-                      {results.can.secondary.result}
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ fontSize: '13px', color: isDarkMode ? '#94a3b8' : '#64748b', marginTop: '10px' }}>
-                  CAN communication test verifies data transfer between OBC-1 and OBC-2 over both primary and secondary CAN buses. 
-                  The test measures successful transmission and acknowledgement of HKP, CFG, MET, ETC, and UHF packets.
+                  ></div>
                 </div>
               </div>
-            </div>
-
-            {/* Memory Test Results (if enabled) */}
-            {(enableSdCard || enableEeprom) && (
+              
+              {/* Display the testing options */}
+              <div style={{ marginBottom: '20px' }}>
+                <h4 style={{ 
+                  fontSize: '14px', 
+                  marginBottom: '10px',
+                  color: isDarkMode ? "#d1d5db" : "#374151"
+                }}>
+                  Selected Test Options:
+                </h4>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {options.map((option, index) => (
+                    <div key={index} style={{ 
+                      padding: '6px 10px', 
+                      backgroundColor: isDarkMode ? '#111827' : '#f3f4f6',
+                      borderRadius: '4px',
+                      fontSize: '13px',
+                      color: isDarkMode ? '#93c5fd' : '#3b82f6',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      {option}
+                    </div>
+                  ))}
+                  {options.length === 0 && (
+                    <div style={{ 
+                      color: isDarkMode ? '#9ca3af' : '#6b7280',
+                      fontStyle: 'italic',
+                      fontSize: '13px'
+                    }}>
+                      No specific options selected. Running with defaults.
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              {/* Connection Status */}
               <div 
-                className={styles.card}
+                className={styles.parameterBox}
                 style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
                   borderColor: isDarkMode ? "#374151" : "#e5e7eb"
                 }}
               >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #713f12, #854d0e)" 
-                      : "linear-gradient(to right, #fffbeb, #fef3c7)",
-                    color: isDarkMode ? "#fef3c7" : "#854d0e"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                    </svg>
-                    Memory Test Results
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
+                <div className={styles.parameterLabel}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                  </svg>
+                  Connection Mode
                 </div>
-                
-                <div className={styles.cardContent}>
-                  {enableSdCard && (
-                    <div style={{ marginBottom: '20px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                        <h4 style={{ margin: 0 }}>SD Card Test</h4>
-                        <span className={`${styles.statusBadge} ${
-                          results.memory.sdCard.result === "[PASS]" ? styles.colorCompleted : 
-                          results.memory.sdCard.result === "Not tested" ? styles.colorWaiting : styles.colorError
-                        }`}>
-                          {results.memory.sdCard.result}
-                        </span>
-                      </div>
-                      
-                      {results.memory.sdCard.result !== "Not tested" && (
-                        <table className={styles.table} style={{ marginTop: '10px' }}>
-                          <thead className={styles.tableHeader}>
-                            <tr>
-                              <th>Counter</th>
-                              <th>Before Test</th>
-                              <th>After Test</th>
-                              <th>Difference</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Write Success</td>
-                              <td>{results.memory.sdCard.before.writeSuccess}</td>
-                              <td>{results.memory.sdCard.after.writeSuccess}</td>
-                              <td>{isNaN(Number(results.memory.sdCard.after.writeSuccess) - Number(results.memory.sdCard.before.writeSuccess)) ? 
-                                "0" : (Number(results.memory.sdCard.after.writeSuccess) - Number(results.memory.sdCard.before.writeSuccess))}</td>
-                            </tr>
-                            <tr>
-                              <td>Read Success</td>
-                              <td>{results.memory.sdCard.before.readSuccess}</td>
-                              <td>{results.memory.sdCard.after.readSuccess}</td>
-                              <td>{isNaN(Number(results.memory.sdCard.after.readSuccess) - Number(results.memory.sdCard.before.readSuccess)) ? 
-                                "0" : (Number(results.memory.sdCard.after.readSuccess) - Number(results.memory.sdCard.before.readSuccess))}</td>
-                            </tr>
-                            <tr>
-                              <td>Write Fail</td>
-                              <td>{results.memory.sdCard.before.writeFail}</td>
-                              <td>{results.memory.sdCard.after.writeFail}</td>
-                              <td>{isNaN(Number(results.memory.sdCard.after.writeFail) - Number(results.memory.sdCard.before.writeFail)) ? 
-                                "0" : (Number(results.memory.sdCard.after.writeFail) - Number(results.memory.sdCard.before.writeFail))}</td>
-                            </tr>
-                            <tr>
-                              <td>Read Fail</td>
-                              <td>{results.memory.sdCard.before.readFail}</td>
-                              <td>{results.memory.sdCard.after.readFail}</td>
-                              <td>{isNaN(Number(results.memory.sdCard.after.readFail) - Number(results.memory.sdCard.before.readFail)) ? 
-                                "0" : (Number(results.memory.sdCard.after.readFail) - Number(results.memory.sdCard.before.readFail))}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      )}
-                    </div>
-                  )}
-
-                  {enableEeprom && (
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                        <h4 style={{ margin: 0 }}>EEPROM Test</h4>
-                        <span className={`${styles.statusBadge} ${
-                          results.memory.eeprom.result === "[PASS]" ? styles.colorCompleted : 
-                          results.memory.eeprom.result === "Not tested" ? styles.colorWaiting : styles.colorError
-                        }`}>
-                          {results.memory.eeprom.result}
-                        </span>
-                      </div>
-                      
-                      {results.memory.eeprom.result !== "Not tested" && (
-                        <table className={styles.table} style={{ marginTop: '10px' }}>
-                          <thead className={styles.tableHeader}>
-                            <tr>
-                              <th>Counter</th>
-                              <th>Before Test</th>
-                              <th>After Test</th>
-                              <th>Difference</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Write Success</td>
-                              <td>{results.memory.eeprom.before.writeSuccess}</td>
-                              <td>{results.memory.eeprom.after.writeSuccess}</td>
-                              <td>{isNaN(Number(results.memory.eeprom.after.writeSuccess) - Number(results.memory.eeprom.before.writeSuccess)) ? 
-                                "0" : (Number(results.memory.eeprom.after.writeSuccess) - Number(results.memory.eeprom.before.writeSuccess))}</td>
-                            </tr>
-                            <tr>
-                              <td>Read Success</td>
-                              <td>{results.memory.eeprom.before.readSuccess}</td>
-                              <td>{results.memory.eeprom.after.readSuccess}</td>
-                              <td>{isNaN(Number(results.memory.eeprom.after.readSuccess) - Number(results.memory.eeprom.before.readSuccess)) ? 
-                                "0" : (Number(results.memory.eeprom.after.readSuccess) - Number(results.memory.eeprom.before.readSuccess))}</td>
-                            </tr>
-                            <tr>
-                              <td>Write Fail</td>
-                              <td>{results.memory.eeprom.before.writeFail}</td>
-                              <td>{results.memory.eeprom.after.writeFail}</td>
-                              <td>{isNaN(Number(results.memory.eeprom.after.writeFail) - Number(results.memory.eeprom.before.writeFail)) ? 
-                                "0" : (Number(results.memory.eeprom.after.writeFail) - Number(results.memory.eeprom.before.writeFail))}</td>
-                            </tr>
-                            <tr>
-                              <td>Read Fail</td>
-                              <td>{results.memory.eeprom.before.readFail}</td>
-                              <td>{results.memory.eeprom.after.readFail}</td>
-                              <td>{isNaN(Number(results.memory.eeprom.after.readFail) - Number(results.memory.eeprom.before.readFail)) ? 
-                                "0" : (Number(results.memory.eeprom.after.readFail) - Number(results.memory.eeprom.before.readFail))}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <span className={`${styles.statusBadge} ${
+                  isForceSimulation ? styles.colorWaiting : styles.colorCompleted
+                }`}>
+                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+                </span>
               </div>
-            )}
-
-            <div>
-              <button 
-                onClick={generateReport}
-                className={styles.reportButton}
+              
+              <div 
+                className={styles.parameterBox}
                 style={{
-                  backgroundColor: "#10b981",
-                  color: "white"
+                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                  borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                  marginTop: '10px'
                 }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                </svg>
-                Generate Report
-              </button>
+                <div className={styles.parameterLabel}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+                    <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
+                  </svg>
+                  Memory Testing
+                </div>
+                <span style={{ display: 'flex', gap: '8px' }}>
+                  <span className={`${styles.parameterValue} ${
+                    enableSdCard ? styles.colorCompleted : styles.colorWaiting
+                  }`}>
+                    SD CARD: {enableSdCard ? 'ENABLED' : 'DISABLED'}
+                  </span>
+                  <span className={`${styles.parameterValue} ${
+                    enableEeprom ? styles.colorCompleted : styles.colorWaiting
+                  }`}>
+                    EEPROM: {enableEeprom ? 'ENABLED' : 'DISABLED'}
+                  </span>
+                </span>
+              </div>
+              
+              {/* Run/Re-run Test Button */}
+              <button 
+                onClick={startTest} 
+                className={styles.button}
+                disabled={isRunning}
+                style={{ 
+                    backgroundColor: isRunning ? '#9ca3af' :
+                      hasRunTest ? '#4f46e5' : '#10b981',
+                    color: 'white',
+                    marginTop: '20px'
+                  }}
+                >
+                  {isRunning ? (
+                    <>
+                      <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 12a9 9 0 11-6.219-8.56" />
+                      </svg>
+                      Running Test...
+                    </>
+                  ) : hasRunTest ? (
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                      <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1 1 1 0 01.008.057z" clipRule="evenodd" />
+                      </svg>
+                      Re-run Test
+                    </>
+                  ) : (
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                      Run Test
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
-          </div>
-    )}  
-    </>
-      ) : (
-        /* Test History Panel */
-        <div 
-          className={styles.card}
-          style={{
-            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-          }}
-        >
-          <div 
-            className={styles.cardHeader}
-            style={{
-              backgroundColor: isDarkMode ? "#111827" : undefined,
-              borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-              background: isDarkMode 
-                ? "linear-gradient(to right, #1e40af, #3b82f6)" 
-                : "linear-gradient(to right, #dbeafe, #eff6ff)"
-            }}
-          >
-            <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-              </svg>
-              OBC-2 Test History
-            </h3>
-          </div>
-          
-          <div className={styles.cardContent}>
-            {historyLoading ? (
-              <div style={{ 
-                textAlign: 'center',
-                padding: '20px',
-                color: isDarkMode ? '#d1d5db' : '#6b7280'
-              }}>
-                <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 8px' }}>
-                  <path d="M21 12a9 9 0 11-6.219-8.56" />
-                </svg>
-                <p>Loading test history...</p>
-              </div>
-            ) : testHistory.length === 0 ? (
-              <div style={{ 
-                textAlign: 'center',
-                padding: '20px',
-                color: isDarkMode ? '#d1d5db' : '#6b7280',
-                fontStyle: 'italic'
-              }}>
-                <p>No test history available for this profile.</p>
-                <p style={{ marginTop: '8px', fontSize: '14px' }}>
-                  Run a test to start building your history.
-                </p>
-                
-                {!profileId && (
-                  <div style={{
-                    marginTop: '16px',
-                    padding: '12px',
-                    backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
-                    borderRadius: '6px',
-                    color: isDarkMode ? '#f87171' : '#b91c1c',
-                    fontSize: '14px'
-                  }}>
-                    <strong>Note:</strong> No profile ID detected. Test history requires a valid profile selection.
-                  </div>
-                )}
-              </div>
-            ) : (
-              <>
-                {/* Visualization Controls */}
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={{ 
-                    display: 'block',
-                    marginBottom: '8px',
-                    color: isDarkMode ? '#d1d5db' : '#4b5563',
-                    fontWeight: 500
-                  }}>
-                    Select Metric:
-                  </label>
-                  <select
-                    value={selectedMetric}
-                    onChange={(e) => setSelectedMetric(e.target.value)}
-                    style={{
-                      width: '100%',
-                      padding: '8px 12px',
-                      borderRadius: '6px',
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                      color: isDarkMode ? '#e5e7eb' : '#111827',
-                      fontSize: '14px'
+            
+            {results && (
+              <div className="space-y-4 mt-4">
+                {/* Firmware Version */}
+                <div 
+                  className={styles.card}
+                  style={{
+                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  }}
+                >
+                  <div 
+                    className={styles.cardHeader} 
+                    style={{ 
+                      background: isDarkMode 
+                        ? "linear-gradient(to right, #064e3b, #065f46)" 
+                        : "linear-gradient(to right, #ecfdf5, #d1fae5)",
+                      color: isDarkMode ? "#d1fae5" : "#065f46"
                     }}
                   >
-                    {metricOptions.map(option => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
+                    <h3 className={styles.cardTitle}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                        <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                      </svg>
+                      Firmware Information
+                    </h3>
+                    
+                    {/* Add simulation badge */}
+                    <SimulationBadge isSimulation={isForceSimulation} />
+                  </div>
+                  
+                  <div className={styles.cardContent}>
+                    <div 
+                      className={styles.infoCard}
+                      style={{
+                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                      }}
+                    >
+                      <div className={styles.infoIcon}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
+                          <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div className={styles.infoContent}>
+                        <div 
+                          className={styles.infoLabel}
+                          style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
+                        >
+                          OBC-2 Firmware Version
+                        </div>
+                        <div 
+                          className={styles.infoValue}
+                          style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
+                        >
+                          {results.firmware.major}.{results.firmware.minor}.{results.firmware.patch}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
-                {/* Metric Trend Chart */}
-                <div style={{
-                  height: '300px',
-                  marginBottom: '20px',
-                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                  padding: '16px',
-                  borderRadius: '8px'
-                }}>
-                  <h4 style={{ 
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    marginBottom: '12px',
-                    color: isDarkMode ? '#e5e7eb' : '#111827'
-                  }}>
-                    {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
-                  </h4>
+                {/* Time Information */}
+                <div 
+                  className={styles.card}
+                  style={{
+                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  }}
+                >
+                  <div 
+                    className={styles.cardHeader} 
+                    style={{ 
+                      background: isDarkMode 
+                        ? "linear-gradient(to right, #1e3a8a, #1d4ed8)" 
+                        : "linear-gradient(to right, #eff6ff, #dbeafe)",
+                      color: isDarkMode ? "#dbeafe" : "#1d4ed8"
+                    }}
+                    >
+                      <h3 className={styles.cardTitle}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                      </svg>
+                      Time Synchronization
+                    </h3>
+                    
+                    {/* Add simulation badge */}
+                    <SimulationBadge isSimulation={isForceSimulation} />
+                  </div>
                   
-                  <TestHistoryChart
-                    data={testHistory}
-                    metricPath={selectedMetric}
-                    metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || selectedMetric}
-                    isDarkMode={isDarkMode}
-                  />
+                  <div className={styles.cardContent}>
+                    <table 
+                      className={styles.table}
+                      style={{
+                        color: isDarkMode ? "#e5e7eb" : "inherit"
+                      }}
+                    >
+                      <thead 
+                        className={styles.tableHeader}
+                        style={{
+                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                          color: isDarkMode ? "#d1d5db" : "#6b7280"
+                        }}
+                      >
+                        <tr>
+                          <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
+                          <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
+                        </tr>
+                      </thead>
+                      <tbody className={styles.tableBody}>
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Before Update</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.before} UTC</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>After Update</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.after} UTC</td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Current Time</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.current} UTC</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Total Uptime</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.uptime.total} sec</td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Session Uptime</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.uptime.session} sec</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Store Period</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.storePeriod} sec</td>
+                        </tr>
+                        
+                        <tr>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Reset Count</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.resetCount}</td>
+                        </tr>
+                        
+                        <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Reset Source</td>
+                          <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.time.resetSource}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+                
+                {/* CAN Communication Test Results */}
+                <div 
+                  className={styles.card}
+                  style={{
+                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  }}
+                >
+                  <div 
+                    className={styles.cardHeader} 
+                    style={{ 
+                      background: isDarkMode 
+                        ? "linear-gradient(to right, #164e63, #0e7490)" 
+                        : "linear-gradient(to right, #ecfeff, #cffafe)",
+                      color: isDarkMode ? "#cffafe" : "#0e7490"
+                    }}
+                  >
+                    <h3 className={styles.cardTitle}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                        <path d="M13 7H7v6h6V7z" />
+                        <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
+                      </svg>
+                      CAN Communication Test
+                    </h3>
+                    
+                    {/* Add simulation badge */}
+                    <SimulationBadge isSimulation={isForceSimulation} />
+                  </div>
+                  
+                  <div className={styles.cardContent}>
+                    <div style={{ display: 'flex', gap: '20px', marginBottom: '15px' }}>
+                      <div
+                        style={{
+                          flex: 1,
+                          padding: '10px',
+                          backgroundColor: isDarkMode ? '#0c4a6e' : '#e0f2fe',
+                          borderRadius: '8px',
+                          textAlign: 'center'
+                        }}
+                      >
+                        <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Primary CAN</div>
+                        <span className={`${styles.statusBadge} ${results.can.primary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                              }`} style={{ fontSize: '14px', padding: '5px 10px' }}>
+                                {results.can.primary.result}
+                              </span>
+                            </div>
 
-                {/* Multi-select controls */}
+                            <div
+                              style={{
+                                flex: 1,
+                                padding: '10px',
+                                backgroundColor: isDarkMode ? '#0c4a6e' : '#e0f2fe',
+                                borderRadius: '8px',
+                                textAlign: 'center'
+                              }}
+                            >
+                              <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Secondary CAN</div>
+                              <span className={`${styles.statusBadge} ${
+                                results.can.secondary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                              }`} style={{ fontSize: '14px', padding: '5px 10px' }}>
+                                {results.can.secondary.result}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* CAN Communications Details (collapsible) */}
+                          <details style={{ marginTop: '15px', borderRadius: '8px', overflow: 'hidden', border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}` }}>
+                            <summary style={{ 
+                              padding: '10px 15px', 
+                              backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
+                              cursor: 'pointer',
+                              fontWeight: 500,
+                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                            }}>
+                              Show CAN Communications Details
+                            </summary>
+                            <div style={{ padding: '15px' }}>
+                              <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '10px' }}>Primary CAN</h4>
+                              
+                              <h5 style={{ fontSize: '13px', fontWeight: 500, marginTop: '15px', marginBottom: '5px' }}>Before Test:</h5>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginBottom: '15px' }}>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>TX HKP: {results.can.primary.before.tx[0]}</div>
+                                  <div>TX CFG: {results.can.primary.before.tx[1]}</div>
+                                  <div>TX MET: {results.can.primary.before.tx[2]}</div>
+                                  <div>TX ETC: {results.can.primary.before.tx[3]}</div>
+                                  <div>TX UHF: {results.can.primary.before.tx[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>ACK HKP: {results.can.primary.before.ack[0]}</div>
+                                  <div>ACK CFG: {results.can.primary.before.ack[1]}</div>
+                                  <div>ACK MET: {results.can.primary.before.ack[2]}</div>
+                                  <div>ACK ETC: {results.can.primary.before.ack[3]}</div>
+                                  <div>ACK UHF: {results.can.primary.before.ack[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Timeout HKP: {results.can.primary.before.timeout[0]}</div>
+                                  <div>Timeout CFG: {results.can.primary.before.timeout[1]}</div>
+                                  <div>Timeout MET: {results.can.primary.before.timeout[2]}</div>
+                                  <div>Timeout ETC: {results.can.primary.before.timeout[3]}</div>
+                                  <div>Timeout UHF: {results.can.primary.before.timeout[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Error HKP: {results.can.primary.before.error[0]}</div>
+                                  <div>Error CFG: {results.can.primary.before.error[1]}</div>
+                                  <div>Error MET: {results.can.primary.before.error[2]}</div>
+                                  <div>Error ETC: {results.can.primary.before.error[3]}</div>
+                                  <div>Error UHF: {results.can.primary.before.error[4]}</div>
+                                </div>
+                              </div>
+                              
+                              <h5 style={{ fontSize: '13px', fontWeight: 500, marginTop: '15px', marginBottom: '5px' }}>After Test:</h5>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginBottom: '15px' }}>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>TX HKP: {results.can.primary.after.tx[0]}</div>
+                                  <div>TX CFG: {results.can.primary.after.tx[1]}</div>
+                                  <div>TX MET: {results.can.primary.after.tx[2]}</div>
+                                  <div>TX ETC: {results.can.primary.after.tx[3]}</div>
+                                  <div>TX UHF: {results.can.primary.after.tx[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>ACK HKP: {results.can.primary.after.ack[0]}</div>
+                                  <div>ACK CFG: {results.can.primary.after.ack[1]}</div>
+                                  <div>ACK MET: {results.can.primary.after.ack[2]}</div>
+                                  <div>ACK ETC: {results.can.primary.after.ack[3]}</div>
+                                  <div>ACK UHF: {results.can.primary.after.ack[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Timeout HKP: {results.can.primary.after.timeout[0]}</div>
+                                  <div>Timeout CFG: {results.can.primary.after.timeout[1]}</div>
+                                  <div>Timeout MET: {results.can.primary.after.timeout[2]}</div>
+                                  <div>Timeout ETC: {results.can.primary.after.timeout[3]}</div>
+                                  <div>Timeout UHF: {results.can.primary.after.timeout[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Error HKP: {results.can.primary.after.error[0]}</div>
+                                  <div>Error CFG: {results.can.primary.after.error[1]}</div>
+                                  <div>Error MET: {results.can.primary.after.error[2]}</div>
+                                  <div>Error ETC: {results.can.primary.after.error[3]}</div>
+                                  <div>Error UHF: {results.can.primary.after.error[4]}</div>
+                                </div>
+                              </div>
+                              
+                              <h4 style={{ fontSize: '14px', fontWeight: 600, marginTop: '20px', marginBottom: '10px' }}>Secondary CAN</h4>
+                              
+                              <h5 style={{ fontSize: '13px', fontWeight: 500, marginTop: '15px', marginBottom: '5px' }}>Before Test:</h5>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginBottom: '15px' }}>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>TX HKP: {results.can.secondary.before.tx[0]}</div>
+                                  <div>TX CFG: {results.can.secondary.before.tx[1]}</div>
+                                  <div>TX MET: {results.can.secondary.before.tx[2]}</div>
+                                  <div>TX ETC: {results.can.secondary.before.tx[3]}</div>
+                                  <div>TX UHF: {results.can.secondary.before.tx[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>ACK HKP: {results.can.secondary.before.ack[0]}</div>
+                                  <div>ACK CFG: {results.can.secondary.before.ack[1]}</div>
+                                  <div>ACK MET: {results.can.secondary.before.ack[2]}</div>
+                                  <div>ACK ETC: {results.can.secondary.before.ack[3]}</div>
+                                  <div>ACK UHF: {results.can.secondary.before.ack[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Timeout HKP: {results.can.secondary.before.timeout[0]}</div>
+                                  <div>Timeout CFG: {results.can.secondary.before.timeout[1]}</div>
+                                  <div>Timeout MET: {results.can.secondary.before.timeout[2]}</div>
+                                  <div>Timeout ETC: {results.can.secondary.before.timeout[3]}</div>
+                                  <div>Timeout UHF: {results.can.secondary.before.timeout[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Error HKP: {results.can.secondary.before.error[0]}</div>
+                                  <div>Error CFG: {results.can.secondary.before.error[1]}</div>
+                                  <div>Error MET: {results.can.secondary.before.error[2]}</div>
+                                  <div>Error ETC: {results.can.secondary.before.error[3]}</div>
+                                  <div>Error UHF: {results.can.secondary.before.error[4]}</div>
+                                </div>
+                              </div>
+                              
+                              <h5 style={{ fontSize: '13px', fontWeight: 500, marginTop: '15px', marginBottom: '5px' }}>After Test:</h5>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginBottom: '15px' }}>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>TX HKP: {results.can.secondary.after.tx[0]}</div>
+                                  <div>TX CFG: {results.can.secondary.after.tx[1]}</div>
+                                  <div>TX MET: {results.can.secondary.after.tx[2]}</div>
+                                  <div>TX ETC: {results.can.secondary.after.tx[3]}</div>
+                                  <div>TX UHF: {results.can.secondary.after.tx[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>ACK HKP: {results.can.secondary.after.ack[0]}</div>
+                                  <div>ACK CFG: {results.can.secondary.after.ack[1]}</div>
+                                  <div>ACK MET: {results.can.secondary.after.ack[2]}</div>
+                                  <div>ACK ETC: {results.can.secondary.after.ack[3]}</div>
+                                  <div>ACK UHF: {results.can.secondary.after.ack[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Timeout HKP: {results.can.secondary.after.timeout[0]}</div>
+                                  <div>Timeout CFG: {results.can.secondary.after.timeout[1]}</div>
+                                  <div>Timeout MET: {results.can.secondary.after.timeout[2]}</div>
+                                  <div>Timeout ETC: {results.can.secondary.after.timeout[3]}</div>
+                                  <div>Timeout UHF: {results.can.secondary.after.timeout[4]}</div>
+                                </div>
+                                <div style={{ fontSize: '12px' }}>
+                                  <div>Error HKP: {results.can.secondary.after.error[0]}</div>
+                                  <div>Error CFG: {results.can.secondary.after.error[1]}</div>
+                                  <div>Error MET: {results.can.secondary.after.error[2]}</div>
+                                  <div>Error ETC: {results.can.secondary.after.error[3]}</div>
+                                  <div>Error UHF: {results.can.secondary.after.error[4]}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </details>
+
+                          <div style={{ fontSize: '13px', color: isDarkMode ? '#94a3b8' : '#64748b', marginTop: '10px' }}>
+                            CAN communication test verifies data transfer between OBC-1 and OBC-2 over both primary and secondary CAN buses. 
+                            The test measures successful transmission and acknowledgement of HKP, CFG, MET, ETC, and UHF packets.
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Voltage Readings Card */}
+                      <div 
+                        className={styles.card}
+                        style={{
+                          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                        }}
+                      >
+                        <div 
+                          className={styles.cardHeader} 
+                          style={{ 
+                            background: isDarkMode 
+                              ? "linear-gradient(to right, #4c1d95, #6d28d9)" 
+                              : "linear-gradient(to right, #f5f3ff, #ede9fe)",
+                            color: isDarkMode ? "#ede9fe" : "#6d28d9"
+                          }}
+                        >
+                          <h3 className={styles.cardTitle}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                            </svg>
+                            Voltage & Current Measurements
+                          </h3>
+                          
+                          {/* Add simulation badge */}
+                          <SimulationBadge isSimulation={isForceSimulation} />
+                        </div>
+                        
+                        <div className={styles.cardContent}>
+                          <table 
+                            className={styles.table}
+                            style={{
+                              color: isDarkMode ? "#e5e7eb" : "inherit"
+                            }}
+                          >
+                            <thead 
+                              className={styles.tableHeader}
+                              style={{
+                                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                color: isDarkMode ? "#d1d5db" : "#6b7280"
+                              }}
+                            >
+                              <tr>
+                                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Parameter</th>
+                                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Value</th>
+                                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody className={styles.tableBody}>
+                              <tr>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>SD Card 3V3</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.sdCard.value} mV</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.sdCard.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.sdCard.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              
+                              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Flash 3V3</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.flash.value} mV</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.flash.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.flash.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              
+                              <tr>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>EEPROM 3V3</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.eeprom.value} mV</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.eeprom.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.eeprom.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              
+                              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Payload 3V3</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.payload.value} mV</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.payload.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.payload.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              
+                              <tr>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Payload Current</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }} colSpan={2}>{results.voltage.payload.current} mA</td>
+                              </tr>
+                              
+                              <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>UHF 3V3</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltage.uhf.value} mV</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.uhf.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.uhf.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              
+                              <tr>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>UHF Current</td>
+                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }} colSpan={2}>{results.voltage.uhf.current} mA</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          {/* Additional Voltage Details Collapsible */}
+                          <details style={{ marginTop: '15px', borderRadius: '8px', overflow: 'hidden', border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}` }}>
+                            <summary style={{ 
+                              padding: '10px 15px', 
+                              backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
+                              cursor: 'pointer',
+                              fontWeight: 500,
+                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                            }}>
+                              Show Additional Voltage Details
+                            </summary>
+                            <div style={{ padding: '15px' }}>
+                              <table className={styles.table}>
+                                <thead className={styles.tableHeader}>
+                                  <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>PP 3V3 Voltage</td>
+                                    <td>{results.voltage.pp.value} mV</td>
+                                  </tr>
+                                  <tr>
+                                    <td>PP 3V3 Current</td>
+                                    <td>{results.voltage.pp.current} mA</td>
+                                  </tr>
+                                  <tr>
+                                    <td>GPS 3V3 Voltage</td>
+                                    <td>{results.voltage.gps.value} mV</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LNA Voltage</td>
+                                    <td>{results.voltage.lna.value} mV</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LNA Current</td>
+                                    <td>{results.voltage.lna.current} mA</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+                      
+                      {/* Memory Test Results (if enabled) */}
+                      {(enableSdCard || enableEeprom) && (
+                        <div 
+                          className={styles.card}
+                          style={{
+                            backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                          }}
+                        >
+                          <div 
+                            className={styles.cardHeader} 
+                            style={{ 
+                              background: isDarkMode 
+                                ? "linear-gradient(to right, #713f12, #854d0e)" 
+                                : "linear-gradient(to right, #fffbeb, #fef3c7)",
+                              color: isDarkMode ? "#fef3c7" : "#854d0e"
+                            }}
+                          >
+                            <h3 className={styles.cardTitle}>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                              </svg>
+                              Memory Test Results
+                            </h3>
+                            
+                            {/* Add simulation badge */}
+                            <SimulationBadge isSimulation={isForceSimulation} />
+                          </div>
+                          
+                          <div className={styles.cardContent}>
+                            {enableSdCard && (
+                              <div style={{ marginBottom: '20px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                  <h4 style={{ margin: 0 }}>SD Card Test</h4>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.memory.sdCard.result === "[PASS]" ? styles.colorCompleted : 
+                                    results.memory.sdCard.result === "Not tested" ? styles.colorWaiting : styles.colorError
+                                  }`}>
+                                    {results.memory.sdCard.result}
+                                  </span>
+                                </div>
+                                
+                                {results.memory.sdCard.result !== "Not tested" && (
+                                  <table className={styles.table} style={{ marginTop: '10px' }}>
+                                    <thead className={styles.tableHeader}>
+                                      <tr>
+                                        <th>Counter</th>
+                                        <th>Before Test</th>
+                                        <th>After Test</th>
+                                        <th>Difference</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Write Success</td>
+                                        <td>{results.memory.sdCard.before.writeSuccess}</td>
+                                        <td>{results.memory.sdCard.after.writeSuccess}</td>
+                                        <td>{isNaN(Number(results.memory.sdCard.after.writeSuccess) - Number(results.memory.sdCard.before.writeSuccess)) ? 
+                                          "0" : (Number(results.memory.sdCard.after.writeSuccess) - Number(results.memory.sdCard.before.writeSuccess))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Read Success</td>
+                                        <td>{results.memory.sdCard.before.readSuccess}</td>
+                                        <td>{results.memory.sdCard.after.readSuccess}</td>
+                                        <td>{isNaN(Number(results.memory.sdCard.after.readSuccess) - Number(results.memory.sdCard.before.readSuccess)) ? 
+                                          "0" : (Number(results.memory.sdCard.after.readSuccess) - Number(results.memory.sdCard.before.readSuccess))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Write Fail</td>
+                                        <td>{results.memory.sdCard.before.writeFail}</td>
+                                        <td>{results.memory.sdCard.after.writeFail}</td>
+                                        <td>{isNaN(Number(results.memory.sdCard.after.writeFail) - Number(results.memory.sdCard.before.writeFail)) ? 
+                                          "0" : (Number(results.memory.sdCard.after.writeFail) - Number(results.memory.sdCard.before.writeFail))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Read Fail</td>
+                                        <td>{results.memory.sdCard.before.readFail}</td>
+                                        <td>{results.memory.sdCard.after.readFail}</td>
+                                        <td>{isNaN(Number(results.memory.sdCard.after.readFail) - Number(results.memory.sdCard.before.readFail)) ? 
+                                          "0" : (Number(results.memory.sdCard.after.readFail) - Number(results.memory.sdCard.before.readFail))}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                )}
+                              </div>
+                            )}
+
+                            {enableEeprom && (
+                              <div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                  <h4 style={{ margin: 0 }}>EEPROM Test</h4>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.memory.eeprom.result === "[PASS]" ? styles.colorCompleted : 
+                                    results.memory.eeprom.result === "Not tested" ? styles.colorWaiting : styles.colorError
+                                  }`}>
+                                    {results.memory.eeprom.result}
+                                  </span>
+                                </div>
+                                
+                                {results.memory.eeprom.result !== "Not tested" && (
+                                  <table className={styles.table} style={{ marginTop: '10px' }}>
+                                    <thead className={styles.tableHeader}>
+                                      <tr>
+                                        <th>Counter</th>
+                                        <th>Before Test</th>
+                                        <th>After Test</th>
+                                        <th>Difference</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Write Success</td>
+                                        <td>{results.memory.eeprom.before.writeSuccess}</td>
+                                        <td>{results.memory.eeprom.after.writeSuccess}</td>
+                                        <td>{isNaN(Number(results.memory.eeprom.after.writeSuccess) - Number(results.memory.eeprom.before.writeSuccess)) ? 
+                                          "0" : (Number(results.memory.eeprom.after.writeSuccess) - Number(results.memory.eeprom.before.writeSuccess))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Read Success</td>
+                                        <td>{results.memory.eeprom.before.readSuccess}</td>
+                                        <td>{results.memory.eeprom.after.readSuccess}</td>
+                                        <td>{isNaN(Number(results.memory.eeprom.after.readSuccess) - Number(results.memory.eeprom.before.readSuccess)) ? 
+                                          "0" : (Number(results.memory.eeprom.after.readSuccess) - Number(results.memory.eeprom.before.readSuccess))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Write Fail</td>
+                                        <td>{results.memory.eeprom.before.writeFail}</td>
+                                        <td>{results.memory.eeprom.after.writeFail}</td>
+                                        <td>{isNaN(Number(results.memory.eeprom.after.writeFail) - Number(results.memory.eeprom.before.writeFail)) ? 
+                                          "0" : (Number(results.memory.eeprom.after.writeFail) - Number(results.memory.eeprom.before.writeFail))}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Read Fail</td>
+                                        <td>{results.memory.eeprom.before.readFail}</td>
+                                        <td>{results.memory.eeprom.after.readFail}</td>
+                                        <td>{isNaN(Number(results.memory.eeprom.after.readFail) - Number(results.memory.eeprom.before.readFail)) ? 
+                                          "0" : (Number(results.memory.eeprom.after.readFail) - Number(results.memory.eeprom.before.readFail))}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Overall Test Summary */}
+                      <div 
+                        className={styles.card}
+                        style={{
+                          backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                        }}
+                      >
+                        <div 
+                          className={styles.cardHeader} 
+                          style={{ 
+                            background: isDarkMode 
+                              ? "linear-gradient(to right, #0f766e, #0d9488)" 
+                              : "linear-gradient(to right, #ccfbf1, #d1fae5)",
+                            color: isDarkMode ? "#ccfbf1" : "#0f766e"
+                          }}
+                        >
+                          <h3 className={styles.cardTitle}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414 0L9 12.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l5-5a1 1 0 000-1.414z" clipRule="evenodd" />
+</svg>
+                            Test Summary
+                          </h3>
+                          
+                          {/* Add simulation badge */}
+                          <SimulationBadge isSimulation={isForceSimulation} />
+                        </div>
+                        
+                        <div className={styles.cardContent}>
+                          <table className={styles.table}>
+                            <thead className={styles.tableHeader}>
+                              <tr>
+                                <th>Test</th>
+                                <th>Result</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Primary CAN</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.can.primary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.can.primary.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Secondary CAN</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.can.secondary.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.can.secondary.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>SD Card Voltage</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.sdCard.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.sdCard.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Flash Voltage</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.flash.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.flash.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>EEPROM Voltage</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.eeprom.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.eeprom.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Payload Voltage</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.payload.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.payload.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>UHF Voltage</td>
+                                <td>
+                                  <span className={`${styles.statusBadge} ${
+                                    results.voltage.uhf.result === "[PASS]" ? styles.colorCompleted : styles.colorError
+                                  }`}>
+                                    {results.voltage.uhf.result}
+                                  </span>
+                                </td>
+                              </tr>
+                              {enableSdCard && (
+                                <tr>
+                                  <td>SD Card Memory Test</td>
+                                  <td>
+                                    <span className={`${styles.statusBadge} ${
+                                      results.memory.sdCard.result === "[PASS]" ? styles.colorCompleted : 
+                                      results.memory.sdCard.result === "Not tested" ? styles.colorWaiting : styles.colorError
+                                    }`}>
+                                      {results.memory.sdCard.result}
+                                    </span>
+                                  </td>
+                                </tr>
+                              )}
+                              {enableEeprom && (
+                                <tr>
+                                  <td>EEPROM Memory Test</td>
+                                  <td>
+                                    <span className={`${styles.statusBadge} ${
+                                      results.memory.eeprom.result === "[PASS]" ? styles.colorCompleted : 
+                                      results.memory.eeprom.result === "Not tested" ? styles.colorWaiting : styles.colorError
+                                    }`}>
+                                      {results.memory.eeprom.result}
+                                    </span>
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
+                          
+                          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                            <div style={{ 
+                              fontSize: '14px', 
+                              fontWeight: 600, 
+                              marginBottom: '10px', 
+                              color: 
+                              Object.values(results.voltage).every((v: any) => v.result === "[PASS]") && 
+                              results.can.primary.result === "[PASS]" && 
+                                results.can.secondary.result === "[PASS]" &&
+                                (!enableSdCard || results.memory.sdCard.result === "[PASS]") &&
+                                (!enableEeprom || results.memory.eeprom.result === "[PASS]")
+                                  ? (isDarkMode ? '#10b981' : '#059669')
+                                  : (isDarkMode ? '#ef4444' : '#dc2626')
+                            }}>
+                               {Object.values(results.voltage).every((v: any) => v.result === "[PASS]") &&
+                               results.can.primary.result === "[PASS]" && 
+                               results.can.secondary.result === "[PASS]" &&
+                               (!enableSdCard || results.memory.sdCard.result === "[PASS]") &&
+                               (!enableEeprom || results.memory.eeprom.result === "[PASS]")
+                                ? "All tests passed successfully!"
+                                : "Some tests failed. See details above."}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <button 
+                          onClick={generateReport}
+                          className={styles.reportButton}
+                          style={{
+                            backgroundColor: "#10b981",
+                            color: "white"
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                          </svg>
+                          Generate Report
+                        </button>
+                      </div>
+                    </div>
+            )}  
+          </>
+        ) : (
+          /* Test History Panel */
+          <div 
+            className={styles.card}
+            style={{
+              backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+              borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+            }}
+          >
+            <div 
+              className={styles.cardHeader}
+              style={{
+                backgroundColor: isDarkMode ? "#111827" : undefined,
+                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                background: isDarkMode 
+                  ? "linear-gradient(to right, #1e40af, #3b82f6)" 
+                  : "linear-gradient(to right, #dbeafe, #eff6ff)"
+              }}
+            >
+              <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                </svg>
+                OBC-2 Test History
+              </h3>
+            </div>
+            
+            <div className={styles.cardContent}>
+              {historyLoading ? (
                 <div style={{ 
-                  marginTop: '20px', 
-                  marginBottom: '12px', 
-                  display: 'flex', 
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
+                  textAlign: 'center',
+                  padding: '20px',
+                  color: isDarkMode ? '#d1d5db' : '#6b7280'
                 }}>
-                  <div>
+                  <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto 8px' }}>
+                    <path d="M21 12a9 9 0 11-6.219-8.56" />
+                  </svg>
+                  <p>Loading test history...</p>
+                </div>
+              ) : testHistory.length === 0 ? (
+                <div style={{ 
+                  textAlign: 'center',
+                  padding: '20px',
+                  color: isDarkMode ? '#d1d5db' : '#6b7280',
+                  fontStyle: 'italic'
+                }}>
+                  <p>No test history available for this profile.</p>
+                  <p style={{ marginTop: '8px', fontSize: '14px' }}>
+                    Run a test to start building your history.
+                  </p>
+                  
+                  {!profileId && (
+                    <div style={{
+                      marginTop: '16px',
+                      padding: '12px',
+                      backgroundColor: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : '#fee2e2',
+                      borderRadius: '6px',
+                      color: isDarkMode ? '#f87171' : '#b91c1c',
+                      fontSize: '14px'
+                    }}>
+                      <strong>Note:</strong> No profile ID detected. Test history requires a valid profile selection.
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  {/* Visualization Controls */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{ 
+                      display: 'block',
+                      marginBottom: '8px',
+                      color: isDarkMode ? '#d1d5db' : '#4b5563',
+                      fontWeight: 500
+                    }}>
+                      Select Metric:
+                    </label>
+                    <select
+                      value={selectedMetric}
+                      onChange={(e) => setSelectedMetric(e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '8px 12px',
+                        borderRadius: '6px',
+                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                        color: isDarkMode ? '#e5e7eb' : '#111827',
+                        fontSize: '14px'
+                      }}
+                    >
+                      {metricOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  {/* Metric Trend Chart */}
+                  <div style={{
+                    height: '300px',
+                    marginBottom: '20px',
+                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                    padding: '16px',
+                    borderRadius: '8px'
+                  }}>
                     <h4 style={{ 
                       fontSize: '14px',
                       fontWeight: 600,
-                      color: isDarkMode ? '#e5e7eb' : '#111827',
-                      marginBottom: '6px'
+                      marginBottom: '12px',
+                      color: isDarkMode ? '#e5e7eb' : '#111827'
                     }}>
-                      Test History Records
+                      {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
                     </h4>
+                    
+                    <TestHistoryChart
+                      data={prepareChartData()}
+                      metricPath={selectedMetric}
+                      metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || selectedMetric}
+                      isDarkMode={isDarkMode}
+                    />
                   </div>
                   
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    {/* Toggle button for multi-select mode */}
-                    <button
-                      onClick={toggleMultiSelectMode}
+                  {/* Multi-select controls */}
+                  <div style={{ 
+                    marginTop: '20px', 
+                    marginBottom: '12px', 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <div>
+                      <h4 style={{ 
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: isDarkMode ? '#e5e7eb' : '#111827',
+                        marginBottom: '6px'
+                      }}>
+                        Test History Records
+                      </h4>
+                    </div>
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      {/* Toggle button for multi-select mode */}
+                      <button
+                        onClick={toggleMultiSelectMode}
+                        style={{
+                          backgroundColor: isMultiSelectMode 
+                            ? (isDarkMode ? '#4f46e5' : '#6366f1') 
+                            : (isDarkMode ? '#1f2937' : '#f3f4f6'),
+                          color: isMultiSelectMode 
+                            ? 'white' 
+                            : (isDarkMode ? '#e5e7eb' : '#374151'),
+                          border: 'none',
+                          borderRadius: '6px',
+                          padding: '6px 12px',
+                          fontSize: '13px',
+                          fontWeight: 500,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                          <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
+                        </svg>
+                        {isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'}
+                      </button>
+                      
+                      {/* Only show these controls when in multi-select mode */}
+                      {isMultiSelectMode && (
+                        <>
+                          <button
+                            onClick={selectAllItems}
+                            style={{
+                              backgroundColor: 'transparent',
+                              color: isDarkMode ? '#93c5fd' : '#2563eb',
+                              border: 'none',
+                              borderRadius: '6px',
+                              padding: '6px 8px',
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              cursor: 'pointer'
+                            }}
+                          >
+                            Select All
+                          </button>
+                          
+                          <button
+                            onClick={deselectAllItems}
+                            style={{
+                              backgroundColor: 'transparent',
+                              color: isDarkMode ? '#93c5fd' : '#2563eb',
+                              border: 'none',
+                              borderRadius: '6px',
+                              padding: '6px 8px',
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              cursor: 'pointer'
+                            }}
+                          >
+                            Deselect All
+                          </button>
+                          
+                          <button
+                            onClick={deleteSelectedItems}
+                            disabled={selectedItems.length === 0}
+                            style={{
+                              backgroundColor: selectedItems.length === 0 
+                                ? (isDarkMode ? '#6b7280' : '#9ca3af') 
+                                : (isDarkMode ? '#dc2626' : '#ef4444'),
+                              color: 'white',
+                              border: 'none',
+                              borderRadius: '6px',
+                              padding: '6px 12px',
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                            Delete Selected ({selectedItems.length})
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Information panel before table */}
+                  <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
+                    <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      Test History Information
+                    </h4>
+                    <p style={{ fontSize: '14px', color: isDarkMode ? '#cbd5e1' : '#334155' }}>
+                      This chart shows only <strong>real test data</strong> from actual hardware tests. 
+                      Simulated test results are not included in this history or visualization.
+                    </p>
+                    {testHistory.length === 0 && (
+                      <p style={{ marginTop: '10px', fontSize: '14px', color: isDarkMode ? '#fb923c' : '#c2410c', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="8" x2="12" y2="12"></line>
+                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        No real test data is available yet. Run tests in real mode (not simulation) to collect actual data.
+                      </p>
+                    )}
+                  </div>
+                  
+                  {/* Test History Table */}
+                  <TestHistoryTable 
+                    testHistory={testHistory}
+                    isDarkMode={isDarkMode}
+                    onViewDetails={(item) => setSelectedHistoryItem(item)}
+                  />
+                  
+                  {/* Additional Metrics Summary */}
+                  <div style={{ marginTop: '20px' }}>
+                    <h4 style={{ 
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      marginBottom: '12px',
+                      color: isDarkMode ? '#e5e7eb' : '#111827'
+                    }}>
+                      Key Metrics Summary
+                    </h4>
+                    
+                    <div style={{ 
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                      gap: '12px'
+                    }}>
+                      {/* Average SD Card Voltage */}
+                      <div style={{
+                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <div style={{ 
+                          fontSize: '12px',
+                          color: isDarkMode ? '#9ca3af' : '#6b7280',
+                          marginBottom: '4px'
+                        }}>
+                          Average SD Card Voltage
+                        </div>
+                        <div style={{ 
+                          fontSize: '18px',
+                          fontWeight: 600,
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          {(() => {
+                            const values = testHistory
+                              .map(item => extractValue(item.results, 'voltage.sdCard.value'))
+                              .filter(v => v !== null) as number[];
+                              
+                            if (values.length === 0) return 'N/A';
+                            
+                            const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
+                            return `${avg.toFixed(2)} mV`;
+                          })()}
+                        </div>
+                      </div>
+                      
+                      {/* CAN Communication Success */}
+                      <div style={{
+                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <div style={{ 
+                          fontSize: '12px',
+                          color: isDarkMode ? '#9ca3af' : '#6b7280',
+                          marginBottom: '4px'
+                        }}>
+                          CAN Communication Success
+                        </div>
+                        <div style={{ 
+                          fontSize: '18px',
+                          fontWeight: 600,
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          {(() => {
+                            const primaryResults = testHistory
+                              .map(item => item.results?.can?.primary?.result === "[PASS]")
+                              .filter(pass => pass !== undefined);
+                              
+                            const secondaryResults = testHistory
+                              .map(item => item.results?.can?.secondary?.result === "[PASS]")
+                              .filter(pass => pass !== undefined);
+                            
+                            const allResults = [...primaryResults, ...secondaryResults];
+                            
+                            if (allResults.length === 0) return 'N/A';
+                            
+                            const passCount = allResults.filter(Boolean).length;
+                            const passRate = (passCount / allResults.length) * 100;
+                            
+                            return `${passRate.toFixed(1)}%`;
+                          })()}
+                        </div>
+                      </div>
+                      
+                      {/* Voltage Pass Rate */}
+                      <div style={{
+                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <div style={{ 
+                          fontSize: '12px',
+                          color: isDarkMode ? '#9ca3af' : '#6b7280',
+                          marginBottom: '4px'
+                        }}>
+                          Voltage Pass Rate
+                        </div>
+                        <div style={{ 
+                          fontSize: '18px',
+                          fontWeight: 600,
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          {(() => {
+                            const voltageResults = testHistory.flatMap(item => {
+                              const voltage = item.results?.voltage;
+                              if (!voltage) return [];
+                              
+                              return [
+                                voltage.sdCard?.result === "[PASS]",
+                                voltage.flash?.result === "[PASS]",
+                                voltage.eeprom?.result === "[PASS]",
+                                voltage.payload?.result === "[PASS]",
+                                voltage.uhf?.result === "[PASS]"
+                              ].filter(result => result !== undefined);
+                            });
+                            
+                            if (voltageResults.length === 0) return 'N/A';
+                            
+                            const passCount = voltageResults.filter(Boolean).length;
+                            const passRate = (passCount / voltageResults.length) * 100;
+                            
+                            return `${passRate.toFixed(1)}%`;
+                          })()}
+                        </div>
+                      </div>
+                      
+                      {/* Test Success Rate */}
+                      <div style={{
+                        backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
+                      }}>
+                        <div style={{ 
+                          fontSize: '12px',
+                          color: isDarkMode ? '#9ca3af' : '#6b7280',
+                          marginBottom: '4px'
+                        }}>
+                          Overall Success Rate
+                        </div>
+                        <div style={{ 
+                          fontSize: '18px',
+                          fontWeight: 600,
+                          color: isDarkMode ? '#e5e7eb' : '#111827'
+                        }}>
+                          {(() => {
+                            if (testHistory.length === 0) return 'N/A';
+                            
+                            const successes = testHistory.filter(item => item.status === 'completed').length;
+                            const successRate = (successes / testHistory.length) * 100;
+                            
+                            return `${successRate.toFixed(0)}%`;
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Export History Button */}
+                  <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
+                    {/* Clear All History Button */}
+                    <button 
+                      onClick={clearAllTestHistory}
                       style={{
-                        backgroundColor: isMultiSelectMode 
-                          ? (isDarkMode ? '#4f46e5' : '#6366f1') 
-                          : (isDarkMode ? '#1f2937' : '#f3f4f6'),
-                        color: isMultiSelectMode 
-                          ? 'white' 
-                          : (isDarkMode ? '#e5e7eb' : '#374151'),
+                        backgroundColor: '#dc2626', 
+                        color: 'white',
                         border: 'none',
                         borderRadius: '6px',
-                        padding: '6px 12px',
-                        fontSize: '13px',
+                        padding: '8px 16px',
+                        fontSize: '14px',
                         fontWeight: 500,
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '6px',
-                        transition: 'all 0.2s ease'
+                        gap: '8px'
                       }}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                        <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
                       </svg>
-                      {isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'}
+                      Clear All History
                     </button>
                     
-                    {/* Only show these controls when in multi-select mode */}
-                    {isMultiSelectMode && (
-                      <>
-                        <button
-                          onClick={selectAllItems}
-                          style={{
-                            backgroundColor: 'transparent',
-                            color: isDarkMode ? '#93c5fd' : '#2563eb',
-                            border: 'none',
-                            borderRadius: '6px',
-                            padding: '6px 8px',
-                            fontSize: '13px',
-                            fontWeight: 500,
-                            cursor: 'pointer'
-                          }}
-                        >
-                          Select All
-                        </button>
-                        
-                        <button
-                          onClick={deselectAllItems}
-                          style={{
-                            backgroundColor: 'transparent',
-                            color: isDarkMode ? '#93c5fd' : '#2563eb',
-                            border: 'none',
-                            borderRadius: '6px',
-                            padding: '6px 8px',
-                            fontSize: '13px',
-                            fontWeight: 500,
-                            cursor: 'pointer'
-                          }}
-                        >
-                          Deselect All
-                        </button>
-                        
-                        <button
-                          onClick={deleteSelectedItems}
-                          disabled={selectedItems.length === 0}
-                          style={{
-                            backgroundColor: selectedItems.length === 0 
-                              ? (isDarkMode ? '#6b7280' : '#9ca3af') 
-                              : (isDarkMode ? '#dc2626' : '#ef4444'),
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '6px',
-                            padding: '6px 12px',
-                            fontSize: '13px',
-                            fontWeight: 500,
-                            cursor: selectedItems.length === 0 ? 'not-allowed' : 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '6px'
-                          }}
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                          </svg>
-                          Delete Selected ({selectedItems.length})
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </div>
-                
-                {/* First add the information panel before the table */}
-                <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
-                  <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    Test History Information
-                  </h4>
-                  <p style={{ fontSize: '14px', color: isDarkMode ? '#cbd5e1' : '#334155' }}>
-                    This chart shows only <strong>real test data</strong> from actual hardware tests. 
-                    Simulated test results are not included in this history or visualization.
-                  </p>
-                  {testHistory.length === 0 && (
-                    <p style={{ marginTop: '10px', fontSize: '14px', color: isDarkMode ? '#fb923c' : '#c2410c', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="12"></line>
-                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    {/* Clean Up Simulated Data Button */}
+                    <button 
+                      onClick={() => cleanupSimulatedData()}
+                      style={{
+                        backgroundColor: '#ef4444',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
                       </svg>
-                      No real test data is available yet. Run tests in real mode (not simulation) to collect actual data.
-                    </p>
+                      Clean Up Simulated Data
+                    </button>
+                    
+                    {/* Limit History Button */}
+                    <button 
+                      onClick={() => limitTestHistory(30)}
+                      style={{
+                        backgroundColor: '#3b82f6',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                      </svg>
+                      Limit History (30 Records)
+                    </button>
+                    
+                    <button 
+                      onClick={() => {
+                        // Implement history export functionality
+                        const historyData = JSON.stringify(testHistory, null, 2);
+                        const blob = new Blob([historyData], { type: 'application/json' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `obc2_test_history_${profileId || 'unknown'}.json`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                      }}
+                      style={{
+                        backgroundColor: '#10b981',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
+                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                      Export Test History
+                    </button>
+                  </div>
+
+                  {/* Status Messages for Cleanup and Limit Operations */}
+                  {(cleanupMessage || limitMessage) && (
+                    <div style={{ 
+                      marginTop: '12px',
+                      padding: '12px',
+                      borderRadius: '6px',
+                      backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
+                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+                      fontSize: '14px'
+                    }}>
+                      {cleanupMessage && (
+                        <div style={{ 
+                          color: cleanupMessage.includes('✅') ? 
+                            (isDarkMode ? '#34d399' : '#047857') : 
+                            (isDarkMode ? '#f87171' : '#b91c1c'),
+                          marginBottom: limitMessage ? '8px' : '0'
+                        }}>
+                          {cleanupMessage}
+                        </div>
+                      )}
+                      
+                      {limitMessage && (
+                        <div style={{ 
+                          color: limitMessage.includes('✅') ? 
+                            (isDarkMode ? '#34d399' : '#047857') : 
+                            (isDarkMode ? '#f87171' : '#b91c1c')
+                        }}>
+                          {limitMessage}
+                        </div>
+                      )}
+                    </div>
                   )}
-                </div>
-                
-                {/* Test History Table */}
-                <TestHistoryTable 
-                  testHistory={testHistory}
-                  isDarkMode={isDarkMode}
-                  onViewDetails={(item) => setSelectedHistoryItem(item)}
-                />
-                
-                {/* Additional Metrics Summary */}
-                <div style={{ marginTop: '20px' }}>
-                  <h4 style={{ 
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    marginBottom: '12px',
-                    color: isDarkMode ? '#e5e7eb' : '#111827'
-                  }}>
-                    Key Metrics Summary
-                  </h4>
-                  
-                  <div style={{ 
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-                    gap: '12px'
-                  }}>
-                    {/* Metric Card: Average SD Card Voltage */}
-                    <div style={{
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      borderRadius: '8px',
-                      padding: '12px',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                    }}>
-                      <div style={{ 
-                        fontSize: '12px',
-                        color: isDarkMode ? '#9ca3af' : '#6b7280',
-                        marginBottom: '4px'
-                      }}>
-                        Average SD Card Voltage
-                      </div>
-                      <div style={{ 
-                        fontSize: '18px',
-                        fontWeight: 600,
-                        color: isDarkMode ? '#e5e7eb' : '#111827'
-                      }}>
-                        {(() => {
-                          const values = testHistory
-                            .map(item => extractValue(item.results, 'voltage.sdCard.value'))
-                            .filter(v => v !== null) as number[];
-                            
-                          if (values.length === 0) return 'N/A';
-                          
-                          const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
-                          return `${avg.toFixed(2)} mV`;
-                        })()}
-                      </div>
-                    </div>
-                    
-                    {/* Metric Card: SD Card Pass Rate */}
-                    <div style={{
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      borderRadius: '8px',
-                      padding: '12px',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                    }}>
-                      <div style={{ 
-                        fontSize: '12px',
-                        color: isDarkMode ? '#9ca3af' : '#6b7280',
-                        marginBottom: '4px'
-                      }}>
-                        CAN Communication Success
-                      </div>
-                      <div style={{ 
-                        fontSize: '18px',
-                        fontWeight: 600,
-                        color: isDarkMode ? '#e5e7eb' : '#111827'
-                      }}>
-                        {(() => {
-                          const primaryResults = testHistory
-                            .map(item => item.results?.can?.primary?.result === "[PASS]")
-                            .filter(pass => pass !== undefined);
-                            
-                          const secondaryResults = testHistory
-                            .map(item => item.results?.can?.secondary?.result === "[PASS]")
-                            .filter(pass => pass !== undefined);
-                          
-                          const allResults = [...primaryResults, ...secondaryResults];
-                          
-                          if (allResults.length === 0) return 'N/A';
-                          
-                          const passCount = allResults.filter(Boolean).length;
-                          const passRate = (passCount / allResults.length) * 100;
-                          
-                          return `${passRate.toFixed(1)}%`;
-                        })()}
-                      </div>
-                    </div>
-                    
-                    {/* Metric Card: Voltage Pass Rate */}
-                    <div style={{
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      borderRadius: '8px',
-                      padding: '12px',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                    }}>
-                      <div style={{ 
-                        fontSize: '12px',
-                        color: isDarkMode ? '#9ca3af' : '#6b7280',
-                        marginBottom: '4px'
-                      }}>
-                        Voltage Pass Rate
-                      </div>
-                      <div style={{ 
-                        fontSize: '18px',
-                        fontWeight: 600,
-                        color: isDarkMode ? '#e5e7eb' : '#111827'
-                      }}>
-                        {(() => {
-                          const voltageResults = testHistory.flatMap(item => {
-                            const voltage = item.results?.voltage;
-                            if (!voltage) return [];
-                            
-                            return [
-                              voltage.sdCard?.result === "[PASS]",
-                              voltage.flash?.result === "[PASS]",
-                              voltage.eeprom?.result === "[PASS]",
-                              voltage.payload?.result === "[PASS]",
-                              voltage.uhf?.result === "[PASS]"
-                            ].filter(result => result !== undefined);
-                          });
-                          
-                          if (voltageResults.length === 0) return 'N/A';
-                          
-                          const passCount = voltageResults.filter(Boolean).length;
-                          const passRate = (passCount / voltageResults.length) * 100;
-                          
-                          return `${passRate.toFixed(1)}%`;
-                        })()}
-                      </div>
-                    </div>
-                    
-                    {/* Metric Card: Memory Test Success */}
-                    <div style={{
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      borderRadius: '8px',
-                      padding: '12px',
-                      border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                    }}>
-                      <div style={{ 
-                        fontSize: '12px',
-                        color: isDarkMode ? '#9ca3af' : '#6b7280',
-                        marginBottom: '4px'
-                      }}>
-                        Memory Test Success
-                      </div>
-                      <div style={{ 
-                        fontSize: '18px',
-                        fontWeight: 600,
-                        color: isDarkMode ? '#e5e7eb' : '#111827'
-                      }}>
-                        {(() => {
-                          const memoryResults = testHistory.flatMap(item => {
-                            const memory = item.results?.memory;
-                            if (!memory) return [];
-                            
-                            return [
-                              memory.sdCard?.result === "[PASS]",
-                              memory.eeprom?.result === "[PASS]"
-                            ].filter(result => {
-                              // First check if it's undefined
-                              if (result === undefined) return false;
-                              
-                              // If it's a string (which shouldn't happen here but TypeScript needs this check),
-                              // make sure it's not "Not tested"
-                              if (typeof result === 'string' && result === "Not tested") return false;
-                              
-                              // Otherwise keep it
-                              return true;
-                            });
-                          });
-                          
-                          if (memoryResults.length === 0) return 'N/A';
-                          
-                          const passCount = memoryResults.filter(Boolean).length;
-                          const passRate = (passCount / memoryResults.length) * 100;
-                          
-                          return `${passRate.toFixed(1)}%`;
-                        })()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Export History Button */}
-                <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
-                  {/* Clear All History Button - New */}
-                  <button 
-                    onClick={clearAllTestHistory}
-                    style={{
-                      backgroundColor: '#dc2626', /* Deeper red for more dangerous action */
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      padding: '8px 16px',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                      <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    Clear All History
-                  </button>
-                  
-                  {/* Clean Up Simulated Data Button */}
-                  <button 
-                    onClick={() => cleanupSimulatedData()}
-                    style={{
-                      backgroundColor: '#ef4444',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      padding: '8px 16px',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                      <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    Clean Up Simulated Data
-                  </button>
-                  
-                  {/* Limit History Button */}
-                  <button 
-                    onClick={() => limitTestHistory(30)}
-                    style={{
-                      backgroundColor: '#3b82f6',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      padding: '8px 16px',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                      <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                    </svg>
-                    Limit History (30 Records)
-                  </button>
-                  
-                  <button 
-                    onClick={() => {
-                      // Implement history export functionality
-                      const historyData = JSON.stringify(testHistory, null, 2);
-                      const blob = new Blob([historyData], { type: 'application/json' });
-                      const url = URL.createObjectURL(blob);
-                      const a = document.createElement('a');
-                      a.href = url;
-                      a.download = `obc2_test_history_${profileId || 'unknown'}.json`;
-                      document.body.appendChild(a);
-                      a.click();
-                      document.body.removeChild(a);
-                      URL.revokeObjectURL(url);
-                    }}
-                    style={{
-                      backgroundColor: '#10b981',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      padding: '8px 16px',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '16px', height: '16px' }}>
-                      <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                    Export Test History
-                  </button>
-                </div>
-
-                {/* Status Messages for Cleanup and Limit Operations */}
-                {(cleanupMessage || limitMessage) && (
-                  <div style={{ 
-                    marginTop: '12px',
-                    padding: '12px',
-                    borderRadius: '6px',
-                    backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
-                    border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                    fontSize: '14px'
-                  }}>
-                    {cleanupMessage && (
-                      <div style={{ 
-                        color: cleanupMessage.includes('✅') ? 
-                          (isDarkMode ? '#34d399' : '#047857') : 
-                          (isDarkMode ? '#f87171' : '#b91c1c'),
-                        marginBottom: limitMessage ? '8px' : '0'
-                      }}>
-                        {cleanupMessage}
-                      </div>
-                    )}
-                    
-                    {limitMessage && (
-                      <div style={{ 
-                        color: limitMessage.includes('✅') ? 
-                          (isDarkMode ? '#34d399' : '#047857') : 
-                          (isDarkMode ? '#f87171' : '#b91c1c')
-                      }}>
-                        {limitMessage}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-      
-      {/* Test Details Modal */}
-      {selectedHistoryItem && (
-        <TestDetailsModal
-          test={selectedHistoryItem}
-          onClose={() => setSelectedHistoryItem(null)}
-          isDarkMode={isDarkMode}
-        />
-      )}
-    </div>
-  );
-};
+        )}
+        
+        {/* Test Details Modal */}
+        {selectedHistoryItem && (
+          <TestDetailsModal
+            test={selectedHistoryItem}
+            onClose={() => setSelectedHistoryItem(null)}
+            isDarkMode={isDarkMode}
+          />
+        )}
+      </div>
+    );
+  }

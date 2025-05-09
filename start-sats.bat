@@ -5,7 +5,7 @@ echo SATS - Satellite Automated Testing System
 echo ====================================
 echo.
 echo This script will start all required services:
-echo  - Backend (Python Flask)
+echo  - Backend (Python Flask using virtual environment)
 echo  - MCC Proxy (Node.js)
 echo  - Frontend (React)
 echo.
@@ -23,6 +23,30 @@ IF %ERRORLEVEL% NEQ 0 (
   echo Please install Python and try again
   pause
   exit /b 1
+)
+
+REM Check if the virtual environment exists
+set VENV_PATH=%~dp0backend\venv
+IF NOT EXIST "%VENV_PATH%\Scripts\activate.bat" (
+  echo Virtual environment not found at: %VENV_PATH%
+  echo Creating virtual environment...
+  cd /d %~dp0backend
+  python -m venv venv
+  
+  IF %ERRORLEVEL% NEQ 0 (
+    echo Failed to create virtual environment
+    pause
+    exit /b 1
+  )
+  
+  echo Installing required packages...
+  call "%VENV_PATH%\Scripts\activate.bat"
+  pip install -r requirements.txt
+  IF %ERRORLEVEL% NEQ 0 (
+    echo Failed to install requirements
+    pause
+    exit /b 1
+  )
 )
 
 REM Kill any existing process that might be using port 5000

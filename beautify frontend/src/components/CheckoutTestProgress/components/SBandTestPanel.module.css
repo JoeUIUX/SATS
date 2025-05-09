@@ -137,3 +137,181 @@
   :global(html.dark) .testResultBox.error .testResultTitle {
     color: #f87171;
   }
+
+/* Extend the OBC1TestPanel styles with overflow fixes */
+/* to ensure all text is fully visible*/
+
+/* Fix for parameter boxes - allowing text wrapping */
+.parameterBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Changed from center to allow vertical growth */
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  margin-bottom: 12px;
+  min-height: 44px;
+  gap: 12px; /* Add gap between label and value */
+  flex-wrap: wrap; /* Allow wrapping on very narrow screens */
+}
+
+/* For very small screens, allow full width stacking */
+@media (max-width: 400px) {
+  .parameterBox {
+    flex-direction: column;
+  }
+}
+
+.parameterLabel {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1; /* Take available space but allow value to have its natural width */
+  min-width: 150px; /* Ensure label has enough room */
+  word-break: break-word; /* Allow long words to break */
+}
+
+.parameterIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  color: #6b7280;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.parameterValue {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  text-align: right;
+  word-break: break-word; /* Allow breaking of long values */
+  max-width: 180px; /* Set a reasonable max width while allowing wrapping */
+}
+
+/* Specific status badges styling */
+.statusBadge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  word-break: break-word; /* Allow long status text to break if necessary */
+  text-align: center;
+}
+
+/* Status colors */
+.colorCompleted {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.colorError {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.colorWaiting {
+  background-color: #fffbeb;
+  color: #92400e;
+}
+
+/* Dark mode support */
+:global(html.dark) .parameterBox {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+:global(html.dark) .parameterLabel {
+  color: #d1d5db;
+}
+
+:global(html.dark) .parameterIcon {
+  color: #9ca3af;
+}
+
+:global(html.dark) .colorCompleted {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+:global(html.dark) .colorError {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+:global(html.dark) .colorWaiting {
+  background-color: rgba(146, 64, 14, 0.1);
+  color: #fcd34d;
+}
+
+/* Temperature specific styling - updated for full visibility */
+.tempGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.tempCard {
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  height: 100%; /* Ensure consistent height */
+  display: flex;
+  flex-direction: column;
+}
+
+.tempLabel {
+  font-size: 14px;
+  color: #92400e;
+  margin-bottom: 8px;
+  word-break: break-word; /* Allow text to wrap */
+}
+
+.tempValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #92400e;
+  margin-top: auto; /* Push to bottom of flex container */
+}
+
+:global(html.dark) .tempCard {
+  background-color: rgba(146, 64, 14, 0.1);
+  border-color: rgba(252, 211, 77, 0.3);
+}
+
+:global(html.dark) .tempLabel {
+  color: #fcd34d;
+}
+
+:global(html.dark) .tempValue {
+  color: #fcd34d;
+}
+
+/* Improved grid layout for parameter boxes */
+.parameterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Make cards expand to fit content better */
+.card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: visible; /* Changed from hidden to allow content to expand */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+:global(html.dark) .card {
+  background-color: #1e1e1e;
+  border-color: #374151;
+}

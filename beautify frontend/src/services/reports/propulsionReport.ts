@@ -71,7 +71,6 @@ export async function generatePropulsionReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        // Data Get Parameters section with temperature data
         new Paragraph({
           text: "",
           spacing: { after: 100 }
@@ -81,13 +80,32 @@ export async function generatePropulsionReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        ...createTemperatureInfoParagraphs(results),
+        ...createPropulsionTmParagraphs(results.prop1Tm),
         
-        // ECU-2 CAN Check Summary
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "Voltage Current Off Record : -",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[1] || 'N/A'}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `ECU 1 Current   : ${padString(results.ecu1OffCurrent || '0.000', 6)} A`,
+          spacing: { after: 100 }
+        }),
+        
+        // Add page break
         new Paragraph({
           text: "",
           pageBreakBefore: true
         }),
+        
+        // ECU-2 CAN Check Summary
         new Paragraph({
           text: "--------------------------------------------------------------------",
           spacing: { after: 200 }
@@ -115,11 +133,41 @@ export async function generatePropulsionReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        // PMA Check Summary
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "Data Get Parameters : -",
+          spacing: { after: 100 }
+        }),
+        
+        ...createPropulsionTmParagraphs(results.prop2Tm),
+        
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "Voltage Current Off Record : -",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `ECU 2 Voltage   : ${padString(results.ecu2OffVoltage || '0.000', 6)} V    ${results.passFailStatus[3] || 'N/A'}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `ECU 2 Current   : ${padString(results.ecu2OffCurrent || '0.000', 6)} A`,
+          spacing: { after: 100 }
+        }),
+        
+        // Add page break
         new Paragraph({
           text: "",
           pageBreakBefore: true
         }),
+        
+        // PMA Check Summary
         new Paragraph({
           text: "--------------------------------------------------------------------",
           spacing: { after: 200 }
@@ -136,11 +184,13 @@ export async function generatePropulsionReport(results: any): Promise<string> {
         
         ...createPmaInfoParagraphs(results),
         
-        // PPU Check Summary
+        // Add page break
         new Paragraph({
           text: "",
           pageBreakBefore: true
         }),
+        
+        // PPU Check Summary
         new Paragraph({
           text: "--------------------------------------------------------------------",
           spacing: { after: 200 }
@@ -173,26 +223,117 @@ export async function generatePropulsionReport(results: any): Promise<string> {
   return filename;
 }
 
-// Helper function to create temperature info paragraphs
-function createTemperatureInfoParagraphs(results: any): Paragraph[] {
+// Helper function to create propulsion telemetry paragraphs
+function createPropulsionTmParagraphs(propTm: any): Paragraph[] {
+  if (!propTm) {
+    return [
+      new Paragraph({
+        text: "No propulsion telemetry data available",
+        spacing: { after: 100 }
+      })
+    ];
+  }
+  
+  const propTmParams = [
+    { key: "ECU_Temp", label: "Temperature from Electronic Control Unit    :", unit: "deg C" },
+    { key: "Anode_PPU_1_Set_Voltage", label: "Set Voltage Anode PPU 1                     :", unit: "V" },
+    { key: "Anode_PPU_1_Voltage", label: "Voltage from Anode PPU 1                    :", unit: "V" },
+    { key: "Anode_PPU_1_Current", label: "Current from Anode PPU 1                    :", unit: "mA" },
+    { key: "Anode_PPU_1_Temp", label: "Temperature of Anode PPU 1                  :", unit: "deg C" },
+    { key: "Anode_PPU_2_Set_Voltage", label: "Set Voltage Anode PPU 2                     :", unit: "V" },
+    { key: "Anode_PPU_2_Voltage", label: "Voltage from Anode PPU 2                    :", unit: "V" },
+    { key: "Anode_PPU_2_Current", label: "Current from Anode PPU 2                    :", unit: "mA" },
+    { key: "Anode_PPU_2_Temp", label: "Temperature of Anode PPU 2                  :", unit: "deg C" },
+    { key: "Cathode_PPU_1_Set_Voltage", label: "Set Voltage Cathode PPU 1                   :", unit: "V" },
+    { key: "Cathode_PPU_1_Voltage", label: "Voltage from Cathode PPU 1                  :", unit: "V" },
+    { key: "Cathode_PPU_1_Set_Current", label: "Set Current Cathode PPU 1                   :", unit: "mA" },
+    { key: "Cathode_PPU_1_Current", label: "Current from Cathode PPU 1                  :", unit: "mA" },
+    { key: "Cathode_PPU_1_Temp", label: "Temperature of Cathode PPU 1                :", unit: "deg C" },
+    { key: "Cathode_PPU_2_Set_Voltage", label: "Set Voltage Cathode PPU 2                   :", unit: "V" },
+    { key: "Cathode_PPU_2_Voltage", label: "Voltage from Cathode PPU 2                  :", unit: "V" },
+    { key: "Cathode_PPU_2_Set_Current", label: "Set Current Cathode PPU 2                   :", unit: "mA" },
+    { key: "Cathode_PPU_2_Current", label: "Current from Cathode PPU 2                  :", unit: "mA" },
+    { key: "Cathode_PPU_2_Temp", label: "Temperature of Cathode PPU 2                :", unit: "deg C" },
+    { key: "Heater_Temp", label: "Temperature of Heater                       :", unit: "deg C" },
+    { key: "Heater_1_Current", label: "Current from Heater 1                       :", unit: "A" },
+    { key: "Heater_1_Voltage", label: "Voltage from Heater 1                       :", unit: "V" },
+    { key: "Heater_1_PWM", label: "PWM of Heater 1                             :", unit: "%" },
+    { key: "Heater_2_PWM", label: "PWM of Heater 2                             :", unit: "%" },
+    { key: "Heater_2_Current", label: "Current from Heater 2                       :", unit: "A" },
+    { key: "Heater_2_Voltage", label: "Voltage from Heater 2                       :", unit: "V" },
+    { key: "Heater_3_Current", label: "Current from Heater 3                       :", unit: "A" },
+    { key: "Heater_3_Voltage", label: "Voltage from Heater 3                       :", unit: "V" },
+    { key: "Heater_3_PWM", label: "PWM of Heater 3                             :", unit: "%" },
+    { key: "Heater_4_PWM", label: "PWM of Heater 4                             :", unit: "%" },
+    { key: "Heater_4_Current", label: "Current from Heater 4                       :", unit: "A" },
+    { key: "Heater_4_Voltage", label: "Voltage from Heater 4                       :", unit: "V" },
+    { key: "Thruster_1_Temp", label: "Temperature of Thruster 1                   :", unit: "deg C" },
+    { key: "Thruster_2_Temp", label: "Temperature of Thruster 2                   :", unit: "deg C" },
+    { key: "HP_Tank_Pressure_1", label: "Pressure from HP transducer 1               :", unit: "bar" },
+    { key: "HP_Tank_Pressure_2", label: "Pressure from HP transducer 2               :", unit: "bar" },
+    { key: "Regulated_Pressure_1", label: "Pressure from LP transducer 1               :", unit: "mbar" },
+    { key: "Regulated_Pressure_2", label: "Pressure from LP transducer 2               :", unit: "mbar" },
+    { key: "MFC_1_Pressure", label: "Pressure from LP transducer 3               :", unit: "mbar" },
+    { key: "MFC_2_Pressure", label: "Pressure from LP transducer 4               :", unit: "mbar" },
+    { key: "MFC_3_Pressure", label: "Pressure from LP transducer 5               :", unit: "mbar" },
+    { key: "MFC_4_Pressure", label: "Pressure from LP transducer 6               :", unit: "mbar" },
+    { key: "SPARE_1", label: "SPARE 1                                     :", unit: "" },
+    { key: "Tank_Temperature_1", label: "Temperature 1 of Tank                       :", unit: "deg C" },
+    { key: "Tank_Temperature_2", label: "Temperature 2 of Tank                       :", unit: "deg C" },
+    { key: "MFC_1_Temperature", label: "Temperature of MFC 1                        :", unit: "deg C" },
+    { key: "MFC_2_Temperature", label: "Temperature of MFC 2                        :", unit: "deg C" },
+    { key: "MFC_3_Temperature", label: "Temperature of MFC 3                        :", unit: "deg C" },
+    { key: "MFC_4_Temperature", label: "Temperature of MFC 4                        :", unit: "deg C" },
+    { key: "Driver_Circuit_1_Temperature", label: "Temperature of Driver Circuit 1             :", unit: "deg C" },
+    { key: "Driver_Circuit_2_Temperature", label: "Temperature of Driver Circuit 2             :", unit: "deg C" },
+    { key: "PMA_Temperature", label: "Temperature of PMA                          :", unit: "deg C" },
+    { key: "IEP_1_PWM", label: "IEP 1 Valve PWM                             :", unit: "%" },
+    { key: "IEP_2_PWM", label: "IEP 2 Valve PWM                             :", unit: "%" },
+    { key: "IEP_3_Freq", label: "Flow Control Frequency for IEP 3            :", unit: "dHz" },
+    { key: "IEP_4_Freq", label: "Flow Control Frequency for IEP 4            :", unit: "dHz" },
+    { key: "IEP_5_Freq", label: "Flow Control Frequency for IEP 5            :", unit: "dHz" },
+    { key: "IEP_6_Freq", label: "Flow Control Frequency for IEP 6            :", unit: "dHz" },
+    { key: "MFC_1_Flow", label: "MFC 1 Full Scale Flow                       :", unit: "0.01%" },
+    { key: "MFC_2_Flow", label: "MFC 2 Full Scale Flow                       :", unit: "0.01%" },
+    { key: "MFC_3_Flow", label: "MFC 3 Full Scale Flow                       :", unit: "0.01%" },
+    { key: "MFC_4_Flow", label: "MFC 4 Full Scale Flow                       :", unit: "0.01%" },
+    { key: "SPARE_2", label: "SPARE 2                                     :", unit: "" },
+    { key: "MFC_2_Thruster_Selector", label: "Switch Valve 1                              :", unit: "" },
+    { key: "MFC_4_Thruster_Selector", label: "Switch Valve 2                              :", unit: "" },
+    { key: "MFC_1_Thruster_Selector", label: "Switch Valve 3                              :", unit: "" },
+    { key: "MFC_3_Thruster_Selector", label: "Switch Valve 4                              :", unit: "" },
+    { key: "Thruster_1_Cathode_Selector", label: "Switch Valve 5                              :", unit: "" },
+    { key: "Thruster_2_Cathode_Selector", label: "Switch Valve 6                              :", unit: "" },
+    { key: "Anode_PPU1_Aliena_Thruster_Selector", label: "Selector Switch 1                           :", unit: "" },
+    { key: "Anode_PPU2_ST_PPU_Thruster_Selector", label: "Selector Switch 2                           :", unit: "" },
+    { key: "Cathode_PPU_1_Aliena_Thruster_Selector", label: "Selector Switch 3                           :", unit: "" },
+    { key: "Thruster_Unit_1_Cathode_Selector", label: "Selector Switch 4                           :", unit: "" },
+    { key: "Cathode_PPU_2_ST_PPU_Thruster_Selector", label: "Selector Switch 5                           :", unit: "" },
+    { key: "Thruster_Unit_2_Cathode_Selector", label: "Selector Switch 6                              :", unit: "" },
+    { key: "Anode_PPU1_Aliena_Enable", label: "Enable Switch 1                             :", unit: "" },
+    { key: "Cathode_PPU1_Aliena_Enable", label: "Enable Switch 2                             :", unit: "" },
+    { key: "Test_Override", label: "Test Override                               :", unit: "" },
+    { key: "Initialisation_mode", label: "Initialisation mode                         :", unit: "" },
+    { key: "SPARE_3", label: "SPARE 3                                     :", unit: "" },
+    { key: "SPARE_4", label: "SPARE 4                                     :", unit: "" },
+    { key: "SPARE_5", label: "SPARE 5                                     :", unit: "" },
+    { key: "Error_vector_1", label: "Error vector 1                              :", unit: "" },
+    { key: "Error_Vector_2", label: "Error vector 2                              :", unit: "" },
+    { key: "SPARE_6", label: "SPARE 6                                     :", unit: "" },
+    { key: "SPARE_7", label: "SPARE 7                                     :", unit: "" }
+  ];
+  
   const paragraphs: Paragraph[] = [];
   
-  if (results.temperatures) {
-    Object.entries(results.temperatures).forEach(([key, value]: [string, any]) => {
+  for (const param of propTmParams) {
+    if (propTm && propTm[param.key] !== undefined) {
       paragraphs.push(
         new Paragraph({
-          text: `Temperature from ${key.replace(/([A-Z])/g, ' $1').trim()}    : ${padString(value, 4)} deg C`,
+          text: `${param.label} ${padString(propTm[param.key], 4)} ${param.unit}`,
           spacing: { after: 50 }
         })
       );
-    });
-  } else {
-    paragraphs.push(
-      new Paragraph({
-        text: "No temperature data available",
-        spacing: { after: 100 }
-      })
-    );
+    }
   }
   
   return paragraphs;
@@ -207,7 +348,7 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
     })];
   }
   
-  return [
+  const paragraphs = [
     new Paragraph({
       text: "Timing : -",
       spacing: { after: 100 }
@@ -247,17 +388,166 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
     new Paragraph({
       text: "Data Send Parameter : -",
       spacing: { after: 100 }
-    }),
-    // Would include propulsion TC parameters here
-    new Paragraph({
-      text: "Test parameters transmitted to propulsion system",
-      spacing: { after: 100 }
-    }),
+    })
+  ];
+  
+  // Add propulsion TC parameters if available
+  if (results.propTc) {
+    const propTcParams = [
+      { key: "Anode_PPU_1_Set_V", label: "Set Voltage Anode PPU 1         :" },
+      { key: "Anode_PPU_2_Set_V", label: "Set Voltage Anode PPU 2         :" },
+      { key: "Cathode_PPU_1_Set_V", label: "Set Voltage Cathode PPU 1       :" },
+      { key: "Cathode_PPU_1_Set_A", label: "Set Current Cathode PPU 1       :" },
+      { key: "Cathode_PPU_2_Set_V", label: "Set Voltage Cathode PPU 2       :" },
+      { key: "Cathode_PPU_2_Set_A", label: "Set Current Cathode PPU 2       :" },
+      { key: "Heater_1_PWM", label: "PWM Setting for Heater 1        :" },
+      { key: "Heater_2_PWM", label: "PWM Setting for Heater 2        :" },
+      { key: "Heater_3_PWM", label: "PWM Setting for Heater 3        :" },
+      { key: "Heater_4_PWM", label: "PWM Setting for Heater 4        :" },
+      { key: "Anode_PPU_1_Set_A", label: "Set Current Anode PPU 1         :" },
+      { key: "IEP_1_PWM", label: "IEP 1 Valve PWM                 :" },
+      { key: "IEP_2_PWM", label: "IEP 2 Valve PWM                 :" },
+      { key: "IEP_3_Freq", label: "Flow Control Frequency for IEP3 :" },
+      { key: "IEP_4_Freq", label: "Flow Control Frequency for IEP4 :" },
+      { key: "IEP_5_Freq", label: "Flow Control Frequency for IEP5 :" },
+      { key: "IEP_6_Freq", label: "Flow Control Frequency for IEP6 :" },
+      { key: "MFC_1_Flow", label: "MFC 1 Full Scale Flow           :" },
+      { key: "MFC_2_Flow", label: "MFC 2 Full Scale Flow           :" },
+      { key: "MFC_3_Flow", label: "MFC 3 Full Scale Flow           :" },
+      { key: "MFC_4_Flow", label: "MFC 4 Full Scale Flow           :" },
+      { key: "Test_Duration", label: "Test Duration                   :" },
+      { key: "MFC_2_Thruster_Selector", label: "Switch Valve 1                  :" },
+      { key: "MFC_4_Thruster_Selector", label: "Switch Valve 2                  :" },
+      { key: "MFC_1_Thruster_Selector", label: "Switch Valve 3                  :" },
+      { key: "MFC_3_Thruster_Selector", label: "Switch Valve 4                  :" },
+      { key: "Thruster_1_Cathode_Selector", label: "Switch Valve 5                  :" },
+      { key: "Thruster_2_Cathode_Selector", label: "Switch Valve 6                  :" },
+      { key: "Anode_PPU1_Aliena_Thruster_Selector", label: "Selector Switch 1               :" },
+      { key: "Anode_PPU2_ST_PPU_Thruster_Selector", label: "Selector Switch 2               :" },
+      { key: "Cathode_PPU_1_Aliena_Thruster_Selector", label: "Selector Switch 3               :" },
+      { key: "Thruster_Unit_1_Cathode_Selector", label: "Selector Switch 4               :" },
+      { key: "Cathode_PPU_2_ST_PPU_Thruster_Selector", label: "Selector Switch 5               :" },
+      { key: "Thruster_Unit_2_Cathode_Selector", label: "Selector Switch 6               :" },
+      { key: "Anode_PPU1_Aliena_Enable", label: "Enable Switch 1                 :" },
+      { key: "Cathode_PPU1_Aliena_Enable", label: "Enable Switch 2                 :" },
+      { key: "Test_Override", label: "Test Duration                   :" },
+      { key: "Spare_3", label: "Spare                           :" },
+      { key: "Spare_4", label: "Spare                           :" },
+      { key: "Spare_5", label: "Spare                           :" }
+    ];
+    
+    for (const param of propTcParams) {
+      if (results.propTc[param.key] !== undefined) {
+        paragraphs.push(
+          new Paragraph({
+            text: `${param.label} ${results.propTc[param.key]}`,
+            spacing: { after: 50 }
+          })
+        );
+      }
+    }
+  } else {
+    paragraphs.push(
+      new Paragraph({
+        text: "Test parameters transmitted to propulsion system",
+        spacing: { after: 100 }
+      })
+    );
+  }
+  
+  paragraphs.push(
     new Paragraph({
       text: "--------------------------------------------------------------------",
       spacing: { after: 200, before: 200 }
-    }),
-  ];
+    })
+  );
+  
+  // Add voltage/current data during test if available
+  if (results.ecu1TestVoltage) {
+    paragraphs.push(
+      new Paragraph({
+        text: "Voltage Current On Record : -",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 1 Voltage   : ${padString(results.ecu1TestVoltage, 6)} V    ${results.passFailStatus[4] || 'N/A'}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 1 Current   : ${padString(results.ecu1TestCurrent || '0.000', 6)} A`,
+        spacing: { after: 100 }
+      })
+    );
+  }
+  
+  // Add telemetry data if available
+  if (results.pmaTm) {
+    paragraphs.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "Data Get Parameters : -",
+        spacing: { after: 100 }
+      }),
+      ...createPropulsionTmParagraphs(results.pmaTm)
+    );
+  }
+  
+  // Add statistics if available
+  if (results.propStat) {
+    paragraphs.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "Statistics : -",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Command Count       : ${results.propStat.Cmd_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Acknowledge Count   : ${results.propStat.Ack_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Timeout Count       : ${results.propStat.Timeout_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Error Count         : ${results.propStat.Error_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      })
+    );
+  }
+  
+  // Add final voltage/current data if available
+  if (results.ecu1FinalVoltage) {
+    paragraphs.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "Voltage Current Off Record : -",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 1 Voltage   : ${padString(results.ecu1FinalVoltage, 6)} V    ${results.passFailStatus[5] || 'N/A'}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 1 Current   : ${padString(results.ecu1FinalCurrent || '0.000', 6)} A`,
+        spacing: { after: 100 }
+      })
+    );
+  }
+  
+  return paragraphs;
 }
 
 // Helper function to create PPU info paragraphs
@@ -269,7 +559,7 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
     })];
   }
   
-  return [
+  const paragraphs = [
     new Paragraph({
       text: "Timing : -",
       spacing: { after: 100 }
@@ -321,19 +611,92 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
     new Paragraph({
       text: "Data Send Parameter : -",
       spacing: { after: 100 }
-    }),
-    // Would include propulsion TC parameters here
-    new Paragraph({
-      text: "Test parameters transmitted to propulsion system",
-      spacing: { after: 100 }
-    }),
+    })
+  ];
+  
+  // Add propulsion TC parameters if available
+  if (results.propTc) {
+    const propTcParams = [
+      { key: "Anode_PPU_1_Set_V", label: "Set Voltage Anode PPU 1         :" },
+      { key: "Anode_PPU_2_Set_V", label: "Set Voltage Anode PPU 2         :" },
+      { key: "Cathode_PPU_1_Set_V", label: "Set Voltage Cathode PPU 1       :" },
+      { key: "Cathode_PPU_1_Set_A", label: "Set Current Cathode PPU 1       :" },
+      { key: "Cathode_PPU_2_Set_V", label: "Set Voltage Cathode PPU 2       :" },
+      { key: "Cathode_PPU_2_Set_A", label: "Set Current Cathode PPU 2       :" },
+      { key: "Heater_1_PWM", label: "PWM Setting for Heater 1        :" },
+      { key: "Heater_2_PWM", label: "PWM Setting for Heater 2        :" },
+      { key: "Heater_3_PWM", label: "PWM Setting for Heater 3        :" },
+      { key: "Heater_4_PWM", label: "PWM Setting for Heater 4        :" },
+      { key: "Anode_PPU_1_Set_A", label: "Set Current Anode PPU 1         :" },
+      { key: "IEP_1_PWM", label: "IEP 1 Valve PWM                 :" },
+      { key: "IEP_2_PWM", label: "IEP 2 Valve PWM                 :" },
+      { key: "IEP_3_Freq", label: "Flow Control Frequency for IEP3 :" },
+      { key: "IEP_4_Freq", label: "Flow Control Frequency for IEP4 :" },
+      { key: "IEP_5_Freq", label: "Flow Control Frequency for IEP5 :" },
+      { key: "IEP_6_Freq", label: "Flow Control Frequency for IEP6 :" },
+      { key: "MFC_1_Flow", label: "MFC 1 Full Scale Flow           :" },
+      { key: "MFC_2_Flow", label: "MFC 2 Full Scale Flow           :" },
+      { key: "MFC_3_Flow", label: "MFC 3 Full Scale Flow           :" },
+      { key: "MFC_4_Flow", label: "MFC 4 Full Scale Flow           :" },
+      { key: "Test_Duration", label: "Test Duration                   :" },
+      { key: "MFC_2_Thruster_Selector", label: "Switch Valve 1                  :" },
+      { key: "MFC_4_Thruster_Selector", label: "Switch Valve 2                  :" },
+      { key: "MFC_1_Thruster_Selector", label: "Switch Valve 3                  :" },
+      { key: "MFC_3_Thruster_Selector", label: "Switch Valve 4                  :" },
+      { key: "Thruster_1_Cathode_Selector", label: "Switch Valve 5                  :" },
+      { key: "Thruster_2_Cathode_Selector", label: "Switch Valve 6                  :" },
+      { key: "Anode_PPU1_Aliena_Thruster_Selector", label: "Selector Switch 1               :" },
+      { key: "Anode_PPU2_ST_PPU_Thruster_Selector", label: "Selector Switch 2               :" },
+      { key: "Cathode_PPU_1_Aliena_Thruster_Selector", label: "Selector Switch 3               :" },
+      { key: "Thruster_Unit_1_Cathode_Selector", label: "Selector Switch 4               :" },
+      { key: "Cathode_PPU_2_ST_PPU_Thruster_Selector", label: "Selector Switch 5               :" },
+      { key: "Thruster_Unit_2_Cathode_Selector", label: "Selector Switch 6               :" },
+      { key: "Anode_PPU1_Aliena_Enable", label: "Enable Switch 1                 :" },
+      { key: "Cathode_PPU1_Aliena_Enable", label: "Enable Switch 2                 :" },
+      { key: "Test_Override", label: "Test Duration                   :" },
+      { key: "Spare_3", label: "Spare                           :" },
+      { key: "Spare_4", label: "Spare                           :" },
+      { key: "Spare_5", label: "Spare                           :" }
+    ];
+    
+    for (const param of propTcParams) {
+      if (results.propTc[param.key] !== undefined) {
+        paragraphs.push(
+          new Paragraph({
+            text: `${param.label} ${results.propTc[param.key]}`,
+            spacing: { after: 50 }
+          })
+        );
+      }
+    }
+  } else {
+    paragraphs.push(
+      new Paragraph({
+        text: "Test parameters transmitted to propulsion system",
+        spacing: { after: 100 }
+      })
+    );
+  }
+  
+  paragraphs.push(
     new Paragraph({
       text: "--------------------------------------------------------------------",
       spacing: { after: 200, before: 200 }
-    }),
-    
+    })
+  );
+  
+  // Add ECU and PPU voltage/current data during test if available
+  paragraphs.push(
     new Paragraph({
       text: "Voltage Current On Record : -",
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `ECU 1 Voltage   : ${padString(results.ecu1.voltage, 6)} V    ${results.passFailStatus[6] || 'N/A'}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `ECU 1 Current   : ${padString(results.ecu1.current, 6)} A`,
       spacing: { after: 100 }
     }),
     new Paragraph({
@@ -343,8 +706,83 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
     new Paragraph({
       text: `PPU 1 Current   : ${padString(results.ppu1.current, 6)} A`,
       spacing: { after: 100 }
+    })
+  );
+  
+  // Add telemetry data if available
+  if (results.ppuTm) {
+    paragraphs.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "Data Get Parameters : -",
+        spacing: { after: 100 }
+      }),
+      ...createPropulsionTmParagraphs(results.ppuTm)
+    );
+  }
+  
+  // Add statistics if available
+  if (results.propStat) {
+    paragraphs.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "Statistics : -",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Command Count       : ${results.propStat.Cmd_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Acknowledge Count   : ${results.propStat.Ack_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Timeout Count       : ${results.propStat.Timeout_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      }),
+      new Paragraph({
+        text: `Error Count         : ${results.propStat.Error_Count || 'N/A'}`,
+        spacing: { after: 50 }
+      })
+    );
+  }
+  
+  // Add final voltage/current data if available
+  paragraphs.push(
+    new Paragraph({
+      text: "--------------------------------------------------------------------",
+      spacing: { after: 100 }
     }),
-  ];
+    new Paragraph({
+      text: "Voltage Current Off Record : -",
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[8] || 'N/A'}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `ECU 1 Current   : ${padString(results.ecu1OffCurrent || '0.000', 6)} A`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `PPU 1 Voltage   : ${padString(results.ppu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[9] || 'N/A'}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `PPU 1 Current   : ${padString(results.ppu1OffCurrent || '0.000', 6)} A`,
+      spacing: { after: 100 }
+    })
+  );
+  
+  return paragraphs;
 }
 
 /**

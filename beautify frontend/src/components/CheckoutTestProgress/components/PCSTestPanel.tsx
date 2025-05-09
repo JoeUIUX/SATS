@@ -2062,8 +2062,8 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
                       }}>
                         {(() => {
                           const sdTests = testHistory
-                            .filter(item => item.results?.sdCard?.enabled)
-                            .map(item => item.results?.sdCard?.pass);
+                          .filter(item => item.results?.sdCard?.pass !== undefined) // or another property that definitely exists
+                          .map(item => item.results?.sdCard?.pass);
                             
                           if (!sdTests.length) return 'N/A';
                           

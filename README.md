@@ -40,36 +40,55 @@ This system supports efficient satellite testing workflows and includes features
 ```
 SATS Satellite Automated Testing System/
 │-- backend/
+│   ├── .env                  # backend environment variables
 │   ├── backend_server.py     # Flask server and API endpoints
 │   ├── mccif.py              # MCC server communication module
 │   ├── requirements.txt      # Python dependencies
 │   ├── models/               # Directory for uploaded 3D models
 │   ├── satellites.db         # SQLite database
+│   ├── venv                  # virtual environment
 │
 │-- mcc-proxy/
 │   ├── mcc-proxy.js          # Node.js proxy server for MCC communication
 │
 │-- beautify frontend/
+│   ├── .env                  # frontend environment variables
 │   ├── src/
 │   │   ├── app/              # Core application structure
 │   │   │   ├── globals.css   # Global styles
 │   │   │   ├── layout.tsx    # Root layout with theme switching
 │   │   │   ├── page.tsx      # Main entry point
 │   │
-│   │   ├── components/       # UI components
-│   │   │   ├── MainScreen/   # Main application screen
-│   │   │   ├── ServerWindow/ # MCC server connection
-│   │   │   ├── ToTestList/   # Test management
-│   │   │   ├── WelcomeWindow/ # Welcome screen
-│   │   │   ├── ModelWindow/  # 3D model visualization
-│   │   │   ├── Taskbar/      # Window management taskbar
-│   │   │   ├── CheckoutTestProgress/ # Test execution
+│   │   ├── components/                            # UI components
+│   │   │   ├── MainScreen/                        # Main application screen
+│   │   │   ├── ServerWindow/                      # MCC server connection
+│   │   │   ├── ToTestList/                        # Test management
+│   │   │   ├── WelcomeWindow/                     # Welcome screen
+│   │   │   ├── ModelWindow/                       # 3D model visualization
+│   │   │   ├── Taskbar/                           # Window management taskbar
+│   │   │   ├── SettingsWindow/                    # Settings
+│   │   │   ├── FontLoader/                        # Fonts in SettingsWindow
+│   │   │   ├── ui/                                # reusable UI elements
+│   │   │   ├── CheckoutTestProgress/              # Test execution
+│   │   │   │   ├── CheckoutTestProgress.tsx
+│   │   │   │   ├── CheckoutTestProgress.module.css
 │   │   │   │   ├── components/
-│   │   │   │       ├── OBC1TestPanel.tsx     # OBC-1 tests
-│   │   │   │       ├── OBC2TestPanel.tsx     # OBC-2 tests
-│   │   │   │       ├── SBandTestPanel.tsx    # S-Band tests
-│   │   │   │       ├── UHFTestPanel.tsx      # UHF tests
-│   │   │   ├── ui/           # Core UI components
+│   │   │   │       ├── OBC1TestPanel.tsx          # OBC-1 test
+│   │   │   │       ├── OBC1TestPanel.module.css   # reusable CSS
+│   │   │   │       ├── OBC2TestPanel.tsx          # OBC-2 test
+│   │   │   │       ├── SBandTestPanel.tsx         # S-Band test
+│   │   │   │       ├── UHFTestPanel.tsx           # UHF test
+│   │   │   │       ├── ADCSTestPanel.tsx          # ADCS test
+│   │   │   │       ├── GPSTestPanel.tsx           # GPS test
+│   │   │   │       ├── HEPSTestPanel.tsx          # HEPS test
+│   │   │   │       ├── PCSTestPanel.tsx           # PCS test
+│   │   │   │       ├── PropulsionTestPanel.tsx    # Propulsion test
+│   │   │   │       ├── LEOCAMTestPanel.tsx        # LEOCAM test
+│   │   │   │       ├── XBandTestPanel.tsx         # X-Band test
+│   │   │   │       ├── TestDetailsModal           # reusable component for Test History
+│   │   │   │       ├── TestHistoryChart           # reusable component for Test History
+│   │   │   │       ├── TestHistoryTable           # reusable component for Test History
+│   │   │   │       ├── index.ts                   # component exports
 │   │
 │   │   ├── services/         # Business logic
 │   │   │   ├── checkout/     # Test execution services
@@ -77,11 +96,25 @@ SATS Satellite Automated Testing System/
 │   │   │   │   ├── obc2Checkout.ts
 │   │   │   │   ├── sbandCheckout.ts
 │   │   │   │   ├── uhfCheckout.ts
+│   │   │   │   ├── adcsCheckout.ts
+│   │   │   │   ├── gpsCheckout.ts
+│   │   │   │   ├── hepsCheckout.ts
+│   │   │   │   ├── pcsCheckout.ts
+│   │   │   │   ├── propulsionCheckout.ts
+│   │   │   │   ├── leocamCheckout.ts
+│   │   │   │   ├── xbandCheckout.ts
 │   │   │   ├── reports/      # Report generation
 │   │   │       ├── obc1Report.ts
 │   │   │       ├── obc2Report.ts
 │   │   │       ├── sbandReport.ts
 │   │   │       ├── uhfReport.ts
+│   │   │       ├── adcsReport.ts
+│   │   │       ├── gpsReport.ts
+│   │   │       ├── hepsReport.ts
+│   │   │       ├── pcsReport.ts
+│   │   │       ├── propulsionReport.ts
+│   │   │       ├── leocamReport.ts
+│   │   │       ├── xbandReport.ts
 │   │
 │   │   ├── utils/            # Utility functions
 │   │   │   ├── mccUtils.ts   # MCC communication
@@ -458,6 +491,5 @@ If the MCC proxy fails to connect:
 
 ## **Author**
 👤 **Joe Goh**  
-📩 *Feel free to reach out for questions or collaboration!*
 
 ---
