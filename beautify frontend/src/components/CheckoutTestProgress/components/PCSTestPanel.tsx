@@ -155,54 +155,51 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  // Modify the useEffect for socket detection to watch for simulation indicators
-  useEffect(() => {
-    // Check if we have real socket info saved
-    const socketInfo = localStorage.getItem('mccSocketInfo');
-    let shouldUseSimulation = true; // Default to simulation
-
-    if (socketInfo) {
-      try {
-        const parsed = JSON.parse(socketInfo);
-        if (parsed && parsed.isReal) {
-          console.log("📡 Using real socket based on stored configuration");
-          shouldUseSimulation = false;
-        }
-      } catch (e) {
-        console.error("Error parsing socket info:", e);
-      }
+// Modify the useEffect for socket detection
+useEffect(() => {
+  // First check the socket itself
+  let isSimulated = true; // Default to simulation (safer assumption)
+  
+  if (sock) {
+    // Direct simulation flag check - most reliable if present
+    if (typeof sock.isSimulated === 'boolean') {
+      isSimulated = sock.isSimulated;
+    } 
+    // If it has a simulateRead method, it's definitely a simulation socket
+    else if (typeof sock.simulateRead === 'function') {
+      isSimulated = true;
     }
-
-    // Check the actual socket type more thoroughly
-    let isActuallySimulated = true;
-    
-    if (sock) {
-      // Direct simulation flag check
-      if (typeof sock.isSimulated === 'boolean') {
-        isActuallySimulated = sock.isSimulated;
-      } 
-      // Check if it's using the simulation fallback
-      else if (typeof sock.simulateRead === 'function') {
-        isActuallySimulated = true;
-      }
-      // Check if it's a real socket with a receive method but no simulation methods
-      else if (typeof sock.send === 'function' && typeof sock.receive === 'function' && typeof sock.simulateRead === 'undefined') {
-        // Additional check to see if it's been correctly initialized
-        if (sock.readyState === undefined || sock.readyState === 1) { // 1 = OPEN for WebSocket
-          isActuallySimulated = false;
-        }
-      }
+    // If it has send/receive methods but no simulation methods, likely real
+    else if (typeof sock.send === 'function' && typeof sock.receive === 'function' && 
+             typeof sock.simulateRead === 'undefined') {
+      isSimulated = false;
     }
-    
-    // Set both states
-    setIsForceSimulation(shouldUseSimulation);
-    setDetectedSimulation(isActuallySimulated);
-    
-    console.log(`🔧 Socket analysis: Config says simulation=${shouldUseSimulation}, actual detection=${isActuallySimulated}`);
-    
-    // Set global simulation mode based on the most accurate information
-    setSimulationMode(isActuallySimulated);
-  }, [sock]);
+  }
+  
+  // Check localStorage as secondary source (less reliable but could be used as fallback)
+  const socketInfoStr = localStorage.getItem('mccSocketInfo');
+  let configSaysSimulation = true;
+
+  if (socketInfoStr) {
+    try {
+      const socketInfo = JSON.parse(socketInfoStr);
+      if (socketInfo && socketInfo.isReal === true) {
+        configSaysSimulation = false;
+      }
+    } catch (e) {
+      console.error("Error parsing socket info:", e);
+    }
+  }
+  
+  // Set states based on our determination
+  setDetectedSimulation(isSimulated);
+  setIsForceSimulation(configSaysSimulation);
+  
+  console.log(`Socket analysis: Socket detected as ${isSimulated ? 'SIMULATION' : 'REAL'}, Config says ${configSaysSimulation ? 'SIMULATION' : 'REAL'}`);
+  
+  // Global simulation mode should use the most accurate determination (socket itself)
+  setSimulationMode(isSimulated);
+}, [sock]);
   
   useEffect(() => {
     // Only run test automatically if this is the initial run and we haven't run it yet
@@ -966,26 +963,31 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
                 </div>
               </div>
               
-              {/* Connection Status */}
-              <div 
-                className={styles.parameterBox}
-                style={{
-                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div className={styles.parameterLabel}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                  </svg>
-                  Connection Mode
-                </div>
-                <span className={`${styles.statusBadge} ${
-                  isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-                }`}>
-                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-                </span>
-              </div>
+{/* Connection Status */}
+<div 
+  className={styles.parameterBox}
+  style={{
+    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+  }}
+>
+  <div className={styles.parameterLabel}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+    </svg>
+    Connection Mode
+  </div>
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+  </span>
+</div>
               
               <div 
                 className={styles.parameterBox}
@@ -1540,7 +1542,7 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
                   </select>
                 </div>
                 
-                {/* Metric Trend Chart */}
+                {/* Use TestHistoryChart component */}
                 <div style={{
                   height: '300px',
                   marginBottom: '20px',
@@ -1557,44 +1559,12 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
                     {metricOptions.find(m => m.value === selectedMetric)?.label} Trend
                   </h4>
                   
-                  <ResponsiveContainer width="100%" height={240}>
-                    <LineChart
-                      data={prepareChartData()}
-                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke={isDarkMode ? "#374151" : "#e5e7eb"} />
-                      <XAxis 
-                        dataKey="date" 
-                        stroke={isDarkMode ? "#9ca3af" : "#6b7280"}
-                        tick={{ fill: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                      />
-                      <YAxis 
-                        stroke={isDarkMode ? "#9ca3af" : "#6b7280"} 
-                        tick={{ fill: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                      />
-                      <Tooltip 
-                        labelFormatter={(label, items) => { 
-                          const item = items[0]?.payload;
-                          return item?.tooltipLabel || label;
-                        }}
-                        contentStyle={{
-                          backgroundColor: isDarkMode ? '#1f2937' : '#ffffff',
-                          borderColor: isDarkMode ? '#374151' : '#e5e7eb',
-                          color: isDarkMode ? '#e5e7eb' : '#111827'
-                        }}
-                      />
-                      <Legend />
-                      <Line 
-                        type="monotone" 
-                        dataKey={selectedMetric.split('.').pop() || 'value'} 
-                        name={metricOptions.find(m => m.value === selectedMetric)?.label || selectedMetric}
-                        stroke="#3b82f6" 
-                        strokeWidth={2}
-                        dot={{ r: 4, stroke: '#3b82f6', fill: 'white' }}
-                        activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2, fill: 'white' }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                  <TestHistoryChart
+                    data={testHistory}
+                    metricPath={selectedMetric}
+                    metricLabel={metricOptions.find(m => m.value === selectedMetric)?.label || ''}
+                    isDarkMode={isDarkMode}
+                  />
                 </div>
 
                 {/* Multi-select controls */}
@@ -1734,232 +1704,12 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
                   )}
                 </div>
 
-                {/* Test history table */}
-                <div style={{
-                  marginTop: '12px',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  border: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                }}>
-                  {testHistory.length > 0 ? (
-                    <table style={{ 
-                      width: '100%', 
-                      borderCollapse: 'collapse',
-                      fontSize: '14px'
-                    }}>
-                      <thead style={{ 
-                        backgroundColor: isDarkMode ? '#1f2937' : '#f9fafb',
-                        color: isDarkMode ? '#d1d5db' : '#6b7280',
-                        fontWeight: 500
-                      }}>
-                        <tr>
-                          {/* Add a checkbox column when in multi-select mode */}
-                          {isMultiSelectMode && (
-                            <th style={{ 
-                              padding: '12px 12px',
-                              textAlign: 'center',
-                              width: '40px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <input 
-                                type="checkbox"
-                                checked={selectedItems.length === testHistory.length}
-                                onChange={(e) => {
-                                  if (e.target.checked) {
-                                    selectAllItems();
-                                  } else {
-                                    deselectAllItems();
-                                  }
-                                }}
-                                style={{ cursor: 'pointer', width: '16px', height: '16px' }}
-                              />
-                            </th>
-                          )}
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Date/Time
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Test Options
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Status
-                          </th>
-                          {/* Add the Type column */}
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Type
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                          }}>
-                            Actions
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {testHistory.slice().reverse().map((item, index) => (
-                          <tr key={item.id} style={{ 
-                            backgroundColor: isMultiSelectMode && selectedItems.includes(item.id)
-                              ? (isDarkMode ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)')
-                              : (index % 2 === 0 
-                                ? (isDarkMode ? '#111827' : '#ffffff') 
-                                : (isDarkMode ? '#1f2937' : '#f9fafb')),
-                            transition: 'background-color 0.2s ease'
-                          }}>
-                            {/* Add a checkbox column when in multi-select mode */}
-                            {isMultiSelectMode && (
-                              <td style={{ 
-                                padding: '12px 12px',
-                                textAlign: 'center',
-                                borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                              }}>
-                                <input 
-                                  type="checkbox"
-                                  checked={selectedItems.includes(item.id)}
-                                  onChange={() => toggleItemSelection(item.id)}
-                                  style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                                {/* Use TestHistoryTable component */}
+                                <TestHistoryTable
+                                  testHistory={testHistory}
+                                  isDarkMode={isDarkMode}
+                                  onViewDetails={(item) => setSelectedHistoryItem(item)}
                                 />
-                              </td>
-                            )}
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              color: isDarkMode ? '#e5e7eb' : '#111827'
-                            }}>
-                              {new Date(item.test_date).toLocaleString()}
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              color: isDarkMode ? '#e5e7eb' : '#111827'
-                            }}>
-                              {item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'}
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <span style={{ 
-                                display: 'inline-block',
-                                padding: '4px 8px',
-                                borderRadius: '9999px',
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                backgroundColor: item.status === 'completed' 
-                                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                                  : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                                color: item.status === 'completed'
-                                  ? (isDarkMode ? '#34d399' : '#047857')
-                                  : (isDarkMode ? '#f87171' : '#b91c1c')
-                              }}>
-                                {item.status === 'completed' ? 'SUCCESS' : 'FAILED'}
-                              </span>
-                            </td>
-                            {/* Add the Type column cell */}
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`
-                            }}>
-                              <span style={{ 
-                                display: 'inline-block',
-                                padding: '4px 8px',
-                                borderRadius: '9999px',
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                                color: isDarkMode ? '#34d399' : '#047857'
-                              }}>
-                                REAL DATA
-                              </span>
-                            </td>
-                            <td style={{ 
-                              padding: '12px 16px',
-                              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-                              display: 'flex',
-                              gap: '8px'
-                            }}>
-                              <button 
-                                onClick={() => setSelectedHistoryItem(item)}
-                                style={{
-                                  backgroundColor: isDarkMode ? '#2563eb' : '#3b82f6',
-                                  color: 'white',
-                                  border: 'none',
-                                  borderRadius: '4px',
-                                  padding: '4px 8px',
-                                  fontSize: '12px',
-                                  cursor: 'pointer',
-                                  fontWeight: 500,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '4px'
-                                }}
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                                </svg>
-                                View
-                              </button>
-                              
-                              {/* Only show the delete button when not in multi-select mode */}
-                              {!isMultiSelectMode && (
-                                <button 
-                                  onClick={() => deleteTestHistoryItem(item.id)}
-                                  style={{
-                                    backgroundColor: isDarkMode ? '#dc2626' : '#ef4444',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px',
-                                    fontSize: '12px',
-                                    cursor: 'pointer',
-                                    fontWeight: 500,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '4px'
-                                  }}
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                                  </svg>
-                                  Delete
-                                </button>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div style={{
-                      padding: '20px',
-                      textAlign: 'center',
-                      color: isDarkMode ? '#9ca3af' : '#6b7280'
-                    }}>
-                      <p>No real test data available. Run tests with real hardware connections to collect data.</p>
-                      <p style={{ marginTop: '10px', fontSize: '14px' }}>
-                        Test data from simulation mode is not stored in the history database.
-                      </p>
-                    </div>
-                  )}
-                </div>
                 
                 {/* Additional Metrics Summary */}
                 <div style={{ marginTop: '20px' }}>
@@ -2253,271 +2003,11 @@ export const PCSTestPanel: React.FC<PCSTestPanelProps> = ({
       
       {/* Test Details Modal */}
       {selectedHistoryItem && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div style={{
-            backgroundColor: isDarkMode ? '#1e1e1e' : 'white',
-            borderRadius: '8px',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            width: '90%',
-            maxWidth: '800px',
-            maxHeight: '90vh',
-            overflow: 'auto',
-            position: 'relative'
-          }}>
-            <div style={{
-              padding: '16px',
-              borderBottom: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
-            }}>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                color: isDarkMode ? '#f3f4f6' : '#111827',
-                margin: 0
-              }}>
-                Test Details - {new Date(selectedHistoryItem.test_date).toLocaleString()}
-              </h3>
-              <button
-                onClick={() => setSelectedHistoryItem(null)}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  fontSize: '24px',
-                  cursor: 'pointer',
-                  color: isDarkMode ? '#9ca3af' : '#6b7280'
-                }}
-              >
-                ×
-              </button>
-            </div>
-            
-            <div style={{ padding: '16px' }}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '16px',
-                marginBottom: '16px'
-              }}>
-                <div>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                    marginBottom: '4px'
-                  }}>
-                    Component
-                  </div>
-                  <div style={{
-                    fontSize: '16px',
-                    color: isDarkMode ? '#f3f4f6' : '#111827'
-                  }}>
-                    {selectedHistoryItem.component_id}
-                  </div>
-                </div>
-                
-                <div>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                    marginBottom: '4px'
-                  }}>
-                    Test Type
-                  </div>
-                  <div style={{
-                    fontSize: '16px',
-                    color: isDarkMode ? '#f3f4f6' : '#111827'
-                  }}>
-                    {selectedHistoryItem.test_type || 'Standard Test'}
-                  </div>
-                </div>
-                
-                <div>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                    marginBottom: '4px'
-                  }}>
-                    Status
-                  </div>
-                  <div style={{
-                    display: 'inline-block',
-                    padding: '4px 8px',
-                    borderRadius: '4px',
-                    fontSize: '14px',
-                    backgroundColor: selectedHistoryItem.status === 'completed' 
-                      ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                      : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                    color: selectedHistoryItem.status === 'completed'
-                      ? (isDarkMode ? '#34d399' : '#047857')
-                      : (isDarkMode ? '#f87171' : '#b91c1c')
-                  }}>
-                    {selectedHistoryItem.status === 'completed' ? 'SUCCESS' : 'FAILED'}
-                  </div>
-                </div>
-                
-                <div>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                    marginBottom: '4px'
-                  }}>
-                    Test Date
-                  </div>
-                  <div style={{
-                    fontSize: '16px',
-                    color: isDarkMode ? '#f3f4f6' : '#111827'
-                  }}>
-                    {new Date(selectedHistoryItem.test_date).toLocaleString()}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Options Tested */}
-              <div style={{ marginTop: '16px' }}>
-                <h4 style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: isDarkMode ? '#f3f4f6' : '#111827',
-                  marginBottom: '8px'
-                }}>
-                  Options Tested
-                </h4>
-                
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '8px',
-                  marginBottom: '16px'
-                }}>
-                  {selectedHistoryItem.results.testedOptions ? (
-                    selectedHistoryItem.results.testedOptions.map((option: string, index: number) => (
-                      <span key={index} style={{
-                        display: 'inline-block',
-                        padding: '4px 8px',
-                        backgroundColor: isDarkMode ? '#1f2937' : '#f3f4f6',
-                        borderRadius: '4px',
-                        fontSize: '12px',
-                        color: isDarkMode ? '#93c5fd' : '#3b82f6'
-                      }}>
-                        {option}
-                      </span>
-                    ))
-                  ) : (
-                    <span style={{
-                      color: isDarkMode ? '#9ca3af' : '#6b7280',
-                      fontStyle: 'italic'
-                    }}>
-                      No specific options recorded
-                    </span>
-                  )}
-                </div>
-              </div>
-              
-              <div style={{ marginTop: '24px' }}>
-                <h4 style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: isDarkMode ? '#f3f4f6' : '#111827',
-                  marginBottom: '12px'
-                }}>
-                  Test Results
-                </h4>
-                
-                <div style={{
-                  backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                  borderRadius: '6px',
-                  padding: '16px',
-                  overflow: 'auto',
-                  maxHeight: '400px',
-                  fontFamily: 'monospace',
-                  fontSize: '14px',
-                  color: isDarkMode ? '#f3f4f6' : '#111827',
-                  whiteSpace: 'pre-wrap'
-                }}>
-                  {JSON.stringify(selectedHistoryItem.results, null, 2)}
-                </div>
-              </div>
-              
-              {selectedHistoryItem.notes && (
-                <div style={{ marginTop: '24px' }}>
-                  <h4 style={{
-                    fontSize: '16px',
-                    fontWeight: 600,
-                    color: isDarkMode ? '#f3f4f6' : '#111827',
-                    marginBottom: '12px'
-                  }}>
-                    Notes
-                  </h4>
-                  <div style={{
-                    padding: '12px',
-                    backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                    borderRadius: '6px',
-                    color: isDarkMode ? '#f3f4f6' : '#111827'
-                  }}>
-                    {selectedHistoryItem.notes}
-                  </div>
-                </div>
-              )}
-              
-              <div style={{ 
-                marginTop: '24px',
-                display: 'flex',
-                justifyContent: 'flex-end'
-              }}>
-                <button
-                  onClick={() => {
-                    // Export the test details
-                    const detailsJson = JSON.stringify(selectedHistoryItem, null, 2);
-                    const blob = new Blob([detailsJson], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `test_details_${selectedHistoryItem.id}.json`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                  }}
-                  style={{
-                    backgroundColor: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '6px',
-                    padding: '8px 16px',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                  Export Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TestDetailsModal
+          test={selectedHistoryItem}
+          onClose={() => setSelectedHistoryItem(null)}
+          isDarkMode={isDarkMode}
+        />
       )}
     </div>
   );

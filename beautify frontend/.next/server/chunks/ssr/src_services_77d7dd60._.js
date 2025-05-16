@@ -94,8 +94,12 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
                 emmc0States: [],
                 emmc1States: []
             },
-            reportGenerated: false
+            reportGenerated: false,
+            // Add new field to store raw parameters
+            rawParameters: {}
         };
+        // Create a record to store raw parameter values
+        const rawParameters = {};
         // Step 1: Read firmware version (5%)
         onProgress('Reading Firmware Version', 5);
         const fwVars = [
@@ -105,15 +109,25 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
         ];
         try {
             const fwResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, fwVars);
-            results.firmware.major = safeParseValue(fwResults[0]);
-            results.firmware.minor = safeParseValue(fwResults[1]);
-            results.firmware.patch = safeParseValue(fwResults[2]);
+            // Store raw parameters
+            fwVars.forEach((param, index)=>{
+                const value = safeParseValue(fwResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_FW_Ver_Major") results.firmware.major = value;
+                if (param === "OBC1_FW_Ver_Minor") results.firmware.minor = value;
+                if (param === "OBC1_FW_Ver_Patch") results.firmware.patch = value;
+            });
         } catch (error) {
             console.error("Error reading firmware version:", error);
             // Provide fallback values
             results.firmware.major = "1";
             results.firmware.minor = "0";
             results.firmware.patch = "0";
+            // Add fallback values to raw parameters too
+            rawParameters["OBC1_FW_Ver_Major"] = "1";
+            rawParameters["OBC1_FW_Ver_Minor"] = "0";
+            rawParameters["OBC1_FW_Ver_Patch"] = "0";
         // Continue with other tests despite this error
         }
         // Step 2: Read kernel info (20%)
@@ -137,21 +151,26 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
         ];
         try {
             const kernelResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, kernelVars);
-            results.kernel.uptime = safeParseValue(kernelResults[0]);
-            results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
-            results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
-            results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
-            results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
-            results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
-            results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
-            results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
-            results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
-            results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
-            results.kernel.processes = safeParseValue(kernelResults[10]);
-            // Skip pad
-            results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
-            results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
-            results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
+            // Store raw parameters
+            kernelVars.forEach((param, index)=>{
+                const value = safeParseValue(kernelResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_Sys_uptime") results.kernel.uptime = value;
+                else if (param === "OBC1_Sys_loads_1m") results.kernel.loads.oneMinute = value;
+                else if (param === "OBC1_Sys_loads_5m") results.kernel.loads.fiveMinute = value;
+                else if (param === "OBC1_Sys_loads_15m") results.kernel.loads.fifteenMinute = value;
+                else if (param === "OBC1_Sys_totalram") results.kernel.memory.totalRam = value;
+                else if (param === "OBC1_Sys_freeram") results.kernel.memory.freeRam = value;
+                else if (param === "OBC1_Sys_sharedram") results.kernel.memory.sharedRam = value;
+                else if (param === "OBC1_Sys_bufferram") results.kernel.memory.bufferRam = value;
+                else if (param === "OBC1_Sys_totalswap") results.kernel.memory.totalSwap = value;
+                else if (param === "OBC1_Sys_freeswap") results.kernel.memory.freeSwap = value;
+                else if (param === "OBC1_Sys_procs") results.kernel.processes = value;
+                else if (param === "OBC1_Sys_totalhigh") results.kernel.memory.totalHigh = value;
+                else if (param === "OBC1_Sys_freehigh") results.kernel.memory.freeHigh = value;
+                else if (param === "OBC1_Sys_mem_unit") results.kernel.memory.memUnit = value;
+            });
         } catch (error) {
             console.error("Error reading kernel info:", error);
         // Continue with other tests despite this error
@@ -192,16 +211,21 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
         ];
         try {
             const fpgaResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, fpgaVars);
-            // First 27 are voltages, last 3 are temperatures
-            results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
-            results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
-            results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
-            results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
-            results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
-            // ... Set other voltages
-            results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
-            results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
-            results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
+            // Store raw parameters
+            fpgaVars.forEach((param, index)=>{
+                const value = safeParseValue(fpgaResults[index]);
+                rawParameters[param] = value;
+                // Map specific values to the structured results
+                // First 27 are voltages, last 3 are temperatures
+                if (param === "OBC1_vcc_pspll") results.fpga.voltages.vccPspll = value;
+                else if (param === "OBC1_vcc_psbatt") results.fpga.voltages.vccPsbatt = value;
+                else if (param === "OBC1_vccint") results.fpga.voltages.vccint = value;
+                else if (param === "OBC1_vccbram") results.fpga.voltages.vccbram = value;
+                else if (param === "OBC1_vccaux") results.fpga.voltages.vccaux = value;
+                else if (param === "OBC1_ps_temp") results.fpga.temperatures.psTemp = value;
+                else if (param === "OBC1_remote_temp") results.fpga.temperatures.remoteTemp = value;
+                else if (param === "OBC1_pl_temp") results.fpga.temperatures.plTemp = value;
+            });
         } catch (error) {
             console.error("Error reading FPGA values:", error);
         // Continue with other tests despite this error
@@ -217,23 +241,29 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
         ];
         try {
             const viResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, viVars);
-            const d3v3Value = safeParseValue(viResults[0]);
-            const ps3v3Obc2Value = safeParseValue(viResults[1]);
-            const ps5vObc2Value = safeParseValue(viResults[2]);
-            results.vi.d3v3 = {
-                value: d3v3Value,
-                pass: checkVoltage(d3v3Value, true)
-            };
-            results.vi.ps3v3Obc2 = {
-                value: ps3v3Obc2Value,
-                pass: checkVoltage(ps3v3Obc2Value, true)
-            };
-            results.vi.ps5vObc2 = {
-                value: ps5vObc2Value,
-                pass: checkVoltage(ps5vObc2Value, false)
-            };
-            results.vi.ps5vObc2I = safeParseValue(viResults[3]);
-            results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
+            // Store raw parameters
+            viVars.forEach((param, index)=>{
+                const value = safeParseValue(viResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_3V3_D") {
+                    results.vi.d3v3 = {
+                        value: value,
+                        pass: checkVoltage(value, true)
+                    };
+                } else if (param === "OBC1_PS_3V3_OBC2_V") {
+                    results.vi.ps3v3Obc2 = {
+                        value: value,
+                        pass: checkVoltage(value, true)
+                    };
+                } else if (param === "OBC1_PS_5V_OBC2_V") {
+                    results.vi.ps5vObc2 = {
+                        value: value,
+                        pass: checkVoltage(value, false)
+                    };
+                } else if (param === "OBC1_PS_5V_OBC2_I") results.vi.ps5vObc2I = value;
+                else if (param === "OBC1_PS_3V3_OBC2_I") results.vi.ps3v3Obc2I = value;
+            });
         } catch (error) {
             console.error("Error reading voltage and current:", error);
         // Continue with other tests despite this error
@@ -250,12 +280,18 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
         ];
         try {
             const tempResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, tempVars);
-            results.temperatures.thruster1 = safeParseValue(tempResults[0]);
-            results.temperatures.thruster2 = safeParseValue(tempResults[1]);
-            results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
-            results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
-            results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
-            results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
+            // Store raw parameters
+            tempVars.forEach((param, index)=>{
+                const value = safeParseValue(tempResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_thruster_ch1_T") results.temperatures.thruster1 = value;
+                else if (param === "OBC1_thruster_ch2_T") results.temperatures.thruster2 = value;
+                else if (param === "OBC1_leocam_ch1_T") results.temperatures.leocam[0] = value;
+                else if (param === "OBC1_leocam_ch2_T") results.temperatures.leocam[1] = value;
+                else if (param === "OBC1_leocam_ch3_T") results.temperatures.leocam[2] = value;
+                else if (param === "OBC1_leocam_ch4_T") results.temperatures.leocam[3] = value;
+            });
         } catch (error) {
             console.error("Error reading temperature sensors:", error);
         // Continue with other tests despite this error
@@ -270,6 +306,11 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
             try {
                 // Initial check
                 const emmcResult1 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, emmcVars);
+                // Store initial state in raw parameters
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcResult1[index]);
+                    rawParameters[`${param}_initial`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
                 // Modified command format: OBC1_Emmc_Control needs 8 or fewer tokens
@@ -277,38 +318,72 @@ async function runOBC1Checkout(sock, enableEmmc, onProgress = ()=>{}) {
                 // Change from value=1 to value=1 (same in this case but follow the pattern)
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 1);
                 const emmcResult2 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, emmcVars);
+                // Store after ON eMMC0 state in raw parameters
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcResult2[index]);
+                    rawParameters[`${param}_afterON_eMMC0`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 3);
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 5);
                 const emmcResult3 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, emmcVars);
+                // Store after OFF eMMC0 state in raw parameters
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcResult3[index]);
+                    rawParameters[`${param}_afterOFF_eMMC0`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
                 // Test eMMC1
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 2);
                 const emmcResult4 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, emmcVars);
+                // Store before ON eMMC1 state in raw parameters
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcResult4[index]);
+                    rawParameters[`${param}_beforeON_eMMC1`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 4);
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 6);
                 const emmcResult5 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, emmcVars);
+                // Store after OFF eMMC1 state in raw parameters
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcResult5[index]);
+                    rawParameters[`${param}_afterOFF_eMMC1`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
+                // Also record the eMMC control commands in raw parameters
+                rawParameters["OBC1_Emmc_Control_1"] = "1"; // Turn ON eMMC0
+                rawParameters["OBC1_Emmc_Control_2"] = "3"; // Skip
+                rawParameters["OBC1_Emmc_Control_3"] = "5"; // Turn OFF eMMC0
+                rawParameters["OBC1_Emmc_Control_4"] = "2"; // Turn ON eMMC1
+                rawParameters["OBC1_Emmc_Control_5"] = "4"; // Skip
+                rawParameters["OBC1_Emmc_Control_6"] = "6"; // Turn OFF eMMC1
             } catch (error) {
                 console.error("Error during eMMC test:", error);
                 // Fill with N/A values if the test fails
                 results.emmc.emmc0States = Array(6).fill('N.A.');
                 results.emmc.emmc1States = Array(6).fill('N.A.');
+                // Record failure in raw parameters
+                rawParameters["OBC1_Q8_eMMC0_state_ERROR"] = "N.A.";
+                rawParameters["OBC1_Q8_eMMC1_state_ERROR"] = "N.A.";
             }
         } else {
             // If eMMC test is disabled, set empty results
             results.emmc.emmc0States = Array(6).fill('N.A.');
             results.emmc.emmc1States = Array(6).fill('N.A.');
+            // Record that test was skipped in raw parameters
+            rawParameters["OBC1_eMMC_test_skipped"] = "true";
         }
         // Complete checkout (100%)
         onProgress('Checkout Complete', 100);
+        // Before returning the results, add the raw parameters
+        results.rawParameters = rawParameters;
         return results;
     } catch (error) {
         console.error('Error during OBC-1 checkout:', error);
@@ -415,8 +490,12 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             },
             reportGenerated: false,
             // Add a simulation flag to track if any part used simulation
-            _simulationUsed: usedSimulation
+            _simulationUsed: usedSimulation,
+            // Add raw parameters field
+            rawParameters: {}
         };
+        // Create a record to store raw parameter values
+        const rawParameters = {};
         // Step 1: Read firmware version (5%)
         onProgress('Reading Firmware Version', 5);
         const fwVars = [
@@ -429,9 +508,15 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             const { results: fwResults, usedSimulation: fwSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, fwVars);
             // Update overall simulation flag if this step used simulation
             usedSimulation = usedSimulation || fwSimulation;
-            results.firmware.major = safeParseValue(fwResults[0]);
-            results.firmware.minor = safeParseValue(fwResults[1]);
-            results.firmware.patch = safeParseValue(fwResults[2]);
+            // Store raw parameters
+            fwVars.forEach((param, index)=>{
+                const value = safeParseValue(fwResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_FW_Ver_Major") results.firmware.major = value;
+                if (param === "OBC1_FW_Ver_Minor") results.firmware.minor = value;
+                if (param === "OBC1_FW_Ver_Patch") results.firmware.patch = value;
+            });
             // Special check for default simulation values
             if (results.firmware.major === '1' && results.firmware.minor === '2' && results.firmware.patch === '3') {
                 console.log("🔍 Detected default simulation values in firmware version");
@@ -443,6 +528,10 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             results.firmware.major = "1";
             results.firmware.minor = "0";
             results.firmware.patch = "0";
+            // Add fallback values to raw parameters
+            rawParameters["OBC1_FW_Ver_Major"] = "1";
+            rawParameters["OBC1_FW_Ver_Minor"] = "0";
+            rawParameters["OBC1_FW_Ver_Patch"] = "0";
             // Mark as simulation since we're using hardcoded values
             usedSimulation = true;
         // Continue with other tests despite this error
@@ -471,24 +560,29 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             const { results: kernelResults, usedSimulation: kernelSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, kernelVars);
             // Update overall simulation flag
             usedSimulation = usedSimulation || kernelSimulation;
-            results.kernel.uptime = safeParseValue(kernelResults[0]);
-            results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
-            results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
-            results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
-            results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
-            results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
-            results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
-            results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
-            results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
-            results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
-            results.kernel.processes = safeParseValue(kernelResults[10]);
-            // Skip pad
-            results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
-            results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
-            results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
+            // Store raw parameters
+            kernelVars.forEach((param, index)=>{
+                const value = safeParseValue(kernelResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_Sys_uptime") results.kernel.uptime = value;
+                else if (param === "OBC1_Sys_loads_1m") results.kernel.loads.oneMinute = value;
+                else if (param === "OBC1_Sys_loads_5m") results.kernel.loads.fiveMinute = value;
+                else if (param === "OBC1_Sys_loads_15m") results.kernel.loads.fifteenMinute = value;
+                else if (param === "OBC1_Sys_totalram") results.kernel.memory.totalRam = value;
+                else if (param === "OBC1_Sys_freeram") results.kernel.memory.freeRam = value;
+                else if (param === "OBC1_Sys_sharedram") results.kernel.memory.sharedRam = value;
+                else if (param === "OBC1_Sys_bufferram") results.kernel.memory.bufferRam = value;
+                else if (param === "OBC1_Sys_totalswap") results.kernel.memory.totalSwap = value;
+                else if (param === "OBC1_Sys_freeswap") results.kernel.memory.freeSwap = value;
+                else if (param === "OBC1_Sys_procs") results.kernel.processes = value;
+                else if (param === "OBC1_Sys_totalhigh") results.kernel.memory.totalHigh = value;
+                else if (param === "OBC1_Sys_freehigh") results.kernel.memory.freeHigh = value;
+                else if (param === "OBC1_Sys_mem_unit") results.kernel.memory.memUnit = value;
+            });
             // Check for simulation indicators in results
             for (const result of kernelResults){
-                if (result.includes('simulated')) {
+                if (result && result.includes('simulated')) {
                     console.log("🔍 Detected simulation indicators in kernel values");
                     usedSimulation = true;
                     break;
@@ -497,6 +591,8 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
         } catch (error) {
             console.error("Error reading kernel info:", error);
             usedSimulation = true; // Failed reads mean simulation
+            // Mark error in raw parameters
+            rawParameters["kernel_read_error"] = "true";
         // Continue with other tests despite this error
         }
         // Step 3: Read FPGA values (40%)
@@ -538,19 +634,24 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             const { results: fpgaResults, usedSimulation: fpgaSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, fpgaVars);
             // Update overall simulation flag
             usedSimulation = usedSimulation || fpgaSimulation;
-            // First 27 are voltages, last 3 are temperatures
-            results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
-            results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
-            results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
-            results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
-            results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
-            // ... Set other voltages
-            results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
-            results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
-            results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
+            // Store raw parameters and map to structure
+            fpgaVars.forEach((param, index)=>{
+                const value = safeParseValue(fpgaResults[index]);
+                rawParameters[param] = value;
+                // Map specific values to the structured results
+                // First 27 are voltages, last 3 are temperatures
+                if (param === "OBC1_vcc_pspll") results.fpga.voltages.vccPspll = value;
+                else if (param === "OBC1_vcc_psbatt") results.fpga.voltages.vccPsbatt = value;
+                else if (param === "OBC1_vccint") results.fpga.voltages.vccint = value;
+                else if (param === "OBC1_vccbram") results.fpga.voltages.vccbram = value;
+                else if (param === "OBC1_vccaux") results.fpga.voltages.vccaux = value;
+                else if (param === "OBC1_ps_temp") results.fpga.temperatures.psTemp = value;
+                else if (param === "OBC1_remote_temp") results.fpga.temperatures.remoteTemp = value;
+                else if (param === "OBC1_pl_temp") results.fpga.temperatures.plTemp = value;
+            });
             // Check for simulation indicators
             for (const result of fpgaResults){
-                if (result.includes('simulated')) {
+                if (result && result.includes('simulated')) {
                     console.log("🔍 Detected simulation indicators in FPGA values");
                     usedSimulation = true;
                     break;
@@ -559,6 +660,8 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
         } catch (error) {
             console.error("Error reading FPGA values:", error);
             usedSimulation = true; // Failed reads mean simulation
+            // Mark error in raw parameters
+            rawParameters["fpga_read_error"] = "true";
         // Continue with other tests despite this error
         }
         // Step 4: Read voltage and current (60%)
@@ -575,26 +678,36 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             const { results: viResults, usedSimulation: viSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, viVars);
             // Update overall simulation flag
             usedSimulation = usedSimulation || viSimulation;
-            const d3v3Value = safeParseValue(viResults[0]);
-            const ps3v3Obc2Value = safeParseValue(viResults[1]);
-            const ps5vObc2Value = safeParseValue(viResults[2]);
-            results.vi.d3v3 = {
-                value: d3v3Value,
-                pass: checkVoltage(d3v3Value, true)
-            };
-            results.vi.ps3v3Obc2 = {
-                value: ps3v3Obc2Value,
-                pass: checkVoltage(ps3v3Obc2Value, true)
-            };
-            results.vi.ps5vObc2 = {
-                value: ps5vObc2Value,
-                pass: checkVoltage(ps5vObc2Value, false)
-            };
-            results.vi.ps5vObc2I = safeParseValue(viResults[3]);
-            results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
+            // Store raw parameters
+            viVars.forEach((param, index)=>{
+                const value = safeParseValue(viResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_3V3_D") {
+                    results.vi.d3v3 = {
+                        value: value,
+                        pass: checkVoltage(value, true)
+                    };
+                } else if (param === "OBC1_PS_3V3_OBC2_V") {
+                    results.vi.ps3v3Obc2 = {
+                        value: value,
+                        pass: checkVoltage(value, true)
+                    };
+                } else if (param === "OBC1_PS_5V_OBC2_V") {
+                    results.vi.ps5vObc2 = {
+                        value: value,
+                        pass: checkVoltage(value, false)
+                    };
+                } else if (param === "OBC1_PS_5V_OBC2_I") results.vi.ps5vObc2I = value;
+                else if (param === "OBC1_PS_3V3_OBC2_I") results.vi.ps3v3Obc2I = value;
+            });
+            // Also store the pass/fail results in the raw parameters
+            rawParameters["OBC1_3V3_D_pass"] = results.vi.d3v3.pass.toString();
+            rawParameters["OBC1_PS_3V3_OBC2_V_pass"] = results.vi.ps3v3Obc2.pass.toString();
+            rawParameters["OBC1_PS_5V_OBC2_V_pass"] = results.vi.ps5vObc2.pass.toString();
             // Check for simulation indicators
             for (const result of viResults){
-                if (result.includes('simulated')) {
+                if (result && result.includes('simulated')) {
                     console.log("🔍 Detected simulation indicators in voltage/current values");
                     usedSimulation = true;
                     break;
@@ -603,6 +716,8 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
         } catch (error) {
             console.error("Error reading voltage and current:", error);
             usedSimulation = true; // Failed reads mean simulation
+            // Mark error in raw parameters
+            rawParameters["vi_read_error"] = "true";
         // Continue with other tests despite this error
         }
         // Step 5: Read temperature sensors (80%)
@@ -620,15 +735,21 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             const { results: tempResults, usedSimulation: tempSimulation } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, tempVars);
             // Update overall simulation flag
             usedSimulation = usedSimulation || tempSimulation;
-            results.temperatures.thruster1 = safeParseValue(tempResults[0]);
-            results.temperatures.thruster2 = safeParseValue(tempResults[1]);
-            results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
-            results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
-            results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
-            results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
+            // Store raw parameters
+            tempVars.forEach((param, index)=>{
+                const value = safeParseValue(tempResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "OBC1_thruster_ch1_T") results.temperatures.thruster1 = value;
+                else if (param === "OBC1_thruster_ch2_T") results.temperatures.thruster2 = value;
+                else if (param === "OBC1_leocam_ch1_T") results.temperatures.leocam[0] = value;
+                else if (param === "OBC1_leocam_ch2_T") results.temperatures.leocam[1] = value;
+                else if (param === "OBC1_leocam_ch3_T") results.temperatures.leocam[2] = value;
+                else if (param === "OBC1_leocam_ch4_T") results.temperatures.leocam[3] = value;
+            });
             // Check for simulation indicators
             for (const result of tempResults){
-                if (result.includes('simulated')) {
+                if (result && result.includes('simulated')) {
                     console.log("🔍 Detected simulation indicators in temperature values");
                     usedSimulation = true;
                     break;
@@ -637,6 +758,8 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
         } catch (error) {
             console.error("Error reading temperature sensors:", error);
             usedSimulation = true; // Failed reads mean simulation
+            // Mark error in raw parameters
+            rawParameters["temperature_read_error"] = "true";
         // Continue with other tests despite this error
         }
         // Step 6: EMMC test if enabled (90-100%)
@@ -651,6 +774,11 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                 const initialEmmcCheck = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
                 // Update simulation status
                 usedSimulation = usedSimulation || initialEmmcCheck.usedSimulation;
+                // Store raw values
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(initialEmmcCheck.results[index]);
+                    rawParameters[`${param}_initial`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(initialEmmcCheck.results[0]));
                 results.emmc.emmc1States.push(safeParseValue(initialEmmcCheck.results[1]));
                 // If mccifSet returns a Promise<boolean> for simulation detection
@@ -674,15 +802,24 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 1);
                         setSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd1"] = "1";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     setSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd1_error"] = "true";
                 }
                 // Update simulation status based on the set operation
                 usedSimulation = usedSimulation || setSimulation;
                 // Read status after first command
                 const emmcCheck2 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
                 usedSimulation = usedSimulation || emmcCheck2.usedSimulation;
+                // Store raw values
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcCheck2.results[index]);
+                    rawParameters[`${param}_afterON_eMMC0`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcCheck2.results[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcCheck2.results[1]));
                 // Continue with eMMC test sequence, detecting simulation on each step
@@ -699,9 +836,13 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 3);
                         nextSetSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd2"] = "3";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     nextSetSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd2_error"] = "true";
                 }
                 usedSimulation = usedSimulation || nextSetSimulation;
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
@@ -718,14 +859,23 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 5);
                         nextSetSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd3"] = "5";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     nextSetSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd3_error"] = "true";
                 }
                 usedSimulation = usedSimulation || nextSetSimulation;
                 // Read status after next command
                 const emmcCheck3 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
                 usedSimulation = usedSimulation || emmcCheck3.usedSimulation;
+                // Store raw values
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcCheck3.results[index]);
+                    rawParameters[`${param}_afterOFF_eMMC0`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcCheck3.results[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcCheck3.results[1]));
                 // Continue with more eMMC tests
@@ -743,14 +893,23 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 2);
                         nextSetSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd4"] = "2";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     nextSetSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd4_error"] = "true";
                 }
                 usedSimulation = usedSimulation || nextSetSimulation;
                 // Read status after command
                 const emmcCheck4 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
                 usedSimulation = usedSimulation || emmcCheck4.usedSimulation;
+                // Store raw values
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcCheck4.results[index]);
+                    rawParameters[`${param}_beforeON_eMMC1`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcCheck4.results[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcCheck4.results[1]));
                 nextSetSimulation = false;
@@ -766,9 +925,13 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 4);
                         nextSetSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd5"] = "4";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     nextSetSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd5_error"] = "true";
                 }
                 usedSimulation = usedSimulation || nextSetSimulation;
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
@@ -785,14 +948,23 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Emmc_Control", 6);
                         nextSetSimulation = true;
                     }
+                    // Store command in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd6"] = "6";
                 } catch (error) {
                     console.error("Error setting eMMC control:", error);
                     nextSetSimulation = true;
+                    // Record error in raw parameters
+                    rawParameters["OBC1_Emmc_Control_cmd6_error"] = "true";
                 }
                 usedSimulation = usedSimulation || nextSetSimulation;
                 // Final read status
                 const emmcCheck5 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifReadWithFlag"])(sock, emmcVars);
                 usedSimulation = usedSimulation || emmcCheck5.usedSimulation;
+                // Store raw values
+                emmcVars.forEach((param, index)=>{
+                    const value = safeParseValue(emmcCheck5.results[index]);
+                    rawParameters[`${param}_afterOFF_eMMC1`] = value;
+                });
                 results.emmc.emmc0States.push(safeParseValue(emmcCheck5.results[0]));
                 results.emmc.emmc1States.push(safeParseValue(emmcCheck5.results[1]));
                 // Final check for simulation evidence in the eMMC results
@@ -800,12 +972,15 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
                 if (results.emmc.emmc0States.every((val)=>val === '0' || val === '1') && results.emmc.emmc1States.every((val)=>val === '0' || val === '1')) {
                     console.log("🔍 eMMC values match typical simulation pattern");
                     usedSimulation = true;
+                    rawParameters["emmc_simulation_pattern_detected"] = "true";
                 }
             } catch (error) {
                 console.error("Error during eMMC test:", error);
                 // Fill with N/A values if the test fails
                 results.emmc.emmc0States = Array(6).fill('N.A.');
                 results.emmc.emmc1States = Array(6).fill('N.A.');
+                // Record failure in raw parameters
+                rawParameters["emmc_test_failed"] = "true";
                 // Mark as simulation since we're using hardcoded values
                 usedSimulation = true;
             }
@@ -813,11 +988,19 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
             // If eMMC test is disabled, set empty results
             results.emmc.emmc0States = Array(6).fill('N.A.');
             results.emmc.emmc1States = Array(6).fill('N.A.');
+            // Record that test was skipped in raw parameters
+            rawParameters["emmc_test_skipped"] = "true";
         }
         // Complete checkout (100%)
         onProgress('Checkout Complete', 100);
         // Add the final simulation status to the results
         results._simulationUsed = usedSimulation;
+        rawParameters["_simulation_used"] = usedSimulation.toString();
+        // Add summary of tests passed/failed to raw parameters
+        const voltageTestsPassed = results.vi.d3v3.pass && results.vi.ps3v3Obc2.pass && results.vi.ps5vObc2.pass;
+        rawParameters["voltage_tests_all_passed"] = voltageTestsPassed.toString();
+        // Before returning the results, add the raw parameters
+        results.rawParameters = rawParameters;
         // Log the simulation status for debugging
         console.log(`OBC-1 checkout completed. Simulation used: ${usedSimulation}`);
         return {
@@ -826,10 +1009,16 @@ async function runOBC1CheckoutWithDetection(sock, enableEmmc, onProgress = ()=>{
         };
     } catch (error) {
         console.error('Error during OBC-1 checkout:', error);
+        // Create minimal raw parameters for the error case
+        const rawParameters = {
+            "fatal_error": error instanceof Error ? error.message : String(error),
+            "error_timestamp": new Date().toISOString()
+        };
         // Always return simulation=true if we had an error
         return {
             results: {
-                error: error instanceof Error ? error.message : String(error)
+                error: error instanceof Error ? error.message : String(error),
+                rawParameters
             },
             usedSimulation: true
         };
@@ -4981,8 +5170,11 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             },
             propTc: {},
             propStat: {},
-            reportGenerated: false
+            reportGenerated: false,
+            rawParameters: {} // Add this to store all raw parameters
         };
+        // Create a record to store raw parameter values
+        const rawParameters = {};
         // Define arrays of parameters to read based on Python code
         const pmaTimeParams = [
             "OBC1_Prop_PmaCheck_InitPayl_Delay",
@@ -5249,8 +5441,14 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
             // Get ECU-1 voltage/current
             const ecu1ViResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
-            results.ecu1.voltage = safeParseValue(ecu1ViResults[0]);
-            results.ecu1.current = safeParseValue(ecu1ViResults[1]);
+            // Add this tracking code
+            ecu1ViParams.forEach((param, index)=>{
+                const value = safeParseValue(ecu1ViResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "HEPS1_PDM1_ECU1_V") results.ecu1.voltage = value;
+                if (param === "HEPS1_PDM1_ECU1_I") results.ecu1.current = value;
+            });
             // Check if voltage is in expected range (regulated)
             const ecu1VoltageStatus = checkVoltageReg(results.ecu1.voltage);
             results.passFailStatus.push(ecu1VoltageStatus ? 'PASS' : 'FAIL');
@@ -5270,12 +5468,14 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             // Store telemetry values in results
             results.prop1Tm = {};
             prop1TmParams.forEach((param, index)=>{
+                const value = safeParseValue(prop1Results[index]);
+                rawParameters[param] = value;
                 const name = param.replace('PROPULSION1_', '');
-                results.prop1Tm[name] = safeParseValue(prop1Results[index]);
+                results.prop1Tm[name] = value;
                 // Also store temperature values in the temperatures object for easy access
                 if (name.includes('Temp') || name.includes('Temperature')) {
                     const simpleName = name.replace('_Temperature', '').replace('_Temp', '');
-                    results.temperatures[simpleName] = safeParseValue(prop1Results[index]);
+                    results.temperatures[simpleName] = value;
                 }
             });
             onProgress("Powering off ECU-1", 15);
@@ -5287,7 +5487,11 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Prop_SingleFiring_Duration", 2059);
             // Check ECU-1 voltage when off (should be near zero)
             const ecu1ViOffResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
-            // Store updated values
+            // Store updated values and track parameters
+            ecu1ViParams.forEach((param, index)=>{
+                const value = safeParseValue(ecu1ViOffResults[index]);
+                rawParameters[param] = value; // Update with new value
+            });
             const ecu1OffVoltage = safeParseValue(ecu1ViOffResults[0]);
             const ecu1OffCurrent = safeParseValue(ecu1ViOffResults[1]);
             // Check if voltage is in expected range for powered off (floating)
@@ -5304,8 +5508,14 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
             // Get ECU-2 voltage/current
             const ecu2ViResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu2ViParams);
-            results.ecu2.voltage = safeParseValue(ecu2ViResults[0]);
-            results.ecu2.current = safeParseValue(ecu2ViResults[1]);
+            // Add tracking code for ECU-2 parameters
+            ecu2ViParams.forEach((param, index)=>{
+                const value = safeParseValue(ecu2ViResults[index]);
+                rawParameters[param] = value;
+                // Map to structured results
+                if (param === "HEPS1_PDM2_ECU2_V") results.ecu2.voltage = value;
+                if (param === "HEPS1_PDM2_ECU2_I") results.ecu2.current = value;
+            });
             // Check if voltage is in expected range (regulated)
             const ecu2VoltageStatus = checkVoltageReg(results.ecu2.voltage);
             results.passFailStatus.push(ecu2VoltageStatus ? 'PASS' : 'FAIL');
@@ -5325,8 +5535,10 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             // Store telemetry values in results
             results.prop2Tm = {};
             prop2TmParams.forEach((param, index)=>{
+                const value = safeParseValue(prop2Results[index]);
+                rawParameters[param] = value;
                 const name = param.replace('PROPULSION2_', '');
-                results.prop2Tm[name] = safeParseValue(prop2Results[index]);
+                results.prop2Tm[name] = value;
             });
             onProgress("Powering off ECU-2", 30);
             // Power off ECU-2
@@ -5337,6 +5549,11 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Prop_SingleFiring_Duration", 2059);
             // Check ECU-2 voltage when off (should be near zero)
             const ecu2ViOffResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu2ViParams);
+            // Track parameters
+            ecu2ViParams.forEach((param, index)=>{
+                const value = safeParseValue(ecu2ViOffResults[index]);
+                rawParameters[param] = value; // Update with new value
+            });
             // Check if voltage is in expected range for powered off (floating)
             const ecu2OffVoltage = safeParseValue(ecu2ViOffResults[0]);
             const ecu2OffVoltageStatus = checkVoltageFloat(ecu2OffVoltage);
@@ -5357,6 +5574,11 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
                 // Read PMA timing parameters
                 const pmaTimeResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, pmaTimeParams);
+                // Store and track PMA timing values
+                pmaTimeParams.forEach((param, index)=>{
+                    const value = safeParseValue(pmaTimeResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Store PMA timing values - ensure we have values even in simulation mode
                 if (sock.isSimulated) {
                     results.pma = {
@@ -5392,14 +5614,21 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 // Store telecommand parameters
                 results.propTc = {};
                 propTcParams.forEach((param, index)=>{
+                    const value = safeParseValue(propTcResults[index]);
+                    rawParameters[param] = value;
                     const name = param.replace('OBC1_Prop_', '');
-                    results.propTc[name] = safeParseValue(propTcResults[index]);
+                    results.propTc[name] = value;
                 });
                 // Execute PMA control command
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Prop_Control", 23);
                 await new Promise((resolve)=>setTimeout(resolve, 5000)); // Wait 5 seconds
                 // Check ECU-1 voltage/current during test
                 const ecu1ViTestResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
+                // Track parameters
+                ecu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ecu1ViTestResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Check voltage during test
                 const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
                 const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
@@ -5417,11 +5646,18 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 // Store propulsion status
                 results.propStat = {};
                 propStatParams.forEach((param, index)=>{
+                    const value = safeParseValue(propStatResults[index]);
+                    rawParameters[param] = value;
                     const name = param.replace('OBC1_Prop_', '');
-                    results.propStat[name] = safeParseValue(propStatResults[index]);
+                    results.propStat[name] = value;
                 });
                 // Read final ECU-1 voltage/current
                 const ecu1ViFinalResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
+                // Track parameters
+                ecu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ecu1ViFinalResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Check final voltage (should be off)
                 const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
                 const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
@@ -5447,11 +5683,13 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             propTcParams.forEach((param)=>{
                 const name = param.replace('OBC1_Prop_', '');
                 results.propTc[name] = 'N.A.';
+                rawParameters[param] = 'N.A.';
             });
             results.propStat = {};
             propStatParams.forEach((param)=>{
                 const name = param.replace('OBC1_Prop_', '');
                 results.propStat[name] = 'N.A.';
+                rawParameters[param] = 'N.A.';
             });
             // Add placeholder pass/fail results
             results.passFailStatus.push('N.A.');
@@ -5469,6 +5707,11 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
                 // Read PPU timing parameters
                 const ppuTimeResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ppuTimeParams);
+                // Store and track PPU timing values
+                ppuTimeParams.forEach((param, index)=>{
+                    const value = safeParseValue(ppuTimeResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Store PPU timing values - ensure we have values even in simulation mode
                 if (sock.isSimulated) {
                     results.ppu = {
@@ -5513,23 +5756,35 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 // Store telecommand parameters
                 results.propTc = {};
                 propTcParams.forEach((param, index)=>{
+                    const value = safeParseValue(propTcResults[index]);
+                    rawParameters[param] = value;
                     const name = param.replace('OBC1_Prop_', '');
-                    results.propTc[name] = safeParseValue(propTcResults[index]);
+                    results.propTc[name] = value;
                 });
                 // Execute PPU control command
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Prop_Control", 21);
                 await new Promise((resolve)=>setTimeout(resolve, 5000)); // Wait 5 seconds
                 // Check ECU-1 voltage/current during test
                 const ecu1ViTestResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
+                // Track parameters
+                ecu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ecu1ViTestResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Check voltage during test
                 const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
                 const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
                 results.passFailStatus.push(ecu1TestVoltageStatus ? 'PASS' : 'FAIL');
                 // Check PPU-1 voltage/current during test
                 const ppu1ViTestResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ppu1ViParams);
-                // Store PPU-1 values
-                results.ppu1.voltage = safeParseValue(ppu1ViTestResults[0]);
-                results.ppu1.current = safeParseValue(ppu1ViTestResults[1]);
+                // Track PPU-1 parameters
+                ppu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ppu1ViTestResults[index]);
+                    rawParameters[param] = value;
+                    // Store PPU-1 values in structured results
+                    if (param === "HEPS1_PDM1_THRU1_V") results.ppu1.voltage = value;
+                    if (param === "HEPS1_PDM1_THRU1_I") results.ppu1.current = value;
+                });
                 // Check PPU-1 voltage
                 const ppu1TestVoltageStatus = checkVoltageReg(results.ppu1.voltage);
                 results.passFailStatus.push(ppu1TestVoltageStatus ? 'PASS' : 'FAIL');
@@ -5547,17 +5802,29 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 // Store propulsion status
                 results.propStat = {};
                 propStatParams.forEach((param, index)=>{
+                    const value = safeParseValue(propStatResults[index]);
+                    rawParameters[param] = value;
                     const name = param.replace('OBC1_Prop_', '');
-                    results.propStat[name] = safeParseValue(propStatResults[index]);
+                    results.propStat[name] = value;
                 });
                 // Read final ECU-1 voltage/current
                 const ecu1ViFinalResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
+                // Track parameters
+                ecu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ecu1ViFinalResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Check final voltage (should be off)
                 const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
                 const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
                 results.passFailStatus.push(ecu1FinalVoltageStatus ? 'PASS' : 'FAIL');
                 // Read final PPU-1 voltage/current
                 const ppu1ViFinalResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ppu1ViParams);
+                // Track parameters
+                ppu1ViParams.forEach((param, index)=>{
+                    const value = safeParseValue(ppu1ViFinalResults[index]);
+                    rawParameters[param] = value;
+                });
                 // Check final PPU-1 voltage (should be off)
                 const ppu1FinalVoltage = safeParseValue(ppu1ViFinalResults[0]);
                 const ppu1FinalVoltageStatus = checkVoltageFloat(ppu1FinalVoltage);
@@ -5587,6 +5854,13 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
                 current: 'N.A.',
                 status: 'N.A.'
             };
+            // Store N.A. values in rawParameters for PPU parameters
+            ppu1ViParams.forEach((param)=>{
+                rawParameters[param] = 'N.A.';
+            });
+            ppuTimeParams.forEach((param)=>{
+                rawParameters[param] = 'N.A.';
+            });
             // Add placeholder pass/fail results
             results.passFailStatus.push('N.A.');
             results.passFailStatus.push('N.A.');
@@ -5595,6 +5869,8 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
         }
         // Complete checkout (100%)
         onProgress('Checkout Complete', 100);
+        // Before returning the results, add the raw parameters
+        results.rawParameters = rawParameters;
         return results;
     } catch (error) {
         console.error('Error during Propulsion checkout:', error);
@@ -8309,27 +8585,85 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 sensorPower: '',
                 sensorLineFrameRate: '',
                 sensorBitDepth: '',
-                sensorRoi: [],
+                sensorRoi1: '',
+                sensorRoi2: '',
+                sensorRoi3: '',
+                sensorRoi4: '',
+                sensorRoi5_1: '',
+                sensorRoi5_2: '',
+                sensorRoi5_3: '',
                 sensorGainAnalog: '',
                 sensorScanDirection: '',
                 sensorTestPatternSel: ''
             },
             leocamTelemetry: {
                 healthStatus: '',
-                dateTime: '',
-                cpuVoltages: [],
-                cpuTemperatures: [],
-                internalTemperatures: [],
-                sensorTemperatures: [],
-                diskUsed: [],
-                diskTemperatures: [],
-                diskLifetimes: [],
-                diskErrorCorrectionCounts: [],
-                diskErrorUncorrectableCounts: [],
-                diskTotalBytesRead: [],
-                diskTotalBytesWritten: [],
+                datetime: '',
+                cpuVoltages: [
+                    '',
+                    '',
+                    '',
+                    ''
+                ],
+                cpuTemperatures: [
+                    '',
+                    '',
+                    '',
+                    ''
+                ],
+                internalTemperatures: [
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    ''
+                ],
+                sensorVoltage: '',
+                sensorTemperatures: [
+                    '',
+                    ''
+                ],
+                sensorReset: '',
+                diskUsed: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskTemperatures: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskLifetimes: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskErrorCorrectionCounts: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskErrorUncorrectableCounts: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskTotalBytesRead: [
+                    '',
+                    '',
+                    ''
+                ],
+                diskTotalBytesWritten: [
+                    '',
+                    '',
+                    ''
+                ],
                 diskListDatasets: '',
-                diskListDatafilesInDataset: ''
+                diskListDatafilesInDataset: '' // For Leocam_Disk_List_Datafiles_in_Dataset
             },
             leocamStatistics: {
                 commandCount: '',
@@ -8338,8 +8672,12 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 errorCount: ''
             },
             reportGenerated: false,
-            testedOptions: options
+            testedOptions: options,
+            // Store all raw parameter values for direct access
+            rawParameters: {}
         };
+        // Create a record to store raw parameter values
+        const rawParameters = {};
         const enableSensorOperations = options.includes('Sensor Operations');
         const enableDiskOperations = options.includes('Disk Operations');
         const enableVoltageTests = options.includes('Voltage Tests');
@@ -8457,13 +8795,16 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
             // Read GPS values
             try {
                 const gpsResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, gpsVi);
-                const gpsVoltage = safeParseValue(gpsResults[0]);
-                const gpsCurrent = safeParseValue(gpsResults[1]);
-                // Store results
-                results.voltageTests.gps.voltage = gpsVoltage;
-                results.voltageTests.gps.current = gpsCurrent;
+                // Add this new tracking code
+                gpsVi.forEach((param, index)=>{
+                    const value = safeParseValue(gpsResults[index]);
+                    rawParameters[param] = value;
+                    // Map to structured results
+                    if (param === "HEPS1_PDM2_GPS_5V_V") results.voltageTests.gps.voltage = value;
+                    if (param === "HEPS1_PDM2_GPS_5V_I") results.voltageTests.gps.current = value;
+                });
                 // Check if voltage is within expected range (5V)
-                const voltageValue = safeParseFloat(gpsVoltage);
+                const voltageValue = safeParseFloat(results.voltageTests.gps.voltage);
                 results.voltageTests.gps.passInitial = voltageValue >= 4.75 && voltageValue <= 5.25;
             } catch (error) {
                 console.error("Error reading GPS values:", error);
@@ -8475,35 +8816,41 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
             // Read PCS values
             try {
                 const pcsResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, pcsVi);
-                const pcsVoltage = safeParseValue(pcsResults[0]);
-                const pcsCurrent = safeParseValue(pcsResults[1]);
-                // Store results
-                results.voltageTests.pcs.voltage = pcsVoltage;
-                results.voltageTests.pcs.current = pcsCurrent;
+                // Add this tracking code
+                pcsVi.forEach((param, index)=>{
+                    const value = safeParseValue(pcsResults[index]);
+                    rawParameters[param] = value;
+                    // Map to structured results
+                    if (param === "HEPS1_PDM2_PCS_V") results.voltageTests.pcs.voltage = value;
+                    if (param === "HEPS1_PDM2_PCS_I") results.voltageTests.pcs.current = value;
+                });
                 // Check if voltage is within expected range (12V)
-                const voltageValue = safeParseFloat(pcsVoltage);
+                const voltageValue = safeParseFloat(results.voltageTests.pcs.voltage);
                 results.voltageTests.pcs.passInitial = voltageValue >= 11.5 && voltageValue <= 12.5;
             } catch (error) {
                 console.error("Error reading PCS values:", error);
             }
-            // If PCS voltage test passed, continue with LEOCAM setup
+            // If PCS voltage test passed, continue with LEOCAM setup...
             if (results.voltageTests.pcs.passInitial) {
-                // Step 4: Set Intercomm Template and enable CH13 (20%)
+                // Set Intercomm Template and enable CH13 (20%)
                 onProgress('Setting up LEOCAM communications', 20);
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Intercomm_Template", 32767);
-                await new Promise((resolve)=>setTimeout(resolve, 1000)); // 1 second delay
+                await new Promise((resolve)=>setTimeout(resolve, 1000));
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOn", 13);
-                await new Promise((resolve)=>setTimeout(resolve, 2000)); // 2 second delay
-                // Read LEOCAM values
+                await new Promise((resolve)=>setTimeout(resolve, 2000));
+                // Read LEOCAM voltage values - Add tracking
                 try {
                     const leocamResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVi);
-                    const leocamVoltage = safeParseValue(leocamResults[0]);
-                    const leocamCurrent = safeParseValue(leocamResults[1]);
-                    // Store results
-                    results.voltageTests.leocam.voltage = leocamVoltage;
-                    results.voltageTests.leocam.current = leocamCurrent;
-                    // Check if voltage is unregulated (just verify it's not zero)
-                    const voltageValue = safeParseFloat(leocamVoltage);
+                    // Add this tracking code
+                    leocamVi.forEach((param, index)=>{
+                        const value = safeParseValue(leocamResults[index]);
+                        rawParameters[param] = value;
+                        // Map to structured results
+                        if (param === "HEPS1_PDM1_OPT_CAM_V") results.voltageTests.leocam.voltage = value;
+                        if (param === "HEPS1_PDM1_OPT_CAM_I") results.voltageTests.leocam.current = value;
+                    });
+                    // Keep the validation logic
+                    const voltageValue = safeParseFloat(results.voltageTests.leocam.voltage);
                     results.voltageTests.leocam.passInitial = voltageValue > 0.5;
                 } catch (error) {
                     console.error("Error reading LEOCAM values:", error);
@@ -8527,27 +8874,35 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
         // Only proceed with sensor operations if voltage tests passed or were skipped
         if (results.voltageTests.pcs.passInitial && results.voltageTests.leocam.passInitial || !enableVoltageTests) {
             if (enableSensorOperations) {
-                // Step 5: Configure LEOCAM for imaging (30%)
+                // Configure LEOCAM for imaging (30%)
                 onProgress('Configuring LEOCAM', 30);
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "PCS_Leocam_Control", 20);
-                await new Promise((resolve)=>setTimeout(resolve, 1000)); // 1 second delay
+                await new Promise((resolve)=>setTimeout(resolve, 1000));
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "PCS_Leocam_Number_of_Lines_L", 100);
-                await new Promise((resolve)=>setTimeout(resolve, 1000)); // 1 second delay
-                // Read LEOCAM configuration
+                await new Promise((resolve)=>setTimeout(resolve, 1000));
+                // Read LEOCAM configuration - Add tracking for leocamSet parameters
                 try {
                     const leocamConfigResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamSet);
-                    // Store configuration values
-                    results.leocamConfig.sensorMode = safeParseValue(leocamConfigResults[0]);
-                    results.leocamConfig.sensorPower = safeParseValue(leocamConfigResults[1]);
-                    results.leocamConfig.sensorLineFrameRate = safeParseValue(leocamConfigResults[2]);
-                    results.leocamConfig.sensorBitDepth = safeParseValue(leocamConfigResults[3]);
-                    // Store ROI values
-                    for(let i = 4; i < 11; i++){
-                        results.leocamConfig.sensorRoi.push(safeParseValue(leocamConfigResults[i]));
-                    }
-                    results.leocamConfig.sensorGainAnalog = safeParseValue(leocamConfigResults[11]);
-                    results.leocamConfig.sensorScanDirection = safeParseValue(leocamConfigResults[12]);
-                    results.leocamConfig.sensorTestPatternSel = safeParseValue(leocamConfigResults[13]);
+                    // Add this tracking code
+                    leocamSet.forEach((param, index)=>{
+                        const value = safeParseValue(leocamConfigResults[index]);
+                        rawParameters[param] = value;
+                        // Map to structured results based on parameter name
+                        if (param === "Leocam_Sen_Mode") results.leocamConfig.sensorMode = value;
+                        if (param === "Leocam_Sen_PWR") results.leocamConfig.sensorPower = value;
+                        if (param === "Leocam_Sen_Line_Frame_Rate") results.leocamConfig.sensorLineFrameRate = value;
+                        if (param === "Leocam_Sen_BIT_DEPTH") results.leocamConfig.sensorBitDepth = value;
+                        if (param === "Leocam_Sen_ROI_1") results.leocamConfig.sensorRoi1 = value;
+                        if (param === "Leocam_Sen_ROI_2") results.leocamConfig.sensorRoi2 = value;
+                        if (param === "Leocam_Sen_ROI_3") results.leocamConfig.sensorRoi3 = value;
+                        if (param === "Leocam_Sen_ROI_4") results.leocamConfig.sensorRoi4 = value;
+                        if (param === "Leocam_Sen_ROI_5_1") results.leocamConfig.sensorRoi5_1 = value;
+                        if (param === "Leocam_Sen_ROI_5_2") results.leocamConfig.sensorRoi5_2 = value;
+                        if (param === "Leocam_Sen_ROI_5_3") results.leocamConfig.sensorRoi5_3 = value;
+                        if (param === "Leocam_Sen_Gain_Analog") results.leocamConfig.sensorGainAnalog = value;
+                        if (param === "Leocam_Sen_Scan_Direction") results.leocamConfig.sensorScanDirection = value;
+                        if (param === "Leocam_Sen_Test_Pattern_Sel") results.leocamConfig.sensorTestPatternSel = value;
+                    });
                 } catch (error) {
                     console.error("Error reading LEOCAM configuration:", error);
                 }
@@ -8572,29 +8927,57 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 try {
                     // First chunk: Health Status and CPU data
                     const telemetryStart = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVarStart);
-                    results.leocamTelemetry.healthStatus = safeParseValue(telemetryStart[0]);
-                    results.leocamTelemetry.dateTime = safeParseValue(telemetryStart[1]);
-                    // CPU voltages
-                    for(let i = 2; i < 6; i++){
-                        results.leocamTelemetry.cpuVoltages.push(safeParseValue(telemetryStart[i]));
-                    }
-                    // CPU temperatures
-                    for(let i = 6; i < 10; i++){
-                        results.leocamTelemetry.cpuTemperatures.push(safeParseValue(telemetryStart[i]));
-                    }
+                    // Add this tracking code
+                    leocamVarStart.forEach((param, index)=>{
+                        const value = safeParseValue(telemetryStart[index]);
+                        rawParameters[param] = value;
+                        // Map to structured results
+                        if (param === "Leocam_Health_Status") results.leocamTelemetry.healthStatus = value;
+                        if (param === "Leocam_Datetime") results.leocamTelemetry.datetime = value;
+                        // For CPU voltages
+                        if (param.startsWith("Leocam_CPU_Voltage_")) {
+                            const idx = parseInt(param.replace("Leocam_CPU_Voltage_", "")) - 1;
+                            if (idx >= 0 && idx < 4) results.leocamTelemetry.cpuVoltages[idx] = value;
+                        }
+                        // For CPU temperatures
+                        if (param.startsWith("Leocam_CPU_Temp_")) {
+                            const idx = parseInt(param.replace("Leocam_CPU_Temp_", "")) - 1;
+                            if (idx >= 0 && idx < 4) results.leocamTelemetry.cpuTemperatures[idx] = value;
+                        }
+                    });
                     // Second chunk: Internal temperatures
                     const telemetryMiddle = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVarMiddle);
-                    for(let i = 0; i < 8; i++){
-                        results.leocamTelemetry.internalTemperatures.push(safeParseValue(telemetryMiddle[i]));
-                    }
+                    // Add this tracking code
+                    leocamVarMiddle.forEach((param, index)=>{
+                        const value = safeParseValue(telemetryMiddle[index]);
+                        rawParameters[param] = value;
+                        // Map to structured results
+                        if (param.startsWith("Leocam_Int_Temp_")) {
+                            const idx = parseInt(param.replace("Leocam_Int_Temp_", "")) - 1;
+                            if (idx >= 0 && idx < 8) results.leocamTelemetry.internalTemperatures[idx] = value;
+                        }
+                    });
                     // Third chunk: Configuration readback
                     const telemetryConfig = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVarConfig);
-                    // We already have this in leocamConfig, so we can skip storing it again
+                    // These values are already stored in leocamConfig, but let's track the raw values
+                    leocamVarConfig.forEach((param, index)=>{
+                        const value = safeParseValue(telemetryConfig[index]);
+                        rawParameters[param] = value;
+                    });
                     // Fourth chunk: Sensor data
                     const telemetryEnd = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVarEnd);
-                    for(let i = 1; i < 3; i++){
-                        results.leocamTelemetry.sensorTemperatures.push(safeParseValue(telemetryEnd[i]));
-                    }
+                    leocamVarEnd.forEach((param, index)=>{
+                        const value = safeParseValue(telemetryEnd[index]);
+                        rawParameters[param] = value;
+                        // Map to structured results
+                        if (param === "Leocam_Sen_VOLTAGE") results.leocamTelemetry.sensorVoltage = value;
+                        if (param === "Leocam_Sen_Reset") results.leocamTelemetry.sensorReset = value;
+                        // For Sensor temperatures
+                        if (param.startsWith("Leocam_Sen_TEMP_")) {
+                            const idx = parseInt(param.replace("Leocam_Sen_TEMP_", "")) - 1;
+                            if (idx >= 0 && idx < 2) results.leocamTelemetry.sensorTemperatures[idx] = value;
+                        }
+                    });
                 } catch (error) {
                     console.error("Error reading LEOCAM telemetry:", error);
                 }
@@ -8604,20 +8987,18 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 results.leocamConfig.sensorPower = "1";
                 results.leocamConfig.sensorLineFrameRate = "100";
                 results.leocamConfig.sensorBitDepth = "8";
-                results.leocamConfig.sensorRoi = [
-                    "100",
-                    "100",
-                    "100",
-                    "100",
-                    "100",
-                    "100",
-                    "100"
-                ];
+                results.leocamConfig.sensorRoi1 = "100";
+                results.leocamConfig.sensorRoi2 = "100";
+                results.leocamConfig.sensorRoi3 = "100";
+                results.leocamConfig.sensorRoi4 = "100";
+                results.leocamConfig.sensorRoi5_1 = "100";
+                results.leocamConfig.sensorRoi5_2 = "100";
+                results.leocamConfig.sensorRoi5_3 = "100";
                 results.leocamConfig.sensorGainAnalog = "1";
                 results.leocamConfig.sensorScanDirection = "0";
                 results.leocamConfig.sensorTestPatternSel = "0";
                 results.leocamTelemetry.healthStatus = "0";
-                results.leocamTelemetry.dateTime = new Date().toISOString();
+                results.leocamTelemetry.datetime = new Date().toISOString();
                 results.leocamTelemetry.cpuVoltages = [
                     "3.3",
                     "1.8",
@@ -8646,41 +9027,43 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 ];
             }
             // Step 9: Read disk information if enabled (80%)
+            // In the enableDiskOperations section
             if (enableDiskOperations) {
                 onProgress('Reading LEOCAM disk information', 80);
                 try {
                     const diskResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamDiskVars);
-                    // Parse disk usage
-                    for(let i = 0; i < 3; i++){
-                        results.leocamTelemetry.diskUsed.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse disk temperatures
-                    for(let i = 3; i < 6; i++){
-                        results.leocamTelemetry.diskTemperatures.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse disk lifetimes
-                    for(let i = 6; i < 9; i++){
-                        results.leocamTelemetry.diskLifetimes.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse error correction counts
-                    for(let i = 9; i < 12; i++){
-                        results.leocamTelemetry.diskErrorCorrectionCounts.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse uncorrectable error counts
-                    for(let i = 12; i < 15; i++){
-                        results.leocamTelemetry.diskErrorUncorrectableCounts.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse total bytes read
-                    for(let i = 15; i < 18; i++){
-                        results.leocamTelemetry.diskTotalBytesRead.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse total bytes written
-                    for(let i = 18; i < 21; i++){
-                        results.leocamTelemetry.diskTotalBytesWritten.push(safeParseValue(diskResults[i]));
-                    }
-                    // Parse dataset information
-                    results.leocamTelemetry.diskListDatasets = safeParseValue(diskResults[21]);
-                    results.leocamTelemetry.diskListDatafilesInDataset = safeParseValue(diskResults[22]);
+                    // Add this tracking code
+                    leocamDiskVars.forEach((param, index)=>{
+                        const value = safeParseValue(diskResults[index]);
+                        rawParameters[param] = value;
+                        // Store in appropriate arrays based on parameter patterns
+                        if (param.startsWith("Leocam_Disk_Used_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Used_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskUsed[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_TEMP_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_TEMP_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskTemperatures[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_Lifetime_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Lifetime_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskLifetimes[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_Err_Correction_Count_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Err_Correction_Count_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskErrorCorrectionCounts[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_Err_Uncorrectable_Count_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Err_Uncorrectable_Count_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskErrorUncorrectableCounts[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_Total_Bytes_Read_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Total_Bytes_Read_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskTotalBytesRead[idx] = value;
+                        } else if (param.startsWith("Leocam_Disk_Total_Bytes_Written_")) {
+                            const idx = parseInt(param.replace("Leocam_Disk_Total_Bytes_Written_", "")) - 1;
+                            if (idx >= 0 && idx < 3) results.leocamTelemetry.diskTotalBytesWritten[idx] = value;
+                        } else if (param === "Leocam_Disk_List_Datasets") {
+                            results.leocamTelemetry.diskListDatasets = value;
+                        } else if (param === "Leocam_Disk_List_Datafiles_in_Dataset") {
+                            results.leocamTelemetry.diskListDatafilesInDataset = value;
+                        }
+                    });
                 } catch (error) {
                     console.error("Error reading LEOCAM disk information:", error);
                 }
@@ -8726,12 +9109,19 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
             }
             // Step 10: Read statistics (90%)
             onProgress('Reading LEOCAM statistics', 90);
+            // For reading statistics
             try {
                 const statResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamStat);
-                results.leocamStatistics.commandCount = safeParseValue(statResults[0]);
-                results.leocamStatistics.acknowledgeCount = safeParseValue(statResults[1]);
-                results.leocamStatistics.timeoutCount = safeParseValue(statResults[2]);
-                results.leocamStatistics.errorCount = safeParseValue(statResults[3]);
+                // Add this tracking code
+                leocamStat.forEach((param, index)=>{
+                    const value = safeParseValue(statResults[index]);
+                    rawParameters[param] = value;
+                    // Map to structured results
+                    if (param === "PCS_Leocam_Cmd_Count") results.leocamStatistics.commandCount = value;
+                    if (param === "PCS_Leocam_Ack_Count") results.leocamStatistics.acknowledgeCount = value;
+                    if (param === "PCS_Leocam_Timeout_Count") results.leocamStatistics.timeoutCount = value;
+                    if (param === "PCS_Leocam_Error_Count") results.leocamStatistics.errorCount = value;
+                });
             } catch (error) {
                 console.error("Error reading LEOCAM statistics:", error);
             }
@@ -8742,20 +9132,18 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
             results.leocamConfig.sensorPower = "N.A.";
             results.leocamConfig.sensorLineFrameRate = "N.A.";
             results.leocamConfig.sensorBitDepth = "N.A.";
-            results.leocamConfig.sensorRoi = [
-                "N.A.",
-                "N.A.",
-                "N.A.",
-                "N.A.",
-                "N.A.",
-                "N.A.",
-                "N.A."
-            ];
+            results.leocamConfig.sensorRoi1 = "N.A.";
+            results.leocamConfig.sensorRoi2 = "N.A.";
+            results.leocamConfig.sensorRoi3 = "N.A.";
+            results.leocamConfig.sensorRoi4 = "N.A.";
+            results.leocamConfig.sensorRoi5_1 = "N.A.";
+            results.leocamConfig.sensorRoi5_2 = "N.A.";
+            results.leocamConfig.sensorRoi5_3 = "N.A.";
             results.leocamConfig.sensorGainAnalog = "N.A.";
             results.leocamConfig.sensorScanDirection = "N.A.";
             results.leocamConfig.sensorTestPatternSel = "N.A.";
             results.leocamTelemetry.healthStatus = "N.A.";
-            results.leocamTelemetry.dateTime = "N.A.";
+            results.leocamTelemetry.datetime = "N.A.";
             results.leocamTelemetry.cpuVoltages = [
                 "N.A.",
                 "N.A.",
@@ -8872,6 +9260,8 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
         }
         // Step 12: Complete checkout (100%)
         onProgress('LEOCAM Checkout Complete', 100);
+        // Before returning the results, add the raw parameters
+        results.rawParameters = rawParameters;
         return results;
     } catch (error) {
         console.error('Error during LEOCAM checkout:', error);
@@ -9313,6 +9703,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$
     return parts.length > 1 ? parts[1] : "unknown";
 };
 /**
+ * Helper function to safely parse and store parameter values
+ * 
+ * @param param The parameter name
+ * @param result The raw result string from MCC
+ * @param rawParameters The object to store parameter values in
+ * @returns The parsed value
+ */ const storeParameterValue = (param, result, rawParameters)=>{
+    if (!result) return "unknown";
+    const parts = result.split('=');
+    const value = parts.length > 1 ? parts[1] : "unknown";
+    rawParameters[param] = value;
+    return value;
+};
+/**
  * Helper function to check if voltage is within acceptable range for batteries
  * 
  * @param value Voltage value as a string
@@ -9612,13 +10016,20 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
             heaterTests: [],
             currentTest: null,
             powerCycleTest: null,
-            passFailStatus: {}
+            passFailStatus: {},
+            rawParameters: {}
         };
+        // Create a record to store raw parameter values
+        const rawParameters = {};
         // First step - Primary CAN Test (10%)
         onProgress('Testing Primary CAN Communication', 10);
         // Read CAN variables before test
         let mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canVar);
-        const canBef = mccResult.map((res)=>safeParseValue(res));
+        const canBef = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[canVar[index]] = value;
+            return value;
+        });
         canBef.forEach((value)=>checkoutResult.push(value));
         index += canVar.length;
         // Store in results for reporting
@@ -9627,14 +10038,18 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         ];
         // Read CAN setting
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canSetting);
-        const canSettingValue = safeParseValue(mccResult[0]);
+        const canSettingValue = storeParameterValue(canSetting[0], mccResult[0], rawParameters);
         checkoutResult.push(canSettingValue);
         index += canSetting.length;
         // Wait for communication to occur
         await new Promise((resolve)=>setTimeout(resolve, 20000));
         // Read CAN variables after test
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canVar);
-        const canAft = mccResult.map((res)=>safeParseValue(res));
+        const canAft = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[`after_${canVar[index]}`] = value;
+            return value;
+        });
         canAft.forEach((value)=>checkoutResult.push(value));
         index += canVar.length;
         // Store in results for reporting
@@ -9651,7 +10066,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Intercomm_PriSec_Cfg", 31);
         // Read secondary CAN variables before test
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canVar);
-        const secCanBef = mccResult.map((res)=>safeParseValue(res));
+        const secCanBef = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[`sec_${canVar[index]}`] = value;
+            return value;
+        });
         secCanBef.forEach((value)=>checkoutResult.push(value));
         index += canVar.length;
         // Store in results for reporting
@@ -9660,14 +10079,18 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         ];
         // Read CAN setting
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canSetting);
-        const secCanSettingValue = safeParseValue(mccResult[0]);
+        const secCanSettingValue = storeParameterValue(`sec_${canSetting[0]}`, mccResult[0], rawParameters);
         checkoutResult.push(secCanSettingValue);
         index += canSetting.length;
         // Wait for communication to occur
         await new Promise((resolve)=>setTimeout(resolve, 20000));
         // Read CAN variables after test
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, canVar);
-        const secCanAft = mccResult.map((res)=>safeParseValue(res));
+        const secCanAft = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[`sec_after_${canVar[index]}`] = value;
+            return value;
+        });
         secCanAft.forEach((value)=>checkoutResult.push(value));
         index += canVar.length;
         // Store in results for reporting
@@ -9684,7 +10107,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing Battery Systems', 30);
         // Read battery voltages and currents
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, batVi);
-        const batViValues = mccResult.map((res)=>safeParseValue(res));
+        const batViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[batVi[index]] = value;
+            return value;
+        });
         batViValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.battery.voltage1 = batViValues[0];
@@ -9706,7 +10133,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += batVi.length;
         // Read battery temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, batT);
-        const batTValues = mccResult.map((res)=>safeParseValue(res));
+        const batTValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[batT[index]] = value;
+            return value;
+        });
         batTValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.battery.temperature1 = batTValues[0];
@@ -9717,7 +10148,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing Solar Array Systems', 40);
         // Read solar array voltages
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, saV);
-        const saVValues = mccResult.map((res)=>safeParseValue(res));
+        const saVValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[saV[index]] = value;
+            return value;
+        });
         saVValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.solarArray.voltage1 = saVValues[0];
@@ -9726,7 +10161,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += saV.length;
         // Read solar array temperatures (Y- side)
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, saT1);
-        const saT1Values = mccResult.map((res)=>safeParseValue(res));
+        const saT1Values = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[saT1[index]] = value;
+            return value;
+        });
         saT1Values.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.solarArray.tempYNeg1 = saT1Values[0];
@@ -9734,7 +10173,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += saT1.length;
         // Read more solar array temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, saT2);
-        const saT2Values = mccResult.map((res)=>safeParseValue(res));
+        const saT2Values = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[saT2[index]] = value;
+            return value;
+        });
         saT2Values.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.solarArray.tempYNeg3 = saT2Values[0];
@@ -9749,7 +10192,7 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, [
             "HEPS1_PSM1_HDRM_DEPLOY_STATUS1"
         ]);
-        const hdrmStatus1 = safeParseValue(mccResult[0]);
+        const hdrmStatus1 = storeParameterValue("HEPS1_PSM1_HDRM_DEPLOY_STATUS1", mccResult[0], rawParameters);
         checkoutResult.push(hdrmStatus1);
         results.hdrmStatus.deploy1 = hdrmStatus1;
         index += 1;
@@ -9757,7 +10200,7 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, [
             "HEPS1_PSM2_HDRM_DEPLOY_STATUS2"
         ]);
-        const hdrmStatus2 = safeParseValue(mccResult[0]);
+        const hdrmStatus2 = storeParameterValue("HEPS1_PSM2_HDRM_DEPLOY_STATUS2", mccResult[0], rawParameters);
         checkoutResult.push(hdrmStatus2);
         results.hdrmStatus.deploy2 = hdrmStatus2;
         index += 1;
@@ -9765,7 +10208,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing OBN System', 50);
         // Read OBN voltages and currents
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, obnVi);
-        const obnViValues = mccResult.map((res)=>safeParseValue(res));
+        const obnViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[obnVi[index]] = value;
+            return value;
+        });
         obnViValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.obn.voltage1 = obnViValues[0];
@@ -9788,7 +10235,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing Battery Charging Regulators', 55);
         // Read BCR currents and temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, bcrIt);
-        const bcrItValues = mccResult.map((res)=>safeParseValue(res));
+        const bcrItValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[bcrIt[index]] = value;
+            return value;
+        });
         bcrItValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.bcr.current1 = bcrItValues[0];
@@ -9802,7 +10253,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Reading PCB Temperatures', 60);
         // Read PCB temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, pcbT);
-        const pcbTValues = mccResult.map((res)=>safeParseValue(res));
+        const pcbTValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[pcbT[index]] = value;
+            return value;
+        });
         pcbTValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.pdmTemperature.pdm1 = pcbTValues[0];
@@ -9812,7 +10267,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing Power Converters', 65);
         // Read Converter 1 voltages
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, conv1V);
-        const conv1VValues = mccResult.map((res)=>safeParseValue(res));
+        const conv1VValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[conv1V[index]] = value;
+            return value;
+        });
         conv1VValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.converters.hdrm12v1_voltage = conv1VValues[0];
@@ -9835,7 +10294,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += conv1V.length;
         // Read Converter 2 voltages
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, conv2V);
-        const conv2VValues = mccResult.map((res)=>safeParseValue(res));
+        const conv2VValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[conv2V[index]] = value;
+            return value;
+        });
         conv2VValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.converters.hdrm12v2_voltage = conv2VValues[0];
@@ -9854,7 +10317,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += conv2V.length;
         // Read Converter 1 temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, conv1T);
-        const conv1TValues = mccResult.map((res)=>safeParseValue(res));
+        const conv1TValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[conv1T[index]] = value;
+            return value;
+        });
         conv1TValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.converters.hdrm12v1_temp = conv1TValues[0];
@@ -9864,7 +10331,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += conv1T.length;
         // Read Converter 2 temperatures
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, conv2T);
-        const conv2TValues = mccResult.map((res)=>safeParseValue(res));
+        const conv2TValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[conv2T[index]] = value;
+            return value;
+        });
         conv2TValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.converters.hdrm12v2_temp = conv2TValues[0];
@@ -9875,7 +10346,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing RLCL System', 70);
         // Read RLCL voltages and currents
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, rlclVi);
-        const rlclViValues = mccResult.map((res)=>safeParseValue(res));
+        const rlclViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[rlclVi[index]] = value;
+            return value;
+        });
         rlclViValues.forEach((value)=>checkoutResult.push(value));
         // Add results to the results object
         results.loads.obc1_voltage = rlclViValues[0];
@@ -9904,7 +10379,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing LCL System', 75);
         // Read LCL voltages and currents
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, lclVi);
-        const lclViValues = mccResult.map((res)=>safeParseValue(res));
+        const lclViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[lclVi[index]] = value;
+            return value;
+        });
         lclViValues.forEach((value)=>checkoutResult.push(value));
         // Add specific load LCL voltages and currents to results as needed
         // We're not adding all of them to keep results object manageable
@@ -9913,7 +10392,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing HDRM Voltage/Current', 80);
         // Read HDRM voltages and currents
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, hdrmVi);
-        const hdrmViValues = mccResult.map((res)=>safeParseValue(res));
+        const hdrmViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[hdrmVi[index]] = value;
+            return value;
+        });
         hdrmViValues.forEach((value)=>checkoutResult.push(value));
         // Add specific HDRM values to results as needed
         // We're not adding all of them to keep results object manageable
@@ -9922,7 +10405,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         onProgress('Testing Heater Systems', 85);
         // Read heater 1 values
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-        const heater1ViValues = mccResult.map((res)=>safeParseValue(res));
+        const heater1ViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[heater1Vi[index]] = value;
+            return value;
+        });
         heater1ViValues.forEach((value)=>checkoutResult.push(value));
         // Initialize heater 1 object
         const heater1 = {
@@ -9936,7 +10423,11 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         index += heater1Vi.length;
         // Read heater 2 values
         mccResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-        const heater2ViValues = mccResult.map((res)=>safeParseValue(res));
+        const heater2ViValues = mccResult.map((res, index)=>{
+            const value = safeParseValue(res);
+            rawParameters[heater2Vi[index]] = value;
+            return value;
+        });
         heater2ViValues.forEach((value)=>checkoutResult.push(value));
         // Initialize heater 2 object
         const heater2 = {
@@ -9957,42 +10448,74 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOn", 18);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading1 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues1 = heater1TestReading1.map((res)=>safeParseValue(res));
+            let heater1TestValues1 = heater1TestReading1.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test1_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 1
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 1);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading2 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues2 = heater1TestReading2.map((res)=>safeParseValue(res));
+            let heater1TestValues2 = heater1TestReading2.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test2_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 1
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 1);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading3 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues3 = heater1TestReading3.map((res)=>safeParseValue(res));
+            let heater1TestValues3 = heater1TestReading3.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test3_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 2
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 2);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading4 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues4 = heater1TestReading4.map((res)=>safeParseValue(res));
+            let heater1TestValues4 = heater1TestReading4.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test4_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 2
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 2);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading5 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues5 = heater1TestReading5.map((res)=>safeParseValue(res));
+            let heater1TestValues5 = heater1TestReading5.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test5_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 3
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 3);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading6 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues6 = heater1TestReading6.map((res)=>safeParseValue(res));
+            let heater1TestValues6 = heater1TestReading6.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test6_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 3
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 3);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading7 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues7 = heater1TestReading7.map((res)=>safeParseValue(res));
+            let heater1TestValues7 = heater1TestReading7.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test7_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater Group 1
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOff", 18);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater1TestReading8 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater1Vi);
-            let heater1TestValues8 = heater1TestReading8.map((res)=>safeParseValue(res));
+            let heater1TestValues8 = heater1TestReading8.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater1_test8_${heater1Vi[index]}`] = value;
+                return value;
+            });
             // Create heater test 1 result
             const heater1Test = {
                 index: 0,
@@ -10026,42 +10549,74 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOn", 19);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading1 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues1 = heater2TestReading1.map((res)=>safeParseValue(res));
+            let heater2TestValues1 = heater2TestReading1.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test1_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 4
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 4);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading2 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues2 = heater2TestReading2.map((res)=>safeParseValue(res));
+            let heater2TestValues2 = heater2TestReading2.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test2_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 4
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 4);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading3 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues3 = heater2TestReading3.map((res)=>safeParseValue(res));
+            let heater2TestValues3 = heater2TestReading3.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test3_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 5
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 5);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading4 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues4 = heater2TestReading4.map((res)=>safeParseValue(res));
+            let heater2TestValues4 = heater2TestReading4.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test4_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 5
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 5);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading5 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues5 = heater2TestReading5.map((res)=>safeParseValue(res));
+            let heater2TestValues5 = heater2TestReading5.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test5_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Enable Heater 6
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOn", 6);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading6 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues6 = heater2TestReading6.map((res)=>safeParseValue(res));
+            let heater2TestValues6 = heater2TestReading6.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test6_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater 6
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_HeaterSwReqOff", 6);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading7 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues7 = heater2TestReading7.map((res)=>safeParseValue(res));
+            let heater2TestValues7 = heater2TestReading7.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test7_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Disable Heater Group 2
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOff", 19);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             let heater2TestReading8 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mccifRead"])(sock, heater2Vi);
-            let heater2TestValues8 = heater2TestReading8.map((res)=>safeParseValue(res));
+            let heater2TestValues8 = heater2TestReading8.map((res, index)=>{
+                const value = safeParseValue(res);
+                rawParameters[`heater2_test8_${heater2Vi[index]}`] = value;
+                return value;
+            });
             // Create heater test 2 result
             const heater2Test = {
                 index: 1,
@@ -10146,6 +10701,8 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         }
         // Complete checkout (100%)
         onProgress('Checkout Complete', 100);
+        // Before returning the results, add the raw parameters
+        results.rawParameters = rawParameters;
         return results;
     } catch (error) {
         console.error('Error during HEPS checkout:', error);

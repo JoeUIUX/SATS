@@ -64,8 +64,13 @@ export async function runOBC1Checkout(
         emmc0States: [] as string[],  // Define explicit type as string array
         emmc1States: [] as string[]   // Define explicit type as string array
       },
-      reportGenerated: false
+      reportGenerated: false,
+      // Add new field to store raw parameters
+      rawParameters: {}
     };
+
+    // Create a record to store raw parameter values
+    const rawParameters: Record<string, string> = {};
 
     // Step 1: Read firmware version (5%)
     onProgress('Reading Firmware Version', 5);
@@ -73,15 +78,29 @@ export async function runOBC1Checkout(
     
     try {
       const fwResults = await mccifRead(sock, fwVars);
-      results.firmware.major = safeParseValue(fwResults[0]);
-      results.firmware.minor = safeParseValue(fwResults[1]);
-      results.firmware.patch = safeParseValue(fwResults[2]);
+      
+      // Store raw parameters
+      fwVars.forEach((param, index) => {
+        const value = safeParseValue(fwResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_FW_Ver_Major") results.firmware.major = value;
+        if (param === "OBC1_FW_Ver_Minor") results.firmware.minor = value;
+        if (param === "OBC1_FW_Ver_Patch") results.firmware.patch = value;
+      });
     } catch (error) {
       console.error("Error reading firmware version:", error);
       // Provide fallback values
       results.firmware.major = "1";
       results.firmware.minor = "0";
       results.firmware.patch = "0";
+      
+      // Add fallback values to raw parameters too
+      rawParameters["OBC1_FW_Ver_Major"] = "1";
+      rawParameters["OBC1_FW_Ver_Minor"] = "0";
+      rawParameters["OBC1_FW_Ver_Patch"] = "0";
+      
       // Continue with other tests despite this error
     }
 
@@ -96,21 +115,29 @@ export async function runOBC1Checkout(
     
     try {
       const kernelResults = await mccifRead(sock, kernelVars);
-      results.kernel.uptime = safeParseValue(kernelResults[0]);
-      results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
-      results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
-      results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
-      results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
-      results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
-      results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
-      results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
-      results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
-      results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
-      results.kernel.processes = safeParseValue(kernelResults[10]);
-      // Skip pad
-      results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
-      results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
-      results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
+      
+      // Store raw parameters
+      kernelVars.forEach((param, index) => {
+        const value = safeParseValue(kernelResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_Sys_uptime") results.kernel.uptime = value;
+        else if (param === "OBC1_Sys_loads_1m") results.kernel.loads.oneMinute = value;
+        else if (param === "OBC1_Sys_loads_5m") results.kernel.loads.fiveMinute = value;
+        else if (param === "OBC1_Sys_loads_15m") results.kernel.loads.fifteenMinute = value;
+        else if (param === "OBC1_Sys_totalram") results.kernel.memory.totalRam = value;
+        else if (param === "OBC1_Sys_freeram") results.kernel.memory.freeRam = value;
+        else if (param === "OBC1_Sys_sharedram") results.kernel.memory.sharedRam = value;
+        else if (param === "OBC1_Sys_bufferram") results.kernel.memory.bufferRam = value;
+        else if (param === "OBC1_Sys_totalswap") results.kernel.memory.totalSwap = value;
+        else if (param === "OBC1_Sys_freeswap") results.kernel.memory.freeSwap = value;
+        else if (param === "OBC1_Sys_procs") results.kernel.processes = value;
+        // Skip pad
+        else if (param === "OBC1_Sys_totalhigh") results.kernel.memory.totalHigh = value;
+        else if (param === "OBC1_Sys_freehigh") results.kernel.memory.freeHigh = value;
+        else if (param === "OBC1_Sys_mem_unit") results.kernel.memory.memUnit = value;
+      });
     } catch (error) {
       console.error("Error reading kernel info:", error);
       // Continue with other tests despite this error
@@ -130,17 +157,23 @@ export async function runOBC1Checkout(
     try {
       const fpgaResults = await mccifRead(sock, fpgaVars);
       
-      // First 27 are voltages, last 3 are temperatures
-      results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
-      results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
-      results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
-      results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
-      results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
-      // ... Set other voltages
-
-      results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
-      results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
-      results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
+      // Store raw parameters
+      fpgaVars.forEach((param, index) => {
+        const value = safeParseValue(fpgaResults[index]);
+        rawParameters[param] = value;
+        
+        // Map specific values to the structured results
+        // First 27 are voltages, last 3 are temperatures
+        if (param === "OBC1_vcc_pspll") results.fpga.voltages.vccPspll = value;
+        else if (param === "OBC1_vcc_psbatt") results.fpga.voltages.vccPsbatt = value;
+        else if (param === "OBC1_vccint") results.fpga.voltages.vccint = value;
+        else if (param === "OBC1_vccbram") results.fpga.voltages.vccbram = value;
+        else if (param === "OBC1_vccaux") results.fpga.voltages.vccaux = value;
+        // ... Other voltages would be set here
+        else if (param === "OBC1_ps_temp") results.fpga.temperatures.psTemp = value;
+        else if (param === "OBC1_remote_temp") results.fpga.temperatures.remoteTemp = value;
+        else if (param === "OBC1_pl_temp") results.fpga.temperatures.plTemp = value;
+      });
     } catch (error) {
       console.error("Error reading FPGA values:", error);
       // Continue with other tests despite this error
@@ -156,24 +189,33 @@ export async function runOBC1Checkout(
     try {
       const viResults = await mccifRead(sock, viVars);
       
-      const d3v3Value = safeParseValue(viResults[0]);
-      const ps3v3Obc2Value = safeParseValue(viResults[1]);
-      const ps5vObc2Value = safeParseValue(viResults[2]);
-      
-      results.vi.d3v3 = { 
-        value: d3v3Value, 
-        pass: checkVoltage(d3v3Value, true) 
-      };
-      results.vi.ps3v3Obc2 = { 
-        value: ps3v3Obc2Value, 
-        pass: checkVoltage(ps3v3Obc2Value, true) 
-      };
-      results.vi.ps5vObc2 = { 
-        value: ps5vObc2Value, 
-        pass: checkVoltage(ps5vObc2Value, false) 
-      };
-      results.vi.ps5vObc2I = safeParseValue(viResults[3]);
-      results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
+      // Store raw parameters
+      viVars.forEach((param, index) => {
+        const value = safeParseValue(viResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_3V3_D") {
+          results.vi.d3v3 = { 
+            value: value, 
+            pass: checkVoltage(value, true) 
+          };
+        }
+        else if (param === "OBC1_PS_3V3_OBC2_V") {
+          results.vi.ps3v3Obc2 = { 
+            value: value, 
+            pass: checkVoltage(value, true) 
+          };
+        }
+        else if (param === "OBC1_PS_5V_OBC2_V") {
+          results.vi.ps5vObc2 = { 
+            value: value, 
+            pass: checkVoltage(value, false) 
+          };
+        }
+        else if (param === "OBC1_PS_5V_OBC2_I") results.vi.ps5vObc2I = value;
+        else if (param === "OBC1_PS_3V3_OBC2_I") results.vi.ps3v3Obc2I = value;
+      });
     } catch (error) {
       console.error("Error reading voltage and current:", error);
       // Continue with other tests despite this error
@@ -190,72 +232,132 @@ export async function runOBC1Checkout(
     try {
       const tempResults = await mccifRead(sock, tempVars);
       
-      results.temperatures.thruster1 = safeParseValue(tempResults[0]);
-      results.temperatures.thruster2 = safeParseValue(tempResults[1]);
-      results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
-      results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
-      results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
-      results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
+      // Store raw parameters
+      tempVars.forEach((param, index) => {
+        const value = safeParseValue(tempResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_thruster_ch1_T") results.temperatures.thruster1 = value;
+        else if (param === "OBC1_thruster_ch2_T") results.temperatures.thruster2 = value;
+        else if (param === "OBC1_leocam_ch1_T") results.temperatures.leocam[0] = value;
+        else if (param === "OBC1_leocam_ch2_T") results.temperatures.leocam[1] = value;
+        else if (param === "OBC1_leocam_ch3_T") results.temperatures.leocam[2] = value;
+        else if (param === "OBC1_leocam_ch4_T") results.temperatures.leocam[3] = value;
+      });
     } catch (error) {
       console.error("Error reading temperature sensors:", error);
       // Continue with other tests despite this error
     }
 
-// Step 6: EMMC test if enabled (90-100%)
-if (enableEmmc) {
-  onProgress('Testing eMMC', 90);
-  
-  const emmcVars = ["OBC1_Q8_eMMC0_state", "OBC1_Q8_eMMC1_state"];
-  
-  try {
-    // Initial check
-    const emmcResult1 = await mccifRead(sock, emmcVars);
-    results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
-    results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
-    
-    // Modified command format: OBC1_Emmc_Control needs 8 or fewer tokens
-    // Test eMMC0 - Use single digit values instead of multi-digit
-    // Change from value=1 to value=1 (same in this case but follow the pattern)
-    await mccifSet(sock, "OBC1_Emmc_Control", 1);
-    const emmcResult2 = await mccifRead(sock, emmcVars);
-    results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
-    results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
-    
-    await mccifSet(sock, "OBC1_Emmc_Control", 3);
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-    
-    await mccifSet(sock, "OBC1_Emmc_Control", 5);
-    const emmcResult3 = await mccifRead(sock, emmcVars);
-    results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
-    results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
-    
-    // Test eMMC1
-    await mccifSet(sock, "OBC1_Emmc_Control", 2);
-    const emmcResult4 = await mccifRead(sock, emmcVars);
-    results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
-    results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
-    
-    await mccifSet(sock, "OBC1_Emmc_Control", 4);
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-    
-    await mccifSet(sock, "OBC1_Emmc_Control", 6);
-    const emmcResult5 = await mccifRead(sock, emmcVars);
-    results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
-    results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
-  } catch (error) {
-    console.error("Error during eMMC test:", error);
-    // Fill with N/A values if the test fails
-    results.emmc.emmc0States = Array(6).fill('N.A.');
-    results.emmc.emmc1States = Array(6).fill('N.A.');
-  }
-} else {
-  // If eMMC test is disabled, set empty results
-  results.emmc.emmc0States = Array(6).fill('N.A.');
-  results.emmc.emmc1States = Array(6).fill('N.A.');
-}
+    // Step 6: EMMC test if enabled (90-100%)
+    if (enableEmmc) {
+      onProgress('Testing eMMC', 90);
+      
+      const emmcVars = ["OBC1_Q8_eMMC0_state", "OBC1_Q8_eMMC1_state"];
+      
+      try {
+        // Initial check
+        const emmcResult1 = await mccifRead(sock, emmcVars);
+        
+        // Store initial state in raw parameters
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcResult1[index]);
+          rawParameters[`${param}_initial`] = value;
+        });
+        
+        results.emmc.emmc0States.push(safeParseValue(emmcResult1[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult1[1]));
+        
+        // Modified command format: OBC1_Emmc_Control needs 8 or fewer tokens
+        // Test eMMC0 - Use single digit values instead of multi-digit
+        // Change from value=1 to value=1 (same in this case but follow the pattern)
+        await mccifSet(sock, "OBC1_Emmc_Control", 1);
+        const emmcResult2 = await mccifRead(sock, emmcVars);
+        
+        // Store after ON eMMC0 state in raw parameters
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcResult2[index]);
+          rawParameters[`${param}_afterON_eMMC0`] = value;
+        });
+        
+        results.emmc.emmc0States.push(safeParseValue(emmcResult2[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult2[1]));
+        
+        await mccifSet(sock, "OBC1_Emmc_Control", 3);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+        
+        await mccifSet(sock, "OBC1_Emmc_Control", 5);
+        const emmcResult3 = await mccifRead(sock, emmcVars);
+        
+        // Store after OFF eMMC0 state in raw parameters
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcResult3[index]);
+          rawParameters[`${param}_afterOFF_eMMC0`] = value;
+        });
+        
+        results.emmc.emmc0States.push(safeParseValue(emmcResult3[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult3[1]));
+        
+        // Test eMMC1
+        await mccifSet(sock, "OBC1_Emmc_Control", 2);
+        const emmcResult4 = await mccifRead(sock, emmcVars);
+        
+        // Store before ON eMMC1 state in raw parameters
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcResult4[index]);
+          rawParameters[`${param}_beforeON_eMMC1`] = value;
+        });
+        
+        results.emmc.emmc0States.push(safeParseValue(emmcResult4[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult4[1]));
+        
+        await mccifSet(sock, "OBC1_Emmc_Control", 4);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+        
+        await mccifSet(sock, "OBC1_Emmc_Control", 6);
+        const emmcResult5 = await mccifRead(sock, emmcVars);
+        
+        // Store after OFF eMMC1 state in raw parameters
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcResult5[index]);
+          rawParameters[`${param}_afterOFF_eMMC1`] = value;
+        });
+        
+        results.emmc.emmc0States.push(safeParseValue(emmcResult5[0]));
+        results.emmc.emmc1States.push(safeParseValue(emmcResult5[1]));
+        
+        // Also record the eMMC control commands in raw parameters
+        rawParameters["OBC1_Emmc_Control_1"] = "1"; // Turn ON eMMC0
+        rawParameters["OBC1_Emmc_Control_2"] = "3"; // Skip
+        rawParameters["OBC1_Emmc_Control_3"] = "5"; // Turn OFF eMMC0
+        rawParameters["OBC1_Emmc_Control_4"] = "2"; // Turn ON eMMC1
+        rawParameters["OBC1_Emmc_Control_5"] = "4"; // Skip
+        rawParameters["OBC1_Emmc_Control_6"] = "6"; // Turn OFF eMMC1
+      } catch (error) {
+        console.error("Error during eMMC test:", error);
+        // Fill with N/A values if the test fails
+        results.emmc.emmc0States = Array(6).fill('N.A.');
+        results.emmc.emmc1States = Array(6).fill('N.A.');
+        
+        // Record failure in raw parameters
+        rawParameters["OBC1_Q8_eMMC0_state_ERROR"] = "N.A.";
+        rawParameters["OBC1_Q8_eMMC1_state_ERROR"] = "N.A.";
+      }
+    } else {
+      // If eMMC test is disabled, set empty results
+      results.emmc.emmc0States = Array(6).fill('N.A.');
+      results.emmc.emmc1States = Array(6).fill('N.A.');
+      
+      // Record that test was skipped in raw parameters
+      rawParameters["OBC1_eMMC_test_skipped"] = "true";
+    }
 
     // Complete checkout (100%)
     onProgress('Checkout Complete', 100);
+    
+    // Before returning the results, add the raw parameters
+    results.rawParameters = rawParameters;
     
     return results;
     
@@ -347,8 +449,13 @@ export async function runOBC1CheckoutWithDetection(
       },
       reportGenerated: false,
       // Add a simulation flag to track if any part used simulation
-      _simulationUsed: usedSimulation
+      _simulationUsed: usedSimulation,
+      // Add raw parameters field
+      rawParameters: {}
     };
+
+    // Create a record to store raw parameter values
+    const rawParameters: Record<string, string> = {};
 
     // Step 1: Read firmware version (5%)
     onProgress('Reading Firmware Version', 5);
@@ -361,9 +468,16 @@ export async function runOBC1CheckoutWithDetection(
       // Update overall simulation flag if this step used simulation
       usedSimulation = usedSimulation || fwSimulation;
       
-      results.firmware.major = safeParseValue(fwResults[0]);
-      results.firmware.minor = safeParseValue(fwResults[1]);
-      results.firmware.patch = safeParseValue(fwResults[2]);
+      // Store raw parameters
+      fwVars.forEach((param, index) => {
+        const value = safeParseValue(fwResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_FW_Ver_Major") results.firmware.major = value;
+        if (param === "OBC1_FW_Ver_Minor") results.firmware.minor = value;
+        if (param === "OBC1_FW_Ver_Patch") results.firmware.patch = value;
+      });
       
       // Special check for default simulation values
       if (results.firmware.major === '1' && 
@@ -378,6 +492,12 @@ export async function runOBC1CheckoutWithDetection(
       results.firmware.major = "1";
       results.firmware.minor = "0";
       results.firmware.patch = "0";
+      
+      // Add fallback values to raw parameters
+      rawParameters["OBC1_FW_Ver_Major"] = "1";
+      rawParameters["OBC1_FW_Ver_Minor"] = "0";
+      rawParameters["OBC1_FW_Ver_Patch"] = "0";
+      
       // Mark as simulation since we're using hardcoded values
       usedSimulation = true;
       // Continue with other tests despite this error
@@ -399,25 +519,32 @@ export async function runOBC1CheckoutWithDetection(
       // Update overall simulation flag
       usedSimulation = usedSimulation || kernelSimulation;
       
-      results.kernel.uptime = safeParseValue(kernelResults[0]);
-      results.kernel.loads.oneMinute = safeParseValue(kernelResults[1]);
-      results.kernel.loads.fiveMinute = safeParseValue(kernelResults[2]);
-      results.kernel.loads.fifteenMinute = safeParseValue(kernelResults[3]);
-      results.kernel.memory.totalRam = safeParseValue(kernelResults[4]);
-      results.kernel.memory.freeRam = safeParseValue(kernelResults[5]);
-      results.kernel.memory.sharedRam = safeParseValue(kernelResults[6]);
-      results.kernel.memory.bufferRam = safeParseValue(kernelResults[7]);
-      results.kernel.memory.totalSwap = safeParseValue(kernelResults[8]);
-      results.kernel.memory.freeSwap = safeParseValue(kernelResults[9]);
-      results.kernel.processes = safeParseValue(kernelResults[10]);
-      // Skip pad
-      results.kernel.memory.totalHigh = safeParseValue(kernelResults[12]);
-      results.kernel.memory.freeHigh = safeParseValue(kernelResults[13]);
-      results.kernel.memory.memUnit = safeParseValue(kernelResults[14]);
+      // Store raw parameters
+      kernelVars.forEach((param, index) => {
+        const value = safeParseValue(kernelResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_Sys_uptime") results.kernel.uptime = value;
+        else if (param === "OBC1_Sys_loads_1m") results.kernel.loads.oneMinute = value;
+        else if (param === "OBC1_Sys_loads_5m") results.kernel.loads.fiveMinute = value;
+        else if (param === "OBC1_Sys_loads_15m") results.kernel.loads.fifteenMinute = value;
+        else if (param === "OBC1_Sys_totalram") results.kernel.memory.totalRam = value;
+        else if (param === "OBC1_Sys_freeram") results.kernel.memory.freeRam = value;
+        else if (param === "OBC1_Sys_sharedram") results.kernel.memory.sharedRam = value;
+        else if (param === "OBC1_Sys_bufferram") results.kernel.memory.bufferRam = value;
+        else if (param === "OBC1_Sys_totalswap") results.kernel.memory.totalSwap = value;
+        else if (param === "OBC1_Sys_freeswap") results.kernel.memory.freeSwap = value;
+        else if (param === "OBC1_Sys_procs") results.kernel.processes = value;
+        // Skip pad
+        else if (param === "OBC1_Sys_totalhigh") results.kernel.memory.totalHigh = value;
+        else if (param === "OBC1_Sys_freehigh") results.kernel.memory.freeHigh = value;
+        else if (param === "OBC1_Sys_mem_unit") results.kernel.memory.memUnit = value;
+      });
       
       // Check for simulation indicators in results
       for (const result of kernelResults) {
-        if (result.includes('simulated')) {
+        if (result && result.includes('simulated')) {
           console.log("🔍 Detected simulation indicators in kernel values");
           usedSimulation = true;
           break;
@@ -426,6 +553,10 @@ export async function runOBC1CheckoutWithDetection(
     } catch (error) {
       console.error("Error reading kernel info:", error);
       usedSimulation = true; // Failed reads mean simulation
+      
+      // Mark error in raw parameters
+      rawParameters["kernel_read_error"] = "true";
+      
       // Continue with other tests despite this error
     }
 
@@ -447,21 +578,27 @@ export async function runOBC1CheckoutWithDetection(
       // Update overall simulation flag
       usedSimulation = usedSimulation || fpgaSimulation;
       
-      // First 27 are voltages, last 3 are temperatures
-      results.fpga.voltages.vccPspll = safeParseValue(fpgaResults[0]);
-      results.fpga.voltages.vccPsbatt = safeParseValue(fpgaResults[1]);
-      results.fpga.voltages.vccint = safeParseValue(fpgaResults[2]);
-      results.fpga.voltages.vccbram = safeParseValue(fpgaResults[3]);
-      results.fpga.voltages.vccaux = safeParseValue(fpgaResults[4]);
-      // ... Set other voltages
-
-      results.fpga.temperatures.psTemp = safeParseValue(fpgaResults[27]);
-      results.fpga.temperatures.remoteTemp = safeParseValue(fpgaResults[28]);
-      results.fpga.temperatures.plTemp = safeParseValue(fpgaResults[29]);
+      // Store raw parameters and map to structure
+      fpgaVars.forEach((param, index) => {
+        const value = safeParseValue(fpgaResults[index]);
+        rawParameters[param] = value;
+        
+        // Map specific values to the structured results
+        // First 27 are voltages, last 3 are temperatures
+        if (param === "OBC1_vcc_pspll") results.fpga.voltages.vccPspll = value;
+        else if (param === "OBC1_vcc_psbatt") results.fpga.voltages.vccPsbatt = value;
+        else if (param === "OBC1_vccint") results.fpga.voltages.vccint = value;
+        else if (param === "OBC1_vccbram") results.fpga.voltages.vccbram = value;
+        else if (param === "OBC1_vccaux") results.fpga.voltages.vccaux = value;
+        // ... Map other voltages here
+        else if (param === "OBC1_ps_temp") results.fpga.temperatures.psTemp = value;
+        else if (param === "OBC1_remote_temp") results.fpga.temperatures.remoteTemp = value;
+        else if (param === "OBC1_pl_temp") results.fpga.temperatures.plTemp = value;
+      });
       
       // Check for simulation indicators
       for (const result of fpgaResults) {
-        if (result.includes('simulated')) {
+        if (result && result.includes('simulated')) {
           console.log("🔍 Detected simulation indicators in FPGA values");
           usedSimulation = true;
           break;
@@ -470,6 +607,10 @@ export async function runOBC1CheckoutWithDetection(
     } catch (error) {
       console.error("Error reading FPGA values:", error);
       usedSimulation = true; // Failed reads mean simulation
+      
+      // Mark error in raw parameters
+      rawParameters["fpga_read_error"] = "true";
+      
       // Continue with other tests despite this error
     }
 
@@ -487,28 +628,42 @@ export async function runOBC1CheckoutWithDetection(
       // Update overall simulation flag
       usedSimulation = usedSimulation || viSimulation;
       
-      const d3v3Value = safeParseValue(viResults[0]);
-      const ps3v3Obc2Value = safeParseValue(viResults[1]);
-      const ps5vObc2Value = safeParseValue(viResults[2]);
+      // Store raw parameters
+      viVars.forEach((param, index) => {
+        const value = safeParseValue(viResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_3V3_D") {
+          results.vi.d3v3 = { 
+            value: value, 
+            pass: checkVoltage(value, true) 
+          };
+        }
+        else if (param === "OBC1_PS_3V3_OBC2_V") {
+          results.vi.ps3v3Obc2 = { 
+            value: value, 
+            pass: checkVoltage(value, true) 
+          };
+        }
+        else if (param === "OBC1_PS_5V_OBC2_V") {
+          results.vi.ps5vObc2 = { 
+            value: value, 
+            pass: checkVoltage(value, false) 
+          };
+        }
+        else if (param === "OBC1_PS_5V_OBC2_I") results.vi.ps5vObc2I = value;
+        else if (param === "OBC1_PS_3V3_OBC2_I") results.vi.ps3v3Obc2I = value;
+      });
       
-      results.vi.d3v3 = { 
-        value: d3v3Value, 
-        pass: checkVoltage(d3v3Value, true) 
-      };
-      results.vi.ps3v3Obc2 = { 
-        value: ps3v3Obc2Value, 
-        pass: checkVoltage(ps3v3Obc2Value, true) 
-      };
-      results.vi.ps5vObc2 = { 
-        value: ps5vObc2Value, 
-        pass: checkVoltage(ps5vObc2Value, false) 
-      };
-      results.vi.ps5vObc2I = safeParseValue(viResults[3]);
-      results.vi.ps3v3Obc2I = safeParseValue(viResults[4]);
+      // Also store the pass/fail results in the raw parameters
+      rawParameters["OBC1_3V3_D_pass"] = results.vi.d3v3.pass.toString();
+      rawParameters["OBC1_PS_3V3_OBC2_V_pass"] = results.vi.ps3v3Obc2.pass.toString();
+      rawParameters["OBC1_PS_5V_OBC2_V_pass"] = results.vi.ps5vObc2.pass.toString();
       
       // Check for simulation indicators
       for (const result of viResults) {
-        if (result.includes('simulated')) {
+        if (result && result.includes('simulated')) {
           console.log("🔍 Detected simulation indicators in voltage/current values");
           usedSimulation = true;
           break;
@@ -517,6 +672,10 @@ export async function runOBC1CheckoutWithDetection(
     } catch (error) {
       console.error("Error reading voltage and current:", error);
       usedSimulation = true; // Failed reads mean simulation
+      
+      // Mark error in raw parameters
+      rawParameters["vi_read_error"] = "true";
+      
       // Continue with other tests despite this error
     }
 
@@ -535,16 +694,23 @@ export async function runOBC1CheckoutWithDetection(
       // Update overall simulation flag
       usedSimulation = usedSimulation || tempSimulation;
       
-      results.temperatures.thruster1 = safeParseValue(tempResults[0]);
-      results.temperatures.thruster2 = safeParseValue(tempResults[1]);
-      results.temperatures.leocam[0] = safeParseValue(tempResults[2]);
-      results.temperatures.leocam[1] = safeParseValue(tempResults[3]);
-      results.temperatures.leocam[2] = safeParseValue(tempResults[4]);
-      results.temperatures.leocam[3] = safeParseValue(tempResults[5]);
+      // Store raw parameters
+      tempVars.forEach((param, index) => {
+        const value = safeParseValue(tempResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "OBC1_thruster_ch1_T") results.temperatures.thruster1 = value;
+        else if (param === "OBC1_thruster_ch2_T") results.temperatures.thruster2 = value;
+        else if (param === "OBC1_leocam_ch1_T") results.temperatures.leocam[0] = value;
+        else if (param === "OBC1_leocam_ch2_T") results.temperatures.leocam[1] = value;
+        else if (param === "OBC1_leocam_ch3_T") results.temperatures.leocam[2] = value;
+        else if (param === "OBC1_leocam_ch4_T") results.temperatures.leocam[3] = value;
+      });
       
       // Check for simulation indicators
       for (const result of tempResults) {
-        if (result.includes('simulated')) {
+        if (result && result.includes('simulated')) {
           console.log("🔍 Detected simulation indicators in temperature values");
           usedSimulation = true;
           break;
@@ -553,6 +719,10 @@ export async function runOBC1CheckoutWithDetection(
     } catch (error) {
       console.error("Error reading temperature sensors:", error);
       usedSimulation = true; // Failed reads mean simulation
+      
+      // Mark error in raw parameters
+      rawParameters["temperature_read_error"] = "true";
+      
       // Continue with other tests despite this error
     }
 
@@ -567,6 +737,12 @@ export async function runOBC1CheckoutWithDetection(
         const initialEmmcCheck = await mccifReadWithFlag(sock, emmcVars);
         // Update simulation status
         usedSimulation = usedSimulation || initialEmmcCheck.usedSimulation;
+        
+        // Store raw values
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(initialEmmcCheck.results[index]);
+          rawParameters[`${param}_initial`] = value;
+        });
         
         results.emmc.emmc0States.push(safeParseValue(initialEmmcCheck.results[0]));
         results.emmc.emmc1States.push(safeParseValue(initialEmmcCheck.results[1]));
@@ -593,9 +769,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 1);
             setSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd1"] = "1";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           setSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd1_error"] = "true";
         }
         
         // Update simulation status based on the set operation
@@ -604,6 +786,12 @@ export async function runOBC1CheckoutWithDetection(
         // Read status after first command
         const emmcCheck2 = await mccifReadWithFlag(sock, emmcVars);
         usedSimulation = usedSimulation || emmcCheck2.usedSimulation;
+        
+        // Store raw values
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcCheck2.results[index]);
+          rawParameters[`${param}_afterON_eMMC0`] = value;
+        });
         
         results.emmc.emmc0States.push(safeParseValue(emmcCheck2.results[0]));
         results.emmc.emmc1States.push(safeParseValue(emmcCheck2.results[1]));
@@ -623,9 +811,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 3);
             nextSetSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd2"] = "3";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           nextSetSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd2_error"] = "true";
         }
         
         usedSimulation = usedSimulation || nextSetSimulation;
@@ -645,9 +839,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 5);
             nextSetSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd3"] = "5";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           nextSetSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd3_error"] = "true";
         }
         
         usedSimulation = usedSimulation || nextSetSimulation;
@@ -655,6 +855,12 @@ export async function runOBC1CheckoutWithDetection(
         // Read status after next command
         const emmcCheck3 = await mccifReadWithFlag(sock, emmcVars);
         usedSimulation = usedSimulation || emmcCheck3.usedSimulation;
+        
+        // Store raw values
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcCheck3.results[index]);
+          rawParameters[`${param}_afterOFF_eMMC0`] = value;
+        });
         
         results.emmc.emmc0States.push(safeParseValue(emmcCheck3.results[0]));
         results.emmc.emmc1States.push(safeParseValue(emmcCheck3.results[1]));
@@ -675,9 +881,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 2);
             nextSetSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd4"] = "2";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           nextSetSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd4_error"] = "true";
         }
         
         usedSimulation = usedSimulation || nextSetSimulation;
@@ -685,6 +897,12 @@ export async function runOBC1CheckoutWithDetection(
         // Read status after command
         const emmcCheck4 = await mccifReadWithFlag(sock, emmcVars);
         usedSimulation = usedSimulation || emmcCheck4.usedSimulation;
+        
+        // Store raw values
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcCheck4.results[index]);
+          rawParameters[`${param}_beforeON_eMMC1`] = value;
+        });
         
         results.emmc.emmc0States.push(safeParseValue(emmcCheck4.results[0]));
         results.emmc.emmc1States.push(safeParseValue(emmcCheck4.results[1]));
@@ -703,9 +921,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 4);
             nextSetSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd5"] = "4";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           nextSetSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd5_error"] = "true";
         }
         
         usedSimulation = usedSimulation || nextSetSimulation;
@@ -725,9 +949,15 @@ export async function runOBC1CheckoutWithDetection(
             await mccifSet(sock, "OBC1_Emmc_Control", 6);
             nextSetSimulation = true;
           }
+          
+          // Store command in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd6"] = "6";
         } catch (error) {
           console.error("Error setting eMMC control:", error);
           nextSetSimulation = true;
+          
+          // Record error in raw parameters
+          rawParameters["OBC1_Emmc_Control_cmd6_error"] = "true";
         }
         
         usedSimulation = usedSimulation || nextSetSimulation;
@@ -735,6 +965,12 @@ export async function runOBC1CheckoutWithDetection(
         // Final read status
         const emmcCheck5 = await mccifReadWithFlag(sock, emmcVars);
         usedSimulation = usedSimulation || emmcCheck5.usedSimulation;
+        
+        // Store raw values
+        emmcVars.forEach((param, index) => {
+          const value = safeParseValue(emmcCheck5.results[index]);
+          rawParameters[`${param}_afterOFF_eMMC1`] = value;
+        });
         
         results.emmc.emmc0States.push(safeParseValue(emmcCheck5.results[0]));
         results.emmc.emmc1States.push(safeParseValue(emmcCheck5.results[1]));
@@ -747,12 +983,17 @@ export async function runOBC1CheckoutWithDetection(
         ) {
           console.log("🔍 eMMC values match typical simulation pattern");
           usedSimulation = true;
+          rawParameters["emmc_simulation_pattern_detected"] = "true";
         }
       } catch (error) {
         console.error("Error during eMMC test:", error);
         // Fill with N/A values if the test fails
         results.emmc.emmc0States = Array(6).fill('N.A.');
         results.emmc.emmc1States = Array(6).fill('N.A.');
+        
+        // Record failure in raw parameters
+        rawParameters["emmc_test_failed"] = "true";
+        
         // Mark as simulation since we're using hardcoded values
         usedSimulation = true;
       }
@@ -760,6 +1001,9 @@ export async function runOBC1CheckoutWithDetection(
       // If eMMC test is disabled, set empty results
       results.emmc.emmc0States = Array(6).fill('N.A.');
       results.emmc.emmc1States = Array(6).fill('N.A.');
+      
+      // Record that test was skipped in raw parameters
+      rawParameters["emmc_test_skipped"] = "true";
     }
 
     // Complete checkout (100%)
@@ -767,6 +1011,14 @@ export async function runOBC1CheckoutWithDetection(
     
     // Add the final simulation status to the results
     results._simulationUsed = usedSimulation;
+    rawParameters["_simulation_used"] = usedSimulation.toString();
+    
+    // Add summary of tests passed/failed to raw parameters
+    const voltageTestsPassed = results.vi.d3v3.pass && results.vi.ps3v3Obc2.pass && results.vi.ps5vObc2.pass;
+    rawParameters["voltage_tests_all_passed"] = voltageTestsPassed.toString();
+    
+    // Before returning the results, add the raw parameters
+    results.rawParameters = rawParameters;
     
     // Log the simulation status for debugging
     console.log(`OBC-1 checkout completed. Simulation used: ${usedSimulation}`);
@@ -775,9 +1027,19 @@ export async function runOBC1CheckoutWithDetection(
     
   } catch (error) {
     console.error('Error during OBC-1 checkout:', error);
+    
+    // Create minimal raw parameters for the error case
+    const rawParameters: Record<string, string> = {
+      "fatal_error": error instanceof Error ? error.message : String(error),
+      "error_timestamp": new Date().toISOString()
+    };
+    
     // Always return simulation=true if we had an error
     return { 
-      results: { error: error instanceof Error ? error.message : String(error) },
+      results: { 
+        error: error instanceof Error ? error.message : String(error),
+        rawParameters
+      },
       usedSimulation: true 
     };
   }

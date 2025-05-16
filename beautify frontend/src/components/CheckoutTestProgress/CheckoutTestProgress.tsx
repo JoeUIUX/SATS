@@ -64,7 +64,15 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
   const tabsListRef = useRef<HTMLDivElement>(null);
   // Use non-null assertion to ensure TypeScript knows this ref will be assigned
   const nodeRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-  const runNextTestTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+const runNextTestTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+const testTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+const completedTestsRef = useRef<string[]>([]);
+const isMountedRef = useRef<boolean>(true);
+
+// Constants for test timeouts and delays
+const TEST_TIMEOUT_MS = 120000; // 2 minutes max per test
+const TEST_SEQUENCE_DELAY_MS = 1000; // 1 second delay between tests
+
 
   const [portalElement] = useState(() => {
     const element = document.createElement("div");
@@ -72,6 +80,53 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
     document.body.appendChild(element);
     return element;
   });
+
+  // Set up a timeout for the current test to prevent it from getting stuck
+const setupTestTimeout = (testName: string) => {
+  // Clear any existing timeout
+  if (testTimeoutRef.current) {
+    clearTimeout(testTimeoutRef.current);
+    testTimeoutRef.current = null;
+  }
+  
+  console.log(`⏱️ Setting up timeout for test ${testName}: ${TEST_TIMEOUT_MS/1000} seconds`);
+  
+  // Set a new timeout for the current test
+  testTimeoutRef.current = setTimeout(() => {
+    if (!isMountedRef.current) return; // Prevent state updates after unmount
+    
+    console.error(`⚠️ Test ${testName} timed out after ${TEST_TIMEOUT_MS/1000} seconds`);
+    
+    // Force the test to be marked as error
+    updateTestResult(testName, { 
+      status: 'error', 
+      message: `Test timed out after ${TEST_TIMEOUT_MS/1000} seconds` 
+    });
+    
+    // Clear the timeout reference
+    testTimeoutRef.current = null;
+  }, TEST_TIMEOUT_MS);
+};
+
+// Component Mount/Unmount Cleanup
+useEffect(() => {
+  isMountedRef.current = true;
+  
+  return () => {
+    isMountedRef.current = false;
+    
+    // Clear any pending timeouts on unmount
+    if (runNextTestTimeoutRef.current) {
+      clearTimeout(runNextTestTimeoutRef.current);
+      runNextTestTimeoutRef.current = null;
+    }
+    
+    if (testTimeoutRef.current) {
+      clearTimeout(testTimeoutRef.current);
+      testTimeoutRef.current = null;
+    }
+  };
+}, []);
 
 useEffect(() => {
   // Try multiple sources for profile ID
@@ -221,6 +276,9 @@ useEffect(() => {
       const firstComponent = filteredDroppedItems[0];
       console.log("Starting first test:", firstComponent.header);
       
+      // Set up timeout for the first test
+      setupTestTimeout(firstComponent.header);
+      
       // Start the first test
       setCurrentlyRunningTest(firstComponent.header);
       setTestResults(prev => ({
@@ -282,6 +340,20 @@ useEffect(() => {
 const updateTestResult = (component: string, result: Partial<TestResult>) => {
   console.log(`Updating test result for ${component} with status: ${result.status}`);
 
+  // Add to completed tests if this test just finished
+  if ((result.status === 'completed' || result.status === 'error') && 
+      !completedTestsRef.current.includes(component)) {
+    completedTestsRef.current.push(component);
+  }
+  
+  // Clear test timeout if this test is completing
+  if (result.status === 'completed' || result.status === 'error') {
+    if (testTimeoutRef.current) {
+      clearTimeout(testTimeoutRef.current);
+      testTimeoutRef.current = null;
+    }
+  }
+
   setTestResults(prev => {
     const updatedResults = {
       ...prev,
@@ -307,12 +379,14 @@ const updateTestResult = (component: string, result: Partial<TestResult>) => {
           clearTimeout(runNextTestTimeoutRef.current);
         }
         
-        console.log("Scheduling next test to run in 1000ms");
+        console.log(`Scheduling next test to run in ${TEST_SEQUENCE_DELAY_MS}ms`);
         runNextTestTimeoutRef.current = setTimeout(() => {
+          if (!isMountedRef.current) return; // Prevent state updates after unmount
+          
           console.log("Timeout expired, running next test");
           runNextTest(updatedResults);
           runNextTestTimeoutRef.current = null;
-        }, 1000);
+        }, TEST_SEQUENCE_DELAY_MS);
       }
     }
     
@@ -321,7 +395,6 @@ const updateTestResult = (component: string, result: Partial<TestResult>) => {
 };
 
   // Find and run the next pending test from filtered items
-// In CheckoutTestProgress.tsx
 const runNextTest = (currentResults: Record<string, TestResult>) => {
   // Clear any existing timeout to prevent multiple calls
   if (runNextTestTimeoutRef.current) {
@@ -352,6 +425,9 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
   if (nextComponent) {
     console.log("Found next test to run:", nextComponent.header);
     
+    // Set up a timeout for this test
+    setupTestTimeout(nextComponent.header);
+    
     // Set as currently running
     setCurrentlyRunningTest(nextComponent.header);
     
@@ -367,9 +443,11 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
     // Automatically switch to the tab with the running test
     setActiveTab(nextComponent.header);
   } else {
-    console.log("No more tests to run.");
+    console.log("No more tests to run. Marking sequence as complete.");
+    setIsComplete(true);
   }
 };
+
   // Generate and save test report
   const saveTestReport = async () => {
     setIsSavingReport(true);
@@ -395,24 +473,41 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
   };
 
   // Run all tests again (reset and restart)
-  const runAllTests = () => {
-    // Reset all test results to waiting
-    const resetResults: Record<string, TestResult> = {};
-    filteredDroppedItems.forEach(item => {
-      resetResults[item.header] = {
-        component: item.header,
-        status: 'waiting',
-        results: null
-      };
-    });
-    
-    setTestResults(resetResults);
-    setIsComplete(false);
-    setCurrentlyRunningTest(null);
-    
-    // Start running tests
+const runAllTests = () => {
+  // Clear completed tests record
+  completedTestsRef.current = [];
+  
+  // Clear any pending timeouts
+  if (runNextTestTimeoutRef.current) {
+    clearTimeout(runNextTestTimeoutRef.current);
+    runNextTestTimeoutRef.current = null;
+  }
+  
+  if (testTimeoutRef.current) {
+    clearTimeout(testTimeoutRef.current);
+    testTimeoutRef.current = null;
+  }
+  
+  // Reset all test results to waiting
+  const resetResults: Record<string, TestResult> = {};
+  filteredDroppedItems.forEach(item => {
+    resetResults[item.header] = {
+      component: item.header,
+      status: 'waiting',
+      results: null
+    };
+  });
+  
+  setTestResults(resetResults);
+  setIsComplete(false);
+  setCurrentlyRunningTest(null);
+  
+  // Start running tests after a short delay
+  setTimeout(() => {
+    if (!isMountedRef.current) return;
     runNextTest(resetResults);
-  };
+  }, 50);
+};
 
   // Calculate test stage status for each filtered component
   const getTestStatusSummary = () => {

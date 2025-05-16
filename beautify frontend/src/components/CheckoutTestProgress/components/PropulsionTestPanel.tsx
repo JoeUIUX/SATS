@@ -67,6 +67,136 @@ interface TestHistoryItem {
   is_simulated?: boolean; // Add this field with optional marker
 }
 
+const pmaTimeParams = [
+      "OBC1_Prop_PmaCheck_InitPayl_Delay", 
+      "OBC1_Prop_PmaCheck_DataGet_Delay",
+      "OBC1_Prop_PmaCheck_DataSend_Delay", 
+      "OBC1_Prop_PmaCheck_EcuOff_Delay",
+      "OBC1_Prop_PmaCheck_Duration"
+    ];
+    
+    const ppuTimeParams = [
+      "OBC1_Prop_PpuCheck_InitPayl_Delay", 
+      "OBC1_Prop_PpuCheck_DataGet1_Delay",
+      "OBC1_Prop_PpuCheck_PpuOn_Delay", 
+      "OBC1_Prop_PpuCheck_DataGet2_Delay",
+      "OBC1_Prop_PpuCheck_DataSend_Delay", 
+      "OBC1_Prop_PpuCheck_PpuOff_Delay",
+      "OBC1_Prop_PpuCheck_EcuOff_Delay", 
+      "OBC1_Prop_PpuCheck_Duration"
+    ];
+    
+    const propTcParams = [
+      "OBC1_Prop_Anode_PPU_1_Set_V", "OBC1_Prop_Anode_PPU_2_Set_V", 
+      "OBC1_Prop_Cathode_PPU_1_Set_V", "OBC1_Prop_Cathode_PPU_1_Set_A", 
+      "OBC1_Prop_Cathode_PPU_2_Set_V", "OBC1_Prop_Cathode_PPU_2_Set_A",
+      "OBC1_Prop_Heater_1_PWM", "OBC1_Prop_Heater_2_PWM", "OBC1_Prop_Heater_3_PWM",
+      "OBC1_Prop_Heater_4_PWM", "OBC1_Prop_Anode_PPU_1_Set_A", "OBC1_Prop_IEP_1_PWM",
+      "OBC1_Prop_IEP_2_PWM", "OBC1_Prop_IEP_3_Freq", "OBC1_Prop_IEP_4_Freq", 
+      "OBC1_Prop_IEP_5_Freq", "OBC1_Prop_IEP_6_Freq", "OBC1_Prop_MFC_1_Flow", 
+      "OBC1_Prop_MFC_2_Flow", "OBC1_Prop_MFC_3_Flow", "OBC1_Prop_MFC_4_Flow", 
+      "OBC1_Prop_Test_Duration", "OBC1_Prop_MFC_2_Thruster_Selector",
+      "OBC1_Prop_MFC_4_Thruster_Selector", "OBC1_Prop_MFC_1_Thruster_Selector",
+      "OBC1_Prop_MFC_3_Thruster_Selector", "OBC1_Prop_Thruster_1_Cathode_Selector",
+      "OBC1_Prop_Thruster_2_Cathode_Selector", "OBC1_Prop_Anode_PPU1_Aliena_Thruster_Selector",
+      "OBC1_Prop_Anode_PPU2_ST_PPU_Thruster_Selector", "OBC1_Prop_Cathode_PPU_1_Aliena_Thruster_Selector",
+      "OBC1_Prop_Thruster_Unit_1_Cathode_Selector", "OBC1_Prop_Cathode_PPU_2_ST_PPU_Thruster_Selector",
+      "OBC1_Prop_Thruster_Unit_2_Cathode_Selector", "OBC1_Prop_Anode_PPU1_Aliena_Enable",
+      "OBC1_Prop_Cathode_PPU1_Aliena_Enable", "OBC1_Prop_Test_Override", "OBC1_Prop_Spare_3",
+      "OBC1_Prop_Spare_4", "OBC1_Prop_Spare_5" 
+    ];
+    
+    const ecu1ViParams = ["HEPS1_PDM1_ECU1_V", "HEPS1_PDM1_ECU1_I"];
+    const ecu2ViParams = ["HEPS1_PDM2_ECU2_V", "HEPS1_PDM2_ECU2_I"];
+    const ppu1ViParams = ["HEPS1_PDM1_THRU1_V", "HEPS1_PDM1_THRU1_I"];
+    const ppu2ViParams = ["HEPS1_PDM2_THRU2_V", "HEPS1_PDM2_THRU2_I"];
+    
+    // Complete propulsion telemetry parameters from the Python code
+    const prop1TmParams = [
+      "PROPULSION1_ECU_Temp", "PROPULSION1_Anode_PPU_1_Set_Voltage", "PROPULSION1_Anode_PPU_1_Voltage",
+      "PROPULSION1_Anode_PPU_1_Current", "PROPULSION1_Anode_PPU_1_Temp",
+      "PROPULSION1_Anode_PPU_2_Set_Voltage", "PROPULSION1_Anode_PPU_2_Voltage",
+      "PROPULSION1_Anode_PPU_2_Current", "PROPULSION1_Anode_PPU_2_Temp",
+      "PROPULSION1_Cathode_PPU_1_Set_Voltage", "PROPULSION1_Cathode_PPU_1_Voltage",
+      "PROPULSION1_Cathode_PPU_1_Set_Current", "PROPULSION1_Cathode_PPU_1_Current",
+      "PROPULSION1_Cathode_PPU_1_Temp", "PROPULSION1_Cathode_PPU_2_Set_Voltage",
+      "PROPULSION1_Cathode_PPU_2_Voltage", "PROPULSION1_Cathode_PPU_2_Set_Current",
+      "PROPULSION1_Cathode_PPU_2_Current", "PROPULSION1_Cathode_PPU_2_Temp", "PROPULSION1_Heater_Temp",
+      "PROPULSION1_Heater_1_Current", "PROPULSION1_Heater_1_Voltage", "PROPULSION1_Heater_1_PWM",
+      "PROPULSION1_Heater_2_PWM", "PROPULSION1_Heater_2_Current", "PROPULSION1_Heater_2_Voltage",
+      "PROPULSION1_Heater_3_Current", "PROPULSION1_Heater_3_Voltage", "PROPULSION1_Heater_3_PWM",
+      "PROPULSION1_Heater_4_PWM", "PROPULSION1_Heater_4_Current", "PROPULSION1_Heater_4_Voltage",
+      "PROPULSION1_Thruster_1_Temp", "PROPULSION1_Thruster_2_Temp", "PROPULSION1_HP_Tank_Pressure_1",
+      "PROPULSION1_HP_Tank_Pressure_2", "PROPULSION1_Regulated_Pressure_1",
+      "PROPULSION1_Regulated_Pressure_2", "PROPULSION1_MFC_1_Pressure", "PROPULSION1_MFC_2_Pressure",
+      "PROPULSION1_MFC_3_Pressure", "PROPULSION1_MFC_4_Pressure", "PROPULSION1_SPARE_1",
+      "PROPULSION1_Tank_Temperature_1", "PROPULSION1_Tank_Temperature_2", "PROPULSION1_MFC_1_Temperature",
+      "PROPULSION1_MFC_2_Temperature", "PROPULSION1_MFC_3_Temperature", "PROPULSION1_MFC_4_Temperature",
+      "PROPULSION1_Driver_Circuit_1_Temperature", "PROPULSION1_Driver_Circuit_2_Temperature",
+      "PROPULSION1_PMA_Temperature", "PROPULSION1_IEP_1_PWM", "PROPULSION1_IEP_2_PWM",
+      "PROPULSION1_IEP_3_Freq", "PROPULSION1_IEP_4_Freq", "PROPULSION1_IEP_5_Freq",
+      "PROPULSION1_IEP_6_Freq", "PROPULSION1_MFC_1_Flow", "PROPULSION1_MFC_2_Flow",
+      "PROPULSION1_MFC_3_Flow", "PROPULSION1_MFC_4_Flow", "PROPULSION1_SPARE_2",
+      "PROPULSION1_MFC_2_Thruster_Selector", "PROPULSION1_MFC_4_Thruster_Selector",
+      "PROPULSION1_MFC_1_Thruster_Selector", "PROPULSION1_MFC_3_Thruster_Selector",
+      "PROPULSION1_Thruster_1_Cathode_Selector", "PROPULSION1_Thruster_2_Cathode_Selector",
+      "PROPULSION1_Anode_PPU1_Aliena_Thruster_Selector",
+      "PROPULSION1_Anode_PPU2_ST_PPU_Thruster_Selector",
+      "PROPULSION1_Cathode_PPU_1_Aliena_Thruster_Selector",
+      "PROPULSION1_Thruster_Unit_1_Cathode_Selector",
+      "PROPULSION1_Cathode_PPU_2_ST_PPU_Thruster_Selector",
+      "PROPULSION1_Thruster_Unit_2_Cathode_Selector", "PROPULSION1_Anode_PPU1_Aliena_Enable",
+      "PROPULSION1_Cathode_PPU1_Aliena_Enable", "PROPULSION1_Test_Override",
+      "PROPULSION1_Initialisation_mode", "PROPULSION1_SPARE_3", "PROPULSION1_SPARE_4",
+      "PROPULSION1_SPARE_5", "PROPULSION1_Error_vector_1", "PROPULSION1_Error_Vector_2",
+      "PROPULSION1_SPARE_6", "PROPULSION1_SPARE_7"
+    ];
+    
+    const prop2TmParams = [
+      "PROPULSION2_ECU_Temp", "PROPULSION2_Anode_PPU_1_Set_Voltage", "PROPULSION2_Anode_PPU_1_Voltage",
+      "PROPULSION2_Anode_PPU_1_Current", "PROPULSION2_Anode_PPU_1_Temp",
+      "PROPULSION2_Anode_PPU_2_Set_Voltage", "PROPULSION2_Anode_PPU_2_Voltage",
+      "PROPULSION2_Anode_PPU_2_Current", "PROPULSION2_Anode_PPU_2_Temp",
+      "PROPULSION2_Cathode_PPU_1_Set_Voltage", "PROPULSION2_Cathode_PPU_1_Voltage",
+      "PROPULSION2_Cathode_PPU_1_Set_Current", "PROPULSION2_Cathode_PPU_1_Current",
+      "PROPULSION2_Cathode_PPU_1_Temp", "PROPULSION2_Cathode_PPU_2_Set_Voltage",
+      "PROPULSION2_Cathode_PPU_2_Voltage", "PROPULSION2_Cathode_PPU_2_Set_Current",
+      "PROPULSION2_Cathode_PPU_2_Current", "PROPULSION2_Cathode_PPU_2_Temp", "PROPULSION2_Heater_Temp",
+      "PROPULSION2_Heater_1_Current", "PROPULSION2_Heater_1_Voltage", "PROPULSION2_Heater_1_PWM",
+      "PROPULSION2_Heater_2_PWM", "PROPULSION2_Heater_2_Current", "PROPULSION2_Heater_2_Voltage",
+      "PROPULSION2_Heater_3_Current", "PROPULSION2_Heater_3_Voltage", "PROPULSION2_Heater_3_PWM",
+      "PROPULSION2_Heater_4_PWM", "PROPULSION2_Heater_4_Current", "PROPULSION2_Heater_4_Voltage",
+      "PROPULSION2_Thruster_1_Temp", "PROPULSION2_Thruster_2_Temp", "PROPULSION2_HP_Tank_Pressure_1",
+      "PROPULSION2_HP_Tank_Pressure_2", "PROPULSION2_Regulated_Pressure_1",
+      "PROPULSION2_Regulated_Pressure_2", "PROPULSION2_MFC_1_Pressure", "PROPULSION2_MFC_2_Pressure",
+      "PROPULSION2_MFC_3_Pressure", "PROPULSION2_MFC_4_Pressure", "PROPULSION2_SPARE_1",
+      "PROPULSION2_Tank_Temperature_1", "PROPULSION2_Tank_Temperature_2", "PROPULSION2_MFC_1_Temperature",
+      "PROPULSION2_MFC_2_Temperature", "PROPULSION2_MFC_3_Temperature", "PROPULSION2_MFC_4_Temperature",
+      "PROPULSION2_Driver_Circuit_1_Temperature", "PROPULSION2_Driver_Circuit_2_Temperature",
+      "PROPULSION2_PMA_Temperature", "PROPULSION2_IEP_1_PWM", "PROPULSION2_IEP_2_PWM",
+      "PROPULSION2_IEP_3_Freq", "PROPULSION2_IEP_4_Freq", "PROPULSION2_IEP_5_Freq",
+      "PROPULSION2_IEP_6_Freq", "PROPULSION2_MFC_1_Flow", "PROPULSION2_MFC_2_Flow",
+      "PROPULSION2_MFC_3_Flow", "PROPULSION2_MFC_4_Flow", "PROPULSION2_SPARE_2",
+      "PROPULSION2_MFC_2_Thruster_Selector", "PROPULSION2_MFC_4_Thruster_Selector",
+      "PROPULSION2_MFC_1_Thruster_Selector", "PROPULSION2_MFC_3_Thruster_Selector",
+      "PROPULSION2_Thruster_1_Cathode_Selector", "PROPULSION2_Thruster_2_Cathode_Selector",
+      "PROPULSION2_Anode_PPU1_Aliena_Thruster_Selector",
+      "PROPULSION2_Anode_PPU2_ST_PPU_Thruster_Selector",
+      "PROPULSION2_Cathode_PPU_1_Aliena_Thruster_Selector",
+      "PROPULSION2_Thruster_Unit_1_Cathode_Selector",
+      "PROPULSION2_Cathode_PPU_2_ST_PPU_Thruster_Selector",
+      "PROPULSION2_Thruster_Unit_2_Cathode_Selector", "PROPULSION2_Anode_PPU1_Aliena_Enable",
+      "PROPULSION2_Cathode_PPU1_Aliena_Enable", "PROPULSION2_Test_Override",
+      "PROPULSION2_Initialisation_mode", "PROPULSION2_SPARE_3", "PROPULSION2_SPARE_4",
+      "PROPULSION2_SPARE_5", "PROPULSION2_Error_vector_1", "PROPULSION2_Error_Vector_2",
+      "PROPULSION2_SPARE_6", "PROPULSION2_SPARE_7"
+    ];
+    
+    const propStatParams = [
+      "OBC1_Prop_Cmd_Count", "OBC1_Prop_Ack_Count", 
+      "OBC1_Prop_Timeout_Count", "OBC1_Prop_Error_Count"
+    ];
+
 export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
   options,
   sock,
@@ -112,6 +242,8 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     { label: 'Tank Temp 1', value: 'temperatures.Tank_Temperature_1' }
   ];
   
+
+
   // Determine test options based on the filtered options
   // Check if any option contains "PMA" or "PPU"
   const enablePMA = options.some(option => option.includes('PMA'));
@@ -1036,879 +1168,316 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
             </button>
           </div>
         </div>
+
+{results && (
+  <div className="space-y-4 mt-4">
+    {/* Raw Parameter Values Panel */}
+    <div 
+      className={styles.card}
+      style={{
+        backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+      }}
+    >
+      <div 
+        className={styles.cardHeader}
+        style={{
+          backgroundColor: isDarkMode ? "#111827" : undefined,
+          borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+          background: isDarkMode 
+            ? "linear-gradient(to right, #1e40af, #3b82f6)" 
+            : "linear-gradient(to right, #dbeafe, #eff6ff)"
+        }}
+      >
+        <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+          </svg>
+          Propulsion Test Results - Raw Parameter Values
+        </h3>
         
-        {results && (
-          <div className="space-y-4 mt-4">
-            {/* ECU-1 Information Card */}
-            <div 
-              className={styles.card}
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
+      </div>
+      
+      <div className={styles.cardContent}>
+        
+        {/* Voltage and Current Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '16px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          Voltage and Current Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ecu1ViParams.concat(ecu2ViParams, ppu1ViParams, ppu2ViParams).map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* Propulsion PMA/PPU Timing Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          PMA/PPU Timing Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pmaTimeParams.concat(ppuTimeParams).map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* Propulsion Telecommand Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          Propulsion Telecommand Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {propTcParams.map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* Propulsion Telemetry 1 Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          Propulsion 1 Telemetry Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {prop1TmParams.map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* Only show Propulsion 2 if it's tested */}
+        {results.prop2Tm && Object.keys(results.prop2Tm).length > 0 && (
+          <>
+            {/* Propulsion Telemetry 2 Parameters */}
+            <h4 style={{ 
+              fontSize: '14px', 
+              fontWeight: 'bold',
+              margin: '20px 0 10px',
+              color: isDarkMode ? "#d1d5db" : "#374151"
+            }}>
+              Propulsion 2 Telemetry Parameters
+            </h4>
+            
+            <table 
+              className={styles.table}
               style={{
-                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                color: isDarkMode ? "#e5e7eb" : "inherit",
+                width: '100%',
+                borderCollapse: 'collapse',
+                fontSize: '14px'
               }}
             >
-              <div 
-                className={styles.cardHeader} 
-                style={{ 
-                  background: isDarkMode 
-                    ? "linear-gradient(to right, #064e3b, #065f46)" 
-                    : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                  color: isDarkMode ? "#d1fae5" : "#065f46"
-                }}
-              >
-                <h3 className={styles.cardTitle}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                    <path d="M13 7H7v6h6V7z" />
-                    <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
-                  </svg>
-                  ECU-1 Information
-                </h3>
-                
-                {/* Add simulation badge */}
-                <SimulationBadge isSimulation={detectedSimulation} />
-              </div>
-              
-              <div className={styles.cardContent}>
-                <div 
-                  className={styles.infoCard}
-                  style={{
-                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                  }}
-                >
-                  <div className={styles.infoIcon} style={{
-                    backgroundColor: isDarkMode ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.1)'
-                  }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
-                      <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className={styles.infoContent}>
-                    <div 
-                      className={styles.infoLabel}
-                      style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                    >
-                      ECU-1 Voltage/Current
-                    </div>
-                    <div 
-                      className={styles.infoValue}
-                      style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
-                    >
-                      {results.ecu1?.voltage ? `${parseFloat(results.ecu1.voltage).toFixed(2)} V / ${parseFloat(results.ecu1.current).toFixed(2)} A` : "N/A"}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* ECU-1 Status Badge */}
-                <div style={{ 
-                  marginTop: '12px',
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
-                  <span style={{
-                    fontSize: '14px',
-                    color: isDarkMode ? '#9ca3af' : '#6b7280'
-                  }}>
-                    ECU-1 Status:
-                  </span>
-                  <span style={{
-                    padding: '4px 12px',
-                    borderRadius: '9999px',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    backgroundColor: results.ecu1?.status === 'PASS' 
-                      ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                      : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                    color: results.ecu1?.status === 'PASS'
-                      ? (isDarkMode ? '#34d399' : '#059669')
-                      : (isDarkMode ? '#f87171' : '#dc2626')
-                  }}>
-                    {results.ecu1?.status || 'N/A'}
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            {/* ECU-2 Information Card */}
-            <div 
-              className={styles.card}
-              style={{
-                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-              }}
-            >
-              <div 
-                className={styles.cardHeader} 
-                style={{ 
-                  background: isDarkMode 
-                    ? "linear-gradient(to right, #064e3b, #065f46)" 
-                    : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                  color: isDarkMode ? "#d1fae5" : "#065f46"
-                }}
-              >
-                <h3 className={styles.cardTitle}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                    <path d="M13 7H7v6h6V7z" />
-                    <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
-                  </svg>
-                  ECU-2 Information
-                </h3>
-                
-                {/* Add simulation badge */}
-                <SimulationBadge isSimulation={detectedSimulation} />
-              </div>
-              
-              <div className={styles.cardContent}>
-                <div 
-                  className={styles.infoCard}
-                  style={{
-                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                  }}
-                >
-                  <div className={styles.infoIcon} style={{
-                    backgroundColor: isDarkMode ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.1)'
-                  }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#059669" width="20" height="20">
-                      <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className={styles.infoContent}>
-                    <div 
-                      className={styles.infoLabel}
-                      style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                    >
-                      ECU-2 Voltage/Current
-                    </div>
-                    <div 
-                      className={styles.infoValue}
-                      style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
-                    >
-                      {results.ecu2?.voltage ? `${parseFloat(results.ecu2.voltage).toFixed(2)} V / ${parseFloat(results.ecu2.current).toFixed(2)} A` : "N/A"}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* ECU-2 Status Badge */}
-                <div style={{ 
-                  marginTop: '12px',
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
-                  <span style={{
-                    fontSize: '14px',
-                    color: isDarkMode ? '#9ca3af' : '#6b7280'
-                  }}>
-                    ECU-2 Status:
-                  </span>
-                  <span style={{
-                    padding: '4px 12px',
-                    borderRadius: '9999px',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    backgroundColor: results.ecu2?.status === 'PASS' 
-                      ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                      : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                    color: results.ecu2?.status === 'PASS'
-                      ? (isDarkMode ? '#34d399' : '#059669')
-                      : (isDarkMode ? '#f87171' : '#dc2626')
-                  }}>
-                    {results.ecu2?.status || 'N/A'}
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Temperature Information Card */}
-            <div 
-              className={styles.card}
-              style={{
-                backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-              }}
-            >
-              <div 
-                className={styles.cardHeader} 
-                style={{ 
-                  background: isDarkMode 
-                    ? "linear-gradient(to right, #1e40af, #3b82f6)" 
-                    : "linear-gradient(to right, #eff6ff, #dbeafe)",
-                  color: isDarkMode ? "#dbeafe" : "#1e40af"
-                }}
-              >
-                <h3 className={styles.cardTitle}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
-                  </svg>
-                  Temperature Readings
-                </h3>
-                
-                {/* Add simulation badge */}
-                <SimulationBadge isSimulation={detectedSimulation} />
-              </div>
-              
-              <div className={styles.cardContent}>
-                <div className={styles.tempGrid} style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-                  gap: '12px'
-                }}>
-                  {results.temperatures && Object.entries(results.temperatures).map(([key, value]: [string, any], index) => (
-                    <div key={index} className={styles.tempCard} style={{
-                      backgroundColor: isDarkMode ? "rgba(219, 234, 254, 0.1)" : "#f0f9ff",
-                      borderColor: isDarkMode ? "rgba(96, 165, 250, 0.3)" : "#93c5fd",
-                      borderRadius: '6px',
-                      padding: '12px',
-                      border: '1px solid'
-                    }}>
-                      <div style={{
-                        fontSize: '12px',
-                        color: isDarkMode ? "#93c5fd" : "#2563eb",
-                        marginBottom: '4px'
-                      }}>
-                        {key.replace(/_/g, ' ')}
-                      </div>
-                      <div style={{
-                        fontSize: '16px',
-                        fontWeight: 600,
-                        color: isDarkMode ? "#93c5fd" : "#2563eb"
-                      }}>
-                        {typeof value === 'string' ? value : `${parseFloat(value).toFixed(1)} °C`}
-                      </div>
-                    </div>
-                  ))}
-                  {!results.temperatures || Object.keys(results.temperatures).length === 0 && (
-                    <div style={{ padding: '12px', color: isDarkMode ? '#9ca3af' : '#6b7280' }}>
-                      No temperature data available
-                    </div>
-                  )}
-                  </div>
-              </div>
-            </div>
-            
-            {/* Display the PMA section only if the PMA option was checked */}
-            {enablePMA && (
-              <div 
-                className={styles.card}
+              <thead 
+                className={styles.tableHeader}
                 style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                  color: isDarkMode ? "#d1d5db" : "#6b7280"
                 }}
               >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #4c1d95, #6d28d9)" 
-                      : "linear-gradient(to right, #f5f3ff, #ede9fe)",
-                    color: isDarkMode ? "#ede9fe" : "#6d28d9"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                    </svg>
-                    PMA Test Results
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={detectedSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  {results.pma && results.pma.status !== 'N.A.' ? (
-                    <table 
-                      className={styles.table}
-                      style={{
-                        width: '100%',
-                        borderCollapse: 'collapse',
-                        color: isDarkMode ? "#e5e7eb" : "inherit"
-                      }}
-                    >
-                      <thead 
-                        className={styles.tableHeader}
-                        style={{
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                          color: isDarkMode ? "#d1d5db" : "#6b7280"
-                        }}
-                      >
-                        <tr>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Parameter
-                          </th>
-                          <th style={{ 
-                            padding: '12px 16px',
-                            textAlign: 'left',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Value
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className={styles.tableBody}>
-                        <tr>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Init Payload Delay
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            {results.pma.initPayl} s
-                          </td>
-                        </tr>
-                        
-                        <tr className={styles.tableRowAlt} style={{ 
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                        }}>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Data Get Delay
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            {results.pma.dataGet} s
-                          </td>
-                        </tr>
-                        
-                        <tr>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Data Send Delay
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            {results.pma.dataSend} s
-                          </td>
-                        </tr>
-                        
-                        <tr className={styles.tableRowAlt} style={{ 
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                        }}>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            ECU Off Delay
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            {results.pma.ecuOff} s
-                          </td>
-                        </tr>
-                        
-                        <tr>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            Test Duration
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            {results.pma.duration} s
-                          </td>
-                        </tr>
-                        
-                        <tr className={styles.tableRowAlt} style={{ 
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                        }}>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            PMA Status
-                          </td>
-                          <td style={{ 
-                            padding: '12px 16px',
-                            borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                          }}>
-                            <span style={{
-                              display: 'inline-block',
-                              padding: '4px 8px',
-                              borderRadius: '4px',
-                              fontSize: '12px',
-                              fontWeight: 600,
-                              backgroundColor: results.pma.status === 'completed' 
-                                ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                                : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                              color: results.pma.status === 'completed'
-                                ? (isDarkMode ? '#34d399' : '#059669')
-                                : (isDarkMode ? '#f87171' : '#dc2626')
-                            }}>
-                              {results.pma.status.toUpperCase()}
-                            </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div style={{
-                      padding: '20px',
-                      textAlign: 'center',
-                      borderRadius: '6px',
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      color: isDarkMode ? '#9ca3af' : '#6b7280'
-                    }}>
-                      <p>PMA test was not performed.</p>
-                      <p style={{ marginTop: '8px', fontSize: '14px' }}>
-                        Enable the PMA option to perform this test.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-            
-            {/* Display the PPU section only if the PPU option was checked */}
-            {enablePPU && (
-              <div 
-                className={styles.card}
-                style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #be185d, #db2777)" 
-                      : "linear-gradient(to right, #fce7f3, #fbcfe8)",
-                    color: isDarkMode ? "#fbcfe8" : "#be185d"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                    </svg>
-                    PPU Test Results
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={detectedSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  {results.ppu && results.ppu.status !== 'N.A.' ? (
-                    <>
-                      {/* PPU Timing Table */}
-                      <div style={{ marginBottom: '20px' }}>
-                        <h4 style={{ 
-                          fontSize: '14px',
-                          fontWeight: 600,
-                          marginBottom: '8px',
-                          color: isDarkMode ? '#e5e7eb' : '#111827'
-                        }}>
-                          PPU Test Timing
-                        </h4>
-                        
-                        <table 
-                          className={styles.table}
-                          style={{
-                            width: '100%',
-                            borderCollapse: 'collapse'
-                          }}
-                        >
-                          <thead 
-                            className={styles.tableHeader}
-                            style={{
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                              color: isDarkMode ? "#d1d5db" : "#6b7280"
-                            }}
-                          >
-                            <tr>
-                              <th style={{ 
-                                padding: '12px 16px',
-                                textAlign: 'left',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Parameter
-                              </th>
-                              <th style={{ 
-                                padding: '12px 16px',
-                                textAlign: 'left',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Value
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className={styles.tableBody}>
-                            <tr>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Init Payload Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.initPayl} s
-                              </td>
-                            </tr>
-                            
-                            <tr className={styles.tableRowAlt} style={{ 
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                            }}>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Data Get 1 Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.dataGet1} s
-                              </td>
-                            </tr>
-                            
-                            <tr>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                PPU On Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.ppuOn} s
-                              </td>
-                            </tr>
-                            
-                            <tr className={styles.tableRowAlt} style={{ 
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                            }}>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Data Get 2 Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.dataGet2} s
-                              </td>
-                            </tr>
-                            
-                            <tr>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Data Send Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.dataSend} s
-                              </td>
-                            </tr>
-                            
-                            <tr className={styles.tableRowAlt} style={{ 
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                            }}>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                PPU Off Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.ppuOff} s
-                              </td>
-                            </tr>
-                            
-                            <tr>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                ECU Off Delay
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.ecuOff} s
-                              </td>
-                            </tr>
-                            
-                            <tr className={styles.tableRowAlt} style={{ 
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                            }}>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                Test Duration
-                              </td>
-                              <td style={{ 
-                                padding: '12px 16px',
-                                borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                              }}>
-                                {results.ppu.duration} s
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      
-                      {/* PPU Voltage/Current */}
-                      <div style={{ marginBottom: '20px' }}>
-                        <h4 style={{ 
-                          fontSize: '14px',
-                          fontWeight: 600,
-                          marginBottom: '8px',
-                          color: isDarkMode ? '#e5e7eb' : '#111827'
-                        }}>
-                          PPU Power Status
-                        </h4>
-                        
-                        <div 
-                          className={styles.infoCard}
-                          style={{
-                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                            borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                          }}
-                        >
-                          <div className={styles.infoIcon} style={{
-                            backgroundColor: isDarkMode ? 'rgba(219, 39, 119, 0.1)' : 'rgba(219, 39, 119, 0.1)'
-                          }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#db2777" width="20" height="20">
-                              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <div className={styles.infoContent}>
-                            <div 
-                              className={styles.infoLabel}
-                              style={{ color: isDarkMode ? "#9ca3af" : "#6b7280" }}
-                            >
-                              PPU-1 Voltage/Current
-                            </div>
-                            <div 
-                              className={styles.infoValue}
-                              style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}
-                            >
-                              {results.ppu1?.voltage ? `${parseFloat(results.ppu1.voltage).toFixed(2)} V / ${parseFloat(results.ppu1.current).toFixed(2)} A` : "N/A"}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div style={{ 
-                          marginTop: '12px',
-                          display: 'flex',
-                          justifyContent: 'flex-end',
-                          alignItems: 'center',
-                          gap: '8px'
-                        }}>
-                          <span style={{
-                            fontSize: '14px',
-                            color: isDarkMode ? '#9ca3af' : '#6b7280'
-                          }}>
-                            PPU-1 Status:
-                          </span>
-                          <span style={{
-                            padding: '4px 12px',
-                            borderRadius: '9999px',
-                            fontSize: '12px',
-                            fontWeight: 600,
-                            backgroundColor: results.ppu1?.status === 'PASS' 
-                              ? (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5')
-                              : (isDarkMode ? 'rgba(239, 68, 68, 0.2)' : '#fee2e2'),
-                            color: results.ppu1?.status === 'PASS'
-                              ? (isDarkMode ? '#34d399' : '#059669')
-                              : (isDarkMode ? '#f87171' : '#dc2626')
-                          }}>
-                            {results.ppu1?.status || 'N/A'}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <div style={{
-                      padding: '20px',
-                      textAlign: 'center',
-                      borderRadius: '6px',
-                      backgroundColor: isDarkMode ? '#111827' : '#f9fafb',
-                      color: isDarkMode ? '#9ca3af' : '#6b7280'
-                    }}>
-                      <p>PPU test was not performed.</p>
-                      <p style={{ marginTop: '8px', fontSize: '14px' }}>
-                        Enable the PPU option to perform this test.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-            
-            {/* Propulsion Stats - shown if PMA or PPU is enabled */}
-            {(enablePMA || enablePPU) && results.propStat && (
-              <div 
-                className={styles.card}
-                style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #0e7490, #06b6d4)" 
-                      : "linear-gradient(to right, #cffafe, #ecfeff)",
-                    color: isDarkMode ? "#cffafe" : "#0e7490"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                    </svg>
-                    Propulsion Statistics
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={detectedSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  <table 
-                    className={styles.table}
-                    style={{
-                      width: '100%',
-                      borderCollapse: 'collapse'
-                    }}
+                <tr>
+                  <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                  <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prop2TmParams.map((param, index) => (
+                  <tr 
+                    key={param} 
+                    className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                    style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
                   >
-                    <thead 
-                      className={styles.tableHeader}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        color: isDarkMode ? "#d1d5db" : "#6b7280"
-                      }}
-                    >
-                      <tr>
-                        <th style={{ 
-                          padding: '12px 16px',
-                          textAlign: 'left',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Statistic
-                        </th>
-                        <th style={{ 
-                          padding: '12px 16px',
-                          textAlign: 'left',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Value
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className={styles.tableBody}>
-                      <tr>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Command Count
-                        </td>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          {results.propStat.Cmd_Count || 'N/A'}
-                        </td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ 
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                      }}>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Acknowledge Count
-                        </td>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          {results.propStat.Ack_Count || 'N/A'}
-                        </td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Timeout Count
-                        </td>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          {results.propStat.Timeout_Count || 'N/A'}
-                        </td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ 
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb"
-                      }}>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          Error Count
-                        </td>
-                        <td style={{ 
-                          padding: '12px 16px',
-                          borderBottom: `1px solid ${isDarkMode ? "#374151" : "#e5e7eb"}` 
-                        }}>
-                          {results.propStat.Error_Count || 'N/A'}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
+                    <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                    <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+        
+        {/* Propulsion Stats Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          Propulsion Statistics Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {propStatParams.map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
             
             {/* Generate Report Button */}
             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>

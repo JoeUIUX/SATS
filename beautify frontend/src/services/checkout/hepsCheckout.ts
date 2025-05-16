@@ -50,6 +50,22 @@ const safeParseValue = (result: string | undefined): string => {
 };
 
 /**
+ * Helper function to safely parse and store parameter values
+ * 
+ * @param param The parameter name
+ * @param result The raw result string from MCC
+ * @param rawParameters The object to store parameter values in
+ * @returns The parsed value
+ */
+const storeParameterValue = (param: string, result: string | undefined, rawParameters: Record<string, string>): string => {
+  if (!result) return "unknown";
+  const parts = result.split('=');
+  const value = parts.length > 1 ? parts[1] : "unknown";
+  rawParameters[param] = value;
+  return value;
+};
+
+/**
  * Helper function to check if voltage is within acceptable range for batteries
  * 
  * @param value Voltage value as a string
@@ -273,15 +289,23 @@ export async function runHEPSCheckout(
       heaterTests: [] as any[],
       currentTest: null as any,
       powerCycleTest: null as any,
-      passFailStatus: {} as Record<string, string>
+      passFailStatus: {} as Record<string, string>,
+      rawParameters: {} as Record<string, string> // to store raw parameter values
     };
+
+    // Create a record to store raw parameter values
+    const rawParameters: Record<string, string> = {};
 
     // First step - Primary CAN Test (10%)
     onProgress('Testing Primary CAN Communication', 10);
     
     // Read CAN variables before test
     let mccResult = await mccifRead(sock, canVar);
-    const canBef = mccResult.map(res => safeParseValue(res));
+    const canBef = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[canVar[index]] = value;
+      return value;
+    });
     canBef.forEach(value => checkoutResult.push(value));
     index += canVar.length;
     
@@ -290,7 +314,7 @@ export async function runHEPSCheckout(
     
     // Read CAN setting
     mccResult = await mccifRead(sock, canSetting);
-    const canSettingValue = safeParseValue(mccResult[0]);
+    const canSettingValue = storeParameterValue(canSetting[0], mccResult[0], rawParameters);
     checkoutResult.push(canSettingValue);
     index += canSetting.length;
     
@@ -299,7 +323,11 @@ export async function runHEPSCheckout(
     
     // Read CAN variables after test
     mccResult = await mccifRead(sock, canVar);
-    const canAft = mccResult.map(res => safeParseValue(res));
+    const canAft = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[`after_${canVar[index]}`] = value;
+      return value;
+    });
     canAft.forEach(value => checkoutResult.push(value));
     index += canVar.length;
     
@@ -319,7 +347,11 @@ export async function runHEPSCheckout(
     
     // Read secondary CAN variables before test
     mccResult = await mccifRead(sock, canVar);
-    const secCanBef = mccResult.map(res => safeParseValue(res));
+    const secCanBef = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[`sec_${canVar[index]}`] = value;
+      return value;
+    });
     secCanBef.forEach(value => checkoutResult.push(value));
     index += canVar.length;
     
@@ -328,7 +360,7 @@ export async function runHEPSCheckout(
     
     // Read CAN setting
     mccResult = await mccifRead(sock, canSetting);
-    const secCanSettingValue = safeParseValue(mccResult[0]);
+    const secCanSettingValue = storeParameterValue(`sec_${canSetting[0]}`, mccResult[0], rawParameters);
     checkoutResult.push(secCanSettingValue);
     index += canSetting.length;
     
@@ -337,7 +369,11 @@ export async function runHEPSCheckout(
     
     // Read CAN variables after test
     mccResult = await mccifRead(sock, canVar);
-    const secCanAft = mccResult.map(res => safeParseValue(res));
+    const secCanAft = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[`sec_after_${canVar[index]}`] = value;
+      return value;
+    });
     secCanAft.forEach(value => checkoutResult.push(value));
     index += canVar.length;
     
@@ -357,7 +393,11 @@ export async function runHEPSCheckout(
     
     // Read battery voltages and currents
     mccResult = await mccifRead(sock, batVi);
-    const batViValues = mccResult.map(res => safeParseValue(res));
+    const batViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[batVi[index]] = value;
+      return value;
+    });
     batViValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -385,7 +425,11 @@ export async function runHEPSCheckout(
     
     // Read battery temperatures
     mccResult = await mccifRead(sock, batT);
-    const batTValues = mccResult.map(res => safeParseValue(res));
+    const batTValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[batT[index]] = value;
+      return value;
+    });
     batTValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -400,7 +444,11 @@ export async function runHEPSCheckout(
     
     // Read solar array voltages
     mccResult = await mccifRead(sock, saV);
-    const saVValues = mccResult.map(res => safeParseValue(res));
+    const saVValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[saV[index]] = value;
+      return value;
+    });
     saVValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -412,7 +460,11 @@ export async function runHEPSCheckout(
     
     // Read solar array temperatures (Y- side)
     mccResult = await mccifRead(sock, saT1);
-    const saT1Values = mccResult.map(res => safeParseValue(res));
+    const saT1Values = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[saT1[index]] = value;
+      return value;
+    });
     saT1Values.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -423,7 +475,11 @@ export async function runHEPSCheckout(
     
     // Read more solar array temperatures
     mccResult = await mccifRead(sock, saT2);
-    const saT2Values = mccResult.map(res => safeParseValue(res));
+    const saT2Values = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[saT2[index]] = value;
+      return value;
+    });
     saT2Values.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -440,14 +496,14 @@ export async function runHEPSCheckout(
     
     // Read HDRM deploy status 1
     mccResult = await mccifRead(sock, ["HEPS1_PSM1_HDRM_DEPLOY_STATUS1"]);
-    const hdrmStatus1 = safeParseValue(mccResult[0]);
+    const hdrmStatus1 = storeParameterValue("HEPS1_PSM1_HDRM_DEPLOY_STATUS1", mccResult[0], rawParameters);
     checkoutResult.push(hdrmStatus1);
     results.hdrmStatus.deploy1 = hdrmStatus1;
     index += 1;
     
     // Read HDRM deploy status 2
     mccResult = await mccifRead(sock, ["HEPS1_PSM2_HDRM_DEPLOY_STATUS2"]);
-    const hdrmStatus2 = safeParseValue(mccResult[0]);
+    const hdrmStatus2 = storeParameterValue("HEPS1_PSM2_HDRM_DEPLOY_STATUS2", mccResult[0], rawParameters);
     checkoutResult.push(hdrmStatus2);
     results.hdrmStatus.deploy2 = hdrmStatus2;
     index += 1;
@@ -457,7 +513,11 @@ export async function runHEPSCheckout(
     
     // Read OBN voltages and currents
     mccResult = await mccifRead(sock, obnVi);
-    const obnViValues = mccResult.map(res => safeParseValue(res));
+    const obnViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[obnVi[index]] = value;
+      return value;
+    });
     obnViValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -487,7 +547,11 @@ export async function runHEPSCheckout(
     
     // Read BCR currents and temperatures
     mccResult = await mccifRead(sock, bcrIt);
-    const bcrItValues = mccResult.map(res => safeParseValue(res));
+    const bcrItValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[bcrIt[index]] = value;
+      return value;
+    });
     bcrItValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -503,9 +567,13 @@ export async function runHEPSCheckout(
     // Eighth step - PCB Temperature (60%)
     onProgress('Reading PCB Temperatures', 60);
     
-    // Read PCB temperatures
+// Read PCB temperatures
     mccResult = await mccifRead(sock, pcbT);
-    const pcbTValues = mccResult.map(res => safeParseValue(res));
+    const pcbTValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[pcbT[index]] = value;
+      return value;
+    });
     pcbTValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -519,7 +587,11 @@ export async function runHEPSCheckout(
     
     // Read Converter 1 voltages
     mccResult = await mccifRead(sock, conv1V);
-    const conv1VValues = mccResult.map(res => safeParseValue(res));
+    const conv1VValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[conv1V[index]] = value;
+      return value;
+    });
     conv1VValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -539,16 +611,20 @@ export async function runHEPSCheckout(
     passFail.push(v12_1Result);
     passFail.push(v15Result);
     
-    results.passFailStatus.hdrm12v1_voltage = hdrm12v1Result
+    results.passFailStatus.hdrm12v1_voltage = hdrm12v1Result;
     results.passFailStatus.v5_1_voltage = v5_1Result;
     results.passFailStatus.v12_1_voltage = v12_1Result;
     results.passFailStatus.v15_voltage = v15Result;
     
     index += conv1V.length;
     
-// Read Converter 2 voltages
+    // Read Converter 2 voltages
     mccResult = await mccifRead(sock, conv2V);
-    const conv2VValues = mccResult.map(res => safeParseValue(res));
+    const conv2VValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[conv2V[index]] = value;
+      return value;
+    });
     conv2VValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -573,7 +649,11 @@ export async function runHEPSCheckout(
     
     // Read Converter 1 temperatures
     mccResult = await mccifRead(sock, conv1T);
-    const conv1TValues = mccResult.map(res => safeParseValue(res));
+    const conv1TValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[conv1T[index]] = value;
+      return value;
+    });
     conv1TValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -586,7 +666,11 @@ export async function runHEPSCheckout(
     
     // Read Converter 2 temperatures
     mccResult = await mccifRead(sock, conv2T);
-    const conv2TValues = mccResult.map(res => safeParseValue(res));
+    const conv2TValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[conv2T[index]] = value;
+      return value;
+    });
     conv2TValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -601,7 +685,11 @@ export async function runHEPSCheckout(
     
     // Read RLCL voltages and currents
     mccResult = await mccifRead(sock, rlclVi);
-    const rlclViValues = mccResult.map(res => safeParseValue(res));
+    const rlclViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[rlclVi[index]] = value;
+      return value;
+    });
     rlclViValues.forEach(value => checkoutResult.push(value));
     
     // Add results to the results object
@@ -637,7 +725,11 @@ export async function runHEPSCheckout(
     
     // Read LCL voltages and currents
     mccResult = await mccifRead(sock, lclVi);
-    const lclViValues = mccResult.map(res => safeParseValue(res));
+    const lclViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[lclVi[index]] = value;
+      return value;
+    });
     lclViValues.forEach(value => checkoutResult.push(value));
     
     // Add specific load LCL voltages and currents to results as needed
@@ -650,7 +742,11 @@ export async function runHEPSCheckout(
     
     // Read HDRM voltages and currents
     mccResult = await mccifRead(sock, hdrmVi);
-    const hdrmViValues = mccResult.map(res => safeParseValue(res));
+    const hdrmViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[hdrmVi[index]] = value;
+      return value;
+    });
     hdrmViValues.forEach(value => checkoutResult.push(value));
     
     // Add specific HDRM values to results as needed
@@ -663,7 +759,11 @@ export async function runHEPSCheckout(
     
     // Read heater 1 values
     mccResult = await mccifRead(sock, heater1Vi);
-    const heater1ViValues = mccResult.map(res => safeParseValue(res));
+    const heater1ViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[heater1Vi[index]] = value;
+      return value;
+    });
     heater1ViValues.forEach(value => checkoutResult.push(value));
     
     // Initialize heater 1 object
@@ -681,7 +781,11 @@ export async function runHEPSCheckout(
     
     // Read heater 2 values
     mccResult = await mccifRead(sock, heater2Vi);
-    const heater2ViValues = mccResult.map(res => safeParseValue(res));
+    const heater2ViValues = mccResult.map((res, index) => {
+      const value = safeParseValue(res);
+      rawParameters[heater2Vi[index]] = value;
+      return value;
+    });
     heater2ViValues.forEach(value => checkoutResult.push(value));
     
     // Initialize heater 2 object
@@ -709,56 +813,88 @@ export async function runHEPSCheckout(
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading1 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues1 = heater1TestReading1.map(res => safeParseValue(res));
+      let heater1TestValues1 = heater1TestReading1.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test1_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 1
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 1);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading2 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues2 = heater1TestReading2.map(res => safeParseValue(res));
+      let heater1TestValues2 = heater1TestReading2.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test2_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 1
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 1);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading3 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues3 = heater1TestReading3.map(res => safeParseValue(res));
+      let heater1TestValues3 = heater1TestReading3.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test3_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 2
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 2);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading4 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues4 = heater1TestReading4.map(res => safeParseValue(res));
+      let heater1TestValues4 = heater1TestReading4.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test4_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 2
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 2);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading5 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues5 = heater1TestReading5.map(res => safeParseValue(res));
+      let heater1TestValues5 = heater1TestReading5.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test5_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 3
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 3);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading6 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues6 = heater1TestReading6.map(res => safeParseValue(res));
+      let heater1TestValues6 = heater1TestReading6.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test6_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 3
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 3);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading7 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues7 = heater1TestReading7.map(res => safeParseValue(res));
+      let heater1TestValues7 = heater1TestReading7.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test7_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater Group 1
       await mccifSet(sock, "OBC1_Ch_ExtReqOff", 18);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater1TestReading8 = await mccifRead(sock, heater1Vi);
-      let heater1TestValues8 = heater1TestReading8.map(res => safeParseValue(res));
+      let heater1TestValues8 = heater1TestReading8.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater1_test8_${heater1Vi[index]}`] = value;
+        return value;
+      });
       
       // Create heater test 1 result
       const heater1Test = {
@@ -788,56 +924,88 @@ export async function runHEPSCheckout(
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading1 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues1 = heater2TestReading1.map(res => safeParseValue(res));
+      let heater2TestValues1 = heater2TestReading1.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test1_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 4
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 4);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading2 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues2 = heater2TestReading2.map(res => safeParseValue(res));
+      let heater2TestValues2 = heater2TestReading2.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test2_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 4
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 4);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading3 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues3 = heater2TestReading3.map(res => safeParseValue(res));
+      let heater2TestValues3 = heater2TestReading3.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test3_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 5
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 5);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading4 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues4 = heater2TestReading4.map(res => safeParseValue(res));
+      let heater2TestValues4 = heater2TestReading4.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test4_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 5
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 5);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading5 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues5 = heater2TestReading5.map(res => safeParseValue(res));
+      let heater2TestValues5 = heater2TestReading5.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test5_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Enable Heater 6
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOn", 6);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading6 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues6 = heater2TestReading6.map(res => safeParseValue(res));
+      let heater2TestValues6 = heater2TestReading6.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test6_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater 6
       await mccifSet(sock, "OBC1_Ch_HeaterSwReqOff", 6);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading7 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues7 = heater2TestReading7.map(res => safeParseValue(res));
+      let heater2TestValues7 = heater2TestReading7.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test7_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Disable Heater Group 2
       await mccifSet(sock, "OBC1_Ch_ExtReqOff", 19);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       let heater2TestReading8 = await mccifRead(sock, heater2Vi);
-      let heater2TestValues8 = heater2TestReading8.map(res => safeParseValue(res));
+      let heater2TestValues8 = heater2TestReading8.map((res, index) => {
+        const value = safeParseValue(res);
+        rawParameters[`heater2_test8_${heater2Vi[index]}`] = value;
+        return value;
+      });
       
       // Create heater test 2 result
       const heater2Test = {
@@ -924,6 +1092,9 @@ export async function runHEPSCheckout(
     
     // Complete checkout (100%)
     onProgress('Checkout Complete', 100);
+    
+    // Before returning the results, add the raw parameters
+    results.rawParameters = rawParameters;
     
     return results;
     

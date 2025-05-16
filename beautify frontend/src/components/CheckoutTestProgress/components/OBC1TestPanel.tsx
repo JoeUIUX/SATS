@@ -147,7 +147,9 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
     temperature: true,
     fpga: true,
     kernel: true,
-    emmc: options.includes('eMMC')
+    emmc: options.includes('eMMC'),
+    rawParameters: false // Default to collapsed
+
   });
   
   // Available metrics for visualization
@@ -1952,6 +1954,356 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
                     )}
                   </div>
                 )}
+
+                {/* Collapsible Section: Raw Parameters */}
+<div 
+  className={styles.card}
+  style={{
+    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+  }}
+>
+  <div 
+    className={styles.cardHeader} 
+    style={{ 
+      background: isDarkMode 
+        ? "linear-gradient(to right, #1e3a8a, #2563eb)" 
+        : "linear-gradient(to right, #dbeafe, #eff6ff)",
+      color: isDarkMode ? "#bfdbfe" : "#1e3a8a",
+      cursor: 'pointer'
+    }}
+    onClick={() => toggleSection('rawParameters')}
+  >
+    <h3 className={styles.cardTitle} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+      </svg>
+      Raw Parameter Values
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 20 20" 
+        fill="currentColor" 
+        style={{ 
+          width: '16px', 
+          height: '16px',
+          transform: expandedSections.rawParameters ? 'rotate(180deg)' : 'rotate(0deg)',
+          transition: 'transform 0.2s ease-in-out'
+        }}
+      >
+        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+      </svg>
+    </h3>
+    
+    {/* Add simulation badge */}
+    <SimulationBadge isSimulation={isForceSimulation} />
+  </div>
+  
+  {expandedSections.rawParameters && (
+    <div className={styles.cardContent}>
+      <div style={{ marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: isDarkMode ? '#d1d5db' : '#6b7280' }}>
+          Displaying all parameters with their exact names as read from the hardware or simulation.
+        </p>
+      </div>
+      
+      {/* Firmware Parameters */}
+      <h4 style={{ 
+        fontSize: '14px', 
+        fontWeight: 'bold',
+        margin: '16px 0 10px',
+        color: isDarkMode ? "#d1d5db" : "#374151"
+      }}>
+        Firmware Parameters
+      </h4>
+      
+      <table 
+        className={styles.table}
+        style={{
+          color: isDarkMode ? "#e5e7eb" : "inherit",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '14px'
+        }}
+      >
+        <thead 
+          className={styles.tableHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+            color: isDarkMode ? "#d1d5db" : "#6b7280"
+          }}
+        >
+          <tr>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {["OBC1_FW_Ver_Major", "OBC1_FW_Ver_Minor", "OBC1_FW_Ver_Patch"].map((param, index) => (
+            <tr 
+              key={param} 
+              className={index % 2 === 1 ? styles.tableRowAlt : ''}
+              style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+            >
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {/* Kernel Parameters */}
+      <h4 style={{ 
+        fontSize: '14px', 
+        fontWeight: 'bold',
+        margin: '20px 0 10px',
+        color: isDarkMode ? "#d1d5db" : "#374151"
+      }}>
+        Kernel Parameters
+      </h4>
+      
+      <table 
+        className={styles.table}
+        style={{
+          color: isDarkMode ? "#e5e7eb" : "inherit",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '14px'
+        }}
+      >
+        <thead 
+          className={styles.tableHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+            color: isDarkMode ? "#d1d5db" : "#6b7280"
+          }}
+        >
+          <tr>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            "OBC1_Sys_uptime", "OBC1_Sys_loads_1m", "OBC1_Sys_loads_5m", "OBC1_Sys_loads_15m",
+            "OBC1_Sys_totalram", "OBC1_Sys_freeram", "OBC1_Sys_sharedram", "OBC1_Sys_bufferram",
+            "OBC1_Sys_totalswap", "OBC1_Sys_freeswap", "OBC1_Sys_procs", "OBC1_Sys_pad",
+            "OBC1_Sys_totalhigh", "OBC1_Sys_freehigh", "OBC1_Sys_mem_unit"
+          ].map((param, index) => (
+            <tr 
+              key={param} 
+              className={index % 2 === 1 ? styles.tableRowAlt : ''}
+              style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+            >
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {/* FPGA Parameters */}
+      <h4 style={{ 
+        fontSize: '14px', 
+        fontWeight: 'bold',
+        margin: '20px 0 10px',
+        color: isDarkMode ? "#d1d5db" : "#374151"
+      }}>
+        FPGA Parameters
+      </h4>
+      
+      <table 
+        className={styles.table}
+        style={{
+          color: isDarkMode ? "#e5e7eb" : "inherit",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '14px'
+        }}
+      >
+        <thead 
+          className={styles.tableHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+            color: isDarkMode ? "#d1d5db" : "#6b7280"
+          }}
+        >
+          <tr>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            "OBC1_vcc_pspll", "OBC1_vcc_psbatt", "OBC1_vccint", "OBC1_vccbram", "OBC1_vccaux",
+            "OBC1_vcc_psddr_pll", "OBC1_vccpsintfp_ddr", "OBC1_vccint1", "OBC1_vccaux1", "OBC1_vccvrefp",
+            "OBC1_vccvrefn", "OBC1_vccbram1", "OBC1_vccplintlp", "OBC1_vccplintfp", "OBC1_vccplaux",
+            "OBC1_vccams", "OBC1_vccpsintlp", "OBC1_vccpsintfp", "OBC1_vccpsaux", "OBC1_vccpsddr",
+            "OBC1_vccpsio3", "OBC1_vccpsio0", "OBC1_vccpsio1", "OBC1_vccpsio2", "OBC1_psmgtravcc",
+            "OBC1_psmgtravtt", "OBC1_vccams1", "OBC1_ps_temp", "OBC1_remote_temp", "OBC1_pl_temp"
+          ].map((param, index) => (
+            <tr 
+              key={param} 
+              className={index % 2 === 1 ? styles.tableRowAlt : ''}
+              style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+            >
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {/* Voltage and Current Parameters */}
+      <h4 style={{ 
+        fontSize: '14px', 
+        fontWeight: 'bold',
+        margin: '20px 0 10px',
+        color: isDarkMode ? "#d1d5db" : "#374151"
+      }}>
+        Voltage and Current Parameters
+      </h4>
+      
+      <table 
+        className={styles.table}
+        style={{
+          color: isDarkMode ? "#e5e7eb" : "inherit",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '14px'
+        }}
+      >
+        <thead 
+          className={styles.tableHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+            color: isDarkMode ? "#d1d5db" : "#6b7280"
+          }}
+        >
+          <tr>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            "OBC1_3V3_D", "OBC1_PS_3V3_OBC2_V", "OBC1_PS_5V_OBC2_V", 
+            "OBC1_PS_5V_OBC2_I", "OBC1_PS_3V3_OBC2_I"
+          ].map((param, index) => (
+            <tr 
+              key={param} 
+              className={index % 2 === 1 ? styles.tableRowAlt : ''}
+              style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+            >
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {/* Temperature Parameters */}
+      <h4 style={{ 
+        fontSize: '14px', 
+        fontWeight: 'bold',
+        margin: '20px 0 10px',
+        color: isDarkMode ? "#d1d5db" : "#374151"
+      }}>
+        Temperature Parameters
+      </h4>
+      
+      <table 
+        className={styles.table}
+        style={{
+          color: isDarkMode ? "#e5e7eb" : "inherit",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '14px'
+        }}
+      >
+        <thead 
+          className={styles.tableHeader}
+          style={{
+            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+            color: isDarkMode ? "#d1d5db" : "#6b7280"
+          }}
+        >
+          <tr>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+            <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            "OBC1_thruster_ch1_T", "OBC1_thruster_ch2_T", 
+            "OBC1_leocam_ch1_T", "OBC1_leocam_ch2_T",
+            "OBC1_leocam_ch3_T", "OBC1_leocam_ch4_T"
+          ].map((param, index) => (
+            <tr 
+              key={param} 
+              className={index % 2 === 1 ? styles.tableRowAlt : ''}
+              style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+            >
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+              <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {/* eMMC Parameters (if enabled) */}
+      {enableEmmc && (
+        <>
+          <h4 style={{ 
+            fontSize: '14px', 
+            fontWeight: 'bold',
+            margin: '20px 0 10px',
+            color: isDarkMode ? "#d1d5db" : "#374151"
+          }}>
+            eMMC Parameters
+          </h4>
+          
+          <table 
+            className={styles.table}
+            style={{
+              color: isDarkMode ? "#e5e7eb" : "inherit",
+              width: '100%',
+              borderCollapse: 'collapse',
+              fontSize: '14px'
+            }}
+          >
+            <thead 
+              className={styles.tableHeader}
+              style={{
+                backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                color: isDarkMode ? "#d1d5db" : "#6b7280"
+              }}
+            >
+              <tr>
+                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Show the raw values for all states of eMMC */}
+{Object.entries(results.rawParameters || {})
+  .filter(([key]) => key.includes('eMMC'))
+  .map(([param, value], index) => (
+    <tr 
+      key={param} 
+      className={index % 2 === 1 ? styles.tableRowAlt : ''}
+      style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+    >
+      <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+      <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{String(value) || 'N/A'}</td>
+    </tr>
+  ))}
+            </tbody>
+          </table>
+        </>
+      )}
+    </div>
+  )}
+</div>
               
               <div>
                 <button 

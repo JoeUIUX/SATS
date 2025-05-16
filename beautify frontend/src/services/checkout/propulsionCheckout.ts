@@ -109,8 +109,12 @@ export async function runPropulsionCheckout(
       },
       propTc: {}, // To store propulsion telecommand parameters
       propStat: {}, // For propulsion status parameters
-      reportGenerated: false
+      reportGenerated: false,
+      rawParameters: {} // Add this to store all raw parameters
     };
+
+    // Create a record to store raw parameter values
+    const rawParameters: Record<string, string> = {};
 
     // Define arrays of parameters to read based on Python code
     const pmaTimeParams = [
@@ -253,8 +257,15 @@ export async function runPropulsionCheckout(
       // Get ECU-1 voltage/current
       const ecu1ViResults = await mccifRead(sock, ecu1ViParams);
       
-      results.ecu1.voltage = safeParseValue(ecu1ViResults[0]);
-      results.ecu1.current = safeParseValue(ecu1ViResults[1]);
+      // Add this tracking code
+      ecu1ViParams.forEach((param, index) => {
+        const value = safeParseValue(ecu1ViResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "HEPS1_PDM1_ECU1_V") results.ecu1.voltage = value;
+        if (param === "HEPS1_PDM1_ECU1_I") results.ecu1.current = value;
+      });
       
       // Check if voltage is in expected range (regulated)
       const ecu1VoltageStatus = checkVoltageReg(results.ecu1.voltage);
@@ -279,13 +290,16 @@ export async function runPropulsionCheckout(
       // Store telemetry values in results
       results.prop1Tm = {};
       prop1TmParams.forEach((param, index) => {
+        const value = safeParseValue(prop1Results[index]);
+        rawParameters[param] = value;
+        
         const name = param.replace('PROPULSION1_', '');
-        results.prop1Tm[name] = safeParseValue(prop1Results[index]);
+        results.prop1Tm[name] = value;
         
         // Also store temperature values in the temperatures object for easy access
         if (name.includes('Temp') || name.includes('Temperature')) {
           const simpleName = name.replace('_Temperature', '').replace('_Temp', '');
-          results.temperatures[simpleName] = safeParseValue(prop1Results[index]);
+          results.temperatures[simpleName] = value;
         }
       });
       
@@ -303,7 +317,12 @@ export async function runPropulsionCheckout(
       // Check ECU-1 voltage when off (should be near zero)
       const ecu1ViOffResults = await mccifRead(sock, ecu1ViParams);
       
-      // Store updated values
+      // Store updated values and track parameters
+      ecu1ViParams.forEach((param, index) => {
+        const value = safeParseValue(ecu1ViOffResults[index]);
+        rawParameters[param] = value; // Update with new value
+      });
+      
       const ecu1OffVoltage = safeParseValue(ecu1ViOffResults[0]);
       const ecu1OffCurrent = safeParseValue(ecu1ViOffResults[1]);
       
@@ -326,8 +345,15 @@ export async function runPropulsionCheckout(
       // Get ECU-2 voltage/current
       const ecu2ViResults = await mccifRead(sock, ecu2ViParams);
       
-      results.ecu2.voltage = safeParseValue(ecu2ViResults[0]);
-      results.ecu2.current = safeParseValue(ecu2ViResults[1]);
+      // Add tracking code for ECU-2 parameters
+      ecu2ViParams.forEach((param, index) => {
+        const value = safeParseValue(ecu2ViResults[index]);
+        rawParameters[param] = value;
+        
+        // Map to structured results
+        if (param === "HEPS1_PDM2_ECU2_V") results.ecu2.voltage = value;
+        if (param === "HEPS1_PDM2_ECU2_I") results.ecu2.current = value;
+      });
       
       // Check if voltage is in expected range (regulated)
       const ecu2VoltageStatus = checkVoltageReg(results.ecu2.voltage);
@@ -352,8 +378,11 @@ export async function runPropulsionCheckout(
       // Store telemetry values in results
       results.prop2Tm = {};
       prop2TmParams.forEach((param, index) => {
+        const value = safeParseValue(prop2Results[index]);
+        rawParameters[param] = value;
+        
         const name = param.replace('PROPULSION2_', '');
-        results.prop2Tm[name] = safeParseValue(prop2Results[index]);
+        results.prop2Tm[name] = value;
       });
       
       onProgress("Powering off ECU-2", 30);
@@ -369,6 +398,12 @@ export async function runPropulsionCheckout(
       
       // Check ECU-2 voltage when off (should be near zero)
       const ecu2ViOffResults = await mccifRead(sock, ecu2ViParams);
+      
+      // Track parameters
+      ecu2ViParams.forEach((param, index) => {
+        const value = safeParseValue(ecu2ViOffResults[index]);
+        rawParameters[param] = value; // Update with new value
+      });
       
       // Check if voltage is in expected range for powered off (floating)
       const ecu2OffVoltage = safeParseValue(ecu2ViOffResults[0]);
@@ -395,6 +430,12 @@ export async function runPropulsionCheckout(
         
         // Read PMA timing parameters
         const pmaTimeResults = await mccifRead(sock, pmaTimeParams);
+        
+        // Store and track PMA timing values
+        pmaTimeParams.forEach((param, index) => {
+          const value = safeParseValue(pmaTimeResults[index]);
+          rawParameters[param] = value;
+        });
         
         // Store PMA timing values - ensure we have values even in simulation mode
         if (sock.isSimulated) {
@@ -436,257 +477,325 @@ export async function runPropulsionCheckout(
         // Store telecommand parameters
         results.propTc = {};
         propTcParams.forEach((param, index) => {
+          const value = safeParseValue(propTcResults[index]);
+          rawParameters[param] = value;
+          
           const name = param.replace('OBC1_Prop_', '');
-          results.propTc[name] = safeParseValue(propTcResults[index]);
+          results.propTc[name] = value;
         });
         
-// Execute PMA control command
-await mccifSet(sock, "OBC1_Prop_Control", 23);
-await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
-
-// Check ECU-1 voltage/current during test
-const ecu1ViTestResults = await mccifRead(sock, ecu1ViParams);
-
-// Check voltage during test
-const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
-const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
-results.passFailStatus.push(ecu1TestVoltageStatus ? 'PASS' : 'FAIL');
-
-onProgress("Waiting for PMA Test to Complete", 60);
-
-// Wait for the test to complete
-if (testDuration > 0 && testDuration < 600) { // Sanity check duration (max 10 minutes)
-  await new Promise(resolve => setTimeout(resolve, testDuration * 1000));
-} else {
-  // Use a default wait time if duration is invalid
-  await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds default
-}
-
-// Read propulsion status after test
-const propStatResults = await mccifRead(sock, propStatParams);
-
-// Store propulsion status
-results.propStat = {};
-propStatParams.forEach((param, index) => {
-  const name = param.replace('OBC1_Prop_', '');
-  results.propStat[name] = safeParseValue(propStatResults[index]);
-});
-
-// Read final ECU-1 voltage/current
-const ecu1ViFinalResults = await mccifRead(sock, ecu1ViParams);
-
-// Check final voltage (should be off)
-const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
-const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
-results.passFailStatus.push(ecu1FinalVoltageStatus ? 'PASS' : 'FAIL');
-
-// Update PMA status at the end
-results.pma.status = 'completed';
-
-} catch (error) {
-console.error("Error during PMA tests:", error);
-results.pma.status = 'error';
-}
-} else {
-// If PMA test is not enabled, set default N.A. values
-results.pma = {
-status: 'N.A.',
-initPayl: 'N.A.',
-dataGet: 'N.A.',
-dataSend: 'N.A.',
-ecuOff: 'N.A.',
-duration: 'N.A.',
-};
-
-// Set N.A. values for propTc and propStat as well
-results.propTc = {};
-propTcParams.forEach(param => {
-const name = param.replace('OBC1_Prop_', '');
-results.propTc[name] = 'N.A.';
-});
-
-results.propStat = {};
-propStatParams.forEach(param => {
-const name = param.replace('OBC1_Prop_', '');
-results.propStat[name] = 'N.A.';
-});
-
-// Add placeholder pass/fail results
-results.passFailStatus.push('N.A.');
-results.passFailStatus.push('N.A.');
-}
-
-// PPU Tests if enabled
-if (options.enablePPU) {
-onProgress("Running PPU Tests", 70);
-
-try {
-// Set ECU-1 for PPU test
-await mccifSet(sock, "OBC1_Prop_EcuId", 1);
-await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-
-// Set PPU ID
-await mccifSet(sock, "OBC1_Prop_PpuId", 1);
-await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-
-// Read PPU timing parameters
-const ppuTimeResults = await mccifRead(sock, ppuTimeParams);
-
-// Store PPU timing values - ensure we have values even in simulation mode
-if (sock.isSimulated) {
-  results.ppu = {
-    status: 'completed',
-    initPayl: '8',
-    dataGet1: '12',
-    ppuOn: '5',
-    dataGet2: '10',
-    dataSend: '15',
-    ppuOff: '7',
-    ecuOff: '5',
-    duration: '25',
-  };
-} else {
-  // Store results from real readings
-  results.ppu.initPayl = safeParseValue(ppuTimeResults[0]);
-  results.ppu.dataGet1 = safeParseValue(ppuTimeResults[1]);
-  results.ppu.ppuOn = safeParseValue(ppuTimeResults[2]);
-  results.ppu.dataGet2 = safeParseValue(ppuTimeResults[3]);
-  results.ppu.dataSend = safeParseValue(ppuTimeResults[4]);
-  results.ppu.ppuOff = safeParseValue(ppuTimeResults[5]);
-  results.ppu.ecuOff = safeParseValue(ppuTimeResults[6]);
-  results.ppu.duration = safeParseValue(ppuTimeResults[7]);
-}
-
-// Calculate total test duration
-const testDuration = sumPpuTime([
-  results.ppu.initPayl,
-  results.ppu.dataGet1,
-  results.ppu.ppuOn,
-  results.ppu.dataGet2,
-  results.ppu.dataSend,
-  results.ppu.ppuOff,
-  results.ppu.ecuOff,
-  results.ppu.duration
-]);
-
-onProgress("Initiating PPU Control", 75);
-
-// Start PPU control
-await mccifSet(sock, "OBC1_Prop_Control", 20);
-await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-
-// Read propulsion telecommand parameters
-const propTcResults = await mccifRead(sock, propTcParams);
-
-// Store telecommand parameters
-results.propTc = {};
-propTcParams.forEach((param, index) => {
-  const name = param.replace('OBC1_Prop_', '');
-  results.propTc[name] = safeParseValue(propTcResults[index]);
-});
-
-// Execute PPU control command
-await mccifSet(sock, "OBC1_Prop_Control", 21);
-await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
-
-// Check ECU-1 voltage/current during test
-const ecu1ViTestResults = await mccifRead(sock, ecu1ViParams);
-
-// Check voltage during test
-const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
-const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
-results.passFailStatus.push(ecu1TestVoltageStatus ? 'PASS' : 'FAIL');
-
-// Check PPU-1 voltage/current during test
-const ppu1ViTestResults = await mccifRead(sock, ppu1ViParams);
-
-// Store PPU-1 values
-results.ppu1.voltage = safeParseValue(ppu1ViTestResults[0]);
-results.ppu1.current = safeParseValue(ppu1ViTestResults[1]);
-
-// Check PPU-1 voltage
-const ppu1TestVoltageStatus = checkVoltageReg(results.ppu1.voltage);
-results.passFailStatus.push(ppu1TestVoltageStatus ? 'PASS' : 'FAIL');
-results.ppu1.status = ppu1TestVoltageStatus ? 'PASS' : 'FAIL';
-
-onProgress("Waiting for PPU Test to Complete", 85);
-
-// Wait for the test to complete
-if (testDuration > 0 && testDuration < 600) { // Sanity check duration (max 10 minutes)
-  await new Promise(resolve => setTimeout(resolve, testDuration * 1000));
-} else {
-  // Use a default wait time if duration is invalid
-  await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds default
-}
-
-// Read propulsion status after test
-const propStatResults = await mccifRead(sock, propStatParams);
-
-// Store propulsion status
-results.propStat = {};
-propStatParams.forEach((param, index) => {
-  const name = param.replace('OBC1_Prop_', '');
-  results.propStat[name] = safeParseValue(propStatResults[index]);
-});
-
-// Read final ECU-1 voltage/current
-const ecu1ViFinalResults = await mccifRead(sock, ecu1ViParams);
-
-// Check final voltage (should be off)
-const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
-const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
-results.passFailStatus.push(ecu1FinalVoltageStatus ? 'PASS' : 'FAIL');
-
-// Read final PPU-1 voltage/current
-const ppu1ViFinalResults = await mccifRead(sock, ppu1ViParams);
-
-// Check final PPU-1 voltage (should be off)
-const ppu1FinalVoltage = safeParseValue(ppu1ViFinalResults[0]);
-const ppu1FinalVoltageStatus = checkVoltageFloat(ppu1FinalVoltage);
-results.passFailStatus.push(ppu1FinalVoltageStatus ? 'PASS' : 'FAIL');
-
-// Update PPU status
-results.ppu.status = 'completed';
-
-} catch (error) {
-console.error("Error during PPU tests:", error);
-results.ppu.status = 'error';
-}
-} else {
-// If PPU test is not enabled, set default N.A. values
-results.ppu = {
-status: 'N.A.',
-initPayl: 'N.A.',
-dataGet1: 'N.A.',
-ppuOn: 'N.A.',
-dataGet2: 'N.A.',
-dataSend: 'N.A.',
-ppuOff: 'N.A.',
-ecuOff: 'N.A.',
-duration: 'N.A.',
-};
-
-// Set N.A. values for PPU related measures
-results.ppu1 = {
-voltage: 'N.A.',
-current: 'N.A.',
-status: 'N.A.'
-};
-
-// Add placeholder pass/fail results
-results.passFailStatus.push('N.A.');
-results.passFailStatus.push('N.A.');
-results.passFailStatus.push('N.A.');
-results.passFailStatus.push('N.A.');
-}
-
-// Complete checkout (100%)
-onProgress('Checkout Complete', 100);
-
-return results;
-
-} catch (error) {
-console.error('Error during Propulsion checkout:', error);
-throw error;
-}
+        // Execute PMA control command
+        await mccifSet(sock, "OBC1_Prop_Control", 23);
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
+        
+        // Check ECU-1 voltage/current during test
+        const ecu1ViTestResults = await mccifRead(sock, ecu1ViParams);
+        
+        // Track parameters
+        ecu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ecu1ViTestResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Check voltage during test
+        const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
+        const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
+        results.passFailStatus.push(ecu1TestVoltageStatus ? 'PASS' : 'FAIL');
+        
+        onProgress("Waiting for PMA Test to Complete", 60);
+        
+        // Wait for the test to complete
+        if (testDuration > 0 && testDuration < 600) { // Sanity check duration (max 10 minutes)
+          await new Promise(resolve => setTimeout(resolve, testDuration * 1000));
+        } else {
+          // Use a default wait time if duration is invalid
+          await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds default
+        }
+        
+        // Read propulsion status after test
+        const propStatResults = await mccifRead(sock, propStatParams);
+        
+        // Store propulsion status
+        results.propStat = {};
+        propStatParams.forEach((param, index) => {
+          const value = safeParseValue(propStatResults[index]);
+          rawParameters[param] = value;
+          
+          const name = param.replace('OBC1_Prop_', '');
+          results.propStat[name] = value;
+        });
+        
+        // Read final ECU-1 voltage/current
+        const ecu1ViFinalResults = await mccifRead(sock, ecu1ViParams);
+        
+        // Track parameters
+        ecu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ecu1ViFinalResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Check final voltage (should be off)
+        const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
+        const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
+        results.passFailStatus.push(ecu1FinalVoltageStatus ? 'PASS' : 'FAIL');
+        
+        // Update PMA status at the end
+        results.pma.status = 'completed';
+        
+      } catch (error) {
+        console.error("Error during PMA tests:", error);
+        results.pma.status = 'error';
+      }
+    } else {
+      // If PMA test is not enabled, set default N.A. values
+      results.pma = {
+        status: 'N.A.',
+        initPayl: 'N.A.',
+        dataGet: 'N.A.',
+        dataSend: 'N.A.',
+        ecuOff: 'N.A.',
+        duration: 'N.A.',
+      };
+      
+      // Set N.A. values for propTc and propStat as well
+      results.propTc = {};
+      propTcParams.forEach(param => {
+        const name = param.replace('OBC1_Prop_', '');
+        results.propTc[name] = 'N.A.';
+        rawParameters[param] = 'N.A.';
+      });
+      
+      results.propStat = {};
+      propStatParams.forEach(param => {
+        const name = param.replace('OBC1_Prop_', '');
+        results.propStat[name] = 'N.A.';
+        rawParameters[param] = 'N.A.';
+      });
+      
+      // Add placeholder pass/fail results
+      results.passFailStatus.push('N.A.');
+      results.passFailStatus.push('N.A.');
+    }
+    
+    // PPU Tests if enabled
+    if (options.enablePPU) {
+      onProgress("Running PPU Tests", 70);
+      
+      try {
+        // Set ECU-1 for PPU test
+        await mccifSet(sock, "OBC1_Prop_EcuId", 1);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+        
+        // Set PPU ID
+        await mccifSet(sock, "OBC1_Prop_PpuId", 1);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+        
+        // Read PPU timing parameters
+        const ppuTimeResults = await mccifRead(sock, ppuTimeParams);
+        
+        // Store and track PPU timing values
+        ppuTimeParams.forEach((param, index) => {
+          const value = safeParseValue(ppuTimeResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Store PPU timing values - ensure we have values even in simulation mode
+        if (sock.isSimulated) {
+          results.ppu = {
+            status: 'completed',
+            initPayl: '8',
+            dataGet1: '12',
+            ppuOn: '5',
+            dataGet2: '10',
+            dataSend: '15',
+            ppuOff: '7',
+            ecuOff: '5',
+            duration: '25',
+          };
+        } else {
+          // Store results from real readings
+          results.ppu.initPayl = safeParseValue(ppuTimeResults[0]);
+          results.ppu.dataGet1 = safeParseValue(ppuTimeResults[1]);
+          results.ppu.ppuOn = safeParseValue(ppuTimeResults[2]);
+          results.ppu.dataGet2 = safeParseValue(ppuTimeResults[3]);
+          results.ppu.dataSend = safeParseValue(ppuTimeResults[4]);
+          results.ppu.ppuOff = safeParseValue(ppuTimeResults[5]);
+          results.ppu.ecuOff = safeParseValue(ppuTimeResults[6]);
+          results.ppu.duration = safeParseValue(ppuTimeResults[7]);
+        }
+        
+        // Calculate total test duration
+        const testDuration = sumPpuTime([
+          results.ppu.initPayl,
+          results.ppu.dataGet1,
+          results.ppu.ppuOn,
+          results.ppu.dataGet2,
+          results.ppu.dataSend,
+          results.ppu.ppuOff,
+          results.ppu.ecuOff,
+          results.ppu.duration
+        ]);
+        
+        onProgress("Initiating PPU Control", 75);
+        
+        // Start PPU control
+        await mccifSet(sock, "OBC1_Prop_Control", 20);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+        
+        // Read propulsion telecommand parameters
+        const propTcResults = await mccifRead(sock, propTcParams);
+        
+        // Store telecommand parameters
+        results.propTc = {};
+        propTcParams.forEach((param, index) => {
+          const value = safeParseValue(propTcResults[index]);
+          rawParameters[param] = value;
+          
+          const name = param.replace('OBC1_Prop_', '');
+          results.propTc[name] = value;
+        });
+        
+        // Execute PPU control command
+        await mccifSet(sock, "OBC1_Prop_Control", 21);
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
+        
+        // Check ECU-1 voltage/current during test
+        const ecu1ViTestResults = await mccifRead(sock, ecu1ViParams);
+        
+        // Track parameters
+        ecu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ecu1ViTestResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Check voltage during test
+        const ecu1TestVoltage = safeParseValue(ecu1ViTestResults[0]);
+        const ecu1TestVoltageStatus = checkVoltageReg(ecu1TestVoltage);
+        results.passFailStatus.push(ecu1TestVoltageStatus ? 'PASS' : 'FAIL');
+        
+        // Check PPU-1 voltage/current during test
+        const ppu1ViTestResults = await mccifRead(sock, ppu1ViParams);
+        
+        // Track PPU-1 parameters
+        ppu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ppu1ViTestResults[index]);
+          rawParameters[param] = value;
+          
+          // Store PPU-1 values in structured results
+          if (param === "HEPS1_PDM1_THRU1_V") results.ppu1.voltage = value;
+          if (param === "HEPS1_PDM1_THRU1_I") results.ppu1.current = value;
+        });
+        
+        // Check PPU-1 voltage
+        const ppu1TestVoltageStatus = checkVoltageReg(results.ppu1.voltage);
+        results.passFailStatus.push(ppu1TestVoltageStatus ? 'PASS' : 'FAIL');
+        results.ppu1.status = ppu1TestVoltageStatus ? 'PASS' : 'FAIL';
+        
+        onProgress("Waiting for PPU Test to Complete", 85);
+        
+        // Wait for the test to complete
+        if (testDuration > 0 && testDuration < 600) { // Sanity check duration (max 10 minutes)
+          await new Promise(resolve => setTimeout(resolve, testDuration * 1000));
+        } else {
+          // Use a default wait time if duration is invalid
+          await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds default
+        }
+        
+        // Read propulsion status after test
+        const propStatResults = await mccifRead(sock, propStatParams);
+        
+        // Store propulsion status
+        results.propStat = {};
+        propStatParams.forEach((param, index) => {
+          const value = safeParseValue(propStatResults[index]);
+          rawParameters[param] = value;
+          
+          const name = param.replace('OBC1_Prop_', '');
+          results.propStat[name] = value;
+        });
+        
+        // Read final ECU-1 voltage/current
+        const ecu1ViFinalResults = await mccifRead(sock, ecu1ViParams);
+        
+        // Track parameters
+        ecu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ecu1ViFinalResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Check final voltage (should be off)
+        const ecu1FinalVoltage = safeParseValue(ecu1ViFinalResults[0]);
+        const ecu1FinalVoltageStatus = checkVoltageFloat(ecu1FinalVoltage);
+        results.passFailStatus.push(ecu1FinalVoltageStatus ? 'PASS' : 'FAIL');
+        
+        // Read final PPU-1 voltage/current
+        const ppu1ViFinalResults = await mccifRead(sock, ppu1ViParams);
+        
+        // Track parameters
+        ppu1ViParams.forEach((param, index) => {
+          const value = safeParseValue(ppu1ViFinalResults[index]);
+          rawParameters[param] = value;
+        });
+        
+        // Check final PPU-1 voltage (should be off)
+        const ppu1FinalVoltage = safeParseValue(ppu1ViFinalResults[0]);
+        const ppu1FinalVoltageStatus = checkVoltageFloat(ppu1FinalVoltage);
+        results.passFailStatus.push(ppu1FinalVoltageStatus ? 'PASS' : 'FAIL');
+        
+        // Update PPU status
+        results.ppu.status = 'completed';
+        
+      } catch (error) {
+        console.error("Error during PPU tests:", error);
+        results.ppu.status = 'error';
+      }
+    } else {
+      // If PPU test is not enabled, set default N.A. values
+      results.ppu = {
+        status: 'N.A.',
+        initPayl: 'N.A.',
+        dataGet1: 'N.A.',
+        ppuOn: 'N.A.',
+        dataGet2: 'N.A.',
+        dataSend: 'N.A.',
+        ppuOff: 'N.A.',
+        ecuOff: 'N.A.',
+        duration: 'N.A.',
+      };
+      
+      // Set N.A. values for PPU related measures
+      results.ppu1 = {
+        voltage: 'N.A.',
+        current: 'N.A.',
+        status: 'N.A.'
+      };
+      
+      // Store N.A. values in rawParameters for PPU parameters
+      ppu1ViParams.forEach(param => {
+        rawParameters[param] = 'N.A.';
+      });
+      
+      ppuTimeParams.forEach(param => {
+        rawParameters[param] = 'N.A.';
+      });
+      
+      // Add placeholder pass/fail results
+      results.passFailStatus.push('N.A.');
+      results.passFailStatus.push('N.A.');
+      results.passFailStatus.push('N.A.');
+      results.passFailStatus.push('N.A.');
+    }
+    
+    // Complete checkout (100%)
+    onProgress('Checkout Complete', 100);
+    
+    // Before returning the results, add the raw parameters
+    results.rawParameters = rawParameters;
+    
+    return results;
+    
+  } catch (error) {
+    console.error('Error during Propulsion checkout:', error);
+    throw error;
+  }
 }

@@ -61,22 +61,54 @@ SATS Satellite Automated Testing System/
 │   │
 │   │   ├── components/                            # UI components
 │   │   │   ├── MainScreen/                        # Main application screen
+│   │   │       ├── MainScreen.tsx                 
+│   │   │       ├── MainScreen.module.css       
+│   │   │       ├── DraggableBox.tsx               # Drag-and-Drop functionality   
+│   │   │   
 │   │   │   ├── ServerWindow/                      # MCC server connection
+│   │   │       ├── ServerWindow.tsx
+│   │   │       ├── ServerWindow.module.css   
+│   │   │       
 │   │   │   ├── ToTestList/                        # Test management
+│   │   │       ├── ToTestList.tsx
+│   │   │       ├── ToTestList.module.css  
+│   │   │   
 │   │   │   ├── WelcomeWindow/                     # Welcome screen
+│   │   │       ├── WelcomeWindow.tsx
+│   │   │       ├── WelcomeWindow.module.css  
+│   │   │      
 │   │   │   ├── ModelWindow/                       # 3D model visualization
+│   │   │       ├── ThreeDModelWindow.jsx
+│   │   │       ├── ThreeDModelWindow.module.css  
+│   │   │   
 │   │   │   ├── Taskbar/                           # Window management taskbar
+│   │   │       ├── Taskbar.tsx
+│   │   │       ├── Taskbar.module.css  
+│   │   │   
 │   │   │   ├── SettingsWindow/                    # Settings
+│   │   │       ├── SettingsWindow.tsx
+│   │   │       ├── SettingsWindow.module.css
+│   │   │   
 │   │   │   ├── FontLoader/                        # Fonts in SettingsWindow
+│   │   │       ├── FontLoader.tsx
+│   │   │     
 │   │   │   ├── ui/                                # reusable UI elements
+│   │   │       ├── alert.tsx
+│   │   │       ├── button.tsx
+│   │   │       ├── card.tsx
+│   │   │       ├── progress.tsx
+│   │   │       ├── tabs.tsx
+│   │   │       ├── index.ts                       # Export UI elements
+│   │   │   
 │   │   │   ├── CheckoutTestProgress/              # Test execution
 │   │   │   │   ├── CheckoutTestProgress.tsx
 │   │   │   │   ├── CheckoutTestProgress.module.css
 │   │   │   │   ├── components/
 │   │   │   │       ├── OBC1TestPanel.tsx          # OBC-1 test
-│   │   │   │       ├── OBC1TestPanel.module.css   # reusable CSS
+│   │   │   │       ├── OBC1TestPanel.module.css   # reusable base CSS
 │   │   │   │       ├── OBC2TestPanel.tsx          # OBC-2 test
 │   │   │   │       ├── SBandTestPanel.tsx         # S-Band test
+│   │   │   │       ├── SBandTestPanel.module.css  # SBand styles in addition to base CSS
 │   │   │   │       ├── UHFTestPanel.tsx           # UHF test
 │   │   │   │       ├── ADCSTestPanel.tsx          # ADCS test
 │   │   │   │       ├── GPSTestPanel.tsx           # GPS test
@@ -85,9 +117,9 @@ SATS Satellite Automated Testing System/
 │   │   │   │       ├── PropulsionTestPanel.tsx    # Propulsion test
 │   │   │   │       ├── LEOCAMTestPanel.tsx        # LEOCAM test
 │   │   │   │       ├── XBandTestPanel.tsx         # X-Band test
-│   │   │   │       ├── TestDetailsModal           # reusable component for Test History
-│   │   │   │       ├── TestHistoryChart           # reusable component for Test History
-│   │   │   │       ├── TestHistoryTable           # reusable component for Test History
+│   │   │   │       ├── TestDetailsModal.tsx       # reusable component for Test History
+│   │   │   │       ├── TestHistoryChart.tsx       # reusable component for Test History
+│   │   │   │       ├── TestHistoryTable.tsx       # reusable component for Test History
 │   │   │   │       ├── index.ts                   # component exports
 │   │
 │   │   ├── services/         # Business logic
@@ -126,6 +158,8 @@ SATS Satellite Automated Testing System/
 │   │
 │   │   ├── types/            # TypeScript definitions
 │   │       ├── types.ts
+│
+│   ├── image.d.ts            # TypeScript declaration file to handle image type
 │
 │   ├── package.json          # Node dependencies
 │   ├── tsconfig.json         # TypeScript configuration

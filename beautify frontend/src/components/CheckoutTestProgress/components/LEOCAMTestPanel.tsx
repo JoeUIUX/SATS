@@ -66,6 +66,55 @@ interface TestHistoryItem {
   is_simulated?: boolean;
 }
 
+// Add these parameter array constants before the component's return statement 
+const pcsVi = ["HEPS1_PDM2_PCS_V", "HEPS1_PDM2_PCS_I"];
+const gpsVi = ["HEPS1_PDM2_GPS_5V_V", "HEPS1_PDM2_GPS_5V_I"];
+const leocamVi = ["HEPS1_PDM1_OPT_CAM_V", "HEPS1_PDM1_OPT_CAM_I"];
+
+const leocamSet = [
+  "Leocam_Sen_Mode", "Leocam_Sen_PWR", "Leocam_Sen_Line_Frame_Rate", "Leocam_Sen_BIT_DEPTH",
+  "Leocam_Sen_ROI_1", "Leocam_Sen_ROI_2", "Leocam_Sen_ROI_3", "Leocam_Sen_ROI_4",
+  "Leocam_Sen_ROI_5_1", "Leocam_Sen_ROI_5_2", "Leocam_Sen_ROI_5_3", "Leocam_Sen_Gain_Analog",
+  "Leocam_Sen_Scan_Direction", "Leocam_Sen_Test_Pattern_Sel"
+];
+
+const leocamVarStart = [
+  "Leocam_Health_Status", "Leocam_Datetime", 
+  "Leocam_CPU_Voltage_1", "Leocam_CPU_Voltage_2", "Leocam_CPU_Voltage_3", "Leocam_CPU_Voltage_4",
+  "Leocam_CPU_Temp_1", "Leocam_CPU_Temp_2", "Leocam_CPU_Temp_3", "Leocam_CPU_Temp_4"
+];
+
+const leocamVarMiddle = [
+  "Leocam_Int_Temp_1", "Leocam_Int_Temp_2", "Leocam_Int_Temp_3", "Leocam_Int_Temp_4",
+  "Leocam_Int_Temp_5", "Leocam_Int_Temp_6", "Leocam_Int_Temp_7", "Leocam_Int_Temp_8"
+];
+
+const leocamVarConfig = [
+  "Leocam_Sen_PWR", "Leocam_Sen_Mode", "Leocam_Sen_Line_Frame_Rate", "Leocam_Sen_BIT_DEPTH", 
+  "Leocam_Sen_ROI_1", "Leocam_Sen_ROI_2", "Leocam_Sen_ROI_3", "Leocam_Sen_ROI_4", 
+  "Leocam_Sen_ROI_5_1", "Leocam_Sen_ROI_5_2", "Leocam_Sen_ROI_5_3", "Leocam_Sen_Gain_Analog", 
+  "Leocam_Sen_Scan_Direction", "Leocam_Sen_Test_Pattern_Sel"
+];
+
+const leocamVarEnd = [
+  "Leocam_Sen_VOLTAGE", "Leocam_Sen_TEMP_1", "Leocam_Sen_TEMP_2", "Leocam_Sen_Reset"
+];
+
+const leocamDiskVars = [
+  "Leocam_Disk_Used_1", "Leocam_Disk_Used_2", "Leocam_Disk_Used_3",
+  "Leocam_Disk_TEMP_1", "Leocam_Disk_TEMP_2", "Leocam_Disk_TEMP_3", 
+  "Leocam_Disk_Lifetime_1", "Leocam_Disk_Lifetime_2", "Leocam_Disk_Lifetime_3",
+  "Leocam_Disk_Err_Correction_Count_1", "Leocam_Disk_Err_Correction_Count_2", "Leocam_Disk_Err_Correction_Count_3",
+  "Leocam_Disk_Err_Uncorrectable_Count_1", "Leocam_Disk_Err_Uncorrectable_Count_2", "Leocam_Disk_Err_Uncorrectable_Count_3",
+  "Leocam_Disk_Total_Bytes_Read_1", "Leocam_Disk_Total_Bytes_Read_2", "Leocam_Disk_Total_Bytes_Read_3",
+  "Leocam_Disk_Total_Bytes_Written_1", "Leocam_Disk_Total_Bytes_Written_2", "Leocam_Disk_Total_Bytes_Written_3",
+  "Leocam_Disk_List_Datasets", "Leocam_Disk_List_Datafiles_in_Dataset"
+];
+
+const leocamStat = [
+  "PCS_Leocam_Cmd_Count", "PCS_Leocam_Ack_Count", "PCS_Leocam_Timeout_Count", "PCS_Leocam_Error_Count"
+];
+
 export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
   options,
   sock,
@@ -138,48 +187,51 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  // Check if we have a real socket or need simulation
-  useEffect(() => {
-    // Check the socket type and update UI accordingly
-    console.log("🔍 Socket debug info:", debugSocketType(sock));
-    
-    // Check if this is coming from localStorage
-    const socketInfoStr = localStorage.getItem('mccSocketInfo');
-    let useSimulation = true; // Default to simulation
+  // Modify the useEffect for socket detection
+useEffect(() => {
+  // First check the socket itself
+  let isSimulated = true; // Default to simulation (safer assumption)
+  
+  if (sock) {
+    // Direct simulation flag check - most reliable if present
+    if (typeof sock.isSimulated === 'boolean') {
+      isSimulated = sock.isSimulated;
+    } 
+    // If it has a simulateRead method, it's definitely a simulation socket
+    else if (typeof sock.simulateRead === 'function') {
+      isSimulated = true;
+    }
+    // If it has send/receive methods but no simulation methods, likely real
+    else if (typeof sock.send === 'function' && typeof sock.receive === 'function' && 
+             typeof sock.simulateRead === 'undefined') {
+      isSimulated = false;
+    }
+  }
+  
+  // Check localStorage as secondary source (less reliable but could be used as fallback)
+  const socketInfoStr = localStorage.getItem('mccSocketInfo');
+  let configSaysSimulation = true;
 
-    if (socketInfoStr) {
-      try {
-        const socketInfo = JSON.parse(socketInfoStr);
-        // If we have valid socket info and it's marked as real (not simulation)
-        if (socketInfo && socketInfo.isReal === true) {
-          console.log("📱 Using real socket configuration from localStorage");
-          useSimulation = false;
-        } else {
-          console.log("📱 Socket in localStorage marked as simulation");
-          useSimulation = true;
-        }
-      } catch (error) {
-        console.error("Error parsing socket info:", error);
+  if (socketInfoStr) {
+    try {
+      const socketInfo = JSON.parse(socketInfoStr);
+      if (socketInfo && socketInfo.isReal === true) {
+        configSaysSimulation = false;
       }
-    } else {
-      console.log("📱 No socket info in localStorage");
+    } catch (e) {
+      console.error("Error parsing socket info:", e);
     }
-
-    // If the socket has an explicit isSimulated flag, use that
-    if (sock && sock.isSimulated !== undefined) {
-      useSimulation = sock.isSimulated;
-      console.log(`📱 Using socket's own isSimulated flag: ${useSimulation}`);
-    }
-
-    setIsForceSimulation(useSimulation);
-    setSimulationMode(useSimulation);
-    
-    if (useSimulation) {
-      console.log("🟢 Using simulation mode for testing");
-    } else {
-      console.log("🔴 Using real socket mode for testing");
-    }
-  }, [sock]);
+  }
+  
+  // Set states based on our determination
+  setDetectedSimulation(isSimulated);
+  setIsForceSimulation(configSaysSimulation);
+  
+  console.log(`Socket analysis: Socket detected as ${isSimulated ? 'SIMULATION' : 'REAL'}, Config says ${configSaysSimulation ? 'SIMULATION' : 'REAL'}`);
+  
+  // Global simulation mode should use the most accurate determination (socket itself)
+  setSimulationMode(isSimulated);
+}, [sock]);
   
   useEffect(() => {
     // Only run test automatically if this is the initial run and we haven't run it yet
@@ -1011,26 +1063,31 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
                 </div>
               </div>
               
-              {/* Connection Status */}
-              <div 
-                className={styles.parameterBox}
-                style={{
-                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div className={styles.parameterLabel}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
-                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                  </svg>
-                  Connection Mode
-                </div>
-                <span className={`${styles.statusBadge} ${
-                  isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-                }`}>
-                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-                </span>
-              </div>
+{/* Connection Status */}
+<div 
+  className={styles.parameterBox}
+  style={{
+    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+  }}
+>
+  <div className={styles.parameterLabel}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
+      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+    </svg>
+    Connection Mode
+  </div>
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+  </span>
+</div>
               
               <div 
                 className={styles.parameterBox}
@@ -1057,7 +1114,7 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
                 disabled={isRunning}
                 style={{ 
                   backgroundColor: isRunning ? '#9ca3af' :
-                    hasRunTest ? '#059669' : '#10b981',
+                    hasRunTest ? '#4f46e5' : '#10b981',
                   color: 'white'
                 }}
               >
@@ -1087,508 +1144,286 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
             </div>
           </div>
           
-          {results && (
-            <div className="space-y-4 mt-4">
-              <div 
-                className={styles.card}
+{results && (
+  <div className="space-y-4 mt-4">
+    {/* Raw Parameter Values Panel - This replaces all existing result panels */}
+    <div 
+      className={styles.card}
+      style={{
+        backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+      }}
+    >
+      <div 
+        className={styles.cardHeader}
+        style={{
+          backgroundColor: isDarkMode ? "#111827" : undefined,
+          borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+          background: isDarkMode 
+            ? "linear-gradient(to right, #1e40af, #3b82f6)" 
+            : "linear-gradient(to right, #dbeafe, #eff6ff)"
+        }}
+      >
+        <h3 className={styles.cardTitle} style={{ color: isDarkMode ? "#f3f4f6" : "#111827" }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
+            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+          </svg>
+          LEOCAM Test Results - Raw Parameter Values
+        </h3>
+        
+        <SimulationBadge isSimulation={isForceSimulation} />
+      </div>
+      
+      <div className={styles.cardContent}>
+        
+        {/* Voltage and Current Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '16px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          Voltage and Current Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pcsVi.concat(gpsVi, leocamVi).map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* LEOCAM Sensor Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          LEOCAM Sensor Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leocamSet.map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* LEOCAM Telemetry Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          LEOCAM Telemetry Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[...leocamVarStart, ...leocamVarMiddle, ...leocamVarConfig, ...leocamVarEnd].map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
+              >
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* LEOCAM Disk Parameters */}
+          <>
+            <h4 style={{ 
+              fontSize: '14px', 
+              fontWeight: 'bold',
+              margin: '20px 0 10px',
+              color: isDarkMode ? "#d1d5db" : "#374151"
+            }}>
+              LEOCAM Disk Parameters
+            </h4>
+            
+            <table 
+              className={styles.table}
+              style={{
+                color: isDarkMode ? "#e5e7eb" : "inherit",
+                width: '100%',
+                borderCollapse: 'collapse',
+                fontSize: '14px'
+              }}
+            >
+              <thead 
+                className={styles.tableHeader}
                 style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                  backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                  color: isDarkMode ? "#d1d5db" : "#6b7280"
                 }}
               >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #064e3b, #065f46)" 
-                      : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                    color: isDarkMode ? "#d1fae5" : "#065f46"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                    </svg>
-                    LEOCAM Voltage Test Results
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  <table 
-                    className={styles.table}
-                    style={{
-                      color: isDarkMode ? "#e5e7eb" : "inherit"
-                    }}
+                <tr>
+                  <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+                  <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leocamDiskVars.map((param, index) => (
+                  <tr 
+                    key={param} 
+                    className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                    style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
                   >
-                    <thead 
-                      className={styles.tableHeader}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        color: isDarkMode ? "#d1d5db" : "#6b7280"
-                      }}
-                    >
-                      <tr>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Device</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Voltage</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Current</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Initial Status</th>
-                        <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Final Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className={styles.tableBody}>
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>GPS</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.gps.voltage} V</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.gps.current} A</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.gps.passInitial ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.gps.passInitial ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.gps.passFinal ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.gps.passFinal ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                      </tr>
-                      
-                      <tr className={styles.tableRowAlt} style={{ backgroundColor: isDarkMode ? "#111827" : "#f9fafb" }}>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>PCS</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.pcs.voltage} V</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.pcs.current} A</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.pcs.passInitial ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.pcs.passInitial ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.pcs.passFinal ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.pcs.passFinal ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                      </tr>
-                      
-                      <tr>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>LEOCAM</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.leocam.voltage} V</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{results.voltageTests.leocam.current} A</td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.leocam.passInitial ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.leocam.passInitial ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                        <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                          <span className={`${styles.statusBadge} ${
-                            results.voltageTests.leocam.passFinal ? styles.colorCompleted : styles.colorError
-                          }`}>
-                            {results.voltageTests.leocam.passFinal ? "PASS" : "FAIL"}
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              
-              <div 
-                className={styles.card}
-                style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
+                    <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                    <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+ 
+        
+        {/* LEOCAM Statistics Parameters */}
+        <h4 style={{ 
+          fontSize: '14px', 
+          fontWeight: 'bold',
+          margin: '20px 0 10px',
+          color: isDarkMode ? "#d1d5db" : "#374151"
+        }}>
+          LEOCAM Statistics Parameters
+        </h4>
+        
+        <table 
+          className={styles.table}
+          style={{
+            color: isDarkMode ? "#e5e7eb" : "inherit",
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: '14px'
+          }}
+        >
+          <thead 
+            className={styles.tableHeader}
+            style={{
+              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+              color: isDarkMode ? "#d1d5db" : "#6b7280"
+            }}
+          >
+            <tr>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Parameter</th>
+              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px', textAlign: 'left' }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leocamStat.map((param, index) => (
+              <tr 
+                key={param} 
+                className={index % 2 === 1 ? styles.tableRowAlt : ''}
+                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
               >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #064e3b, #065f46)" 
-                      : "linear-gradient(to right, #ecfdf5, #d1fae5)",
-                    color: isDarkMode ? "#d1fae5" : "#065f46"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
-                    </svg>
-                    LEOCAM Configuration
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Sensor Mode</div>
-                      <span>{results.leocamConfig.sensorMode || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Sensor Power</div>
-                      <span>{results.leocamConfig.sensorPower || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Frame Rate</div>
-                      <span>{results.leocamConfig.sensorLineFrameRate || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Bit Depth</div>
-                      <span>{results.leocamConfig.sensorBitDepth || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                        gridColumn: "span 2"
-                      }}
-                      >
-                      <div className={styles.parameterLabel}>ROI Settings</div>
-                      <span>{results.leocamConfig.sensorRoi.join(', ') || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Gain Analog</div>
-                      <span>{results.leocamConfig.sensorGainAnalog || 'N/A'}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.parameterBox}
-                      style={{
-                        backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                        borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                      }}
-                    >
-                      <div className={styles.parameterLabel}>Scan Direction</div>
-                      <span>{results.leocamConfig.sensorScanDirection || 'N/A'}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div 
-                className={styles.card}
-                style={{
-                  backgroundColor: isDarkMode ? "#1e1e1e" : "white",
-                  borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                }}
-              >
-                <div 
-                  className={styles.cardHeader} 
-                  style={{ 
-                    background: isDarkMode 
-                      ? "linear-gradient(to right, #075985, #0369a1)" 
-                      : "linear-gradient(to right, #e0f2fe, #bae6fd)",
-                    color: isDarkMode ? "#bae6fd" : "#0369a1"
-                  }}
-                >
-                  <h3 className={styles.cardTitle}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.cardIcon}>
-                      <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8l4-2 4 2V6z" clipRule="evenodd" />
-                    </svg>
-                    LEOCAM Telemetry Data
-                  </h3>
-                  
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
-                </div>
-                
-                <div className={styles.cardContent}>
-                  <div 
-                    className={styles.parameterBox}
-                    style={{
-                      backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                      borderColor: isDarkMode ? "#374151" : "#e5e7eb",
-                      marginBottom: "16px"
-                    }}
-                  >
-                    <div className={styles.parameterLabel}>Health Status</div>
-                    <span className={`${styles.statusBadge} ${
-                      results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? 
-                      styles.colorCompleted : styles.colorError
-                    }`}>
-                      {results.leocamTelemetry.healthStatus === "0" || results.leocamTelemetry.healthStatus === 0 ? 
-                       "HEALTHY" : "ERROR"}
-                    </span>
-                  </div>
-                  
-                  <h4 style={{ 
-                    fontSize: '14px', 
-                    fontWeight: 'bold',
-                    marginBottom: '10px',
-                    color: isDarkMode ? "#d1d5db" : "#374151"
-                  }}>
-                    Temperature Readings
-                  </h4>
-                  
-                  <div className={styles.tempGrid}>
-                    {/* CPU Temperatures */}
-                    {results.leocamTelemetry.cpuTemperatures.map((temp: string, index: number) => (
-                      <div 
-                        key={`cpu-temp-${index}`}
-                        className={styles.tempCard} style={{
-                          backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                          borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                        }}
-                      >
-                        <div 
-                          className={styles.tempLabel}
-                          style={{
-                            color: isDarkMode ? "#fcd34d" : "#92400e"
-                          }}
-                        >
-                          CPU {index + 1}
-                        </div>
-                        <div 
-                          className={styles.tempValue}
-                          style={{
-                            color: isDarkMode ? "#fcd34d" : "#92400e"
-                          }}
-                        >
-                          {temp}°C
-                        </div>
-                      </div>
-                      ))}
-                      
-                      {/* Internal Temperatures */}
-                      {results.leocamTelemetry.internalTemperatures.map((temp: string, index: number) => (
-                        <div 
-                          key={`int-temp-${index}`}
-                          className={styles.tempCard}
-                          style={{
-                            backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                            borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                          }}
-                        >
-                          <div 
-                            className={styles.tempLabel}
-                            style={{
-                              color: isDarkMode ? "#fcd34d" : "#92400e"
-                            }}
-                          >
-                            Internal {index + 1}
-                          </div>
-                          <div 
-                            className={styles.tempValue}
-                            style={{
-                              color: isDarkMode ? "#fcd34d" : "#92400e"
-                            }}
-                          >
-                            {temp}°C
-                          </div>
-                        </div>
-                      ))}
-                      
-                      {/* Sensor Temperatures */}
-                      {results.leocamTelemetry.sensorTemperatures.map((temp: string, index: number) => (
-                        <div 
-                          key={`sensor-temp-${index}`}
-                          className={styles.tempCard}
-                          style={{
-                            backgroundColor: isDarkMode ? "rgba(146, 64, 14, 0.1)" : "#fffbeb",
-                            borderColor: isDarkMode ? "rgba(252, 211, 77, 0.3)" : "#fcd34d"
-                          }}
-                        >
-                          <div 
-                            className={styles.tempLabel}
-                            style={{
-                              color: isDarkMode ? "#fcd34d" : "#92400e"
-                            }}
-                          >
-                            Sensor {index + 1}
-                          </div>
-                          <div 
-                            className={styles.tempValue}
-                            style={{
-                              color: isDarkMode ? "#fcd34d" : "#92400e"
-                            }}
-                          >
-                            {temp}°C
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Storage Section */}
-                    {(options.includes('Disk Operations') || results.leocamTelemetry.diskUsed.length > 0) && (
-                      <>
-                        <h4 style={{ 
-                          fontSize: '14px', 
-                          fontWeight: 'bold',
-                          margin: '16px 0 10px',
-                          color: isDarkMode ? "#d1d5db" : "#374151"
-                        }}>
-                          Storage Information
-                        </h4>
-                        
-                        <table 
-                          className={styles.table}
-                          style={{
-                            color: isDarkMode ? "#e5e7eb" : "inherit"
-                          }}
-                        >
-                          <thead 
-                            className={styles.tableHeader}
-                            style={{
-                              backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                              color: isDarkMode ? "#d1d5db" : "#6b7280"
-                            }}
-                          >
-                            <tr>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Disk</th>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Usage (KB)</th>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Temp (°C)</th>
-                              <th style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Lifetime (h)</th>
-                            </tr>
-                          </thead>
-                          <tbody className={styles.tableBody}>
-                            {results.leocamTelemetry.diskUsed.map((usage: string, index: number) => (
-                              <tr 
-                                key={`disk-${index}`} 
-                                className={index % 2 === 1 ? styles.tableRowAlt : ''}
-                                style={{ backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined }}
-                              >
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>Disk {index + 1}</td>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>{usage}</td>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                                  {results.leocamTelemetry.diskTemperatures[index] || 'N/A'}
-                                </td>
-                                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb" }}>
-                                  {results.leocamTelemetry.diskLifetimes[index] || 'N/A'}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </>
-                    )}
-                    
-                    {/* Statistics Section */}
-                    <h4 style={{ 
-                      fontSize: '14px', 
-                      fontWeight: 'bold',
-                      margin: '16px 0 10px',
-                      color: isDarkMode ? "#d1d5db" : "#374151"
-                    }}>
-                      Command Statistics
-                    </h4>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div 
-                        className={styles.parameterBox}
-                        style={{
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        }}
-                      >
-                        <div className={styles.parameterLabel}>Commands</div>
-                        <span>{results.leocamStatistics.commandCount || '0'}</span>
-                      </div>
-                      
-                      <div 
-                        className={styles.parameterBox}
-                        style={{
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        }}
-                      >
-                        <div className={styles.parameterLabel}>Acknowledges</div>
-                        <span>{results.leocamStatistics.acknowledgeCount || '0'}</span>
-                      </div>
-                      
-                      <div 
-                        className={styles.parameterBox}
-                        style={{
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        }}
-                      >
-                        <div className={styles.parameterLabel}>Timeouts</div>
-                        <span className={parseInt(results.leocamStatistics.timeoutCount || '0') > 0 ? styles.colorError : ''}>
-                          {results.leocamStatistics.timeoutCount || '0'}
-                        </span>
-                      </div>
-                      
-                      <div 
-                        className={styles.parameterBox}
-                        style={{
-                          backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
-                          borderColor: isDarkMode ? "#374151" : "#e5e7eb"
-                        }}
-                      >
-                        <div className={styles.parameterLabel}>Errors</div>
-                        <span className={parseInt(results.leocamStatistics.errorCount || '0') > 0 ? styles.colorError : ''}>
-                          {results.leocamStatistics.errorCount || '0'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <button 
-                    onClick={generateReport}
-                    className={styles.reportButton}
-                    style={{
-                      backgroundColor: "#10b981",
-                      color: "white"
-                    }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
-                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                    </svg>
-                    Generate Report
-                  </button>
-                </div>
-              </div>
-            )}
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{param}</td>
+                <td style={{ borderColor: isDarkMode ? "#374151" : "#e5e7eb", padding: '8px 12px' }}>{results.rawParameters?.[param] || 'N/A'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    {/* Keep the Generate Report button */}
+    <div>
+      <button 
+        onClick={generateReport}
+        className={styles.reportButton}
+        style={{
+          backgroundColor: "#10b981",
+          color: "white"
+        }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.buttonIcon}>
+          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+        </svg>
+        Generate Report
+      </button>
+    </div>
+  </div>
+)}
           </>
         ) : (
           /* Test History Panel */

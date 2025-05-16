@@ -74,7 +74,8 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
         temperature: true,
         fpga: true,
         kernel: true,
-        emmc: options.includes('eMMC')
+        emmc: options.includes('eMMC'),
+        rawParameters: false // Default to collapsed
     });
     // Available metrics for visualization
     const metricOptions = [
@@ -770,7 +771,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-            lineNumber: 917,
+            lineNumber: 919,
             columnNumber: 7
         }, this);
     };
@@ -789,7 +790,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-            lineNumber: 934,
+            lineNumber: 936,
             columnNumber: 7
         }, this);
     };
@@ -802,12 +803,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                    lineNumber: 948,
+                    lineNumber: 950,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                lineNumber: 947,
+                lineNumber: 949,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -834,7 +835,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         children: "Current Test"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 958,
+                        lineNumber: 960,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -852,13 +853,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                         children: "Test History"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 973,
+                        lineNumber: 975,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                lineNumber: 952,
+                lineNumber: 954,
                 columnNumber: 7
             }, this),
             !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -893,12 +894,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1009,
+                                                lineNumber: 1011,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1008,
+                                            lineNumber: 1010,
                                             columnNumber: 17
                                         }, this),
                                         "OBC-1 Test Status",
@@ -914,18 +915,18 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "SIMULATION MODE"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1015,
+                                            lineNumber: 1017,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 1007,
+                                    lineNumber: 1009,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1000,
+                                lineNumber: 1002,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -945,7 +946,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: currentStep || 'Waiting to start test...'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1032,
+                                                        lineNumber: 1034,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -959,13 +960,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1035,
+                                                        lineNumber: 1037,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1031,
+                                                lineNumber: 1033,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -981,18 +982,18 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1043,
+                                                    lineNumber: 1045,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1039,
+                                                lineNumber: 1041,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1030,
+                                        lineNumber: 1032,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1009,7 +1010,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Selected Test Options:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1057,
+                                                lineNumber: 1059,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1043,19 +1044,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1077,
+                                                                        lineNumber: 1079,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1076,
+                                                                    lineNumber: 1078,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 option
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1066,
+                                                            lineNumber: 1068,
                                                             columnNumber: 21
                                                         }, this)),
                                                     options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1067,19 +1068,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "No specific options selected. Running with defaults."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1083,
+                                                        lineNumber: 1085,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1064,
+                                                lineNumber: 1066,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1056,
+                                        lineNumber: 1058,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1107,12 +1108,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1108,
+                                                        lineNumber: 1110,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1107,
+                                                    lineNumber: 1109,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Running Test..."
@@ -1130,12 +1131,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1115,
+                                                        lineNumber: 1117,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1114,
+                                                    lineNumber: 1116,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Re-run Test"
@@ -1153,12 +1154,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1122,
+                                                        lineNumber: 1124,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1121,
+                                                    lineNumber: 1123,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Run Test"
@@ -1166,19 +1167,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1095,
+                                        lineNumber: 1097,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1029,
+                                lineNumber: 1031,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 993,
+                        lineNumber: 995,
                         columnNumber: 11
                     }, this),
                     results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1219,12 +1220,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1155,
+                                                            lineNumber: 1157,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1154,
+                                                        lineNumber: 1156,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Firmware Version",
@@ -1244,31 +1245,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1169,
+                                                            lineNumber: 1171,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1158,
+                                                        lineNumber: 1160,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1153,
+                                                lineNumber: 1155,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1174,
+                                                lineNumber: 1176,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1142,
+                                        lineNumber: 1144,
                                         columnNumber: 17
                                     }, this),
                                     expandedSections.firmware && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1300,7 +1301,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Version"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1189,
+                                                        lineNumber: 1191,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1318,29 +1319,29 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1192,
+                                                        lineNumber: 1194,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1180,
+                                                lineNumber: 1182,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1179,
+                                            lineNumber: 1181,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1178,
+                                        lineNumber: 1180,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1135,
+                                lineNumber: 1137,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1378,12 +1379,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1222,
+                                                            lineNumber: 1224,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1221,
+                                                        lineNumber: 1223,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Voltage & Current Summary",
@@ -1403,31 +1404,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1236,
+                                                            lineNumber: 1238,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1225,
+                                                        lineNumber: 1227,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1220,
+                                                lineNumber: 1222,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1241,
+                                                lineNumber: 1243,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1209,
+                                        lineNumber: 1211,
                                         columnNumber: 17
                                     }, this),
                                     expandedSections.voltage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1460,19 +1461,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1258,
+                                                                        lineNumber: 1260,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1257,
+                                                                    lineNumber: 1259,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "OBC-1 3V3 D"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1256,
+                                                            lineNumber: 1258,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1487,13 +1488,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1262,
+                                                            lineNumber: 1264,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1252,
+                                                    lineNumber: 1254,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1517,19 +1518,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1281,
+                                                                        lineNumber: 1283,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1280,
+                                                                    lineNumber: 1282,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "PS 3V3 OBC-2"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1279,
+                                                            lineNumber: 1281,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1544,13 +1545,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1285,
+                                                            lineNumber: 1287,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1275,
+                                                    lineNumber: 1277,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1574,19 +1575,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1304,
+                                                                        lineNumber: 1306,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1303,
+                                                                    lineNumber: 1305,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "PS 5V OBC-2"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1302,
+                                                            lineNumber: 1304,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1601,13 +1602,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1308,
+                                                            lineNumber: 1310,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1298,
+                                                    lineNumber: 1300,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1630,7 +1631,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             d: "M13 7H7v6h6V7z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1327,
+                                                                            lineNumber: 1329,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1639,20 +1640,20 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             clipRule: "evenodd"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1328,
+                                                                            lineNumber: 1330,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1326,
+                                                                    lineNumber: 1328,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "PS 5V OBC-2 Current"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1325,
+                                                            lineNumber: 1327,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1663,13 +1664,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1332,
+                                                            lineNumber: 1334,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1321,
+                                                    lineNumber: 1323,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1692,7 +1693,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             d: "M13 7H7v6h6V7z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1344,
+                                                                            lineNumber: 1346,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1701,20 +1702,20 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             clipRule: "evenodd"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1345,
+                                                                            lineNumber: 1347,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1343,
+                                                                    lineNumber: 1345,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "PS 3V3 OBC-2 Current"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1342,
+                                                            lineNumber: 1344,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1725,30 +1726,30 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1349,
+                                                            lineNumber: 1351,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1338,
+                                                    lineNumber: 1340,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1246,
+                                            lineNumber: 1248,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1245,
+                                        lineNumber: 1247,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1202,
+                                lineNumber: 1204,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1786,12 +1787,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1379,
+                                                            lineNumber: 1381,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1378,
+                                                        lineNumber: 1380,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Temperature Readings",
@@ -1811,31 +1812,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1393,
+                                                            lineNumber: 1395,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1382,
+                                                        lineNumber: 1384,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1377,
+                                                lineNumber: 1379,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1398,
+                                                lineNumber: 1400,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1366,
+                                        lineNumber: 1368,
                                         columnNumber: 17
                                     }, this),
                                     expandedSections.temperature && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1858,7 +1859,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Thruster 1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1409,
+                                                            lineNumber: 1411,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1872,13 +1873,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1414,
+                                                            lineNumber: 1416,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1405,
+                                                    lineNumber: 1407,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1896,7 +1897,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Thruster 2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1426,
+                                                            lineNumber: 1428,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1910,13 +1911,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1431,
+                                                            lineNumber: 1433,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 1422,
+                                                    lineNumber: 1424,
                                                     columnNumber: 23
                                                 }, this),
                                                 results.temperatures.leocam.map((temp, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1937,7 +1938,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1444,
+                                                                lineNumber: 1446,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1951,30 +1952,30 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1449,
+                                                                lineNumber: 1451,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, i, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1440,
+                                                        lineNumber: 1442,
                                                         columnNumber: 25
                                                     }, this))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1403,
+                                            lineNumber: 1405,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1402,
+                                        lineNumber: 1404,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1359,
+                                lineNumber: 1361,
                                 columnNumber: 1
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2011,7 +2012,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1482,
+                                                                lineNumber: 1484,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2020,13 +2021,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1483,
+                                                                lineNumber: 1485,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1481,
+                                                        lineNumber: 1483,
                                                         columnNumber: 21
                                                     }, this),
                                                     "FPGA Voltages & Temperatures",
@@ -2046,31 +2047,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1497,
+                                                            lineNumber: 1499,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1486,
+                                                        lineNumber: 1488,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1480,
+                                                lineNumber: 1482,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1502,
+                                                lineNumber: 1504,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1469,
+                                        lineNumber: 1471,
                                         columnNumber: 17
                                     }, this),
                                     expandedSections.fpga && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2091,7 +2092,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Voltages"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1508,
+                                                        lineNumber: 1510,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2113,7 +2114,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "vcc_pspll"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1522,
+                                                                        lineNumber: 1524,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2124,13 +2125,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1525,
+                                                                        lineNumber: 1527,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1518,
+                                                                lineNumber: 1520,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2145,7 +2146,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "vcc_psbatt"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1535,
+                                                                        lineNumber: 1537,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2156,13 +2157,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1538,
+                                                                        lineNumber: 1540,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1531,
+                                                                lineNumber: 1533,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2177,7 +2178,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "vccint"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1548,
+                                                                        lineNumber: 1550,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2188,13 +2189,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1551,
+                                                                        lineNumber: 1553,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1544,
+                                                                lineNumber: 1546,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2209,7 +2210,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "vccbram"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1561,
+                                                                        lineNumber: 1563,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2220,13 +2221,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1564,
+                                                                        lineNumber: 1566,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1557,
+                                                                lineNumber: 1559,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2241,7 +2242,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "vccaux"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1574,
+                                                                        lineNumber: 1576,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2252,25 +2253,25 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1577,
+                                                                        lineNumber: 1579,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1570,
+                                                                lineNumber: 1572,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1512,
+                                                        lineNumber: 1514,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1507,
+                                                lineNumber: 1509,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2285,7 +2286,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Temperatures"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1585,
+                                                        lineNumber: 1587,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2310,7 +2311,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "PS Temperature"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1599,
+                                                                        lineNumber: 1601,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2324,13 +2325,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1604,
+                                                                        lineNumber: 1606,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1595,
+                                                                lineNumber: 1597,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2348,7 +2349,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Remote Temperature"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1616,
+                                                                        lineNumber: 1618,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2362,13 +2363,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1621,
+                                                                        lineNumber: 1623,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1612,
+                                                                lineNumber: 1614,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2386,7 +2387,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "PL Temperature"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1633,
+                                                                        lineNumber: 1635,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2400,37 +2401,37 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1638,
+                                                                        lineNumber: 1640,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1629,
+                                                                lineNumber: 1631,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1589,
+                                                        lineNumber: 1591,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1584,
+                                                lineNumber: 1586,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1506,
+                                        lineNumber: 1508,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1462,
+                                lineNumber: 1464,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2468,12 +2469,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1671,
+                                                            lineNumber: 1673,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1670,
+                                                        lineNumber: 1672,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Kernel Information",
@@ -2493,31 +2494,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1685,
+                                                            lineNumber: 1687,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1674,
+                                                        lineNumber: 1676,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1669,
+                                                lineNumber: 1671,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1690,
+                                                lineNumber: 1692,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1658,
+                                        lineNumber: 1660,
                                         columnNumber: 17
                                     }, this),
                                     expandedSections.kernel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2538,7 +2539,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "System Information"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1696,
+                                                        lineNumber: 1698,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2561,7 +2562,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Uptime"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1703,
+                                                                            lineNumber: 1705,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2576,13 +2577,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1706,
+                                                                            lineNumber: 1708,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1702,
+                                                                    lineNumber: 1704,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2599,7 +2600,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "1 minute load average"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1711,
+                                                                            lineNumber: 1713,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2611,13 +2612,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: results.kernel.loads.oneMinute
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1714,
+                                                                            lineNumber: 1716,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1710,
+                                                                    lineNumber: 1712,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2631,7 +2632,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "5 minute load average"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1719,
+                                                                            lineNumber: 1721,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2643,13 +2644,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: results.kernel.loads.fiveMinute
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1722,
+                                                                            lineNumber: 1724,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1718,
+                                                                    lineNumber: 1720,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2666,7 +2667,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "15 minute load average"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1727,
+                                                                            lineNumber: 1729,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2678,13 +2679,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: results.kernel.loads.fifteenMinute
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1730,
+                                                                            lineNumber: 1732,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1726,
+                                                                    lineNumber: 1728,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2698,7 +2699,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Number of processes"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1735,
+                                                                            lineNumber: 1737,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2710,30 +2711,30 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: results.kernel.processes
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1738,
+                                                                            lineNumber: 1740,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1734,
+                                                                    lineNumber: 1736,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1701,
+                                                            lineNumber: 1703,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1700,
+                                                        lineNumber: 1702,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1695,
+                                                lineNumber: 1697,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2748,7 +2749,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Memory Information"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1747,
+                                                        lineNumber: 1749,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2771,7 +2772,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Total usable main memory"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1754,
+                                                                            lineNumber: 1756,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2786,13 +2787,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1757,
+                                                                            lineNumber: 1759,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1753,
+                                                                    lineNumber: 1755,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2809,7 +2810,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Available memory"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1762,
+                                                                            lineNumber: 1764,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2824,13 +2825,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1765,
+                                                                            lineNumber: 1767,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1761,
+                                                                    lineNumber: 1763,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2844,7 +2845,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Shared memory"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1770,
+                                                                            lineNumber: 1772,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2859,13 +2860,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1773,
+                                                                            lineNumber: 1775,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1769,
+                                                                    lineNumber: 1771,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2882,7 +2883,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Buffer memory"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1778,
+                                                                            lineNumber: 1780,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2897,13 +2898,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1781,
+                                                                            lineNumber: 1783,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1777,
+                                                                    lineNumber: 1779,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2917,7 +2918,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Total swap space"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1786,
+                                                                            lineNumber: 1788,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2932,13 +2933,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1789,
+                                                                            lineNumber: 1791,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1785,
+                                                                    lineNumber: 1787,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2955,7 +2956,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Available swap space"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1794,
+                                                                            lineNumber: 1796,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2970,42 +2971,42 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1797,
+                                                                            lineNumber: 1799,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1793,
+                                                                    lineNumber: 1795,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1752,
+                                                            lineNumber: 1754,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1751,
+                                                        lineNumber: 1753,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1746,
+                                                lineNumber: 1748,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1694,
+                                        lineNumber: 1696,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1651,
+                                lineNumber: 1653,
                                 columnNumber: 15
                             }, this),
                             enableEmmc && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3041,12 +3042,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             d: "M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1830,
+                                                            lineNumber: 1832,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1829,
+                                                        lineNumber: 1831,
                                                         columnNumber: 25
                                                     }, this),
                                                     "eMMC Test Results",
@@ -3066,31 +3067,31 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 1844,
+                                                            lineNumber: 1846,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1833,
+                                                        lineNumber: 1835,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1828,
+                                                lineNumber: 1830,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1849,
+                                                lineNumber: 1851,
                                                 columnNumber: 1
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1817,
+                                        lineNumber: 1819,
                                         columnNumber: 21
                                     }, this),
                                     expandedSections.emmc && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3111,7 +3112,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "eMMC State Transitions"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1857,
+                                                        lineNumber: 1859,
                                                         columnNumber: 31
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -3137,7 +3138,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Test State"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1864,
+                                                                            lineNumber: 1866,
                                                                             columnNumber: 37
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -3150,7 +3151,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "eMMC-0"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1867,
+                                                                            lineNumber: 1869,
                                                                             columnNumber: 37
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -3163,18 +3164,18 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "eMMC-1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                            lineNumber: 1870,
+                                                                            lineNumber: 1872,
                                                                             columnNumber: 37
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 1863,
+                                                                    lineNumber: 1865,
                                                                     columnNumber: 35
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1862,
+                                                                lineNumber: 1864,
                                                                 columnNumber: 33
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -3190,7 +3191,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Before ON eMMC-0"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1877,
+                                                                                lineNumber: 1879,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3203,7 +3204,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[0]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1880,
+                                                                                lineNumber: 1882,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3216,13 +3217,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[0]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1883,
+                                                                                lineNumber: 1885,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1876,
+                                                                        lineNumber: 1878,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3239,7 +3240,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "After ON eMMC-0"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1888,
+                                                                                lineNumber: 1890,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3252,7 +3253,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[1]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1891,
+                                                                                lineNumber: 1893,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3265,13 +3266,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[1]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1894,
+                                                                                lineNumber: 1896,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1887,
+                                                                        lineNumber: 1889,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3285,7 +3286,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "After OFF eMMC-0"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1899,
+                                                                                lineNumber: 1901,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3298,7 +3299,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[2]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1902,
+                                                                                lineNumber: 1904,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3311,13 +3312,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[2]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1905,
+                                                                                lineNumber: 1907,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1898,
+                                                                        lineNumber: 1900,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3334,7 +3335,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Before ON eMMC-1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1910,
+                                                                                lineNumber: 1912,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3347,7 +3348,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[3]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1913,
+                                                                                lineNumber: 1915,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3360,13 +3361,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[3]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1916,
+                                                                                lineNumber: 1918,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1909,
+                                                                        lineNumber: 1911,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3380,7 +3381,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "After ON eMMC-1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1921,
+                                                                                lineNumber: 1923,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3393,7 +3394,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[4]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1924,
+                                                                                lineNumber: 1926,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3406,13 +3407,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[4]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1927,
+                                                                                lineNumber: 1929,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1920,
+                                                                        lineNumber: 1922,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3429,7 +3430,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "After OFF eMMC-1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1932,
+                                                                                lineNumber: 1934,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3442,7 +3443,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc0States[5]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1935,
+                                                                                lineNumber: 1937,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3455,36 +3456,36 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: results.emmc.emmc1States[5]
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                                lineNumber: 1938,
+                                                                                lineNumber: 1940,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 1931,
+                                                                        lineNumber: 1933,
                                                                         columnNumber: 35
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                lineNumber: 1875,
+                                                                lineNumber: 1877,
                                                                 columnNumber: 33
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 1861,
+                                                        lineNumber: 1863,
                                                         columnNumber: 31
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1856,
+                                                lineNumber: 1858,
                                                 columnNumber: 29
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1855,
+                                            lineNumber: 1857,
                                             columnNumber: 27
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
@@ -3495,19 +3496,875 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "eMMC test was skipped or no data available"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1947,
+                                            lineNumber: 1949,
                                             columnNumber: 27
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1853,
+                                        lineNumber: 1855,
                                         columnNumber: 23
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1810,
+                                lineNumber: 1812,
                                 columnNumber: 19
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].card,
+                                style: {
+                                    backgroundColor: isDarkMode ? "#1e1e1e" : "white",
+                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardHeader,
+                                        style: {
+                                            background: isDarkMode ? "linear-gradient(to right, #1e3a8a, #2563eb)" : "linear-gradient(to right, #dbeafe, #eff6ff)",
+                                            color: isDarkMode ? "#bfdbfe" : "#1e3a8a",
+                                            cursor: 'pointer'
+                                        },
+                                        onClick: ()=>toggleSection('rawParameters'),
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardTitle,
+                                                style: {
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '8px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardIcon,
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 1979,
+                                                            columnNumber: 9
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 1978,
+                                                        columnNumber: 7
+                                                    }, this),
+                                                    "Raw Parameter Values",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor",
+                                                        style: {
+                                                            width: '16px',
+                                                            height: '16px',
+                                                            transform: expandedSections.rawParameters ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                            transition: 'transform 0.2s ease-in-out'
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            fillRule: "evenodd",
+                                                            d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+                                                            clipRule: "evenodd"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 1993,
+                                                            columnNumber: 9
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 1982,
+                                                        columnNumber: 7
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 1977,
+                                                columnNumber: 5
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: isForceSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 1998,
+                                                columnNumber: 5
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                        lineNumber: 1966,
+                                        columnNumber: 3
+                                    }, this),
+                                    expandedSections.rawParameters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].cardContent,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    marginBottom: '16px'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        color: isDarkMode ? '#d1d5db' : '#6b7280'
+                                                    },
+                                                    children: "Displaying all parameters with their exact names as read from the hardware or simulation."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                    lineNumber: 2004,
+                                                    columnNumber: 9
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2003,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '16px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Firmware Parameters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2010,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                style: {
+                                                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                    width: '100%',
+                                                    borderCollapse: 'collapse',
+                                                    fontSize: '14px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Parameter"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2036,
+                                                                    columnNumber: 13
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Value"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2037,
+                                                                    columnNumber: 13
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 2035,
+                                                            columnNumber: 11
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2028,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            "OBC1_FW_Ver_Major",
+                                                            "OBC1_FW_Ver_Minor",
+                                                            "OBC1_FW_Ver_Patch"
+                                                        ].map((param, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                style: {
+                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: param
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2047,
+                                                                        columnNumber: 15
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: results.rawParameters?.[param] || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2048,
+                                                                        columnNumber: 15
+                                                                    }, this)
+                                                                ]
+                                                            }, param, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2042,
+                                                                columnNumber: 13
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2040,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2019,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '20px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Kernel Parameters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2055,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                style: {
+                                                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                    width: '100%',
+                                                    borderCollapse: 'collapse',
+                                                    fontSize: '14px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Parameter"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2081,
+                                                                    columnNumber: 13
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Value"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2082,
+                                                                    columnNumber: 13
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 2080,
+                                                            columnNumber: 11
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2073,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            "OBC1_Sys_uptime",
+                                                            "OBC1_Sys_loads_1m",
+                                                            "OBC1_Sys_loads_5m",
+                                                            "OBC1_Sys_loads_15m",
+                                                            "OBC1_Sys_totalram",
+                                                            "OBC1_Sys_freeram",
+                                                            "OBC1_Sys_sharedram",
+                                                            "OBC1_Sys_bufferram",
+                                                            "OBC1_Sys_totalswap",
+                                                            "OBC1_Sys_freeswap",
+                                                            "OBC1_Sys_procs",
+                                                            "OBC1_Sys_pad",
+                                                            "OBC1_Sys_totalhigh",
+                                                            "OBC1_Sys_freehigh",
+                                                            "OBC1_Sys_mem_unit"
+                                                        ].map((param, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                style: {
+                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: param
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2097,
+                                                                        columnNumber: 15
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: results.rawParameters?.[param] || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2098,
+                                                                        columnNumber: 15
+                                                                    }, this)
+                                                                ]
+                                                            }, param, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2092,
+                                                                columnNumber: 13
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2085,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2064,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '20px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "FPGA Parameters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2105,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                style: {
+                                                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                    width: '100%',
+                                                    borderCollapse: 'collapse',
+                                                    fontSize: '14px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Parameter"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2131,
+                                                                    columnNumber: 13
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Value"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2132,
+                                                                    columnNumber: 13
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 2130,
+                                                            columnNumber: 11
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2123,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            "OBC1_vcc_pspll",
+                                                            "OBC1_vcc_psbatt",
+                                                            "OBC1_vccint",
+                                                            "OBC1_vccbram",
+                                                            "OBC1_vccaux",
+                                                            "OBC1_vcc_psddr_pll",
+                                                            "OBC1_vccpsintfp_ddr",
+                                                            "OBC1_vccint1",
+                                                            "OBC1_vccaux1",
+                                                            "OBC1_vccvrefp",
+                                                            "OBC1_vccvrefn",
+                                                            "OBC1_vccbram1",
+                                                            "OBC1_vccplintlp",
+                                                            "OBC1_vccplintfp",
+                                                            "OBC1_vccplaux",
+                                                            "OBC1_vccams",
+                                                            "OBC1_vccpsintlp",
+                                                            "OBC1_vccpsintfp",
+                                                            "OBC1_vccpsaux",
+                                                            "OBC1_vccpsddr",
+                                                            "OBC1_vccpsio3",
+                                                            "OBC1_vccpsio0",
+                                                            "OBC1_vccpsio1",
+                                                            "OBC1_vccpsio2",
+                                                            "OBC1_psmgtravcc",
+                                                            "OBC1_psmgtravtt",
+                                                            "OBC1_vccams1",
+                                                            "OBC1_ps_temp",
+                                                            "OBC1_remote_temp",
+                                                            "OBC1_pl_temp"
+                                                        ].map((param, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                style: {
+                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: param
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2149,
+                                                                        columnNumber: 15
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: results.rawParameters?.[param] || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2150,
+                                                                        columnNumber: 15
+                                                                    }, this)
+                                                                ]
+                                                            }, param, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2144,
+                                                                columnNumber: 13
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2135,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2114,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '20px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Voltage and Current Parameters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2157,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                style: {
+                                                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                    width: '100%',
+                                                    borderCollapse: 'collapse',
+                                                    fontSize: '14px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Parameter"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2183,
+                                                                    columnNumber: 13
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Value"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2184,
+                                                                    columnNumber: 13
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 2182,
+                                                            columnNumber: 11
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2175,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            "OBC1_3V3_D",
+                                                            "OBC1_PS_3V3_OBC2_V",
+                                                            "OBC1_PS_5V_OBC2_V",
+                                                            "OBC1_PS_5V_OBC2_I",
+                                                            "OBC1_PS_3V3_OBC2_I"
+                                                        ].map((param, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                style: {
+                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: param
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2197,
+                                                                        columnNumber: 15
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: results.rawParameters?.[param] || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2198,
+                                                                        columnNumber: 15
+                                                                    }, this)
+                                                                ]
+                                                            }, param, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2192,
+                                                                columnNumber: 13
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2187,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2166,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: {
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold',
+                                                    margin: '20px 0 10px',
+                                                    color: isDarkMode ? "#d1d5db" : "#374151"
+                                                },
+                                                children: "Temperature Parameters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2205,
+                                                columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                style: {
+                                                    color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                    width: '100%',
+                                                    borderCollapse: 'collapse',
+                                                    fontSize: '14px'
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                        style: {
+                                                            backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                            color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Parameter"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2231,
+                                                                    columnNumber: 13
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    style: {
+                                                                        borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                        padding: '8px 12px',
+                                                                        textAlign: 'left'
+                                                                    },
+                                                                    children: "Value"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2232,
+                                                                    columnNumber: 13
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                            lineNumber: 2230,
+                                                            columnNumber: 11
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2223,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            "OBC1_thruster_ch1_T",
+                                                            "OBC1_thruster_ch2_T",
+                                                            "OBC1_leocam_ch1_T",
+                                                            "OBC1_leocam_ch2_T",
+                                                            "OBC1_leocam_ch3_T",
+                                                            "OBC1_leocam_ch4_T"
+                                                        ].map((param, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                style: {
+                                                                    backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: param
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2246,
+                                                                        columnNumber: 15
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                        style: {
+                                                                            borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                            padding: '8px 12px'
+                                                                        },
+                                                                        children: results.rawParameters?.[param] || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2247,
+                                                                        columnNumber: 15
+                                                                    }, this)
+                                                                ]
+                                                            }, param, true, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2241,
+                                                                columnNumber: 13
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2235,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                lineNumber: 2214,
+                                                columnNumber: 7
+                                            }, this),
+                                            enableEmmc && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        style: {
+                                                            fontSize: '14px',
+                                                            fontWeight: 'bold',
+                                                            margin: '20px 0 10px',
+                                                            color: isDarkMode ? "#d1d5db" : "#374151"
+                                                        },
+                                                        children: "eMMC Parameters"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2256,
+                                                        columnNumber: 11
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].table,
+                                                        style: {
+                                                            color: isDarkMode ? "#e5e7eb" : "inherit",
+                                                            width: '100%',
+                                                            borderCollapse: 'collapse',
+                                                            fontSize: '14px'
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableHeader,
+                                                                style: {
+                                                                    backgroundColor: isDarkMode ? "#111827" : "#f9fafb",
+                                                                    color: isDarkMode ? "#d1d5db" : "#6b7280"
+                                                                },
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                                padding: '8px 12px',
+                                                                                textAlign: 'left'
+                                                                            },
+                                                                            children: "Parameter"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                            lineNumber: 2282,
+                                                                            columnNumber: 17
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                            style: {
+                                                                                borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                                padding: '8px 12px',
+                                                                                textAlign: 'left'
+                                                                            },
+                                                                            children: "Value"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                            lineNumber: 2283,
+                                                                            columnNumber: 17
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                    lineNumber: 2281,
+                                                                    columnNumber: 15
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2274,
+                                                                columnNumber: 13
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                                children: Object.entries(results.rawParameters || {}).filter(([key])=>key.includes('eMMC')).map(([param, value], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                        className: index % 2 === 1 ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].tableRowAlt : '',
+                                                                        style: {
+                                                                            backgroundColor: index % 2 === 1 && isDarkMode ? "#111827" : undefined
+                                                                        },
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                                    padding: '8px 12px'
+                                                                                },
+                                                                                children: param
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                                lineNumber: 2296,
+                                                                                columnNumber: 7
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                                style: {
+                                                                                    borderColor: isDarkMode ? "#374151" : "#e5e7eb",
+                                                                                    padding: '8px 12px'
+                                                                                },
+                                                                                children: String(value) || 'N/A'
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                                lineNumber: 2297,
+                                                                                columnNumber: 7
+                                                                            }, this)
+                                                                        ]
+                                                                    }, param, true, {
+                                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                        lineNumber: 2291,
+                                                                        columnNumber: 5
+                                                                    }, this))
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                                lineNumber: 2286,
+                                                                columnNumber: 13
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                                        lineNumber: 2265,
+                                                        columnNumber: 11
+                                                    }, this)
+                                                ]
+                                            }, void 0, true)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                        lineNumber: 2002,
+                                        columnNumber: 5
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
+                                lineNumber: 1959,
+                                columnNumber: 1
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3529,30 +4386,30 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 1966,
+                                                lineNumber: 2318,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 1965,
+                                            lineNumber: 2317,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 1957,
+                                    lineNumber: 2309,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                lineNumber: 1956,
+                                lineNumber: 2308,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 1133,
+                        lineNumber: 1135,
                         columnNumber: 13
                     }, this)
                 ]
@@ -3587,24 +4444,24 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 1995,
+                                        lineNumber: 2347,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 1994,
+                                    lineNumber: 2346,
                                     columnNumber: 15
                                 }, this),
                                 "OBC-1 Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                            lineNumber: 1993,
+                            lineNumber: 2345,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 1983,
+                        lineNumber: 2335,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3634,25 +4491,25 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                        lineNumber: 2009,
+                                        lineNumber: 2361,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2008,
+                                    lineNumber: 2360,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2011,
+                                    lineNumber: 2363,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                            lineNumber: 2003,
+                            lineNumber: 2355,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -3666,7 +4523,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2020,
+                                    lineNumber: 2372,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3677,7 +4534,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2021,
+                                    lineNumber: 2373,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3694,20 +4551,20 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2034,
+                                            lineNumber: 2386,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2026,
+                                    lineNumber: 2378,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                            lineNumber: 2014,
+                            lineNumber: 2366,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -3726,7 +4583,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2042,
+                                            lineNumber: 2394,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3746,18 +4603,18 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2064,
+                                                    lineNumber: 2416,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2050,
+                                            lineNumber: 2402,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2041,
+                                    lineNumber: 2393,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3782,7 +4639,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2079,
+                                            lineNumber: 2431,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -3792,13 +4649,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2088,
+                                            lineNumber: 2440,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2072,
+                                    lineNumber: 2424,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3821,12 +4678,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                lineNumber: 2105,
+                                                lineNumber: 2457,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2104,
+                                            lineNumber: 2456,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3864,7 +4721,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 2139,
+                                                                    lineNumber: 2491,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -3873,20 +4730,20 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 2140,
+                                                                    lineNumber: 2492,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2138,
+                                                            lineNumber: 2490,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2117,
+                                                    lineNumber: 2469,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -3906,7 +4763,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2148,
+                                                            lineNumber: 2500,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3924,7 +4781,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2164,
+                                                            lineNumber: 2516,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3956,12 +4813,12 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                        lineNumber: 2200,
+                                                                        lineNumber: 2552,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                                    lineNumber: 2199,
+                                                                    lineNumber: 2551,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -3970,7 +4827,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2180,
+                                                            lineNumber: 2532,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -3978,13 +4835,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2115,
+                                            lineNumber: 2467,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2097,
+                                    lineNumber: 2449,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -3993,7 +4850,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2210,
+                                    lineNumber: 2562,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4011,7 +4868,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2218,
+                                            lineNumber: 2570,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4038,7 +4895,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Average 3V3 D Voltage"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2239,
+                                                            lineNumber: 2591,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4055,13 +4912,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2246,
+                                                            lineNumber: 2598,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2233,
+                                                    lineNumber: 2585,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4081,7 +4938,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "3V3 Pass Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2271,
+                                                            lineNumber: 2623,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4099,13 +4956,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2278,
+                                                            lineNumber: 2630,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2265,
+                                                    lineNumber: 2617,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4125,7 +4982,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Avg. Thruster Temp"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2305,
+                                                            lineNumber: 2657,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4150,13 +5007,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2312,
+                                                            lineNumber: 2664,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2299,
+                                                    lineNumber: 2651,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4176,7 +5033,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2346,
+                                                            lineNumber: 2698,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4193,25 +5050,25 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                            lineNumber: 2353,
+                                                            lineNumber: 2705,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2340,
+                                                    lineNumber: 2692,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2227,
+                                            lineNumber: 2579,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2217,
+                                    lineNumber: 2569,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4253,19 +5110,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 2391,
+                                                        lineNumber: 2743,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2390,
+                                                    lineNumber: 2742,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2374,
+                                            lineNumber: 2726,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4298,19 +5155,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 2414,
+                                                        lineNumber: 2766,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2413,
+                                                    lineNumber: 2765,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2397,
+                                            lineNumber: 2749,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4343,19 +5200,19 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 2437,
+                                                        lineNumber: 2789,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2436,
+                                                    lineNumber: 2788,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2420,
+                                            lineNumber: 2772,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4404,25 +5261,25 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                        lineNumber: 2471,
+                                                        lineNumber: 2823,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                                    lineNumber: 2470,
+                                                    lineNumber: 2822,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2442,
+                                            lineNumber: 2794,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2372,
+                                    lineNumber: 2724,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4443,7 +5300,7 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2488,
+                                            lineNumber: 2840,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4453,26 +5310,26 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                            lineNumber: 2499,
+                                            lineNumber: 2851,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                                    lineNumber: 2479,
+                                    lineNumber: 2831,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                        lineNumber: 2001,
+                        lineNumber: 2353,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                lineNumber: 1976,
+                lineNumber: 2328,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -4481,13 +5338,13 @@ const OBC1TestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-                lineNumber: 2517,
+                lineNumber: 2869,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/OBC1TestPanel.tsx",
-        lineNumber: 945,
+        lineNumber: 947,
         columnNumber: 5
     }, this);
 };
