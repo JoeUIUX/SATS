@@ -1406,10 +1406,10 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
-                                                isSimulation: isForceSimulation
+                                                isSimulation: detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1174,
+                                                lineNumber: 1175,
                                                 columnNumber: 9
                                             }, this)
                                         ]
@@ -1431,7 +1431,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 children: "Voltage and Current Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1180,
+                                                lineNumber: 1181,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1460,7 +1460,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1206,
+                                                                    lineNumber: 1207,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1472,18 +1472,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1207,
+                                                                    lineNumber: 1208,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1205,
+                                                            lineNumber: 1206,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1198,
+                                                        lineNumber: 1199,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1501,7 +1501,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1217,
+                                                                        lineNumber: 1218,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1512,24 +1512,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1218,
+                                                                        lineNumber: 1219,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1212,
+                                                                lineNumber: 1213,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1210,
+                                                        lineNumber: 1211,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1189,
+                                                lineNumber: 1190,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1542,7 +1542,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 children: "LEOCAM Sensor Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1225,
+                                                lineNumber: 1226,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1571,7 +1571,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1251,
+                                                                    lineNumber: 1252,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1583,18 +1583,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1252,
+                                                                    lineNumber: 1253,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1250,
+                                                            lineNumber: 1251,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1243,
+                                                        lineNumber: 1244,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1612,7 +1612,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1262,
+                                                                        lineNumber: 1263,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1623,24 +1623,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1263,
+                                                                        lineNumber: 1264,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1257,
+                                                                lineNumber: 1258,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1255,
+                                                        lineNumber: 1256,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1234,
+                                                lineNumber: 1235,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1653,7 +1653,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 children: "LEOCAM Telemetry Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1270,
+                                                lineNumber: 1271,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1682,7 +1682,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1296,
+                                                                    lineNumber: 1297,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1694,18 +1694,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1297,
+                                                                    lineNumber: 1298,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1295,
+                                                            lineNumber: 1296,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1288,
+                                                        lineNumber: 1289,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1728,7 +1728,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1307,
+                                                                        lineNumber: 1308,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1739,24 +1739,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1308,
+                                                                        lineNumber: 1309,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1302,
+                                                                lineNumber: 1303,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1300,
+                                                        lineNumber: 1301,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1279,
+                                                lineNumber: 1280,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1771,7 +1771,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         children: "LEOCAM Disk Parameters"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1316,
+                                                        lineNumber: 1317,
                                                         columnNumber: 13
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1800,7 +1800,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                             children: "Parameter"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                            lineNumber: 1342,
+                                                                            lineNumber: 1343,
                                                                             columnNumber: 19
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1812,18 +1812,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                             children: "Value"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                            lineNumber: 1343,
+                                                                            lineNumber: 1344,
                                                                             columnNumber: 19
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1341,
+                                                                    lineNumber: 1342,
                                                                     columnNumber: 17
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1334,
+                                                                lineNumber: 1335,
                                                                 columnNumber: 15
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1841,7 +1841,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                                 children: param
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                                lineNumber: 1353,
+                                                                                lineNumber: 1354,
                                                                                 columnNumber: 21
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1852,24 +1852,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                                 children: results.rawParameters?.[param] || 'N/A'
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                                lineNumber: 1354,
+                                                                                lineNumber: 1355,
                                                                                 columnNumber: 21
                                                                             }, this)
                                                                         ]
                                                                     }, param, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1348,
+                                                                        lineNumber: 1349,
                                                                         columnNumber: 19
                                                                     }, this))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1346,
+                                                                lineNumber: 1347,
                                                                 columnNumber: 15
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1325,
+                                                        lineNumber: 1326,
                                                         columnNumber: 13
                                                     }, this)
                                                 ]
@@ -1884,7 +1884,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 children: "LEOCAM Statistics Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1363,
+                                                lineNumber: 1364,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1913,7 +1913,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1389,
+                                                                    lineNumber: 1390,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1925,18 +1925,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1390,
+                                                                    lineNumber: 1391,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1388,
+                                                            lineNumber: 1389,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1381,
+                                                        lineNumber: 1382,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1954,7 +1954,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1400,
+                                                                        lineNumber: 1401,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1965,30 +1965,30 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1401,
+                                                                        lineNumber: 1402,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                lineNumber: 1395,
+                                                                lineNumber: 1396,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1393,
+                                                        lineNumber: 1394,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1372,
+                                                lineNumber: 1373,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 1177,
+                                        lineNumber: 1178,
                                         columnNumber: 7
                                     }, this)
                                 ]
@@ -2017,24 +2017,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1420,
+                                                lineNumber: 1421,
                                                 columnNumber: 11
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1419,
+                                            lineNumber: 1420,
                                             columnNumber: 9
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1411,
+                                    lineNumber: 1412,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                lineNumber: 1410,
+                                lineNumber: 1411,
                                 columnNumber: 5
                             }, this)
                         ]
@@ -2075,24 +2075,24 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 1449,
+                                        lineNumber: 1450,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1448,
+                                    lineNumber: 1449,
                                     columnNumber: 17
                                 }, this),
                                 "LEOCAM Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                            lineNumber: 1447,
+                            lineNumber: 1448,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 1437,
+                        lineNumber: 1438,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2122,25 +2122,25 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                        lineNumber: 1463,
+                                        lineNumber: 1464,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1462,
+                                    lineNumber: 1463,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1465,
+                                    lineNumber: 1466,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                            lineNumber: 1457,
+                            lineNumber: 1458,
                             columnNumber: 17
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -2154,7 +2154,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1474,
+                                    lineNumber: 1475,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2165,7 +2165,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1475,
+                                    lineNumber: 1476,
                                     columnNumber: 19
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2182,20 +2182,20 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1488,
+                                            lineNumber: 1489,
                                             columnNumber: 23
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1480,
+                                    lineNumber: 1481,
                                     columnNumber: 21
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                            lineNumber: 1468,
+                            lineNumber: 1469,
                             columnNumber: 17
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -2214,7 +2214,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1496,
+                                            lineNumber: 1497,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2234,18 +2234,18 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1518,
+                                                    lineNumber: 1519,
                                                     columnNumber: 25
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1504,
+                                            lineNumber: 1505,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1495,
+                                    lineNumber: 1496,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2270,7 +2270,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1533,
+                                            lineNumber: 1534,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -2280,13 +2280,13 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1542,
+                                            lineNumber: 1543,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1526,
+                                    lineNumber: 1527,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2309,12 +2309,12 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                lineNumber: 1559,
+                                                lineNumber: 1560,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1558,
+                                            lineNumber: 1559,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2352,7 +2352,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1593,
+                                                                    lineNumber: 1594,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2361,20 +2361,20 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1594,
+                                                                    lineNumber: 1595,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1592,
+                                                            lineNumber: 1593,
                                                             columnNumber: 25
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1571,
+                                                    lineNumber: 1572,
                                                     columnNumber: 23
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2394,7 +2394,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1602,
+                                                            lineNumber: 1603,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2412,7 +2412,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1618,
+                                                            lineNumber: 1619,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2444,12 +2444,12 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                        lineNumber: 1654,
+                                                                        lineNumber: 1655,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                                    lineNumber: 1653,
+                                                                    lineNumber: 1654,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -2458,7 +2458,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1634,
+                                                            lineNumber: 1635,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
@@ -2466,13 +2466,13 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1569,
+                                            lineNumber: 1570,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1551,
+                                    lineNumber: 1552,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2508,19 +2508,19 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1667,
+                                                        lineNumber: 1668,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1666,
+                                                    lineNumber: 1667,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1665,
+                                            lineNumber: 1666,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2534,14 +2534,14 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1672,
+                                                    lineNumber: 1673,
                                                     columnNumber: 45
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1671,
+                                            lineNumber: 1672,
                                             columnNumber: 21
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2571,7 +2571,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1678,
+                                                            lineNumber: 1679,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2581,7 +2581,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1679,
+                                                            lineNumber: 1680,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2591,26 +2591,26 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                            lineNumber: 1680,
+                                                            lineNumber: 1681,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1677,
+                                                    lineNumber: 1678,
                                                     columnNumber: 25
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1676,
+                                            lineNumber: 1677,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1664,
+                                    lineNumber: 1665,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -2619,7 +2619,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1688,
+                                    lineNumber: 1689,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2661,19 +2661,19 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1714,
+                                                        lineNumber: 1715,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1713,
+                                                    lineNumber: 1714,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1697,
+                                            lineNumber: 1698,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2706,19 +2706,19 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1737,
+                                                        lineNumber: 1738,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1736,
+                                                    lineNumber: 1737,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1720,
+                                            lineNumber: 1721,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2751,19 +2751,19 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1760,
+                                                        lineNumber: 1761,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1759,
+                                                    lineNumber: 1760,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1743,
+                                            lineNumber: 1744,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2812,25 +2812,25 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                        lineNumber: 1795,
+                                                        lineNumber: 1796,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                                    lineNumber: 1794,
+                                                    lineNumber: 1795,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1766,
+                                            lineNumber: 1767,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1695,
+                                    lineNumber: 1696,
                                     columnNumber: 19
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2851,7 +2851,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1812,
+                                            lineNumber: 1813,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2861,26 +2861,26 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                            lineNumber: 1823,
+                                            lineNumber: 1824,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                                    lineNumber: 1803,
+                                    lineNumber: 1804,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                        lineNumber: 1455,
+                        lineNumber: 1456,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                lineNumber: 1430,
+                lineNumber: 1431,
                 columnNumber: 11
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -2889,7 +2889,7 @@ const LEOCAMTestPanel = ({ options, sock, onTestComplete, onTestError, onTestSta
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx",
-                lineNumber: 1841,
+                lineNumber: 1842,
                 columnNumber: 9
             }, this)
         ]

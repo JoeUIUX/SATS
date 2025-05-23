@@ -2408,3 +2408,767 @@
 [16/05/2025 11:43:28 am] [Frontend] HEAD /models/profile_1.glb 404 in 4693ms
 [16/05/2025 11:43:29 am] [Frontend] HEAD /models/profile_1.glb 404 in 5350ms
 [16/05/2025 11:50:38 am] Frontend process exited with code 1
+[21/05/2025 9:48:40 am] Starting frontend development server...
+[21/05/2025 9:48:42 am] [Frontend] > beautify@0.1.0 dev
+[21/05/2025 9:48:42 am] [Frontend] > next dev --turbopack
+[21/05/2025 9:48:54 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[21/05/2025 9:48:54 am] [Frontend] - Local:        http://localhost:3000
+[21/05/2025 9:48:54 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[21/05/2025 9:48:54 am] [Frontend]    - Environments: .env
+[21/05/2025 9:48:54 am] [Frontend] ✓ Starting...
+[21/05/2025 9:49:00 am] [Frontend] ✓ Ready in 7.3s
+[21/05/2025 9:49:16 am] [Frontend] ○ Compiling / ...
+[21/05/2025 9:49:34 am] [Frontend] ✓ Compiled / in 19.2s
+[21/05/2025 9:49:38 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 9:49:38 am] [Frontend] GET / 500 in 23709ms
+[21/05/2025 9:49:41 am] [Frontend] ○ Compiling /favicon.ico ...
+[21/05/2025 9:49:44 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3962ms
+[21/05/2025 9:49:48 am] [Frontend] ✓ Compiled /favicon.ico in 7.5s
+[21/05/2025 9:49:51 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 8609ms
+[21/05/2025 9:58:53 am] [Frontend] ✓ Compiled in 1202ms
+[21/05/2025 9:59:27 am] [Frontend] ✓ Compiled in 1458ms
+[21/05/2025 9:59:59 am] [Frontend] ✓ Compiled in 874ms
+[21/05/2025 10:00:06 am] [Frontend] ✓ Compiled in 953ms
+[21/05/2025 10:00:25 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 10:00:25 am] [Frontend] GET / 500 in 8035ms
+[21/05/2025 10:00:31 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5312ms
+[21/05/2025 10:00:34 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 10:00:34 am] [Frontend] GET / 500 in 3967ms
+[21/05/2025 10:00:38 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4177ms
+[21/05/2025 10:00:40 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1173ms
+[21/05/2025 10:15:31 am] [Frontend] ✓ Compiled in 1056ms
+[21/05/2025 10:16:11 am] [Frontend] ✓ Compiled in 1222ms
+[21/05/2025 10:21:45 am] [Frontend] ✓ Compiled in 1144ms
+[21/05/2025 10:21:58 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 10:21:58 am] [Frontend] GET / 500 in 6156ms
+[21/05/2025 10:22:03 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4059ms
+[21/05/2025 10:22:06 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 10:22:06 am] [Frontend] GET / 500 in 3585ms
+[21/05/2025 10:22:10 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4490ms
+[21/05/2025 10:22:12 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2675ms
+[21/05/2025 10:28:10 am] [Frontend] ✓ Compiled in 1520ms
+[21/05/2025 10:28:15 am] [Frontend] ✓ Compiled in 1121ms
+[21/05/2025 10:28:21 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 10:28:21 am] [Frontend] GET / 500 in 3670ms
+[21/05/2025 10:28:26 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4748ms
+[21/05/2025 10:42:58 am] Frontend process exited with code 1
+[21/05/2025 4:27:19 pm] Starting frontend development server...
+[21/05/2025 4:27:21 pm] [Frontend] > beautify@0.1.0 dev
+[21/05/2025 4:27:21 pm] [Frontend] > next dev --turbopack
+[21/05/2025 4:27:31 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[21/05/2025 4:27:31 pm] [Frontend] - Local:        http://localhost:3000
+[21/05/2025 4:27:31 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[21/05/2025 4:27:31 pm] [Frontend]    - Environments: .env
+[21/05/2025 4:27:31 pm] [Frontend]  ✓ Starting...
+[21/05/2025 4:27:35 pm] [Frontend] Slow filesystem detected. If C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next is a network drive, consider moving it to a local folder. If you have an antivirus enabled, consider excluding your project directory.
+[21/05/2025 4:27:36 pm] [Frontend] ✓ Ready in 6.3s
+[21/05/2025 4:27:38 pm] [Frontend] ○ Compiling / ...
+[21/05/2025 4:28:00 pm] Frontend process exited with code 1
+[21/05/2025 4:39:50 pm] Starting frontend development server...
+[21/05/2025 4:39:52 pm] [Frontend] > beautify@0.1.0 dev
+[21/05/2025 4:39:52 pm] [Frontend] > next dev --turbopack
+[21/05/2025 4:40:01 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[21/05/2025 4:40:01 pm] [Frontend] - Local:        http://localhost:3000
+[21/05/2025 4:40:01 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[21/05/2025 4:40:01 pm] [Frontend]    - Environments: .env
+[21/05/2025 4:40:01 pm] [Frontend]  ✓ Starting...
+[21/05/2025 4:40:05 pm] [Frontend] Slow filesystem detected. If C:\Users\joeg0001\Documents\SATS Satellite Automated Testing System\beautify frontend\.next is a network drive, consider moving it to a local folder. If you have an antivirus enabled, consider excluding your project directory.
+[21/05/2025 4:40:06 pm] [Frontend] ✓ Ready in 6.1s
+[21/05/2025 4:40:29 pm] [Frontend] ○ Compiling / ...
+[21/05/2025 4:40:47 pm] [Frontend] ✓ Compiled / in 18.6s
+[21/05/2025 4:40:50 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[21/05/2025 4:40:50 pm] [Frontend] GET / 500 in 22244ms
+[21/05/2025 4:40:53 pm] [Frontend] ○ Compiling /favicon.ico ...
+[21/05/2025 4:40:53 pm] [Frontend] ✓ Compiled /favicon.ico in 1352ms
+[21/05/2025 4:40:55 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3128ms
+[21/05/2025 4:40:57 pm] [Frontend] ○ Compiling /_not-found/page ...
+[21/05/2025 4:40:59 pm] [Frontend] ✓ Compiled /_not-found/page in 2.9s
+[21/05/2025 4:41:04 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7489ms
+[21/05/2025 5:12:17 pm] [Frontend] ✓ Compiled in 606ms
+[21/05/2025 5:12:52 pm] [Frontend] ✓ Compiled in 570ms
+[21/05/2025 5:13:37 pm] [Frontend] ✓ Compiled in 691ms
+[21/05/2025 5:13:50 pm] [Frontend] ✓ Compiled in 1096ms
+[21/05/2025 5:14:21 pm] [Frontend] ✓ Compiled in 1237ms
+[21/05/2025 5:15:48 pm] [Frontend] ✓ Compiled in 1204ms
+[21/05/2025 5:15:52 pm] [Frontend] ✓ Compiled in 821ms
+[21/05/2025 5:16:03 pm] [Frontend] ✓ Compiled in 957ms
+[21/05/2025 5:19:53 pm] [Frontend] ✓ Compiled in 1133ms
+[21/05/2025 5:20:10 pm] [Frontend] ✓ Compiled in 1136ms
+[21/05/2025 5:22:33 pm] [Frontend] ✓ Compiled in 1051ms
+[21/05/2025 5:22:50 pm] [Frontend] ✓ Compiled in 1131ms
+[21/05/2025 5:23:08 pm] [Frontend] ✓ Compiled in 1249ms
+[21/05/2025 5:23:31 pm] [Frontend] ✓ Compiled in 1217ms
+[21/05/2025 5:23:56 pm] [Frontend] ✓ Compiled in 1110ms
+[21/05/2025 5:24:14 pm] [Frontend] ✓ Compiled in 1078ms
+[21/05/2025 5:24:59 pm] [Frontend] ✓ Compiled in 1232ms
+[21/05/2025 5:29:08 pm] [Frontend] ✓ Compiled in 957ms
+[21/05/2025 5:29:51 pm] [Frontend] ✓ Compiled in 1020ms
+[21/05/2025 5:30:00 pm] [Frontend] ✓ Compiled in 1011ms
+[21/05/2025 5:30:35 pm] [Frontend] ✓ Compiled in 1045ms
+[21/05/2025 5:38:34 pm] [Frontend] ✓ Compiled in 1011ms
+[21/05/2025 5:38:39 pm] [Frontend] ✓ Compiled in 955ms
+[21/05/2025 5:38:58 pm] [Frontend] ✓ Compiled in 1014ms
+[21/05/2025 5:40:12 pm] [Frontend] ✓ Compiled in 1169ms
+[21/05/2025 5:40:28 pm] [Frontend] ✓ Compiled in 1311ms
+[21/05/2025 5:40:37 pm] [Frontend] ✓ Compiled in 933ms
+[21/05/2025 5:41:45 pm] [Frontend] ✓ Compiled in 1175ms
+[21/05/2025 5:42:05 pm] [Frontend] ✓ Compiled in 1057ms
+[21/05/2025 5:44:53 pm] [Frontend] ✓ Compiled in 1090ms
+[21/05/2025 5:45:49 pm] Frontend process exited with code 1
+[22/05/2025 9:49:42 am] Starting frontend development server...
+[22/05/2025 9:49:44 am] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 9:49:44 am] [Frontend] > next dev --turbopack
+[22/05/2025 9:49:58 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 9:49:58 am] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 9:49:58 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 9:49:58 am] [Frontend]    - Environments: .env
+[22/05/2025 9:49:58 am] [Frontend]  ✓ Starting...
+[22/05/2025 9:50:05 am] [Frontend] ✓ Ready in 9.2s
+[22/05/2025 9:50:06 am] [Frontend] ○ Compiling / ...
+[22/05/2025 9:50:30 am] [Frontend] ✓ Compiled / in 24.8s
+[22/05/2025 9:50:36 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 9:50:36 am] [Frontend] GET / 500 in 30437ms
+[22/05/2025 9:50:47 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 9:50:50 am] [Frontend] ✓ Compiled /_not-found/page in 3.5s
+[22/05/2025 9:50:56 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 9992ms
+[22/05/2025 10:23:24 am] [Frontend] ✓ Compiled in 1132ms
+[22/05/2025 10:25:40 am] [Frontend] ✓ Compiled in 845ms
+[22/05/2025 10:29:26 am] Frontend process exited with code 1
+[22/05/2025 10:29:54 am] Starting frontend development server...
+[22/05/2025 10:29:56 am] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 10:29:56 am] [Frontend] > next dev --turbopack
+[22/05/2025 10:30:05 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 10:30:05 am] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 10:30:05 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 10:30:05 am] [Frontend]    - Environments: .env
+[22/05/2025 10:30:05 am] [Frontend]  ✓ Starting...
+[22/05/2025 10:30:09 am] [Frontend] ✓ Ready in 5.6s
+[22/05/2025 10:30:58 am] [Frontend] ○ Compiling / ...
+[22/05/2025 10:31:14 am] [Frontend] ✓ Compiled / in 17.1s
+[22/05/2025 10:31:18 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 10:31:18 am] [Frontend] GET / 500 in 20500ms
+[22/05/2025 10:31:20 am] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 10:31:21 am] [Frontend] ✓ Compiled /favicon.ico in 1923ms
+[22/05/2025 10:31:22 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 10:31:24 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4249ms
+[22/05/2025 10:31:27 am] [Frontend] ✓ Compiled /_not-found/page in 4.8s
+[22/05/2025 10:31:29 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7402ms
+[22/05/2025 10:34:50 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 10:34:50 am] [Frontend] GET / 500 in 2679ms
+[22/05/2025 10:45:41 am] [Frontend] ✓ Compiled in 969ms
+[22/05/2025 10:46:11 am] [Frontend] ✓ Compiled in 876ms
+[22/05/2025 10:47:13 am] [Frontend] ✓ Compiled in 802ms
+[22/05/2025 10:48:44 am] [Frontend] ✓ Compiled in 807ms
+[22/05/2025 11:17:39 am] [Frontend] ✓ Compiled in 874ms
+[22/05/2025 11:17:57 am] Frontend process exited with code 1
+[22/05/2025 11:20:09 am] Starting frontend development server...
+[22/05/2025 11:20:10 am] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 11:20:10 am] [Frontend] > next dev --turbopack
+[22/05/2025 11:20:19 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 11:20:19 am] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 11:20:19 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 11:20:19 am] [Frontend]    - Environments: .env
+[22/05/2025 11:20:19 am] [Frontend]  ✓ Starting...
+[22/05/2025 11:20:23 am] [Frontend] ✓ Ready in 5.2s
+[22/05/2025 11:21:03 am] [Frontend] ○ Compiling / ...
+[22/05/2025 11:21:20 am] [Frontend] ✓ Compiled / in 17.5s
+[22/05/2025 11:21:23 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 11:21:23 am] [Frontend] GET / 500 in 21210ms
+[22/05/2025 11:21:51 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 11:21:54 am] [Frontend] ✓ Compiled /_not-found/page in 3.4s
+[22/05/2025 11:21:58 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7445ms
+[22/05/2025 11:39:41 am] [Frontend] ✓ Compiled in 1213ms
+[22/05/2025 11:39:47 am] [Frontend] ✓ Compiled in 1006ms
+[22/05/2025 11:41:01 am] [Frontend] ✓ Compiled in 880ms
+[22/05/2025 11:42:09 am] [Frontend] ✓ Compiled in 1096ms
+[22/05/2025 11:42:22 am] Frontend process exited with code 1
+[22/05/2025 11:42:54 am] Starting frontend development server...
+[22/05/2025 11:42:56 am] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 11:42:56 am] [Frontend] > next dev --turbopack
+[22/05/2025 11:43:05 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 11:43:05 am] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 11:43:05 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 11:43:05 am] [Frontend]    - Environments: .env
+[22/05/2025 11:43:05 am] [Frontend]  ✓ Starting...
+[22/05/2025 11:43:09 am] [Frontend] ✓ Ready in 5.2s
+[22/05/2025 11:43:53 am] [Frontend] ○ Compiling / ...
+[22/05/2025 11:44:09 am] [Frontend] ✓ Compiled / in 17.3s
+[22/05/2025 11:44:13 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 11:44:13 am] [Frontend] GET / 500 in 20564ms
+[22/05/2025 11:44:18 am] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 11:44:20 am] [Frontend] ✓ Compiled /_not-found/page in 3s
+[22/05/2025 11:44:24 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6362ms
+[22/05/2025 11:57:28 am] [Frontend] ✓ Compiled in 1073ms
+[22/05/2025 11:57:59 am] [Frontend] ✓ Compiled in 799ms
+[22/05/2025 11:59:01 am] [Frontend] ✓ Compiled in 892ms
+[22/05/2025 12:01:36 pm] [Frontend] ✓ Compiled in 917ms
+[22/05/2025 12:01:56 pm] Frontend process exited with code 1
+[22/05/2025 12:02:21 pm] Starting frontend development server...
+[22/05/2025 12:02:22 pm] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 12:02:22 pm] [Frontend] > next dev --turbopack
+[22/05/2025 12:02:31 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 12:02:31 pm] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 12:02:31 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 12:02:31 pm] [Frontend]    - Environments: .env
+[22/05/2025 12:02:31 pm] [Frontend]  ✓ Starting...
+[22/05/2025 12:02:35 pm] [Frontend] ✓ Ready in 5.2s
+[22/05/2025 12:02:56 pm] [Frontend] ○ Compiling / ...
+[22/05/2025 12:03:11 pm] [Frontend] ✓ Compiled / in 15.9s
+[22/05/2025 12:03:15 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 12:03:15 pm] [Frontend] GET / 500 in 19765ms
+[22/05/2025 12:03:17 pm] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 12:03:17 pm] [Frontend] ✓ Compiled /favicon.ico in 1326ms
+[22/05/2025 12:03:19 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3014ms
+[22/05/2025 12:03:23 pm] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 12:03:25 pm] [Frontend] ✓ Compiled /_not-found/page in 3.3s
+[22/05/2025 12:03:29 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6540ms
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:22 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:22 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:22 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:22 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:23 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:23 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:23 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:23 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:23 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:23 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:23 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:23 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:23 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:23 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:25:23 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:25:23 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:25:23 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:25:23 pm] [Frontend] ✓ Compiled in 1185ms
+[22/05/2025 12:25:38 pm] Frontend process exited with code 1
+[22/05/2025 12:29:08 pm] Starting frontend development server...
+[22/05/2025 12:29:09 pm] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 12:29:09 pm] [Frontend] > next dev --turbopack
+[22/05/2025 12:29:19 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 12:29:19 pm] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 12:29:19 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 12:29:19 pm] [Frontend]    - Environments: .env
+[22/05/2025 12:29:19 pm] [Frontend] ✓ Starting...
+[22/05/2025 12:29:23 pm] [Frontend] ✓ Ready in 5.6s
+[22/05/2025 12:29:24 pm] [Frontend] ○ Compiling / ...
+[22/05/2025 12:29:41 pm] [Frontend] ✓ Compiled / in 17.4s
+[22/05/2025 12:29:41 pm] [Frontend Error] ⨯ ./src/services/reports/obc1Report.ts:4:1
+[22/05/2025 12:29:41 pm] [Frontend Error] Module not found: Can't resolve 'jspdf'
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m 2 |[39m [36mimport[39m { [33mDocument[39m[33m,[39m [33mPacker[39m[33m,[39m [33mParagraph[39m[33m,[39m [33mTextRun[39m[33m,[39m [33mHeadingLevel[39m[33m,[39m [33mTable[39m[33m,[39m [33mTableRow[39m[33m,[39m [33mTableCell[39m[33m,[39m [33mBorderStyle[39m[33m,[39m [33mWidthType[39m[33m,[39m [33mAlignmentType[39m } [36mfrom[39m [32m'docx'[39m[33m;[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m 3 |[39m [36mimport[39m { saveAs } [36mfrom[39m [32m'file-saver'[39m[33m;[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m jsPDF [36mfrom[39m [32m'jspdf'[39m[33m;[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m 5 |[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m 6 |[39m [90m/**[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] [0m [90m 7 |[39m [90m * Generate both Word document and PDF reports for OBC-1 checkout results[39m[0m
+[22/05/2025 12:29:41 pm] [Frontend Error] Import map: aliased to relative './jspdf' inside of [project]/ | aliased to relative './jspdf.ts' inside of [project]/ | aliased to relative './jspdf.tsx' inside of [project]/
+[22/05/2025 12:29:41 pm] [Frontend Error] https://nextjs.org/docs/messages/module-not-found
+[22/05/2025 12:29:41 pm] [Frontend] ○ Compiling /_error ...
+[22/05/2025 12:29:43 pm] [Frontend] ✓ Compiled /_error in 2.2s
+[22/05/2025 12:29:46 pm] [Frontend] GET / 500 in 22981ms
+[22/05/2025 12:29:47 pm] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 12:29:48 pm] [Frontend] ✓ Compiled /favicon.ico in 1748ms
+[22/05/2025 12:29:50 pm] [Frontend] GET /favicon.ico 500 in 3273ms
+[22/05/2025 12:32:05 pm] Frontend process exited with code 1
+[22/05/2025 12:35:03 pm] Starting frontend development server...
+[22/05/2025 12:35:04 pm] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 12:35:04 pm] [Frontend] > next dev --turbopack
+[22/05/2025 12:35:12 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 12:35:12 pm] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 12:35:12 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 12:35:12 pm] [Frontend]    - Environments: .env
+[22/05/2025 12:35:12 pm] [Frontend]  ✓ Starting...
+[22/05/2025 12:35:16 pm] [Frontend] ✓ Ready in 5.3s
+[22/05/2025 12:35:53 pm] [Frontend] ○ Compiling / ...
+[22/05/2025 12:36:16 pm] [Frontend] ✓ Compiled / in 23.6s
+[22/05/2025 12:36:20 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 12:36:20 pm] [Frontend] GET / 500 in 27669ms
+[22/05/2025 12:36:22 pm] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 12:36:23 pm] [Frontend] ✓ Compiled /favicon.ico in 1970ms
+[22/05/2025 12:36:24 pm] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 12:36:27 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 5869ms
+[22/05/2025 12:36:33 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 5807ms
+[22/05/2025 12:36:35 pm] [Frontend] ✓ Compiled /_not-found/page in 11.4s
+[22/05/2025 12:36:37 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 14002ms
+[22/05/2025 12:37:57 pm] Frontend process exited with code 1
+[22/05/2025 1:01:12 pm] Starting frontend development server...
+[22/05/2025 1:01:14 pm] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 1:01:14 pm] [Frontend] > next dev --turbopack
+[22/05/2025 1:01:23 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 1:01:23 pm] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 1:01:23 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 1:01:23 pm] [Frontend]    - Environments: .env
+[22/05/2025 1:01:23 pm] [Frontend]  ✓ Starting...
+[22/05/2025 1:01:27 pm] [Frontend] ✓ Ready in 5.6s
+[22/05/2025 1:01:40 pm] [Frontend] ○ Compiling / ...
+[22/05/2025 1:01:59 pm] [Frontend] ✓ Compiled / in 19.7s
+[22/05/2025 1:01:59 pm] [Frontend Error] ⨯ ./src/services/reports/obc2Report.ts:671:45
+[22/05/2025 1:01:59 pm] [Frontend Error] Parsing ecmascript source code failed
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 669 |[39m     paragraphs[33m.[39mpush([36mnew[39m [33mParagraph[39m({ text[33m:[39m [32m`HKP Acknowledgement after test  : ${padString(ackAfter[0], 4)}`[39m[33m,[39m spacing[33m:[39m { after[33m:[39m [35m100[39m } }))[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 670 |[39m     paragraphs[33m.[39mpush([36mnew[39m [33mParagraph[39m({ text[33m:[39m [32m`CFG Acknowledgement after test  : ${padString(ackAfter[1], 4)}`[39m[33m,[39m spacing[33m:[39m { after[33m:[39m [35m100[39m } }))[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 671 |[39m     paragraphs[33m.[39mpush([36mnew[39m [33mParagraph[39m({ text[33m:[39m [32m`M[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m     |[39m                                             [31m[1m^[22m[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] Unexpected eof
+[22/05/2025 1:01:59 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:19:1
+[22/05/2025 1:01:59 pm] [Frontend Error] Export generateOBC2Report doesn't exist in target module
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 17 |[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 18 |[39m [36mimport[39m { generateOBC1Report } [36mfrom[39m [32m'@/services/reports/obc1Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 19 |[39m [36mimport[39m { generateOBC2Report } [36mfrom[39m [32m'@/services/reports/obc2Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 20 |[39m [36mimport[39m { generateSBandReport } [36mfrom[39m [32m'@/services/reports/sbandReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 21 |[39m [36mimport[39m { generateUHFReport } [36mfrom[39m [32m'@/services/reports/uhfReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 22 |[39m [36mimport[39m { generateHEPSReport } [36mfrom[39m [32m'@/services/reports/hepsReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] The export generateOBC2Report was not found in module [project]/src/services/reports/obc2Report.ts [app-client] (ecmascript).
+[22/05/2025 1:01:59 pm] [Frontend Error] The module has no exports at all.
+[22/05/2025 1:01:59 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[22/05/2025 1:01:59 pm] [Frontend Error] ./src/components/CheckoutTestProgress/CheckoutTestProgress.tsx:19:1
+[22/05/2025 1:01:59 pm] [Frontend Error] Export generateOBC2Report doesn't exist in target module
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 17 |[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 18 |[39m [36mimport[39m { generateOBC1Report } [36mfrom[39m [32m'@/services/reports/obc1Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m 19 |[39m [36mimport[39m { generateOBC2Report } [36mfrom[39m [32m'@/services/reports/obc2Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 20 |[39m [36mimport[39m { generateSBandReport } [36mfrom[39m [32m'@/services/reports/sbandReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 21 |[39m [36mimport[39m { generateUHFReport } [36mfrom[39m [32m'@/services/reports/uhfReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 22 |[39m [36mimport[39m { generateHEPSReport } [36mfrom[39m [32m'@/services/reports/hepsReport'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] The export generateOBC2Report was not found in module [project]/src/services/reports/obc2Report.ts [app-ssr] (ecmascript).
+[22/05/2025 1:01:59 pm] [Frontend Error] The module has no exports at all.
+[22/05/2025 1:01:59 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[22/05/2025 1:01:59 pm] [Frontend Error] ./src/components/CheckoutTestProgress/components/OBC2TestPanel.tsx:9:1
+[22/05/2025 1:01:59 pm] [Frontend Error] Export generateOBC2Report doesn't exist in target module
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m  7 |[39m [90m// Import the OBC2-specific functions[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { runOBC2Checkout } [36mfrom[39m [32m'@/services/checkout/obc2Checkout'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { generateOBC2Report } [36mfrom[39m [32m'@/services/reports/obc2Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 10 |[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 11 |[39m [90m// Import test history components[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mTestHistoryChart[39m[33m,[39m [33mTestHistoryTable[39m } [36mfrom[39m [32m'@/components/CheckoutTestProgress/components'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] The export generateOBC2Report was not found in module [project]/src/services/reports/obc2Report.ts [app-client] (ecmascript).
+[22/05/2025 1:01:59 pm] [Frontend Error] The module has no exports at all.
+[22/05/2025 1:01:59 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[22/05/2025 1:01:59 pm] [Frontend Error] ./src/components/CheckoutTestProgress/components/OBC2TestPanel.tsx:9:1
+[22/05/2025 1:01:59 pm] [Frontend Error] Export generateOBC2Report doesn't exist in target module
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m  7 |[39m [90m// Import the OBC2-specific functions[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m  8 |[39m [36mimport[39m { runOBC2Checkout } [36mfrom[39m [32m'@/services/checkout/obc2Checkout'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m[31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { generateOBC2Report } [36mfrom[39m [32m'@/services/reports/obc2Report'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 10 |[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 11 |[39m [90m// Import test history components[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] [0m [90m 12 |[39m [36mimport[39m { [33mTestHistoryChart[39m[33m,[39m [33mTestHistoryTable[39m } [36mfrom[39m [32m'@/components/CheckoutTestProgress/components'[39m[33m;[39m[0m
+[22/05/2025 1:01:59 pm] [Frontend Error] The export generateOBC2Report was not found in module [project]/src/services/reports/obc2Report.ts [app-ssr] (ecmascript).
+[22/05/2025 1:01:59 pm] [Frontend Error] The module has no exports at all.
+[22/05/2025 1:01:59 pm] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[22/05/2025 1:02:00 pm] [Frontend] ○ Compiling /_error ...
+[22/05/2025 1:02:02 pm] [Frontend] ✓ Compiled /_error in 3s
+[22/05/2025 1:02:06 pm] [Frontend] GET / 500 in 26355ms
+[22/05/2025 1:02:06 pm] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 1:02:08 pm] [Frontend] ✓ Compiled /favicon.ico in 1849ms
+[22/05/2025 1:02:09 pm] [Frontend] GET /favicon.ico 500 in 3392ms
+[22/05/2025 1:05:24 pm] Frontend process exited with code 1
+[22/05/2025 3:06:34 pm] Starting frontend development server...
+[22/05/2025 3:06:36 pm] [Frontend] > beautify@0.1.0 dev
+[22/05/2025 3:06:36 pm] [Frontend] > next dev --turbopack
+[22/05/2025 3:06:45 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[22/05/2025 3:06:45 pm] [Frontend] - Local:        http://localhost:3000
+[22/05/2025 3:06:45 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[22/05/2025 3:06:45 pm] [Frontend]    - Environments: .env
+[22/05/2025 3:06:45 pm] [Frontend]  ✓ Starting...
+[22/05/2025 3:06:49 pm] [Frontend] ✓ Ready in 5.4s
+[22/05/2025 3:07:14 pm] [Frontend] ○ Compiling / ...
+[22/05/2025 3:07:32 pm] [Frontend] ✓ Compiled / in 18.5s
+[22/05/2025 3:07:36 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[22/05/2025 3:07:36 pm] [Frontend] GET / 500 in 22521ms
+[22/05/2025 3:07:38 pm] [Frontend] ○ Compiling /favicon.ico ...
+[22/05/2025 3:07:39 pm] [Frontend] ✓ Compiled /favicon.ico in 1516ms
+[22/05/2025 3:07:41 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3459ms
+[22/05/2025 3:07:44 pm] [Frontend] ○ Compiling /_not-found/page ...
+[22/05/2025 3:07:47 pm] [Frontend] ✓ Compiled /_not-found/page in 3.1s
+[22/05/2025 3:07:52 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7871ms
+[22/05/2025 3:23:22 pm] [Frontend] ✓ Compiled in 1114ms
+[22/05/2025 3:27:55 pm] [Frontend] ✓ Compiled in 861ms
+[22/05/2025 3:39:04 pm] [Frontend] ✓ Compiled in 942ms
+[22/05/2025 3:47:12 pm] [Frontend] ✓ Compiled in 1144ms
+[22/05/2025 3:53:04 pm] [Frontend] ✓ Compiled in 1149ms
+[22/05/2025 3:58:15 pm] [Frontend] ✓ Compiled in 858ms
+[22/05/2025 4:00:06 pm] Frontend process exited with code 1
+[23/05/2025 9:55:46 am] Starting frontend development server...
+[23/05/2025 9:55:48 am] [Frontend] > beautify@0.1.0 dev
+[23/05/2025 9:55:48 am] [Frontend] > next dev --turbopack
+[23/05/2025 9:55:58 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[23/05/2025 9:55:58 am] [Frontend] - Local:        http://localhost:3000
+[23/05/2025 9:55:58 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[23/05/2025 9:55:58 am] [Frontend]    - Environments: .env
+[23/05/2025 9:55:58 am] [Frontend]  ✓ Starting...
+[23/05/2025 9:56:02 am] [Frontend] ✓ Ready in 6s
+[23/05/2025 9:56:21 am] [Frontend] ○ Compiling / ...
+[23/05/2025 9:56:41 am] [Frontend] ✓ Compiled / in 20.1s
+[23/05/2025 9:56:44 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 9:56:44 am] [Frontend] GET / 500 in 23648ms
+[23/05/2025 9:56:45 am] [Frontend] ○ Compiling /_not-found/page ...
+[23/05/2025 9:56:52 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7834ms
+[23/05/2025 9:56:53 am] [Frontend] ✓ Compiled /_not-found/page in 8.9s
+[23/05/2025 9:56:56 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 8515ms
+[23/05/2025 9:57:00 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3554ms
+[23/05/2025 10:12:19 am] [Frontend] ✓ Compiled in 1321ms
+[23/05/2025 10:13:31 am] Frontend process exited with code 1
+[23/05/2025 10:14:05 am] Starting frontend development server...
+[23/05/2025 10:14:07 am] [Frontend] > beautify@0.1.0 dev
+[23/05/2025 10:14:07 am] [Frontend] > next dev --turbopack
+[23/05/2025 10:14:17 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[23/05/2025 10:14:17 am] [Frontend] - Local:        http://localhost:3000
+[23/05/2025 10:14:17 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[23/05/2025 10:14:17 am] [Frontend]    - Environments: .env
+[23/05/2025 10:14:17 am] [Frontend] ✓ Starting...
+[23/05/2025 10:14:21 am] [Frontend] ✓ Ready in 5.9s
+[23/05/2025 10:14:21 am] [Frontend] ○ Compiling / ...
+[23/05/2025 10:14:39 am] [Frontend] ✓ Compiled / in 17.8s
+[23/05/2025 10:14:42 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 10:14:43 am] [Frontend] GET / 500 in 21759ms
+[23/05/2025 10:14:47 am] [Frontend] ○ Compiling /_not-found/page ...
+[23/05/2025 10:14:49 am] [Frontend] ✓ Compiled /_not-found/page in 2.8s
+[23/05/2025 10:14:53 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6476ms
+[23/05/2025 10:16:43 am] [Frontend] ✓ Compiled in 948ms
+[23/05/2025 10:21:51 am] [Frontend] ✓ Compiled in 916ms
+[23/05/2025 10:22:39 am] [Frontend] ✓ Compiled in 950ms
+[23/05/2025 10:22:51 am] Frontend process exited with code 1
+[23/05/2025 10:23:15 am] Starting frontend development server...
+[23/05/2025 10:23:21 am] [Frontend] > beautify@0.1.0 dev
+[23/05/2025 10:23:21 am] [Frontend] > next dev --turbopack
+[23/05/2025 10:23:29 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[23/05/2025 10:23:29 am] [Frontend] - Local:        http://localhost:3000
+[23/05/2025 10:23:29 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[23/05/2025 10:23:29 am] [Frontend]    - Environments: .env
+[23/05/2025 10:23:29 am] [Frontend]  ✓ Starting...
+[23/05/2025 10:23:33 am] [Frontend] ✓ Ready in 5.1s
+[23/05/2025 10:23:47 am] [Frontend] ○ Compiling / ...
+[23/05/2025 10:24:04 am] [Frontend] ✓ Compiled / in 17.8s
+[23/05/2025 10:24:08 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 10:24:08 am] [Frontend] GET / 500 in 21501ms
+[23/05/2025 10:24:10 am] [Frontend] ○ Compiling /favicon.ico ...
+[23/05/2025 10:24:11 am] [Frontend] ✓ Compiled /favicon.ico in 1331ms
+[23/05/2025 10:24:13 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3687ms
+[23/05/2025 10:24:15 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2233ms
+[23/05/2025 10:24:29 am] [Frontend] ○ Compiling /_not-found/page ...
+[23/05/2025 10:24:33 am] [Frontend] ✓ Compiled /_not-found/page in 4.8s
+[23/05/2025 10:24:38 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 9136ms
+[23/05/2025 10:24:53 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 10:24:53 am] [Frontend] GET / 500 in 3014ms
+[23/05/2025 10:25:00 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7192ms
+[23/05/2025 10:29:25 am] [Frontend] ✓ Compiled in 995ms
+[23/05/2025 10:30:55 am] [Frontend] ✓ Compiled in 984ms
+[23/05/2025 10:32:29 am] [Frontend] ✓ Compiled in 890ms
+[23/05/2025 10:33:07 am] [Frontend] ✓ Compiled in 897ms
+[23/05/2025 10:34:22 am] [Frontend] ✓ Compiled in 918ms
+[23/05/2025 10:35:02 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 10:35:02 am] [Frontend] GET / 500 in 3579ms
+[23/05/2025 10:35:06 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4025ms
+[23/05/2025 10:58:46 am] [Frontend] ✓ Compiled in 1132ms
+[23/05/2025 11:01:17 am] [Frontend] ✓ Compiled in 846ms
+[23/05/2025 11:01:24 am] Frontend process exited with code 1
+[23/05/2025 11:02:00 am] Starting frontend development server...
+[23/05/2025 11:02:02 am] [Frontend] > beautify@0.1.0 dev
+[23/05/2025 11:02:02 am] [Frontend] > next dev --turbopack
+[23/05/2025 11:02:11 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[23/05/2025 11:02:11 am] [Frontend] - Local:        http://localhost:3000
+[23/05/2025 11:02:11 am] [Frontend]    - Network:      http://10.97.25.124:3000
+[23/05/2025 11:02:11 am] [Frontend]    - Environments: .env
+[23/05/2025 11:02:11 am] [Frontend]  ✓ Starting...
+[23/05/2025 11:02:15 am] [Frontend] ✓ Ready in 5.5s
+[23/05/2025 11:02:58 am] [Frontend] ○ Compiling / ...
+[23/05/2025 11:03:24 am] [Frontend] ✓ Compiled / in 26.8s
+[23/05/2025 11:03:28 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2370966008' }
+[23/05/2025 11:03:28 am] [Frontend] GET / 500 in 30897ms
+[23/05/2025 11:03:34 am] [Frontend] ○ Compiling /_not-found/page ...
+[23/05/2025 11:03:36 am] [Frontend] ✓ Compiled /_not-found/page in 2.4s
+[23/05/2025 11:03:39 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5209ms
+[23/05/2025 11:11:20 am] Frontend process exited with code 1

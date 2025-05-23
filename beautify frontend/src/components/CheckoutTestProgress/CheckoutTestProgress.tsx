@@ -15,6 +15,18 @@ import { PCSTestPanel } from "./components/PCSTestPanel";
 import { XBandTestPanel } from "./components/XBandTestPanel";
 import { LEOCAMTestPanel } from "./components/LEOCAMTestPanel";
 
+import { generateOBC1Report } from '@/services/reports/obc1Report';
+import { generateOBC2Report } from '@/services/reports/obc2Report';
+import { generateSBandReport } from '@/services/reports/sbandReport';
+import { generateUHFReport } from '@/services/reports/uhfReport';
+import { generateHEPSReport } from '@/services/reports/hepsReport';
+import { generateADCSReport } from '@/services/reports/adcsReport';
+import { generateGPSReport } from '@/services/reports/gpsReport';
+import { generatePropulsionReport } from '@/services/reports/propulsionReport';
+import { generatePCSReport } from '@/services/reports/pcsReport';
+import { generateXBandReport } from '@/services/reports/xbandReport';
+import { generateLEOCAMReport } from '@/services/reports/leocamReport';
+
 import styles from "./CheckoutTestProgress.module.css";
 import { setSimulationMode } from '@/utils/mccUtils';
 
@@ -64,13 +76,23 @@ const CheckoutTestProgress: React.FC<CheckoutTestProgressProps> = ({
   const tabsListRef = useRef<HTMLDivElement>(null);
   // Use non-null assertion to ensure TypeScript knows this ref will be assigned
   const nodeRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-const runNextTestTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-const testTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-const completedTestsRef = useRef<string[]>([]);
-const isMountedRef = useRef<boolean>(true);
+  const runNextTestTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const testTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const completedTestsRef = useRef<string[]>([]);
+  const isMountedRef = useRef<boolean>(true);
+  const currentlyRunningRef = useRef<string | null>(null);
+  const [panelKey, setPanelKey] = useState(0);
+  const [reportsGenerated, setReportsGenerated] = useState(false);
+  // Use a ref to track if auto-generation has been triggered to avoid race conditions
+const autoGenerationTriggeredRef = useRef(false);
+const [reportProgress, setReportProgress] = useState<{
+  current: number;
+  total: number;
+  currentComponent: string;
+} | null>(null);
 
 // Constants for test timeouts and delays
-const TEST_TIMEOUT_MS = 120000; // 2 minutes max per test
+const TEST_TIMEOUT_MS = 900000; // 15 minutes max per test, propulsion test need ~10min
 const TEST_SEQUENCE_DELAY_MS = 1000; // 1 second delay between tests
 
 
@@ -143,50 +165,61 @@ useEffect(() => {
 }, []);
 
   // Load the filtered items with checked options from localStorage
-  useEffect(() => {
-    const filteredItemsJson = localStorage.getItem('checkoutTestItems');
-    
-    if (filteredItemsJson) {
-      try {
-        const parsedItems = JSON.parse(filteredItemsJson);
-        
-        if (Array.isArray(parsedItems) && parsedItems.length > 0) {
-          console.log("📋 Using filtered items with checked options:", parsedItems);
-          setFilteredDroppedItems(parsedItems);
-        } else {
-          console.log("⚠️ No valid filtered items found, using original dropped items");
-          setFilteredDroppedItems(droppedItems);
-        }
-      } catch (e) {
-        console.error("Error parsing filtered items:", e);
+useEffect(() => {
+  const filteredItemsJson = localStorage.getItem('checkoutTestItems');
+  
+  if (filteredItemsJson) {
+    try {
+      const parsedItems = JSON.parse(filteredItemsJson);
+      
+      if (Array.isArray(parsedItems) && parsedItems.length > 0) {
+        console.log("📋 Using filtered items with checked options:", parsedItems);
+        setFilteredDroppedItems(parsedItems);
+      } else {
+        console.log("⚠️ No valid filtered items found, using original dropped items");
         setFilteredDroppedItems(droppedItems);
       }
-    } else {
-      // If no filtered items in localStorage, use the original droppedItems
-      // but try to only include options that are checked
-      console.log("⚠️ No filtered items in localStorage, using original items");
-      
-      // For backward compatibility - try to filter based on checkedOptions if available
-      const backwardCompatibleItems = droppedItems.map(item => {
-        if (item.checkedOptions) {
-          // Get the list of options that are checked
-          const checkedOptionsList = Object.entries(item.checkedOptions)
-            .filter(([_, isChecked]) => isChecked)
-            .map(([option]) => option);
-          
-          // Only include checked options if any exist, otherwise keep all options
-          return {
-            ...item,
-            options: checkedOptionsList.length > 0 ? checkedOptionsList : item.options
-          };
-        }
-        
-        return item;
-      });
-      
-      setFilteredDroppedItems(backwardCompatibleItems);
+    } catch (e) {
+      console.error("Error parsing filtered items:", e);
+      setFilteredDroppedItems(droppedItems);
     }
-  }, [droppedItems]);
+  } else {
+    // If no filtered items in localStorage, use the original droppedItems
+    // but try to only include options that are checked
+    console.log("⚠️ No filtered items in localStorage, using original items");
+    
+    // For backward compatibility - try to filter based on checkedOptions if available
+    const backwardCompatibleItems = droppedItems.map(item => {
+      // Get the list of options that are checked
+      const checkedOptionsList = Object.entries(item.checkedOptions || {})
+        .filter(([_, isChecked]) => isChecked)
+        .map(([option]) => option);
+      
+      // If no options are checked, include all options as a fallback AND visually check them
+      if (checkedOptionsList.length === 0) {
+        // Create a new checkedOptions object with all options set to true
+        const allOptionsChecked: Record<string, boolean> = {};
+        item.options.forEach(option => {
+          allOptionsChecked[option] = true;
+        });
+        
+        return {
+          ...item,
+          options: item.options, // Keep all options
+          checkedOptions: allOptionsChecked // Mark all as visually checked
+        };
+      }
+      
+      // Return a version of the item with only the checked options
+      return {
+        ...item,
+        options: checkedOptionsList // Replace with only the checked options
+      };
+    });
+    
+    setFilteredDroppedItems(backwardCompatibleItems);
+  }
+}, [droppedItems]);
 
   // Also, let's add a small optimization to make the scroll buttons look better
 // and handle tab overflow more intelligently
@@ -367,27 +400,28 @@ const updateTestResult = (component: string, result: Partial<TestResult>) => {
     if (result.status === 'completed' || result.status === 'error') {
       console.log(`Test ${component} completed with status: ${result.status}`);
       
-      // Clear the currently running test
-      if (currentlyRunningTest === component) {
-        console.log(`Clearing currentlyRunningTest: ${component}`);
-        
-        // Clear the current test immediately
-        setCurrentlyRunningTest(null);
-        
-        // Schedule the next test with a delay
-        if (runNextTestTimeoutRef.current) {
-          clearTimeout(runNextTestTimeoutRef.current);
-        }
-        
-        console.log(`Scheduling next test to run in ${TEST_SEQUENCE_DELAY_MS}ms`);
-        runNextTestTimeoutRef.current = setTimeout(() => {
-          if (!isMountedRef.current) return; // Prevent state updates after unmount
-          
-          console.log("Timeout expired, running next test");
-          runNextTest(updatedResults);
-          runNextTestTimeoutRef.current = null;
-        }, TEST_SEQUENCE_DELAY_MS);
+      // Important: Set currentlyRunningTest to null immediately,
+      // don't rely on state update to have happened
+      setCurrentlyRunningTest(null);
+      
+      // Store the fact that we're no longer running a test in a ref
+      // This avoids the state closure issue
+      currentlyRunningRef.current = null;
+      
+      // Schedule the next test with a delay
+      if (runNextTestTimeoutRef.current) {
+        clearTimeout(runNextTestTimeoutRef.current);
       }
+      
+      console.log(`Scheduling next test to run in ${TEST_SEQUENCE_DELAY_MS}ms`);
+      runNextTestTimeoutRef.current = setTimeout(() => {
+        if (!isMountedRef.current) return; // Prevent state updates after unmount
+        
+        console.log("Timeout expired, running next test");
+        // Pass the updated results to runNextTest
+        runNextTest(updatedResults);
+        runNextTestTimeoutRef.current = null;
+      }, TEST_SEQUENCE_DELAY_MS);
     }
     
     return updatedResults;
@@ -402,18 +436,11 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
     runNextTestTimeoutRef.current = null;
   }
   
-  console.log("Attempting to run next test. Current running test:", currentlyRunningTest);
+  console.log("Attempting to run next test. Current running test:", currentlyRunningRef.current);
   
-  // Force a fresh check of the current running test (avoid stale closures)
-  let isTestRunning = false;
-  setCurrentlyRunningTest(current => {
-    isTestRunning = current !== null;
-    return current;
-  });
-  
-  // Don't try to run another test if one is already running
-  if (isTestRunning || currentlyRunningTest) {
-    console.log("Can't run next test - a test is already running:", currentlyRunningTest);
+  // Don't rely on state, use the ref instead
+  if (currentlyRunningRef.current !== null) {
+    console.log("Can't run next test - a test is already running:", currentlyRunningRef.current);
     return;
   }
   
@@ -428,8 +455,9 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
     // Set up a timeout for this test
     setupTestTimeout(nextComponent.header);
     
-    // Set as currently running
+    // Update both the state and the ref
     setCurrentlyRunningTest(nextComponent.header);
+    currentlyRunningRef.current = nextComponent.header;
     
     // Mark it as running in the results
     setTestResults(prev => ({
@@ -448,34 +476,262 @@ const runNextTest = (currentResults: Record<string, TestResult>) => {
   }
 };
 
-  // Generate and save test report
-  const saveTestReport = async () => {
-    setIsSavingReport(true);
+// Helper function for components that don't have report generators imported yet
+const generateGenericReport = async (componentName: string, results: any, filename: string): Promise<void> => {
+  try {
+    // Create a generic JSON report for components without imported generators
+    const now = new Date();
     
-    try {
-      // Call report generation for each completed test
-      for (const item of filteredDroppedItems) {
-        const result = testResults[item.header];
-        if (result && result.status === 'completed') {
-          // Here you would call the appropriate report generator for each component
-          console.log(`Generating report for ${item.header}...`);
-          // For example: await generateOBC1Report(result.results);
-        }
+    // Create comprehensive report data
+    const reportData = {
+      component: componentName,
+      testDate: now.toISOString(),
+      version: '1.0.0',
+      summary: {
+        status: 'completed',
+        duration: results.duration || 'N/A',
+        testedOptions: results.testedOptions || []
+      },
+      results: results,
+      metadata: {
+        generatedBy: 'SATS - Satellite Automated Testing System',
+        generatedAt: now.toISOString(),
+        reportType: 'Generic JSON Report',
+        note: `This is a temporary generic report for ${componentName}. The dedicated report generator exists but needs to be imported.`
       }
-      
-      alert("Test reports have been generated and saved successfully!");
-    } catch (error) {
-      console.error("Error generating report:", error);
-      alert("Failed to generate test reports.");
-    } finally {
-      setIsSavingReport(false);
-    }
-  };
+    };
 
-  // Run all tests again (reset and restart)
+     // Convert to JSON string with formatting
+    const reportContent = JSON.stringify(reportData, null, 2);
+    
+    // Create and download the file
+    const blob = new Blob([reportContent], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    console.log(`📄 Generated generic report: ${filename}`);
+  } catch (error) {
+    console.error(`Error generating generic report for ${componentName}:`, error);
+    throw error;
+  }
+};
+
+// Add automatic report generation when all tests complete
+useEffect(() => {
+  console.log('🔍 Auto-report useEffect triggered:', {
+    isComplete,
+    filteredItemsLength: filteredDroppedItems.length,
+    isSavingReport,
+    reportsGenerated,
+    autoGenerationTriggered: autoGenerationTriggeredRef.current,
+    testResultsKeys: Object.keys(testResults),
+    completedTestsCount: Object.values(testResults).filter(r => r.status === 'completed').length
+  });
+
+  // Check if all tests are complete and auto-generate reports (but only once)
+  if (isComplete && filteredDroppedItems.length > 0 && !isSavingReport && !reportsGenerated && !autoGenerationTriggeredRef.current) {
+    const completedTests = Object.values(testResults).filter(
+      result => result.status === 'completed'
+    );
+    
+    console.log(`🎯 All tests completed. Found ${completedTests.length} completed tests out of ${filteredDroppedItems.length} total tests.`);
+    
+    if (completedTests.length > 0 && completedTests.length === filteredDroppedItems.length) {
+      console.log('🎯 All tests completed. Auto-generating reports...');
+      
+      // Mark that auto-generation has been triggered
+      autoGenerationTriggeredRef.current = true;
+      
+      // Generate reports immediately instead of using a timeout
+      if (isMountedRef.current) {
+        console.log('📋 Auto-generating reports for all completed tests...');
+        setReportsGenerated(true); // Set this right before calling saveTestReport
+        saveTestReport();
+      }
+    } else {
+      console.log(`⏳ Not all tests complete yet. Completed: ${completedTests.length}, Total: ${filteredDroppedItems.length}`);
+    }
+  } else {
+    console.log('⏭️ Auto-report conditions not met:', {
+      isComplete: isComplete ? '✓' : '✗',
+      hasItems: filteredDroppedItems.length > 0 ? '✓' : '✗',
+      notSaving: !isSavingReport ? '✓' : '✗',
+      notGenerated: !reportsGenerated ? '✓' : '✗',
+      notTriggered: !autoGenerationTriggeredRef.current ? '✓' : '✗'
+    });
+  }
+}, [isComplete, filteredDroppedItems.length, isSavingReport, reportsGenerated]); // Removed testResults from dependencies
+
+// another useEffect to monitor when tests complete
+useEffect(() => {
+  const completedCount = Object.values(testResults).filter(r => r.status === 'completed' || r.status === 'error').length;
+  const totalCount = filteredDroppedItems.length;
+  
+  console.log(`📊 Test progress: ${completedCount}/${totalCount} tests finished`);
+  
+  if (completedCount === totalCount && totalCount > 0 && !reportsGenerated) {
+    console.log('🏁 All tests have finished, setting isComplete to true');
+    setIsComplete(true);
+  }
+}, [testResults, filteredDroppedItems.length, reportsGenerated]);
+
+  // Generate and save test report
+// In CheckoutTestProgress.tsx, modify the saveTestReport function:
+
+const saveTestReport = async () => {
+  if (filteredDroppedItems.length === 0) {
+    alert('No test components available to generate reports.');
+    return;
+  }
+
+  setIsSavingReport(true);
+  
+  try {
+    let successCount = 0;
+    let errorCount = 0;
+    const errors: string[] = [];
+    const generatedReports: string[] = [];
+
+    console.log('🔄 Starting report generation for all completed tests...');
+
+    // Add delay between downloads to prevent browser blocking
+    const DOWNLOAD_DELAY = 1500; // 1.5 seconds between each report generation
+
+    // Generate reports for each completed test with delays
+    for (let i = 0; i < filteredDroppedItems.length; i++) {
+      const item = filteredDroppedItems[i];
+      const result = testResults[item.header];
+      
+      if (result && result.status === 'completed' && result.results) {
+        try {
+          console.log(`📝 Generating report ${i + 1}/${filteredDroppedItems.length} for ${item.header}...`);
+          
+          // Add progress indicator
+          setReportProgress({
+            current: i + 1,
+            total: filteredDroppedItems.length,
+            currentComponent: item.header
+          });
+          
+          let reportFileName = '';
+          
+          // Generate report based on component type
+          switch (item.header) {
+            case 'OBC-1':
+              reportFileName = await generateOBC1Report(result.results);
+              break;
+            case 'OBC-2':
+              reportFileName = await generateOBC2Report(result.results);
+              break;
+            case 'S-Band':
+              reportFileName = await generateSBandReport(result.results);
+              break;
+            case 'UHF':
+              reportFileName = await generateUHFReport(result.results);
+              break;
+            case 'HEPS':
+              reportFileName = await generateHEPSReport(result.results);
+              break;
+            case 'ADCS':
+              reportFileName = await generateADCSReport(result.results);
+              break;
+            case 'GPS':
+              reportFileName = await generateGPSReport(result.results);
+              break;
+            case 'Propulsion':
+              reportFileName = await generatePropulsionReport(result.results);
+              break;
+            case 'PCS':
+              reportFileName = await generatePCSReport(result.results);
+              break;
+            case 'X-Band':
+              reportFileName = await generateXBandReport(result.results);
+              break;
+            case 'LEOCAM':
+              reportFileName = await generateLEOCAMReport(result.results);
+              break;
+            default:
+              console.log(`⚠️ No report generator found for ${item.header}`);
+              reportFileName = `${item.header}_Report_${new Date().toISOString().split('T')[0]}.json`;
+              await generateGenericReport(item.header, result.results, reportFileName);
+              break;
+          }
+          
+          if (reportFileName) {
+            successCount++;
+            generatedReports.push(reportFileName);
+            console.log(`✅ Successfully generated report: ${reportFileName}`);
+          } else {
+            errorCount++;
+            errors.push(`Failed to generate report for ${item.header}: No filename returned`);
+          }
+          
+          // Add delay between downloads (except for the last one)
+          if (i < filteredDroppedItems.length - 1) {
+            console.log(`⏳ Waiting ${DOWNLOAD_DELAY}ms before next download...`);
+            await new Promise(resolve => setTimeout(resolve, DOWNLOAD_DELAY));
+          }
+          
+        } catch (error) {
+          errorCount++;
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          errors.push(`Failed to generate report for ${item.header}: ${errorMessage}`);
+          console.error(`❌ Error generating report for ${item.header}:`, error);
+        }
+      } else if (result && result.status !== 'completed') {
+        console.log(`⏭️ Skipping ${item.header} - test not completed (status: ${result.status})`);
+      } else {
+        console.log(`⏭️ Skipping ${item.header} - no test results available`);
+      }
+    }
+    
+    // Show summary message
+    if (successCount > 0 && errorCount === 0) {
+      const reportList = generatedReports.join('\n• ');
+      alert(`✅ Successfully generated ${successCount} test report(s)!\n\nGenerated Reports:\n• ${reportList}\n\nReports have been downloaded to your default downloads folder.\n\n💡 If some downloads were blocked by your browser, please check your download settings and allow multiple downloads from this site.`);
+    } else if (successCount > 0 && errorCount > 0) {
+      const reportList = generatedReports.join('\n• ');
+      alert(`⚠️ Generated ${successCount} report(s) successfully, but ${errorCount} failed.\n\nSuccessful Reports:\n• ${reportList}\n\nErrors:\n${errors.join('\n')}\n\nSuccessful reports have been downloaded to your default downloads folder.\n\n💡 If some downloads were blocked, check browser download settings.`);
+    } else if (errorCount > 0) {
+      alert(`❌ Failed to generate any reports.\n\nErrors:\n${errors.join('\n')}`);
+    } else {
+      alert('ℹ️ No completed tests found to generate reports for.');
+    }
+    
+  } catch (error) {
+    console.error('Error during batch report generation:', error);
+    alert(`❌ Error generating reports: ${error instanceof Error ? error.message : String(error)}\n\n💡 Try generating reports individually or check browser download settings.`);
+  } finally {
+    setIsSavingReport(false);
+    setReportProgress(null); // Clear progress when done
+  }
+};
+
+// Run all tests again (reset and restart)
+// Also update the runAllTests function to reset the reportsGenerated flag
 const runAllTests = () => {
+  // First, clear any running tests and timeouts
+  if (currentlyRunningTest) {
+    console.log(`Stopping current test: ${currentlyRunningTest}`);
+  }
+  
+  // Clear the currently running test in both state and ref
+  setCurrentlyRunningTest(null);
+  currentlyRunningRef.current = null;
+  
   // Clear completed tests record
   completedTestsRef.current = [];
+  
+  // Reset the reports generated flag and auto-generation trigger
+  setReportsGenerated(false);
+  autoGenerationTriggeredRef.current = false;
   
   // Clear any pending timeouts
   if (runNextTestTimeoutRef.current) {
@@ -487,6 +743,8 @@ const runAllTests = () => {
     clearTimeout(testTimeoutRef.current);
     testTimeoutRef.current = null;
   }
+  
+  console.log("🔄 Resetting all tests to 'waiting' state");
   
   // Reset all test results to waiting
   const resetResults: Record<string, TestResult> = {};
@@ -500,14 +758,44 @@ const runAllTests = () => {
   
   setTestResults(resetResults);
   setIsComplete(false);
-  setCurrentlyRunningTest(null);
   
-  // Start running tests after a short delay
+  // Force a key change in test panels to trigger a full remount
+  setPanelKey(prevKey => prevKey + 1);
+  
+  // Allow a small delay for components to remount
   setTimeout(() => {
     if (!isMountedRef.current) return;
-    runNextTest(resetResults);
-  }, 50);
+    
+    console.log("✅ Starting first test after reset");
+    // Find the first test component
+    const firstComponent = filteredDroppedItems[0];
+    if (firstComponent) {
+      console.log(`🚀 Explicitly starting test for: ${firstComponent.header}`);
+      
+      // Set up timeout for this test
+      setupTestTimeout(firstComponent.header);
+      
+      // Set as currently running
+      setCurrentlyRunningTest(firstComponent.header);
+      currentlyRunningRef.current = firstComponent.header;
+      
+      // Mark it as running in the results
+      setTestResults(prev => ({
+        ...prev,
+        [firstComponent.header]: {
+          ...(prev[firstComponent.header] || { component: firstComponent.header, results: null }),
+          status: 'running'
+        }
+      }));
+      
+      // Switch to the tab for this test
+      setActiveTab(firstComponent.header);
+    } else {
+      console.log("❌ No test components found to run");
+    }
+  }, 200);
 };
+
 
   // Calculate test stage status for each filtered component
   const getTestStatusSummary = () => {
@@ -797,7 +1085,7 @@ useEffect(() => {
               <div style={{ overflow: 'auto', height: '100%', display: activeTab ? 'block' : 'none' }}>
                 {filteredDroppedItems.map(item => (
                   <div 
-                    key={item.header} 
+                    key={`${item.header}-${panelKey}`} 
                     style={{ 
                       display: activeTab === item.header ? 'block' : 'none',
                       height: '100%',
@@ -807,6 +1095,7 @@ useEffect(() => {
                     {/* Render the appropriate test panel based on component type */}
                     {item.header === "OBC-1" && (
                       <OBC1TestPanel
+                        key={`panel-${panelKey}`} // Add this key to force remount
                         options={getComponentOptions(item.header)} // Pass only the filtered/checked options
                         sock={sock}
                         onTestComplete={(results) => 
@@ -833,6 +1122,7 @@ useEffect(() => {
                     
                     {item.header === "OBC-2" && (
   <OBC2TestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -859,6 +1149,7 @@ useEffect(() => {
 
 {item.header === "S-Band" && (
   <SBandTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)} // Pass only the filtered/checked options
     sock={sock}
     onTestComplete={(results) => 
@@ -885,6 +1176,7 @@ useEffect(() => {
 
 {item.header === "UHF" && (
   <UHFTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -911,6 +1203,7 @@ useEffect(() => {
 
 {item.header === "LEOCAM" && (
   <LEOCAMTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -937,6 +1230,7 @@ useEffect(() => {
 
 {item.header === "HEPS" && (
   <HEPSTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -963,6 +1257,7 @@ useEffect(() => {
 
 {item.header === "ADCS" && (
   <ADCSTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -989,6 +1284,7 @@ useEffect(() => {
 
 {item.header === "GPS" && (
   <GPSTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1015,6 +1311,7 @@ useEffect(() => {
 
 {item.header === "Propulsion" && (
   <PropulsionTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1041,6 +1338,7 @@ useEffect(() => {
 
 {item.header === "PCS" && (
   <PCSTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1067,6 +1365,7 @@ useEffect(() => {
 
 {item.header === "X-Band" && (
   <XBandTestPanel
+    key={`panel-${panelKey}`} // Add this key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1310,24 +1609,43 @@ useEffect(() => {
                     ))}
                   </div>
                   
-                  {/* Save Report Button */}
-                  <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "8px" }}>
-                    <button
-                      onClick={saveTestReport}
-                      disabled={!isComplete || isSavingReport || filteredDroppedItems.length === 0}
-                      className={styles.runAllButton}
-                      style={{
-                        backgroundColor: !isComplete || isSavingReport || filteredDroppedItems.length === 0 
-                          ? "#9ca3af" : "#10b981",
-                        color: "white"
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className={styles.runAllButtonIcon} viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                      </svg>
-                      {isSavingReport ? "Saving..." : "Save Reports"}
-                    </button>
-                  </div>
+{/* Save Report Button with Progress */}
+<div style={{ display: "flex", justifyContent: "flex-end", marginTop: "8px" }}>
+  <button
+    onClick={saveTestReport}
+    disabled={isSavingReport || filteredDroppedItems.length === 0}
+    className={styles.runAllButton}
+    style={{
+      backgroundColor: isSavingReport || filteredDroppedItems.length === 0 
+        ? "#9ca3af" : "#10b981",
+      color: "white",
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '6px'
+    }}
+  >
+    {isSavingReport ? (
+      <>
+        <svg className={styles.spinnerIcon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 12a9 9 0 11-6.219-8.56" />
+        </svg>
+        {reportProgress ? (
+          `Generating ${reportProgress.currentComponent} (${reportProgress.current}/${reportProgress.total})`
+        ) : (
+          'Generating Reports...'
+        )}
+      </>
+    ) : (
+      <>
+        <svg xmlns="http://www.w3.org/2000/svg" className={styles.runAllButtonIcon} viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+        </svg>
+        Save All Reports ({Object.values(testResults).filter(r => r.status === 'completed').length})
+      </>
+    )}
+  </button>
+</div>
                 </div>
                 
                 {/* Component Options Summary */}

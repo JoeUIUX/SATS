@@ -1171,7 +1171,8 @@ useEffect(() => {
           LEOCAM Test Results - Raw Parameter Values
         </h3>
         
-        <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
       </div>
       
       <div className={styles.cardContent}>

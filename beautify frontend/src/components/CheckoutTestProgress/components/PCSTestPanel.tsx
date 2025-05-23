@@ -1071,8 +1071,8 @@ useEffect(() => {
                     Firmware Information
                   </h3>
                   
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
                 
                 <div className={styles.cardContent}>
@@ -1129,8 +1129,8 @@ useEffect(() => {
                     Power Measurements
                   </h3>
                   
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
                 
                 <div className={styles.cardContent}>
@@ -1224,8 +1224,8 @@ useEffect(() => {
                     System Status
                   </h3>
                   
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
                 
                 <div className={styles.cardContent}>
@@ -1314,8 +1314,8 @@ useEffect(() => {
                       SD Card Test Results
                     </h3>
                     
-                    {/* Add simulation badge */}
-                    <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
                   </div>
                   
                   <div className={styles.cardContent}>

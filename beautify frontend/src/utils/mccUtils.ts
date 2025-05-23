@@ -94,13 +94,20 @@ class SimulatedMccSocket implements IMccSocket {
   public async send(message: string): Promise<void> {
     mccLogger.debug(`[SIM] Sending: ${message.trim()}`);
     
-    // Parse the message to update simulated data if it's a set command
-    if (message.includes('.value=')) {
-      const [param, valueStr] = message.trim().split('.value=');
-      const value = valueStr.trim();
-      this.simulatedData.set(param, value);
-      mccLogger.debug(`[SIM] Set ${param} to ${value}`);
-    }
+// Parse the message to update simulated data if it's a set command
+if (message.includes('.value=')) {
+  // Handle the old format: parameter.value=value
+  const [param, valueStr] = message.trim().split('.value=');
+  const value = valueStr.trim();
+  this.simulatedData.set(param, value);
+  mccLogger.debug(`[SIM] Set ${param} to ${value}`);
+} else if (message.includes('=') && !message.includes('.log=')) {
+  // Handle the new format: parameter=value (but not .log=true commands)
+  const [param, valueStr] = message.trim().split('=');
+  const value = valueStr.trim();
+  this.simulatedData.set(param, value);
+  mccLogger.debug(`[SIM] Set ${param} to ${value}`);
+}
     
     // Add simulated delay if enabled
     if (this.delays) {
@@ -626,7 +633,7 @@ export async function connectToMcc(
 export async function mccifSet(sock: any, parameter: string, value: any): Promise<void> {
   // Format the message in the same way as the Python implementation
   // Ensure clean formatting with no extra whitespace or tokens
-  const message = `${parameter}.value=${value}\n`;
+const message = `${parameter}=${value}\n`; // mccifSet to accept 3 tokens, change as needed
   
   // Add a log to identify what's happening
   console.log(`📡 mccifSet: ${parameter}=${value}, using ${sock? (sock.isSimulated ? "simulated" : "real") : "no"} socket`);

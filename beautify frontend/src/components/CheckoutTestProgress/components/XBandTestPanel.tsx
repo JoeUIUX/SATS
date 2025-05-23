@@ -1005,11 +1005,15 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
                   </svg>
                   Connection Mode
                 </div>
-                <span className={`${styles.statusBadge}`} style={{
-                  backgroundColor: detectedSimulation || isForceSimulation ? 'rgba(245, 158, 11, 0.1)' : 'rgba(16, 185, 129, 0.1)', 
-                  color: detectedSimulation || isForceSimulation ? '#f59e0b' : '#10b981'
-                }}>
-                  {detectedSimulation || isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
                 </span>
               </div>
               
@@ -1075,8 +1079,8 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
                     Voltage Measurements
                   </h3>
                   
-                  {/* Add simulation badge */}
-                  <SimulationBadge isSimulation={isForceSimulation} />
+        {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
                 
                 <div className={styles.cardContent}>

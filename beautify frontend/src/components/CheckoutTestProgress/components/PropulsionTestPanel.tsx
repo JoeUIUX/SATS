@@ -1061,20 +1061,18 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={styles.parameterIcon}>
                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                 </svg>
-                Connection Mode
-              </div>
-              <span className={`${styles.statusBadge} ${
-                isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-              }`} style={{
-                backgroundColor: isForceSimulation 
-                  ? (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb') 
-                  : (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5'),
-                color: isForceSimulation
-                  ? (isDarkMode ? '#fbbf24' : '#d97706')
-                  : (isDarkMode ? '#34d399' : '#059669')
-              }}>
-                {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-              </span>
+                  Connection Mode
+                </div>
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+                </span>
             </div>
             
             <div 
@@ -1092,14 +1090,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               <span className={`${styles.statusBadge} ${
                 enablePMA ? styles.colorCompleted : styles.colorWaiting
-              }`} style={{
-                backgroundColor: enablePMA 
-                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5')
-                  : (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb'),
-                color: enablePMA
-                  ? (isDarkMode ? '#34d399' : '#059669')
-                  : (isDarkMode ? '#fbbf24' : '#d97706')
-              }}>
+                      }`}>
                 {enablePMA ? 'ENABLED' : 'DISABLED'}
               </span>
             </div>
@@ -1119,14 +1110,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
               </div>
               <span className={`${styles.statusBadge} ${
                 enablePPU ? styles.colorCompleted : styles.colorWaiting
-              }`} style={{
-                backgroundColor: enablePPU 
-                  ? (isDarkMode ? 'rgba(16, 185, 129, 0.1)' : '#ecfdf5')
-                  : (isDarkMode ? 'rgba(245, 158, 11, 0.1)' : '#fffbeb'),
-                color: enablePPU
-                  ? (isDarkMode ? '#34d399' : '#059669')
-                  : (isDarkMode ? '#fbbf24' : '#d97706')
-              }}>
+              }`}>
                 {enablePPU ? 'ENABLED' : 'DISABLED'}
               </span>
             </div>

@@ -129,20 +129,99 @@ const MainScreen: React.FC<MainScreenProps> = ({
   const [isCheckoutEditing, setIsCheckoutEditing] = useState(false); // For checkoutSection
   const [droppedItems, setDroppedItems] = useState<DraggableItem[]>([]);
   // Manage draggable items
-  const [items, setItems] = useState<DraggableItem[]>([
-    { id: "1", header: "OBC-1", options: ["eMMC"], isDropped: false, checkedOptions: {} }, // ✅ Ensure consistent key name
-    { id: "2", header: "OBC-2", options: ["SD Card", "EEPROM"], isDropped: false, checkedOptions: {} },
-    { id: "3", header: "S-Band", options: ["Telemetry", "Ground Pass"], isDropped: false, checkedOptions: {} },
-    { id: "4", header: "UHF", options: ["Telemetry", "Ground Pass"], isDropped: false, checkedOptions: {} },
-    { id: "5", header: "HEPS", options: ["Solar Panel", "Heater", "Hdrm"], isDropped: false, checkedOptions: {} },
-    { id: "6", header: "ADCS", options: ["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"], isDropped: false, checkedOptions: {} },
-    { id: "7", header: "GPS", options: ["Version Check"], isDropped: false, checkedOptions: {} },
-    { id: "8", header: "Propulsion", options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], isDropped: false, checkedOptions: {} },
-    { id: "9", header: "PCS", options: ["SD Card"], isDropped: false, checkedOptions: {} },
-    { id: "10", header: "LEOCAM", options: ["LEOCAM"], isDropped: false, checkedOptions: {} },
-    { id: "11", header: "X-Band", options: ["Telecommand", "Telemetry"], isDropped: false, checkedOptions: {} },
-    { id: "12", header: "AOD", options: ["AOD"], isDropped: false, checkedOptions: {} },
-  ]);
+  const createDefaultCheckedOptions = (options: string[]): Record<string, boolean> => {
+  const checkedOptions: Record<string, boolean> = {};
+  options.forEach(option => {
+    checkedOptions[option] = true;
+  });
+  return checkedOptions;
+};
+const [items, setItems] = useState<DraggableItem[]>([
+  { 
+    id: "1", 
+    header: "OBC-1", 
+    options: ["eMMC"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["eMMC"])
+  },
+  { 
+    id: "2", 
+    header: "OBC-2", 
+    options: ["SD Card", "EEPROM"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["SD Card", "EEPROM"])
+  },
+  { 
+    id: "3", 
+    header: "S-Band", 
+    options: ["Telemetry", "Ground Pass"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Telemetry", "Ground Pass"])
+  },
+  { 
+    id: "4", 
+    header: "UHF", 
+    options: ["Telemetry", "Ground Pass"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Telemetry", "Ground Pass"])
+  },
+  { 
+    id: "5", 
+    header: "HEPS", 
+    options: ["Solar Panel", "Heater", "Hdrm"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Solar Panel", "Heater", "Hdrm"])
+  },
+  { 
+    id: "6", 
+    header: "ADCS", 
+    options: ["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Version Check", "Gyroscope", "Magnetometer", "Star Tracker", "FOG", "Fine Sun Sensor", "Coarse Sun Sensor", "Earth Sensor", "Reaction Wheel", "Magnetic Torquer"])
+  },
+  { 
+    id: "7", 
+    header: "GPS", 
+    options: ["Version Check"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Version Check"])
+  },
+  { 
+    id: "8", 
+    header: "Propulsion", 
+    options: ["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["ECU-1 PMA", "ECU-1 PPU-1", "ECU-2 PMA", "ECU-2 PPU-2"])
+  },
+  { 
+    id: "9", 
+    header: "PCS", 
+    options: ["SD Card"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["SD Card"])
+  },
+  { 
+    id: "10", 
+    header: "LEOCAM", 
+    options: ["LEOCAM"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["LEOCAM"])
+  },
+  { 
+    id: "11", 
+    header: "X-Band", 
+    options: ["Telecommand", "Telemetry"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["Telecommand", "Telemetry"])
+  },
+  { 
+    id: "12", 
+    header: "AOD", 
+    options: ["AOD"], 
+    isDropped: false, 
+    checkedOptions: createDefaultCheckedOptions(["AOD"])
+  },
+]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
   const [sortableKey, setSortableKey] = useState(0);
@@ -960,18 +1039,19 @@ const handleDragEnd = (event: DragEndEvent) => {
   const isTopSection = dropZoneId === "top-section" || dropZoneId === "1";
   const isBottomSection = dropZoneId === "bottom-section" || dropZoneId === "2";
 
+  // Preserve checkedOptions when moving between sections
+  setDroppedItems(prevDroppedItems => {
+    const alreadyInTop = prevDroppedItems.some(item => item.id === draggedItemId);
 
-// Preserve checkedOptions when moving between sections
-setDroppedItems(prevDroppedItems => {
-  const alreadyInTop = prevDroppedItems.some(item => item.id === draggedItemId);
-
-  if (isTopSection && !alreadyInTop) {
-    console.log(`✅ Adding item ${draggedItemId} to top section`);
-    return [...prevDroppedItems, { 
-      ...draggedItem, 
-      isDropped: true,
-      // Preserve checked options
-      checkedOptions: draggedItem.checkedOptions || {}
+    if (isTopSection && !alreadyInTop) {
+      console.log(`✅ Adding item ${draggedItemId} to top section`);
+      return [...prevDroppedItems, { 
+        ...draggedItem, 
+        isDropped: true,
+        // Preserve checked options, or use default if none exist
+        checkedOptions: draggedItem.checkedOptions && Object.keys(draggedItem.checkedOptions).length > 0
+          ? draggedItem.checkedOptions 
+          : createDefaultCheckedOptions(draggedItem.options)
       }];
     } 
     
@@ -988,8 +1068,10 @@ setDroppedItems(prevDroppedItems => {
       item.id === draggedItemId ? { 
         ...item, 
         isDropped: isTopSection,
-        // Preserve checked options
-        checkedOptions: draggedItem.checkedOptions || {}
+        // Preserve checked options, or use default if none exist
+        checkedOptions: item.checkedOptions && Object.keys(item.checkedOptions).length > 0
+          ? item.checkedOptions 
+          : createDefaultCheckedOptions(item.options)
       } : item
     );
     console.log("✅ Updated items after drop:", updatedItems);
@@ -1024,24 +1106,65 @@ const handleStartTest = () => {
     return;
   }
   
-// Filter the droppedItems to create a version that only includes checked options
-const itemsWithCheckedOptions = droppedItems.map(item => {
-  // Get the options that are checked (true in checkedOptions)
-  const checkedOptionsList = Object.entries(item.checkedOptions || {})
-    .filter(([_, isChecked]) => isChecked)
-    .map(([option]) => option);
+  // Filter the droppedItems and update the main state for visual consistency
+  const itemsWithCheckedOptions = droppedItems.map(item => {
+    // Get the options that are checked (true in checkedOptions)
+    const checkedOptionsList = Object.entries(item.checkedOptions || {})
+      .filter(([_, isChecked]) => isChecked)
+      .map(([option]) => option);
+    
+    // If no options are checked, include all options as a fallback AND mark them as visually checked
+    if (checkedOptionsList.length === 0) {
+      console.log(`⚠️ No options checked for ${item.header}, using all options as fallback and marking them as checked`);
+      
+      // Create a new checkedOptions object with all options set to true
+      const allOptionsChecked: Record<string, boolean> = {};
+      item.options.forEach(option => {
+        allOptionsChecked[option] = true;
+      });
+      
+      return {
+        ...item,
+        options: item.options, // Keep all options
+        checkedOptions: allOptionsChecked // Mark all as visually checked
+      };
+    }
+    
+    // Return a version of the item with only the checked options
+    return {
+      ...item,
+      options: checkedOptionsList // Replace with only the checked options
+    };
+  });
   
-  // If no options are checked, include all options as a fallback
-  const optionsToTest = checkedOptionsList.length > 0 
-    ? checkedOptionsList 
-    : item.options;
+  // Update the actual droppedItems state to reflect the visual changes
+  setDroppedItems(prev => {
+    return prev.map(item => {
+      const updatedItem = itemsWithCheckedOptions.find(updated => updated.id === item.id);
+      if (updatedItem && Object.keys(item.checkedOptions || {}).length === 0) {
+        console.log(`Updating visual state for ${item.header} to show all options as checked`);
+        return {
+          ...item,
+          checkedOptions: updatedItem.checkedOptions
+        };
+      }
+      return item;
+    });
+  });
   
-  // Return a version of the item with only the checked options
-  return {
-    ...item,
-    options: optionsToTest // Replace with only the checked options
-  };
-});
+  // Also update the items state for consistency
+  setItems(prev => {
+    return prev.map(item => {
+      const updatedItem = itemsWithCheckedOptions.find(updated => updated.id === item.id);
+      if (updatedItem && Object.keys(item.checkedOptions || {}).length === 0) {
+        return {
+          ...item,
+          checkedOptions: updatedItem.checkedOptions
+        };
+      }
+      return item;
+    });
+  });
   
   // Make sure there's at least one item with options to test
   const hasTestableItems = itemsWithCheckedOptions.some(item => item.options.length > 0);
@@ -1056,6 +1179,17 @@ const itemsWithCheckedOptions = droppedItems.map(item => {
   
   // Store a flag in localStorage to signal that the window should be open
   localStorage.setItem('showCheckoutTest', 'true');
+  
+  // Ensure we have a socket ready
+  if (!mccSocket) {
+    // Initialize a simulated socket
+    const simSocket = {
+      simulateRead: (params: string[]) => params.map(p => `${p}=simulated`),
+      send: async () => Promise.resolve(),
+      receive: async () => Promise.resolve("simulated")
+    };
+    setMccSocket(simSocket);
+  }
   
   // Update the state
   setShowCheckoutTest(true);
@@ -1306,7 +1440,10 @@ const handleLoadCheckout = async (profileId: string) => {
       const loadedItems = result.items.map((item: any) => ({
         ...item,
         isDropped: true,
-        checkedOptions: item.checkedOptions || {},
+        // Ensure loaded items have proper checked options, or use defaults
+        checkedOptions: item.checkedOptions && Object.keys(item.checkedOptions).length > 0
+          ? item.checkedOptions 
+          : createDefaultCheckedOptions(item.options),
       }));
       
       // Set dropped items first
@@ -1325,8 +1462,9 @@ const handleLoadCheckout = async (profileId: string) => {
             item.isDropped = true;
             item.checkedOptions = {...matchingItem.checkedOptions};
           } else {
-            // Make sure it's marked as not dropped
+            // Make sure it's marked as not dropped but has default checked options
             item.isDropped = false;
+            item.checkedOptions = createDefaultCheckedOptions(item.options);
           }
         });
         
@@ -1338,12 +1476,12 @@ const handleLoadCheckout = async (profileId: string) => {
       console.log(`ℹ️ No saved checkout items found for profile ${profileId}`);
       setDroppedItems([]);
       
-      // Reset the dropped state in the items array
+      // Reset the dropped state in the items array with default checked options
       setItems(prevItems => 
         prevItems.map(item => ({
           ...item,
           isDropped: false,
-          checkedOptions: {}
+          checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked
         }))
       );
     }
@@ -1403,12 +1541,12 @@ const tryLocalStorageFallback = (profileId: string) => {
 const resetItemStates = () => {
   setDroppedItems([]);
   
-  // Reset the items array
+  // Reset the items array with default checked options
   setItems(prevItems => 
     prevItems.map(item => ({
       ...item,
       isDropped: false,
-      checkedOptions: {}
+      checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked instead of empty
     }))
   );
 };
@@ -1922,38 +2060,7 @@ return (
   <button 
     className={styles.startTestButton} 
     style={{ marginLeft: 'auto' }}
-    onClick={(e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Ensure we have items to test
-      if (droppedItems.length === 0) {
-        alert("Please add components to the checkout section before starting the test.");
-        return;
-      }
-      
-      // Store a flag in localStorage to ensure window stays visible
-      localStorage.setItem('showCheckoutTest', 'true');
-      
-      // Ensure we have a socket ready
-      if (!mccSocket) {
-        // Initialize a simulated socket
-        const simSocket = {
-          simulateRead: (params: string[]) => params.map(p => `${p}=simulated`),
-          send: async () => Promise.resolve(),
-          receive: async () => Promise.resolve("simulated")
-        };
-        setMccSocket(simSocket);
-      }
-      
-      // Set window visible
-      setShowCheckoutTest(true);
-      
-      // Force re-render
-      setDummyState(prev => !prev);
-      
-      console.log("🚀 CheckoutTest window activated");
-    }}
+    onClick={handleStartTest}
   >
     <FaPlay /> Start Test
   </button>

@@ -1,6 +1,26 @@
 // src/services/reports/gpsReport.ts
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, BorderStyle, WidthType, AlignmentType } from 'docx';
 import { saveAs } from 'file-saver';
+import jsPDF from 'jspdf';
+
+/**
+ * Generate both Word document and PDF reports for GPS checkout results
+ * 
+ * @param results The GPS test results
+ * @returns A promise that resolves to the filename of the saved reports
+ */
+export async function generateGPSReport(results: any): Promise<string> {
+  try {
+    // Generate both Word and PDF reports
+    const wordFilename = await generateGPSWordReport(results);
+    const pdfFilename = await generateGPSPDFReport(results);
+    
+    return `${wordFilename} and ${pdfFilename}`;
+  } catch (error) {
+    console.error('❌ Error generating GPS reports:', error);
+    throw new Error(`Failed to generate GPS reports: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
 
 /**
  * Generate a Word document report for GPS checkout results
@@ -8,178 +28,414 @@ import { saveAs } from 'file-saver';
  * @param results The GPS test results
  * @returns A promise that resolves to the filename of the saved report
  */
-export async function generateGPSReport(results: any): Promise<string> {
+async function generateGPSWordReport(results: any): Promise<string> {
   // Get current date and time for the report filename
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
   const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
   const filename = `GPS_Checkout_${dateStr}_${timeStr}.docx`;
   
-  // Create the document
-  const doc = new Document({
-    sections: [{
-      properties: {},
-      children: [
-        // Title
-        new Paragraph({
-          text: "GPS Automated Self Check Out Test",
-          heading: HeadingLevel.HEADING_1,
-          spacing: { after: 200 }
-        }),
-        
-        // Test metadata
-        new Paragraph({
-          text: `Test Version: 24.3.21`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Test Date: ${now.toLocaleDateString()}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Test Time: ${now.toLocaleTimeString()}`,
-          spacing: { after: 200 }
-        }),
-        
-        // Separator
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 200 }
-        }),
-        
-        // Voltage Current Summary section
-        new Paragraph({
-          text: "* Voltage Current Summary:",
-          heading: HeadingLevel.HEADING_2,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 100 }
-        }),
-        
-        // GPS power on voltage and current measurements
-        new Paragraph({
-          text: `GPS 5V Supply Voltage   : ${padFloat(results.voltages.gps5V.value, 6, 3)} V    ${results.voltages.gps5V.pass ? "[PASS]" : "[FAIL]"}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `GPS 5V Supply Current   : ${padFloat(results.voltages.gps5VCurrent.value, 6, 3)} A`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `GPS 3.3V Supply Voltage : ${padString(results.voltages.gps3V3.value, 4)} mV     ${results.voltages.gps3V3.pass ? "[PASS]" : "[FAIL]"}`,
-          spacing: { after: 100 }
-        }),
-        
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 200, before: 100 }
-        }),
-        
-        // Command Check section
-        new Paragraph({
-          text: "* Command Check:",
-          heading: HeadingLevel.HEADING_2,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 100 }
-        }),
-        
-        // Command check results
-        new Paragraph({
-          text: `Log Version : -- ${results.stats.commandCheck.pass ? "[PASS]" : "[FAIL]"}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Transmit Count before test  : ${results.stats.txCountBefore}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Receive Count before test   : ${results.stats.rxCountBefore}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Transmit Bytes before test  : ${results.stats.txBytesBefore}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Receive Bytes before test   : ${results.stats.rxBytesBefore}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Transmit Count after test   : ${results.stats.txCountAfter}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Receive Count after test    : ${results.stats.rxCountAfter}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Transmit Bytes after test   : ${results.stats.txBytesAfter}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `Receive Bytes after test    : ${results.stats.rxBytesAfter}`,
-          spacing: { after: 100 }
-        }),
-        
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 100 }
-        }),
-        
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 200, before: 100 }
-        }),
-        
-        // Power Off Voltage Current Summary section
-        new Paragraph({
-          text: "* Voltage Current Summary (After Power Off):",
-          heading: HeadingLevel.HEADING_2,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 100 }
-        }),
-        
-        // GPS power off voltage and current measurements
-        new Paragraph({
-          text: `GPS 5V Supply Voltage   : ${padFloat(results.powerOff.gps5V.value, 6, 3)} V    ${results.powerOff.gps5V.pass ? "[PASS]" : "[FAIL]"}`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `GPS 5V Supply Current   : ${padFloat(results.powerOff.gps5VCurrent.value, 6, 3)} A`,
-          spacing: { after: 100 }
-        }),
-        new Paragraph({
-          text: `GPS 3.3V Supply Voltage : ${padString(results.powerOff.gps3V3.value, 4)} mV     ${results.powerOff.gps3V3.pass ? "[PASS]" : "[FAIL]"}`,
-          spacing: { after: 100 }
-        }),
-        
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
-          spacing: { after: 200, before: 100 }
-        }),
-      ]
-    }]
-  });
+  console.log(`📝 Generating GPS Word report: ${filename}`);
   
-  // Generate the document
-  const buffer = await Packer.toBuffer(doc);
+  try {
+    // Create the document
+    const doc = new Document({
+      sections: [{
+        properties: {},
+        children: [
+          // Title
+          new Paragraph({
+            text: "GPS Automated Self Check Out Test",
+            heading: HeadingLevel.HEADING_1,
+            spacing: { after: 200 }
+          }),
+          
+          // Test metadata
+          new Paragraph({
+            text: `Test Version: 24.3.21`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Test Date: ${now.toLocaleDateString()}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Test Time: ${now.toLocaleTimeString()}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Generated by: SATS - Satellite Automated Testing System`,
+            spacing: { after: 200 }
+          }),
+          
+          // Test Summary
+          new Paragraph({
+            text: "Test Summary",
+            heading: HeadingLevel.HEADING_2,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`,
+            spacing: { after: 100 }
+          }),
+          
+          // Separator
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 200 }
+          }),
+          
+          // Voltage Current Summary section
+          new Paragraph({
+            text: "* Voltage Current Summary:",
+            heading: HeadingLevel.HEADING_2,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 100 }
+          }),
+          
+          // GPS power on voltage and current measurements
+          new Paragraph({
+            text: `GPS 5V Supply Voltage   : ${padFloat(results.voltages?.gps5V?.value || '0', 6, 3)} V    ${results.voltages?.gps5V?.pass ? "[PASS]" : "[FAIL]"}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `GPS 5V Supply Current   : ${padFloat(results.voltages?.gps5VCurrent?.value || '0', 6, 3)} A`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `GPS 3.3V Supply Voltage : ${padString(results.voltages?.gps3V3?.value || 'N/A', 4)} mV     ${results.voltages?.gps3V3?.pass ? "[PASS]" : "[FAIL]"}`,
+            spacing: { after: 100 }
+          }),
+          
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 200, before: 100 }
+          }),
+          
+          // Command Check section
+          new Paragraph({
+            text: "* Command Check:",
+            heading: HeadingLevel.HEADING_2,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 100 }
+          }),
+          
+          // Command check results
+          new Paragraph({
+            text: `Log Version : -- ${results.stats?.commandCheck?.pass ? "[PASS]" : "[FAIL]"}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Transmit Count before test  : ${results.stats?.txCountBefore || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Receive Count before test   : ${results.stats?.rxCountBefore || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Transmit Bytes before test  : ${results.stats?.txBytesBefore || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Receive Bytes before test   : ${results.stats?.rxBytesBefore || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Transmit Count after test   : ${results.stats?.txCountAfter || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Receive Count after test    : ${results.stats?.rxCountAfter || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Transmit Bytes after test   : ${results.stats?.txBytesAfter || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Receive Bytes after test    : ${results.stats?.rxBytesAfter || 'N/A'}`,
+            spacing: { after: 100 }
+          }),
+          
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 100 }
+          }),
+          
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 200, before: 100 }
+          }),
+          
+          // Power Off Voltage Current Summary section
+          new Paragraph({
+            text: "* Voltage Current Summary (After Power Off):",
+            heading: HeadingLevel.HEADING_2,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 100 }
+          }),
+          
+          // GPS power off voltage and current measurements
+          new Paragraph({
+            text: `GPS 5V Supply Voltage   : ${padFloat(results.powerOff?.gps5V?.value || '0', 6, 3)} V    ${results.powerOff?.gps5V?.pass ? "[PASS]" : "[FAIL]"}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `GPS 5V Supply Current   : ${padFloat(results.powerOff?.gps5VCurrent?.value || '0', 6, 3)} A`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `GPS 3.3V Supply Voltage : ${padString(results.powerOff?.gps3V3?.value || 'N/A', 4)} mV     ${results.powerOff?.gps3V3?.pass ? "[PASS]" : "[FAIL]"}`,
+            spacing: { after: 100 }
+          }),
+          
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 200, before: 100 }
+          }),
+          
+          // Test Completion Summary
+          new Paragraph({
+            text: "* Test Completion Summary:",
+            heading: HeadingLevel.HEADING_2,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `Report generated: ${now.toLocaleString()}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "--------------------------------------------------------------------",
+            spacing: { after: 200, before: 200 }
+          }),
+        ]
+      }]
+    });
+    
+    // Generate the document
+    const buffer = await Packer.toBuffer(doc);
+    
+    // Save the file
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+    saveAs(blob, filename);
+    
+    console.log(`✅ GPS Word report saved successfully: ${filename}`);
+    
+    // Mark the report as generated
+    if (results && typeof results === 'object') {
+      results.reportGenerated = true;
+    }
+    
+    return filename;
+  } catch (error) {
+    console.error('❌ Error generating GPS Word report:', error);
+    throw new Error(`Failed to generate GPS Word report: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
+/**
+ * Generate a PDF report for GPS checkout results
+ * 
+ * @param results The GPS test results
+ * @returns A promise that resolves to the filename of the saved PDF report
+ */
+async function generateGPSPDFReport(results: any): Promise<string> {
+  // Get current date and time for the report filename
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+  const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
+  const filename = `GPS_Checkout_${dateStr}_${timeStr}.pdf`;
   
-  // Save the file
-  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
-  saveAs(blob, filename);
+  console.log(`📝 Generating GPS PDF report: ${filename}`);
   
-  // Mark the report as generated
-  results.reportGenerated = true;
-  
-  return filename;
+  try {
+    // Create new PDF document
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+
+    // Set up the document
+    let yPosition = 20;
+    const pageWidth = pdf.internal.pageSize.width;
+    const pageHeight = pdf.internal.pageSize.height;
+    const margin = 20;
+    const contentWidth = pageWidth - (2 * margin);
+
+    // Helper function to check if we need a new page
+    const checkNewPage = (requiredSpace: number = 20) => {
+      if (yPosition + requiredSpace > pageHeight - 30) {
+        pdf.addPage();
+        yPosition = 20;
+        return true;
+      }
+      return false;
+    };
+
+    // Title
+    pdf.setFontSize(18);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('GPS Automated Self Check Out Test Report', margin, yPosition);
+    yPosition += 15;
+
+    // Subtitle
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('Generated by SATS - Satellite Automated Testing System', margin, yPosition);
+    yPosition += 10;
+
+    // Test metadata
+    pdf.setFontSize(10);
+    pdf.text(`Test Date: ${now.toLocaleDateString()}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Test Time: ${now.toLocaleTimeString()}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
+    yPosition += 15;
+
+    // Add a separator line
+    pdf.line(margin, yPosition, pageWidth - margin, yPosition);
+    yPosition += 10;
+
+    // Voltage Current Summary Section (Power On)
+    checkNewPage(50);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Voltage Current Summary (Power On)', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    if (results.voltages) {
+      const voltages = results.voltages;
+      pdf.text(`GPS 5V Supply Voltage: ${padFloat(voltages.gps5V?.value || '0', 6, 3)} V [${voltages.gps5V?.pass ? 'PASS' : 'FAIL'}]`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`GPS 5V Supply Current: ${padFloat(voltages.gps5VCurrent?.value || '0', 6, 3)} A`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`GPS 3.3V Supply Voltage: ${padString(voltages.gps3V3?.value || 'N/A', 4)} mV [${voltages.gps3V3?.pass ? 'PASS' : 'FAIL'}]`, margin, yPosition);
+      yPosition += 6;
+    } else {
+      pdf.text('Voltage information not available', margin, yPosition);
+      yPosition += 6;
+    }
+    yPosition += 15;
+
+    // Command Check Section
+    checkNewPage(60);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Command Check', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    if (results.stats) {
+      const stats = results.stats;
+      pdf.text(`Log Version: -- [${stats.commandCheck?.pass ? 'PASS' : 'FAIL'}]`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Transmit Count before test: ${stats.txCountBefore || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Receive Count before test: ${stats.rxCountBefore || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Transmit Bytes before test: ${stats.txBytesBefore || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Receive Bytes before test: ${stats.rxBytesBefore || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Transmit Count after test: ${stats.txCountAfter || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Receive Count after test: ${stats.rxCountAfter || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Transmit Bytes after test: ${stats.txBytesAfter || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Receive Bytes after test: ${stats.rxBytesAfter || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+    } else {
+      pdf.text('Command check statistics not available', margin, yPosition);
+      yPosition += 6;
+    }
+    yPosition += 15;
+
+    // Voltage Current Summary Section (Power Off)
+    checkNewPage(30);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Voltage Current Summary (After Power Off)', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    if (results.powerOff) {
+      const powerOff = results.powerOff;
+      pdf.text(`GPS 5V Supply Voltage: ${padFloat(powerOff.gps5V?.value || '0', 6, 3)} V [${powerOff.gps5V?.pass ? 'PASS' : 'FAIL'}]`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`GPS 5V Supply Current: ${padFloat(powerOff.gps5VCurrent?.value || '0', 6, 3)} A`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`GPS 3.3V Supply Voltage: ${padString(powerOff.gps3V3?.value || 'N/A', 4)} mV [${powerOff.gps3V3?.pass ? 'PASS' : 'FAIL'}]`, margin, yPosition);
+      yPosition += 6;
+    } else {
+      pdf.text('Power off voltage information not available', margin, yPosition);
+      yPosition += 6;
+    }
+    yPosition += 15;
+
+    // Test Completion Summary
+    checkNewPage(30);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Test Completion Summary', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text(results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully", margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Report generated: ${now.toLocaleString()}`, margin, yPosition);
+    yPosition += 6;
+
+    // Add footer to all pages
+    const totalPages = pdf.internal.pages.length - 1;
+    for (let i = 1; i <= totalPages; i++) {
+      pdf.setPage(i);
+      pdf.setFontSize(8);
+      pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin - 20, pageHeight - 10);
+      pdf.text(`Generated: ${now.toLocaleString()}`, margin, pageHeight - 10);
+    }
+
+    // Save the PDF
+    pdf.save(filename);
+
+    console.log(`✅ GPS PDF report saved successfully: ${filename}`);
+    return filename;
+
+  } catch (error) {
+    console.error('❌ Error generating GPS PDF report:', error);
+    throw new Error(`Failed to generate GPS PDF report: ${error instanceof Error ? error.message : String(error)}`);
+  }
 }
 
 /**
@@ -191,7 +447,7 @@ export async function generateGPSReport(results: any): Promise<string> {
  */
 function padString(value: string, length: number): string {
   if (!value) return ''.padStart(length, ' ');
-  return value.padStart(length, ' ');
+  return value.toString().padStart(length, ' ');
 }
 
 /**
@@ -207,6 +463,6 @@ function padFloat(value: string, width: number, precision: number): string {
     const floatValue = parseFloat(value);
     return floatValue.toFixed(precision).padStart(width, ' ');
   } catch (error) {
-    return value.padStart(width, ' ');
+    return value.toString().padStart(width, ' ');
   }
 }

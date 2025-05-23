@@ -1054,14 +1054,14 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge}`,
                                                 style: {
-                                                    backgroundColor: detectedSimulation || isForceSimulation ? 'rgba(245, 158, 11, 0.1)' : 'rgba(16, 185, 129, 0.1)',
-                                                    color: detectedSimulation || isForceSimulation ? '#f59e0b' : '#10b981'
+                                                    backgroundColor: detectedSimulation ? isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb' : isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5',
+                                                    color: detectedSimulation ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#34d399' : '#047857'
                                                 },
-                                                children: detectedSimulation || isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
+                                                children: detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
                                                 lineNumber: 1008,
-                                                columnNumber: 17
+                                                columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -1094,12 +1094,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1030,
+                                                        lineNumber: 1034,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1029,
+                                                    lineNumber: 1033,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Running Test..."
@@ -1117,12 +1117,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1037,
+                                                        lineNumber: 1041,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1036,
+                                                    lineNumber: 1040,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Re-run Test"
@@ -1140,12 +1140,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1044,
+                                                        lineNumber: 1048,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1043,
+                                                    lineNumber: 1047,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Run Test"
@@ -1153,7 +1153,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1017,
+                                        lineNumber: 1021,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1199,32 +1199,32 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1073,
+                                                            lineNumber: 1077,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1072,
+                                                        lineNumber: 1076,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Voltage Measurements"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                lineNumber: 1071,
+                                                lineNumber: 1075,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
-                                                isSimulation: isForceSimulation
+                                                isSimulation: detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                lineNumber: 1079,
-                                                columnNumber: 19
+                                                lineNumber: 1083,
+                                                columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1062,
+                                        lineNumber: 1066,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1250,7 +1250,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                lineNumber: 1097,
+                                                                lineNumber: 1101,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1260,7 +1260,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                lineNumber: 1098,
+                                                                lineNumber: 1102,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1270,18 +1270,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                 children: "Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                lineNumber: 1099,
+                                                                lineNumber: 1103,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1096,
+                                                        lineNumber: 1100,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1089,
+                                                    lineNumber: 1093,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1296,7 +1296,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "PCS Voltage"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1104,
+                                                                    lineNumber: 1108,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1309,7 +1309,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1105,
+                                                                    lineNumber: 1109,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1325,18 +1325,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: results.voltages.pcs.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1107,
+                                                                        lineNumber: 1111,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1106,
+                                                                    lineNumber: 1110,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1103,
+                                                            lineNumber: 1107,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1352,7 +1352,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "PCS Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1117,
+                                                                    lineNumber: 1121,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1365,7 +1365,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1118,
+                                                                    lineNumber: 1122,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1381,18 +1381,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: "INFO"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1120,
+                                                                        lineNumber: 1124,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1119,
+                                                                    lineNumber: 1123,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1116,
+                                                            lineNumber: 1120,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1404,7 +1404,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "X-Band Voltage"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1130,
+                                                                    lineNumber: 1134,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1417,7 +1417,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1131,
+                                                                    lineNumber: 1135,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1433,18 +1433,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: results.voltages.xband.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1133,
+                                                                        lineNumber: 1137,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1132,
+                                                                    lineNumber: 1136,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1129,
+                                                            lineNumber: 1133,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1460,7 +1460,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "X-Band Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1143,
+                                                                    lineNumber: 1147,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1473,7 +1473,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1144,
+                                                                    lineNumber: 1148,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1489,18 +1489,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: "INFO"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1146,
+                                                                        lineNumber: 1150,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1145,
+                                                                    lineNumber: 1149,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1142,
+                                                            lineNumber: 1146,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1512,7 +1512,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "X-Band Off Voltage"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1156,
+                                                                    lineNumber: 1160,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1525,7 +1525,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1157,
+                                                                    lineNumber: 1161,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1541,18 +1541,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: results.voltages.xbandOff.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1159,
+                                                                        lineNumber: 1163,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1158,
+                                                                    lineNumber: 1162,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1155,
+                                                            lineNumber: 1159,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1568,7 +1568,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     children: "X-Band Off Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1169,
+                                                                    lineNumber: 1173,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1581,7 +1581,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1170,
+                                                                    lineNumber: 1174,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1597,41 +1597,41 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         children: "INFO"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1172,
+                                                                        lineNumber: 1176,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1171,
+                                                                    lineNumber: 1175,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1168,
+                                                            lineNumber: 1172,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1102,
+                                                    lineNumber: 1106,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1083,
+                                            lineNumber: 1087,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1082,
+                                        lineNumber: 1086,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                lineNumber: 1055,
+                                lineNumber: 1059,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1651,7 +1651,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                         children: "Overall Test Status"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1194,
+                                        lineNumber: 1198,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1685,12 +1685,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                lineNumber: 1220,
+                                                                lineNumber: 1224,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1219,
+                                                            lineNumber: 1223,
                                                             columnNumber: 29
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1701,7 +1701,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "All tests passed successfully"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1222,
+                                                            lineNumber: 1226,
                                                             columnNumber: 29
                                                         }, this)
                                                     ]
@@ -1719,12 +1719,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                lineNumber: 1232,
+                                                                lineNumber: 1236,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1231,
+                                                            lineNumber: 1235,
                                                             columnNumber: 29
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1735,14 +1735,14 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "Some tests failed"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1234,
+                                                            lineNumber: 1238,
                                                             columnNumber: 29
                                                         }, this)
                                                     ]
                                                 }, void 0, true)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                lineNumber: 1212,
+                                                lineNumber: 1216,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1773,37 +1773,37 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1261,
+                                                            lineNumber: 1265,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1260,
+                                                        lineNumber: 1264,
                                                         columnNumber: 25
                                                     }, this),
                                                     "Generate Report"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                lineNumber: 1244,
+                                                lineNumber: 1248,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1203,
+                                        lineNumber: 1207,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                lineNumber: 1189,
+                                lineNumber: 1193,
                                 columnNumber: 19
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                        lineNumber: 1054,
+                        lineNumber: 1058,
                         columnNumber: 13
                     }, this)
                 ]
@@ -1838,24 +1838,24 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1291,
+                                        lineNumber: 1295,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1290,
+                                    lineNumber: 1294,
                                     columnNumber: 15
                                 }, this),
                                 "X-Band Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                            lineNumber: 1289,
+                            lineNumber: 1293,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                        lineNumber: 1279,
+                        lineNumber: 1283,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1885,25 +1885,25 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                        lineNumber: 1304,
+                                        lineNumber: 1308,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1303,
+                                    lineNumber: 1307,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1306,
+                                    lineNumber: 1310,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                            lineNumber: 1299,
+                            lineNumber: 1303,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -1917,7 +1917,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1315,
+                                    lineNumber: 1319,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1928,7 +1928,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1316,
+                                    lineNumber: 1320,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1945,20 +1945,20 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1329,
+                                            lineNumber: 1333,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1321,
+                                    lineNumber: 1325,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                            lineNumber: 1309,
+                            lineNumber: 1313,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -1977,7 +1977,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1337,
+                                            lineNumber: 1341,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1997,18 +1997,18 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1359,
+                                                    lineNumber: 1363,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1345,
+                                            lineNumber: 1349,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1336,
+                                    lineNumber: 1340,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2033,7 +2033,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1374,
+                                            lineNumber: 1378,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -2043,13 +2043,13 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1383,
+                                            lineNumber: 1387,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1367,
+                                    lineNumber: 1371,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2072,12 +2072,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                lineNumber: 1400,
+                                                lineNumber: 1404,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1399,
+                                            lineNumber: 1403,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2115,7 +2115,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1434,
+                                                                    lineNumber: 1438,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2124,20 +2124,20 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1435,
+                                                                    lineNumber: 1439,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1433,
+                                                            lineNumber: 1437,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1412,
+                                                    lineNumber: 1416,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2157,7 +2157,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1443,
+                                                            lineNumber: 1447,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2175,7 +2175,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1459,
+                                                            lineNumber: 1463,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2207,12 +2207,12 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                        lineNumber: 1495,
+                                                                        lineNumber: 1499,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                                    lineNumber: 1494,
+                                                                    lineNumber: 1498,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -2221,7 +2221,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1475,
+                                                            lineNumber: 1479,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -2229,13 +2229,13 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1410,
+                                            lineNumber: 1414,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1392,
+                                    lineNumber: 1396,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2271,19 +2271,19 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1508,
+                                                        lineNumber: 1512,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1507,
+                                                    lineNumber: 1511,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1506,
+                                            lineNumber: 1510,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2297,14 +2297,14 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1513,
+                                                    lineNumber: 1517,
                                                     columnNumber: 43
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1512,
+                                            lineNumber: 1516,
                                             columnNumber: 19
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2334,7 +2334,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1519,
+                                                            lineNumber: 1523,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2344,7 +2344,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1520,
+                                                            lineNumber: 1524,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2354,26 +2354,26 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1521,
+                                                            lineNumber: 1525,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1518,
+                                                    lineNumber: 1522,
                                                     columnNumber: 23
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1517,
+                                            lineNumber: 1521,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1505,
+                                    lineNumber: 1509,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -2382,7 +2382,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1529,
+                                    lineNumber: 1533,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2400,7 +2400,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1537,
+                                            lineNumber: 1541,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2427,7 +2427,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "Average PCS Voltage"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1558,
+                                                            lineNumber: 1562,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2444,13 +2444,13 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1565,
+                                                            lineNumber: 1569,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1552,
+                                                    lineNumber: 1556,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2470,7 +2470,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "Average X-Band Voltage"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1590,
+                                                            lineNumber: 1594,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2487,13 +2487,13 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1597,
+                                                            lineNumber: 1601,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1584,
+                                                    lineNumber: 1588,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2513,7 +2513,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "PCS Pass Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1622,
+                                                            lineNumber: 1626,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2531,13 +2531,13 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1629,
+                                                            lineNumber: 1633,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1616,
+                                                    lineNumber: 1620,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2557,7 +2557,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             children: "X-Band Pass Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1656,
+                                                            lineNumber: 1660,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2575,25 +2575,25 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                            lineNumber: 1663,
+                                                            lineNumber: 1667,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1650,
+                                                    lineNumber: 1654,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1546,
+                                            lineNumber: 1550,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1536,
+                                    lineNumber: 1540,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2635,19 +2635,19 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1705,
+                                                        lineNumber: 1709,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1704,
+                                                    lineNumber: 1708,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1688,
+                                            lineNumber: 1692,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2680,19 +2680,19 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1728,
+                                                        lineNumber: 1732,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1727,
+                                                    lineNumber: 1731,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1711,
+                                            lineNumber: 1715,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2725,19 +2725,19 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1751,
+                                                        lineNumber: 1755,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1750,
+                                                    lineNumber: 1754,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1734,
+                                            lineNumber: 1738,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2786,25 +2786,25 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                        lineNumber: 1785,
+                                                        lineNumber: 1789,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                                    lineNumber: 1784,
+                                                    lineNumber: 1788,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1756,
+                                            lineNumber: 1760,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1686,
+                                    lineNumber: 1690,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2825,7 +2825,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1802,
+                                            lineNumber: 1806,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2835,26 +2835,26 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                            lineNumber: 1813,
+                                            lineNumber: 1817,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                                    lineNumber: 1793,
+                                    lineNumber: 1797,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                        lineNumber: 1297,
+                        lineNumber: 1301,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                lineNumber: 1272,
+                lineNumber: 1276,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -2863,7 +2863,7 @@ const XBandTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStar
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/XBandTestPanel.tsx",
-                lineNumber: 1831,
+                lineNumber: 1835,
                 columnNumber: 15
             }, this)
         ]

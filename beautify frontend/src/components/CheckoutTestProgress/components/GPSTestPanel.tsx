@@ -930,20 +930,15 @@ export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
                   </svg>
                   Connection Mode
                 </div>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '4px 8px',
-                  borderRadius: '9999px',
-                  fontSize: '12px',
-                  fontWeight: '500',
-                  backgroundColor: isForceSimulation ? 
-                    (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : 'rgba(245, 158, 11, 0.1)') : 
-                    (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : 'rgba(16, 185, 129, 0.1)'),
-                  color: isForceSimulation ? 
-                    (isDarkMode ? '#fbbf24' : '#d97706') : 
-                    (isDarkMode ? '#34d399' : '#059669')
-                }}>
-                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
                 </span>
               </div>
               

@@ -302,6 +302,13 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
     const [isCheckoutEditing, setIsCheckoutEditing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false); // For checkoutSection
     const [droppedItems, setDroppedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     // Manage draggable items
+    const createDefaultCheckedOptions = (options)=>{
+        const checkedOptions = {};
+        options.forEach((option)=>{
+            checkedOptions[option] = true;
+        });
+        return checkedOptions;
+    };
     const [items, setItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
             id: "1",
@@ -310,7 +317,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "eMMC"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "eMMC"
+            ])
         },
         {
             id: "2",
@@ -320,7 +329,10 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "EEPROM"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "SD Card",
+                "EEPROM"
+            ])
         },
         {
             id: "3",
@@ -330,7 +342,10 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Ground Pass"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Telemetry",
+                "Ground Pass"
+            ])
         },
         {
             id: "4",
@@ -340,7 +355,10 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Ground Pass"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Telemetry",
+                "Ground Pass"
+            ])
         },
         {
             id: "5",
@@ -351,7 +369,11 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Hdrm"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Solar Panel",
+                "Heater",
+                "Hdrm"
+            ])
         },
         {
             id: "6",
@@ -369,7 +391,18 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Magnetic Torquer"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Version Check",
+                "Gyroscope",
+                "Magnetometer",
+                "Star Tracker",
+                "FOG",
+                "Fine Sun Sensor",
+                "Coarse Sun Sensor",
+                "Earth Sensor",
+                "Reaction Wheel",
+                "Magnetic Torquer"
+            ])
         },
         {
             id: "7",
@@ -378,7 +411,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Version Check"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Version Check"
+            ])
         },
         {
             id: "8",
@@ -390,7 +425,12 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "ECU-2 PPU-2"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "ECU-1 PMA",
+                "ECU-1 PPU-1",
+                "ECU-2 PMA",
+                "ECU-2 PPU-2"
+            ])
         },
         {
             id: "9",
@@ -399,7 +439,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "SD Card"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "SD Card"
+            ])
         },
         {
             id: "10",
@@ -408,7 +450,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "LEOCAM"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "LEOCAM"
+            ])
         },
         {
             id: "11",
@@ -418,7 +462,10 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "Telemetry"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "Telecommand",
+                "Telemetry"
+            ])
         },
         {
             id: "12",
@@ -427,7 +474,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 "AOD"
             ],
             isDropped: false,
-            checkedOptions: {}
+            checkedOptions: createDefaultCheckedOptions([
+                "AOD"
+            ])
         }
     ]);
     const [activeId, setActiveId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -1129,8 +1178,8 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                     {
                         ...draggedItem,
                         isDropped: true,
-                        // Preserve checked options
-                        checkedOptions: draggedItem.checkedOptions || {}
+                        // Preserve checked options, or use default if none exist
+                        checkedOptions: draggedItem.checkedOptions && Object.keys(draggedItem.checkedOptions).length > 0 ? draggedItem.checkedOptions : createDefaultCheckedOptions(draggedItem.options)
                     }
                 ];
             }
@@ -1144,8 +1193,8 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
             const updatedItems = prevItems.map((item)=>item.id === draggedItemId ? {
                     ...item,
                     isDropped: isTopSection,
-                    // Preserve checked options
-                    checkedOptions: draggedItem.checkedOptions || {}
+                    // Preserve checked options, or use default if none exist
+                    checkedOptions: item.checkedOptions && Object.keys(item.checkedOptions).length > 0 ? item.checkedOptions : createDefaultCheckedOptions(item.options)
                 } : item);
             console.log("✅ Updated items after drop:", updatedItems);
             return [
@@ -1179,17 +1228,56 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
             alert("Please add components to the checkout section before starting the test.");
             return;
         }
-        // Filter the droppedItems to create a version that only includes checked options
+        // Filter the droppedItems and update the main state for visual consistency
         const itemsWithCheckedOptions = droppedItems.map((item)=>{
             // Get the options that are checked (true in checkedOptions)
             const checkedOptionsList = Object.entries(item.checkedOptions || {}).filter(([_, isChecked])=>isChecked).map(([option])=>option);
-            // If no options are checked, include all options as a fallback
-            const optionsToTest = checkedOptionsList.length > 0 ? checkedOptionsList : item.options;
+            // If no options are checked, include all options as a fallback AND mark them as visually checked
+            if (checkedOptionsList.length === 0) {
+                console.log(`⚠️ No options checked for ${item.header}, using all options as fallback and marking them as checked`);
+                // Create a new checkedOptions object with all options set to true
+                const allOptionsChecked = {};
+                item.options.forEach((option)=>{
+                    allOptionsChecked[option] = true;
+                });
+                return {
+                    ...item,
+                    options: item.options,
+                    checkedOptions: allOptionsChecked // Mark all as visually checked
+                };
+            }
             // Return a version of the item with only the checked options
             return {
                 ...item,
-                options: optionsToTest // Replace with only the checked options
+                options: checkedOptionsList // Replace with only the checked options
             };
+        });
+        // Update the actual droppedItems state to reflect the visual changes
+        setDroppedItems((prev)=>{
+            return prev.map((item)=>{
+                const updatedItem = itemsWithCheckedOptions.find((updated)=>updated.id === item.id);
+                if (updatedItem && Object.keys(item.checkedOptions || {}).length === 0) {
+                    console.log(`Updating visual state for ${item.header} to show all options as checked`);
+                    return {
+                        ...item,
+                        checkedOptions: updatedItem.checkedOptions
+                    };
+                }
+                return item;
+            });
+        });
+        // Also update the items state for consistency
+        setItems((prev)=>{
+            return prev.map((item)=>{
+                const updatedItem = itemsWithCheckedOptions.find((updated)=>updated.id === item.id);
+                if (updatedItem && Object.keys(item.checkedOptions || {}).length === 0) {
+                    return {
+                        ...item,
+                        checkedOptions: updatedItem.checkedOptions
+                    };
+                }
+                return item;
+            });
         });
         // Make sure there's at least one item with options to test
         const hasTestableItems = itemsWithCheckedOptions.some((item)=>item.options.length > 0);
@@ -1201,6 +1289,16 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
         localStorage.setItem('checkoutTestItems', JSON.stringify(itemsWithCheckedOptions));
         // Store a flag in localStorage to signal that the window should be open
         localStorage.setItem('showCheckoutTest', 'true');
+        // Ensure we have a socket ready
+        if (!mccSocket) {
+            // Initialize a simulated socket
+            const simSocket = {
+                simulateRead: (params)=>params.map((p)=>`${p}=simulated`),
+                send: async ()=>Promise.resolve(),
+                receive: async ()=>Promise.resolve("simulated")
+            };
+            setMccSocket(simSocket);
+        }
         // Update the state
         setShowCheckoutTest(true);
         // Force a re-render
@@ -1407,7 +1505,8 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 const loadedItems = result.items.map((item)=>({
                         ...item,
                         isDropped: true,
-                        checkedOptions: item.checkedOptions || {}
+                        // Ensure loaded items have proper checked options, or use defaults
+                        checkedOptions: item.checkedOptions && Object.keys(item.checkedOptions).length > 0 ? item.checkedOptions : createDefaultCheckedOptions(item.options)
                     }));
                 // Set dropped items first
                 setDroppedItems(loadedItems);
@@ -1427,8 +1526,9 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 ...matchingItem.checkedOptions
                             };
                         } else {
-                            // Make sure it's marked as not dropped
+                            // Make sure it's marked as not dropped but has default checked options
                             item.isDropped = false;
+                            item.checkedOptions = createDefaultCheckedOptions(item.options);
                         }
                     });
                     return updatedItems;
@@ -1437,11 +1537,11 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
             } else {
                 console.log(`ℹ️ No saved checkout items found for profile ${profileId}`);
                 setDroppedItems([]);
-                // Reset the dropped state in the items array
+                // Reset the dropped state in the items array with default checked options
                 setItems((prevItems)=>prevItems.map((item)=>({
                             ...item,
                             isDropped: false,
-                            checkedOptions: {}
+                            checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked
                         })));
             }
         } catch (error) {
@@ -1492,11 +1592,11 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
     // Extract reset logic to a separate function
     const resetItemStates = ()=>{
         setDroppedItems([]);
-        // Reset the items array
+        // Reset the items array with default checked options
         setItems((prevItems)=>prevItems.map((item)=>({
                     ...item,
                     isDropped: false,
-                    checkedOptions: {}
+                    checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked instead of empty
                 })));
     };
     // Update the profile change handler to load checkout items with their checkbox states
@@ -1683,12 +1783,12 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                 onClick: toggleSidebar,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaBars"], {}, void 0, false, {
                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                    lineNumber: 1615,
+                    lineNumber: 1753,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1611,
+                lineNumber: 1749,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1701,7 +1801,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Menu"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1621,
+                                lineNumber: 1759,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1710,13 +1810,13 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "☰"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1622,
+                                lineNumber: 1760,
                                 columnNumber: 9
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1620,
+                        lineNumber: 1758,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1728,7 +1828,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1627,
+                                lineNumber: 1765,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1785,7 +1885,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Tests to Conduct"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1631,
+                                lineNumber: 1769,
                                 columnNumber: 1
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1799,7 +1899,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                             children: "Profiles"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1698,
+                                            lineNumber: 1836,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1811,7 +1911,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                     children: isProfileDropdownOpen ? "▲" : "▼"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1705,
+                                                    lineNumber: 1843,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1819,29 +1919,29 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                     onClick: addProfile,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaPlus"], {}, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1715,
+                                                        lineNumber: 1853,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1711,
+                                                    lineNumber: 1849,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1704,
+                                            lineNumber: 1842,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                    lineNumber: 1697,
+                                    lineNumber: 1835,
                                     columnNumber: 11
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1696,
+                                lineNumber: 1834,
                                 columnNumber: 9
                             }, this),
                             isProfileDropdownOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1854,18 +1954,18 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                         children: profile.name
                                     }, profile.id || profile.name, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1723,
+                                        lineNumber: 1861,
                                         columnNumber: 13
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1721,
+                                lineNumber: 1859,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1626,
+                        lineNumber: 1764,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1877,23 +1977,23 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaCog"], {}, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1744,
+                                lineNumber: 1882,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                            lineNumber: 1738,
+                            lineNumber: 1876,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1737,
+                        lineNumber: 1875,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1619,
+                lineNumber: 1757,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1909,7 +2009,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                         children: selectedProfile
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1753,
+                                        lineNumber: 1891,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1917,18 +2017,18 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                         onClick: ()=>deleteProfile(selectedProfile),
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaTrash"], {}, void 0, false, {
                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                            lineNumber: 1758,
+                                            lineNumber: 1896,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1754,
+                                        lineNumber: 1892,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1752,
+                                lineNumber: 1890,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1937,14 +2037,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaInfoCircle"], {}, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1764,
+                                        lineNumber: 1902,
                                         columnNumber: 13
                                     }, this),
                                     " About/Specifications"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1763,
+                                lineNumber: 1901,
                                 columnNumber: 11
                             }, this),
                             showAbout && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1960,7 +2060,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: "Bullet List"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1781,
+                                                        lineNumber: 1919,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1968,13 +2068,13 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: "Ordered List"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1784,
+                                                        lineNumber: 1922,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1780,
+                                                lineNumber: 1918,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tiptap$2f$react$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["EditorContent"], {
@@ -1982,7 +2082,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].richTextEditor
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1789,
+                                                lineNumber: 1927,
                                                 columnNumber: 19
                                             }, this),
                                             uploadedImages.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1996,7 +2096,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].uploadedImage
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1796,
+                                                                lineNumber: 1934,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2005,25 +2105,25 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                                 children: "✖"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1802,
+                                                                lineNumber: 1940,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, index, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1795,
+                                                        lineNumber: 1933,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1793,
+                                                lineNumber: 1931,
                                                 columnNumber: 21
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].imagePlaceholder,
                                                 children: "No images uploaded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1812,
+                                                lineNumber: 1950,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2036,7 +2136,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].uploadInput
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1817,
+                                                        lineNumber: 1955,
                                                         columnNumber: 21
                                                     }, this),
                                                     selectedProfile && profileData[selectedProfile]?.uploadedFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2046,13 +2146,13 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1826,
+                                                        lineNumber: 1964,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1816,
+                                                lineNumber: 1954,
                                                 columnNumber: 19
                                             }, this)
                                         ]
@@ -2064,7 +2164,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1833,
+                                                lineNumber: 1971,
                                                 columnNumber: 19
                                             }, this),
                                             profileData[selectedProfile]?.images.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2078,17 +2178,17 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                             onError: (e)=>e.currentTarget.src = "/fallback-image.png"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                            lineNumber: 1843,
+                                                            lineNumber: 1981,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, index, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1842,
+                                                        lineNumber: 1980,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1840,
+                                                lineNumber: 1978,
                                                 columnNumber: 21
                                             }, this)
                                         ]
@@ -2104,14 +2204,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaDownload"], {}, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1864,
+                                                                lineNumber: 2002,
                                                                 columnNumber: 25
                                                             }, this),
                                                             " Save as .TXT"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1860,
+                                                        lineNumber: 1998,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2120,14 +2220,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaDownload"], {}, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1870,
+                                                                lineNumber: 2008,
                                                                 columnNumber: 25
                                                             }, this),
                                                             " Save as .DOCX"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1866,
+                                                        lineNumber: 2004,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
@@ -2140,14 +2240,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaCheck"], {}, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1880,
+                                                                lineNumber: 2018,
                                                                 columnNumber: 25
                                                             }, this),
                                                             " Save"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1876,
+                                                        lineNumber: 2014,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2156,14 +2256,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaTimes"], {}, void 0, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 1886,
+                                                                lineNumber: 2024,
                                                                 columnNumber: 25
                                                             }, this),
                                                             " Cancel"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1882,
+                                                        lineNumber: 2020,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
@@ -2172,24 +2272,24 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 onClick: startEditing,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaEdit"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1891,
+                                                    lineNumber: 2029,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1890,
+                                                lineNumber: 2028,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1857,
+                                        lineNumber: 1995,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1769,
+                                lineNumber: 1907,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2197,7 +2297,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Test Type"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1899,
+                                lineNumber: 2037,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2206,14 +2306,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaWrench"], {}, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1901,
+                                        lineNumber: 2039,
                                         columnNumber: 17
                                     }, this),
                                     " Checkout"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1900,
+                                lineNumber: 2038,
                                 columnNumber: 15
                             }, this),
                             showCheckout && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2241,7 +2341,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 children: "Test Selection:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1916,
+                                                lineNumber: 2054,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2249,12 +2349,12 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 onClick: toggleCheckoutEditMode,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaEdit"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 1918,
+                                                    lineNumber: 2056,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1917,
+                                                lineNumber: 2055,
                                                 columnNumber: 19
                                             }, this),
                                             !isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2262,49 +2362,24 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 style: {
                                                     marginLeft: 'auto'
                                                 },
-                                                onClick: (e)=>{
-                                                    e.preventDefault();
-                                                    e.stopPropagation();
-                                                    // Ensure we have items to test
-                                                    if (droppedItems.length === 0) {
-                                                        alert("Please add components to the checkout section before starting the test.");
-                                                        return;
-                                                    }
-                                                    // Store a flag in localStorage to ensure window stays visible
-                                                    localStorage.setItem('showCheckoutTest', 'true');
-                                                    // Ensure we have a socket ready
-                                                    if (!mccSocket) {
-                                                        // Initialize a simulated socket
-                                                        const simSocket = {
-                                                            simulateRead: (params)=>params.map((p)=>`${p}=simulated`),
-                                                            send: async ()=>Promise.resolve(),
-                                                            receive: async ()=>Promise.resolve("simulated")
-                                                        };
-                                                        setMccSocket(simSocket);
-                                                    }
-                                                    // Set window visible
-                                                    setShowCheckoutTest(true);
-                                                    // Force re-render
-                                                    setDummyState((prev)=>!prev);
-                                                    console.log("🚀 CheckoutTest window activated");
-                                                },
+                                                onClick: handleStartTest,
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaPlay"], {}, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1958,
+                                                        lineNumber: 2065,
                                                         columnNumber: 5
                                                     }, this),
                                                     " Start Test"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1922,
+                                                lineNumber: 2060,
                                                 columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1915,
+                                        lineNumber: 2053,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$core$2f$dist$2f$core$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DndContext"], {
@@ -2343,7 +2418,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: "Drop items here"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 1990,
+                                                        lineNumber: 2097,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$sortable$2f$dist$2f$sortable$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SortableContext"], {
@@ -2369,23 +2444,23 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                                     onOptionChange: handleOptionChange
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                    lineNumber: 2004,
+                                                                    lineNumber: 2111,
                                                                     columnNumber: 7
                                                                 }, this)
                                                             }, `top-${item.id}`, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 2003,
+                                                                lineNumber: 2110,
                                                                 columnNumber: 5
                                                             }, this))
                                                     }, sortableKey, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 2001,
+                                                        lineNumber: 2108,
                                                         columnNumber: 1
                                                     }, this)
                                                 ]
                                             }, "top-section", true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 1977,
+                                                lineNumber: 2084,
                                                 columnNumber: 3
                                             }, this),
                                             isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2415,7 +2490,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                         children: "Available Components"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 2045,
+                                                        lineNumber: 2152,
                                                         columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$sortable$2f$dist$2f$sortable$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SortableContext"], {
@@ -2445,24 +2520,24 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                                     onOptionChange: handleOptionChange
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                    lineNumber: 2062,
+                                                                    lineNumber: 2169,
                                                                     columnNumber: 7
                                                                 }, this)
                                                             }, `bottom-${item.id}`, false, {
                                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                                lineNumber: 2051,
+                                                                lineNumber: 2158,
                                                                 columnNumber: 5
                                                             }, this);
                                                         })
                                                     }, sortableKey, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 2046,
+                                                        lineNumber: 2153,
                                                         columnNumber: 3
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 2022,
+                                                lineNumber: 2129,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$core$2f$dist$2f$core$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DragOverlay"], {
@@ -2475,18 +2550,18 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                    lineNumber: 2081,
+                                                    lineNumber: 2188,
                                                     columnNumber: 5
                                                 }, this) : null
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 2079,
+                                                lineNumber: 2186,
                                                 columnNumber: 1
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 1963,
+                                        lineNumber: 2070,
                                         columnNumber: 17
                                     }, this),
                                     isCheckoutEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2501,14 +2576,14 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaCheck"], {}, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 2098,
+                                                        lineNumber: 2205,
                                                         columnNumber: 21
                                                     }, this),
                                                     " Save"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 2094,
+                                                lineNumber: 2201,
                                                 columnNumber: 1
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2520,26 +2595,26 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaTimes"], {}, void 0, false, {
                                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                        lineNumber: 2104,
+                                                        lineNumber: 2211,
                                                         columnNumber: 21
                                                     }, this),
                                                     " Cancel"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                                lineNumber: 2100,
+                                                lineNumber: 2207,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 2093,
+                                        lineNumber: 2200,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 1906,
+                                lineNumber: 2044,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2547,7 +2622,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Satellite Model Viewer"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 2110,
+                                lineNumber: 2217,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2574,20 +2649,20 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaCube"], {}, void 0, false, {
                                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                        lineNumber: 2138,
+                                        lineNumber: 2245,
                                         columnNumber: 3
                                     }, this),
                                     " 3D Model Viewer"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 2112,
+                                lineNumber: 2219,
                                 columnNumber: 1
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 1751,
+                        lineNumber: 1889,
                         columnNumber: 9
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].profilePage,
@@ -2597,7 +2672,7 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Satellite Automated Testing System"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 2144,
+                                lineNumber: 2251,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2605,13 +2680,13 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 children: "Navigate using the side panel"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 2145,
+                                lineNumber: 2252,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 2143,
+                        lineNumber: 2250,
                         columnNumber: 11
                     }, this),
                     (()=>{
@@ -2643,25 +2718,25 @@ const MainScreen = ({ openToTestList, closeToTestList, openServerWindow, openMod
                                 sock: mccSocket || {}
                             }, void 0, false, {
                                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                                lineNumber: 2166,
+                                lineNumber: 2273,
                                 columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                        lineNumber: 2157,
+                        lineNumber: 2264,
                         columnNumber: 3
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-                lineNumber: 1749,
+                lineNumber: 1887,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/MainScreen/MainScreen.tsx",
-        lineNumber: 1609,
+        lineNumber: 1747,
         columnNumber: 3
     }, this);
 };

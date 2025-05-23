@@ -632,6 +632,10 @@ html.dark {
   text-wrap: wrap;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .text-clip {
   text-overflow: clip;
 }

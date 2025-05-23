@@ -235,13 +235,23 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
     }
   }, [sock]);
   
-  useEffect(() => {
-    // Only run test automatically if this is the initial run and we haven't run it yet
-    if (isInitialRun && !hasRunTest && !isRunning) {
-      console.log("Auto-starting test because isInitialRun =", isInitialRun);
+// Create a more responsive version of the useEffect hook
+useEffect(() => {
+  // This will run whenever isInitialRun changes
+  if (isInitialRun) {
+    console.log(`🔄 OBC-1 Test Panel received isInitialRun=true signal, running test`);
+    // Reset state for a fresh run
+    setIsRunning(false); 
+    setProgress(0);
+    setError(null);
+    setHasRunTest(false);
+    
+    // Start test after a short delay to ensure state is updated
+    setTimeout(() => {
       startTest();
-    }
-  }, [isInitialRun, hasRunTest, isRunning]);
+    }, 50);
+  }
+}, [isInitialRun]); // Only depend on isInitialRun
   
   // Add function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {

@@ -116,7 +116,7 @@ export async function runSBandCheckout(
     try {
       // Send activation command (value 5 corresponds to S-Band activation)
       if (options.testTX || options.testRX) {
-        await mccifSet(sock, "OBC1_Command", 5);
+        //await mccifSet(sock, "OBC1_Command", 5); functionality removed (21 May Test)
         
         // Wait for activation (60 seconds in the original Python script)
         onProgress('Waiting for S-Band hardware to initialize', 15);

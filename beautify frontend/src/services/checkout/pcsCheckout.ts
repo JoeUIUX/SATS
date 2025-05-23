@@ -132,7 +132,8 @@ export async function runPCSCheckout(
 
     // Step 1: Turn on PCS (10%)
     onProgress('Powering on PCS', 10);
-    await mccifSet(sock, "OBC1_Ch_ExtReqOn", 7);
+    //await mccifSet(sock, "OBC1_Ch_ExtReqOn", 7);
+    await mccifSet(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); // new parameter name and value (21 May 2025 Test)
     // Allow time for power up
     await new Promise(resolve => setTimeout(resolve, 2000));
 

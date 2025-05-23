@@ -227,13 +227,23 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
     }
   }, [sock]);
   
-  useEffect(() => {
-    // Only run test automatically if this is the initial run and we haven't run it yet
-    if (isInitialRun && !hasRunTest && !isRunning) {
-      console.log("Auto-starting test because isInitialRun =", isInitialRun);
+// Create a more responsive version of the useEffect hook
+useEffect(() => {
+  // This will run whenever isInitialRun changes
+  if (isInitialRun) {
+    console.log(`🔄 OBC-1 Test Panel received isInitialRun=true signal, running test`);
+    // Reset state for a fresh run
+    setIsRunning(false); 
+    setProgress(0);
+    setError(null);
+    setHasRunTest(false);
+    
+    // Start test after a short delay to ensure state is updated
+    setTimeout(() => {
       startTest();
-    }
-  }, [isInitialRun, hasRunTest, isRunning]);
+    }, 50);
+  }
+}, [isInitialRun]); // Only depend on isInitialRun
   
   // Add function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
@@ -1014,10 +1024,15 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
                   </svg>
                   Connection Mode
                 </div>
-                <span className={`${styles.statusBadge} ${
-                  isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-                }`}>
-                  {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
                 </span>
               </div>
               

@@ -134,12 +134,12 @@ export async function runADCSCheckout(
     };
 
     // Define variables to read
-    const adcsVi = ["HEPS1_PDM2_ADCS_IF_V", "HEPS1_PDM2_ADCS-IF_I", "HEPS1_PDM2_ADCD_RW_V", "HEPS1_PDM2_ADCD_RW_I"];
+    const adcsVi = ["HEPS1_PDM2_ADCS_IF_V", "HEPS1_PDM2_ADCS-IF_I", "HEPS1_PDM2_ADCS_RW_V", "HEPS1_PDM2_ADCS_RW_I"];
     const adcsTlm128 = [
-      "ADCS_TLM_Identifier", "ADCS_TLM_InterfaceVer", "ADCS_TLM_IdFwVerMajor", "ADCS_TLM_IdFwVerMinor",
-      "ADCS_TLM_RuntimeSec", "ADCS_TLM_RuntimeMiliSec"
+      "ADCS1_TLM_Identifier", "ADCS1_TLM_InterfaceVer", "ADCS1_TLM_IdFwVerMajor", "ADCS1_TLM_IdFwVerMinor",
+      "ADCS1_TLM_RuntimeSec", "ADCS1_TLM_RuntimeMiliSec"
     ];
-    const adcsStat = ["OBC1_Adcs_Cmd_Count", "OBC1_Adcs_Ack_Count", "OBC1_Adcs_Timeout_Count", "OBC1_Adcs_Error_Count"];
+    const adcsStat = ["OBC1_Itc_Adcs_Tm_TxCount", "OBC1_Itc_Adcs_Tm_AckCount", "OBC1_Itc_Adcs_Tm_TimeoutCount", "OBC1_Itc_Adcs_Tm_ErrCount"];
 
     // Step 1: Power on the ADCS (10%)
     onProgress('Powering on ADCS', 10);

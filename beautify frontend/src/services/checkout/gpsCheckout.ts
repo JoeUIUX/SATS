@@ -231,7 +231,7 @@ export async function runGPSCheckout(
     // Step 7: Power off GPS (80%)
     onProgress('Powering off GPS', 80);
     
-    await mccifSet(sock, "OBC1_Gps_Control", 3);
+    await mccifSet(sock, "OBC1_Gps_Control", 3); // value =4 for 'Power Off' (21 May 2025 Test)
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Step 8: Read GPS power status after power off (90%)

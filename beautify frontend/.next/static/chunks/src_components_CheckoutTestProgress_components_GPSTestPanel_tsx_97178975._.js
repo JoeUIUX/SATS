@@ -1009,20 +1009,16 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge}`,
                                                 style: {
-                                                    display: 'inline-block',
-                                                    padding: '4px 8px',
-                                                    borderRadius: '9999px',
-                                                    fontSize: '12px',
-                                                    fontWeight: '500',
-                                                    backgroundColor: isForceSimulation ? isDarkMode ? 'rgba(245, 158, 11, 0.2)' : 'rgba(245, 158, 11, 0.1)' : isDarkMode ? 'rgba(16, 185, 129, 0.2)' : 'rgba(16, 185, 129, 0.1)',
-                                                    color: isForceSimulation ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#34d399' : '#059669'
+                                                    backgroundColor: detectedSimulation ? isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb' : isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5',
+                                                    color: detectedSimulation ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#34d399' : '#047857'
                                                 },
-                                                children: isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'
+                                                children: detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
                                                 lineNumber: 933,
-                                                columnNumber: 17
+                                                columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -1056,12 +1052,12 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 965,
+                                                        lineNumber: 960,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 964,
+                                                    lineNumber: 959,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Running Test..."
@@ -1079,12 +1075,12 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 972,
+                                                        lineNumber: 967,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 971,
+                                                    lineNumber: 966,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Re-run Test"
@@ -1102,12 +1098,12 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 979,
+                                                        lineNumber: 974,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 978,
+                                                    lineNumber: 973,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Run Test"
@@ -1115,7 +1111,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 951,
+                                        lineNumber: 946,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1161,32 +1157,32 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1009,
+                                                            lineNumber: 1004,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1008,
+                                                        lineNumber: 1003,
                                                         columnNumber: 21
                                                     }, this),
                                                     "GPS Power Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1007,
+                                                lineNumber: 1002,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1015,
+                                                lineNumber: 1010,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 998,
+                                        lineNumber: 993,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1212,7 +1208,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1033,
+                                                                lineNumber: 1028,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1222,7 +1218,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1034,
+                                                                lineNumber: 1029,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1232,18 +1228,18 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1035,
+                                                                lineNumber: 1030,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1032,
+                                                        lineNumber: 1027,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1025,
+                                                    lineNumber: 1020,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1258,7 +1254,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 5V Supply"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1040,
+                                                                    lineNumber: 1035,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1271,7 +1267,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1041,
+                                                                    lineNumber: 1036,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1291,18 +1287,18 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.voltages.gps5V.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1043,
+                                                                        lineNumber: 1038,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1042,
+                                                                    lineNumber: 1037,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1039,
+                                                            lineNumber: 1034,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1318,7 +1314,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 5V Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1062,
+                                                                    lineNumber: 1057,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1331,7 +1327,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1063,
+                                                                    lineNumber: 1058,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1341,13 +1337,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "-"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1064,
+                                                                    lineNumber: 1059,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1061,
+                                                            lineNumber: 1056,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1359,7 +1355,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 3.3V Supply"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1068,
+                                                                    lineNumber: 1063,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1372,7 +1368,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1069,
+                                                                    lineNumber: 1064,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1392,41 +1388,41 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.voltages.gps3V3.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1071,
+                                                                        lineNumber: 1066,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1070,
+                                                                    lineNumber: 1065,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1067,
+                                                            lineNumber: 1062,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1038,
+                                                    lineNumber: 1033,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1019,
+                                            lineNumber: 1014,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1018,
+                                        lineNumber: 1013,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                lineNumber: 991,
+                                lineNumber: 986,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1457,32 +1453,32 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1112,
+                                                            lineNumber: 1107,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1111,
+                                                        lineNumber: 1106,
                                                         columnNumber: 21
                                                     }, this),
                                                     "GPS Command Test"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1110,
+                                                lineNumber: 1105,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1118,
+                                                lineNumber: 1113,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1101,
+                                        lineNumber: 1096,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1505,7 +1501,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: "Command Test Status"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1123,
+                                                        lineNumber: 1118,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1521,13 +1517,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: results.stats.commandCheck.pass ? "COMMAND SUCCEEDED" : "COMMAND FAILED"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1126,
+                                                        lineNumber: 1121,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1122,
+                                                lineNumber: 1117,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1554,7 +1550,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "TX Count Before:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1152,
+                                                                        lineNumber: 1147,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1565,7 +1561,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.txCountBefore
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1153,
+                                                                        lineNumber: 1148,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1575,7 +1571,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "TX Count After:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1154,
+                                                                        lineNumber: 1149,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1586,13 +1582,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.txCountAfter
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1155,
+                                                                        lineNumber: 1150,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1151,
+                                                                lineNumber: 1146,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1604,7 +1600,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "RX Count Before:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1158,
+                                                                        lineNumber: 1153,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1615,7 +1611,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.rxCountBefore
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1159,
+                                                                        lineNumber: 1154,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1625,7 +1621,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "RX Count After:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1160,
+                                                                        lineNumber: 1155,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1636,13 +1632,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.rxCountAfter
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1161,
+                                                                        lineNumber: 1156,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1157,
+                                                                lineNumber: 1152,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1654,7 +1650,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "TX Bytes Before:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1164,
+                                                                        lineNumber: 1159,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1665,7 +1661,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.txBytesBefore
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1165,
+                                                                        lineNumber: 1160,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1675,7 +1671,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "TX Bytes After:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1166,
+                                                                        lineNumber: 1161,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1686,13 +1682,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.txBytesAfter
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1167,
+                                                                        lineNumber: 1162,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1163,
+                                                                lineNumber: 1158,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1704,7 +1700,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "RX Bytes Before:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1170,
+                                                                        lineNumber: 1165,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1715,7 +1711,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.rxBytesBefore
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1171,
+                                                                        lineNumber: 1166,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1725,7 +1721,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: "RX Bytes After:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1172,
+                                                                        lineNumber: 1167,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1736,41 +1732,41 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.stats.rxBytesAfter
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1173,
+                                                                        lineNumber: 1168,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1169,
+                                                                lineNumber: 1164,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1150,
+                                                        lineNumber: 1145,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1149,
+                                                    lineNumber: 1144,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1143,
+                                                lineNumber: 1138,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1121,
+                                        lineNumber: 1116,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                lineNumber: 1094,
+                                lineNumber: 1089,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1801,32 +1797,32 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1200,
+                                                            lineNumber: 1195,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1199,
+                                                        lineNumber: 1194,
                                                         columnNumber: 21
                                                     }, this),
                                                     "GPS Power Off Test"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1198,
+                                                lineNumber: 1193,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1206,
+                                                lineNumber: 1201,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1189,
+                                        lineNumber: 1184,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1852,7 +1848,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1224,
+                                                                lineNumber: 1219,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1862,7 +1858,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1225,
+                                                                lineNumber: 1220,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1872,18 +1868,18 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                lineNumber: 1226,
+                                                                lineNumber: 1221,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1223,
+                                                        lineNumber: 1218,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1216,
+                                                    lineNumber: 1211,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1898,7 +1894,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 5V Supply (Off)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1231,
+                                                                    lineNumber: 1226,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1911,7 +1907,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1232,
+                                                                    lineNumber: 1227,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1931,18 +1927,18 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.powerOff.gps5V.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1234,
+                                                                        lineNumber: 1229,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1233,
+                                                                    lineNumber: 1228,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1230,
+                                                            lineNumber: 1225,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1958,7 +1954,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 5V Current (Off)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1253,
+                                                                    lineNumber: 1248,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1971,7 +1967,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1254,
+                                                                    lineNumber: 1249,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1981,13 +1977,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "-"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1255,
+                                                                    lineNumber: 1250,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1252,
+                                                            lineNumber: 1247,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1999,7 +1995,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "GPS 3.3V Supply (Off)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1259,
+                                                                    lineNumber: 1254,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2012,7 +2008,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1260,
+                                                                    lineNumber: 1255,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2032,41 +2028,41 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         children: results.powerOff.gps3V3.pass ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1262,
+                                                                        lineNumber: 1257,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1261,
+                                                                    lineNumber: 1256,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1258,
+                                                            lineNumber: 1253,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1229,
+                                                    lineNumber: 1224,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1210,
+                                            lineNumber: 1205,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1209,
+                                        lineNumber: 1204,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                lineNumber: 1182,
+                                lineNumber: 1177,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2089,30 +2085,30 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1295,
+                                                lineNumber: 1290,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1294,
+                                            lineNumber: 1289,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1286,
+                                    lineNumber: 1281,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                lineNumber: 1285,
+                                lineNumber: 1280,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                        lineNumber: 989,
+                        lineNumber: 984,
                         columnNumber: 13
                     }, this)
                 ]
@@ -2147,24 +2143,24 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1324,
+                                        lineNumber: 1319,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1323,
+                                    lineNumber: 1318,
                                     columnNumber: 15
                                 }, this),
                                 "GPS Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                            lineNumber: 1322,
+                            lineNumber: 1317,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                        lineNumber: 1312,
+                        lineNumber: 1307,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2194,25 +2190,25 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                        lineNumber: 1338,
+                                        lineNumber: 1333,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1337,
+                                    lineNumber: 1332,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1340,
+                                    lineNumber: 1335,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                            lineNumber: 1332,
+                            lineNumber: 1327,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -2226,7 +2222,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1349,
+                                    lineNumber: 1344,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2237,7 +2233,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1350,
+                                    lineNumber: 1345,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2254,20 +2250,20 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1363,
+                                            lineNumber: 1358,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1355,
+                                    lineNumber: 1350,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                            lineNumber: 1343,
+                            lineNumber: 1338,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -2286,7 +2282,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1371,
+                                            lineNumber: 1366,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2306,18 +2302,18 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1393,
+                                                    lineNumber: 1388,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1379,
+                                            lineNumber: 1374,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1370,
+                                    lineNumber: 1365,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2342,7 +2338,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1408,
+                                            lineNumber: 1403,
                                             columnNumber: 34
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -2352,13 +2348,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1417,
+                                            lineNumber: 1412,
                                             columnNumber: 34
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1401,
+                                    lineNumber: 1396,
                                     columnNumber: 32
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2381,12 +2377,12 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                lineNumber: 1434,
+                                                lineNumber: 1429,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1433,
+                                            lineNumber: 1428,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2424,7 +2420,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1468,
+                                                                    lineNumber: 1463,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2433,20 +2429,20 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1469,
+                                                                    lineNumber: 1464,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1467,
+                                                            lineNumber: 1462,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1446,
+                                                    lineNumber: 1441,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2466,7 +2462,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1477,
+                                                            lineNumber: 1472,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2484,7 +2480,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1493,
+                                                            lineNumber: 1488,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2516,12 +2512,12 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                        lineNumber: 1529,
+                                                                        lineNumber: 1524,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                                    lineNumber: 1528,
+                                                                    lineNumber: 1523,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -2530,7 +2526,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1509,
+                                                            lineNumber: 1504,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -2538,13 +2534,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1444,
+                                            lineNumber: 1439,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1426,
+                                    lineNumber: 1421,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2580,19 +2576,19 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1542,
+                                                        lineNumber: 1537,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1541,
+                                                    lineNumber: 1536,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1540,
+                                            lineNumber: 1535,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2606,14 +2602,14 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1547,
+                                                    lineNumber: 1542,
                                                     columnNumber: 43
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1546,
+                                            lineNumber: 1541,
                                             columnNumber: 19
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2643,7 +2639,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1553,
+                                                            lineNumber: 1548,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2653,7 +2649,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1554,
+                                                            lineNumber: 1549,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2663,26 +2659,26 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1555,
+                                                            lineNumber: 1550,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1552,
+                                                    lineNumber: 1547,
                                                     columnNumber: 23
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1551,
+                                            lineNumber: 1546,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1539,
+                                    lineNumber: 1534,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -2691,7 +2687,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1563,
+                                    lineNumber: 1558,
                                     columnNumber: 33
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2709,7 +2705,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1571,
+                                            lineNumber: 1566,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2736,7 +2732,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average GPS 5V"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1592,
+                                                            lineNumber: 1587,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2753,13 +2749,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1599,
+                                                            lineNumber: 1594,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1586,
+                                                    lineNumber: 1581,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2779,7 +2775,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "GPS 5V Pass Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1624,
+                                                            lineNumber: 1619,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2797,13 +2793,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1631,
+                                                            lineNumber: 1626,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1618,
+                                                    lineNumber: 1613,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2823,7 +2819,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Avg. GPS 3.3V"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1658,
+                                                            lineNumber: 1653,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2840,13 +2836,13 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1665,
+                                                            lineNumber: 1660,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1652,
+                                                    lineNumber: 1647,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2866,7 +2862,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1689,
+                                                            lineNumber: 1684,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2883,25 +2879,25 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                            lineNumber: 1696,
+                                                            lineNumber: 1691,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1684,
+                                                    lineNumber: 1679,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1580,
+                                            lineNumber: 1575,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1570,
+                                    lineNumber: 1565,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2943,19 +2939,19 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1734,
+                                                        lineNumber: 1729,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1733,
+                                                    lineNumber: 1728,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1717,
+                                            lineNumber: 1712,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2988,19 +2984,19 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1757,
+                                                        lineNumber: 1752,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1756,
+                                                    lineNumber: 1751,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1740,
+                                            lineNumber: 1735,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3033,19 +3029,19 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1780,
+                                                        lineNumber: 1775,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1779,
+                                                    lineNumber: 1774,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1763,
+                                            lineNumber: 1758,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3094,25 +3090,25 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                        lineNumber: 1814,
+                                                        lineNumber: 1809,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                                    lineNumber: 1813,
+                                                    lineNumber: 1808,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1785,
+                                            lineNumber: 1780,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1715,
+                                    lineNumber: 1710,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3133,7 +3129,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1831,
+                                            lineNumber: 1826,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3143,26 +3139,26 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                            lineNumber: 1842,
+                                            lineNumber: 1837,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                                    lineNumber: 1822,
+                                    lineNumber: 1817,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                        lineNumber: 1330,
+                        lineNumber: 1325,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                lineNumber: 1305,
+                lineNumber: 1300,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -3171,7 +3167,7 @@ const GPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/GPSTestPanel.tsx",
-                lineNumber: 1860,
+                lineNumber: 1855,
                 columnNumber: 15
             }, this)
         ]

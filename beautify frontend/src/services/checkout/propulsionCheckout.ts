@@ -186,7 +186,8 @@ export async function runPropulsionCheckout(
       "PROPULSION1_PMA_Temperature", "PROPULSION1_IEP_1_PWM", "PROPULSION1_IEP_2_PWM",
       "PROPULSION1_IEP_3_Freq", "PROPULSION1_IEP_4_Freq", "PROPULSION1_IEP_5_Freq",
       "PROPULSION1_IEP_6_Freq", "PROPULSION1_MFC_1_Flow", "PROPULSION1_MFC_2_Flow",
-      "PROPULSION1_MFC_3_Flow", "PROPULSION1_MFC_4_Flow", "PROPULSION1_SPARE_2",
+      "PROPULSION1_MFC_3_Flow", "PROPULSION1_MFC_4_Flow", "PROPULSION1_SPARE_2", 
+      //here onwards mostly
       "PROPULSION1_MFC_2_Thruster_Selector", "PROPULSION1_MFC_4_Thruster_Selector",
       "PROPULSION1_MFC_1_Thruster_Selector", "PROPULSION1_MFC_3_Thruster_Selector",
       "PROPULSION1_Thruster_1_Cathode_Selector", "PROPULSION1_Thruster_2_Cathode_Selector",

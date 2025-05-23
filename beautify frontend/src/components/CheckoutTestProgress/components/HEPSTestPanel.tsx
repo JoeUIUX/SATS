@@ -1689,11 +1689,16 @@ return (
                 </svg>
                 Connection Mode
               </div>
-              <span className={`${styles.statusBadge} ${
-                isForceSimulation || detectedSimulation ? styles.colorWaiting : styles.colorCompleted
-              }`}>
-                {isForceSimulation || detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-              </span>
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+                </span>
             </div>
             
             <div 
@@ -4289,6 +4294,8 @@ PDM Temperature Status
         </svg>
         Raw Parameter Values
       </h3>
+              {/* Add simulation badge */}
+        <SimulationBadge isSimulation={detectedSimulation} />
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         width="20" 

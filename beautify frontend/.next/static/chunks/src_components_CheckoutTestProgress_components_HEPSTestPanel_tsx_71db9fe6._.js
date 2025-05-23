@@ -2372,12 +2372,16 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge} ${isForceSimulation || detectedSimulation ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorWaiting : __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].colorCompleted}`,
-                                                children: isForceSimulation || detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
+                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$OBC1TestPanel$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].statusBadge}`,
+                                                style: {
+                                                    backgroundColor: detectedSimulation ? isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb' : isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5',
+                                                    color: detectedSimulation ? isDarkMode ? '#fbbf24' : '#d97706' : isDarkMode ? '#34d399' : '#047857'
+                                                },
+                                                children: detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
                                                 lineNumber: 1692,
-                                                columnNumber: 15
+                                                columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -2407,19 +2411,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1709,
+                                                            lineNumber: 1714,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1708,
+                                                        lineNumber: 1713,
                                                         columnNumber: 17
                                                     }, this),
                                                     "HEPS System Tests"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1707,
+                                                lineNumber: 1712,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2433,7 +2437,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "CAN"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1715,
+                                                        lineNumber: 1720,
                                                         columnNumber: 19
                                                     }, this),
                                                     enableBatteryTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2441,7 +2445,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Battery"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1720,
+                                                        lineNumber: 1725,
                                                         columnNumber: 19
                                                     }, this),
                                                     enableHeaterTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2449,7 +2453,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Heaters"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1725,
+                                                        lineNumber: 1730,
                                                         columnNumber: 19
                                                     }, this),
                                                     enableCurrentTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2457,7 +2461,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Current"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1730,
+                                                        lineNumber: 1735,
                                                         columnNumber: 19
                                                     }, this),
                                                     enablePowerCycle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2465,7 +2469,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Power Cycle"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1735,
+                                                        lineNumber: 1740,
                                                         columnNumber: 19
                                                     }, this),
                                                     enableConverterTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2473,19 +2477,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Converters"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1740,
+                                                        lineNumber: 1745,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1713,
+                                                lineNumber: 1718,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1699,
+                                        lineNumber: 1704,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2514,12 +2518,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1762,
+                                                        lineNumber: 1767,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1761,
+                                                    lineNumber: 1766,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Running Test..."
@@ -2537,12 +2541,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1769,
+                                                        lineNumber: 1774,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1768,
+                                                    lineNumber: 1773,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Re-run Test"
@@ -2560,12 +2564,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1776,
+                                                        lineNumber: 1781,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 1775,
+                                                    lineNumber: 1780,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Run Test"
@@ -2573,7 +2577,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1748,
+                                        lineNumber: 1753,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -2619,32 +2623,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1807,
+                                                            lineNumber: 1812,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1806,
+                                                        lineNumber: 1811,
                                                         columnNumber: 19
                                                     }, this),
                                                     "HEPS System Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1805,
+                                                lineNumber: 1810,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1813,
+                                                lineNumber: 1818,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1796,
+                                        lineNumber: 1801,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2677,7 +2681,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "Power Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1828,
+                                                                lineNumber: 1833,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2695,7 +2699,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.system.powerStatus === "1" ? "POWERED" : "OFF"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1842,
+                                                                        lineNumber: 1847,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2707,19 +2711,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Current State"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1851,
+                                                                        lineNumber: 1856,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1838,
+                                                                lineNumber: 1843,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1823,
+                                                        lineNumber: 1828,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2741,7 +2745,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "System Voltage"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1866,
+                                                                lineNumber: 1871,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2759,7 +2763,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.voltage, 'system.voltage')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1880,
+                                                                        lineNumber: 1885,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2771,19 +2775,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Bus Voltage"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1887,
+                                                                        lineNumber: 1892,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1876,
+                                                                lineNumber: 1881,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1861,
+                                                        lineNumber: 1866,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2805,7 +2809,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "System Current"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1902,
+                                                                lineNumber: 1907,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2823,7 +2827,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.current, 'system.current')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1916,
+                                                                        lineNumber: 1921,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2835,25 +2839,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Total Current"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1923,
+                                                                        lineNumber: 1928,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1912,
+                                                                lineNumber: 1917,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1897,
+                                                        lineNumber: 1902,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1817,
+                                                lineNumber: 1822,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2877,7 +2881,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1948,
+                                                                    lineNumber: 1953,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2887,7 +2891,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1949,
+                                                                    lineNumber: 1954,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2897,18 +2901,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Status"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 1950,
+                                                                    lineNumber: 1955,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 1947,
+                                                            lineNumber: 1952,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1940,
+                                                        lineNumber: 1945,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2923,7 +2927,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.powerStatus')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1955,
+                                                                        lineNumber: 1960,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2933,7 +2937,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.powerStatus, 'system.powerStatus')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1958,
+                                                                        lineNumber: 1963,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2945,18 +2949,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: results.system.powerStatus === "1" ? "ONLINE" : "OFFLINE"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1962,
+                                                                            lineNumber: 1967,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1961,
+                                                                        lineNumber: 1966,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1954,
+                                                                lineNumber: 1959,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2972,7 +2976,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.voltage')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1971,
+                                                                        lineNumber: 1976,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2982,7 +2986,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.voltage, 'system.voltage')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1974,
+                                                                        lineNumber: 1979,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2994,18 +2998,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: parseFloat(results.system.voltage) > 27 && parseFloat(results.system.voltage) < 30 ? "NORMAL" : "CHECK"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1978,
+                                                                            lineNumber: 1983,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1977,
+                                                                        lineNumber: 1982,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1970,
+                                                                lineNumber: 1975,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3017,7 +3021,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.current')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1989,
+                                                                        lineNumber: 1994,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3027,7 +3031,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.current, 'system.current')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1992,
+                                                                        lineNumber: 1997,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3039,18 +3043,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: parseFloat(results.system.current) < 1500 ? "NORMAL" : "HIGH"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 1996,
+                                                                            lineNumber: 2001,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 1995,
+                                                                        lineNumber: 2000,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 1988,
+                                                                lineNumber: 1993,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3066,7 +3070,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.power')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2007,
+                                                                        lineNumber: 2012,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3076,7 +3080,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.system.power, 'system.power')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2010,
+                                                                        lineNumber: 2015,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3088,18 +3092,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: parseFloat(results.system.power) < 50 ? "NORMAL" : "HIGH"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 2014,
+                                                                            lineNumber: 2019,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2013,
+                                                                        lineNumber: 2018,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2006,
+                                                                lineNumber: 2011,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3111,7 +3115,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.powerCycleCount')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2025,
+                                                                        lineNumber: 2030,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3121,7 +3125,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.system.powerCycleCount
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2028,
+                                                                        lineNumber: 2033,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3131,13 +3135,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "-"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2031,
+                                                                        lineNumber: 2036,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2024,
+                                                                lineNumber: 2029,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3153,7 +3157,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('system.operatingTime')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2035,
+                                                                        lineNumber: 2040,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3166,7 +3170,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2038,
+                                                                        lineNumber: 2043,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3176,37 +3180,37 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "-"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2041,
+                                                                        lineNumber: 2046,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2034,
+                                                                lineNumber: 2039,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 1953,
+                                                        lineNumber: 1958,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 1934,
+                                                lineNumber: 1939,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 1816,
+                                        lineNumber: 1821,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 1789,
+                                lineNumber: 1794,
                                 columnNumber: 13
                             }, this),
                             (enableCANTest || results.canTest) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3237,32 +3241,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2068,
+                                                            lineNumber: 2073,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2067,
+                                                        lineNumber: 2072,
                                                         columnNumber: 21
                                                     }, this),
                                                     "CAN Communication Test"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2066,
+                                                lineNumber: 2071,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2074,
+                                                lineNumber: 2079,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2057,
+                                        lineNumber: 2062,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3295,7 +3299,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "Primary CAN Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2089,
+                                                                lineNumber: 2094,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3313,7 +3317,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.canTest?.primaryResult === "[PASS]" ? "CONNECTED" : "FAILED"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2103,
+                                                                        lineNumber: 2108,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3325,19 +3329,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Primary Bus"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2112,
+                                                                        lineNumber: 2117,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2099,
+                                                                lineNumber: 2104,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2084,
+                                                        lineNumber: 2089,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3359,7 +3363,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "Secondary CAN Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2127,
+                                                                lineNumber: 2132,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3377,7 +3381,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.canTest?.secondaryResult === "[PASS]" ? "CONNECTED" : "FAILED"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2141,
+                                                                        lineNumber: 2146,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3389,25 +3393,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Secondary Bus"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2150,
+                                                                        lineNumber: 2155,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2137,
+                                                                lineNumber: 2142,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2122,
+                                                        lineNumber: 2127,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2078,
+                                                lineNumber: 2083,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3428,7 +3432,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "CAN Communication Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2167,
+                                                        lineNumber: 2172,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3443,7 +3447,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2176,
+                                                        lineNumber: 2181,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3457,25 +3461,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2186,
+                                                        lineNumber: 2191,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2161,
+                                                lineNumber: 2166,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2077,
+                                        lineNumber: 2082,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2050,
+                                lineNumber: 2055,
                                 columnNumber: 15
                             }, this),
                             results.battery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3505,7 +3509,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2219,
+                                                                lineNumber: 2224,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -3514,33 +3518,33 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2220,
+                                                                lineNumber: 2225,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2218,
+                                                        lineNumber: 2223,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Battery Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2217,
+                                                lineNumber: 2222,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2226,
+                                                lineNumber: 2231,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2208,
+                                        lineNumber: 2213,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3576,7 +3580,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2242,
+                                                                lineNumber: 2247,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3598,7 +3602,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2260,
+                                                                                lineNumber: 2265,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3609,13 +3613,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.voltage1, 'battery.voltage1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2261,
+                                                                                lineNumber: 2266,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2255,
+                                                                        lineNumber: 2260,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3632,7 +3636,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2275,
+                                                                                lineNumber: 2280,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3642,13 +3646,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.current1, 'battery.current1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2276,
+                                                                                lineNumber: 2281,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2270,
+                                                                        lineNumber: 2275,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3664,7 +3668,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Temperature:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2284,
+                                                                                lineNumber: 2289,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3674,25 +3678,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.temperature1, 'battery.temperature1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2285,
+                                                                                lineNumber: 2290,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2280,
+                                                                        lineNumber: 2285,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2252,
+                                                                lineNumber: 2257,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2237,
+                                                        lineNumber: 2242,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3717,7 +3721,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2298,
+                                                                lineNumber: 2303,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3739,7 +3743,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2316,
+                                                                                lineNumber: 2321,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3750,13 +3754,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.voltage2, 'battery.voltage2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2317,
+                                                                                lineNumber: 2322,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2311,
+                                                                        lineNumber: 2316,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3773,7 +3777,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2331,
+                                                                                lineNumber: 2336,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3783,13 +3787,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.current2, 'battery.current2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2332,
+                                                                                lineNumber: 2337,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2326,
+                                                                        lineNumber: 2331,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3805,7 +3809,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Temperature:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2340,
+                                                                                lineNumber: 2345,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3815,25 +3819,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.temperature2, 'battery.temperature2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2341,
+                                                                                lineNumber: 2346,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2336,
+                                                                        lineNumber: 2341,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2308,
+                                                                lineNumber: 2313,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2293,
+                                                        lineNumber: 2298,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3858,7 +3862,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2354,
+                                                                lineNumber: 2359,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3880,7 +3884,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2372,
+                                                                                lineNumber: 2377,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3891,13 +3895,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.voltage3, 'battery.voltage3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2373,
+                                                                                lineNumber: 2378,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2367,
+                                                                        lineNumber: 2372,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3914,7 +3918,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2387,
+                                                                                lineNumber: 2392,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3924,13 +3928,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.current3, 'battery.current3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2388,
+                                                                                lineNumber: 2393,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2382,
+                                                                        lineNumber: 2387,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3946,7 +3950,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Temperature:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2396,
+                                                                                lineNumber: 2401,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3956,31 +3960,31 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.battery.temperature3, 'battery.temperature3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2397,
+                                                                                lineNumber: 2402,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2392,
+                                                                        lineNumber: 2397,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2364,
+                                                                lineNumber: 2369,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2349,
+                                                        lineNumber: 2354,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2230,
+                                                lineNumber: 2235,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4001,7 +4005,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Battery Status Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2411,
+                                                        lineNumber: 2416,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4012,25 +4016,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: results.passFailStatus && results.passFailStatus.battery1 === "[PASS]" && results.passFailStatus.battery2 === "[PASS]" && results.passFailStatus.battery3 === "[PASS]" ? "All batteries are within nominal voltage range (11-16V) and operating at expected temperature." : "One or more batteries are outside nominal voltage range. Check battery health and charging circuit."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2420,
+                                                        lineNumber: 2425,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2405,
+                                                lineNumber: 2410,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2229,
+                                        lineNumber: 2234,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2201,
+                                lineNumber: 2206,
                                 columnNumber: 15
                             }, this),
                             results.solarArray && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4061,32 +4065,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2456,
+                                                            lineNumber: 2461,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2455,
+                                                        lineNumber: 2460,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Solar Array Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2454,
+                                                lineNumber: 2459,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2462,
+                                                lineNumber: 2467,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2445,
+                                        lineNumber: 2450,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4122,7 +4126,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2478,
+                                                                lineNumber: 2483,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4144,7 +4148,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2496,
+                                                                                lineNumber: 2501,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4154,13 +4158,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.voltage1, 'solarArray.voltage1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2497,
+                                                                                lineNumber: 2502,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2491,
+                                                                        lineNumber: 2496,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4177,7 +4181,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y- Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2506,
+                                                                                lineNumber: 2511,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4187,13 +4191,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYNeg1, 'solarArray.tempYNeg1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2507,
+                                                                                lineNumber: 2512,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2501,
+                                                                        lineNumber: 2506,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4209,7 +4213,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y+ Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2515,
+                                                                                lineNumber: 2520,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4219,25 +4223,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYPos1, 'solarArray.tempYPos1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2516,
+                                                                                lineNumber: 2521,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2511,
+                                                                        lineNumber: 2516,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2488,
+                                                                lineNumber: 2493,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2473,
+                                                        lineNumber: 2478,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4262,7 +4266,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2529,
+                                                                lineNumber: 2534,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4284,7 +4288,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2547,
+                                                                                lineNumber: 2552,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4294,13 +4298,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.voltage2, 'solarArray.voltage2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2548,
+                                                                                lineNumber: 2553,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2542,
+                                                                        lineNumber: 2547,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4317,7 +4321,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y- Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2557,
+                                                                                lineNumber: 2562,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4327,13 +4331,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYNeg2, 'solarArray.tempYNeg2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2558,
+                                                                                lineNumber: 2563,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2552,
+                                                                        lineNumber: 2557,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4349,7 +4353,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y+ Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2566,
+                                                                                lineNumber: 2571,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4359,25 +4363,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYPos2, 'solarArray.tempYPos2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2567,
+                                                                                lineNumber: 2572,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2562,
+                                                                        lineNumber: 2567,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2539,
+                                                                lineNumber: 2544,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2524,
+                                                        lineNumber: 2529,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4402,7 +4406,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2580,
+                                                                lineNumber: 2585,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4424,7 +4428,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2598,
+                                                                                lineNumber: 2603,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4434,13 +4438,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.voltage3, 'solarArray.voltage3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2599,
+                                                                                lineNumber: 2604,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2593,
+                                                                        lineNumber: 2598,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4457,7 +4461,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y- Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2608,
+                                                                                lineNumber: 2613,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4467,13 +4471,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYNeg3, 'solarArray.tempYNeg3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2609,
+                                                                                lineNumber: 2614,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2603,
+                                                                        lineNumber: 2608,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4489,7 +4493,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Y+ Temp:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2617,
+                                                                                lineNumber: 2622,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4499,31 +4503,31 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.solarArray.tempYPos3, 'solarArray.tempYPos3')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2618,
+                                                                                lineNumber: 2623,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2613,
+                                                                        lineNumber: 2618,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2590,
+                                                                lineNumber: 2595,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2575,
+                                                        lineNumber: 2580,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2466,
+                                                lineNumber: 2471,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4544,7 +4548,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: getReadableParameterName('solarArray.tempBodyMount')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2633,
+                                                        lineNumber: 2638,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4562,7 +4566,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: "Temperature:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2643,
+                                                                lineNumber: 2648,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4574,19 +4578,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: formatParameterValue(results.solarArray.tempBodyMount, 'solarArray.tempBodyMount')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2649,
+                                                                lineNumber: 2654,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2642,
+                                                        lineNumber: 2647,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2627,
+                                                lineNumber: 2632,
                                                 columnNumber: 19
                                             }, this),
                                             results.hdrmStatus && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4607,7 +4611,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "HDRM Deployment Status"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2675,
+                                                        lineNumber: 2680,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4632,7 +4636,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('hdrmStatus.deploy1')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2694,
+                                                                        lineNumber: 2699,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4643,13 +4647,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.hdrmStatus.deploy1, 'hdrmStatus.deploy1')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2700,
+                                                                        lineNumber: 2705,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2689,
+                                                                lineNumber: 2694,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4667,7 +4671,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName('hdrmStatus.deploy2')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2715,
+                                                                        lineNumber: 2720,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4678,37 +4682,37 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.hdrmStatus.deploy2, 'hdrmStatus.deploy2')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2721,
+                                                                        lineNumber: 2726,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2710,
+                                                                lineNumber: 2715,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2684,
+                                                        lineNumber: 2689,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2661,
+                                                lineNumber: 2666,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2465,
+                                        lineNumber: 2470,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2438,
+                                lineNumber: 2443,
                                 columnNumber: 15
                             }, this),
                             results.obn && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4739,32 +4743,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2757,
+                                                            lineNumber: 2762,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2756,
+                                                        lineNumber: 2761,
                                                         columnNumber: 21
                                                     }, this),
                                                     "OBN (On-Board Network) Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2755,
+                                                lineNumber: 2760,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2763,
+                                                lineNumber: 2768,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2746,
+                                        lineNumber: 2751,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4800,7 +4804,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2779,
+                                                                lineNumber: 2784,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4822,7 +4826,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2797,
+                                                                                lineNumber: 2802,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4833,13 +4837,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.obn.voltage1, 'obn.voltage1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2798,
+                                                                                lineNumber: 2803,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2792,
+                                                                        lineNumber: 2797,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4855,7 +4859,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2811,
+                                                                                lineNumber: 2816,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4865,25 +4869,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.obn.current1, 'obn.current1')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2812,
+                                                                                lineNumber: 2817,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2807,
+                                                                        lineNumber: 2812,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2789,
+                                                                lineNumber: 2794,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2774,
+                                                        lineNumber: 2779,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4908,7 +4912,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2825,
+                                                                lineNumber: 2830,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4930,7 +4934,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2843,
+                                                                                lineNumber: 2848,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4941,13 +4945,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.obn.voltage2, 'obn.voltage2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2844,
+                                                                                lineNumber: 2849,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2838,
+                                                                        lineNumber: 2843,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4963,7 +4967,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2857,
+                                                                                lineNumber: 2862,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4973,25 +4977,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.obn.current2, 'obn.current2')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 2858,
+                                                                                lineNumber: 2863,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 2853,
+                                                                        lineNumber: 2858,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2835,
+                                                                lineNumber: 2840,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2820,
+                                                        lineNumber: 2825,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5013,7 +5017,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('obn.auxVoltage')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2871,
+                                                                lineNumber: 2876,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5033,7 +5037,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Voltage:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 2888,
+                                                                            lineNumber: 2893,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5044,30 +5048,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.obn.auxVoltage, 'obn.auxVoltage')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 2889,
+                                                                            lineNumber: 2894,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 2884,
+                                                                    lineNumber: 2889,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 2881,
+                                                                lineNumber: 2886,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2866,
+                                                        lineNumber: 2871,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2767,
+                                                lineNumber: 2772,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5088,7 +5092,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "OBN Status Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2908,
+                                                        lineNumber: 2913,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5099,25 +5103,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: results.passFailStatus && results.passFailStatus.obn1Voltage === "[PASS]" && results.passFailStatus.obn2Voltage === "[PASS]" && results.passFailStatus.auxVoltage === "[PASS]" ? "All OBN voltages are within nominal range. Network communication links operational." : "One or more OBN voltages are outside nominal range. Check power supply and network connections."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2917,
+                                                        lineNumber: 2922,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2902,
+                                                lineNumber: 2907,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2766,
+                                        lineNumber: 2771,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2739,
+                                lineNumber: 2744,
                                 columnNumber: 15
                             }, this),
                             results.bcr && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5148,12 +5152,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2953,
+                                                            lineNumber: 2958,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 2952,
+                                                        lineNumber: 2957,
                                                         columnNumber: 21
                                                     }, this),
                                                     getReadableParameterName('bcr.current1').split(' ')[0],
@@ -5161,20 +5165,20 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2951,
+                                                lineNumber: 2956,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 2959,
+                                                lineNumber: 2964,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2942,
+                                        lineNumber: 2947,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5209,7 +5213,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2975,
+                                                            lineNumber: 2980,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5231,7 +5235,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Current:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 2993,
+                                                                            lineNumber: 2998,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5241,13 +5245,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.current1, 'bcr.current1')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 2994,
+                                                                            lineNumber: 2999,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 2988,
+                                                                    lineNumber: 2993,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5263,7 +5267,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Temperature:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3002,
+                                                                            lineNumber: 3007,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5273,25 +5277,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.temp1, 'bcr.temp1')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3003,
+                                                                            lineNumber: 3008,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 2998,
+                                                                    lineNumber: 3003,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 2985,
+                                                            lineNumber: 2990,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 2970,
+                                                    lineNumber: 2975,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5316,7 +5320,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3016,
+                                                            lineNumber: 3021,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5338,7 +5342,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Current:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3034,
+                                                                            lineNumber: 3039,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5348,13 +5352,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.current2, 'bcr.current2')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3035,
+                                                                            lineNumber: 3040,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3029,
+                                                                    lineNumber: 3034,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5370,7 +5374,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Temperature:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3043,
+                                                                            lineNumber: 3048,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5380,25 +5384,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.temp2, 'bcr.temp2')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3044,
+                                                                            lineNumber: 3049,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3039,
+                                                                    lineNumber: 3044,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3026,
+                                                            lineNumber: 3031,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 3011,
+                                                    lineNumber: 3016,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5423,7 +5427,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3057,
+                                                            lineNumber: 3062,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5445,7 +5449,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Current:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3075,
+                                                                            lineNumber: 3080,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5455,13 +5459,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.current3, 'bcr.current3')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3076,
+                                                                            lineNumber: 3081,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3070,
+                                                                    lineNumber: 3075,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5477,7 +5481,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: "Temperature:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3084,
+                                                                            lineNumber: 3089,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5487,42 +5491,42 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(results.bcr.temp3, 'bcr.temp3')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3085,
+                                                                            lineNumber: 3090,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3080,
+                                                                    lineNumber: 3085,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3067,
+                                                            lineNumber: 3072,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 3052,
+                                                    lineNumber: 3057,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 2963,
+                                            lineNumber: 2968,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 2962,
+                                        lineNumber: 2967,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 2935,
+                                lineNumber: 2940,
                                 columnNumber: 15
                             }, this),
                             results.pdmTemperature && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5553,32 +5557,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3116,
+                                                            lineNumber: 3121,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3115,
+                                                        lineNumber: 3120,
                                                         columnNumber: 21
                                                     }, this),
                                                     "PDM Temperature"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3114,
+                                                lineNumber: 3119,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3122,
+                                                lineNumber: 3127,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3105,
+                                        lineNumber: 3110,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5611,7 +5615,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('pdmTemperature.pdm1')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3138,
+                                                                lineNumber: 3143,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5629,7 +5633,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.pdmTemperature.pdm1, 'pdmTemperature.pdm1')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3152,
+                                                                        lineNumber: 3157,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5641,19 +5645,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "PCB Temperature"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3159,
+                                                                        lineNumber: 3164,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3148,
+                                                                lineNumber: 3153,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3133,
+                                                        lineNumber: 3138,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5675,7 +5679,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('pdmTemperature.pdm2')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3175,
+                                                                lineNumber: 3180,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5693,7 +5697,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(results.pdmTemperature.pdm2, 'pdmTemperature.pdm2')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3189,
+                                                                        lineNumber: 3194,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5705,25 +5709,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "PCB Temperature"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3196,
+                                                                        lineNumber: 3201,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3185,
+                                                                lineNumber: 3190,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3170,
+                                                        lineNumber: 3175,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3126,
+                                                lineNumber: 3131,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5744,7 +5748,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "PDM Temperature Status"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3213,
+                                                        lineNumber: 3218,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5755,25 +5759,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: parseFloat(results.pdmTemperature.pdm1) < 60 && parseFloat(results.pdmTemperature.pdm2) < 60 ? "PDM temperatures are within normal operating range (< 60°C)." : "One or more PDM temperatures exceeded nominal range. Check thermal conditions."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3222,
+                                                        lineNumber: 3227,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3207,
+                                                lineNumber: 3212,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3125,
+                                        lineNumber: 3130,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3098,
+                                lineNumber: 3103,
                                 columnNumber: 15
                             }, this),
                             results.converters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5804,32 +5808,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3255,
+                                                            lineNumber: 3260,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3254,
+                                                        lineNumber: 3259,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Power Converters"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3253,
+                                                lineNumber: 3258,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3261,
+                                                lineNumber: 3266,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3244,
+                                        lineNumber: 3249,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5845,7 +5849,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Converter 1 (PSM1)"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3265,
+                                                lineNumber: 3270,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5863,7 +5867,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3274,
+                                                lineNumber: 3279,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -5876,7 +5880,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Converter 2 (PSM2)"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3306,
+                                                lineNumber: 3311,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5893,7 +5897,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3315,
+                                                lineNumber: 3320,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5914,7 +5918,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Converter Status Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3347,
+                                                        lineNumber: 3352,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5925,25 +5929,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: Object.entries(results.passFailStatus || {}).filter(([key])=>key.includes('voltage')).every(([, value])=>value === "[PASS]") ? "All converters operating within voltage specifications. Temperature readings normal." : "One or more converters outside voltage specifications. Check power supply and load conditions."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3356,
+                                                        lineNumber: 3361,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3341,
+                                                lineNumber: 3346,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3264,
+                                        lineNumber: 3269,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3237,
+                                lineNumber: 3242,
                                 columnNumber: 15
                             }, this),
                             results.loads && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5973,40 +5977,40 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 d: "M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3391,
+                                                                lineNumber: 3396,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                                 d: "M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3392,
+                                                                lineNumber: 3397,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3390,
+                                                        lineNumber: 3395,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Load Status"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3389,
+                                                lineNumber: 3394,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3398,
+                                                lineNumber: 3403,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3380,
+                                        lineNumber: 3385,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6039,7 +6043,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('loads.obc1_voltage').split(' ')[0]
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3414,
+                                                                lineNumber: 3419,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6061,7 +6065,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3432,
+                                                                                lineNumber: 3437,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6072,13 +6076,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.obc1_voltage, 'loads.obc1_voltage')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3433,
+                                                                                lineNumber: 3438,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3427,
+                                                                        lineNumber: 3432,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6094,7 +6098,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3446,
+                                                                                lineNumber: 3451,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6104,25 +6108,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.obc1_current, 'loads.obc1_current')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3447,
+                                                                                lineNumber: 3452,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3442,
+                                                                        lineNumber: 3447,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3424,
+                                                                lineNumber: 3429,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3409,
+                                                        lineNumber: 3414,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6144,7 +6148,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('loads.obc2_voltage').split(' ')[0]
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3460,
+                                                                lineNumber: 3465,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6166,7 +6170,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3478,
+                                                                                lineNumber: 3483,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6177,13 +6181,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.obc2_voltage, 'loads.obc2_voltage')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3479,
+                                                                                lineNumber: 3484,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3473,
+                                                                        lineNumber: 3478,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6199,7 +6203,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3492,
+                                                                                lineNumber: 3497,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6209,25 +6213,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.obc2_current, 'loads.obc2_current')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3493,
+                                                                                lineNumber: 3498,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3488,
+                                                                        lineNumber: 3493,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3470,
+                                                                lineNumber: 3475,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3455,
+                                                        lineNumber: 3460,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6249,7 +6253,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('loads.sband_voltage').split(' ')[0]
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3506,
+                                                                lineNumber: 3511,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6271,7 +6275,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3524,
+                                                                                lineNumber: 3529,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6282,13 +6286,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.sband_voltage, 'loads.sband_voltage')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3525,
+                                                                                lineNumber: 3530,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3519,
+                                                                        lineNumber: 3524,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6304,7 +6308,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3538,
+                                                                                lineNumber: 3543,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6314,25 +6318,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.sband_current, 'loads.sband_current')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3539,
+                                                                                lineNumber: 3544,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3534,
+                                                                        lineNumber: 3539,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3516,
+                                                                lineNumber: 3521,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3501,
+                                                        lineNumber: 3506,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6354,7 +6358,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getReadableParameterName('loads.uhf_voltage').split(' ')[0]
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3552,
+                                                                lineNumber: 3557,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6376,7 +6380,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Voltage:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3570,
+                                                                                lineNumber: 3575,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6387,13 +6391,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.uhf_voltage, 'loads.uhf_voltage')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3571,
+                                                                                lineNumber: 3576,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3565,
+                                                                        lineNumber: 3570,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6409,7 +6413,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Current:"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3584,
+                                                                                lineNumber: 3589,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6419,31 +6423,31 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: formatParameterValue(results.loads.uhf_current, 'loads.uhf_current')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 3585,
+                                                                                lineNumber: 3590,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3580,
+                                                                        lineNumber: 3585,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3562,
+                                                                lineNumber: 3567,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3547,
+                                                        lineNumber: 3552,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3402,
+                                                lineNumber: 3407,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6464,7 +6468,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Load Status Summary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3599,
+                                                        lineNumber: 3604,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6475,25 +6479,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: results.passFailStatus?.obc1_voltage === "[PASS]" && results.passFailStatus?.obc2_voltage === "[PASS]" && results.passFailStatus?.sband_voltage === "[PASS]" && results.passFailStatus?.uhf_voltage === "[PASS]" ? "All loads receiving correct voltage. Current consumption within expected ranges." : "One or more loads receiving incorrect voltage. Check power distribution system."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3608,
+                                                        lineNumber: 3613,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3593,
+                                                lineNumber: 3598,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3401,
+                                        lineNumber: 3406,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3373,
+                                lineNumber: 3378,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6524,32 +6528,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3643,
+                                                            lineNumber: 3648,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3642,
+                                                        lineNumber: 3647,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Heater Status Summary"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3641,
+                                                lineNumber: 3646,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3649,
+                                                lineNumber: 3654,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3632,
+                                        lineNumber: 3637,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6585,7 +6589,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3665,
+                                                                lineNumber: 3670,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6603,7 +6607,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(heater.temperature, `heaters[${index}].temperature`)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3683,
+                                                                        lineNumber: 3688,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6615,24 +6619,24 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(heater.current, `heaters[${index}].current`)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3690,
+                                                                        lineNumber: 3695,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3679,
+                                                                lineNumber: 3684,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, index, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3660,
+                                                        lineNumber: 3665,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3653,
+                                                lineNumber: 3658,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -6656,7 +6660,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Heater"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3716,
+                                                                    lineNumber: 3721,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -6666,7 +6670,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Status"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3717,
+                                                                    lineNumber: 3722,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -6676,7 +6680,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Temperature"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3718,
+                                                                    lineNumber: 3723,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -6686,7 +6690,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Current"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3719,
+                                                                    lineNumber: 3724,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -6696,18 +6700,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Power"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3720,
+                                                                    lineNumber: 3725,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3715,
+                                                            lineNumber: 3720,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3708,
+                                                        lineNumber: 3713,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -6729,7 +6733,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3726,
+                                                                        lineNumber: 3731,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -6741,12 +6745,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: formatParameterValue(heater.status, `heaters[${index}].status`)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3730,
+                                                                            lineNumber: 3735,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3729,
+                                                                        lineNumber: 3734,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -6756,7 +6760,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(heater.temperature, `heaters[${index}].temperature`)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3736,
+                                                                        lineNumber: 3741,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -6766,7 +6770,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(heater.current, `heaters[${index}].current`)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3739,
+                                                                        lineNumber: 3744,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -6776,36 +6780,36 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: formatParameterValue(heater.power, `heaters[${index}].power`)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3742,
+                                                                        lineNumber: 3747,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, index, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3725,
+                                                                lineNumber: 3730,
                                                                 columnNumber: 25
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3723,
+                                                        lineNumber: 3728,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3702,
+                                                lineNumber: 3707,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3652,
+                                        lineNumber: 3657,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3625,
+                                lineNumber: 3630,
                                 columnNumber: 13
                             }, this),
                             enableHeaterTest && results.heaterTests && results.heaterTests.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6836,32 +6840,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3772,
+                                                            lineNumber: 3777,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3771,
+                                                        lineNumber: 3776,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Heater Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3770,
+                                                lineNumber: 3775,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3778,
+                                                lineNumber: 3783,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3761,
+                                        lineNumber: 3766,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6898,7 +6902,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3796,
+                                                                lineNumber: 3801,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6906,13 +6910,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: heaterTest.testResult
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3804,
+                                                                lineNumber: 3809,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3790,
+                                                        lineNumber: 3795,
                                                         columnNumber: 25
                                                     }, this),
                                                     renderTemperatureTrend(heaterTest, index),
@@ -6921,18 +6925,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 ]
                                             }, index, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3783,
+                                                lineNumber: 3788,
                                                 columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3781,
+                                        lineNumber: 3786,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3754,
+                                lineNumber: 3759,
                                 columnNumber: 17
                             }, this),
                             enableCurrentTest && results.currentTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6963,32 +6967,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3845,
+                                                            lineNumber: 3850,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3844,
+                                                        lineNumber: 3849,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Current Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3843,
+                                                lineNumber: 3848,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3851,
+                                                lineNumber: 3856,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3834,
+                                        lineNumber: 3839,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7013,7 +7017,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: results.currentTest.testResult
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3864,
+                                                        lineNumber: 3869,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7028,13 +7032,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3874,
+                                                        lineNumber: 3879,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3855,
+                                                lineNumber: 3860,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -7058,7 +7062,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Heater"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3896,
+                                                                    lineNumber: 3901,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -7068,7 +7072,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Expected (mA)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3897,
+                                                                    lineNumber: 3902,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -7078,7 +7082,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Measured (mA)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3898,
+                                                                    lineNumber: 3903,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -7088,7 +7092,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Deviation (%)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3899,
+                                                                    lineNumber: 3904,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -7098,18 +7102,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Result"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 3900,
+                                                                    lineNumber: 3905,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 3895,
+                                                            lineNumber: 3900,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3888,
+                                                        lineNumber: 3893,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -7131,7 +7135,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3906,
+                                                                        lineNumber: 3911,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7141,7 +7145,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: result.expectedCurrent
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3909,
+                                                                        lineNumber: 3914,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7151,7 +7155,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: result.measuredCurrent
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3910,
+                                                                        lineNumber: 3915,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7164,7 +7168,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3911,
+                                                                        lineNumber: 3916,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7176,29 +7180,29 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                             children: result.inRange ? "PASS" : "FAIL"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                            lineNumber: 3913,
+                                                                            lineNumber: 3918,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 3912,
+                                                                        lineNumber: 3917,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, index, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3905,
+                                                                lineNumber: 3910,
                                                                 columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3903,
+                                                        lineNumber: 3908,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3882,
+                                                lineNumber: 3887,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7219,7 +7223,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Test Summary:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3932,
+                                                        lineNumber: 3937,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7230,7 +7234,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3933,
+                                                        lineNumber: 3938,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7240,7 +7244,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3934,
+                                                        lineNumber: 3939,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7251,7 +7255,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3935,
+                                                        lineNumber: 3940,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7262,25 +7266,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3936,
+                                                        lineNumber: 3941,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3924,
+                                                lineNumber: 3929,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3854,
+                                        lineNumber: 3859,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3827,
+                                lineNumber: 3832,
                                 columnNumber: 17
                             }, this),
                             enablePowerCycle && results.powerCycleTest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7310,7 +7314,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3962,
+                                                                lineNumber: 3967,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -7319,33 +7323,33 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 3963,
+                                                                lineNumber: 3968,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3961,
+                                                        lineNumber: 3966,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Power Cycle Test Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3960,
+                                                lineNumber: 3965,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3969,
+                                                lineNumber: 3974,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3951,
+                                        lineNumber: 3956,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7370,7 +7374,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: results.powerCycleTest.testResult
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3982,
+                                                        lineNumber: 3987,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7387,13 +7391,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 3992,
+                                                        lineNumber: 3997,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 3973,
+                                                lineNumber: 3978,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -7417,7 +7421,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 4014,
+                                                                    lineNumber: 4019,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -7427,18 +7431,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 4015,
+                                                                    lineNumber: 4020,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4013,
+                                                            lineNumber: 4018,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4006,
+                                                        lineNumber: 4011,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -7453,7 +7457,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Cycles Completed"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4020,
+                                                                        lineNumber: 4025,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7467,13 +7471,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4021,
+                                                                        lineNumber: 4026,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4019,
+                                                                lineNumber: 4024,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -7489,7 +7493,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Cycle Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4026,
+                                                                        lineNumber: 4031,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7502,13 +7506,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4027,
+                                                                        lineNumber: 4032,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4025,
+                                                                lineNumber: 4030,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -7520,7 +7524,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Power On Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4031,
+                                                                        lineNumber: 4036,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7533,13 +7537,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4032,
+                                                                        lineNumber: 4037,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4030,
+                                                                lineNumber: 4035,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -7555,7 +7559,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Power Off Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4036,
+                                                                        lineNumber: 4041,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7568,13 +7572,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4037,
+                                                                        lineNumber: 4042,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4035,
+                                                                lineNumber: 4040,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -7586,7 +7590,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Total Test Time"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4041,
+                                                                        lineNumber: 4046,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7599,13 +7603,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4042,
+                                                                        lineNumber: 4047,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4040,
+                                                                lineNumber: 4045,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -7621,7 +7625,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Failures"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4046,
+                                                                        lineNumber: 4051,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -7631,37 +7635,37 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: results.powerCycleTest.failures
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4047,
+                                                                        lineNumber: 4052,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4045,
+                                                                lineNumber: 4050,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4018,
+                                                        lineNumber: 4023,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4000,
+                                                lineNumber: 4005,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 3972,
+                                        lineNumber: 3977,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 3944,
+                                lineNumber: 3949,
                                 columnNumber: 17
                             }, this),
                             results.passFailStatus && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7692,32 +7696,32 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4075,
+                                                            lineNumber: 4080,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4074,
+                                                        lineNumber: 4079,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Pass/Fail Status Summary"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4073,
+                                                lineNumber: 4078,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation || detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4081,
+                                                lineNumber: 4086,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4064,
+                                        lineNumber: 4069,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7756,7 +7760,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Test Results Summary"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4105,
+                                                                        lineNumber: 4110,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7777,7 +7781,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4119,
+                                                                                lineNumber: 4124,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7789,19 +7793,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: "Pass Rate"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4130,
+                                                                                lineNumber: 4135,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4115,
+                                                                        lineNumber: 4120,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4100,
+                                                                lineNumber: 4105,
                                                                 columnNumber: 29
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7823,7 +7827,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Passed Tests"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4145,
+                                                                        lineNumber: 4150,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7841,7 +7845,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: passedTests
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4159,
+                                                                                lineNumber: 4164,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7857,19 +7861,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4166,
+                                                                                lineNumber: 4171,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4155,
+                                                                        lineNumber: 4160,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4140,
+                                                                lineNumber: 4145,
                                                                 columnNumber: 29
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7891,7 +7895,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: "Failed Tests"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4181,
+                                                                        lineNumber: 4186,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7909,7 +7913,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 children: failedTests
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4195,
+                                                                                lineNumber: 4200,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7925,19 +7929,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                                lineNumber: 4204,
+                                                                                lineNumber: 4209,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4191,
+                                                                        lineNumber: 4196,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4176,
+                                                                lineNumber: 4181,
                                                                 columnNumber: 29
                                                             }, this)
                                                         ]
@@ -7945,7 +7949,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 })()
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4085,
+                                                lineNumber: 4090,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7966,7 +7970,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Test Status Details"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4224,
+                                                        lineNumber: 4229,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7993,7 +7997,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: getReadableParameterName(key)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4248,
+                                                                        lineNumber: 4253,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -8001,36 +8005,36 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         children: value === "[PASS]" ? "PASS" : "FAIL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4253,
+                                                                        lineNumber: 4258,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, key, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4239,
+                                                                lineNumber: 4244,
                                                                 columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4233,
+                                                        lineNumber: 4238,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4218,
+                                                lineNumber: 4223,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4084,
+                                        lineNumber: 4089,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 4057,
+                                lineNumber: 4062,
                                 columnNumber: 17
                             }, this),
                             results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8071,20 +8075,27 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4288,
+                                                            lineNumber: 4293,
                                                             columnNumber: 11
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4287,
+                                                        lineNumber: 4292,
                                                         columnNumber: 9
                                                     }, this),
                                                     "Raw Parameter Values"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4286,
+                                                lineNumber: 4291,
                                                 columnNumber: 7
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
+                                                isSimulation: detectedSimulation
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
+                                                lineNumber: 4298,
+                                                columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                 xmlns: "http://www.w3.org/2000/svg",
@@ -8102,18 +8113,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     clipRule: "evenodd"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4303,
+                                                    lineNumber: 4310,
                                                     columnNumber: 9
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4292,
+                                                lineNumber: 4299,
                                                 columnNumber: 7
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4273,
+                                        lineNumber: 4278,
                                         columnNumber: 5
                                     }, this),
                                     showParameters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8134,7 +8145,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         children: "Select Parameter Group:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4310,
+                                                        lineNumber: 4317,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -8154,18 +8165,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                 children: getParameterGroupName(key)
                                                             }, key, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                lineNumber: 4332,
+                                                                lineNumber: 4339,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4318,
+                                                        lineNumber: 4325,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4309,
+                                                lineNumber: 4316,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(HEPSParameterDisplay, {
@@ -8175,7 +8186,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 isDarkMode: isDarkMode
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4339,
+                                                lineNumber: 4346,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8188,19 +8199,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4346,
+                                                lineNumber: 4353,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4308,
+                                        lineNumber: 4315,
                                         columnNumber: 7
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 4268,
+                                lineNumber: 4273,
                                 columnNumber: 3
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8224,30 +8235,30 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4370,
+                                                lineNumber: 4377,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4369,
+                                            lineNumber: 4376,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4361,
+                                    lineNumber: 4368,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                lineNumber: 4360,
+                                lineNumber: 4367,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 1787,
+                        lineNumber: 1792,
                         columnNumber: 11
                     }, this)
                 ]
@@ -8282,24 +8293,24 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4399,
+                                        lineNumber: 4406,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4398,
+                                    lineNumber: 4405,
                                     columnNumber: 15
                                 }, this),
                                 "UHF Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 4397,
+                            lineNumber: 4404,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 4387,
+                        lineNumber: 4394,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8329,25 +8340,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                        lineNumber: 4413,
+                                        lineNumber: 4420,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4412,
+                                    lineNumber: 4419,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4415,
+                                    lineNumber: 4422,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 4407,
+                            lineNumber: 4414,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -8361,7 +8372,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4424,
+                                    lineNumber: 4431,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -8372,7 +8383,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4425,
+                                    lineNumber: 4432,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8389,20 +8400,20 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4438,
+                                            lineNumber: 4445,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4430,
+                                    lineNumber: 4437,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                            lineNumber: 4418,
+                            lineNumber: 4425,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -8421,7 +8432,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4446,
+                                            lineNumber: 4453,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -8441,18 +8452,18 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4468,
+                                                    lineNumber: 4475,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4454,
+                                            lineNumber: 4461,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4445,
+                                    lineNumber: 4452,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8477,7 +8488,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4483,
+                                            lineNumber: 4490,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -8487,13 +8498,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4492,
+                                            lineNumber: 4499,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4476,
+                                    lineNumber: 4483,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8516,12 +8527,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                lineNumber: 4509,
+                                                lineNumber: 4516,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4508,
+                                            lineNumber: 4515,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8559,7 +8570,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 4543,
+                                                                    lineNumber: 4550,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -8568,20 +8579,20 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 4544,
+                                                                    lineNumber: 4551,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4542,
+                                                            lineNumber: 4549,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4521,
+                                                    lineNumber: 4528,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -8601,7 +8612,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4552,
+                                                            lineNumber: 4559,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -8619,7 +8630,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4568,
+                                                            lineNumber: 4575,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -8651,12 +8662,12 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                        lineNumber: 4604,
+                                                                        lineNumber: 4611,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                                    lineNumber: 4603,
+                                                                    lineNumber: 4610,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -8665,7 +8676,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4584,
+                                                            lineNumber: 4591,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -8673,13 +8684,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4519,
+                                            lineNumber: 4526,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4501,
+                                    lineNumber: 4508,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8715,19 +8726,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4617,
+                                                        lineNumber: 4624,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4616,
+                                                    lineNumber: 4623,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4615,
+                                            lineNumber: 4622,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -8741,14 +8752,14 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4622,
+                                                    lineNumber: 4629,
                                                     columnNumber: 43
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4621,
+                                            lineNumber: 4628,
                                             columnNumber: 19
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -8778,7 +8789,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4628,
+                                                            lineNumber: 4635,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -8788,7 +8799,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4629,
+                                                            lineNumber: 4636,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -8798,26 +8809,26 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4630,
+                                                            lineNumber: 4637,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4627,
+                                                    lineNumber: 4634,
                                                     columnNumber: 23
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4626,
+                                            lineNumber: 4633,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4614,
+                                    lineNumber: 4621,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -8826,7 +8837,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4638,
+                                    lineNumber: 4645,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8844,7 +8855,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4646,
+                                            lineNumber: 4653,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8871,7 +8882,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Average Board Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4667,
+                                                            lineNumber: 4674,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8888,13 +8899,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4674,
+                                                            lineNumber: 4681,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4661,
+                                                    lineNumber: 4668,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8914,7 +8925,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Average PA Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4699,
+                                                            lineNumber: 4706,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8931,13 +8942,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4706,
+                                                            lineNumber: 4713,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4693,
+                                                    lineNumber: 4700,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8957,7 +8968,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Average RSSI"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4731,
+                                                            lineNumber: 4738,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8974,13 +8985,13 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4738,
+                                                            lineNumber: 4745,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4725,
+                                                    lineNumber: 4732,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9000,7 +9011,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4763,
+                                                            lineNumber: 4770,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9017,25 +9028,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                            lineNumber: 4770,
+                                                            lineNumber: 4777,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4757,
+                                                    lineNumber: 4764,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4655,
+                                            lineNumber: 4662,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4645,
+                                    lineNumber: 4652,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9077,19 +9088,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4808,
+                                                        lineNumber: 4815,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4807,
+                                                    lineNumber: 4814,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4791,
+                                            lineNumber: 4798,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -9122,19 +9133,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4831,
+                                                        lineNumber: 4838,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4830,
+                                                    lineNumber: 4837,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4814,
+                                            lineNumber: 4821,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -9167,19 +9178,19 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4854,
+                                                        lineNumber: 4861,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4853,
+                                                    lineNumber: 4860,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4837,
+                                            lineNumber: 4844,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -9228,25 +9239,25 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                        lineNumber: 4888,
+                                                        lineNumber: 4895,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                                    lineNumber: 4887,
+                                                    lineNumber: 4894,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4859,
+                                            lineNumber: 4866,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4789,
+                                    lineNumber: 4796,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9267,7 +9278,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4905,
+                                            lineNumber: 4912,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9277,26 +9288,26 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                            lineNumber: 4916,
+                                            lineNumber: 4923,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                                    lineNumber: 4896,
+                                    lineNumber: 4903,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                        lineNumber: 4405,
+                        lineNumber: 4412,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 4380,
+                lineNumber: 4387,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -9305,7 +9316,7 @@ const HEPSTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/HEPSTestPanel.tsx",
-                lineNumber: 4934,
+                lineNumber: 4941,
                 columnNumber: 9
             }, this)
         ]

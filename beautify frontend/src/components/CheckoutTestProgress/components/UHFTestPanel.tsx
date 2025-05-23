@@ -996,11 +996,16 @@ return (
                 </svg>
                 Connection Mode
               </div>
-              <span className={`${styles.statusBadge} ${
-                isForceSimulation ? styles.colorWaiting : styles.colorCompleted
-              }`}>
-                {isForceSimulation ? 'SIMULATION' : 'REAL SOCKET'}
-              </span>
+  <span className={`${styles.statusBadge}`} style={{
+    backgroundColor: detectedSimulation ? 
+      (isDarkMode ? 'rgba(245, 158, 11, 0.2)' : '#fffbeb') : 
+      (isDarkMode ? 'rgba(16, 185, 129, 0.2)' : '#ecfdf5'),
+    color: detectedSimulation ? 
+      (isDarkMode ? '#fbbf24' : '#d97706') : 
+      (isDarkMode ? '#34d399' : '#047857')
+  }}>
+    {detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'}
+                </span>
             </div>
             
             <div 

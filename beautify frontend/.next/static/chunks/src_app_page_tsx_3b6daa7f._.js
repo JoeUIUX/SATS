@@ -5,7 +5,7 @@
 (globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
   "path": "static/chunks/src_app_page_tsx_3b6daa7f._.js",
   "chunks": [
-    "static/chunks/_329cbc3b._.js",
+    "static/chunks/_a2d3f423._.js",
     "static/chunks/src_components_MainScreen_97ecd62c._.js",
     "static/chunks/src_components_CheckoutTestProgress_components_OBC2TestPanel_tsx_632540be._.js",
     "static/chunks/src_components_CheckoutTestProgress_components_SBandTestPanel_tsx_5101e423._.js",
@@ -42,10 +42,11 @@
     "static/chunks/node_modules_@tiptap_core_dist_index_bbf02861.js",
     "static/chunks/node_modules_@popperjs_core_lib_e7041586._.js",
     "static/chunks/node_modules_@dnd-kit_core_dist_core_esm_deb93fb9.js",
+    "static/chunks/node_modules_jspdf_dist_jspdf_es_min_c277e70f.js",
     "static/chunks/node_modules_lodash_20634561._.js",
     "static/chunks/node_modules_recharts_es6_7bff9f4c._.js",
     "static/chunks/node_modules_@tiptap_05a7a47d._.js",
-    "static/chunks/node_modules_91e0ca89._.js",
+    "static/chunks/node_modules_ace38389._.js",
     "static/chunks/src_components_fd0fd771._.css"
   ],
   "source": "dynamic"
