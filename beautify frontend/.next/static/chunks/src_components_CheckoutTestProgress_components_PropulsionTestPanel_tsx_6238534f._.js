@@ -320,13 +320,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
     const [isDarkMode, setIsDarkMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isForceSimulation, setIsForceSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [detectedSimulation, setDetectedSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Add new states for test history
+    // states for test history
     const [showHistory, setShowHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [testHistory, setTestHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [historyLoading, setHistoryLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [selectedMetric, setSelectedMetric] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('temperatures.Thruster_1_Temp');
     const [selectedHistoryItem, setSelectedHistoryItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    // Add state variables for messages
+    // state variables for messages
     const [cleanupMessage, setCleanupMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [limitMessage, setLimitMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -462,7 +462,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
         hasRunTest,
         isRunning
     ]);
-    // Add function to fetch test history
+    // function to fetch test history
     const fetchTestHistory = async (limit = 30)=>{
         if (!profileId) {
             console.log("Cannot fetch history: No profile ID provided");
@@ -534,7 +534,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
         showHistory,
         profileId
     ]);
-    // Add function to save test result to history
+    // function to save test result to history
     const saveTestResult = async (testResults, status, wasSimulated)=>{
         if (!profileId) {
             console.log("Cannot save history: No profile ID provided");
@@ -627,10 +627,10 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
         const numValue = parseFloat(value);
         return isNaN(numValue) ? null : numValue;
     };
-    // Format chart data for test history - ensure we only use real data
+    // Format chart data for test history - ensure only use real data
     const prepareChartData = ()=>{
         return testHistory.filter((item)=>{
-            // Ensure we only use real (non-simulated) data for charts
+            // Ensure only use real (non-simulated) data for charts
             if (item.is_simulated || item.results?.simulated) {
                 return false;
             }
@@ -790,7 +790,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
             setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
         }
     };
-    // Add these functions for multi-select mode
+    // functions for multi-select mode
     const toggleMultiSelectMode = ()=>{
         setIsMultiSelectMode(!isMultiSelectMode);
         if (isMultiSelectMode) {
@@ -982,12 +982,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                    lineNumber: 922,
+                    lineNumber: 920,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                lineNumber: 921,
+                lineNumber: 919,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1014,7 +1014,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                         children: "Current Test"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 932,
+                        lineNumber: 930,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1032,13 +1032,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                         children: "Test History"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 947,
+                        lineNumber: 945,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                lineNumber: 926,
+                lineNumber: 924,
                 columnNumber: 7
             }, this),
             !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1073,24 +1073,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 983,
+                                                lineNumber: 981,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 982,
+                                            lineNumber: 980,
                                             columnNumber: 15
                                         }, this),
                                         "Propulsion Test Status"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 981,
+                                    lineNumber: 979,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                lineNumber: 974,
+                                lineNumber: 972,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1110,7 +1110,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         children: currentStep || 'Waiting to start test...'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 992,
+                                                        lineNumber: 990,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1124,13 +1124,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 995,
+                                                        lineNumber: 993,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 991,
+                                                lineNumber: 989,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1146,18 +1146,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1003,
+                                                    lineNumber: 1001,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 999,
+                                                lineNumber: 997,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 990,
+                                        lineNumber: 988,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,7 +1174,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Selected Test Options:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1015,
+                                                lineNumber: 1013,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1208,19 +1208,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1035,
+                                                                        lineNumber: 1033,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1034,
+                                                                    lineNumber: 1032,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 option
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1024,
+                                                            lineNumber: 1022,
                                                             columnNumber: 19
                                                         }, this)),
                                                     options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1232,19 +1232,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         children: "No specific options selected. Running with defaults."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1041,
+                                                        lineNumber: 1039,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1022,
+                                                lineNumber: 1020,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1014,
+                                        lineNumber: 1012,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1266,19 +1266,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1062,
+                                                            lineNumber: 1060,
                                                             columnNumber: 17
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1061,
+                                                        lineNumber: 1059,
                                                         columnNumber: 17
                                                     }, this),
                                                     "Connection Mode"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1060,
+                                                lineNumber: 1058,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1290,13 +1290,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1066,
+                                                lineNumber: 1064,
                                                 columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1053,
+                                        lineNumber: 1051,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1318,19 +1318,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             d: "M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1087,
+                                                            lineNumber: 1085,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1086,
+                                                        lineNumber: 1084,
                                                         columnNumber: 17
                                                     }, this),
                                                     "PMA Testing"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1085,
+                                                lineNumber: 1083,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1338,13 +1338,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: enablePMA ? 'ENABLED' : 'DISABLED'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1091,
+                                                lineNumber: 1089,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1078,
+                                        lineNumber: 1076,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1366,19 +1366,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             d: "M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1107,
+                                                            lineNumber: 1105,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1106,
+                                                        lineNumber: 1104,
                                                         columnNumber: 17
                                                     }, this),
                                                     "PPU Testing"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1105,
+                                                lineNumber: 1103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1386,13 +1386,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: enablePPU ? 'ENABLED' : 'DISABLED'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1111,
+                                                lineNumber: 1109,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1098,
+                                        lineNumber: 1096,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1421,12 +1421,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1133,
+                                                        lineNumber: 1131,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1132,
+                                                    lineNumber: 1130,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Running Test..."
@@ -1444,12 +1444,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1140,
+                                                        lineNumber: 1138,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1139,
+                                                    lineNumber: 1137,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Re-run Test"
@@ -1467,12 +1467,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1147,
+                                                        lineNumber: 1145,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1146,
+                                                    lineNumber: 1144,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Run Test"
@@ -1480,19 +1480,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1119,
+                                        lineNumber: 1117,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                lineNumber: 989,
+                                lineNumber: 987,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 967,
+                        lineNumber: 965,
                         columnNumber: 9
                     }, this),
                     results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1530,32 +1530,32 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1178,
+                                                            lineNumber: 1176,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1177,
+                                                        lineNumber: 1175,
                                                         columnNumber: 11
                                                     }, this),
                                                     "Propulsion Test Results - Raw Parameter Values"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1176,
+                                                lineNumber: 1174,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: detectedSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1184,
+                                                lineNumber: 1182,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1166,
+                                        lineNumber: 1164,
                                         columnNumber: 7
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1571,7 +1571,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Voltage and Current Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1190,
+                                                lineNumber: 1188,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1600,7 +1600,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1216,
+                                                                    lineNumber: 1214,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1612,18 +1612,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1217,
+                                                                    lineNumber: 1215,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1215,
+                                                            lineNumber: 1213,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1208,
+                                                        lineNumber: 1206,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1641,7 +1641,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1227,
+                                                                        lineNumber: 1225,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1652,24 +1652,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1228,
+                                                                        lineNumber: 1226,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1222,
+                                                                lineNumber: 1220,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1220,
+                                                        lineNumber: 1218,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1199,
+                                                lineNumber: 1197,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1682,7 +1682,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "PMA/PPU Timing Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1235,
+                                                lineNumber: 1233,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1711,7 +1711,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1261,
+                                                                    lineNumber: 1259,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1723,18 +1723,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1262,
+                                                                    lineNumber: 1260,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1260,
+                                                            lineNumber: 1258,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1253,
+                                                        lineNumber: 1251,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1752,7 +1752,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1272,
+                                                                        lineNumber: 1270,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1763,24 +1763,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1273,
+                                                                        lineNumber: 1271,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1267,
+                                                                lineNumber: 1265,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1265,
+                                                        lineNumber: 1263,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1244,
+                                                lineNumber: 1242,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1793,7 +1793,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Propulsion Telecommand Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1280,
+                                                lineNumber: 1278,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1822,7 +1822,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1306,
+                                                                    lineNumber: 1304,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1834,18 +1834,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1307,
+                                                                    lineNumber: 1305,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1305,
+                                                            lineNumber: 1303,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1298,
+                                                        lineNumber: 1296,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1863,7 +1863,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1317,
+                                                                        lineNumber: 1315,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1874,24 +1874,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1318,
+                                                                        lineNumber: 1316,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1312,
+                                                                lineNumber: 1310,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1310,
+                                                        lineNumber: 1308,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1289,
+                                                lineNumber: 1287,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1904,7 +1904,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Propulsion 1 Telemetry Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1325,
+                                                lineNumber: 1323,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1933,7 +1933,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1351,
+                                                                    lineNumber: 1349,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1945,18 +1945,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1352,
+                                                                    lineNumber: 1350,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1350,
+                                                            lineNumber: 1348,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1343,
+                                                        lineNumber: 1341,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1974,7 +1974,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1362,
+                                                                        lineNumber: 1360,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1985,24 +1985,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1363,
+                                                                        lineNumber: 1361,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1357,
+                                                                lineNumber: 1355,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1355,
+                                                        lineNumber: 1353,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1334,
+                                                lineNumber: 1332,
                                                 columnNumber: 9
                                             }, this),
                                             results.prop2Tm && Object.keys(results.prop2Tm).length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2017,7 +2017,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         children: "Propulsion 2 Telemetry Parameters"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1373,
+                                                        lineNumber: 1371,
                                                         columnNumber: 13
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2046,7 +2046,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                             children: "Parameter"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                            lineNumber: 1399,
+                                                                            lineNumber: 1397,
                                                                             columnNumber: 19
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2058,18 +2058,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                             children: "Value"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                            lineNumber: 1400,
+                                                                            lineNumber: 1398,
                                                                             columnNumber: 19
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1398,
+                                                                    lineNumber: 1396,
                                                                     columnNumber: 17
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1391,
+                                                                lineNumber: 1389,
                                                                 columnNumber: 15
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2087,7 +2087,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                                 children: param
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                lineNumber: 1410,
+                                                                                lineNumber: 1408,
                                                                                 columnNumber: 21
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2098,24 +2098,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                                 children: results.rawParameters?.[param] || 'N/A'
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                lineNumber: 1411,
+                                                                                lineNumber: 1409,
                                                                                 columnNumber: 21
                                                                             }, this)
                                                                         ]
                                                                     }, param, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1405,
+                                                                        lineNumber: 1403,
                                                                         columnNumber: 19
                                                                     }, this))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1403,
+                                                                lineNumber: 1401,
                                                                 columnNumber: 15
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1382,
+                                                        lineNumber: 1380,
                                                         columnNumber: 13
                                                     }, this)
                                                 ]
@@ -2130,7 +2130,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Propulsion Statistics Parameters"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1420,
+                                                lineNumber: 1418,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -2159,7 +2159,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Parameter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1446,
+                                                                    lineNumber: 1444,
                                                                     columnNumber: 15
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2171,18 +2171,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1447,
+                                                                    lineNumber: 1445,
                                                                     columnNumber: 15
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1445,
+                                                            lineNumber: 1443,
                                                             columnNumber: 13
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1438,
+                                                        lineNumber: 1436,
                                                         columnNumber: 11
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2200,7 +2200,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: param
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1457,
+                                                                        lineNumber: 1455,
                                                                         columnNumber: 17
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2211,36 +2211,36 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         children: results.rawParameters?.[param] || 'N/A'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1458,
+                                                                        lineNumber: 1456,
                                                                         columnNumber: 17
                                                                     }, this)
                                                                 ]
                                                             }, param, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1452,
+                                                                lineNumber: 1450,
                                                                 columnNumber: 15
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1450,
+                                                        lineNumber: 1448,
                                                         columnNumber: 11
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1429,
+                                                lineNumber: 1427,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1187,
+                                        lineNumber: 1185,
                                         columnNumber: 7
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                lineNumber: 1159,
+                                lineNumber: 1157,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2268,30 +2268,30 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1477,
+                                                lineNumber: 1475,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1476,
+                                            lineNumber: 1474,
                                             columnNumber: 17
                                         }, this),
                                         "Generate Propulsion Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1468,
+                                    lineNumber: 1466,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                lineNumber: 1467,
+                                lineNumber: 1465,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 1157,
+                        lineNumber: 1155,
                         columnNumber: 3
                     }, this)
                 ]
@@ -2326,24 +2326,24 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1506,
+                                        lineNumber: 1504,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1505,
+                                    lineNumber: 1503,
                                     columnNumber: 13
                                 }, this),
                                 "Propulsion Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                            lineNumber: 1504,
+                            lineNumber: 1502,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 1494,
+                        lineNumber: 1492,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2373,25 +2373,25 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1520,
+                                        lineNumber: 1518,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1519,
+                                    lineNumber: 1517,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1522,
+                                    lineNumber: 1520,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                            lineNumber: 1514,
+                            lineNumber: 1512,
                             columnNumber: 13
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -2405,7 +2405,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1531,
+                                    lineNumber: 1529,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2416,7 +2416,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1532,
+                                    lineNumber: 1530,
                                     columnNumber: 13
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2433,20 +2433,20 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1545,
+                                            lineNumber: 1543,
                                             columnNumber: 17
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1537,
+                                    lineNumber: 1535,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                            lineNumber: 1525,
+                            lineNumber: 1523,
                             columnNumber: 11
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -2465,7 +2465,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1553,
+                                            lineNumber: 1551,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2485,18 +2485,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1575,
+                                                    lineNumber: 1573,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1561,
+                                            lineNumber: 1559,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1552,
+                                    lineNumber: 1550,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2521,7 +2521,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1590,
+                                            lineNumber: 1588,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -2531,13 +2531,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1599,
+                                            lineNumber: 1597,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1583,
+                                    lineNumber: 1581,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2560,12 +2560,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1616,
+                                                lineNumber: 1614,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1615,
+                                            lineNumber: 1613,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2603,7 +2603,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1650,
+                                                                    lineNumber: 1648,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2612,20 +2612,20 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1651,
+                                                                    lineNumber: 1649,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1649,
+                                                            lineNumber: 1647,
                                                             columnNumber: 19
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1628,
+                                                    lineNumber: 1626,
                                                     columnNumber: 17
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2645,7 +2645,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1659,
+                                                            lineNumber: 1657,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2663,7 +2663,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1675,
+                                                            lineNumber: 1673,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2695,12 +2695,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1711,
+                                                                        lineNumber: 1709,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1710,
+                                                                    lineNumber: 1708,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -2709,7 +2709,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1691,
+                                                            lineNumber: 1689,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
@@ -2717,13 +2717,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1626,
+                                            lineNumber: 1624,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1608,
+                                    lineNumber: 1606,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2759,19 +2759,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1724,
+                                                        lineNumber: 1722,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1723,
+                                                    lineNumber: 1721,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1722,
+                                            lineNumber: 1720,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2785,14 +2785,14 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1729,
+                                                    lineNumber: 1727,
                                                     columnNumber: 39
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1728,
+                                            lineNumber: 1726,
                                             columnNumber: 15
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2822,7 +2822,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1735,
+                                                            lineNumber: 1733,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2832,7 +2832,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1736,
+                                                            lineNumber: 1734,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -2842,26 +2842,26 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1737,
+                                                            lineNumber: 1735,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1734,
+                                                    lineNumber: 1732,
                                                     columnNumber: 19
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1733,
+                                            lineNumber: 1731,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1721,
+                                    lineNumber: 1719,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2909,12 +2909,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1769,
+                                                                lineNumber: 1767,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1763,
+                                                            lineNumber: 1761,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2926,7 +2926,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Date/Time"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1783,
+                                                            lineNumber: 1781,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2938,7 +2938,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Test Options"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1790,
+                                                            lineNumber: 1788,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2950,7 +2950,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Status"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1797,
+                                                            lineNumber: 1795,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2962,7 +2962,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Type"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1805,
+                                                            lineNumber: 1803,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2974,18 +2974,18 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Actions"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1812,
+                                                            lineNumber: 1810,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1760,
+                                                    lineNumber: 1758,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1755,
+                                                lineNumber: 1753,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -3012,12 +3012,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1838,
+                                                                    lineNumber: 1836,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1833,
+                                                                lineNumber: 1831,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3029,7 +3029,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                 children: new Date(item.test_date).toLocaleString()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1846,
+                                                                lineNumber: 1844,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3041,7 +3041,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                 children: item.results.testedOptions ? item.results.testedOptions.join(', ') : 'N/A'
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1853,
+                                                                lineNumber: 1851,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3062,12 +3062,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: item.status === 'completed' ? 'SUCCESS' : 'FAILED'
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1864,
+                                                                    lineNumber: 1862,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1860,
+                                                                lineNumber: 1858,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3088,12 +3088,12 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                     children: "REAL DATA"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                    lineNumber: 1884,
+                                                                    lineNumber: 1882,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1880,
+                                                                lineNumber: 1878,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3131,7 +3131,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                                         d: "M10 12a2 2 0 100-4 2 2 0 000 4z"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                        lineNumber: 1919,
+                                                                                        lineNumber: 1917,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -3140,20 +3140,20 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                                         clipRule: "evenodd"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                        lineNumber: 1920,
+                                                                                        lineNumber: 1918,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                lineNumber: 1918,
+                                                                                lineNumber: 1916,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             "View"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1902,
+                                                                        lineNumber: 1900,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     !isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3184,47 +3184,47 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                                                     clipRule: "evenodd"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                    lineNumber: 1944,
+                                                                                    lineNumber: 1942,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                                lineNumber: 1943,
+                                                                                lineNumber: 1941,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             "Delete"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                        lineNumber: 1927,
+                                                                        lineNumber: 1925,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                                lineNumber: 1896,
+                                                                lineNumber: 1894,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, item.id, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 1823,
+                                                        lineNumber: 1821,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                lineNumber: 1821,
+                                                lineNumber: 1819,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                        lineNumber: 1750,
+                                        lineNumber: 1748,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1745,
+                                    lineNumber: 1743,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3242,7 +3242,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1958,
+                                            lineNumber: 1956,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3269,7 +3269,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Average ECU-1 Voltage"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1979,
+                                                            lineNumber: 1977,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3286,13 +3286,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 1986,
+                                                            lineNumber: 1984,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 1973,
+                                                    lineNumber: 1971,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3312,7 +3312,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Average PPU-1 Voltage"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2011,
+                                                            lineNumber: 2009,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3329,13 +3329,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2018,
+                                                            lineNumber: 2016,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2005,
+                                                    lineNumber: 2003,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3355,7 +3355,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Avg. Thruster Temp"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2043,
+                                                            lineNumber: 2041,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3380,13 +3380,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2050,
+                                                            lineNumber: 2048,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2037,
+                                                    lineNumber: 2035,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3406,7 +3406,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2084,
+                                                            lineNumber: 2082,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3423,25 +3423,25 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                            lineNumber: 2091,
+                                                            lineNumber: 2089,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2078,
+                                                    lineNumber: 2076,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 1967,
+                                            lineNumber: 1965,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 1957,
+                                    lineNumber: 1955,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3483,19 +3483,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 2129,
+                                                        lineNumber: 2127,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2128,
+                                                    lineNumber: 2126,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2112,
+                                            lineNumber: 2110,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3528,19 +3528,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 2152,
+                                                        lineNumber: 2150,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2151,
+                                                    lineNumber: 2149,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2135,
+                                            lineNumber: 2133,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3573,19 +3573,19 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 2175,
+                                                        lineNumber: 2173,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2174,
+                                                    lineNumber: 2172,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2158,
+                                            lineNumber: 2156,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3634,25 +3634,25 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                        lineNumber: 2209,
+                                                        lineNumber: 2207,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                                    lineNumber: 2208,
+                                                    lineNumber: 2206,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2180,
+                                            lineNumber: 2178,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 2110,
+                                    lineNumber: 2108,
                                     columnNumber: 13
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3673,7 +3673,7 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2226,
+                                            lineNumber: 2224,
                                             columnNumber: 21
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3683,26 +3683,26 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                            lineNumber: 2237,
+                                            lineNumber: 2235,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                                    lineNumber: 2217,
+                                    lineNumber: 2215,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                        lineNumber: 1512,
+                        lineNumber: 1510,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                lineNumber: 1487,
+                lineNumber: 1485,
                 columnNumber: 7
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -3711,13 +3711,13 @@ const PropulsionTestPanel = ({ options, sock, onTestComplete, onTestError, onTes
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-                lineNumber: 2255,
+                lineNumber: 2253,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/PropulsionTestPanel.tsx",
-        lineNumber: 919,
+        lineNumber: 917,
         columnNumber: 5
     }, this);
 };

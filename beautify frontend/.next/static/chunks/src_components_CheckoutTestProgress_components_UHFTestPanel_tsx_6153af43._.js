@@ -62,7 +62,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
     const [isDarkMode, setIsDarkMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isForceSimulation, setIsForceSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [detectedSimulation, setDetectedSimulation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Add new states for test history
+    // states for test history
     const [showHistory, setShowHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [testHistory, setTestHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [historyLoading, setHistoryLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -79,11 +79,11 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
         let shouldEnableReceiver = false;
         // Check for specific options and map them to capabilities
         if (options.includes('Telemetry')) {
-            // Telemetry typically involves receiving data, so enable receiver
+            // Telemetry (receiving data) - enable receiver
             shouldEnableReceiver = true;
         }
         if (options.includes('Ground Pass')) {
-            // Ground Pass typically involves both transmitting commands and receiving telemetry
+            // Ground Pass (involves both transmitting commands and receiving telemetry)
             shouldEnableTransmitter = true;
             shouldEnableReceiver = true;
         }
@@ -157,7 +157,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
             })["UHFTestPanel.useEffect"];
         }
     }["UHFTestPanel.useEffect"], []);
-    // Check if we have a real socket or need simulation
+    // Check if have a real socket or need simulation
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "UHFTestPanel.useEffect": ()=>{
             // Check the socket type and update UI accordingly
@@ -168,7 +168,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
             if (socketInfoStr) {
                 try {
                     const socketInfo = JSON.parse(socketInfoStr);
-                    // If we have valid socket info and it's marked as real (not simulation)
+                    // If have valid socket info and it's marked as real (not simulation)
                     if (socketInfo && socketInfo.isReal === true) {
                         console.log("📱 Using real socket configuration from localStorage");
                         useSimulation = false;
@@ -212,7 +212,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
         hasRunTest,
         isRunning
     ]);
-    // Add function to fetch test history
+    // function to fetch test history
     const fetchTestHistory = async (limit = 30)=>{
         if (!profileId) {
             console.log("Cannot fetch history: No profile ID provided");
@@ -281,7 +281,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
         showHistory,
         profileId
     ]);
-    // Add function to save test result to history
+    // function to save test result to history
     const saveTestResult = async (testResults, status, wasSimulated)=>{
         if (!profileId) {
             console.log("Cannot save history: No profile ID provided");
@@ -649,7 +649,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
             setCleanupMessage(`❌ Error: ${error instanceof Error ? error.message : String(error)}`);
         }
     };
-    // Add these functions for multi-select mode
+    // functions for multi-select mode
     /**
    * Toggle multi-select mode
    */ const toggleMultiSelectMode = ()=>{
@@ -740,7 +740,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
             setHistoryLoading(false);
         }
     };
-    // Optionally add automatic cleanup on component mount
+    // automatic cleanup on component mount
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "UHFTestPanel.useEffect": ()=>{
             if (profileId) {
@@ -767,7 +767,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                    lineNumber: 844,
+                    lineNumber: 843,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -778,13 +778,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                     children: value
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                    lineNumber: 845,
+                    lineNumber: 844,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-            lineNumber: 843,
+            lineNumber: 842,
             columnNumber: 5
         }, this);
     };
@@ -797,12 +797,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                    lineNumber: 854,
+                    lineNumber: 853,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 853,
+                lineNumber: 852,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -829,7 +829,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                         children: "Current Test"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 864,
+                        lineNumber: 863,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -847,13 +847,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                         children: "Test History"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 879,
+                        lineNumber: 878,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 858,
+                lineNumber: 857,
                 columnNumber: 5
             }, this),
             !showHistory ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -889,32 +889,32 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     clipRule: "evenodd"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 915,
+                                                    lineNumber: 914,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                     d: "M7.879 6.464a1 1 0 01-1.414 1.414 3 3 0 000 4.243 1 1 0 11-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a1 1 0 011.414 0 5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.244 1 1 0 010-1.414z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 916,
+                                                    lineNumber: 915,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 914,
+                                            lineNumber: 913,
                                             columnNumber: 15
                                         }, this),
                                         "UHF Test Status"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 913,
+                                    lineNumber: 912,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 906,
+                                lineNumber: 905,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -934,7 +934,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: currentStep || 'Waiting to start test...'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 925,
+                                                        lineNumber: 924,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -948,13 +948,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 928,
+                                                        lineNumber: 927,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 924,
+                                                lineNumber: 923,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -970,18 +970,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 936,
+                                                    lineNumber: 935,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 932,
+                                                lineNumber: 931,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 923,
+                                        lineNumber: 922,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -998,7 +998,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: "Selected Test Options:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 948,
+                                                lineNumber: 947,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1032,19 +1032,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 968,
+                                                                        lineNumber: 967,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 967,
+                                                                    lineNumber: 966,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 option
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 957,
+                                                            lineNumber: 956,
                                                             columnNumber: 19
                                                         }, this)),
                                                     options.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1056,19 +1056,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         children: "No specific options selected. Running with defaults."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 974,
+                                                        lineNumber: 973,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 955,
+                                                lineNumber: 954,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 947,
+                                        lineNumber: 946,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1090,19 +1090,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             d: "M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 995,
+                                                            lineNumber: 994,
                                                             columnNumber: 17
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 994,
+                                                        lineNumber: 993,
                                                         columnNumber: 17
                                                     }, this),
                                                     "Connection Mode"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 993,
+                                                lineNumber: 992,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1114,13 +1114,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: detectedSimulation ? 'SIMULATION' : 'REAL SOCKET'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 999,
+                                                lineNumber: 998,
                                                 columnNumber: 3
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 986,
+                                        lineNumber: 985,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1145,19 +1145,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1021,
+                                                            lineNumber: 1020,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1020,
+                                                        lineNumber: 1019,
                                                         columnNumber: 17
                                                     }, this),
                                                     "UHF Testing"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1019,
+                                                lineNumber: 1018,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1174,7 +1174,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1026,
+                                                        lineNumber: 1025,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1185,19 +1185,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1031,
+                                                        lineNumber: 1030,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1025,
+                                                lineNumber: 1024,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1011,
+                                        lineNumber: 1010,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1226,12 +1226,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1054,
+                                                        lineNumber: 1053,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1053,
+                                                    lineNumber: 1052,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Running Test..."
@@ -1249,12 +1249,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1061,
+                                                        lineNumber: 1060,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1060,
+                                                    lineNumber: 1059,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Re-run Test"
@@ -1272,12 +1272,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1068,
+                                                        lineNumber: 1067,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1067,
+                                                    lineNumber: 1066,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Run Test"
@@ -1285,19 +1285,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1040,
+                                        lineNumber: 1039,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 922,
+                                lineNumber: 921,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 899,
+                        lineNumber: 898,
                         columnNumber: 9
                     }, this),
                     results && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1330,7 +1330,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 d: "M13 7H7v6h6V7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1099,
+                                                                lineNumber: 1098,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1339,33 +1339,33 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 clipRule: "evenodd"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1100,
+                                                                lineNumber: 1099,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1098,
+                                                        lineNumber: 1097,
                                                         columnNumber: 19
                                                     }, this),
                                                     "UHF Telemetry"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1097,
+                                                lineNumber: 1096,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1106,
+                                                lineNumber: 1105,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1088,
+                                        lineNumber: 1087,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1396,7 +1396,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1127,
+                                                                lineNumber: 1126,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1408,18 +1408,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1128,
+                                                                lineNumber: 1127,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1126,
+                                                        lineNumber: 1125,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1119,
+                                                    lineNumber: 1118,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1446,24 +1446,24 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1131,
+                                                    lineNumber: 1130,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1110,
+                                            lineNumber: 1109,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1109,
+                                        lineNumber: 1108,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1081,
+                                lineNumber: 1080,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1494,32 +1494,32 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1175,
+                                                            lineNumber: 1174,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1174,
+                                                        lineNumber: 1173,
                                                         columnNumber: 19
                                                     }, this),
                                                     "UHF System Configuration"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1173,
+                                                lineNumber: 1172,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1181,
+                                                lineNumber: 1180,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1164,
+                                        lineNumber: 1163,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1550,7 +1550,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1202,
+                                                                lineNumber: 1201,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1562,18 +1562,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1203,
+                                                                lineNumber: 1202,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1201,
+                                                        lineNumber: 1200,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1194,
+                                                    lineNumber: 1193,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1601,24 +1601,24 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1206,
+                                                    lineNumber: 1205,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1185,
+                                            lineNumber: 1184,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1184,
+                                        lineNumber: 1183,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1157,
+                                lineNumber: 1156,
                                 columnNumber: 13
                             }, this),
                             enableReceiver && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1649,32 +1649,32 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1252,
+                                                            lineNumber: 1251,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1251,
+                                                        lineNumber: 1250,
                                                         columnNumber: 21
                                                     }, this),
                                                     "UHF Receiver Configuration"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1250,
+                                                lineNumber: 1249,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1258,
+                                                lineNumber: 1257,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1241,
+                                        lineNumber: 1240,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1705,7 +1705,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1279,
+                                                                lineNumber: 1278,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1717,18 +1717,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1280,
+                                                                lineNumber: 1279,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1278,
+                                                        lineNumber: 1277,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1271,
+                                                    lineNumber: 1270,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1744,7 +1744,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_freq"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1285,
+                                                                    lineNumber: 1284,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1758,13 +1758,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1285,
+                                                                    lineNumber: 1284,
                                                                     columnNumber: 128
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1285,
+                                                            lineNumber: 1284,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1781,7 +1781,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_baud"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1286,
+                                                                    lineNumber: 1285,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1795,13 +1795,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1286,
+                                                                    lineNumber: 1285,
                                                                     columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1286,
+                                                            lineNumber: 1285,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1814,7 +1814,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_modindex"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1287,
+                                                                    lineNumber: 1286,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1825,13 +1825,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.modindex
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1287,
+                                                                    lineNumber: 1286,
                                                                     columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1287,
+                                                            lineNumber: 1286,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1848,7 +1848,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_guard"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1288,
+                                                                    lineNumber: 1287,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1862,13 +1862,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1288,
+                                                                    lineNumber: 1287,
                                                                     columnNumber: 224
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1288,
+                                                            lineNumber: 1287,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1881,7 +1881,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_pllrang"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1289,
+                                                                    lineNumber: 1288,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1892,13 +1892,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.pllrang
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1289,
+                                                                    lineNumber: 1288,
                                                                     columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1289,
+                                                            lineNumber: 1288,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1915,7 +1915,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_mode"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1290,
+                                                                    lineNumber: 1289,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1926,13 +1926,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.mode
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1290,
+                                                                    lineNumber: 1289,
                                                                     columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1290,
+                                                            lineNumber: 1289,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1945,7 +1945,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_hmac"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1291,
+                                                                    lineNumber: 1290,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1956,13 +1956,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.cspHmac
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1291,
+                                                                    lineNumber: 1290,
                                                                     columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1291,
+                                                            lineNumber: 1290,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1979,7 +1979,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_rs"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1292,
+                                                                    lineNumber: 1291,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1990,13 +1990,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.cspRs
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1292,
+                                                                    lineNumber: 1291,
                                                                     columnNumber: 225
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1292,
+                                                            lineNumber: 1291,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2009,7 +2009,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_crc"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1293,
+                                                                    lineNumber: 1292,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2020,13 +2020,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.cspCrc
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1293,
+                                                                    lineNumber: 1292,
                                                                     columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1293,
+                                                            lineNumber: 1292,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2043,7 +2043,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_rand"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1294,
+                                                                    lineNumber: 1293,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2054,13 +2054,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.cspRand
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1294,
+                                                                    lineNumber: 1293,
                                                                     columnNumber: 227
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1294,
+                                                            lineNumber: 1293,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2073,7 +2073,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_hmac_key_0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1295,
+                                                                    lineNumber: 1294,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2084,13 +2084,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.hmacKeys[0]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1295,
+                                                                    lineNumber: 1294,
                                                                     columnNumber: 138
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1295,
+                                                            lineNumber: 1294,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2107,7 +2107,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_hmac_key_1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1296,
+                                                                    lineNumber: 1295,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2118,13 +2118,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.hmacKeys[1]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1296,
+                                                                    lineNumber: 1295,
                                                                     columnNumber: 233
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1296,
+                                                            lineNumber: 1295,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2137,7 +2137,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_hmac_key_2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1297,
+                                                                    lineNumber: 1296,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2148,13 +2148,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.hmacKeys[2]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1297,
+                                                                    lineNumber: 1296,
                                                                     columnNumber: 138
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1297,
+                                                            lineNumber: 1296,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2171,7 +2171,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_csp_hmac_key_3"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1298,
+                                                                    lineNumber: 1297,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2182,13 +2182,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.hmacKeys[3]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1298,
+                                                                    lineNumber: 1297,
                                                                     columnNumber: 233
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1298,
+                                                            lineNumber: 1297,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2201,7 +2201,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_ax25_call_0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1299,
+                                                                    lineNumber: 1298,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2212,13 +2212,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.ax25Call[0]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1299,
+                                                                    lineNumber: 1298,
                                                                     columnNumber: 135
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1299,
+                                                            lineNumber: 1298,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2235,7 +2235,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_ax25_call_1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1300,
+                                                                    lineNumber: 1299,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2246,13 +2246,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.ax25Call[1]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1300,
+                                                                    lineNumber: 1299,
                                                                     columnNumber: 230
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1300,
+                                                            lineNumber: 1299,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2265,7 +2265,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_ax25_call_2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1301,
+                                                                    lineNumber: 1300,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2276,13 +2276,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.receiver.ax25Call[2]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1301,
+                                                                    lineNumber: 1300,
                                                                     columnNumber: 135
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1301,
+                                                            lineNumber: 1300,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2299,7 +2299,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_bw"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1302,
+                                                                    lineNumber: 1301,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2313,13 +2313,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1302,
+                                                                    lineNumber: 1301,
                                                                     columnNumber: 221
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1302,
+                                                            lineNumber: 1301,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2332,7 +2332,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_rx_afcrange"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1303,
+                                                                    lineNumber: 1302,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2346,36 +2346,36 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1303,
+                                                                    lineNumber: 1302,
                                                                     columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1303,
+                                                            lineNumber: 1302,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1283,
+                                                    lineNumber: 1282,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1262,
+                                            lineNumber: 1261,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1261,
+                                        lineNumber: 1260,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1234,
+                                lineNumber: 1233,
                                 columnNumber: 15
                             }, this),
                             enableTransmitter && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2406,32 +2406,32 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             clipRule: "evenodd"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1330,
+                                                            lineNumber: 1329,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1329,
+                                                        lineNumber: 1328,
                                                         columnNumber: 21
                                                     }, this),
                                                     "UHF Transmitter Configuration"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1328,
+                                                lineNumber: 1327,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SimulationBadge, {
                                                 isSimulation: isForceSimulation
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1336,
+                                                lineNumber: 1335,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1319,
+                                        lineNumber: 1318,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2462,7 +2462,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Parameter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1357,
+                                                                lineNumber: 1356,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2474,18 +2474,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                 children: "Value"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                lineNumber: 1358,
+                                                                lineNumber: 1357,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1356,
+                                                        lineNumber: 1355,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1349,
+                                                    lineNumber: 1348,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -2501,7 +2501,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_freq"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1363,
+                                                                    lineNumber: 1362,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2515,13 +2515,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1363,
+                                                                    lineNumber: 1362,
                                                                     columnNumber: 128
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1363,
+                                                            lineNumber: 1362,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2538,7 +2538,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_baud"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1364,
+                                                                    lineNumber: 1363,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2552,13 +2552,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1364,
+                                                                    lineNumber: 1363,
                                                                     columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1364,
+                                                            lineNumber: 1363,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2571,7 +2571,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_modindex"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1365,
+                                                                    lineNumber: 1364,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2582,13 +2582,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.modindex
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1365,
+                                                                    lineNumber: 1364,
                                                                     columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1365,
+                                                            lineNumber: 1364,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2605,7 +2605,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_guard"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1366,
+                                                                    lineNumber: 1365,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2619,13 +2619,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1366,
+                                                                    lineNumber: 1365,
                                                                     columnNumber: 224
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1366,
+                                                            lineNumber: 1365,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2638,7 +2638,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_pllrang"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1367,
+                                                                    lineNumber: 1366,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2649,13 +2649,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.pllrang
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1367,
+                                                                    lineNumber: 1366,
                                                                     columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1367,
+                                                            lineNumber: 1366,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2672,7 +2672,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_mode"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1368,
+                                                                    lineNumber: 1367,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2683,13 +2683,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.mode
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1368,
+                                                                    lineNumber: 1367,
                                                                     columnNumber: 223
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1368,
+                                                            lineNumber: 1367,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2702,7 +2702,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_hmac"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1369,
+                                                                    lineNumber: 1368,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2713,13 +2713,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.cspHmac
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1369,
+                                                                    lineNumber: 1368,
                                                                     columnNumber: 132
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1369,
+                                                            lineNumber: 1368,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2736,7 +2736,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_rs"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1370,
+                                                                    lineNumber: 1369,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2747,13 +2747,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.cspRs
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1370,
+                                                                    lineNumber: 1369,
                                                                     columnNumber: 225
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1370,
+                                                            lineNumber: 1369,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2766,7 +2766,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_crc"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1371,
+                                                                    lineNumber: 1370,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2777,13 +2777,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.cspCrc
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1371,
+                                                                    lineNumber: 1370,
                                                                     columnNumber: 131
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1371,
+                                                            lineNumber: 1370,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2800,7 +2800,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_rand"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1372,
+                                                                    lineNumber: 1371,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2811,13 +2811,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.cspRand
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1372,
+                                                                    lineNumber: 1371,
                                                                     columnNumber: 227
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1372,
+                                                            lineNumber: 1371,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2830,7 +2830,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_hmac_key_0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1373,
+                                                                    lineNumber: 1372,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2841,13 +2841,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.hmacKeys[0]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1373,
+                                                                    lineNumber: 1372,
                                                                     columnNumber: 138
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1373,
+                                                            lineNumber: 1372,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2864,7 +2864,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_hmac_key_1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1374,
+                                                                    lineNumber: 1373,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2875,13 +2875,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.hmacKeys[1]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1374,
+                                                                    lineNumber: 1373,
                                                                     columnNumber: 233
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1374,
+                                                            lineNumber: 1373,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2894,7 +2894,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_hmac_key_2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1375,
+                                                                    lineNumber: 1374,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2905,13 +2905,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.hmacKeys[2]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1375,
+                                                                    lineNumber: 1374,
                                                                     columnNumber: 138
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1375,
+                                                            lineNumber: 1374,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2928,7 +2928,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_csp_hmac_key_3"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1376,
+                                                                    lineNumber: 1375,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2939,13 +2939,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.hmacKeys[3]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1376,
+                                                                    lineNumber: 1375,
                                                                     columnNumber: 233
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1376,
+                                                            lineNumber: 1375,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2958,7 +2958,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_ax25_call_0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1377,
+                                                                    lineNumber: 1376,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2969,13 +2969,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.ax25Call[0]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1377,
+                                                                    lineNumber: 1376,
                                                                     columnNumber: 135
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1377,
+                                                            lineNumber: 1376,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -2992,7 +2992,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_ax25_call_1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1378,
+                                                                    lineNumber: 1377,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3003,13 +3003,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.ax25Call[1]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1378,
+                                                                    lineNumber: 1377,
                                                                     columnNumber: 230
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1378,
+                                                            lineNumber: 1377,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3022,7 +3022,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_ax25_call_2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1379,
+                                                                    lineNumber: 1378,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3033,13 +3033,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.ax25Call[2]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1379,
+                                                                    lineNumber: 1378,
                                                                     columnNumber: 135
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1379,
+                                                            lineNumber: 1378,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3056,7 +3056,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_preamb"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1380,
+                                                                    lineNumber: 1379,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3067,13 +3067,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.preamb
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1380,
+                                                                    lineNumber: 1379,
                                                                     columnNumber: 225
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1380,
+                                                            lineNumber: 1379,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3086,7 +3086,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_preamblen"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1381,
+                                                                    lineNumber: 1380,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3100,13 +3100,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1381,
+                                                                    lineNumber: 1380,
                                                                     columnNumber: 133
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1381,
+                                                            lineNumber: 1380,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3123,7 +3123,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_preambflags"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1382,
+                                                                    lineNumber: 1381,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3134,13 +3134,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.preambflags
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1382,
+                                                                    lineNumber: 1381,
                                                                     columnNumber: 230
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1382,
+                                                            lineNumber: 1381,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3153,7 +3153,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_intfrm"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1383,
+                                                                    lineNumber: 1382,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3164,13 +3164,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.intfrm
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1383,
+                                                                    lineNumber: 1382,
                                                                     columnNumber: 130
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1383,
+                                                            lineNumber: 1382,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3187,7 +3187,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_intfrmlen"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1384,
+                                                                    lineNumber: 1383,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3201,13 +3201,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1384,
+                                                                    lineNumber: 1383,
                                                                     columnNumber: 228
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1384,
+                                                            lineNumber: 1383,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3220,7 +3220,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_intfrmflags"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1385,
+                                                                    lineNumber: 1384,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3231,13 +3231,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.intfrmflags
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1385,
+                                                                    lineNumber: 1384,
                                                                     columnNumber: 135
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1385,
+                                                            lineNumber: 1384,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3254,7 +3254,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_rssibusy"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1386,
+                                                                    lineNumber: 1385,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3265,13 +3265,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.rssibusy
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1386,
+                                                                    lineNumber: 1385,
                                                                     columnNumber: 227
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1386,
+                                                            lineNumber: 1385,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3284,7 +3284,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_kup_delay"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1387,
+                                                                    lineNumber: 1386,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3295,13 +3295,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.kupDelay
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1387,
+                                                                    lineNumber: 1386,
                                                                     columnNumber: 133
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1387,
+                                                            lineNumber: 1386,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3318,7 +3318,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_pa_level"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1388,
+                                                                    lineNumber: 1387,
                                                                     columnNumber: 122
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3329,13 +3329,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.paLevel
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1388,
+                                                                    lineNumber: 1387,
                                                                     columnNumber: 227
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1388,
+                                                            lineNumber: 1387,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -3348,7 +3348,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: "UHF_tx_ber"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1389,
+                                                                    lineNumber: 1388,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -3359,36 +3359,36 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     children: results.transmitter.ber
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1389,
+                                                                    lineNumber: 1388,
                                                                     columnNumber: 127
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1389,
+                                                            lineNumber: 1388,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1361,
+                                                    lineNumber: 1360,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1340,
+                                            lineNumber: 1339,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1339,
+                                        lineNumber: 1338,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1312,
+                                lineNumber: 1311,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3411,30 +3411,30 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 clipRule: "evenodd"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1407,
+                                                lineNumber: 1406,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1406,
+                                            lineNumber: 1405,
                                             columnNumber: 19
                                         }, this),
                                         "Generate Report"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1398,
+                                    lineNumber: 1397,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                lineNumber: 1397,
+                                lineNumber: 1396,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1079,
+                        lineNumber: 1078,
                         columnNumber: 11
                     }, this)
                 ]
@@ -3469,24 +3469,24 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         clipRule: "evenodd"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1436,
+                                        lineNumber: 1435,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1435,
+                                    lineNumber: 1434,
                                     columnNumber: 15
                                 }, this),
                                 "UHF Test History"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1434,
+                            lineNumber: 1433,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1424,
+                        lineNumber: 1423,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3516,25 +3516,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                         d: "M21 12a9 9 0 11-6.219-8.56"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                        lineNumber: 1450,
+                                        lineNumber: 1449,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1449,
+                                    lineNumber: 1448,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Loading test history..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1452,
+                                    lineNumber: 1451,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1444,
+                            lineNumber: 1443,
                             columnNumber: 15
                         }, this) : testHistory.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -3548,7 +3548,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "No test history available for this profile."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1461,
+                                    lineNumber: 1460,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3559,7 +3559,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     children: "Run a test to start building your history."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1462,
+                                    lineNumber: 1461,
                                     columnNumber: 17
                                 }, this),
                                 !profileId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3576,20 +3576,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Note:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1475,
+                                            lineNumber: 1474,
                                             columnNumber: 21
                                         }, this),
                                         " No profile ID detected. Test history requires a valid profile selection."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1467,
+                                    lineNumber: 1466,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                            lineNumber: 1455,
+                            lineNumber: 1454,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -3608,7 +3608,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Select Metric:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1483,
+                                            lineNumber: 1482,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3628,18 +3628,18 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: option.label
                                                 }, option.value, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1505,
+                                                    lineNumber: 1504,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1491,
+                                            lineNumber: 1490,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1482,
+                                    lineNumber: 1481,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3664,7 +3664,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1520,
+                                            lineNumber: 1519,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryChart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryChart"], {
@@ -3674,13 +3674,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             isDarkMode: isDarkMode
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1529,
+                                            lineNumber: 1528,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1513,
+                                    lineNumber: 1512,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3703,12 +3703,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                 children: "Test History Records"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                lineNumber: 1546,
+                                                lineNumber: 1545,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1545,
+                                            lineNumber: 1544,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3746,7 +3746,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     d: "M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1580,
+                                                                    lineNumber: 1579,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -3755,20 +3755,20 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                     clipRule: "evenodd"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1581,
+                                                                    lineNumber: 1580,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1579,
+                                                            lineNumber: 1578,
                                                             columnNumber: 23
                                                         }, this),
                                                         isMultiSelectMode ? 'Exit Selection Mode' : 'Select Items'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1558,
+                                                    lineNumber: 1557,
                                                     columnNumber: 21
                                                 }, this),
                                                 isMultiSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -3788,7 +3788,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Select All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1589,
+                                                            lineNumber: 1588,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3806,7 +3806,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Deselect All"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1605,
+                                                            lineNumber: 1604,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3838,12 +3838,12 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                                         clipRule: "evenodd"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                        lineNumber: 1641,
+                                                                        lineNumber: 1640,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                                    lineNumber: 1640,
+                                                                    lineNumber: 1639,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 "Delete Selected (",
@@ -3852,7 +3852,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1621,
+                                                            lineNumber: 1620,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
@@ -3860,13 +3860,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1556,
+                                            lineNumber: 1555,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1538,
+                                    lineNumber: 1537,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3902,19 +3902,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1654,
+                                                        lineNumber: 1653,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1653,
+                                                    lineNumber: 1652,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Test History Information"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1652,
+                                            lineNumber: 1651,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3928,14 +3928,14 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                     children: "real test data"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1659,
+                                                    lineNumber: 1658,
                                                     columnNumber: 43
                                                 }, this),
                                                 " from actual hardware tests. Simulated test results are not included in this history or visualization."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1658,
+                                            lineNumber: 1657,
                                             columnNumber: 19
                                         }, this),
                                         testHistory.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3965,7 +3965,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             r: "10"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1665,
+                                                            lineNumber: 1664,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -3975,7 +3975,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "12"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1666,
+                                                            lineNumber: 1665,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -3985,26 +3985,26 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             y2: "16"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1667,
+                                                            lineNumber: 1666,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1664,
+                                                    lineNumber: 1663,
                                                     columnNumber: 23
                                                 }, this),
                                                 "No real test data is available yet. Run tests in real mode (not simulation) to collect actual data."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1663,
+                                            lineNumber: 1662,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1651,
+                                    lineNumber: 1650,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestHistoryTable$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestHistoryTable"], {
@@ -4013,7 +4013,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                     onViewDetails: (item)=>setSelectedHistoryItem(item)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1675,
+                                    lineNumber: 1674,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4031,7 +4031,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: "Key Metrics Summary"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1683,
+                                            lineNumber: 1682,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4058,7 +4058,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average Board Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1704,
+                                                            lineNumber: 1703,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4075,13 +4075,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1711,
+                                                            lineNumber: 1710,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1698,
+                                                    lineNumber: 1697,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4101,7 +4101,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average PA Temperature"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1736,
+                                                            lineNumber: 1735,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4118,13 +4118,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1743,
+                                                            lineNumber: 1742,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1730,
+                                                    lineNumber: 1729,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4144,7 +4144,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Average RSSI"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1768,
+                                                            lineNumber: 1767,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4161,13 +4161,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1775,
+                                                            lineNumber: 1774,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1762,
+                                                    lineNumber: 1761,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4187,7 +4187,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             children: "Overall Success Rate"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1800,
+                                                            lineNumber: 1799,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4204,25 +4204,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                             })()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                            lineNumber: 1807,
+                                                            lineNumber: 1806,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1794,
+                                                    lineNumber: 1793,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1692,
+                                            lineNumber: 1691,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1682,
+                                    lineNumber: 1681,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4264,19 +4264,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1845,
+                                                        lineNumber: 1844,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1844,
+                                                    lineNumber: 1843,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clear All History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1828,
+                                            lineNumber: 1827,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4309,19 +4309,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1868,
+                                                        lineNumber: 1867,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1867,
+                                                    lineNumber: 1866,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Clean Up Simulated Data"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1851,
+                                            lineNumber: 1850,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4354,19 +4354,19 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1891,
+                                                        lineNumber: 1890,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1890,
+                                                    lineNumber: 1889,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Limit History (30 Records)"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1874,
+                                            lineNumber: 1873,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4415,25 +4415,25 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                                         clipRule: "evenodd"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                        lineNumber: 1925,
+                                                        lineNumber: 1924,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                                    lineNumber: 1924,
+                                                    lineNumber: 1923,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Export Test History"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1896,
+                                            lineNumber: 1895,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1826,
+                                    lineNumber: 1825,
                                     columnNumber: 17
                                 }, this),
                                 (cleanupMessage || limitMessage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4454,7 +4454,7 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: cleanupMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1942,
+                                            lineNumber: 1941,
                                             columnNumber: 23
                                         }, this),
                                         limitMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4464,26 +4464,26 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                                             children: limitMessage
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                            lineNumber: 1953,
+                                            lineNumber: 1952,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                                    lineNumber: 1933,
+                                    lineNumber: 1932,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                        lineNumber: 1442,
+                        lineNumber: 1441,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 1417,
+                lineNumber: 1416,
                 columnNumber: 9
             }, this),
             selectedHistoryItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CheckoutTestProgress$2f$components$2f$TestDetailsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TestDetailsModal"], {
@@ -4492,13 +4492,13 @@ const UHFTestPanel = ({ options, sock, onTestComplete, onTestError, onTestStart,
                 isDarkMode: isDarkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-                lineNumber: 1971,
+                lineNumber: 1970,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CheckoutTestProgress/components/UHFTestPanel.tsx",
-        lineNumber: 851,
+        lineNumber: 850,
         columnNumber: 3
     }, this);
 };

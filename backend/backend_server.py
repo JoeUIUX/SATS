@@ -1,8 +1,6 @@
-# Fix the indentation issue with route handlers
-
 from flask import Flask, jsonify, request, send_from_directory, Response
 from flask_cors import CORS
-from flask_compress import Compress  # Add compression
+from flask_compress import Compress
 from mccif import connect_to_mcc
 import os
 import sqlite3
@@ -190,11 +188,11 @@ def update_database_schema():
         print(f"❌ Error updating database schema: {e}")
 
 
-# Call this after create_table() in your initialization code
+# Call this after create_table() in initialization code
 update_database_schema()
 
 
-# Also ensure your test_results route has proper CORS headers
+# Ensure test_results route has proper CORS headers
 @app.route('/test-results/<profile_id>', methods=['GET', 'OPTIONS'])
 def get_test_results(profile_id):
     """Get all test results for a specific profile"""
@@ -240,7 +238,7 @@ def get_test_results(profile_id):
 
     db.close()
 
-    # Add explicit CORS headers to the response
+    # explicit CORS headers to the response
     response = jsonify(results)
     response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
     response.headers.add('Access-Control-Allow-Credentials', 'true')
@@ -267,7 +265,7 @@ def save_test_result():
 
         db = get_db()
 
-        # Add is_simulated flag (default to 0/false if not provided)
+        # is_simulated flag (default to 0/false if not provided)
         is_simulated = 1 if data.get("is_simulated", False) else 0
 
         db.execute(
@@ -361,9 +359,6 @@ create_table()
 def home():
     return "Welcome to the MCC Backend API. Use POST /connect_mcc to interact with the server."
 
-
-# This is just the modified connect_mcc route from backend_server.py
-# You can replace this route in your existing backend_server.py file
 
 @app.route('/connect_mcc', methods=['POST'])
 def connect_mcc():
@@ -487,7 +482,7 @@ def connect_mcc():
         }), 500
 
 
-# ✅ **New API: Fetch All Profiles with Images**
+# **API: Fetch All Profiles with Images**
 @app.route("/profiles", methods=["GET"])
 def get_profiles():
     db = get_db()
@@ -500,13 +495,13 @@ def get_profiles():
             "description": row["description"],
             "images": json.loads(row["images"]) if row["images"] else [],
             "uploadedFileName": row["uploadedFileName"] if "uploadedFileName" in row.keys() else ""
-            # ✅ Ensure key exists
+            # Ensure key exists
         })
     db.close()
     return jsonify(profiles)
 
 
-# ✅ **New API: Add a Profile with Description and Images**
+# **API: Add a Profile with Description and Images**
 @app.route('/profiles', methods=['POST'])
 def add_profile():
     """ Add a new profile, ensuring uniqueness and storing descriptions, images, and file names. """
@@ -523,7 +518,7 @@ def add_profile():
         if existing_profile:
             return jsonify({"error": "Profile name must be unique."}), 400  # More specific error
 
-        # ✅ Store images as JSON in the database
+        # Store images as JSON in the database
         images_json = json.dumps(data.get("images", []))
 
         db.execute(
@@ -541,7 +536,7 @@ def add_profile():
             "name": new_profile["name"],
             "description": new_profile["description"],
             "images": json.loads(new_profile["images"]),
-            "uploadedFileName": new_profile["uploadedFileName"]  # ✅ Ensure frontend gets the filename
+            "uploadedFileName": new_profile["uploadedFileName"]  # Ensure frontend gets the filename
         }), 201
 
     except sqlite3.IntegrityError:
@@ -550,7 +545,7 @@ def add_profile():
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ **New API: Update Profile Description and Images**
+# **API: Update Profile Description and Images**
 @app.route('/profiles/<name>', methods=['PUT'])
 def update_profile(name):
     """ Update the description, images, and uploaded file name of an existing profile. """
@@ -576,7 +571,7 @@ def update_profile(name):
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ **New API: Delete a Profile**
+# **API: Delete a Profile**
 @app.route('/profiles/<name>', methods=['DELETE'])
 def delete_profile(name):
     """ Delete a profile from the database. """
@@ -643,7 +638,6 @@ def save_checkout_items():
         return response, 500
 
 
-# Update the checkout/load/<profile_id> route to also handle OPTIONS
 @app.route('/checkout/load/<profile_id>', methods=['GET'])
 def load_checkout_items(profile_id):
     """Loads the saved checkout section items for a profile."""
@@ -658,7 +652,7 @@ def load_checkout_items(profile_id):
         if row:
             print(f"Found checkout items for profile {profile_id}")
 
-            # Create response with proper CORS headers
+            # response with proper CORS headers
             response = jsonify({"items": json.loads(row["item_data"])})
             response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
             response.headers.add('Access-Control-Allow-Credentials', 'true')
@@ -666,19 +660,18 @@ def load_checkout_items(profile_id):
         else:
             print(f"No saved checkout items found for profile {profile_id}")
 
-            # Create response with proper CORS headers
+            # response with proper CORS headers
             response = jsonify({"items": []})
             response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
             response.headers.add('Access-Control-Allow-Credentials', 'true')
             return response, 200  # Return empty if no data is found
 
     except Exception as e:
-        # Plain text error logging without emojis
         print(f"Error in load_checkout_items: {str(e)}")
         import traceback
         print(traceback.format_exc())  # Print full stack trace for debugging
 
-        # Create error response with proper CORS headers
+        # error response with proper CORS headers
         response = jsonify({"error": str(e), "items": []})
         response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
         response.headers.add('Access-Control-Allow-Credentials', 'true')
@@ -710,7 +703,7 @@ def get_profile_model(profile_id):
         return jsonify({"error": str(e), "model_path": None}), 500
 
 
-# ✅ **API: Upload and Assign `.glb` Model to a Profile**
+# **API: Upload and Assign `.glb` Model to a Profile**
 @app.route("/api/upload-glb", methods=["POST"])
 def upload_glb():
     if "file" not in request.files or "profile_id" not in request.form:
@@ -726,7 +719,7 @@ def upload_glb():
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(file_path)
 
-    # Add optimization step
+    # optimization step
     print(f"📦 Original file size: {os.path.getsize(file_path) / 1024 / 1024:.2f}MB")
     try:
         optimized_path = optimize_glb_model(file_path)
@@ -749,7 +742,7 @@ def upload_glb():
 
     try:
         db = get_db()
-        full_path = f"/models/{filename}"  # ✅ Store the full path
+        full_path = f"/models/{filename}"  # Store the full path
         db.execute("UPDATE profiles SET model_path = ? WHERE id = ?", (full_path, profile_id))
         db.commit()
         db.close()
@@ -821,7 +814,7 @@ def scan_and_update_database():
 threading.Thread(target=scan_and_update_database, daemon=True).start()
 
 
-# ✅ Serve static `.glb` models with caching
+# Serve static `.glb` models with caching
 @app.route("/models/<filename>")
 def get_model(filename):
     # Set response with specified mimetype
@@ -830,12 +823,12 @@ def get_model(filename):
                                    mimetype="model/gltf-binary",
                                    as_attachment=False)
 
-    # Add caching headers for better performance
+    # caching headers for better performance
     # Set cache to 1 year (31536000 seconds)
     response.headers["Cache-Control"] = "public, max-age=31536000"
     response.headers["Expires"] = (datetime.utcnow() + timedelta(days=365)).strftime("%a, %d %b %Y %H:%M:%S GMT")
 
-    # Add ETag for better caching
+    # ETag for better caching
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     if os.path.exists(file_path):
         # Generate ETag based on file size and modification time
@@ -869,7 +862,7 @@ def create_test_items_table():
 create_test_items_table()
 
 
-# Add these routes to handle test items
+# routes to handle test items
 @app.route('/test-items', methods=['GET'])
 def get_test_items():
     """ Get all test items from the database. """
@@ -947,7 +940,7 @@ def clear_test_items():
         return jsonify({"error": str(e)}), 500
 
 
-# ===== NEW BACKGROUND SETTINGS ROUTES =====
+# ===== BACKGROUND SETTINGS ROUTES =====
 
 # Get current app settings including background settings
 @app.route('/settings', methods=['GET'])
@@ -1239,7 +1232,6 @@ def apply_background():
         print(f"❌ Error applying background: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-    # Add this function to backend_server.py
     def ensure_db_persistence():
         """Ensure database changes are immediately flushed to disk"""
         conn = get_db()
@@ -1253,7 +1245,6 @@ def apply_background():
     create_table()
     ensure_db_persistence()
 
-    # Add after the get_db function
     def ensure_connection_safety():
         """Ensures SQLite connections are thread-safe and durable"""
         try:
@@ -1409,7 +1400,7 @@ def limit_test_history(profile_id):
         return response, 500
 
 
-# Add a new route to clear test history for a specific profile and component
+# route to clear test history for a specific profile and component
 @app.route('/test-results/clear/<profile_id>', methods=['DELETE', 'OPTIONS'])
 def clear_test_history(profile_id):
     """Clear all test results for a specific profile and optional component"""
@@ -1467,7 +1458,7 @@ def clear_test_history(profile_id):
         return response, 500
 
 
-# Add a route for deleting a single test history item by ID
+# route for deleting a single test history item by ID
 @app.route('/test-results/<int:result_id>', methods=['DELETE', 'OPTIONS'])
 def delete_test_result(result_id):
     """Delete a specific test result by ID"""

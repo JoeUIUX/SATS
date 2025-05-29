@@ -39,10 +39,9 @@ interface GPSTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -65,7 +64,7 @@ interface TestHistoryItem {
   };
   status: string;
   notes?: string;
-  is_simulated?: boolean; // Add this field with optional marker
+  is_simulated?: boolean;
 }
 
 export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
@@ -86,14 +85,14 @@ export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   
-  // Add new states for test history
+  // new states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('voltages.gps5V.value');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -267,7 +266,7 @@ export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -679,7 +678,7 @@ export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
     }
   };
 
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   // Toggle multi-select mode
   const toggleMultiSelectMode = () => {
     setIsMultiSelectMode(!isMultiSelectMode);
@@ -1530,7 +1529,7 @@ export const GPSTestPanel: React.FC<GPSTestPanelProps> = ({
                   </div>
                 </div>
                 
-                {/* First add the information panel before the table */}
+                {/* add the information panel before the table */}
                 <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
                   <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -12,7 +12,6 @@ import { generateLEOCAMReport } from '@/services/reports/leocamReport';
 import { TestHistoryChart, TestHistoryTable } from '@/components/CheckoutTestProgress/components';
 import { TestDetailsModal } from '@/components/CheckoutTestProgress/components';
 
-// Create a reusable SimulationBadge component for consistency
 const SimulationBadge: React.FC<SimulationBadgeProps> = ({ isSimulation }) => (
   <div style={{ 
     fontSize: '12px', 
@@ -37,10 +36,9 @@ interface LEOCAMTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -66,7 +64,6 @@ interface TestHistoryItem {
   is_simulated?: boolean;
 }
 
-// Add these parameter array constants before the component's return statement 
 const pcsVi = ["HEPS1_PDM2_PCS_V", "HEPS1_PDM2_PCS_I"];
 const gpsVi = ["HEPS1_PDM2_GPS_5V_V", "HEPS1_PDM2_GPS_5V_I"];
 const leocamVi = ["HEPS1_PDM1_OPT_CAM_V", "HEPS1_PDM1_OPT_CAM_I"];
@@ -133,7 +130,7 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -141,7 +138,7 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -187,7 +184,7 @@ export const LEOCAMTestPanel: React.FC<LEOCAMTestPanelProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  // Modify the useEffect for socket detection
+  // useEffect for socket detection
 useEffect(() => {
   // First check the socket itself
   let isSimulated = true; // Default to simulation (safer assumption)
@@ -326,7 +323,7 @@ useEffect(() => {
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -449,11 +446,11 @@ useEffect(() => {
     return isNaN(numValue) ? null : numValue;
   };
   
-  // Format chart data for test history - ensure we only use real data
+  // Format chart data for test history - ensure only use real data
   const prepareChartData = () => {
     return testHistory
       .filter(item => {
-        // Ensure we only use real (non-simulated) data for charts
+        // Ensure only use real (non-simulated) data for charts
         if (item.is_simulated || item.results?.simulated) {
           return false;
         }
@@ -767,7 +764,7 @@ useEffect(() => {
     }
   };
 
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   /**
    * Toggle multi-select mode
    */
@@ -848,7 +845,7 @@ useEffect(() => {
         }
       }
       
-      // Update the message about success/failure
+      // message about success/failure
       if (successCount > 0 && errorCount === 0) {
         setCleanupMessage(`✅ Successfully deleted ${successCount} items`);
       } else if (successCount > 0 && errorCount > 0) {
@@ -872,7 +869,7 @@ useEffect(() => {
     }
   };
 
-  // Modify the useEffect for socket detection to watch for simulation indicators
+  // useEffect for socket detection to watch for simulation indicators
   useEffect(() => {
     // Check if we have real socket info saved
     const socketInfo = localStorage.getItem('mccSocketInfo');
@@ -921,7 +918,7 @@ useEffect(() => {
     setSimulationMode(isActuallySimulated);
   }, [sock]);
 
-  // Optionally add automatic cleanup on component mount
+  // automatic cleanup on component mount
   useEffect(() => {
     if (profileId) {
       // Automatically limit history to 30 records when the component mounts
@@ -1018,7 +1015,7 @@ useEffect(() => {
                     className={styles.progressBarFill}
                     style={{ 
                       width: `${progress}%`,
-                      background: 'linear-gradient(to right, #10b981, #059669)'
+                      background: 'linear-gradient(to right, #3b82f6, #4f46e5)'
                     }}
                   ></div>
                 </div>
@@ -1146,7 +1143,7 @@ useEffect(() => {
           
 {results && (
   <div className="space-y-4 mt-4">
-    {/* Raw Parameter Values Panel - This replaces all existing result panels */}
+    {/* Raw Parameter Values Panel */}
     <div 
       className={styles.card}
       style={{

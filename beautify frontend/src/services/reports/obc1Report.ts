@@ -1,4 +1,4 @@
-// src/services/reports/obc1Report.ts
+// src/services/reports/obc1Report.ts - Enhanced with all parameters
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, BorderStyle, WidthType, AlignmentType } from 'docx';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
@@ -81,6 +81,10 @@ async function generateOBC1WordReport(results: any): Promise<string> {
           text: `Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`,
           spacing: { after: 100 }
         }),
+        new Paragraph({
+          text: `Simulation Mode: ${results._simulationUsed || results.simulated ? 'YES' : 'NO'}`,
+          spacing: { after: 100 }
+        }),
         
         // Separator
         new Paragraph({
@@ -141,7 +145,7 @@ async function generateOBC1WordReport(results: any): Promise<string> {
           pageBreakBefore: true
         }),
         
-        // FPGA section
+        // FPGA section - Enhanced with all voltage parameters
         new Paragraph({
           text: "* FPGA Voltage Current Temperature Summary:",
           heading: HeadingLevel.HEADING_2,
@@ -152,8 +156,8 @@ async function generateOBC1WordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        // Create FPGA info paragraphs
-        ...(results.fpga ? createFpgaInfoParagraphs(results) : [new Paragraph({
+        // Create comprehensive FPGA info paragraphs
+        ...(results.fpga || results.rawParameters ? createComprehensiveFpgaInfoParagraphs(results) : [new Paragraph({
           text: "FPGA information not available",
           spacing: { after: 100 }
         })]),
@@ -211,6 +215,34 @@ async function generateOBC1WordReport(results: any): Promise<string> {
         // Create eMMC info paragraphs
         ...(results.emmc ? createEmmcInfoParagraphs(results) : [new Paragraph({
           text: "eMMC test information not available",
+          spacing: { after: 100 }
+        })]),
+        
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200, before: 200 }
+        }),
+
+        // Page break
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+
+        // Raw Parameters section
+        new Paragraph({
+          text: "* Raw Parameter Values:",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        
+        // Create raw parameters table
+        ...(results.rawParameters ? [createRawParametersTable(results)] : [new Paragraph({
+          text: "Raw parameter information not available",
           spacing: { after: 100 }
         })]),
         
@@ -329,6 +361,8 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
     pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`, margin, yPosition);
     yPosition += 6;
     pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Simulation Mode: ${results._simulationUsed || results.simulated ? 'YES' : 'NO'}`, margin, yPosition);
     yPosition += 15;
 
     // Add a separator line
@@ -352,7 +386,7 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
     yPosition += 15;
 
     // Kernel Information Section
-    checkNewPage(50);
+    checkNewPage(80);
     pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
     pdf.text('Kernel Information', margin, yPosition);
@@ -374,6 +408,20 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
       yPosition += 6;
       pdf.text(`Free RAM: ${kernelData.memory?.freeRam || 'N/A'} bytes`, margin, yPosition);
       yPosition += 6;
+      pdf.text(`Shared RAM: ${kernelData.memory?.sharedRam || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Buffer RAM: ${kernelData.memory?.bufferRam || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Total Swap: ${kernelData.memory?.totalSwap || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Free Swap: ${kernelData.memory?.freeSwap || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Total High: ${kernelData.memory?.totalHigh || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Free High: ${kernelData.memory?.freeHigh || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Memory Unit: ${kernelData.memory?.memUnit || 'N/A'} bytes`, margin, yPosition);
+      yPosition += 6;
       pdf.text(`Processes: ${kernelData.processes || 'N/A'}`, margin, yPosition);
     } else {
       pdf.text('Kernel information not available', margin, yPosition);
@@ -381,7 +429,7 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
     yPosition += 15;
 
     // FPGA Section
-    checkNewPage(40);
+    checkNewPage(120);
     pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
     pdf.text('FPGA Voltages & Temperatures', margin, yPosition);
@@ -389,28 +437,64 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
 
     pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
-    if (results.fpga) {
-      const fpgaData = results.fpga;
-      if (fpgaData.voltages) {
-        pdf.text(`vcc_pspll: ${fpgaData.voltages.vccPspll || 'N/A'} V`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`vcc_psbatt: ${fpgaData.voltages.vccPsbatt || 'N/A'} V`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`vccint: ${fpgaData.voltages.vccint || 'N/A'} V`, margin, yPosition);
-        yPosition += 6;
-      }
-      if (fpgaData.temperatures) {
-        pdf.text(`PS Temperature: ${fpgaData.temperatures.psTemp || 'N/A'} °C`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`Remote Temperature: ${fpgaData.temperatures.remoteTemp || 'N/A'} °C`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`PL Temperature: ${fpgaData.temperatures.plTemp || 'N/A'} °C`, margin, yPosition);
-        yPosition += 6;
-      }
-    } else {
-      pdf.text('FPGA information not available', margin, yPosition);
+    
+    // All FPGA voltages from the checkout variables
+    const fpgaVoltageParams = [
+      { param: 'OBC1_vcc_pspll', label: 'vcc_pspll' },
+      { param: 'OBC1_vcc_psbatt', label: 'vcc_psbatt' },
+      { param: 'OBC1_vccint', label: 'vccint' },
+      { param: 'OBC1_vccbram', label: 'vccbram' },
+      { param: 'OBC1_vccaux', label: 'vccaux' },
+      { param: 'OBC1_vcc_psddr_pll', label: 'vcc_psddr_pll' },
+      { param: 'OBC1_vccpsintfp_ddr', label: 'vccpsintfp_ddr' },
+      { param: 'OBC1_vccint1', label: 'vccint1' },
+      { param: 'OBC1_vccaux1', label: 'vccaux1' },
+      { param: 'OBC1_vccvrefp', label: 'vccvrefp' },
+      { param: 'OBC1_vccvrefn', label: 'vccvrefn' },
+      { param: 'OBC1_vccbram1', label: 'vccbram1' },
+      { param: 'OBC1_vccplintlp', label: 'vccplintlp' },
+      { param: 'OBC1_vccplintfp', label: 'vccplintfp' },
+      { param: 'OBC1_vccplaux', label: 'vccplaux' },
+      { param: 'OBC1_vccams', label: 'vccams' },
+      { param: 'OBC1_vccpsintlp', label: 'vccpsintlp' },
+      { param: 'OBC1_vccpsintfp', label: 'vccpsintfp' },
+      { param: 'OBC1_vccpsaux', label: 'vccpsaux' },
+      { param: 'OBC1_vccpsddr', label: 'vccpsddr' },
+      { param: 'OBC1_vccpsio3', label: 'vccpsio3' },
+      { param: 'OBC1_vccpsio0', label: 'vccpsio0' },
+      { param: 'OBC1_vccpsio1', label: 'vccpsio1' },
+      { param: 'OBC1_vccpsio2', label: 'vccpsio2' },
+      { param: 'OBC1_psmgtravcc', label: 'psmgtravcc' },
+      { param: 'OBC1_psmgtravtt', label: 'psmgtravtt' },
+      { param: 'OBC1_vccams1', label: 'vccams1' },
+    ];
+
+    // Print all FPGA voltages
+    for (const voltage of fpgaVoltageParams) {
+      checkNewPage(6);
+      const value = results.rawParameters?.[voltage.param] || 
+                   (results.fpga?.voltages && getNestedValue(results.fpga.voltages, voltage.param)) || 
+                   'N/A';
+      pdf.text(`${voltage.label}: ${value} V`, margin, yPosition);
+      yPosition += 6;
     }
-    yPosition += 15;
+
+    // FPGA temperatures
+    checkNewPage(20);
+    const fpgaTempParams = [
+      { param: 'OBC1_ps_temp', label: 'PS Temperature' },
+      { param: 'OBC1_remote_temp', label: 'Remote Temperature' },
+      { param: 'OBC1_pl_temp', label: 'PL Temperature' }
+    ];
+
+    for (const temp of fpgaTempParams) {
+      const value = results.rawParameters?.[temp.param] || 
+                   (results.fpga?.temperatures && getNestedValue(results.fpga.temperatures, temp.param)) || 
+                   'N/A';
+      pdf.text(`${temp.label}: ${value} °C`, margin, yPosition);
+      yPosition += 6;
+    }
+    yPosition += 10;
 
     // Voltage & Current Section
     checkNewPage(40);
@@ -455,6 +539,7 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
       yPosition += 6;
       if (tempData.leocam && Array.isArray(tempData.leocam)) {
         tempData.leocam.forEach((temp: string, index: number) => {
+          checkNewPage(6);
           pdf.text(`LEOCAM ${index + 1}: ${temp || 'N/A'} °C`, margin, yPosition);
           yPosition += 6;
         });
@@ -489,10 +574,202 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
 
       states.forEach((stateName, index) => {
         if (index < emmcData.emmc0States.length) {
+          checkNewPage(6);
           pdf.text(`${stateName}: eMMC-0=${emmcData.emmc0States[index] || 'N/A'}, eMMC-1=${emmcData.emmc1States[index] || 'N/A'}`, margin, yPosition);
           yPosition += 6;
         }
       });
+      yPosition += 10;
+    }
+
+    // Raw Parameters Section
+    checkNewPage(60);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Complete Raw Parameter Values', margin, yPosition);
+    yPosition += 10;
+
+    if (results.rawParameters) {
+      const rawParams = results.rawParameters;
+      
+      // Parameter groups matching the Word document
+      const parameterGroups = {
+        'Firmware Parameters': [
+          'OBC1_FW_Ver_Major',
+          'OBC1_FW_Ver_Minor', 
+          'OBC1_FW_Ver_Patch'
+        ],
+        'Kernel Parameters': [
+          'OBC1_Sys_uptime',
+          'OBC1_Sys_loads_1m',
+          'OBC1_Sys_loads_5m', 
+          'OBC1_Sys_loads_15m',
+          'OBC1_Sys_totalram',
+          'OBC1_Sys_freeram',
+          'OBC1_Sys_sharedram',
+          'OBC1_Sys_bufferram',
+          'OBC1_Sys_totalswap',
+          'OBC1_Sys_freeswap',
+          'OBC1_Sys_procs',
+          'OBC1_Sys_pad',
+          'OBC1_Sys_totalhigh',
+          'OBC1_Sys_freehigh',
+          'OBC1_Sys_mem_unit'
+        ],
+        'FPGA Voltage Parameters': [
+          'OBC1_vcc_pspll',
+          'OBC1_vcc_psbatt',
+          'OBC1_vccint',
+          'OBC1_vccbram',
+          'OBC1_vccaux',
+          'OBC1_vcc_psddr_pll',
+          'OBC1_vccpsintfp_ddr',
+          'OBC1_vccint1',
+          'OBC1_vccaux1',
+          'OBC1_vccvrefp',
+          'OBC1_vccvrefn',
+          'OBC1_vccbram1',
+          'OBC1_vccplintlp',
+          'OBC1_vccplintfp',
+          'OBC1_vccplaux',
+          'OBC1_vccams',
+          'OBC1_vccpsintlp',
+          'OBC1_vccpsintfp',
+          'OBC1_vccpsaux',
+          'OBC1_vccpsddr',
+          'OBC1_vccpsio3',
+          'OBC1_vccpsio0',
+          'OBC1_vccpsio1',
+          'OBC1_vccpsio2',
+          'OBC1_psmgtravcc',
+          'OBC1_psmgtravtt',
+          'OBC1_vccams1'
+        ],
+        'FPGA Temperature Parameters': [
+          'OBC1_ps_temp',
+          'OBC1_remote_temp',
+          'OBC1_pl_temp'
+        ],
+        'Voltage & Current Parameters': [
+          'OBC1_3V3_D',
+          'OBC1_PS_3V3_OBC2_V',
+          'OBC1_PS_5V_OBC2_V',
+          'OBC1_PS_5V_OBC2_I',
+          'OBC1_PS_3V3_OBC2_I'
+        ],
+        'Temperature Sensor Parameters': [
+          'OBC1_thruster_ch1_T',
+          'OBC1_thruster_ch2_T',
+          'OBC1_leocam_ch1_T',
+          'OBC1_leocam_ch2_T',
+          'OBC1_leocam_ch3_T',
+          'OBC1_leocam_ch4_T'
+        ],
+        'eMMC Parameters': [
+          'OBC1_Q8_eMMC0_state',
+          'OBC1_Q8_eMMC1_state'
+        ]
+      };
+
+      // Display parameters by group
+      Object.entries(parameterGroups).forEach(([groupName, params]) => {
+        checkNewPage(20);
+        
+        // Group header
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(groupName, margin, yPosition);
+        yPosition += 8;
+        
+        // Parameters in this group
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        
+        params.forEach(param => {
+          checkNewPage(6);
+          const value = rawParams[param] || 'N/A';
+          const displayText = `${param}: ${value}`;
+          
+          // Check if text is too long for one line
+          const textWidth = pdf.getTextWidth(displayText);
+          const maxWidth = contentWidth;
+          
+          if (textWidth > maxWidth) {
+            // Split long text
+            const colonIndex = displayText.indexOf(':');
+            const paramName = displayText.substring(0, colonIndex + 1);
+            const paramValue = displayText.substring(colonIndex + 1).trim();
+            
+            pdf.text(paramName, margin, yPosition);
+            yPosition += 5;
+            pdf.text(`    ${paramValue}`, margin, yPosition);
+          } else {
+            pdf.text(displayText, margin, yPosition);
+          }
+          yPosition += 5;
+        });
+        
+        yPosition += 5; // Extra space after each group
+      });
+
+      // Add any additional parameters not in the predefined groups
+      const definedParams = new Set(Object.values(parameterGroups).flat());
+      const additionalParams = Object.keys(rawParams).filter(param => !definedParams.has(param));
+      
+      if (additionalParams.length > 0) {
+        checkNewPage(20);
+        
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Additional Parameters', margin, yPosition);
+        yPosition += 8;
+        
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        
+        additionalParams.forEach(param => {
+          checkNewPage(6);
+          const value = rawParams[param];
+          const displayText = `${param}: ${value}`;
+          
+          // Check if text is too long for one line
+          const textWidth = pdf.getTextWidth(displayText);
+          const maxWidth = contentWidth;
+          
+          if (textWidth > maxWidth) {
+            // Split long text
+            const colonIndex = displayText.indexOf(':');
+            const paramName = displayText.substring(0, colonIndex + 1);
+            const paramValue = displayText.substring(colonIndex + 1).trim();
+            
+            pdf.text(paramName, margin, yPosition);
+            yPosition += 5;
+            pdf.text(`    ${paramValue}`, margin, yPosition);
+          } else {
+            pdf.text(displayText, margin, yPosition);
+          }
+          yPosition += 5;
+        });
+      }
+
+      // Show summary at the end
+      checkNewPage(15);
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'bold');
+      const paramCount = Object.keys(rawParams).length;
+      pdf.text(`Total parameters recorded: ${paramCount}`, margin, yPosition);
+      yPosition += 6;
+      
+      // Show simulation status
+      if (rawParams._simulation_used) {
+        pdf.text(`Simulation used: ${rawParams._simulation_used}`, margin, yPosition);
+        yPosition += 6;
+      }
+    } else {
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Raw parameter information not available', margin, yPosition);
+      yPosition += 10;
     }
 
     // Add footer to all pages
@@ -516,7 +793,7 @@ async function generateOBC1PDFReport(results: any): Promise<string> {
   }
 }
 
-// Helper function to create kernel info table
+// Helper function to create comprehensive kernel info table
 function createKernelInfoTable(results: any): Table {
   const kernelData = results.kernel || {};
   
@@ -562,22 +839,84 @@ function createKernelInfoTable(results: any): Table {
   });
 }
 
-// Helper function to create FPGA info paragraphs
-function createFpgaInfoParagraphs(results: any): Paragraph[] {
-  const fpgaData = results.fpga || {};
-  const voltages = fpgaData.voltages || {};
-  const temperatures = fpgaData.temperatures || {};
+// Helper function to create comprehensive FPGA info paragraphs
+function createComprehensiveFpgaInfoParagraphs(results: any): Paragraph[] {
+  const paragraphs: Paragraph[] = [];
   
-  return [
-    new Paragraph(`vcc_pspll       : ${padString(voltages.vccPspll || 'N/A', 4)} V`),
-    new Paragraph(`vcc_psbatt      : ${padString(voltages.vccPsbatt || 'N/A', 4)} V`),
-    new Paragraph(`vccint          : ${padString(voltages.vccint || 'N/A', 4)} V`),
-    new Paragraph(`vccbram         : ${padString(voltages.vccbram || 'N/A', 4)} V`),
-    new Paragraph(`vccaux          : ${padString(voltages.vccaux || 'N/A', 4)} V`),
-    new Paragraph(`ps_temp         : ${padString(temperatures.psTemp || 'N/A', 4)} deg C`),
-    new Paragraph(`remote_temp     : ${padString(temperatures.remoteTemp || 'N/A', 4)} deg C`),
-    new Paragraph(`pl_temp         : ${padString(temperatures.plTemp || 'N/A', 4)} deg C`)
+  // FPGA Voltages Section
+  paragraphs.push(new Paragraph({
+    text: "FPGA Voltages:",
+    spacing: { after: 100 },
+    run: {
+      bold: true
+    }
+  }));
+
+  // All FPGA voltage parameters from the checkout
+  const fpgaVoltageParams = [
+    { param: 'OBC1_vcc_pspll', label: 'vcc_pspll' },
+    { param: 'OBC1_vcc_psbatt', label: 'vcc_psbatt' },
+    { param: 'OBC1_vccint', label: 'vccint' },
+    { param: 'OBC1_vccbram', label: 'vccbram' },
+    { param: 'OBC1_vccaux', label: 'vccaux' },
+    { param: 'OBC1_vcc_psddr_pll', label: 'vcc_psddr_pll' },
+    { param: 'OBC1_vccpsintfp_ddr', label: 'vccpsintfp_ddr' },
+    { param: 'OBC1_vccint1', label: 'vccint1' },
+    { param: 'OBC1_vccaux1', label: 'vccaux1' },
+    { param: 'OBC1_vccvrefp', label: 'vccvrefp' },
+    { param: 'OBC1_vccvrefn', label: 'vccvrefn' },
+    { param: 'OBC1_vccbram1', label: 'vccbram1' },
+    { param: 'OBC1_vccplintlp', label: 'vccplintlp' },
+    { param: 'OBC1_vccplintfp', label: 'vccplintfp' },
+    { param: 'OBC1_vccplaux', label: 'vccplaux' },
+    { param: 'OBC1_vccams', label: 'vccams' },
+    { param: 'OBC1_vccpsintlp', label: 'vccpsintlp' },
+    { param: 'OBC1_vccpsintfp', label: 'vccpsintfp' },
+    { param: 'OBC1_vccpsaux', label: 'vccpsaux' },
+    { param: 'OBC1_vccpsddr', label: 'vccpsddr' },
+    { param: 'OBC1_vccpsio3', label: 'vccpsio3' },
+    { param: 'OBC1_vccpsio0', label: 'vccpsio0' },
+    { param: 'OBC1_vccpsio1', label: 'vccpsio1' },
+    { param: 'OBC1_vccpsio2', label: 'vccpsio2' },
+    { param: 'OBC1_psmgtravcc', label: 'psmgtravcc' },
+    { param: 'OBC1_psmgtravtt', label: 'psmgtravtt' },
+    { param: 'OBC1_vccams1', label: 'vccams1' },
   ];
+
+  // Add voltage paragraphs
+  fpgaVoltageParams.forEach(voltage => {
+    const value = results.rawParameters?.[voltage.param] || 
+                 (results.fpga?.voltages && getNestedValue(results.fpga.voltages, voltage.param)) || 
+                 'N/A';
+    paragraphs.push(new Paragraph(`${voltage.label.padEnd(20)} : ${padString(value, 6)} V`));
+  });
+
+  // Add spacing
+  paragraphs.push(new Paragraph({ text: "", spacing: { after: 100 } }));
+
+  // FPGA Temperatures Section
+  paragraphs.push(new Paragraph({
+    text: "FPGA Temperatures:",
+    spacing: { after: 100 },
+    run: {
+      bold: true
+    }
+  }));
+
+  const fpgaTempParams = [
+    { param: 'OBC1_ps_temp', label: 'ps_temp' },
+    { param: 'OBC1_remote_temp', label: 'remote_temp' },
+    { param: 'OBC1_pl_temp', label: 'pl_temp' }
+  ];
+
+  fpgaTempParams.forEach(temp => {
+    const value = results.rawParameters?.[temp.param] || 
+                 (results.fpga?.temperatures && getNestedValue(results.fpga.temperatures, temp.param)) || 
+                 'N/A';
+    paragraphs.push(new Paragraph(`${temp.label.padEnd(20)} : ${padString(value, 6)} deg C`));
+  });
+
+  return paragraphs;
 }
 
 // Helper function to create VI info paragraphs
@@ -630,8 +969,209 @@ function createEmmcInfoParagraphs(results: any): Paragraph[] {
     new Paragraph(`eMMC-1 : ${padString(emmc1States[4] || 'N/A', 3)}`),
     new Paragraph('eMMC state after off eMMC-1 : -'),
     new Paragraph(`eMMC-0 : ${padString(emmc0States[5] || 'N/A', 3)}`),
-new Paragraph(`eMMC-1 : ${padString(emmc1States[5] || 'N/A', 3)}`)
+    new Paragraph(`eMMC-1 : ${padString(emmc1States[5] || 'N/A', 3)}`)
   ];
+}
+
+// Helper function to create raw parameters table
+function createRawParametersTable(results: any): Table {
+  const rawParams = results.rawParameters || {};
+  
+  // Group parameters by category for better organization
+  const parameterGroups = {
+    'Firmware Parameters': [
+      'OBC1_FW_Ver_Major',
+      'OBC1_FW_Ver_Minor', 
+      'OBC1_FW_Ver_Patch'
+    ],
+    'Kernel Parameters': [
+      'OBC1_Sys_uptime',
+      'OBC1_Sys_loads_1m',
+      'OBC1_Sys_loads_5m', 
+      'OBC1_Sys_loads_15m',
+      'OBC1_Sys_totalram',
+      'OBC1_Sys_freeram',
+      'OBC1_Sys_sharedram',
+      'OBC1_Sys_bufferram',
+      'OBC1_Sys_totalswap',
+      'OBC1_Sys_freeswap',
+      'OBC1_Sys_procs',
+      'OBC1_Sys_pad',
+      'OBC1_Sys_totalhigh',
+      'OBC1_Sys_freehigh',
+      'OBC1_Sys_mem_unit'
+    ],
+    'FPGA Voltage Parameters': [
+      'OBC1_vcc_pspll',
+      'OBC1_vcc_psbatt',
+      'OBC1_vccint',
+      'OBC1_vccbram',
+      'OBC1_vccaux',
+      'OBC1_vcc_psddr_pll',
+      'OBC1_vccpsintfp_ddr',
+      'OBC1_vccint1',
+      'OBC1_vccaux1',
+      'OBC1_vccvrefp',
+      'OBC1_vccvrefn',
+      'OBC1_vccbram1',
+      'OBC1_vccplintlp',
+      'OBC1_vccplintfp',
+      'OBC1_vccplaux',
+      'OBC1_vccams',
+      'OBC1_vccpsintlp',
+      'OBC1_vccpsintfp',
+      'OBC1_vccpsaux',
+      'OBC1_vccpsddr',
+      'OBC1_vccpsio3',
+      'OBC1_vccpsio0',
+      'OBC1_vccpsio1',
+      'OBC1_vccpsio2',
+      'OBC1_psmgtravcc',
+      'OBC1_psmgtravtt',
+      'OBC1_vccams1'
+    ],
+    'FPGA Temperature Parameters': [
+      'OBC1_ps_temp',
+      'OBC1_remote_temp',
+      'OBC1_pl_temp'
+    ],
+    'Voltage & Current Parameters': [
+      'OBC1_3V3_D',
+      'OBC1_PS_3V3_OBC2_V',
+      'OBC1_PS_5V_OBC2_V',
+      'OBC1_PS_5V_OBC2_I',
+      'OBC1_PS_3V3_OBC2_I'
+    ],
+    'Temperature Sensor Parameters': [
+      'OBC1_thruster_ch1_T',
+      'OBC1_thruster_ch2_T',
+      'OBC1_leocam_ch1_T',
+      'OBC1_leocam_ch2_T',
+      'OBC1_leocam_ch3_T',
+      'OBC1_leocam_ch4_T'
+    ],
+    'eMMC Parameters': [
+      'OBC1_Q8_eMMC0_state',
+      'OBC1_Q8_eMMC1_state'
+    ]
+  };
+
+  const rows: TableRow[] = [];
+
+  // Add header row
+  rows.push(new TableRow({
+    children: [
+      new TableCell({
+        children: [new Paragraph({
+          text: "Parameter Category",
+          run: { bold: true }
+        })],
+        width: { size: 40, type: WidthType.PERCENTAGE }
+      }),
+      new TableCell({
+        children: [new Paragraph({
+          text: "Parameter Name", 
+          run: { bold: true }
+        })],
+        width: { size: 35, type: WidthType.PERCENTAGE }
+      }),
+      new TableCell({
+        children: [new Paragraph({
+          text: "Value",
+          run: { bold: true }
+        })],
+        width: { size: 25, type: WidthType.PERCENTAGE }
+      })
+    ]
+  }));
+
+  // Add parameters by group
+  Object.entries(parameterGroups).forEach(([groupName, params]) => {
+    // Add group header
+    rows.push(new TableRow({
+      children: [
+        new TableCell({
+          children: [new Paragraph({
+            text: groupName,
+            run: { bold: true, color: "0066CC" }
+          })],
+          columnSpan: 3
+        })
+      ]
+    }));
+
+    // Add parameters in this group
+    params.forEach(param => {
+      const value = rawParams[param] || 'N/A';
+      rows.push(new TableRow({
+        children: [
+          new TableCell({
+            children: [new Paragraph("")], // Empty cell for category
+            width: { size: 40, type: WidthType.PERCENTAGE }
+          }),
+          new TableCell({
+            children: [new Paragraph(param)],
+            width: { size: 35, type: WidthType.PERCENTAGE }
+          }),
+          new TableCell({
+            children: [new Paragraph(String(value))],
+            width: { size: 25, type: WidthType.PERCENTAGE }
+          })
+        ]
+      }));
+    });
+  });
+
+  // Add any additional parameters not in the predefined groups
+  const definedParams = new Set(Object.values(parameterGroups).flat());
+  const additionalParams = Object.keys(rawParams).filter(param => !definedParams.has(param));
+  
+  if (additionalParams.length > 0) {
+    rows.push(new TableRow({
+      children: [
+        new TableCell({
+          children: [new Paragraph({
+            text: "Additional Parameters",
+            run: { bold: true, color: "CC6600" }
+          })],
+          columnSpan: 3
+        })
+      ]
+    }));
+
+    additionalParams.forEach(param => {
+      const value = rawParams[param];
+      rows.push(new TableRow({
+        children: [
+          new TableCell({
+            children: [new Paragraph("")], // Empty cell for category
+            width: { size: 40, type: WidthType.PERCENTAGE }
+          }),
+          new TableCell({
+            children: [new Paragraph(param)],
+            width: { size: 35, type: WidthType.PERCENTAGE }
+          }),
+          new TableCell({
+            children: [new Paragraph(String(value))],
+            width: { size: 25, type: WidthType.PERCENTAGE }
+          })
+        ]
+      }));
+    });
+  }
+
+  return new Table({
+    rows,
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: { style: BorderStyle.SINGLE, size: 1 },
+      bottom: { style: BorderStyle.SINGLE, size: 1 },
+      left: { style: BorderStyle.SINGLE, size: 1 },
+      right: { style: BorderStyle.SINGLE, size: 1 },
+      insideHorizontal: { style: BorderStyle.SINGLE, size: 1 },
+      insideVertical: { style: BorderStyle.SINGLE, size: 1 }
+    }
+  });
 }
 
 /**
@@ -644,4 +1184,34 @@ new Paragraph(`eMMC-1 : ${padString(emmc1States[5] || 'N/A', 3)}`)
 function padString(value: string, length: number): string {
   if (!value) return ''.padStart(length, ' ');
   return value.toString().padStart(length, ' ');
+}
+
+/**
+ * Helper function to get nested values from objects
+ * 
+ * @param obj The object to search in
+ * @param path The path to the value
+ * @returns The value or undefined
+ */
+function getNestedValue(obj: any, path: string): any {
+  if (!obj || !path) return undefined;
+  
+  // Try to find the value by different mapping strategies
+  const pathParts = path.split('_').slice(1); // Remove 'OBC1' prefix
+  
+  // Try direct property access first
+  if (obj[path]) return obj[path];
+  
+  // Try camelCase conversion
+  const camelCasePath = pathParts.map((part, index) => 
+    index === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+  ).join('');
+  
+  if (obj[camelCasePath]) return obj[camelCasePath];
+  
+  // Try other common patterns
+  const simplePath = pathParts.join('').toLowerCase();
+  if (obj[simplePath]) return obj[simplePath];
+  
+  return undefined;
 }

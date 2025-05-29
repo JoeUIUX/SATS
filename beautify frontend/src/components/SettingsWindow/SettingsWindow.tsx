@@ -805,7 +805,7 @@ const applyBackground = async () => {
                   />
                 </div>
                 
-                <h3 className={styles.appTitle}>Satellite Automated Testing System</h3>
+                <h3 className={styles.appTitle}>SATS <br></br><br></br> Satellite Automated Testing System</h3>
                 <div className={styles.versionInfo}>
                   <div className={styles.versionRow}>
                     <span className={styles.versionLabel}>Version:</span>
@@ -821,25 +821,35 @@ const applyBackground = async () => {
                   </div>
                 </div>
                 
-                <div className={styles.aboutText}>
-                  <p>
-                    This application provides a comprehensive interface for automated testing
-                    of satellite components and systems. It facilitates test management, execution,
-                    and result analysis.
-                  </p>
-                  
-                  <h4>Main Features:</h4>
-<ul>
-  <li>Checkout Test - Subsystems and Components</li>
-  <li>Real-time hardware integration with simulation fallback capability</li>
-  <li>Interactive Satellite 3D model Viewer</li>
-  <li>Comprehensive test result logging and report generation</li>
-  <li>Customisability features</li>
-</ul>
-                  
+<div className={styles.aboutText}>
+  <p>
+    This application provides a comprehensive interface for automated testing
+    of satellite components and systems. It facilitates test management, execution,
+    and result analysis.
+  </p>
+  
+  <h4>Main Features:</h4>
+  <ul>
+    <li><strong>Profile Management:</strong> Create, edit, delete customizable test profiles</li>
+    <li><strong>11 Subsystem Tests:</strong> Automated testing for OBC-1/2, S-Band, UHF, ADCS, GPS, HEPS, etc.</li>
+    <li><strong>Drag-and-Drop Test Selection:</strong> Visual component selection for customized testing</li>
+    <li><strong>3D Model Viewer:</strong> Interactive visualization of uploaded .glb satellite models</li>
+    <li><strong>Test History & Reports:</strong> Parameter tracking, visualization, and auto-generated .docx/.pdf reports</li>
+    <li><strong>MCC Integration:</strong> Real hardware connection with simulation fallback</li>
+    <li><strong>Multi-Window Interface:</strong> Draggable, resizable floating windows with taskbar</li>
+    <li><strong>Theming & Customization:</strong> Light/dark mode, fonts, and background settings</li>
+  </ul>
+  
+  <p>
+    <em>For complete documentation and setup instructions, refer to the SATS README.md file.</em>
+  </p>
 
-<h4>NTU Professional Internship Project - Jan to May 2025:</h4>
-<p><em>Building Satellite - Development and implementation of Automated Testing System for Satellite</em></p>
+ <br></br>
+ 
+ <h4>Credits</h4>
+<p>SATS - 🐧Joe Goh, Lew Jia Min</p>
+<p><em>Migrated from & Built upon:</em></p>
+<p>VLEO Checkout - Ng Siew Juan, Lew Jia Min, William Xu KaiChao  </p>
 
                 </div>
               </div>

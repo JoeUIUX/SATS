@@ -121,7 +121,14 @@ class SimulatedMccSocket {
         mccLogger.debug(`[SIM] Sending: ${message.trim()}`);
         // Parse the message to update simulated data if it's a set command
         if (message.includes('.value=')) {
+            // Handle the old format: parameter.value=value
             const [param, valueStr] = message.trim().split('.value=');
+            const value = valueStr.trim();
+            this.simulatedData.set(param, value);
+            mccLogger.debug(`[SIM] Set ${param} to ${value}`);
+        } else if (message.includes('=') && !message.includes('.log=')) {
+            // Handle the new format: parameter=value (but not .log=true commands)
+            const [param, valueStr] = message.trim().split('=');
             const value = valueStr.trim();
             this.simulatedData.set(param, value);
             mccLogger.debug(`[SIM] Set ${param} to ${value}`);
@@ -135,14 +142,14 @@ class SimulatedMccSocket {
     async receive(maxBytes = 4096, timeout = 5000) {
         // This would contain the read logic for parameters that have been 
         // requested with param.log=true in a real implementation
-        // In our simulation, just get the last parameters from the log=true messages
+        // In simulation, just get the last parameters from the log=true messages
         const loggedParams = Array.from(this.simulatedData.keys()).filter((key)=>key.endsWith('.log') && this.simulatedData.get(key) === 'true');
         // Add simulated delay if enabled
         if (this.delays) {
             await new Promise((resolve)=>setTimeout(resolve, 100 + Math.random() * 200));
         }
         // For simulation, if log=true isn't set (because we don't track it),
-        // we'll just respond to the actual parameter name
+        // just respond to the actual parameter name
         // Extract parameter names from something like "param.log=true\n"
         const responses = [];
         // Extract all parameters from buffer that may have been sent with .log=true
@@ -407,7 +414,6 @@ class ProxyMccSocket {
         this.socket.onclose = this.handleClose.bind(this);
         mccLogger.info('Initialized proxy MCC socket connection');
     }
-    // In mccUtils.ts, in the ProxyMccSocket class handleMessage method
     handleMessage(event) {
         const data = event.data;
         mccLogger.debug(`[PROXY] Received: ${data}`);
@@ -526,7 +532,7 @@ async function connectToMcc(serverAddress, forceSim = false, throwErrors = false
 async function mccifSet(sock, parameter, value) {
     // Format the message in the same way as the Python implementation
     // Ensure clean formatting with no extra whitespace or tokens
-    const message = `${parameter}.value=${value}\n`;
+    const message = `${parameter}=${value}\n`; // mccifSet to accept 3 tokens, change as needed
     // Add a log to identify what's happening
     console.log(`📡 mccifSet: ${parameter}=${value}, using ${sock ? sock.isSimulated ? "simulated" : "real" : "no"} socket`);
     // Check if we're in development mode and sock might be missing

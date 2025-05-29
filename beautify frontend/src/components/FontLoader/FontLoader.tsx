@@ -6,7 +6,7 @@ interface FontLoaderProps {
 }
 
 const FontLoader: React.FC<FontLoaderProps> = ({ fontFamily = 'System Default' }) => {
-  // Add a state to track loaded fonts and force re-renders when needed
+  // state to track loaded fonts and force re-renders when needed
   const [loadedFonts, setLoadedFonts] = useState<string[]>([]);
 
   useEffect(() => {

@@ -127,7 +127,7 @@ body,
 /* Hover Effect for Better User Experience */
 .toggleButton:hover {
   background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
-  border-radius: 5px; /* Optional rounded hover effect */
+  border-radius: 5px; /* rounded hover effect */
 }
 
 
@@ -208,7 +208,7 @@ body,
 .dropdownButton:hover,
 .addProfileButton:hover {
   background-color: #008c9e;
-  border-radius: 5px; /* Optional rounded hover effect */
+  border-radius: 5px; /* rounded hover effect */
 }
 
 /* Profile Dropdown - Ensure Alignment */
@@ -339,7 +339,7 @@ body,
   background-color: #c0392b;
 }
 
-/* Move About Button Below Profile Name */
+/* About Button Below Profile Name */
 .threeDModelButton,
 .checkoutButton,
 .aboutButton {
@@ -403,7 +403,7 @@ body,
   padding: 5px 0;
 }
 
-/* ✅ Fix for Dark Mode in CSS Modules */
+/* Dark Mode */
 :global(html.dark)  .checkoutSection, .aboutSection {
   background-color: var(--dark-section-bg) !important;
   border: 1px solid var(--dark-section-border) !important;
@@ -425,13 +425,12 @@ body,
 }
 
 
-
 /* Show About Section When Active */
 .profilePage .checkoutSection, .aboutSection {
   display: block;
 }
 
-/* Edit Button - Move to Bottom Right of About Section */
+/* Edit Button - Bottom Right of About Section */
 .aboutSection .editButton {
   position: absolute;
   bottom: 10px;
@@ -455,7 +454,7 @@ body,
   background-color: #e67e22;
 }
 
-/* ✅ Ensure unordered list styles are applied */
+/* Ensure unordered list styles are applied */
 .aboutSection ul {
   padding-left: 20px;
   list-style-type: disc !important; /* Force bullet points */
@@ -464,7 +463,7 @@ body,
   display: block !important; /* Ensure visibility */
 }
 
-/* ✅ Ensure ordered list styles are applied */
+/* Ensure ordered list styles are applied */
 .aboutSection ol {
   padding-left: 20px;
   list-style-type: decimal !important; /* Force numbers */
@@ -473,7 +472,7 @@ body,
   display: block !important; /* Ensure visibility */
 }
 
-/* ✅ Ensure list items have proper spacing */
+/* Ensure list items have proper spacing */
 .aboutSection li {
   margin-bottom: 5px;
   display: list-item !important; /* Ensure list item behavior */
@@ -494,7 +493,7 @@ body,
 }
 
 
-/* Delete Button - Ensure It Remains at the Top Right */
+/* Delete Button - at the Top Right */
 .profileHeading .deleteButton {
   position: absolute;
   top: 50px;
@@ -591,39 +590,39 @@ body,
   background-color: #c0392b;
 }
 
-/* ✅ Upload File Name Confirmation */
+/* Upload File Name Confirmation */
 .uploadedFileName {
   font-size: 14px;
   color: var(--text-color);
   margin-top: 5px;
 }
 
-/* ✅ Upload Note (Beside Choose File Button) */
+/* Upload Note (Beside Choose File Button) */
 .uploadNote {
   font-size: 12px;
   color: var(--text-secondary-color);
   margin-top: 5px;
 }
 
-/* ✅ Default Light Mode (Handled Automatically) */
+/* Default Light Mode (Handled Automatically) */
 .richTextEditor {
   border: 1px solid var(--section-border);
   border-radius: 5px;
   padding: 10px;
   min-height: 200px;
   overflow: auto;
-  background-color: var(--light-bg); /* ✅ Light mode background */
-  color: var(--light-text); /* ✅ Light mode text */
+  background-color: var(--light-bg); /* Light mode background */
+  color: var(--light-text); /* Light mode text */
 }
 
-/* ✅ Dark Mode Styling */
+/* Dark Mode Styling */
 .dark .richTextEditor {
-  background-color: var(--dark-bg); /* ✅ Dark mode background */
-  color: var(--dark-text); /* ✅ Dark mode text */
+  background-color: var(--dark-bg); /* Dark mode background */
+  color: var(--dark-text); /* Dark mode text */
 }
 
 
-/* ✅ Align Action Buttons Properly */
+/* Align Action Buttons Properly */
 .actionButtons {
   display: flex;
   justify-content: flex-start; /* Aligns from left */
@@ -632,7 +631,7 @@ body,
 }
 
 
-/* ✅ Upload Container */
+/* Upload Container */
 .uploadContainer {
   display: flex;
   flex-direction: column;
@@ -673,10 +672,10 @@ body,
   justify-content: center;
   border: none;
   border-radius: 50%;
-  visibility: visible; /* ✅ This is only relevant if the button is rendered */
+  visibility: visible; /* This is only relevant if the button is rendered */
 }
 
-/* ✅ Drop zone styling (Only visible in edit mode) */
+/* Drop zone styling (Only visible in edit mode) */
 .dropZone {
   min-height: 200px;
   padding: 20px;
@@ -698,7 +697,7 @@ body,
   color: var(--text-color);
 }
 
-/* ✅ Follow Same Color Transition as 'Test Selection:' Text */
+/* Follow Same Color Transition as 'Test Selection:' Text */
 .dropHereText {
   color: var(--text-color);
 }
@@ -722,7 +721,6 @@ body,
   position: relative;
   transition: background-color 0.2s ease-in-out;
   background-color: transparent;
-  /* pointer-events: auto !important; */
   touch-action: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -753,7 +751,7 @@ body,
   pointer-events: auto;
 }
 
-/* ✅ Ensure removed items in bottom section can be dragged again */
+/* Ensure removed items in bottom section can be dragged again */
 .bottomSection .dragItem[data-dropped="false"] {
   opacity: 1 !important;
   pointer-events: auto !important;
@@ -844,7 +842,7 @@ body,
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Add styles for the dropped items container */
+/* styles for the dropped items container */
 .editableArea {
   position: relative;
   z-index: 1;
@@ -852,7 +850,7 @@ body,
   min-height: 200px;
 }
 
-/* Add isDragging state for dragged items */
+/* isDragging state for dragged items */
 .isDragging {
   z-index: 1000;
   pointer-events: none;
@@ -873,7 +871,7 @@ body,
   overflow: visible !important; /* Ensure visibility */
 }
 
-/* Update droppable box in top section */
+/* droppable box in top section */
 .topSection .droppableBox {
   margin: 5px;
   position: relative;
@@ -889,7 +887,6 @@ body,
   transition: transform 0.2s ease-in-out;
   transform-origin: center center;
   will-change: transform;
-  /*overflow-x: hidden !important; /* Prevent horizontal scrolling */
   white-space: normal !important; /* Prevent text forcing extra width */
   overflow: visible !important; /* Ensure elements are visible */
 }
@@ -948,7 +945,7 @@ body,
   background-color: #404040;  /* Darker grey for dark mode */
 }
 
-/* ✅ Ensure items can be reactivated */
+/* Ensure items can be reactivated */
 .dragItem:not(.isDropped),
 .dragItem.isDropped.isEnabled {
   opacity: 1 !important;
@@ -969,7 +966,7 @@ body,
   align-items: center;
   gap: 5px; /* Space between icon and text */
   transition: background-color 0.2s ease-in-out;
-  margin-left: auto; /* ✅ Pushes the button to the right */
+  margin-left: auto; /* Pushes the button to the right */
 }
 
 .startTestButton:hover {
@@ -997,7 +994,7 @@ body,
   font-family: var(--app-font-family, Arial, sans-serif) !important;
 }
 
-/* Fix for profile items */
+/* correct font for profile items */
 .profileSidebarItem {
   font-family: var(--app-font-family, Arial, sans-serif) !important;
 }

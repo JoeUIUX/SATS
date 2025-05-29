@@ -161,7 +161,6 @@ export async function runPropulsionCheckout(
     const ppu1ViParams = ["HEPS1_PDM1_THRU1_V", "HEPS1_PDM1_THRU1_I"];
     const ppu2ViParams = ["HEPS1_PDM2_THRU2_V", "HEPS1_PDM2_THRU2_I"];
     
-    // Complete propulsion telemetry parameters from the Python code
     const prop1TmParams = [
       "PROPULSION1_ECU_Temp", "PROPULSION1_Anode_PPU_1_Set_Voltage", "PROPULSION1_Anode_PPU_1_Voltage",
       "PROPULSION1_Anode_PPU_1_Current", "PROPULSION1_Anode_PPU_1_Temp",
@@ -187,7 +186,7 @@ export async function runPropulsionCheckout(
       "PROPULSION1_IEP_3_Freq", "PROPULSION1_IEP_4_Freq", "PROPULSION1_IEP_5_Freq",
       "PROPULSION1_IEP_6_Freq", "PROPULSION1_MFC_1_Flow", "PROPULSION1_MFC_2_Flow",
       "PROPULSION1_MFC_3_Flow", "PROPULSION1_MFC_4_Flow", "PROPULSION1_SPARE_2", 
-      //here onwards mostly
+      // need replace params here onwards mostly
       "PROPULSION1_MFC_2_Thruster_Selector", "PROPULSION1_MFC_4_Thruster_Selector",
       "PROPULSION1_MFC_1_Thruster_Selector", "PROPULSION1_MFC_3_Thruster_Selector",
       "PROPULSION1_Thruster_1_Cathode_Selector", "PROPULSION1_Thruster_2_Cathode_Selector",
@@ -258,7 +257,7 @@ export async function runPropulsionCheckout(
       // Get ECU-1 voltage/current
       const ecu1ViResults = await mccifRead(sock, ecu1ViParams);
       
-      // Add this tracking code
+      // tracking code
       ecu1ViParams.forEach((param, index) => {
         const value = safeParseValue(ecu1ViResults[index]);
         rawParameters[param] = value;

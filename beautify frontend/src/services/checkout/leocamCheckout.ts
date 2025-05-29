@@ -163,7 +163,7 @@ const rawParameters: Record<string, string> = {};
       try {
     const gpsResults = await mccifRead(sock, gpsVi);
     
-    // Add this new tracking code
+    // tracking code
     gpsVi.forEach((param, index) => {
       const value = safeParseValue(gpsResults[index]);
       rawParameters[param] = value;
@@ -221,7 +221,7 @@ const voltageValue = safeParseFloat(results.voltageTests.pcs.voltage);
     try {
       const leocamResults = await mccifRead(sock, leocamVi);
       
-      // Add this tracking code
+      // tracking code
       leocamVi.forEach((param, index) => {
         const value = safeParseValue(leocamResults[index]);
         rawParameters[param] = value;
@@ -326,7 +326,7 @@ const voltageValue = safeParseFloat(results.voltageTests.pcs.voltage);
   // First chunk: Health Status and CPU data
   const telemetryStart = await mccifRead(sock, leocamVarStart);
   
-  // Add this tracking code
+  // tracking code
   leocamVarStart.forEach((param, index) => {
     const value = safeParseValue(telemetryStart[index]);
     rawParameters[param] = value;
@@ -395,13 +395,13 @@ if (param === "Leocam_Datetime") results.leocamTelemetry.datetime = value;
         results.leocamConfig.sensorPower = "1";
         results.leocamConfig.sensorLineFrameRate = "100";
         results.leocamConfig.sensorBitDepth = "8";
-results.leocamConfig.sensorRoi1 = "100";
-results.leocamConfig.sensorRoi2 = "100";
-results.leocamConfig.sensorRoi3 = "100";
-results.leocamConfig.sensorRoi4 = "100";
-results.leocamConfig.sensorRoi5_1 = "100";
-results.leocamConfig.sensorRoi5_2 = "100";
-results.leocamConfig.sensorRoi5_3 = "100";
+        results.leocamConfig.sensorRoi1 = "100";
+        results.leocamConfig.sensorRoi2 = "100";
+        results.leocamConfig.sensorRoi3 = "100";
+        results.leocamConfig.sensorRoi4 = "100";
+        results.leocamConfig.sensorRoi5_1 = "100";
+        results.leocamConfig.sensorRoi5_2 = "100";
+        results.leocamConfig.sensorRoi5_3 = "100";
         results.leocamConfig.sensorGainAnalog = "1";
         results.leocamConfig.sensorScanDirection = "0";
         results.leocamConfig.sensorTestPatternSel = "0";
@@ -415,14 +415,13 @@ results.leocamConfig.sensorRoi5_3 = "100";
       }
       
       // Step 9: Read disk information if enabled (80%)
-      // In the enableDiskOperations section
 if (enableDiskOperations) {
   onProgress('Reading LEOCAM disk information', 80);
   
   try {
     const diskResults = await mccifRead(sock, leocamDiskVars);
     
-    // Add this tracking code
+    // tracking code
     leocamDiskVars.forEach((param, index) => {
       const value = safeParseValue(diskResults[index]);
       rawParameters[param] = value;
@@ -511,13 +510,13 @@ try {
       results.leocamConfig.sensorPower = "N.A.";
       results.leocamConfig.sensorLineFrameRate = "N.A.";
       results.leocamConfig.sensorBitDepth = "N.A.";
-results.leocamConfig.sensorRoi1 = "N.A.";
-results.leocamConfig.sensorRoi2 = "N.A.";
-results.leocamConfig.sensorRoi3 = "N.A.";
-results.leocamConfig.sensorRoi4 = "N.A.";
-results.leocamConfig.sensorRoi5_1 = "N.A.";
-results.leocamConfig.sensorRoi5_2 = "N.A.";
-results.leocamConfig.sensorRoi5_3 = "N.A.";
+      results.leocamConfig.sensorRoi1 = "N.A.";
+      results.leocamConfig.sensorRoi2 = "N.A.";
+      results.leocamConfig.sensorRoi3 = "N.A.";
+      results.leocamConfig.sensorRoi4 = "N.A.";
+      results.leocamConfig.sensorRoi5_1 = "N.A.";
+      results.leocamConfig.sensorRoi5_2 = "N.A.";
+      results.leocamConfig.sensorRoi5_3 = "N.A.";
       results.leocamConfig.sensorGainAnalog = "N.A.";
       results.leocamConfig.sensorScanDirection = "N.A.";
       results.leocamConfig.sensorTestPatternSel = "N.A.";

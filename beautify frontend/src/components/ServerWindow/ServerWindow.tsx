@@ -578,8 +578,9 @@ const testProxyConnection = async (): Promise<boolean> => {
           <ul style={{ margin: '0', paddingLeft: '20px' }}>
             <li>Ensure the MCC server is running at the specified address/port</li>
             <li>Verify MCC Proxy <code>mcc-proxy.js</code> is running</li>
+            <li>Run SATS Diagnostic Tool<code>diagnose.js</code> to debug</li>
             <li>Simulation mode will be used if there is no connection</li>
-            <li>Minimise this window to keep the connection while working</li>
+            <li>Minimise this window to keep the ServerWindow in the taskbar while working</li>
           </ul>
         </div>
       </div>

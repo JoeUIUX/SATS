@@ -9,11 +9,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { runHEPSCheckout } from '@/services/checkout/hepsCheckout';
 import { generateHEPSReport } from '@/services/reports/hepsReport';
 
-// Import test history components - ensuring these are actually used
+// Import test history components
 import { TestHistoryChart, TestHistoryTable } from '@/components/CheckoutTestProgress/components';
 import { TestDetailsModal } from '@/components/CheckoutTestProgress/components';
 
-// Create a reusable SimulationBadge component for consistency
 const SimulationBadge: React.FC<SimulationBadgeProps> = ({ isSimulation }) => (
   <div style={{ 
     fontSize: '12px', 
@@ -96,10 +95,9 @@ interface HEPSTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -294,7 +292,7 @@ export const HEPSTestPanel: React.FC<HEPSTestPanelProps> = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -302,13 +300,13 @@ export const HEPSTestPanel: React.FC<HEPSTestPanelProps> = ({
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isMultiSelectMode, setIsMultiSelectMode] = useState(false);
   
-// Add states for parameter display
+// states for parameter display
 const [showParameters, setShowParameters] = useState(false);
 const [selectedParameterGroup, setSelectedParameterGroup] = useState<string>("canVar");
   
@@ -412,7 +410,6 @@ const [selectedParameterGroup, setSelectedParameterGroup] = useState<string>("ca
   // Check for dark mode
   useEffect(() => {
     const checkDarkMode = () => {
-// Continued from previous artifact
       setIsDarkMode(document.documentElement.classList.contains("dark"));
     };
     
@@ -483,7 +480,7 @@ const [selectedParameterGroup, setSelectedParameterGroup] = useState<string>("ca
     }
   }, [isInitialRun, hasRunTest, isRunning]);
   
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -573,7 +570,7 @@ const [selectedParameterGroup, setSelectedParameterGroup] = useState<string>("ca
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -720,7 +717,7 @@ const [selectedParameterGroup, setSelectedParameterGroup] = useState<string>("ca
     return isNaN(numValue) ? null : numValue;
   };
   
-  // Format chart data for test history - ensure we only use real data
+  // Format chart data for test history - ensure only use real data
   const prepareChartData = () => {
     return testHistory
       .filter(item => {
@@ -1068,7 +1065,7 @@ await saveTestResult(testResults, 'completed', wasSimulated);
     }
   };
 
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   /**
    * Toggle multi-select mode
    */
@@ -4268,7 +4265,7 @@ PDM Temperature Status
                 </div>
               )}
 
-              {/* Raw Parameter Values Section - add this after the main results cards */}
+              {/* Raw Parameter Values Section - after the main results cards */}
 {results && (
   <div className={styles.card} style={{
     backgroundColor: isDarkMode ? "#1e1e1e" : "white",

@@ -11,8 +11,8 @@
     display: flex;
     flex-direction: column;
     max-height: 90vh; /* Increased from 80vh to show more content */
-    top: 0;
-    left: 0;
+    top: 0; /* Make sure it's not hidden below viewport */
+    left: 0; /* Make sure it's not hidden off-screen */
     background-color: var(--bg-color, #ffffff); /* Explicit background */
     transform: translate(calc(50vw - 50%), calc(50vh - 50%)); /* Center it */
   }
@@ -23,7 +23,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   }
     
-  /* Add double-click handler for header to reset position */
+  /* double-click handler for header to reset position */
   .windowHeader {
     display: flex;
     justify-content: space-between;
@@ -37,7 +37,7 @@
     box-sizing: border-box; /* Include padding in width calculation */
   }
     
-  /* Add a reset button in the header */
+  /* reset button in the header */
   .resetButton {
     position: absolute;
     left: 50%;
@@ -237,7 +237,7 @@
   
   .tabsList::-webkit-scrollbar {
     height: 6px;                /* Show a thin scrollbar */
-    background: transparent;    /* Make scrollbar background transparent */
+    background: transparent;    /* transparent scrollbar background */
   }
 
   .tabsList::-webkit-scrollbar-thumb {
@@ -332,7 +332,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Add scroll shadow effect to indicate there's more content */
+/* scroll shadow effect to indicate there's more content */
 .hasMoreLeft {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 5%);
 }
@@ -487,15 +487,13 @@
     font-weight: bold;
   }
 
-  /* Create a container to manage tab scrolling efficiently */
+  /* a container to manage tab scrolling efficiently */
 .tabsWrapper {
   position: relative;
   width: 100%;
   padding: 0 28px; /* Make room for scroll buttons */
   box-sizing: border-box;
 }
-
-/* Add to your existing CSS file, e.g., CheckoutTestProgress.module.css */
 
 .historyPanel {
   width: 100%;

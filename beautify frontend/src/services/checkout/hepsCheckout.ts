@@ -733,7 +733,7 @@ export async function runHEPSCheckout(
     lclViValues.forEach(value => checkoutResult.push(value));
     
     // Add specific load LCL voltages and currents to results as needed
-    // We're not adding all of them to keep results object manageable
+    // not adding all of them to keep results object manageable
     
     index += lclVi.length;
     
@@ -750,7 +750,7 @@ export async function runHEPSCheckout(
     hdrmViValues.forEach(value => checkoutResult.push(value));
     
     // Add specific HDRM values to results as needed
-    // We're not adding all of them to keep results object manageable
+    // not adding all of them to keep results object manageable
     
     index += hdrmVi.length;
     

@@ -38,10 +38,9 @@ interface ADCSTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update our TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -66,7 +65,7 @@ interface TestHistoryItem {
   };
   status: string;
   notes?: string;
-  is_simulated?: boolean; // Add this field with optional marker
+  is_simulated?: boolean;
 }
 
 export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
@@ -88,14 +87,14 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('vi.adcsIfVoltage.value');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -113,7 +112,7 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
   const enableReactionWheels = options.includes('Reaction Wheel');
   const enableMagneticTorquer = options.includes('Magnetic Torquer');
   
-  // Group them into main functional categories for testing
+  // Group into main functional categories for testing
   const enableTelemetry = enableVersion || enableGyroscope || enableMagnetometer || 
                           enableStarTracker || enableFOG;
   const enableSensors = enableFineSunSensor || enableCoarseSunSensor || enableEarthSensor;
@@ -313,7 +312,6 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
     console.log(`Saving test result: simulation=${finalSimulationStatus} (wasSimulated=${wasSimulated}, detected=${detectedSimulation}, config=${isForceSimulation})`);
     
     try {
-      // Add simulation flag to the results
       const resultsWithFlag = {
         ...testResults,
         simulated: finalSimulationStatus,
@@ -876,7 +874,7 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
     }
   };
 
-  // Optionally add automatic cleanup on component mount
+  // automatic cleanup on component mount
   useEffect(() => {
     if (profileId) {
       // Automatically limit history to 30 records when the component mounts
@@ -1317,7 +1315,7 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
                   )}
                   
                   <div>
-                    {/* Add a small component summary section */}
+                    {/* a small component summary section */}
                     <div style={{ 
                       display: 'grid', 
                       gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', 
@@ -1824,7 +1822,7 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
                   </div>
                 </div>
                 
-                {/* First add the information panel before the table */}
+                {/* information panel before the table */}
                 <div style={{ marginBottom: '20px', padding: '12px', borderRadius: '8px', backgroundColor: isDarkMode ? '#1e293b' : '#f0f9ff', border: '1px solid', borderColor: isDarkMode ? '#475569' : '#bfdbfe' }}>
                   <h4 style={{ marginBottom: '8px', color: isDarkMode ? '#e5e7eb' : '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -2006,7 +2004,7 @@ export const ADCSTestPanel: React.FC<ADCSTestPanelProps> = ({
 
                 {/* Export History Button */}
                 <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
-                  {/* Clear All History Button - New */}
+                  {/* Clear All History Button */}
                   <button 
                     onClick={clearAllTestHistory}
                     style={{

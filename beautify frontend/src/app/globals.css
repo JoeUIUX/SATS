@@ -200,7 +200,7 @@ html.dark {
 }
 
 .light .icon.sun {
-  color: #ffffff; /* Sun icon now white in light mode */
+  color: #ffffff; /* Sun icon white in light mode */
 }
 
 .main-container {
@@ -214,7 +214,7 @@ html.dark {
 /* Ensure the draggable window does not stretch other elements */
 .popup {
   position: fixed;
-  z-index: 2000; /* ✅ Ensure it appears above everything else */
+  z-index: 2000; /* Ensure it appears above everything else */
   max-width: 600px;
 }
 

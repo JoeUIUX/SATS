@@ -38,10 +38,9 @@ interface UHFTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Test history item interface definition with is_simulated field
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -80,7 +79,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -99,12 +98,12 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     
     // Check for specific options and map them to capabilities
     if (options.includes('Telemetry')) {
-      // Telemetry typically involves receiving data, so enable receiver
+      // Telemetry (receiving data) - enable receiver
       shouldEnableReceiver = true;
     }
     
     if (options.includes('Ground Pass')) {
-      // Ground Pass typically involves both transmitting commands and receiving telemetry
+      // Ground Pass (involves both transmitting commands and receiving telemetry)
       shouldEnableTransmitter = true;
       shouldEnableReceiver = true;
     }
@@ -163,7 +162,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     return () => observer.disconnect();
   }, []);
   
-  // Check if we have a real socket or need simulation
+  // Check if have a real socket or need simulation
   useEffect(() => {
     // Check the socket type and update UI accordingly
     console.log("🔍 Socket debug info:", debugSocketType(sock));
@@ -175,7 +174,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     if (socketInfoStr) {
       try {
         const socketInfo = JSON.parse(socketInfoStr);
-        // If we have valid socket info and it's marked as real (not simulation)
+        // If have valid socket info and it's marked as real (not simulation)
         if (socketInfo && socketInfo.isReal === true) {
           console.log("📱 Using real socket configuration from localStorage");
           useSimulation = false;
@@ -215,7 +214,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     }
   }, [isInitialRun, hasRunTest, isRunning]);
   
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -295,7 +294,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -724,7 +723,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     }
   };
   
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   /**
    * Toggle multi-select mode
    */
@@ -829,7 +828,7 @@ export const UHFTestPanel: React.FC<UHFTestPanelProps> = ({
     }
   };
   
-// Optionally add automatic cleanup on component mount
+// automatic cleanup on component mount
 useEffect(() => {
   if (profileId) {
     // Automatically limit history to 30 records when the component mounts
@@ -1177,7 +1176,7 @@ return (
                   UHF System Configuration
                 </h3>
                 
-                {/* Add simulation badge */}
+                {/* simulation badge */}
                 <SimulationBadge isSimulation={isForceSimulation} />
               </div>
               
@@ -1332,7 +1331,7 @@ return (
                     UHF Transmitter Configuration
                   </h3>
                   
-                  {/* Add simulation badge */}
+                  {/* simulation badge */}
                   <SimulationBadge isSimulation={isForceSimulation} />
                 </div>
                 

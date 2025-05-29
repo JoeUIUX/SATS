@@ -125,7 +125,7 @@ const ThreeDModelWindow = (props) => {
     }
   };
 
-  // Implement a custom close handler that cleans up properly
+  // custom close handler that cleans up properly
   const handleClose = () => {
     console.log("🔴 User closing ThreeDModelWindow");
     
@@ -151,14 +151,13 @@ const ThreeDModelWindow = (props) => {
       controlsRef.current.autoRotate = newState;
     }
     
-    // Also update in threeInstance for other code to reference
+    // update in threeInstance for other code to reference
     if (threeInstanceRef.current) {
       threeInstanceRef.current.autoRotate = newState;
       console.log(`🔄 Auto-rotation ${newState ? 'enabled' : 'disabled'} in threeInstance`);
     }
   };
 
-  // Add this helper outside your component
   const preventReactTreeCleanup = (targetRef) => {
     if (!targetRef || !targetRef.current) return;
     
@@ -180,7 +179,7 @@ const ThreeDModelWindow = (props) => {
     };
   };
 
-  // Add keyframes animation
+  // keyframes animation
   useEffect(() => {
     const pulseAnimation = `
       @keyframes pulse {
@@ -299,14 +298,14 @@ const ThreeDModelWindow = (props) => {
 
     // Only execute the fetch if we're showing the window and have an API URL
     if (!showThreeDModelWindow || !API_URL) {
-      // We need to still reset this flag when not visible
+      // need to still reset this flag when not visible
       if (!showThreeDModelWindow) {
         hasCalledOnMouseDownRef.current = false;
       }
       return;
     }
 
-    // Skip if we've already fetched data for this profile
+    // Skip if already fetched data for this profile
     if (dataFetchedRef.current && lastProfileIdRef.current === profileId) {
       console.log(`🔄 Skipping redundant API call for profile ${profileId}`);
       return;

@@ -2,7 +2,7 @@
 
 /* Center the popup on the screen */
 .welcomeWindow {
-  position: fixed !important; /* ✅ Keeps the window fixed in place */
+  position: fixed !important; /* Keeps the window fixed in place */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -13,7 +13,7 @@
   background: linear-gradient(135deg, #ffffff, #e6f7ff);
   text-align: center;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: var(--window-z-index, 1) !important; /* ✅ Uses dynamic z-index */
+  z-index: var(--window-z-index, 1) !important; /* Uses dynamic z-index */
   font-family: Arial, sans-serif;
   color: var(--text-color) !important;
 }

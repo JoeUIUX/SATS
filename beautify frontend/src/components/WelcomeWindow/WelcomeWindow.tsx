@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
-import ToTestList from "../ToTestList/ToTestList"; // Import the ToTestList popup window React Component
-import ServerWindow from "../ServerWindow/ServerWindow"; // Import Server Window Component
+import ToTestList from "../ToTestList/ToTestList";
+import ServerWindow from "../ServerWindow/ServerWindow";
 import styles from "./WelcomeWindow.module.css";
 import { WindowName } from "@/types/types";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +48,35 @@ const formatDateTime = (date: Date) => {
   
   // update const here accordingly as timezone or timezoneOffset
   return `${day}/${month}/${year} ${hours}:${minutes}:${seconds} (${timezoneOffset})`;
+};
+
+  const [logoClickCount, setLogoClickCount] = useState(0);
+  const [showSatellite, setShowSatellite] = useState(false);
+  const [showPenguin, setShowPenguin] = useState(false);
+  const [showPenguinPopup, setShowPenguinPopup] = useState(false);
+
+  const handleLogoClick = () => {
+  setLogoClickCount(prev => {
+    const newCount = prev + 1;
+    
+    // Every 13 clicks, show BOTH the satellite and penguin
+    if (newCount % 13 === 0) {
+      setShowSatellite(true);
+      setShowPenguin(true);
+      
+      // Hide satellite after 4.5 seconds
+      setTimeout(() => {
+        setShowSatellite(false);
+      }, 4500);
+      
+      // Hide penguin after 10.5 seconds
+      setTimeout(() => {
+        setShowPenguin(false);
+      }, 10500);
+    }
+    
+    return newCount;
+  });
 };
 
   // Update the date/time every second
@@ -111,6 +140,7 @@ const formatDateTime = (date: Date) => {
           alt="Satellite Research Centre Logo" 
           className={styles.logo} 
           draggable="false" 
+          onClick={handleLogoClick}
           onDragStart={(e) => e.preventDefault()}
         />
         <h2>Satellite Research Centre</h2>
@@ -134,6 +164,122 @@ const formatDateTime = (date: Date) => {
           MCC
         </button>
       </div>
+
+{showSatellite && (
+  <div style={{
+    position: 'fixed',
+    top: '20%',
+    left: '-500px',
+    fontSize: '60px',
+    zIndex: 99999,
+    animation: 'satelliteBounce 4s ease-out forwards', 
+    pointerEvents: 'none'
+  }}>
+    🛰️
+    <style jsx>{`
+      @keyframes satelliteBounce {
+        0% { 
+          transform: translateX(-100px) rotate(0deg); 
+        }
+        12.5% {
+          transform: translateX(12.5vw) rotate(45deg) scale(1.05);
+        }
+        25% {
+          transform: translateX(25vw) rotate(90deg) scale(1.1);
+        }
+        37.5% {
+          transform: translateX(37.5vw) rotate(135deg) scale(1.15);
+        }
+        50% { 
+          transform: translateX(50vw) rotate(180deg) scale(1.2); 
+        }
+        62.5% {
+          transform: translateX(62.5vw) rotate(225deg) scale(1.15);
+        }
+        75% {
+          transform: translateX(75vw) rotate(270deg) scale(1.1);
+        }
+        87.5% {
+          transform: translateX(87.5vw) rotate(315deg) scale(1.05);
+        }
+        100% { 
+          transform: translateX(calc(100vw + 100px)) rotate(360deg) scale(1); 
+        }
+      }
+    `}</style>
+  </div>
+)}
+
+{showPenguin && (
+  <div 
+    style={{
+      position: 'fixed',
+      top: '60%',
+      left: '-500px',
+      fontSize: '50px',
+      zIndex: 99998,
+      animation: 'penguinBounce 10s ease-in-out forwards', 
+      pointerEvents: 'auto',
+      cursor: 'pointer',
+      filter: 'drop-shadow(0 0 8px rgba(0, 123, 181, 0.6))' 
+    }}
+    onClick={() => {
+      console.log("If you found the easter egg or if you are reading this, feel free to come say hi!🐧 https://www.linkedin.com/in/joegohguanwei/")
+    }}
+  >
+    🐧
+    <style jsx>{`
+      @keyframes penguinBounce {
+        0% { 
+          transform: translateX(-100px) translateY(0) rotate(0deg); 
+        }
+        7.5% {
+          transform: translateX(7.5vw) translateY(-30px) rotate(-10deg);
+        }
+        15% {
+          transform: translateX(15vw) translateY(0) rotate(10deg);
+        }
+        22.5% {
+          transform: translateX(22.5vw) translateY(-40px) rotate(-15deg);
+        }
+        30% {
+          transform: translateX(30vw) translateY(0) rotate(15deg);
+        }
+        37.5% {
+          transform: translateX(37.5vw) translateY(-35px) rotate(-12deg);
+        }
+        45% {
+          transform: translateX(45vw) translateY(0) rotate(12deg);
+        }
+        52.5% {
+          transform: translateX(52.5vw) translateY(-30px) rotate(-8deg);
+        }
+        60% {
+          transform: translateX(60vw) translateY(0) rotate(8deg);
+        }
+        67.5% {
+          transform: translateX(67.5vw) translateY(-25px) rotate(-5deg);
+        }
+        75% {
+          transform: translateX(75vw) translateY(0) rotate(5deg);
+        }
+        82.5% {
+          transform: translateX(82.5vw) translateY(-20px) rotate(-3deg);
+        }
+        90% {
+          transform: translateX(90vw) translateY(0) rotate(3deg);
+        }
+        95% {
+          transform: translateX(95vw) translateY(-10px) rotate(-1deg);
+        }
+        100% { 
+          transform: translateX(calc(100vw + 100px)) translateY(-10px) rotate(0deg); 
+        }
+      }
+    `}</style>
+  </div>
+)}
+
     </div>
 </Draggable>
   );

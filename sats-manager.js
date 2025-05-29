@@ -1,6 +1,6 @@
 // sats-manager.js
 // Process manager for Satellite Automated Testing System
-// Starts and manages all three required processes
+// Starts and manages all three required processes - backend, mcc-proxy, frontend
 
 const { spawn } = require('child_process');
 const path = require('path');
@@ -27,7 +27,7 @@ const CONFIG = {
     DATABASE_SYNC_TIMEOUT: '5000',
     FLASK_DEBUG: '1',
     FLASK_APP: 'backend_server.py',
-    PYTHONIOENCODING: 'utf-8',     // Force UTF-8 encoding for Python I/O
+    PYTHONIOENCODING: 'utf-8',     // Force UTF-8 encoding for Python I/O, to show symbols in console
     FLASK_CORS_ENABLED: 'true',    // Enable CORS specifically
     FLASK_CORS_ORIGINS: 'http://localhost:3000,http://127.0.0.1:3000'  // Whitelist origins
   }
@@ -611,7 +611,7 @@ const stopAll = () => {
     if (processes.backend) {
       log('Sending database cleanup signal to backend...', backendLog);
       // Send SIGUSR1 as a custom signal for clean database shutdown
-      // On Windows, we'll need a different approach
+      // On Windows, need a different approach
       if (os.platform() !== 'win32') {
         processes.backend.kill('SIGUSR1');
         // Give it time to properly close DB connections

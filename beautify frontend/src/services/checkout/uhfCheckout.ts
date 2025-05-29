@@ -121,7 +121,6 @@ export async function runUHFCheckout(
     // Step 1: Initialize test (5%)
     onProgress('Initializing UHF Checkout', 5);
     
-    // Define all telemetry variables based on the Python script
     const telemetryVars = [
       "OBC2_Uhf_BoardTemperature", "OBC2_Uhf_PaTemperature", "OBC2_Uhf_LastRssi",
       "OBC2_Uhf_LastRferr", "OBC2_Uhf_TxCount", "OBC2_Uhf_RxCount", "OBC2_Uhf_TxBytes",
@@ -157,7 +156,7 @@ export async function runUHFCheckout(
     onProgress('Setting UHF Downlink Type', 20);
 
     try {
-      // Similar to the Python implementation, we need to send the same command multiple times
+      // Similar to the Python implementation, need to send the same command multiple times
       for (let i = 0; i < 4; i++) {
         await mccifSet(sock, "OBC2_Downlink_Type", 3);
         await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds between commands

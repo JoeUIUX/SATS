@@ -67,6 +67,31 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 200 }
         }),
         
+        // Test Summary
+        new Paragraph({
+          text: "Test Summary",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'PMA and PPU tests as configured'}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`,
+          spacing: { after: 100 }
+        }),
+        
+        // Test configuration
+        new Paragraph({
+          text: `PMA Test: ${results.pma?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PPU Test: ${results.ppu?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`,
+          spacing: { after: 100 }
+        }),
+        
         // Separator
         new Paragraph({
           text: "--------------------------------------------------------------------",
@@ -89,11 +114,11 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 1 Voltage   : ${padString(results.ecu1.voltage, 6)} V    ${results.ecu1.status || 'N/A'}`,
+          text: `ECU 1 Voltage   : ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.ecu1?.status || 'N/A'}`,
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 1 Current   : ${padString(results.ecu1.current, 6)} A`,
+          text: `ECU 1 Current   : ${padString(results.ecu1?.current || 'N/A', 6)} A`,
           spacing: { after: 100 }
         }),
         
@@ -106,7 +131,8 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        ...createPropulsionTmParagraphs(results.prop1Tm),
+        // ECU-1 Propulsion Telemetry Parameters
+        ...createPropulsionTmParagraphs(results.prop1Tm, "ECU-1"),
         
         new Paragraph({
           text: "",
@@ -117,7 +143,7 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[1] || 'N/A'}`,
+          text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[1] || 'N/A'}`,
           spacing: { after: 100 }
         }),
         new Paragraph({
@@ -151,11 +177,11 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 2 Voltage   : ${padString(results.ecu2.voltage, 6)} V    ${results.ecu2.status || 'N/A'}`,
+          text: `ECU 2 Voltage   : ${padString(results.ecu2?.voltage || 'N/A', 6)} V    ${results.ecu2?.status || 'N/A'}`,
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 2 Current   : ${padString(results.ecu2.current, 6)} A`,
+          text: `ECU 2 Current   : ${padString(results.ecu2?.current || 'N/A', 6)} A`,
           spacing: { after: 100 }
         }),
         
@@ -168,7 +194,8 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         
-        ...createPropulsionTmParagraphs(results.prop2Tm),
+        // ECU-2 Propulsion Telemetry Parameters
+        ...createPropulsionTmParagraphs(results.prop2Tm, "ECU-2"),
         
         new Paragraph({
           text: "",
@@ -179,7 +206,7 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
           spacing: { after: 100 }
         }),
         new Paragraph({
-          text: `ECU 2 Voltage   : ${padString(results.ecu2OffVoltage || '0.000', 6)} V    ${results.passFailStatus[3] || 'N/A'}`,
+          text: `ECU 2 Voltage   : ${padString(results.ecu2OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[3] || 'N/A'}`,
           spacing: { after: 100 }
         }),
         new Paragraph({
@@ -232,6 +259,56 @@ async function generatePropulsionWordReport(results: any): Promise<string> {
         }),
         
         ...createPpuInfoParagraphs(results),
+        
+        // Add page break for Raw Parameters section
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        
+        // Raw Parameters Section
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200 }
+        }),
+        new Paragraph({
+          text: "* Raw Parameters Summary :",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        
+        ...createRawParametersParagraphs(results),
+        
+        // Test Completion Summary
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        new Paragraph({
+          text: "* Test Completion Summary:",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Report generated: ${now.toLocaleString()}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200, before: 200 }
+        }),
       ]
     }]
   });
@@ -318,6 +395,14 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
     pdf.text(`Test Time: ${now.toLocaleTimeString()}`, margin, yPosition);
     yPosition += 6;
     pdf.text(`Test Version: 24.3.21`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'PMA and PPU tests as configured'}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`PMA Test: ${results.pma?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`, margin, yPosition);
+    yPosition += 6;
+    pdf.text(`PPU Test: ${results.ppu?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`, margin, yPosition);
     yPosition += 15;
 
     // Add a separator line
@@ -335,12 +420,12 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
     pdf.setFont('helvetica', 'normal');
     pdf.text('Voltage Current On Record:', margin, yPosition);
     yPosition += 8;
-    pdf.text(`ECU 1 Voltage: ${padString(results.ecu1.voltage, 6)} V    ${results.ecu1.status || 'N/A'}`, margin, yPosition);
+    pdf.text(`ECU 1 Voltage: ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.ecu1?.status || 'N/A'}`, margin, yPosition);
     yPosition += 6;
-    pdf.text(`ECU 1 Current: ${padString(results.ecu1.current, 6)} A`, margin, yPosition);
+    pdf.text(`ECU 1 Current: ${padString(results.ecu1?.current || 'N/A', 6)} A`, margin, yPosition);
     yPosition += 12;
 
-    // ECU-1 Data Get Parameters (abbreviated for space)
+    // ECU-1 Data Get Parameters (key values only for PDF space constraints)
     if (results.prop1Tm) {
       pdf.text('Data Get Parameters (Key Values):', margin, yPosition);
       yPosition += 8;
@@ -351,7 +436,9 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
         { key: 'Anode_PPU_1_Voltage', label: 'Anode PPU 1 Voltage', unit: 'V' },
         { key: 'Cathode_PPU_1_Voltage', label: 'Cathode PPU 1 Voltage', unit: 'V' },
         { key: 'Heater_Temp', label: 'Heater Temperature', unit: '°C' },
-        { key: 'HP_Tank_Pressure_1', label: 'HP Tank Pressure 1', unit: 'bar' }
+        { key: 'HP_Tank_Pressure_1', label: 'HP Tank Pressure 1', unit: 'bar' },
+        { key: 'Thruster_1_Temp', label: 'Thruster 1 Temp', unit: '°C' },
+        { key: 'Thruster_2_Temp', label: 'Thruster 2 Temp', unit: '°C' }
       ];
       
       keyParams.forEach(param => {
@@ -382,12 +469,12 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
     pdf.setFont('helvetica', 'normal');
     pdf.text('Voltage Current On Record:', margin, yPosition);
     yPosition += 8;
-    pdf.text(`ECU 2 Voltage: ${padString(results.ecu2.voltage, 6)} V    ${results.ecu2.status || 'N/A'}`, margin, yPosition);
+    pdf.text(`ECU 2 Voltage: ${padString(results.ecu2?.voltage || 'N/A', 6)} V    ${results.ecu2?.status || 'N/A'}`, margin, yPosition);
     yPosition += 6;
-    pdf.text(`ECU 2 Current: ${padString(results.ecu2.current, 6)} A`, margin, yPosition);
+    pdf.text(`ECU 2 Current: ${padString(results.ecu2?.current || 'N/A', 6)} A`, margin, yPosition);
     yPosition += 12;
 
-    // ECU-2 Data Get Parameters (abbreviated)
+    // ECU-2 Data Get Parameters (key values only)
     if (results.prop2Tm) {
       pdf.text('Data Get Parameters (Key Values):', margin, yPosition);
       yPosition += 8;
@@ -512,13 +599,13 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
       checkNewPage(30);
       pdf.text('Voltage Current On Record:', margin, yPosition);
       yPosition += 8;
-      pdf.text(`ECU 1 Voltage: ${padString(results.ecu1.voltage, 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`, margin, yPosition);
+      pdf.text(`ECU 1 Voltage: ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`, margin, yPosition);
       yPosition += 6;
-      pdf.text(`ECU 1 Current: ${padString(results.ecu1.current, 6)} A`, margin, yPosition);
+      pdf.text(`ECU 1 Current: ${padString(results.ecu1?.current || 'N/A', 6)} A`, margin, yPosition);
       yPosition += 6;
-      pdf.text(`PPU 1 Voltage: ${padString(results.ppu1.voltage, 6)} V    ${results.ppu1.status || 'N/A'}`, margin, yPosition);
+      pdf.text(`PPU 1 Voltage: ${padString(results.ppu1?.voltage || 'N/A', 6)} V    ${results.ppu1?.status || 'N/A'}`, margin, yPosition);
       yPosition += 6;
-      pdf.text(`PPU 1 Current: ${padString(results.ppu1.current, 6)} A`, margin, yPosition);
+      pdf.text(`PPU 1 Current: ${padString(results.ppu1?.current || 'N/A', 6)} A`, margin, yPosition);
       yPosition += 12;
 
       // Add final voltage current records
@@ -535,6 +622,72 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
     } else {
       pdf.text('PPU test was not performed', margin, yPosition);
       yPosition += 12;
+    }
+
+    // Complete Raw Parameters Summary for PDF - SHOWS ALL PARAMETERS
+    checkNewPage(50);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Raw Parameters Summary', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(7); // Even smaller font for more parameters
+    pdf.setFont('helvetica', 'normal');
+    
+    if (results.rawParameters) {
+      const paramGroups = [
+        { title: 'ECU Voltage/Current Parameters', filter: (key: string) => key.includes('ECU') && (key.includes('_V') || key.includes('_I')) },
+        { title: 'PPU Voltage/Current Parameters', filter: (key: string) => key.includes('THRU') && (key.includes('_V') || key.includes('_I')) },
+        { title: 'PMA Timing Parameters', filter: (key: string) => key.includes('PmaCheck') },
+        { title: 'PPU Timing Parameters', filter: (key: string) => key.includes('PpuCheck') },
+        { title: 'Propulsion Telecommand Parameters', filter: (key: string) => key.startsWith('OBC1_Prop_') && !key.includes('Check') && !key.includes('Count') && !key.includes('Error') },
+{ title: 'Propulsion Telemetry ECU-1 Parameters', filter: (key: string) => key.startsWith('PROPULSION1_') },
+        { title: 'Propulsion Telemetry ECU-2 Parameters', filter: (key: string) => key.startsWith('PROPULSION2_') },
+        { title: 'Propulsion Statistics', filter: (key: string) => key.includes('Prop_') && (key.includes('Count') || key.includes('Error')) }
+      ];
+      
+      paramGroups.forEach(group => {
+        const groupParams = Object.entries(results.rawParameters).filter(([key]) => group.filter(key));
+        
+        if (groupParams.length > 0) {
+          checkNewPage(15);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text(group.title + ':', margin, yPosition);
+          yPosition += 5;
+          pdf.setFont('helvetica', 'normal');
+          
+          // FIXED: Show ALL parameters, not limited to 10
+          groupParams.forEach(([key, value]) => {
+            checkNewPage(3);
+            const displayKey = key.length > 45 ? key.substring(0, 45) + '...' : key;
+            pdf.text(`${displayKey}: ${String(value)}`, margin + 2, yPosition);
+            yPosition += 3;
+          });
+          
+          yPosition += 4;
+        }
+      });
+      
+      // Add miscellaneous parameters that don't fit in other categories
+      const allGroupFilters = paramGroups.map(g => g.filter);
+      const miscParams = Object.entries(results.rawParameters).filter(([key]) => 
+        !allGroupFilters.some(filter => filter(key))
+      );
+      
+      if (miscParams.length > 0) {
+        checkNewPage(15);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Miscellaneous Parameters:', margin, yPosition);
+        yPosition += 5;
+        pdf.setFont('helvetica', 'normal');
+        
+        miscParams.forEach(([key, value]) => {
+          checkNewPage(3);
+          const displayKey = key.length > 45 ? key.substring(0, 45) + '...' : key;
+          pdf.text(`${displayKey}: ${String(value)}`, margin + 2, yPosition);
+          yPosition += 3;
+        });
+      }
     }
 
     // Add footer to all pages
@@ -558,12 +711,12 @@ async function generatePropulsionPDFReport(results: any): Promise<string> {
   }
 }
 
-// Helper function to create propulsion telemetry paragraphs
-function createPropulsionTmParagraphs(propTm: any): Paragraph[] {
+// Helper function to create propulsion telemetry paragraphs with all parameters
+function createPropulsionTmParagraphs(propTm: any, ecuLabel: string): Paragraph[] {
   if (!propTm) {
     return [
       new Paragraph({
-        text: "No propulsion telemetry data available",
+        text: `No propulsion telemetry data available for ${ecuLabel}`,
         spacing: { after: 100 }
       })
     ];
@@ -599,7 +752,7 @@ function createPropulsionTmParagraphs(propTm: any): Paragraph[] {
     { key: "Heater_3_Current", label: "Current from Heater 3                       :", unit: "A" },
     { key: "Heater_3_Voltage", label: "Voltage from Heater 3                       :", unit: "V" },
     { key: "Heater_3_PWM", label: "PWM of Heater 3                             :", unit: "%" },
-{ key: "Heater_4_PWM", label: "PWM of Heater 4                             :", unit: "%" },
+    { key: "Heater_4_PWM", label: "PWM of Heater 4                             :", unit: "%" },
     { key: "Heater_4_Current", label: "Current from Heater 4                       :", unit: "A" },
     { key: "Heater_4_Voltage", label: "Voltage from Heater 4                       :", unit: "V" },
     { key: "Thruster_1_Temp", label: "Temperature of Thruster 1                   :", unit: "deg C" },
@@ -674,7 +827,7 @@ function createPropulsionTmParagraphs(propTm: any): Paragraph[] {
   return paragraphs;
 }
 
-// Helper function to create PMA info paragraphs
+// Helper function to create PMA info paragraphs with complete parameter coverage
 function createPmaInfoParagraphs(results: any): Paragraph[] {
   if (!results.pma || results.pma.status === 'N.A.') {
     return [new Paragraph({
@@ -765,10 +918,10 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
       { key: "Thruster_Unit_2_Cathode_Selector", label: "Selector Switch 6               :" },
       { key: "Anode_PPU1_Aliena_Enable", label: "Enable Switch 1                 :" },
       { key: "Cathode_PPU1_Aliena_Enable", label: "Enable Switch 2                 :" },
-      { key: "Test_Override", label: "Test Duration                   :" },
-      { key: "Spare_3", label: "Spare                           :" },
-      { key: "Spare_4", label: "Spare                           :" },
-      { key: "Spare_5", label: "Spare                           :" }
+      { key: "Test_Override", label: "Test Override                   :" },
+      { key: "Spare_3", label: "Spare 3                         :" },
+      { key: "Spare_4", label: "Spare 4                         :" },
+      { key: "Spare_5", label: "Spare 5                         :" }
     ];
     
     for (const param of propTcParams) {
@@ -805,7 +958,7 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
         spacing: { after: 100 }
       }),
       new Paragraph({
-        text: `ECU 1 Voltage   : ${padString(results.ecu1TestVoltage, 6)} V    ${results.passFailStatus[4] || 'N/A'}`,
+        text: `ECU 1 Voltage   : ${padString(results.ecu1TestVoltage, 6)} V    ${results.passFailStatus?.[4] || 'N/A'}`,
         spacing: { after: 100 }
       }),
       new Paragraph({
@@ -826,7 +979,7 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
         text: "Data Get Parameters : -",
         spacing: { after: 100 }
       }),
-      ...createPropulsionTmParagraphs(results.pmaTm)
+      ...createPropulsionTmParagraphs(results.pmaTm, "PMA")
     );
   }
   
@@ -872,7 +1025,7 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
         spacing: { after: 100 }
       }),
       new Paragraph({
-        text: `ECU 1 Voltage   : ${padString(results.ecu1FinalVoltage, 6)} V    ${results.passFailStatus[5] || 'N/A'}`,
+        text: `ECU 1 Voltage   : ${padString(results.ecu1FinalVoltage, 6)} V    ${results.passFailStatus?.[5] || 'N/A'}`,
         spacing: { after: 100 }
       }),
       new Paragraph({
@@ -885,7 +1038,7 @@ function createPmaInfoParagraphs(results: any): Paragraph[] {
   return paragraphs;
 }
 
-// Helper function to create PPU info paragraphs
+// Helper function to create PPU info paragraphs with complete parameter coverage
 function createPpuInfoParagraphs(results: any): Paragraph[] {
   if (!results.ppu || results.ppu.status === 'N.A.') {
     return [new Paragraph({
@@ -949,7 +1102,7 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
     })
   ];
   
-  // Add propulsion TC parameters if available
+  // Add propulsion TC parameters if available (same as PMA)
   if (results.propTc) {
     const propTcParams = [
       { key: "Anode_PPU_1_Set_V", label: "Set Voltage Anode PPU 1         :" },
@@ -959,6 +1112,7 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
       { key: "Cathode_PPU_2_Set_V", label: "Set Voltage Cathode PPU 2       :" },
       { key: "Cathode_PPU_2_Set_A", label: "Set Current Cathode PPU 2       :" },
       { key: "Heater_1_PWM", label: "PWM Setting for Heater 1        :" },
+{ key: "Heater_1_PWM", label: "PWM Setting for Heater 1        :" },
       { key: "Heater_2_PWM", label: "PWM Setting for Heater 2        :" },
       { key: "Heater_3_PWM", label: "PWM Setting for Heater 3        :" },
       { key: "Heater_4_PWM", label: "PWM Setting for Heater 4        :" },
@@ -988,10 +1142,10 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
       { key: "Thruster_Unit_2_Cathode_Selector", label: "Selector Switch 6               :" },
       { key: "Anode_PPU1_Aliena_Enable", label: "Enable Switch 1                 :" },
       { key: "Cathode_PPU1_Aliena_Enable", label: "Enable Switch 2                 :" },
-      { key: "Test_Override", label: "Test Duration                   :" },
-      { key: "Spare_3", label: "Spare                           :" },
-      { key: "Spare_4", label: "Spare                           :" },
-      { key: "Spare_5", label: "Spare                           :" }
+      { key: "Test_Override", label: "Test Override                   :" },
+      { key: "Spare_3", label: "Spare 3                         :" },
+      { key: "Spare_4", label: "Spare 4                         :" },
+      { key: "Spare_5", label: "Spare 5                         :" }
     ];
     
     for (const param of propTcParams) {
@@ -1027,19 +1181,19 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
       spacing: { after: 100 }
     }),
     new Paragraph({
-      text: `ECU 1 Voltage   : ${padString(results.ecu1.voltage, 6)} V    ${results.passFailStatus[6] || 'N/A'}`,
+      text: `ECU 1 Voltage   : ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`,
       spacing: { after: 100 }
     }),
     new Paragraph({
-      text: `ECU 1 Current   : ${padString(results.ecu1.current, 6)} A`,
+      text: `ECU 1 Current   : ${padString(results.ecu1?.current || 'N/A', 6)} A`,
       spacing: { after: 100 }
     }),
     new Paragraph({
-      text: `PPU 1 Voltage   : ${padString(results.ppu1.voltage, 6)} V    ${results.ppu1.status || 'N/A'}`,
+      text: `PPU 1 Voltage   : ${padString(results.ppu1?.voltage || 'N/A', 6)} V    ${results.ppu1?.status || 'N/A'}`,
       spacing: { after: 100 }
     }),
     new Paragraph({
-      text: `PPU 1 Current   : ${padString(results.ppu1.current, 6)} A`,
+      text: `PPU 1 Current   : ${padString(results.ppu1?.current || 'N/A', 6)} A`,
       spacing: { after: 100 }
     })
   );
@@ -1055,7 +1209,7 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
         text: "Data Get Parameters : -",
         spacing: { after: 100 }
       }),
-      ...createPropulsionTmParagraphs(results.ppuTm)
+      ...createPropulsionTmParagraphs(results.ppuTm, "PPU")
     );
   }
   
@@ -1100,15 +1254,15 @@ function createPpuInfoParagraphs(results: any): Paragraph[] {
       spacing: { after: 100 }
     }),
     new Paragraph({
-      text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[8] || 'N/A'}`,
+      text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[8] || 'N/A'}`,
       spacing: { after: 100 }
     }),
     new Paragraph({
       text: `ECU 1 Current   : ${padString(results.ecu1OffCurrent || '0.000', 6)} A`,
       spacing: { after: 100 }
     }),
-new Paragraph({
-      text: `PPU 1 Voltage   : ${padString(results.ppu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[9] || 'N/A'}`,
+    new Paragraph({
+      text: `PPU 1 Voltage   : ${padString(results.ppu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[9] || 'N/A'}`,
       spacing: { after: 100 }
     }),
     new Paragraph({
@@ -1120,13 +1274,152 @@ new Paragraph({
   return paragraphs;
 }
 
+// Define the parameter type
+interface ParameterItem {
+  key: string;
+  value: unknown;
+}
+
+// Define the parameter group type
+interface ParameterGroup {
+  title: string;
+  filter: (key: string) => boolean;
+  params: ParameterItem[];
+}
+
+// New helper function to create Raw Parameters section
+function createRawParametersParagraphs(results: any): Paragraph[] {
+  if (!results.rawParameters) {
+    return [new Paragraph({
+      text: 'No raw parameters available',
+      spacing: { after: 100 }
+    })];
+  }
+
+  const paragraphs: Paragraph[] = [
+    new Paragraph({
+      text: "All raw parameters captured during the propulsion checkout test:",
+      spacing: { after: 100 }
+    })
+  ];
+
+  // Group parameters by category for better organization
+  const parameterGroups: ParameterGroup[] = [
+    {
+      title: "PMA Timing Parameters",
+      filter: (key: string) => key.includes("PmaCheck"),
+      params: []
+    },
+    {
+      title: "PPU Timing Parameters", 
+      filter: (key: string) => key.includes("PpuCheck"),
+      params: []
+    },
+    {
+      title: "ECU Voltage/Current Parameters",
+      filter: (key: string) => key.includes("ECU") && (key.includes("_V") || key.includes("_I")),
+      params: []
+    },
+    {
+      title: "PPU Voltage/Current Parameters",
+      filter: (key: string) => key.includes("THRU") && (key.includes("_V") || key.includes("_I")),
+      params: []
+    },
+    {
+      title: "Propulsion Telecommand Parameters",
+      filter: (key: string) => key.startsWith("OBC1_Prop_") && !key.includes("Check") && !key.includes("Count") && !key.includes("Error"),
+      params: []
+    },
+    {
+      title: "Propulsion Telemetry ECU-1 Parameters",
+      filter: (key: string) => key.startsWith("PROPULSION1_"),
+      params: []
+    },
+    {
+      title: "Propulsion Telemetry ECU-2 Parameters", 
+      filter: (key: string) => key.startsWith("PROPULSION2_"),
+      params: []
+    },
+    {
+      title: "Propulsion Statistics Parameters",
+      filter: (key: string) => key.includes("Prop_") && (key.includes("Count") || key.includes("Error")),
+      params: []
+    }
+  ];
+
+  // Organize parameters into groups
+  Object.entries(results.rawParameters).forEach(([key, value]) => {
+    let assigned = false;
+    for (const group of parameterGroups) {
+      if (group.filter(key)) {
+        group.params.push({ key, value });
+        assigned = true;
+        break;
+      }
+    }
+    // If not assigned to any group, add to a miscellaneous group
+    if (!assigned) {
+      let miscGroup = parameterGroups.find(g => g.title === "Miscellaneous Parameters");
+      if (!miscGroup) {
+        miscGroup = {
+          title: "Miscellaneous Parameters",
+          filter: () => true,
+          params: []
+        };
+        parameterGroups.push(miscGroup);
+      }
+      miscGroup.params.push({ key, value });
+    }
+  });
+
+  // Add each group to paragraphs
+  parameterGroups.forEach(group => {
+    if (group.params.length > 0) {
+      paragraphs.push(
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${group.title}:`,
+              bold: true,
+              size: 24
+            })
+          ],
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 50 }
+        })
+      );
+
+      group.params.forEach(({ key, value }) => {
+        // Ensure key is a string and pad it safely
+        const keyStr = String(key);
+        const paddedKey = keyStr + ' '.repeat(Math.max(0, 45 - keyStr.length));
+        paragraphs.push(
+          new Paragraph({
+            text: `${paddedKey}: ${String(value)}`,
+            spacing: { after: 25 }
+          })
+        );
+      });
+    }
+  });
+
+  return paragraphs;
+}
+
 /**
-* Utility function to pad a string to a specific length
-* 
-* @param value The string value to pad
-* @param length The desired length
-* @returns The padded string
-*/
+ * Utility function to pad a string to a specific length
+ * 
+ * @param value The string value to pad
+ * @param length The desired length
+ * @returns The padded string
+ */
 function padString(value: string | number, length: number): string {
   const strValue = String(value || '');
   if (!strValue) return ''.padStart(length, ' ');

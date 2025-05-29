@@ -74,17 +74,17 @@ interface DraggableItem {
 }
 
 interface MainScreenProps {
-  openToTestList: (forceRender?: boolean) => void; // Updated to accept optional parameter
-  closeToTestList: () => void;  // ✅ Accept close function as a prop
+  openToTestList: (forceRender?: boolean) => void; // accept optional parameter
+  closeToTestList: () => void;
   openServerWindow: () => void;
   openModelWindow: (profileId?: number) => void;
-  closeModelWindow: () => void;  // ✅ Accept close function
-  showToTestList: boolean;  // ✅ Accept this prop
-  showThreeDModelWindow: boolean;  // ✅ Accept this prop
-  threeDModelProfileId: number | null;  // ✅ Accept profile ID
-  windowZIndexes: { [key in WindowName]: number };  // ✅ Ensure proper indexing
-  bringWindowToFront: (windowName: WindowName) => void;  // ✅ Ensure correct function type
-  zIndexCounter: number;  // ✅ Accept counter
+  closeModelWindow: () => void; 
+  showToTestList: boolean; 
+  showThreeDModelWindow: boolean; 
+  threeDModelProfileId: number | null; 
+  windowZIndexes: { [key in WindowName]: number }; 
+  bringWindowToFront: (windowName: WindowName) => void;
+  zIndexCounter: number;
   navigateWithState?: (to: string, options?: any) => void;
   showSettingsWindow: boolean;
   openSettingsWindow: () => void;
@@ -93,16 +93,16 @@ interface MainScreenProps {
 
 const MainScreen: React.FC<MainScreenProps> = ({ 
   openToTestList, 
-  closeToTestList, // ✅ Use close function
+  closeToTestList,
   openServerWindow, 
   openModelWindow,
-  closeModelWindow,  // ✅ Use function from props
-  showToTestList,  // ✅ Use this prop
-  showThreeDModelWindow,  // ✅ Use this prop
-  threeDModelProfileId,  // ✅ Use profile ID from props
-  windowZIndexes, // ✅ Use windowZIndexes from props
-  bringWindowToFront,  // ✅ Use function from props
-  zIndexCounter,  // ✅ Use counter from props
+  closeModelWindow,
+  showToTestList, 
+  showThreeDModelWindow,
+  threeDModelProfileId,
+  windowZIndexes,
+  bringWindowToFront,
+  zIndexCounter,
   showSettingsWindow,
   openSettingsWindow,
   closeSettingsWindow,
@@ -122,7 +122,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
     [key: string]: { 
       description: string; 
       images: { src: string; alt: string }[]; 
-      uploadedFileName?: string; // ✅ Store filename per profile
+      uploadedFileName?: string; // Store filename per profile
     } 
   }>({});
   const [showCheckout, setShowCheckout] = useState(false);
@@ -223,13 +223,13 @@ const [items, setItems] = useState<DraggableItem[]>([
   },
 ]);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [dummyState, setDummyState] = useState(false); // Declare a state for forcing re-renders
+  const [dummyState, setDummyState] = useState(false); // state for forcing re-renders
   const [sortableKey, setSortableKey] = useState(0);
   const [show3DModel, setShow3DModel] = useState(false); // Manage pop-up visibility
   const [selectedProfileId, setSelectedProfileId] = useState<number | null>(null);
   const [showCheckoutTest, setShowCheckoutTest] = useState(false);
   const [mccSocket, setMccSocket] = useState<any>(null);
-  // Add this state to store the real MCC socket
+  // state to store the real MCC socket
 const [realMccSocket, setRealMccSocket] = useState<any>(null);
 const [settingsWindowVisible, setSettingsWindowVisible] = useState(showSettingsWindow);
   
@@ -243,14 +243,14 @@ const [settingsWindowVisible, setSettingsWindowVisible] = useState(showSettingsW
   
     console.log(`🗑️ Attempting to remove item ${itemId} from top section`);
   
-    // ✅ Remove from `droppedItems`
+    // Remove from `droppedItems`
     setDroppedItems(prev => {
       const updatedDroppedItems = prev.filter(item => item.id !== itemId);
       console.log("✅ Updated dropped items after removal:", updatedDroppedItems);
-      return [...updatedDroppedItems]; // ✅ Force reactivity
+      return [...updatedDroppedItems]; // Force reactivity
     });
   
-    // ✅ Ensure item is draggable again by updating `items` state
+    // Ensure item is draggable again by updating `items` state
     setItems(prev => {
       const updatedItems = prev.map(item => {
         if (item.id === itemId) {
@@ -260,10 +260,10 @@ const [settingsWindowVisible, setSettingsWindowVisible] = useState(showSettingsW
         return item;
       });
       console.log("✅ Updated items after removal:", updatedItems);
-      return [...updatedItems]; // ✅ Ensure a new array reference for reactivity
+      return [...updatedItems]; // Ensure a new array reference for reactivity
     });
   
-    // ✅ Reset DOM attributes to make the item draggable again
+    // Reset DOM attributes to make the item draggable again
     setTimeout(() => {
       const bottomItem = document.querySelector(`[data-draggable-id="${itemId}"]`) as HTMLElement;
       if (bottomItem) {
@@ -278,13 +278,13 @@ const [settingsWindowVisible, setSettingsWindowVisible] = useState(showSettingsW
     setActiveId(null);
     setDragging(false);
   
-    // ✅ FULL Reset of Drop Zones and SortableContext
+    // FULL Reset of Drop Zones and SortableContext
     setTimeout(() => {
       console.log("🔄 FORCING FULL Reset of Drop Zones and SortableContext...");
       setDroppedItems(prev => [...prev]);
       setItems(prev => [...prev]); // ✅ Ensure full re-render
   
-      // ✅ Force SortableContext to reset
+      // Force SortableContext to reset
       setSortableKey(prev => prev + 1);
     }, 200);
   };
@@ -485,7 +485,7 @@ const handleOptionChange = (itemId: string, option: string, checked: boolean) =>
   turndownService.addRule("list", {
     filter: ["ul", "ol"],
     replacement: function (content: string, node: Node) {
-      return (node as HTMLElement).outerHTML; // ✅ Typecast `node` as `HTMLElement`
+      return (node as HTMLElement).outerHTML; // Typecast `node` as `HTMLElement`
     },
   });
   
@@ -499,7 +499,7 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
   const fileName = file.name;
 
-  // ✅ Store the file name (avoid unnecessary re-renders)
+  // Store the file name (avoid unnecessary re-renders)
   setProfileData((prevData) => ({
     ...prevData,
     [selectedProfile]: {
@@ -526,13 +526,13 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         try {
           let formattedHtml = "";
 
-          // ✅ Extract HTML using `mammoth.convertToHtml()`
+          // Extract HTML using `mammoth.convertToHtml()`
           const mammothResult = await mammoth.convertToHtml({ arrayBuffer: e.target.result });
           let extractedHtml = mammothResult.value.trim();
 
           console.log("Mammoth Extracted Content (With Lists):", extractedHtml);
 
-          // ✅ Preserve bullet points & numbered lists properly
+          // Preserve bullet points & numbered lists properly
           formattedHtml = extractedHtml
             .replace(/<p>\s*•\s*/g, "<ul><li>") // Fix unordered lists
             .replace(/<p>\s*\d+\.\s*/g, "<ol><li>") // Fix ordered lists
@@ -543,25 +543,23 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
           console.log("Final Processed HTML (Fixed Lists):", formattedHtml);
 
-          // ✅ Process `docx-preview` but DO NOT append it to the UI
+          // Process `docx-preview` but DO NOT append it to the UI
           const docxContainer = document.createElement("div");
           await renderAsync(e.target.result, docxContainer);
 
-          // ✅ Extract only relevant content, ignoring `docx-preview` elements
+          // Extract only relevant content, ignoring `docx-preview` elements
           const extractedBodyContent = docxContainer.querySelector("article")?.innerHTML || "";
 
-          // ✅ Ensure we use the most structured version
+          // Ensure used the most structured version
           formattedHtml = extractedBodyContent.includes(formattedHtml)
             ? extractedBodyContent
             : extractedBodyContent || formattedHtml;
 
-          // ✅ Remove `docx-preview` elements BEFORE storing content
           const tempContainer = document.createElement("div");
           tempContainer.innerHTML = formattedHtml;
           tempContainer.querySelectorAll("section.docx, .docx-wrapper").forEach((el) => el.remove());
           formattedHtml = tempContainer.innerHTML.trim();
 
-          // ✅ Ensure proper table & list styling
           formattedHtml = formattedHtml
             .replace(/<table/g, '<table style="border-collapse: collapse; width: 100%; border: 1px solid black;"') 
             .replace(/<td/g, '<td style="padding: 8px; border: 1px solid black;"') 
@@ -569,10 +567,9 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
             .replace(/<ol/g, '<ol style="padding-left: 20px; list-style-type: decimal; margin-top: 10px; margin-bottom: 10px;"') 
             .replace(/<li/g, '<li style="margin-bottom: 5px;"'); // ✅ Ensure list items have proper spacing
 
-          // ✅ Remove incorrect `<li>` wrapping on normal text
           formattedHtml = formattedHtml.replace(/<li><strong>/g, "<p><strong>").replace(/<\/strong><\/li>/g, "</strong></p>");
 
-          // ✅ Extract images & convert to Base64
+          // Extract images & convert to Base64
           const extractedImages = await Promise.all(
             Array.from(docxContainer.querySelectorAll("img")).map(async (img) => {
               const base64Image = await convertImageToBase64(img.src);
@@ -580,12 +577,11 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
             })
           );
 
-          // ✅ Store only cleaned & formatted content without `docx-preview`
+          // Store only cleaned & formatted content without `docx-preview`
           setUploadedText(formattedHtml.trim());
           setUploadedImages(extractedImages);
           autoSaveToDatabase(formattedHtml.trim(), extractedImages);
 
-          // ✅ Remove `docx-preview` from the DOM after processing
           document.querySelectorAll("section.docx, .docx-wrapper").forEach((el) => el.remove());
         } catch (error) {
           console.error("Error processing .docx:", error);
@@ -610,10 +606,7 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 };
 
 
-
-
-
-/* ✅ Function to Start Editing */
+/* Function to Start Editing */
 const startEditing = () => {
   if (!selectedProfile) return;
   
@@ -626,7 +619,7 @@ const startEditing = () => {
 };
 
 
-/* ✅ Function to Save Edited Description */
+/* Function to Save Edited Description */
 const saveEditedDescription = async () => {
   if (!selectedProfile) return;
 
@@ -643,7 +636,7 @@ const saveEditedDescription = async () => {
       }),
     });
 
-    // ✅ Update profileData to reflect saved changes
+    // Update profileData to reflect saved changes
     setProfileData((prevData) => ({
       ...prevData,
       [selectedProfile]: {
@@ -662,7 +655,7 @@ const saveEditedDescription = async () => {
 
 
 const removeImage = (index: number) => {
-  if (!selectedProfile || !isEditing) return; // ✅ Ensure we're in edit mode
+  if (!selectedProfile || !isEditing) return; // Ensure in edit mode
 
   setProfileData((prevData) => {
     const updatedImages = (prevData[selectedProfile]?.images || []).filter((_, i) => i !== index);
@@ -676,26 +669,22 @@ const removeImage = (index: number) => {
     };
   });
 
-  // ✅ Temporarily update images during editing
+  // Temporarily update images during editing
   setUploadedImages((prevImages) => prevImages.filter((_, i) => i !== index));
 };
 
 
 
-
-
-
-/* ✅ Sanitize Extracted HTML */
-/* ✅ Sanitize Extracted HTML */
+/* Sanitize Extracted HTML */
 const sanitizeHTML = (html: string): string => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, "text/html");
 
-  // ✅ Ensure lists (`<ul>`, `<ol>`, `<li>`) are preserved
+  // Ensure lists (`<ul>`, `<ol>`, `<li>`) are preserved
   doc.querySelectorAll("p:empty, div:empty").forEach((node) => node.remove());
   doc.querySelectorAll("br").forEach((node) => node.remove());
 
-  // ✅ Log extracted HTML to verify if lists exist before rendering
+  // Log extracted HTML to verify if lists exist before rendering
   console.log("Sanitized HTML Output:", doc.body.innerHTML);
 
   return doc.body.innerHTML;
@@ -715,11 +704,11 @@ const saveToFile = (format = "txt") => {
   }
 
   const sanitizedProfileName = selectedProfile.replace(/[^a-zA-Z0-9_-]/g, "");
-  const readableText = convertHtmlToPlainText(uploadedText); // ✅ Convert HTML to plain text
+  const readableText = convertHtmlToPlainText(uploadedText); // Convert HTML to plain text
 
   if (format === "txt") {
     const element = document.createElement("a");
-    const file = new Blob([readableText], { type: "text/plain" }); // ✅ Save as plain text
+    const file = new Blob([readableText], { type: "text/plain" }); // Save as plain text
     element.href = URL.createObjectURL(file);
     element.download = `${sanitizedProfileName}_Specifications.txt`;
     document.body.appendChild(element);
@@ -729,7 +718,7 @@ const saveToFile = (format = "txt") => {
       sections: [
         {
           properties: {},
-          children: readableText.split("\n").map(line => new Paragraph(line)), // ✅ Split into paragraphs
+          children: readableText.split("\n").map(line => new Paragraph(line)), // Split into paragraphs
         },
       ],
     });
@@ -762,7 +751,7 @@ const autoSaveToDatabase = async (text: string, images: { src: string; alt: stri
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         description: text,
-        images: images.map(img => img.src), // ✅ Ensure only the src is saved
+        images: images.map(img => img.src), // Ensure only the src is saved
         uploadedFileName: profileData[selectedProfile]?.uploadedFileName || "",
       }),
     });
@@ -786,7 +775,7 @@ const convertHtmlToPlainText = (html: string): string => {
 const editor = useEditor({
   extensions: [
     StarterKit.configure({
-      bulletList: false, // ✅ Disable default list handling
+      bulletList: false, // Disable default list handling
       orderedList: false,
     }),
     Table.configure({
@@ -795,9 +784,9 @@ const editor = useEditor({
     TableRow,
     TableCell,
     TableHeader,
-    BulletList, // ✅ Enable bullet points
-    OrderedList, // ✅ Enable numbered lists
-    ListItem,    // ✅ Enable list items
+    BulletList, // Enable bullet points
+    OrderedList, // Enable numbered lists
+    ListItem,    // Enable list items
   ],
   content: uploadedText, // Initialize with the uploaded content
   onUpdate: ({ editor }) => setTempDescription(editor.getHTML()), // Update state with editor changes
@@ -826,7 +815,7 @@ const handleProfileSelect = (profileName: string) => {
   // Ensure images are correctly set and do not become undefined
   const profile = profileData[profileName] || { description: "", images: [], uploadedFileName: "" };
 
-  setUploadedImages(profile.images.length ? profile.images : []); // ✅ Ensure images exist
+  setUploadedImages(profile.images.length ? profile.images : []); // Ensure images exist
   setUploadedText(profile.description);
 };
 
@@ -847,7 +836,7 @@ const toggleCheckoutEditMode = () => {
 };
 
 
-const { active } = useDndContext(); // ✅ Get active drag item
+const { active } = useDndContext(); // Get active drag item
 
 // Define droppable state
 const { isOver: isOverTop, setNodeRef: topSectionRef } = useDroppable({
@@ -868,16 +857,16 @@ const { isOver: isOverBottom, setNodeRef: bottomSectionRef } = useDroppable({
   }
 });
 
-// ✅ Add this after the useDroppable hooks
+// after the useDroppable hooks
 useEffect(() => {
   console.log("Active Dragging Type:", active?.data?.current?.type);
 }, [active]);
 
 
-// add this state to track the background color, to match checkout section's dynamic background
+// state to track the background color, to match checkout section's dynamic background
 const [checkoutBgColor, setCheckoutBgColor] = useState('var(--background-color, #ffffff)');
 
-// Add an effect to update the background color when the theme changes
+// effect to update the background color when the theme changes
 useEffect(() => {
   const updateBackgroundColor = () => {
     const isDarkMode = document.documentElement.classList.contains('dark');
@@ -909,9 +898,7 @@ const lastValidDropZoneRef = useRef<string | null>(null);
 
 let lastValidDropZone: { id: string } | null = null;
 
-// customCollisionDetection function
-// Update collision detection for better sensitivity
-// Replace your existing customCollisionDetection with this updated version
+// collision detection w better sensitivity
 const customCollisionDetection: CollisionDetection = (args) => {
   const { collisionRect, droppableContainers } = args;
   const validDropZoneIds = new Set(["top-section", "bottom-section", "1", "2"]);
@@ -1012,7 +999,7 @@ const sensors = useSensors(
 );
 
 
-// Update the handleDragEnd function to preserve checkedOptions
+// handleDragEnd function to preserve checkedOptions
 const handleDragEnd = (event: DragEndEvent) => {
   const { active, over } = event;
   setActiveId(null);
@@ -1094,8 +1081,7 @@ const handleDragEnd = (event: DragEndEvent) => {
   }, 200);
 };
 
-// Finally, modify the "Start Test" button handler to only test checked options
-// Update the Start Test button click handler
+// "Start Test" button handler to only test checked options
 const handleStartTest = () => {
   console.log("🚀 Start Test button clicked");
   
@@ -1200,7 +1186,6 @@ const handleStartTest = () => {
   console.log("CheckoutTest window should now be visible with checked options:", itemsWithCheckedOptions);
 };
 
-// Add this to your useEffect hooks section
 useEffect(() => {
   // Check localStorage on component mount
   const shouldShowWindow = localStorage.getItem('showCheckoutTest') === 'true';
@@ -1211,15 +1196,15 @@ useEffect(() => {
   }
 }, []);
 
-// Update handleCloseCheckoutTest to also clear localStorage
+// handleCloseCheckoutTest to also clear localStorage
 const handleCloseCheckoutTest = () => {
   console.log("🔴 Closing checkout test window");
   localStorage.removeItem('showCheckoutTest');
   setShowCheckoutTest(false);
 };
 
-// Add new effect to maintain drop zones
-const hasUpdatedDropZones = useRef(false); // ✅ Prevent multiple updates
+// effect to maintain drop zones
+const hasUpdatedDropZones = useRef(false); // Prevent multiple updates
 
 useEffect(() => {
   if (!isCheckoutEditing) return;
@@ -1240,7 +1225,7 @@ useEffect(() => {
 
 
 
-// Add this useEffect to monitor state changes
+// useEffect to monitor state changes
 useEffect(() => {
   const itemsStatus = items.map(item => ({
     id: item.id,
@@ -1295,7 +1280,6 @@ useEffect(() => {
   console.log("🛠️ isCheckoutEditing changed:", isCheckoutEditing);
 }, [isCheckoutEditing]);
 
-// Update dropZoneStyle
 const dropZoneStyle: React.CSSProperties = {
   minHeight: "250px",
   width: "100%",
@@ -1310,7 +1294,7 @@ const dropZoneStyle: React.CSSProperties = {
   overflow: "visible"
 };
 
-// Update the handleSaveCheckout function to save the checked options state
+//handleSaveCheckout function to save the checked options state
 const handleSaveCheckout = async () => {
   if (!selectedProfile) {
     console.log("❌ No active profile selected");
@@ -1326,7 +1310,7 @@ const handleSaveCheckout = async () => {
       header: item.header,
       options: item.options,
       isDropped: true,
-      checkedOptions: item.checkedOptions || {} // Ensure we always have checkedOptions
+      checkedOptions: item.checkedOptions || {} // Ensure always have checkedOptions
     }));
     
     // Retry logic for better persistence
@@ -1397,7 +1381,7 @@ const handleCancelCheckout = async () => {
   }
 };
 
-// Update the handleLoadCheckout function with proper typing
+// handleLoadCheckout function with proper typing
 // with better error handling and CORS configuration
 
 const handleLoadCheckout = async (profileId: string) => {
@@ -1416,7 +1400,7 @@ const handleLoadCheckout = async (profileId: string) => {
       },
       mode: 'cors',       // Explicitly set CORS mode
       credentials: 'omit', // Don't send credentials
-      signal: controller.signal // Add timeout signal
+      signal: controller.signal // timeout signal
     });
     
     // Clear the timeout
@@ -1481,7 +1465,7 @@ const handleLoadCheckout = async (profileId: string) => {
         prevItems.map(item => ({
           ...item,
           isDropped: false,
-          checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked
+          checkedOptions: createDefaultCheckedOptions(item.options) // Use default checked
         }))
       );
     }
@@ -1546,18 +1530,16 @@ const resetItemStates = () => {
     prevItems.map(item => ({
       ...item,
       isDropped: false,
-      checkedOptions: createDefaultCheckedOptions(item.options) // ✅ Use default checked instead of empty
+      checkedOptions: createDefaultCheckedOptions(item.options) // Use default checked instead of empty
     }))
   );
 };
 
-// Update the profile change handler to load checkout items with their checkbox states
-// Inside MainScreen.tsx
+// load checkout items with their checkbox states
 const handleProfileChange = async (profileId: string) => {
   console.log(`🔄 Profile changed: ${profileId}`);
   setSelectedProfile(profileId);
   
-  // This line should be added:
   localStorage.setItem('currentProfileId', profileId);
   
   await handleLoadCheckout(profileId);
@@ -1566,7 +1548,7 @@ const handleProfileChange = async (profileId: string) => {
 // useEffect for profile changes to load checkout items immediately
 useEffect(() => {
   if (selectedProfile) {
-    // Add a small delay to ensure database connections are ready
+    // small delay to ensure database connections are ready
     const timer = setTimeout(() => {
       handleLoadCheckout(selectedProfile);
     }, 50);
@@ -1575,7 +1557,7 @@ useEffect(() => {
   }
 }, [selectedProfile]);
 
-// Add effect to ensure items and droppedItems stay in sync
+// effect to ensure items and droppedItems stay in sync
 useEffect(() => {
   // This ensures items marked as dropped appear in droppedItems
   const droppedIds = droppedItems.map(item => item.id);
@@ -1585,14 +1567,14 @@ useEffect(() => {
     item.isDropped && !droppedIds.includes(item.id)
   );
   
-  // If we found inconsistencies, fix them
+  // If found inconsistencies, fix them
   if (itemsThatShouldBeDropped.length > 0) {
     console.log("⚠️ Found inconsistent dropped state, fixing...");
     setDroppedItems(prev => [...prev, ...itemsThatShouldBeDropped]);
   }
 }, [items, droppedItems]);
 
-// Update the useEffect in MainScreen.tsx to better initialize the MCC socket
+// useEffect to better initialize the MCC socket
 useEffect(() => {
   if (showCheckoutTest && !mccSocket) {
     // Initialize a simulated MCC socket for testing
@@ -1862,7 +1844,7 @@ return (
               key={profile.id || profile.name}
               className={styles.profileSidebarItem}
               onClick={() => {
-                handleProfileChange(profile.name); // ✅ Ensure checkout items load per profile
+                handleProfileChange(profile.name); // Ensure checkout items load per profile
               }}
             >
               {profile.name}
@@ -1897,12 +1879,12 @@ return (
             </button>
           </div>
 
-          {/* ✅ About/Specifications Button Below Profile Name */}
+          {/* About/Specifications Button Below Profile Name */}
           <button className={styles.aboutButton} onClick={toggleAbout}>
             <FaInfoCircle /> About/Specifications
           </button>
 
-          {/* ✅ Show/Hide About Section */}
+          {/* Show/Hide About Section */}
           {showAbout && (
             <div
               className={`${styles.aboutSection} ${
@@ -1911,10 +1893,10 @@ return (
                   : ""
               }`}
             >
-              {/* ✅ Editing Mode: Use Tiptap Rich Text Editor */}
+              {/* Editing Mode: Use Tiptap Rich Text Editor */}
               {isEditing ? (
                 <>
-                  {/* ✅ Add Toolbar for Lists */}
+                  {/* Toolbar for Lists */}
                   <div className="toolbar">
                     <button onClick={() => editor?.chain().focus().toggleBulletList().run()}>
                       Bullet List
@@ -1926,7 +1908,7 @@ return (
 
                   <EditorContent editor={editor} className={styles.richTextEditor} />
 
-                  {/* ✅ Show all images outside the editor */}
+                  {/* Show all images outside the editor */}
                   {uploadedImages.length > 0 ? (
                     <div className={styles.imageContainer}>
                       {uploadedImages.map((image, index) => (
@@ -1936,7 +1918,7 @@ return (
                             alt={image.alt}
                             className={styles.uploadedImage}
                           />
-                          {/* ✅ Remove button only renders in editing mode */}
+                          {/* Remove button only renders in editing mode */}
                           <button
                             className={styles.removeImageButton}
                             onClick={() => removeImage(index)}
@@ -1950,7 +1932,7 @@ return (
                     <p className={styles.imagePlaceholder}>No images uploaded</p>
                   )}
 
-                  {/* ✅ File Upload Section (Only in Editing Mode) */}
+                  {/* File Upload Section (Only in Editing Mode) */}
                   <div className={styles.uploadContainer}>
                     <input
                       type="file"
@@ -1958,7 +1940,7 @@ return (
                       onChange={handleFileUpload}
                       className={styles.uploadInput}
                     />
-                    {/* ✅ Show file name specific to the selected profile */}
+                    {/* Show file name specific to the selected profile */}
                     {selectedProfile &&
                       profileData[selectedProfile]?.uploadedFileName && (
                         <p>Uploaded: {profileData[selectedProfile].uploadedFileName}</p>
@@ -1966,14 +1948,14 @@ return (
                   </div>
                 </>
               ) : (
-                /* ✅ Normal Mode: Display Formatted Content */
+                /* Normal Mode: Display Formatted Content */
                 <>
                   <div
                       dangerouslySetInnerHTML={{
                         __html: sanitizeHTML(profileData[selectedProfile]?.description || "<p>No description available.</p>"),
                       }}
                   />
-                  {/* ✅ Show all images outside the editor */}
+                  {/* Show all images outside the editor */}
                   {profileData[selectedProfile]?.images.length > 0 && (
                     <div className={styles.imageContainer}>
                       {selectedProfile && profileData[selectedProfile]?.images.map((image: { src: string; alt: string }, index: number) => (
@@ -1982,7 +1964,7 @@ return (
                              src={image.src} 
                              alt={image.alt} 
                              className={styles.uploadedImage}
-                             onError={(e) => e.currentTarget.src = "/fallback-image.png"} // Provide a fallback image
+                             onError={(e) => e.currentTarget.src = "/fallback-image.png"} // can provide a fallback image if want
                             />
                           </div>
                         ))}
@@ -1991,7 +1973,7 @@ return (
                   </>
                 )}
 
-                {/* ✅ Save, Edit, and Download Buttons */}
+                {/* Save, Edit, and Download Buttons */}
                 <div className={styles.actionButtons}>
                   {!isEditing && (
                     <>
@@ -2033,7 +2015,7 @@ return (
               </div>
             )}
 
-              {/* ✅ Test Type & Checkout Button Located Outside About Section */}
+              {/* Test Type & Checkout Button Located Outside About Section */}
               <h2 className={styles.testTypeHeader}>Test Type</h2>
               <button className={styles.checkoutButton} onClick={toggleCheckout}>
                 <FaWrench /> Checkout
@@ -2172,7 +2154,7 @@ return (
         options={item.options}
         data={{ type: "draggable-item" }}
         isDropped={isInTopSection}
-        isInBottomSection={true} // ✅ Ensure it knows it's in the bottom section
+        isInBottomSection={true} // Ensure it knows it's in the bottom section
         checkedOptions={item.checkedOptions} // Pass checked state
         onOptionChange={handleOptionChange} // Pass handler
       />
@@ -2189,7 +2171,7 @@ return (
       id={activeId}
       header={(items.find(item => item.id === activeId) || droppedItems.find(item => item.id === activeId))?.header || ""}
       options={(items.find(item => item.id === activeId) || droppedItems.find(item => item.id === activeId))?.options || []}
-      data={{ type: "draggable-item" }} // ✅ Ensure this is added
+      data={{ type: "draggable-item" }}
     />
   ) : null}
 </DragOverlay>
@@ -2200,13 +2182,13 @@ return (
                 <div className={styles.editModeButtons}>
 <button className={styles.saveButton} onClick={() => {
                       handleSaveCheckout();
-                      toggleCheckoutEditMode(); // ✅ Exit edit mode after saving
+                      toggleCheckoutEditMode(); // Exit edit mode after saving
                   }}>
                     <FaCheck /> Save
                   </button>
                   <button className={styles.cancelButton} onClick={() => {
                       handleCancelCheckout();
-                      toggleCheckoutEditMode(); // ✅ Exit edit mode after canceling
+                      toggleCheckoutEditMode(); // Exit edit mode after canceling
                   }}>
                     <FaTimes /> Cancel
                   </button>
@@ -2215,7 +2197,7 @@ return (
             </div>
           )}
           <h2 className={styles.ThreeDModelViewerHeader}>Satellite Model Viewer</h2>
-{/* ✅ Open the 3D Model Viewer for the selected profile */}
+{/* Open the 3D Model Viewer for the selected profile */}
 <button
   className={styles.threeDModelButton}
   onClick={(e) => {

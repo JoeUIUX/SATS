@@ -1856,17 +1856,34 @@ const ServerWindow = ({ zIndex, onMouseDown, onClose, onMinimize, bringWindowToF
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                    children: "Simulation mode will be used if there is no connection"
-                                }, void 0, false, {
+                                    children: [
+                                        "Run SATS Diagnostic Tool",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                            children: "diagnose.js"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
+                                            lineNumber: 581,
+                                            columnNumber: 41
+                                        }, this),
+                                        " to debug"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
                                     lineNumber: 581,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                    children: "Minimise this window to keep the connection while working"
+                                    children: "Simulation mode will be used if there is no connection"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
                                     lineNumber: 582,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                    children: "Minimise this window to keep the ServerWindow in the taskbar while working"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/ServerWindow/ServerWindow.tsx",
+                                    lineNumber: 583,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -2051,7 +2068,7 @@ const ThreeDModelWindow = (props)=>{
             onMouseDown();
         }
     };
-    // Implement a custom close handler that cleans up properly
+    // custom close handler that cleans up properly
     const handleClose = ()=>{
         console.log("🔴 User closing ThreeDModelWindow");
         // Call the provided onClose function
@@ -2071,13 +2088,12 @@ const ThreeDModelWindow = (props)=>{
             console.log(`🔄 Directly setting autoRotate to ${newState}`);
             controlsRef.current.autoRotate = newState;
         }
-        // Also update in threeInstance for other code to reference
+        // update in threeInstance for other code to reference
         if (threeInstanceRef.current) {
             threeInstanceRef.current.autoRotate = newState;
             console.log(`🔄 Auto-rotation ${newState ? 'enabled' : 'disabled'} in threeInstance`);
         }
     };
-    // Add this helper outside your component
     const preventReactTreeCleanup = (targetRef)=>{
         if (!targetRef || !targetRef.current) return;
         // Save any existing DOM content to a document fragment
@@ -2095,7 +2111,7 @@ const ThreeDModelWindow = (props)=>{
             }
         };
     };
-    // Add keyframes animation
+    // keyframes animation
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ThreeDModelWindow.useEffect": ()=>{
             const pulseAnimation = `
@@ -2231,13 +2247,13 @@ const ThreeDModelWindow = (props)=>{
             let isMounted = true;
             // Only execute the fetch if we're showing the window and have an API URL
             if (!showThreeDModelWindow || !API_URL) {
-                // We need to still reset this flag when not visible
+                // need to still reset this flag when not visible
                 if (!showThreeDModelWindow) {
                     hasCalledOnMouseDownRef.current = false;
                 }
                 return;
             }
-            // Skip if we've already fetched data for this profile
+            // Skip if already fetched data for this profile
             if (dataFetchedRef.current && lastProfileIdRef.current === profileId) {
                 console.log(`🔄 Skipping redundant API call for profile ${profileId}`);
                 return;
@@ -3094,7 +3110,7 @@ const ThreeDModelWindow = (props)=>{
                                     children: "Satellite Model Viewer"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1318,
+                                    lineNumber: 1317,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3112,13 +3128,13 @@ const ThreeDModelWindow = (props)=>{
                                     children: "✖"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1319,
+                                    lineNumber: 1318,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                            lineNumber: 1305,
+                            lineNumber: 1304,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3137,7 +3153,7 @@ const ThreeDModelWindow = (props)=>{
                                     children: uploadStatus
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1339,
+                                    lineNumber: 1338,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3169,7 +3185,7 @@ const ThreeDModelWindow = (props)=>{
                                             children: showDetailedStats ? "Hide Stats" : "Show Stats"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1362,
+                                            lineNumber: 1361,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3201,20 +3217,20 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "🔄"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1405,
+                                                    lineNumber: 1404,
                                                     columnNumber: 19
                                                 }, this),
                                                 isAutoRotating ? "Stop Rotation" : "Auto-Rotate"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1385,
+                                            lineNumber: 1384,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1355,
+                                    lineNumber: 1354,
                                     columnNumber: 15
                                 }, this),
                                 showDetailedStats && modelStats.vertices > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3232,7 +3248,7 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "Vertices:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1425,
+                                                    lineNumber: 1424,
                                                     columnNumber: 24
                                                 }, this),
                                                 " ",
@@ -3240,7 +3256,7 @@ const ThreeDModelWindow = (props)=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1425,
+                                            lineNumber: 1424,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3249,7 +3265,7 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "Triangles:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1426,
+                                                    lineNumber: 1425,
                                                     columnNumber: 24
                                                 }, this),
                                                 " ",
@@ -3257,7 +3273,7 @@ const ThreeDModelWindow = (props)=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1426,
+                                            lineNumber: 1425,
                                             columnNumber: 19
                                         }, this),
                                         totalBytes > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3266,7 +3282,7 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "File Size:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1428,
+                                                    lineNumber: 1427,
                                                     columnNumber: 26
                                                 }, this),
                                                 " ",
@@ -3274,13 +3290,13 @@ const ThreeDModelWindow = (props)=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1428,
+                                            lineNumber: 1427,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1418,
+                                    lineNumber: 1417,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3325,7 +3341,7 @@ const ThreeDModelWindow = (props)=>{
                                                             children: "Loading 3D model..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                            lineNumber: 1463,
+                                                            lineNumber: 1462,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3336,13 +3352,13 @@ const ThreeDModelWindow = (props)=>{
                                                             children: loadingProgress > 0 ? `${loadingProgress}% (${formatFileSize(loadingBytes)})` : "Initializing..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                            lineNumber: 1466,
+                                                            lineNumber: 1465,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1462,
+                                                    lineNumber: 1461,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3364,12 +3380,12 @@ const ThreeDModelWindow = (props)=>{
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                        lineNumber: 1481,
+                                                        lineNumber: 1480,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1473,
+                                                    lineNumber: 1472,
                                                     columnNumber: 21
                                                 }, this),
                                                 loadingProgress === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3401,13 +3417,13 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "Retry Loading"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1492,
+                                                    lineNumber: 1491,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1449,
+                                            lineNumber: 1448,
                                             columnNumber: 19
                                         }, this),
                                         loadError && !isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3446,7 +3462,7 @@ const ThreeDModelWindow = (props)=>{
                                                                 r: "10"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                                lineNumber: 1547,
+                                                                lineNumber: 1546,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -3456,7 +3472,7 @@ const ThreeDModelWindow = (props)=>{
                                                                 y2: "12"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                                lineNumber: 1548,
+                                                                lineNumber: 1547,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -3466,31 +3482,31 @@ const ThreeDModelWindow = (props)=>{
                                                                 y2: "16"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                                lineNumber: 1549,
+                                                                lineNumber: 1548,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                        lineNumber: 1546,
+                                                        lineNumber: 1545,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1545,
+                                                    lineNumber: 1544,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     children: loadError
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1552,
+                                                    lineNumber: 1551,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1529,
+                                            lineNumber: 1528,
                                             columnNumber: 19
                                         }, this),
                                         !modelPath && !isLoading && !loadError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3515,7 +3531,7 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "No 3D model available"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1571,
+                                                    lineNumber: 1570,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3526,19 +3542,19 @@ const ThreeDModelWindow = (props)=>{
                                                     children: "Upload a .glb file below"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1572,
+                                                    lineNumber: 1571,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1558,
+                                            lineNumber: 1557,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1434,
+                                    lineNumber: 1433,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3562,7 +3578,7 @@ const ThreeDModelWindow = (props)=>{
                                             children: "Upload 3D Model"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1588,
+                                            lineNumber: 1587,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3577,14 +3593,14 @@ const ThreeDModelWindow = (props)=>{
                                                     children: ".glb"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1593,
+                                                    lineNumber: 1592,
                                                     columnNumber: 27
                                                 }, this),
                                                 " files - Max size: 100MB"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1592,
+                                            lineNumber: 1591,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3616,7 +3632,7 @@ const ThreeDModelWindow = (props)=>{
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1597,
+                                                    lineNumber: 1596,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3638,13 +3654,13 @@ const ThreeDModelWindow = (props)=>{
                                                     children: isLoading ? "Uploading..." : "Upload"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1619,
+                                                    lineNumber: 1618,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1596,
+                                            lineNumber: 1595,
                                             columnNumber: 17
                                         }, this),
                                         selectedFile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3663,13 +3679,13 @@ const ThreeDModelWindow = (props)=>{
                                                             children: selectedFile.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                            lineNumber: 1648,
+                                                            lineNumber: 1647,
                                                             columnNumber: 36
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1648,
+                                                    lineNumber: 1647,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3680,41 +3696,41 @@ const ThreeDModelWindow = (props)=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                                    lineNumber: 1649,
+                                                    lineNumber: 1648,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                            lineNumber: 1641,
+                                            lineNumber: 1640,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                                    lineNumber: 1578,
+                                    lineNumber: 1577,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                            lineNumber: 1336,
+                            lineNumber: 1335,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                    lineNumber: 1287,
+                    lineNumber: 1286,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-                lineNumber: 1281,
+                lineNumber: 1280,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/ModelWindow/ThreeDModelWindow.jsx",
-            lineNumber: 1269,
+            lineNumber: 1268,
             columnNumber: 7
         }, this), portalRef.current);
     } catch (err) {
@@ -3757,6 +3773,7 @@ __turbopack_context__.s({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$draggable$2f$build$2f$cjs$2f$cjs$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-draggable/build/cjs/cjs.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/components/WelcomeWindow/WelcomeWindow.module.css [app-client] (css module)");
@@ -3764,6 +3781,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$rou
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -3795,6 +3813,29 @@ const WelcomeWindow = ({ openToTestList, openServerWindow })=>{
         const timezoneOffset = date.toTimeString().split(' ')[1];
         // update const here accordingly as timezone or timezoneOffset
         return `${day}/${month}/${year} ${hours}:${minutes}:${seconds} (${timezoneOffset})`;
+    };
+    const [logoClickCount, setLogoClickCount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [showSatellite, setShowSatellite] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showPenguin, setShowPenguin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showPenguinPopup, setShowPenguinPopup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const handleLogoClick = ()=>{
+        setLogoClickCount((prev)=>{
+            const newCount = prev + 1;
+            // Every 13 clicks, show BOTH the satellite and penguin
+            if (newCount % 13 === 0) {
+                setShowSatellite(true);
+                setShowPenguin(true);
+                // Hide satellite after 4.5 seconds
+                setTimeout(()=>{
+                    setShowSatellite(false);
+                }, 4500);
+                // Hide penguin after 10.5 seconds
+                setTimeout(()=>{
+                    setShowPenguin(false);
+                }, 10500);
+            }
+            return newCount;
+        });
     };
     // Update the date/time every second
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -3865,24 +3906,25 @@ const WelcomeWindow = ({ openToTestList, openServerWindow })=>{
                             alt: "Satellite Research Centre Logo",
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].logo,
                             draggable: "false",
+                            onClick: handleLogoClick,
                             onDragStart: (e)=>e.preventDefault()
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 109,
+                            lineNumber: 138,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             children: "Satellite Research Centre"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 116,
+                            lineNumber: 146,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             children: "Satellite Automated Testing System"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 117,
+                            lineNumber: 147,
                             columnNumber: 9
                         }, this),
                         dateTime && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3890,13 +3932,13 @@ const WelcomeWindow = ({ openToTestList, openServerWindow })=>{
                             children: dateTime
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 118,
+                            lineNumber: 148,
                             columnNumber: 22
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 108,
+                    lineNumber: 137,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3911,20 +3953,20 @@ const WelcomeWindow = ({ openToTestList, openServerWindow })=>{
                                     children: "Tests to Conduct"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 152,
                                     columnNumber: 11
                                 }, this),
                                 hasTests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].notificationDot
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 158,
                                     columnNumber: 24
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 121,
+                            lineNumber: 151,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3933,28 +3975,79 @@ const WelcomeWindow = ({ openToTestList, openServerWindow })=>{
                             children: "MCC"
                         }, void 0, false, {
                             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                            lineNumber: 130,
+                            lineNumber: 160,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-                    lineNumber: 120,
+                    lineNumber: 150,
                     columnNumber: 7
+                }, this),
+                showSatellite && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        position: 'fixed',
+                        top: '20%',
+                        left: '-500px',
+                        fontSize: '60px',
+                        zIndex: 99999,
+                        animation: 'satelliteBounce 4s ease-out forwards',
+                        pointerEvents: 'none'
+                    },
+                    className: "jsx-fdf6c9ce46fc8822",
+                    children: [
+                        "🛰️",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            id: "fdf6c9ce46fc8822",
+                            children: "@keyframes satelliteBounce{0%{transform:translate(-100px)rotate(0)}12.5%{transform:translate(12.5vw)rotate(45deg)scale(1.05)}25%{transform:translate(25vw)rotate(90deg)scale(1.1)}37.5%{transform:translate(37.5vw)rotate(135deg)scale(1.15)}50%{transform:translate(50vw)rotate(180deg)scale(1.2)}62.5%{transform:translate(62.5vw)rotate(225deg)scale(1.15)}75%{transform:translate(75vw)rotate(270deg)scale(1.1)}87.5%{transform:translate(87.5vw)rotate(315deg)scale(1.05)}to{transform:translate(calc(100vw + 100px))rotate(360deg)scale(1)}}"
+                        }, void 0, false, void 0, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
+                    lineNumber: 169,
+                    columnNumber: 3
+                }, this),
+                showPenguin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        position: 'fixed',
+                        top: '60%',
+                        left: '-500px',
+                        fontSize: '50px',
+                        zIndex: 99998,
+                        animation: 'penguinBounce 10s ease-in-out forwards',
+                        pointerEvents: 'auto',
+                        cursor: 'pointer',
+                        filter: 'drop-shadow(0 0 8px rgba(0, 123, 181, 0.6))'
+                    },
+                    onClick: ()=>{
+                        console.log("If you found the easter egg or if you are reading this, feel free to come say hi!🐧 https://www.linkedin.com/in/joegohguanwei/");
+                    },
+                    className: "jsx-fa850577dd949c1e",
+                    children: [
+                        "🐧",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            id: "fa850577dd949c1e",
+                            children: "@keyframes penguinBounce{0%{transform:translate(-100px)translateY(0)rotate(0)}7.5%{transform:translate(7.5vw)translateY(-30px)rotate(-10deg)}15%{transform:translate(15vw)translateY(0)rotate(10deg)}22.5%{transform:translate(22.5vw)translateY(-40px)rotate(-15deg)}30%{transform:translate(30vw)translateY(0)rotate(15deg)}37.5%{transform:translate(37.5vw)translateY(-35px)rotate(-12deg)}45%{transform:translate(45vw)translateY(0)rotate(12deg)}52.5%{transform:translate(52.5vw)translateY(-30px)rotate(-8deg)}60%{transform:translate(60vw)translateY(0)rotate(8deg)}67.5%{transform:translate(67.5vw)translateY(-25px)rotate(-5deg)}75%{transform:translate(75vw)translateY(0)rotate(5deg)}82.5%{transform:translate(82.5vw)translateY(-20px)rotate(-3deg)}90%{transform:translate(90vw)translateY(0)rotate(3deg)}95%{transform:translate(95vw)translateY(-10px)rotate(-1deg)}to{transform:translate(calc(100vw + 100px))translateY(-10px)rotate(0)}}"
+                        }, void 0, false, void 0, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
+                    lineNumber: 214,
+                    columnNumber: 3
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-            lineNumber: 94,
+            lineNumber: 123,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/WelcomeWindow/WelcomeWindow.tsx",
-        lineNumber: 93,
+        lineNumber: 122,
         columnNumber: 5
     }, this);
 };
-_s(WelcomeWindow, "GT+fBVLvtr611h/1lrIaKb0Pii8=", false, function() {
+_s(WelcomeWindow, "tie0bcRauL/k/IPP6SfGmgA81w8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2f$dist$2f$development$2f$chunk$2d$BAXFHI7N$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNavigate"]
     ];
@@ -4530,7 +4623,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 const FontLoader = ({ fontFamily = 'System Default' })=>{
     _s();
-    // Add a state to track loaded fonts and force re-renders when needed
+    // state to track loaded fonts and force re-renders when needed
     const [loadedFonts, setLoadedFonts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "FontLoader.useEffect": ()=>{

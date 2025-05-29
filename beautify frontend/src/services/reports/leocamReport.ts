@@ -3,6 +3,55 @@ import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, Ta
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 
+// Parameter arrays from leocamCheckout.ts
+const pcsVi = ["HEPS1_PDM2_PCS_V", "HEPS1_PDM2_PCS_I"];
+const gpsVi = ["HEPS1_PDM2_GPS_5V_V", "HEPS1_PDM2_GPS_5V_I"];
+const leocamVi = ["HEPS1_PDM1_OPT_CAM_V", "HEPS1_PDM1_OPT_CAM_I"];
+
+const leocamSet = [
+  "Leocam_Sen_Mode", "Leocam_Sen_PWR", "Leocam_Sen_Line_Frame_Rate", "Leocam_Sen_BIT_DEPTH",
+  "Leocam_Sen_ROI_1", "Leocam_Sen_ROI_2", "Leocam_Sen_ROI_3", "Leocam_Sen_ROI_4",
+  "Leocam_Sen_ROI_5_1", "Leocam_Sen_ROI_5_2", "Leocam_Sen_ROI_5_3", "Leocam_Sen_Gain_Analog",
+  "Leocam_Sen_Scan_Direction", "Leocam_Sen_Test_Pattern_Sel"
+];
+
+const leocamVarStart = [
+  "Leocam_Health_Status", "Leocam_Datetime", 
+  "Leocam_CPU_Voltage_1", "Leocam_CPU_Voltage_2", "Leocam_CPU_Voltage_3", "Leocam_CPU_Voltage_4",
+  "Leocam_CPU_Temp_1", "Leocam_CPU_Temp_2", "Leocam_CPU_Temp_3", "Leocam_CPU_Temp_4"
+];
+
+const leocamVarMiddle = [
+  "Leocam_Int_Temp_1", "Leocam_Int_Temp_2", "Leocam_Int_Temp_3", "Leocam_Int_Temp_4",
+  "Leocam_Int_Temp_5", "Leocam_Int_Temp_6", "Leocam_Int_Temp_7", "Leocam_Int_Temp_8"
+];
+
+const leocamVarConfig = [
+  "Leocam_Sen_PWR", "Leocam_Sen_Mode", "Leocam_Sen_Line_Frame_Rate", "Leocam_Sen_BIT_DEPTH", 
+  "Leocam_Sen_ROI_1", "Leocam_Sen_ROI_2", "Leocam_Sen_ROI_3", "Leocam_Sen_ROI_4", 
+  "Leocam_Sen_ROI_5_1", "Leocam_Sen_ROI_5_2", "Leocam_Sen_ROI_5_3", "Leocam_Sen_Gain_Analog", 
+  "Leocam_Sen_Scan_Direction", "Leocam_Sen_Test_Pattern_Sel"
+];
+
+const leocamVarEnd = [
+  "Leocam_Sen_VOLTAGE", "Leocam_Sen_TEMP_1", "Leocam_Sen_TEMP_2", "Leocam_Sen_Reset"
+];
+
+const leocamDiskVars = [
+  "Leocam_Disk_Used_1", "Leocam_Disk_Used_2", "Leocam_Disk_Used_3",
+  "Leocam_Disk_TEMP_1", "Leocam_Disk_TEMP_2", "Leocam_Disk_TEMP_3", 
+  "Leocam_Disk_Lifetime_1", "Leocam_Disk_Lifetime_2", "Leocam_Disk_Lifetime_3",
+  "Leocam_Disk_Err_Correction_Count_1", "Leocam_Disk_Err_Correction_Count_2", "Leocam_Disk_Err_Correction_Count_3",
+  "Leocam_Disk_Err_Uncorrectable_Count_1", "Leocam_Disk_Err_Uncorrectable_Count_2", "Leocam_Disk_Err_Uncorrectable_Count_3",
+  "Leocam_Disk_Total_Bytes_Read_1", "Leocam_Disk_Total_Bytes_Read_2", "Leocam_Disk_Total_Bytes_Read_3",
+  "Leocam_Disk_Total_Bytes_Written_1", "Leocam_Disk_Total_Bytes_Written_2", "Leocam_Disk_Total_Bytes_Written_3",
+  "Leocam_Disk_List_Datasets", "Leocam_Disk_List_Datafiles_in_Dataset"
+];
+
+const leocamStat = [
+  "PCS_Leocam_Cmd_Count", "PCS_Leocam_Ack_Count", "PCS_Leocam_Timeout_Count", "PCS_Leocam_Error_Count"
+];
+
 /**
  * Generate both Word document and PDF reports for LEOCAM checkout results
  * 
@@ -183,6 +232,30 @@ async function generateLEOCAMWordReport(results: any): Promise<string> {
           spacing: { after: 200, before: 200 }
         }),
         
+        // Page break for Raw Parameters
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        
+        // Raw Parameters Section
+        new Paragraph({
+          text: "* Raw Parameter Values:",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        
+        ...createRawParametersParagraphs(results),
+        
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200, before: 200 }
+        }),
+        
         // Test Completion Summary
         new Paragraph({
           text: "* Test Completion Summary:",
@@ -351,8 +424,6 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
     pdf.setFont('helvetica', 'normal');
     if (results.leocamConfig) {
       const config = results.leocamConfig;
-      const roiValues = config.sensorRoi || [];
-      const roiStr = roiValues.length > 0 ? roiValues.join('') : 'N/A';
       
       pdf.text(`Sensor Mode: ${config.sensorMode || 'N/A'}`, margin, yPosition);
       yPosition += 6;
@@ -362,7 +433,13 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       yPosition += 6;
       pdf.text(`Sensor Bit Depth: ${config.sensorBitDepth || 'N/A'}`, margin, yPosition);
       yPosition += 6;
-      pdf.text(`Sensor ROI: ${roiStr}`, margin, yPosition);
+      pdf.text(`Sensor ROI 1: ${config.sensorRoi1 || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Sensor ROI 2: ${config.sensorRoi2 || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Sensor ROI 3: ${config.sensorRoi3 || 'N/A'}`, margin, yPosition);
+      yPosition += 6;
+      pdf.text(`Sensor ROI 4: ${config.sensorRoi4 || 'N/A'}`, margin, yPosition);
       yPosition += 6;
       pdf.text(`Sensor Gain Analog: ${config.sensorGainAnalog || 'N/A'}`, margin, yPosition);
       yPosition += 6;
@@ -390,7 +467,7 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       
       pdf.text(`Health Status: ${telemetry.healthStatus || 'N/A'}`, margin, yPosition);
       yPosition += 6;
-      pdf.text(`Current Date Time: ${telemetry.dateTime || 'N/A'}`, margin, yPosition);
+      pdf.text(`Current Date Time: ${telemetry.datetime || 'N/A'}`, margin, yPosition);
       yPosition += 8;
       
       // CPU Voltages
@@ -411,7 +488,7 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       
       // Internal Temperatures
       const internalTemperatures = telemetry.internalTemperatures || [];
-      for (let i = 0; i < Math.min(internalTemperatures.length, 4); i++) {
+      for (let i = 0; i < Math.min(internalTemperatures.length, 8); i++) {
         checkNewPage(6);
         pdf.text(`Internal Temperature ${i + 1}: ${internalTemperatures[i] || 'N/A'} °C`, margin, yPosition);
         yPosition += 6;
@@ -423,7 +500,7 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       
       // Sensor Temperatures
       const sensorTemperatures = telemetry.sensorTemperatures || [];
-      for (let i = 0; i < Math.min(sensorTemperatures.length, 4); i++) {
+      for (let i = 0; i < Math.min(sensorTemperatures.length, 2); i++) {
         checkNewPage(6);
         pdf.text(`Sensor Temperature ${i + 1}: ${sensorTemperatures[i] || 'N/A'} °C`, margin, yPosition);
         yPosition += 6;
@@ -433,11 +510,18 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       pdf.text(`Sensor Reset: ${telemetry.sensorReset || 'N/A'}`, margin, yPosition);
       yPosition += 8;
       
-      // Disk data (limited to prevent overflow)
+      // Disk data
       const diskUsed = telemetry.diskUsed || [];
-      for (let i = 0; i < Math.min(diskUsed.length, 2); i++) {
+      for (let i = 0; i < Math.min(diskUsed.length, 3); i++) {
         checkNewPage(6);
         pdf.text(`Disk Used ${i + 1}: ${diskUsed[i] || 'N/A'} Kbytes`, margin, yPosition);
+        yPosition += 6;
+      }
+      
+      const diskTemperatures = telemetry.diskTemperatures || [];
+      for (let i = 0; i < Math.min(diskTemperatures.length, 3); i++) {
+        checkNewPage(6);
+        pdf.text(`Disk Temperature ${i + 1}: ${diskTemperatures[i] || 'N/A'} °C`, margin, yPosition);
         yPosition += 6;
       }
       
@@ -511,6 +595,20 @@ async function generateLEOCAMPDFReport(results: any): Promise<string> {
       pdf.text('Final voltage test information not available', margin, yPosition);
       yPosition += 6;
     }
+    yPosition += 15;
+
+    // Raw Parameters Section
+    checkNewPage(40);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Raw Parameter Values', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(9); // Smaller font for parameter tables
+    pdf.setFont('helvetica', 'normal');
+    
+    // Add raw parameters to PDF
+    yPosition = addRawParametersToPDF(pdf, results, margin, yPosition, pageHeight, checkNewPage);
 
     // Add footer to all pages
     const totalPages = pdf.internal.pages.length - 1;
@@ -544,7 +642,7 @@ function createVoltageOnParagraphs(results: any): Paragraph[] {
   const gpsStatus = results.voltageTests?.gps?.passInitial ? "[PASS]" : "[FAIL]";
   
   const pcsVoltage = parseFloat(results.voltageTests?.pcs?.voltage || "0").toFixed(3);
-  const pcsCurrent = parseFloat(results.voltageTests?.pcs?.current || "0").toFixed(3);
+const pcsCurrent = parseFloat(results.voltageTests?.pcs?.current || "0").toFixed(3);
   const pcsStatus = results.voltageTests?.pcs?.passInitial ? "[PASS]" : "[FAIL]";
   
   const leocamVoltage = parseFloat(results.voltageTests?.leocam?.voltage || "0").toFixed(3);
@@ -568,15 +666,19 @@ function createVoltageOnParagraphs(results: any): Paragraph[] {
  */
 function createConfigurationParagraphs(results: any): Paragraph[] {
   const config = results.leocamConfig || {};
-  const roiValues = config.sensorRoi || [];
-  const roiStr = roiValues.length > 0 ? roiValues.join('') : 'N/A';
   
   return [
     new Paragraph(`Sensor Mode                 : ${config.sensorMode || 'N/A'}`),
     new Paragraph(`Sensor Power                : ${config.sensorPower || 'N/A'}`),
     new Paragraph(`Sensor Line Frame Rate      : ${config.sensorLineFrameRate || 'N/A'}`),
     new Paragraph(`Sensor Bit Depth            : ${config.sensorBitDepth || 'N/A'}`),
-    new Paragraph(`Sensor ROI                  : ${roiStr}`),
+    new Paragraph(`Sensor ROI 1                : ${config.sensorRoi1 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 2                : ${config.sensorRoi2 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 3                : ${config.sensorRoi3 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 4                : ${config.sensorRoi4 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 5_1              : ${config.sensorRoi5_1 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 5_2              : ${config.sensorRoi5_2 || 'N/A'}`),
+    new Paragraph(`Sensor ROI 5_3              : ${config.sensorRoi5_3 || 'N/A'}`),
     new Paragraph(`Sensor Gain Analog          : ${config.sensorGainAnalog || 'N/A'}`),
     new Paragraph(`Sensor Scan Direction       : ${config.sensorScanDirection || 'N/A'}`),
     new Paragraph(`Sensor Test Pattern Select  : ${config.sensorTestPatternSel || 'N/A'}`)
@@ -592,23 +694,23 @@ function createTelemetryParagraphs(results: any): Paragraph[] {
   
   // Add Health Status and DateTime
   paragraphs.push(new Paragraph(`Health Status                       : ${telemetry.healthStatus || 'N/A'}`));
-  paragraphs.push(new Paragraph(`Current Date Time                   : ${telemetry.dateTime || 'N/A'}`));
+  paragraphs.push(new Paragraph(`Current Date Time                   : ${telemetry.datetime || 'N/A'}`));
   
   // Add CPU Voltages
   const cpuVoltages = telemetry.cpuVoltages || [];
-  for (let i = 0; i < cpuVoltages.length; i++) {
+  for (let i = 0; i < cpuVoltages.length && i < 4; i++) {
     paragraphs.push(new Paragraph(`CPU Voltage ${i + 1}                       : ${cpuVoltages[i] || 'N/A'} V`));
   }
   
   // Add CPU Temperatures
   const cpuTemperatures = telemetry.cpuTemperatures || [];
-  for (let i = 0; i < cpuTemperatures.length; i++) {
+  for (let i = 0; i < cpuTemperatures.length && i < 4; i++) {
     paragraphs.push(new Paragraph(`CPU Temperature ${i + 1}                   : ${cpuTemperatures[i] || 'N/A'} deg C`));
   }
   
   // Add Internal Temperatures
   const internalTemperatures = telemetry.internalTemperatures || [];
-  for (let i = 0; i < internalTemperatures.length; i++) {
+  for (let i = 0; i < internalTemperatures.length && i < 8; i++) {
     paragraphs.push(new Paragraph(`Internal Temperature ${i + 1}              : ${internalTemperatures[i] || 'N/A'} deg C`));
   }
   
@@ -616,7 +718,7 @@ function createTelemetryParagraphs(results: any): Paragraph[] {
   paragraphs.push(new Paragraph(`Sensor Voltage                      : ${telemetry.sensorVoltage || 'N/A'} V`));
   
   const sensorTemperatures = telemetry.sensorTemperatures || [];
-  for (let i = 0; i < sensorTemperatures.length; i++) {
+  for (let i = 0; i < sensorTemperatures.length && i < 2; i++) {
     paragraphs.push(new Paragraph(`Sensor Temperature ${i + 1}                : ${sensorTemperatures[i] || 'N/A'} deg C`));
   }
   
@@ -624,37 +726,37 @@ function createTelemetryParagraphs(results: any): Paragraph[] {
   
   // Add disk data
   const diskUsed = telemetry.diskUsed || [];
-  for (let i = 0; i < diskUsed.length; i++) {
+  for (let i = 0; i < diskUsed.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Used ${i + 1}                         : ${diskUsed[i] || 'N/A'} Kbytes`));
   }
   
   const diskTemperatures = telemetry.diskTemperatures || [];
-  for (let i = 0; i < diskTemperatures.length; i++) {
+  for (let i = 0; i < diskTemperatures.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Temperature ${i + 1}                  : ${diskTemperatures[i] || 'N/A'} deg C`));
   }
   
   const diskLifetimes = telemetry.diskLifetimes || [];
-  for (let i = 0; i < diskLifetimes.length; i++) {
+  for (let i = 0; i < diskLifetimes.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Lifetime ${i + 1}                     : ${diskLifetimes[i] || 'N/A'} hours`));
   }
   
   const diskErrorCorrectionCounts = telemetry.diskErrorCorrectionCounts || [];
-  for (let i = 0; i < diskErrorCorrectionCounts.length; i++) {
+  for (let i = 0; i < diskErrorCorrectionCounts.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Error Correction Count ${i + 1}       : ${diskErrorCorrectionCounts[i] || 'N/A'}`));
   }
   
   const diskErrorUncorrectableCounts = telemetry.diskErrorUncorrectableCounts || [];
-  for (let i = 0; i < diskErrorUncorrectableCounts.length; i++) {
+  for (let i = 0; i < diskErrorUncorrectableCounts.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Error Uncorrectable Count ${i + 1}    : ${diskErrorUncorrectableCounts[i] || 'N/A'}`));
   }
   
   const diskTotalBytesRead = telemetry.diskTotalBytesRead || [];
-  for (let i = 0; i < diskTotalBytesRead.length; i++) {
+  for (let i = 0; i < diskTotalBytesRead.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Total Bytes Read ${i + 1}             : ${diskTotalBytesRead[i] || 'N/A'} MiB`));
   }
 
   const diskTotalBytesWritten = telemetry.diskTotalBytesWritten || [];
-  for (let i = 0; i < diskTotalBytesWritten.length; i++) {
+  for (let i = 0; i < diskTotalBytesWritten.length && i < 3; i++) {
     paragraphs.push(new Paragraph(`Disk Total Bytes Written ${i + 1}          : ${diskTotalBytesWritten[i] || 'N/A'} MiB`));
   }
   
@@ -707,12 +809,212 @@ function createVoltageOffParagraphs(results: any): Paragraph[] {
 }
 
 /**
-* Utility function to pad a string to a specific length
-* 
-* @param value The string value to pad
-* @param length The desired length
-* @returns The padded string
-*/
+ * Create paragraphs for the Raw Parameters section
+ */
+function createRawParametersParagraphs(results: any): Paragraph[] {
+  const rawParams = results.rawParameters || {};
+  const paragraphs: Paragraph[] = [];
+  
+  // Add section header
+  paragraphs.push(new Paragraph({
+    text: "All raw parameter values as read from the hardware:",
+    spacing: { after: 100 }
+  }));
+  
+  // Voltage and Current Parameters
+  paragraphs.push(new Paragraph({
+    text: "Voltage and Current Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  [...pcsVi, ...gpsVi, ...leocamVi].forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Sensor Configuration Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Sensor Configuration Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamSet.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Telemetry Start Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Telemetry Start Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamVarStart.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Internal Temperature Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Internal Temperature Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamVarMiddle.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Configuration Readback Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Configuration Readback Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamVarConfig.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Sensor End Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Sensor End Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamVarEnd.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Disk Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Disk Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamDiskVars.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  // LEOCAM Statistics Parameters
+  paragraphs.push(new Paragraph({
+    text: "LEOCAM Statistics Parameters:",
+    spacing: { before: 100, after: 50 }
+  }));
+  
+  leocamStat.forEach(param => {
+    paragraphs.push(new Paragraph(`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+  });
+  
+  return paragraphs;
+}
+
+/**
+ * Add raw parameters to PDF
+ */
+function addRawParametersToPDF(pdf: any, results: any, margin: number, startYPosition: number, pageHeight: number, checkNewPage: Function): number {
+  const rawParams = results.rawParameters || {};
+  let yPosition = startYPosition;
+  
+  // Helper function to add a section header
+  const addSectionHeader = (title: string) => {
+    // Check if we need more space for header + at least 3 parameter lines
+    if (yPosition + 25 > pageHeight - 30) {
+      pdf.addPage();
+      yPosition = 20;
+    }
+    
+    pdf.setFontSize(11);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text(title, margin, yPosition);
+    yPosition += 8;
+    pdf.setFontSize(9);
+    pdf.setFont('helvetica', 'normal');
+  };
+  
+  // Helper function to add parameters with better page break handling
+  const addParameters = (params: string[]) => {
+    params.forEach(param => {
+      // Check if we need a new page (allow space for parameter line)
+      if (yPosition + 6 > pageHeight - 30) {
+        pdf.addPage();
+        yPosition = 20;
+      }
+      
+      const value = rawParams[param] || 'N/A';
+      // Truncate very long parameter names/values to fit on page
+      const truncatedParam = param.length > 40 ? param.substring(0, 37) + '...' : param;
+      const truncatedValue = value.toString().length > 30 ? value.toString().substring(0, 27) + '...' : value;
+      
+      pdf.text(`${truncatedParam}: ${truncatedValue}`, margin, yPosition);
+      yPosition += 5;
+    });
+    yPosition += 3; // Add small gap after each section
+  };
+  
+  try {
+    // Voltage and Current Parameters
+    addSectionHeader('Voltage and Current Parameters:');
+    addParameters([...pcsVi, ...gpsVi, ...leocamVi]);
+    
+    // LEOCAM Sensor Configuration Parameters  
+    addSectionHeader('LEOCAM Sensor Configuration Parameters:');
+    addParameters(leocamSet);
+    
+    // LEOCAM Telemetry Start Parameters
+    addSectionHeader('LEOCAM Telemetry Start Parameters:');
+    addParameters(leocamVarStart);
+    
+    // LEOCAM Internal Temperature Parameters
+    addSectionHeader('LEOCAM Internal Temperature Parameters:');
+    addParameters(leocamVarMiddle);
+    
+    // LEOCAM Configuration Readback Parameters
+    addSectionHeader('LEOCAM Configuration Readback Parameters:');
+    addParameters(leocamVarConfig);
+    
+    // LEOCAM Sensor End Parameters
+    addSectionHeader('LEOCAM Sensor End Parameters:');
+    addParameters(leocamVarEnd);
+    
+    // LEOCAM Disk Parameters (split into smaller chunks due to length)
+    addSectionHeader('LEOCAM Disk Usage Parameters:');
+    addParameters(leocamDiskVars.filter(param => param.includes('Used') || param.includes('TEMP')));
+    
+    addSectionHeader('LEOCAM Disk Lifetime Parameters:');
+    addParameters(leocamDiskVars.filter(param => param.includes('Lifetime')));
+    
+    addSectionHeader('LEOCAM Disk Error Parameters:');
+    addParameters(leocamDiskVars.filter(param => param.includes('Err')));
+    
+    addSectionHeader('LEOCAM Disk I/O Parameters:');
+    addParameters(leocamDiskVars.filter(param => param.includes('Bytes')));
+    
+    addSectionHeader('LEOCAM Disk List Parameters:');
+    addParameters(leocamDiskVars.filter(param => param.includes('List')));
+    
+    // LEOCAM Statistics Parameters
+    addSectionHeader('LEOCAM Statistics Parameters:');
+    addParameters(leocamStat);
+    
+  } catch (error) {
+    console.error('Error adding raw parameters to PDF:', error);
+    // Add error message to PDF
+    if (yPosition + 12 > pageHeight - 30) {
+      pdf.addPage();
+      yPosition = 20;
+    }
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('Error: Some raw parameters could not be displayed', margin, yPosition);
+    yPosition += 10;
+  }
+  
+  return yPosition;
+}
+
+/**
+ * Utility function to pad a string to a specific length
+ * 
+ * @param value The string value to pad
+ * @param length The desired length
+ * @returns The padded string
+ */
 function padString(value: string, length: number): string {
   if (!value) return ''.padStart(length, ' ');
   return value.padStart(length, ' ');

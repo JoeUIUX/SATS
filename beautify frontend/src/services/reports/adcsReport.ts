@@ -129,6 +129,35 @@ async function generateADCSWordReport(results: any): Promise<string> {
           pageBreakBefore: true
         }),
         
+        // ADCS Command Status section
+        new Paragraph({
+          text: "* ADCS Command Status :",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        
+        // Command status table
+        ...(results.command ? [createCommandStatusTable(results)] : [new Paragraph({
+          text: "Command status information not available",
+          spacing: { after: 100 }
+        })]),
+        
+        // Separator
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200 }
+        }),
+        
+        // Page break
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        
         // ADCS Telemetry section
         new Paragraph({
           text: "* ADCS Telemetry :",
@@ -182,6 +211,12 @@ async function generateADCSWordReport(results: any): Promise<string> {
           spacing: { after: 200 }
         }),
         
+        // Page break
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        
         // Voltage Current Summary after power off section
         new Paragraph({
           text: "* Voltage Current Summary (After Power Off) :",
@@ -210,6 +245,35 @@ async function generateADCSWordReport(results: any): Promise<string> {
           text: `ADCS Reaction Wheel Current : ${formatCurrent(results.vi?.adcsRwCurrent?.value)} A`,
           spacing: { after: 100 }
         }),
+        
+        // Separator
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 200 }
+        }),
+        
+        // Page break
+        new Paragraph({
+          text: "",
+          pageBreakBefore: true
+        }),
+        
+        // Raw Parameters section
+        new Paragraph({
+          text: "* Raw Parameter Values :",
+          heading: HeadingLevel.HEADING_2,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
+          spacing: { after: 100 }
+        }),
+        
+        // Raw parameters table
+        ...(results.rawParameters ? [createRawParametersTable(results)] : [new Paragraph({
+          text: "Raw parameter data not available",
+          spacing: { after: 100 }
+        })]),
         
         // Separator
         new Paragraph({
@@ -306,6 +370,26 @@ async function generateADCSPDFReport(results: any): Promise<string> {
       return false;
     };
 
+    // Helper function to add text with proper wrapping
+    const addWrappedText = (text: string, x: number = margin, maxWidth: number = contentWidth) => {
+      checkNewPage(8);
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      
+      // Split text if it's too long
+      const lines = pdf.splitTextToSize(text, maxWidth);
+      
+      if (Array.isArray(lines)) {
+        lines.forEach((line: string) => {
+          pdf.text(line, x, yPosition);
+          yPosition += 6;
+        });
+      } else {
+        pdf.text(lines, x, yPosition);
+        yPosition += 6;
+      }
+    };
+
     // Title
     pdf.setFontSize(18);
     pdf.setFont('helvetica', 'bold');
@@ -320,14 +404,11 @@ async function generateADCSPDFReport(results: any): Promise<string> {
 
     // Test metadata
     pdf.setFontSize(10);
-    pdf.text(`Test Date: ${now.toLocaleDateString()}`, margin, yPosition);
-    yPosition += 6;
-    pdf.text(`Test Time: ${now.toLocaleTimeString()}`, margin, yPosition);
-    yPosition += 6;
-    pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`, margin, yPosition);
-    yPosition += 6;
-    pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
-    yPosition += 15;
+    addWrappedText(`Test Date: ${now.toLocaleDateString()}`);
+    addWrappedText(`Test Time: ${now.toLocaleTimeString()}`);
+    addWrappedText(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`);
+    addWrappedText(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`);
+    yPosition += 10;
 
     // Add a separator line
     pdf.line(margin, yPosition, pageWidth - margin, yPosition);
@@ -344,19 +425,40 @@ async function generateADCSPDFReport(results: any): Promise<string> {
     pdf.setFont('helvetica', 'normal');
     if (results.vi) {
       const viData = results.vi;
-      pdf.text(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltage?.value)} V    ${formatStatus(viData.adcsIfVoltage?.status)}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltage?.value)} V    ${formatStatus(viData.adcsRwVoltage?.status)}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`, margin, yPosition);
-      yPosition += 6;
+      addWrappedText(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltage?.value)} V    ${formatStatus(viData.adcsIfVoltage?.status)}`);
+      addWrappedText(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`);
+      addWrappedText(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltage?.value)} V    ${formatStatus(viData.adcsRwVoltage?.status)}`);
+      addWrappedText(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`);
     } else {
-      pdf.text('Voltage and current information not available', margin, yPosition);
-      yPosition += 6;
+      addWrappedText('Voltage and current information not available');
     }
+    yPosition += 5;
+
+    // Command Status Section
+    checkNewPage(50);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('ADCS Command Status', margin, yPosition);
     yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    if (results.command && results.commandResults) {
+      addWrappedText(`Overall Command Status: ${formatCommandStatus(results.command.status)}`);
+      yPosition += 2;
+      
+      const cmdResults = results.commandResults;
+      if (cmdResults.length >= 8) {
+        addWrappedText('Command Counters (Before -> After):');
+        addWrappedText(`  TX Count:     ${cmdResults[0]} -> ${cmdResults[4]}`, margin + 5);
+        addWrappedText(`  ACK Count:    ${cmdResults[1]} -> ${cmdResults[5]}`, margin + 5);
+        addWrappedText(`  Timeout Count: ${cmdResults[2]} -> ${cmdResults[6]}`, margin + 5);
+        addWrappedText(`  Error Count:   ${cmdResults[3]} -> ${cmdResults[7]}`, margin + 5);
+      }
+    } else {
+      addWrappedText('Command status information not available');
+    }
+    yPosition += 5;
 
     // ADCS Telemetry Section
     checkNewPage(60);
@@ -368,31 +470,23 @@ async function generateADCSPDFReport(results: any): Promise<string> {
     pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
     if (results.command) {
-      pdf.text(`TLM 128: -- ${formatCommandStatus(results.command.status)}`, margin, yPosition);
-      yPosition += 8;
+      addWrappedText(`TLM 128: -- ${formatCommandStatus(results.command.status)}`);
+      yPosition += 2;
     }
 
     if (results.telemetry) {
       const telemetryData = results.telemetry;
-      pdf.text(`Node type identifier:        ${telemetryData.identifier || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Program type identifier:     ${telemetryData.identifier || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Interface version:           ${telemetryData.interfaceVersion || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Firmware version (Major):    ${telemetryData.fwVersionMajor || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Firmware version (Minor):    ${telemetryData.fwVersionMinor || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Runtime (seconds):           ${telemetryData.runtimeSec || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`Runtime (milliseconds):      ${telemetryData.runtimeMiliSec || 'N/A'}`, margin, yPosition);
-      yPosition += 6;
+      addWrappedText(`Node type identifier:        ${telemetryData.identifier || 'N/A'}`);
+      addWrappedText(`Program type identifier:     ${telemetryData.identifier || 'N/A'}`);
+      addWrappedText(`Interface version:           ${telemetryData.interfaceVersion || 'N/A'}`);
+      addWrappedText(`Firmware version (Major):    ${telemetryData.fwVersionMajor || 'N/A'}`);
+      addWrappedText(`Firmware version (Minor):    ${telemetryData.fwVersionMinor || 'N/A'}`);
+      addWrappedText(`Runtime (seconds):           ${telemetryData.runtimeSec || 'N/A'}`);
+      addWrappedText(`Runtime (milliseconds):      ${telemetryData.runtimeMiliSec || 'N/A'}`);
     } else {
-      pdf.text('Telemetry information not available', margin, yPosition);
-      yPosition += 6;
+      addWrappedText('Telemetry information not available');
     }
-    yPosition += 10;
+    yPosition += 5;
 
     // Voltage Current Summary After Power Off Section
     checkNewPage(50);
@@ -405,19 +499,86 @@ async function generateADCSPDFReport(results: any): Promise<string> {
     pdf.setFont('helvetica', 'normal');
     if (results.vi) {
       const viData = results.vi;
-      pdf.text(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltageOff?.value)} V    ${formatStatus(viData.adcsIfVoltageOff?.status)}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltageOff?.value)} V    ${formatStatus(viData.adcsRwVoltageOff?.status)}`, margin, yPosition);
-      yPosition += 6;
-      pdf.text(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`, margin, yPosition);
-      yPosition += 6;
+      addWrappedText(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltageOff?.value)} V    ${formatStatus(viData.adcsIfVoltageOff?.status)}`);
+      addWrappedText(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`);
+      addWrappedText(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltageOff?.value)} V    ${formatStatus(viData.adcsRwVoltageOff?.status)}`);
+      addWrappedText(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`);
     } else {
-      pdf.text('Power off voltage and current information not available', margin, yPosition);
-      yPosition += 6;
+      addWrappedText('Power off voltage and current information not available');
     }
-    yPosition += 15;
+    yPosition += 10;
+
+    // Raw Parameters Section
+    checkNewPage(80);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Raw Parameter Values', margin, yPosition);
+    yPosition += 10;
+
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    if (results.rawParameters) {
+      addWrappedText('Voltage & Current Parameters:');
+      yPosition += 2;
+      
+      const adcsVi = ["HEPS1_PDM2_ADCS_IF_V", "HEPS1_PDM2_ADCS-IF_I", "HEPS1_PDM2_ADCS_RW_V", "HEPS1_PDM2_ADCS_RW_I"];
+      adcsVi.forEach(param => {
+        if (results.rawParameters[param] !== undefined) {
+          addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+        }
+      });
+      
+      yPosition += 3;
+      checkNewPage(40);
+      addWrappedText('Telemetry Parameters:');
+      yPosition += 2;
+      
+      const adcsTlm128 = [
+        "ADCS1_TLM_Identifier", "ADCS1_TLM_InterfaceVer", "ADCS1_TLM_IdFwVerMajor", "ADCS1_TLM_IdFwVerMinor",
+        "ADCS1_TLM_RuntimeSec", "ADCS1_TLM_RuntimeMiliSec"
+      ];
+      adcsTlm128.forEach(param => {
+        if (results.rawParameters[param] !== undefined) {
+          addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+        }
+      });
+      
+      yPosition += 3;
+      checkNewPage(40);
+      addWrappedText('Command Status Parameters (Before):');
+      yPosition += 2;
+      
+      const adcsStat = ["OBC1_Itc_Adcs_Tm_TxCount", "OBC1_Itc_Adcs_Tm_AckCount", "OBC1_Itc_Adcs_Tm_TimeoutCount", "OBC1_Itc_Adcs_Tm_ErrCount"];
+      adcsStat.forEach(param => {
+        if (results.rawParameters[`${param}_before`] !== undefined) {
+          addWrappedText(`  ${param}_before: ${results.rawParameters[`${param}_before`]}`, margin + 5, contentWidth - 10);
+        }
+      });
+      
+      yPosition += 3;
+      addWrappedText('Command Status Parameters (After):');
+      yPosition += 2;
+      
+      adcsStat.forEach(param => {
+        if (results.rawParameters[`${param}_after`] !== undefined) {
+          addWrappedText(`  ${param}_after: ${results.rawParameters[`${param}_after`]}`, margin + 5, contentWidth - 10);
+        }
+      });
+      
+      yPosition += 3;
+      addWrappedText('Power Control Parameters:');
+      yPosition += 2;
+      
+      const powerParams = ["OBC1_Ch_ExtReqOn_1", "OBC1_Ch_ExtReqOn_2", "OBC1_Ch_ExtReqOff_1", "OBC1_Ch_ExtReqOff_2", "OBC1_Adcs_TlmID", "OBC1_Adcs_Control"];
+      powerParams.forEach(param => {
+        if (results.rawParameters[param] !== undefined) {
+          addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+        }
+      });
+    } else {
+      addWrappedText('Raw parameter data not available');
+    }
+    yPosition += 10;
 
     // Test Completion Summary
     checkNewPage(30);
@@ -428,9 +589,8 @@ async function generateADCSPDFReport(results: any): Promise<string> {
 
     pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
-    pdf.text(results.error ? `Test completed with errors: ${results.error}` : 'All tests completed successfully', margin, yPosition);
-    yPosition += 6;
-    pdf.text(`Report generated: ${now.toLocaleString()}`, margin, yPosition);
+    addWrappedText(results.error ? `Test completed with errors: ${results.error}` : 'All tests completed successfully');
+    addWrappedText(`Report generated: ${now.toLocaleString()}`);
 
     // Add footer to all pages
     const totalPages = pdf.internal.pages.length - 1;
@@ -451,6 +611,140 @@ async function generateADCSPDFReport(results: any): Promise<string> {
     console.error('❌ Error generating ADCS PDF report:', error);
     throw new Error(`Failed to generate ADCS PDF report: ${error instanceof Error ? error.message : String(error)}`);
   }
+}
+
+/**
+ * Helper function to create command status table for Word document
+ */
+function createCommandStatusTable(results: any): Table {
+  const cmdResults = results.commandResults || [];
+  
+  if (cmdResults.length < 8) {
+    return new Table({
+      rows: [
+        new TableRow({
+          children: [
+            new TableCell({
+              children: [new Paragraph('Command status data incomplete')],
+              width: { size: 100, type: WidthType.PERCENTAGE }
+            })
+          ]
+        })
+      ],
+      width: { size: 100, type: WidthType.PERCENTAGE }
+    });
+  }
+  
+  const rows = [
+    ['Counter Type', 'Before Command', 'After Command', 'Difference'],
+    ['TX Count', cmdResults[0] || 'N/A', cmdResults[4] || 'N/A', String((parseInt(cmdResults[4] || '0') - parseInt(cmdResults[0] || '0')) || 0)],
+    ['ACK Count', cmdResults[1] || 'N/A', cmdResults[5] || 'N/A', String((parseInt(cmdResults[5] || '0') - parseInt(cmdResults[1] || '0')) || 0)],
+    ['Timeout Count', cmdResults[2] || 'N/A', cmdResults[6] || 'N/A', String((parseInt(cmdResults[6] || '0') - parseInt(cmdResults[2] || '0')) || 0)],
+    ['Error Count', cmdResults[3] || 'N/A', cmdResults[7] || 'N/A', String((parseInt(cmdResults[7] || '0') - parseInt(cmdResults[3] || '0')) || 0)],
+    ['Overall Status', '', '', formatCommandStatus(results.command?.status)]
+  ].map((row, index) => new TableRow({
+    children: row.map(cell => new TableCell({
+      children: [new Paragraph({
+        text: cell,
+        run: index === 0 ? { bold: true } : undefined // Make header row bold
+      })],
+      width: { size: 25, type: WidthType.PERCENTAGE }
+    }))
+  }));
+
+  return new Table({
+    rows,
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: { style: BorderStyle.SINGLE, size: 1 },
+      bottom: { style: BorderStyle.SINGLE, size: 1 },
+      left: { style: BorderStyle.SINGLE, size: 1 },
+      right: { style: BorderStyle.SINGLE, size: 1 },
+      insideHorizontal: { style: BorderStyle.SINGLE, size: 1 },
+      insideVertical: { style: BorderStyle.SINGLE, size: 1 }
+    }
+  });
+}
+
+/**
+ * Helper function to create raw parameters table for Word document
+ */
+function createRawParametersTable(results: any): Table {
+  const rawParams = results.rawParameters || {};
+  
+  // Define parameter groups
+  const parameterGroups = [
+    {
+      title: 'Voltage & Current Parameters',
+      params: ["HEPS1_PDM2_ADCS_IF_V", "HEPS1_PDM2_ADCS-IF_I", "HEPS1_PDM2_ADCS_RW_V", "HEPS1_PDM2_ADCS_RW_I"]
+    },
+    {
+      title: 'Telemetry Parameters',
+      params: ["ADCS1_TLM_Identifier", "ADCS1_TLM_InterfaceVer", "ADCS1_TLM_IdFwVerMajor", "ADCS1_TLM_IdFwVerMinor", "ADCS1_TLM_RuntimeSec", "ADCS1_TLM_RuntimeMiliSec"]
+    },
+    {
+      title: 'Command Status Parameters',
+      params: ["OBC1_Itc_Adcs_Tm_TxCount", "OBC1_Itc_Adcs_Tm_AckCount", "OBC1_Itc_Adcs_Tm_TimeoutCount", "OBC1_Itc_Adcs_Tm_ErrCount"]
+    }
+  ];
+  
+  const tableRows: TableRow[] = [];
+  
+  // Add header row
+  tableRows.push(new TableRow({
+    children: [
+      new TableCell({
+        children: [new Paragraph({ text: 'Parameter', run: { bold: true } })],
+        width: { size: 70, type: WidthType.PERCENTAGE }
+      }),
+      new TableCell({
+        children: [new Paragraph({ text: 'Value', run: { bold: true } })],
+        width: { size: 30, type: WidthType.PERCENTAGE }
+      })
+    ]
+  }));
+  
+  // Add parameters by group
+  parameterGroups.forEach(group => {
+    // Add group header
+    tableRows.push(new TableRow({
+      children: [
+        new TableCell({
+          children: [new Paragraph({ text: group.title, run: { bold: true, italics: true } })],
+          columnSpan: 2
+        })
+      ]
+    }));
+    
+// Add parameters in this group
+    group.params.forEach(param => {
+      tableRows.push(new TableRow({
+        children: [
+          new TableCell({
+            children: [new Paragraph(param)],
+            width: { size: 70, type: WidthType.PERCENTAGE }
+          }),
+          new TableCell({
+            children: [new Paragraph(rawParams[param] || 'N/A')],
+            width: { size: 30, type: WidthType.PERCENTAGE }
+          })
+        ]
+      }));
+    });
+  });
+
+  return new Table({
+    rows: tableRows,
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: { style: BorderStyle.SINGLE, size: 1 },
+      bottom: { style: BorderStyle.SINGLE, size: 1 },
+      left: { style: BorderStyle.SINGLE, size: 1 },
+      right: { style: BorderStyle.SINGLE, size: 1 },
+      insideHorizontal: { style: BorderStyle.SINGLE, size: 1 },
+      insideVertical: { style: BorderStyle.SINGLE, size: 1 }
+    }
+  });
 }
 
 /**

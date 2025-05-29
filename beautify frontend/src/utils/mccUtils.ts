@@ -121,7 +121,7 @@ if (message.includes('.value=')) {
     // This would contain the read logic for parameters that have been 
     // requested with param.log=true in a real implementation
     
-    // In our simulation, just get the last parameters from the log=true messages
+    // In simulation, just get the last parameters from the log=true messages
     const loggedParams = Array.from(this.simulatedData.keys())
       .filter(key => key.endsWith('.log') && this.simulatedData.get(key) === 'true');
     
@@ -131,7 +131,7 @@ if (message.includes('.value=')) {
     }
     
     // For simulation, if log=true isn't set (because we don't track it),
-    // we'll just respond to the actual parameter name
+    // just respond to the actual parameter name
     // Extract parameter names from something like "param.log=true\n"
     const responses: string[] = [];
     
@@ -469,7 +469,6 @@ class ProxyMccSocket implements IMccSocket {
     mccLogger.info('Initialized proxy MCC socket connection');
   }
   
-// In mccUtils.ts, in the ProxyMccSocket class handleMessage method
 private handleMessage(event: MessageEvent): void {
   const data = event.data;
   mccLogger.debug(`[PROXY] Received: ${data}`);
@@ -682,7 +681,6 @@ const message = `${parameter}=${value}\n`; // mccifSet to accept 3 tokens, chang
 * @param parameters Array of parameter names to read
 * @returns A promise that resolves to an array of response strings
 */
-// Around line 640-720 in mccUtils.ts, in the mccifRead function
 export async function mccifRead(sock: any, parameters: string[]): Promise<string[]> {
   // Log what's happening
   console.log(`📡 mccifRead: ${parameters.length} parameters, using ${sock? (sock.isSimulated ? "simulated" : "real") : "no"} socket`);
@@ -982,7 +980,6 @@ export function isSimulationMode(): boolean {
 }
 
 // Export a helper to toggle simulation mode at runtime
-// In utils/mccUtils.ts, modify setSimulationMode
 export function setSimulationMode(enabled: boolean): void {
   const previous = MCC_CONFIG.SIMULATION_MODE;
   MCC_CONFIG.SIMULATION_MODE = enabled;

@@ -40,10 +40,9 @@ interface OBC1TestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -129,14 +128,14 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('vi.d3v3.value');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -235,7 +234,7 @@ export const OBC1TestPanel: React.FC<OBC1TestPanelProps> = ({
     }
   }, [sock]);
   
-// Create a more responsive version of the useEffect hook
+// more responsive version
 useEffect(() => {
   // This will run whenever isInitialRun changes
   if (isInitialRun) {
@@ -253,7 +252,7 @@ useEffect(() => {
   }
 }, [isInitialRun]); // Only depend on isInitialRun
   
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -443,7 +442,7 @@ useEffect(() => {
     return isNaN(numValue) ? null : numValue;
   };
   
-  // Format chart data for test history - ensure we only use real data
+  // Format chart data for test history - ensure only use real data
   const prepareChartData = () => {
     return testHistory
       .filter(item => {
@@ -850,7 +849,7 @@ useEffect(() => {
     }));
   };
 
-  // Modify the useEffect for socket detection to watch for simulation indicators
+  // useEffect for socket detection to watch for simulation indicators
   useEffect(() => {
     // Check if we have real socket info saved
     const socketInfo = localStorage.getItem('mccSocketInfo');
@@ -899,7 +898,7 @@ useEffect(() => {
     setSimulationMode(isActuallySimulated);
   }, [sock]);
 
-  // Optionally add automatic cleanup on component mount
+  // automatic cleanup on component mount
   useEffect(() => {
     if (profileId) {
       // Automatically limit history to 30 records when the component mounts

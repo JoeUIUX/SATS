@@ -37,6 +37,14 @@ async function generateHEPSWordReport(results: any): Promise<string> {
   
   console.log(`📝 Generating HEPS Word report: ${filename}`);
   
+  // Helper function to format values
+  const formatValue = (value: string | number | undefined, unit: string = '') => {
+    if (value === undefined || value === null || value === '') return 'N/A';
+    const numValue = parseFloat(String(value));
+    if (isNaN(numValue)) return String(value);
+    return `${numValue.toFixed(3)}${unit ? ' ' + unit : ''}`;
+  };
+
   // Create all document children (paragraphs and tables) in one array
   const children: Array<Paragraph | Table> = [
     // Title
@@ -194,120 +202,97 @@ async function generateHEPSWordReport(results: any): Promise<string> {
       })
     );
     
-    // Add CAN data if available
-    if (results.canTest.primaryBefore && results.canTest.primaryBefore.length > 0) {
+    // Add detailed CAN data if available
+    if (results.canTest.primaryBefore && results.canTest.primaryBefore.length >= 20) {
       children.push(
-        // PCM Transmit before test
         new Paragraph({
           text: `PCM Transmit before test            : ${results.canTest.primaryBefore[0] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Transmit before test
         new Paragraph({
           text: `PSM1 Transmit before test           : ${results.canTest.primaryBefore[1] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Transmit before test
         new Paragraph({
           text: `PSM2 Transmit before test           : ${results.canTest.primaryBefore[2] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Transmit before test
         new Paragraph({
           text: `PDM1 Transmit before test           : ${results.canTest.primaryBefore[3] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Transmit before test
         new Paragraph({
           text: `PDM2 Transmit before test           : ${results.canTest.primaryBefore[4] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Acknowledgement before test
         new Paragraph({
           text: `PCM Acknowledgement before test     : ${results.canTest.primaryBefore[5] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Acknowledgement before test
         new Paragraph({
           text: `PSM1 Acknowledgement before test    : ${results.canTest.primaryBefore[6] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Acknowledgement before test
         new Paragraph({
           text: `PSM2 Acknowledgement before test    : ${results.canTest.primaryBefore[7] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Acknowledgement before test
         new Paragraph({
           text: `PDM1 Acknowledgement before test    : ${results.canTest.primaryBefore[8] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Acknowledgement before test
         new Paragraph({
           text: `PDM2 Acknowledgement before test    : ${results.canTest.primaryBefore[9] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Timeout before test
         new Paragraph({
           text: `PCM Timeout before test             : ${results.canTest.primaryBefore[10] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Timeout before test
         new Paragraph({
           text: `PSM1 Timeout before test            : ${results.canTest.primaryBefore[11] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Timeout before test
         new Paragraph({
           text: `PSM2 Timeout before test            : ${results.canTest.primaryBefore[12] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Timeout before test
         new Paragraph({
           text: `PDM1 Timeout before test            : ${results.canTest.primaryBefore[13] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Timeout before test
         new Paragraph({
           text: `PDM2 Timeout before test            : ${results.canTest.primaryBefore[14] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Error before test
         new Paragraph({
           text: `PCM Error before test               : ${results.canTest.primaryBefore[15] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Error before test
         new Paragraph({
           text: `PSM1 Error before test              : ${results.canTest.primaryBefore[16] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Error before test
         new Paragraph({
           text: `PSM2 Error before test              : ${results.canTest.primaryBefore[17] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Error before test
         new Paragraph({
           text: `PDM1 Error before test              : ${results.canTest.primaryBefore[18] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Error before test
         new Paragraph({
           text: `PDM2 Error before test              : ${results.canTest.primaryBefore[19] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // Empty line
         new Paragraph({
           text: "",
           spacing: { after: 100 }
         }),
-        // CAN Primary Secondary Config
         new Paragraph({
-          text: `CAN Primary Secondary Config        : ${results.canTest.primaryBefore[20] || "N/A"}`,
+          text: `CAN Primary Secondary Config        : ${results.rawParameters?.["OBC1_Intercomm_PriSec_Cfg"] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // Empty line
         new Paragraph({
           text: "",
           spacing: { after: 100 }
@@ -316,115 +301,97 @@ async function generateHEPSWordReport(results: any): Promise<string> {
     }
     
     // Add CAN after test data if available
-    if (results.canTest.primaryAfter && results.canTest.primaryAfter.length > 0) {
+    if (results.canTest.primaryAfter && results.canTest.primaryAfter.length >= 20) {
       children.push(
-        // PCM Transmit after test
         new Paragraph({
           text: `PCM Transmit after test             : ${results.canTest.primaryAfter[0] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Transmit after test
         new Paragraph({
           text: `PSM1 Transmit after test            : ${results.canTest.primaryAfter[1] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Transmit after test
         new Paragraph({
           text: `PSM2 Transmit after test            : ${results.canTest.primaryAfter[2] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Transmit after test
         new Paragraph({
           text: `PDM1 Transmit after test            : ${results.canTest.primaryAfter[3] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Transmit after test
         new Paragraph({
           text: `PDM2 Transmit after test            : ${results.canTest.primaryAfter[4] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Acknowledgement after test
         new Paragraph({
           text: `PCM Acknowledgement after test      : ${results.canTest.primaryAfter[5] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Acknowledgement after test
         new Paragraph({
           text: `PSM1 Acknowledgement after test     : ${results.canTest.primaryAfter[6] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Acknowledgement after test
         new Paragraph({
           text: `PSM2 Acknowledgement after test     : ${results.canTest.primaryAfter[7] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Acknowledgement after test
         new Paragraph({
           text: `PDM1 Acknowledgement after test     : ${results.canTest.primaryAfter[8] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Acknowledgement after test
         new Paragraph({
           text: `PDM2 Acknowledgement after test     : ${results.canTest.primaryAfter[9] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Timeout after test
         new Paragraph({
           text: `PCM Timeout after test              : ${results.canTest.primaryAfter[10] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Timeout after test
         new Paragraph({
           text: `PSM1 Timeout after test             : ${results.canTest.primaryAfter[11] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Timeout after test
         new Paragraph({
           text: `PSM2 Timeout after test             : ${results.canTest.primaryAfter[12] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Timeout after test
         new Paragraph({
           text: `PDM1 Timeout after test             : ${results.canTest.primaryAfter[13] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Timeout after test
         new Paragraph({
           text: `PDM2 Timeout after test             : ${results.canTest.primaryAfter[14] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PCM Error after test
         new Paragraph({
           text: `PCM Error after test                : ${results.canTest.primaryAfter[15] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM1 Error after test
         new Paragraph({
           text: `PSM1 Error after test               : ${results.canTest.primaryAfter[16] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PSM2 Error after test
         new Paragraph({
           text: `PSM2 Error after test               : ${results.canTest.primaryAfter[17] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM1 Error after test
         new Paragraph({
           text: `PDM1 Error after test               : ${results.canTest.primaryAfter[18] || "N/A"}`,
           spacing: { after: 100 }
         }),
-        // PDM2 Error after test
         new Paragraph({
           text: `PDM2 Error after test               : ${results.canTest.primaryAfter[19] || "N/A"}`,
-          spacing: { after: 100 }
-        }),
-        // Separator
-        new Paragraph({
-          text: "--------------------------------------------------------------------",
           spacing: { after: 100 }
         })
       );
     }
+
+    children.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
 
     // Add page break
     children.push(
@@ -456,22 +423,190 @@ async function generateHEPSWordReport(results: any): Promise<string> {
     );
 
     // Add secondary CAN data if available
-    if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length > 0) {
-      // Similar structure to primary CAN, add all the values
-      // (Same structure as primary, so not repeating all the paragraphs for brevity)
-      // In a real implementation, you would add all the specific details here
+    if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length >= 20) {
       children.push(
-        // PCM Transmit before test
         new Paragraph({
           text: `PCM Transmit before test            : ${results.canTest.secondaryBefore[0] || "N/A"}`,
           spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Transmit before test           : ${results.canTest.secondaryBefore[1] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Transmit before test           : ${results.canTest.secondaryBefore[2] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Transmit before test           : ${results.canTest.secondaryBefore[3] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Transmit before test           : ${results.canTest.secondaryBefore[4] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Acknowledgement before test     : ${results.canTest.secondaryBefore[5] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Acknowledgement before test    : ${results.canTest.secondaryBefore[6] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Acknowledgement before test    : ${results.canTest.secondaryBefore[7] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Acknowledgement before test    : ${results.canTest.secondaryBefore[8] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Acknowledgement before test    : ${results.canTest.secondaryBefore[9] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Timeout before test             : ${results.canTest.secondaryBefore[10] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Timeout before test            : ${results.canTest.secondaryBefore[11] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Timeout before test            : ${results.canTest.secondaryBefore[12] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Timeout before test            : ${results.canTest.secondaryBefore[13] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Timeout before test            : ${results.canTest.secondaryBefore[14] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Error before test               : ${results.canTest.secondaryBefore[15] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Error before test              : ${results.canTest.secondaryBefore[16] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Error before test              : ${results.canTest.secondaryBefore[17] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Error before test              : ${results.canTest.secondaryBefore[18] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Error before test              : ${results.canTest.secondaryBefore[19] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `CAN Primary Secondary Config        : ${results.rawParameters?.["sec_OBC1_Intercomm_PriSec_Cfg"] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
         })
-        // ...add all other values similarly
+      );
+    }
+
+    // Add secondary CAN after test data
+    if (results.canTest.secondaryAfter && results.canTest.secondaryAfter.length >= 20) {
+      children.push(
+        new Paragraph({
+          text: `PCM Transmit after test             : ${results.canTest.secondaryAfter[0] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Transmit after test            : ${results.canTest.secondaryAfter[1] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Transmit after test            : ${results.canTest.secondaryAfter[2] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Transmit after test            : ${results.canTest.secondaryAfter[3] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Transmit after test            : ${results.canTest.secondaryAfter[4] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Acknowledgement after test      : ${results.canTest.secondaryAfter[5] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Acknowledgement after test     : ${results.canTest.secondaryAfter[6] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Acknowledgement after test     : ${results.canTest.secondaryAfter[7] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Acknowledgement after test     : ${results.canTest.secondaryAfter[8] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Acknowledgement after test     : ${results.canTest.secondaryAfter[9] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Timeout after test              : ${results.canTest.secondaryAfter[10] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Timeout after test             : ${results.canTest.secondaryAfter[11] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Timeout after test             : ${results.canTest.secondaryAfter[12] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Timeout after test             : ${results.canTest.secondaryAfter[13] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Timeout after test             : ${results.canTest.secondaryAfter[14] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PCM Error after test                : ${results.canTest.secondaryAfter[15] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM1 Error after test               : ${results.canTest.secondaryAfter[16] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PSM2 Error after test               : ${results.canTest.secondaryAfter[17] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM1 Error after test               : ${results.canTest.secondaryAfter[18] || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `PDM2 Error after test               : ${results.canTest.secondaryAfter[19] || "N/A"}`,
+          spacing: { after: 100 }
+        })
       );
     }
 
     children.push(
-      // Separator
       new Paragraph({
         text: "--------------------------------------------------------------------",
         spacing: { after: 200, before: 200 }
@@ -495,62 +630,53 @@ async function generateHEPSWordReport(results: any): Promise<string> {
         text: "--------------------------------------------------------------------",
         spacing: { after: 100 }
       }),
-      // Battery 1 Voltage
+      // Battery Voltages
       new Paragraph({
-        text: `Battery 1 Voltage           : ${results.battery.voltage1 ? parseFloat(results.battery.voltage1).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery1 || "N/A"}`,
+        text: `Battery 1 Voltage           : ${formatValue(results.battery.voltage1, "V")}    ${results.passFailStatus?.battery1 || "N/A"}`,
         spacing: { after: 100 }
       }),
-      // Battery 2 Voltage
       new Paragraph({
-        text: `Battery 2 Voltage           : ${results.battery.voltage2 ? parseFloat(results.battery.voltage2).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery2 || "N/A"}`,
+        text: `Battery 2 Voltage           : ${formatValue(results.battery.voltage2, "V")}    ${results.passFailStatus?.battery2 || "N/A"}`,
         spacing: { after: 100 }
       }),
-      // Battery 3 Voltage
       new Paragraph({
-        text: `Battery 3 Voltage           : ${results.battery.voltage3 ? parseFloat(results.battery.voltage3).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery3 || "N/A"}`,
+        text: `Battery 3 Voltage           : ${formatValue(results.battery.voltage3, "V")}    ${results.passFailStatus?.battery3 || "N/A"}`,
         spacing: { after: 100 }
       }),
-      // Empty line
       new Paragraph({
         text: "",
         spacing: { after: 100 }
       }),
-      // Battery 1 Charging Current
+      // Battery Charging Currents
       new Paragraph({
-        text: `Battery 1 Charging Current  : ${results.battery.current1 ? parseFloat(results.battery.current1).toFixed(3) : "N/A"} A`,
+        text: `Battery 1 Charging Current  : ${formatValue(results.battery.current1, "A")}`,
         spacing: { after: 100 }
       }),
-      // Battery 2 Charging Current
       new Paragraph({
-        text: `Battery 2 Charging Current  : ${results.battery.current2 ? parseFloat(results.battery.current2).toFixed(3) : "N/A"} A`,
+        text: `Battery 2 Charging Current  : ${formatValue(results.battery.current2, "A")}`,
         spacing: { after: 100 }
       }),
-      // Battery 3 Charging Current
       new Paragraph({
-        text: `Battery 3 Charging Current  : ${results.battery.current3 ? parseFloat(results.battery.current3).toFixed(3) : "N/A"} A`,
+        text: `Battery 3 Charging Current  : ${formatValue(results.battery.current3, "A")}`,
         spacing: { after: 100 }
       }),
-      // Empty line
       new Paragraph({
         text: "",
         spacing: { after: 100 }
       }),
-      // Battery 1 Temperature
+      // Battery Temperatures
       new Paragraph({
-        text: `Battery 1 Temperature       : ${results.battery.temperature1 ? parseFloat(results.battery.temperature1).toFixed(3) : "N/A"} deg C`,
+        text: `Battery 1 Temperature       : ${formatValue(results.battery.temperature1, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Battery 2 Temperature
       new Paragraph({
-        text: `Battery 2 Temperature       : ${results.battery.temperature2 ? parseFloat(results.battery.temperature2).toFixed(3) : "N/A"} deg C`,
+        text: `Battery 2 Temperature       : ${formatValue(results.battery.temperature2, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Battery 3 Temperature
       new Paragraph({
-        text: `Battery 3 Temperature       : ${results.battery.temperature3 ? parseFloat(results.battery.temperature3).toFixed(3) : "N/A"} deg C`,
+        text: `Battery 3 Temperature       : ${formatValue(results.battery.temperature3, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Separator
       new Paragraph({
         text: "--------------------------------------------------------------------",
         spacing: { after: 100 }
@@ -570,63 +696,52 @@ async function generateHEPSWordReport(results: any): Promise<string> {
         text: "--------------------------------------------------------------------",
         spacing: { after: 100 }
       }),
-      // Solar Array 1 Voltage
+      // Solar Array Voltages
       new Paragraph({
-        text: `Solar Array 1 Voltage               : ${results.solarArray.voltage1 ? parseFloat(results.solarArray.voltage1).toFixed(3) : "N/A"} V`,
+        text: `Solar Array 1 Voltage               : ${formatValue(results.solarArray.voltage1, "V")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 2 Voltage
       new Paragraph({
-        text: `Solar Array 2 Voltage               : ${results.solarArray.voltage2 ? parseFloat(results.solarArray.voltage2).toFixed(3) : "N/A"} V`,
+        text: `Solar Array 2 Voltage               : ${formatValue(results.solarArray.voltage2, "V")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 3 Voltage
       new Paragraph({
-        text: `Solar Array 3 Voltage               : ${results.solarArray.voltage3 ? parseFloat(results.solarArray.voltage3).toFixed(3) : "N/A"} V`,
+        text: `Solar Array 3 Voltage               : ${formatValue(results.solarArray.voltage3, "V")}`,
         spacing: { after: 100 }
       }),
-      // Empty line
       new Paragraph({
         text: "",
         spacing: { after: 100 }
       }),
-      // Solar Array temperature values
-      // Solar Array 1 Y- Temperature
+      // Solar Array Temperatures
       new Paragraph({
-        text: `Solar Array 1 Y- Temperature        : ${results.solarArray.tempYNeg1 ? parseFloat(results.solarArray.tempYNeg1).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 1 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg1, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 2 Y- Temperature
       new Paragraph({
-        text: `Solar Array 2 Y- Temperature        : ${results.solarArray.tempYNeg2 ? parseFloat(results.solarArray.tempYNeg2).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 2 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg2, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 3 Y- Temperature
       new Paragraph({
-        text: `Solar Array 3 Y- Temperature        : ${results.solarArray.tempYNeg3 ? parseFloat(results.solarArray.tempYNeg3).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 3 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg3, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array Body Mount Temperature
       new Paragraph({
-        text: `Solar Array Body Mount Temperature  : ${results.solarArray.tempBodyMount ? parseFloat(results.solarArray.tempBodyMount).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array Body Mount Temperature  : ${formatValue(results.solarArray.tempBodyMount, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 1 Y+ Temperature
       new Paragraph({
-        text: `Solar Array 1 Y+ Temperature        : ${results.solarArray.tempYPos1 ? parseFloat(results.solarArray.tempYPos1).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 1 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos1, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 2 Y+ Temperature
       new Paragraph({
-        text: `Solar Array 2 Y+ Temperature        : ${results.solarArray.tempYPos2 ? parseFloat(results.solarArray.tempYPos2).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 2 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos2, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Solar Array 3 Y+ Temperature
       new Paragraph({
-        text: `Solar Array 3 Y+ Temperature        : ${results.solarArray.tempYPos3 ? parseFloat(results.solarArray.tempYPos3).toFixed(3) : "N/A"} deg C`,
+        text: `Solar Array 3 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos3, "deg C")}`,
         spacing: { after: 100 }
       }),
-      // Empty line
       new Paragraph({
         text: "",
         spacing: { after: 100 }
@@ -636,30 +751,931 @@ async function generateHEPSWordReport(results: any): Promise<string> {
     // HDRM Deploy Status
     if (results.hdrmStatus) {
       children.push(
-        // HDRM 1 Deploy Status
         new Paragraph({
-          text: `HDRM 1 Deploy Status                : ${results.hdrmStatus.deploy1 ? parseFloat(results.hdrmStatus.deploy1).toFixed(3) : "N/A"} V`,
+          text: `HDRM 1 Deploy Status                : ${formatValue(results.hdrmStatus.deploy1, "V")}`,
           spacing: { after: 100 }
         }),
-        // HDRM 2 Deploy Status
         new Paragraph({
-          text: `HDRM 2 Deploy Status                : ${results.hdrmStatus.deploy2 ? parseFloat(results.hdrmStatus.deploy2).toFixed(3) : "N/A"} V`,
+          text: `HDRM 2 Deploy Status                : ${formatValue(results.hdrmStatus.deploy2, "V")}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "--------------------------------------------------------------------",
           spacing: { after: 100 }
         })
       );
     }
   }
 
-  // Add additional sections as in the original implementation...
-  // (OBN Summary, BCR Summary, PCB Temperature, Converter Summary, Load Summary, etc.)
-  // [The rest of the Word document generation logic remains the same as in your original code]
+  // OBN Summary
+  if (results.obn) {
+    children.push(
+      new Paragraph({
+        text: "* OBN Summary :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBN 1 Voltage               : ${formatValue(results.obn.voltage1, "V")}    ${results.passFailStatus?.obn1Voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBN 1 Current               : ${formatValue(results.obn.current1, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBN 2 Voltage               : ${formatValue(results.obn.voltage2, "V")}    ${results.passFailStatus?.obn2Voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBN 2 Current               : ${formatValue(results.obn.current2, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `AUX 12V Voltage             : ${formatValue(results.obn.auxVoltage, "V")}    ${results.passFailStatus?.auxVoltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Battery Charging Regulator Summary
+  if (results.bcr) {
+    children.push(
+      new Paragraph({
+        text: "* Battery Charging Regulator Summary :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 1 Current               : ${formatValue(results.bcr.current1, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 2 Current               : ${formatValue(results.bcr.current2, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 3 Current               : ${formatValue(results.bcr.current3, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 1 Temperature           : ${formatValue(results.bcr.temp1, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 2 Temperature           : ${formatValue(results.bcr.temp2, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `BCR 3 Temperature           : ${formatValue(results.bcr.temp3, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // PCB Temperature Summary
+  if (results.pdmTemperature) {
+    children.push(
+      new Paragraph({
+        text: "* PCB Temperature Summary :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `PDM 1 Temperature           : ${formatValue(results.pdmTemperature.pdm1, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `PDM 2 Temperature           : ${formatValue(results.pdmTemperature.pdm2, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Converter Summary
+  if (results.converters) {
+    children.push(
+      new Paragraph({
+        text: "* Converter Summary :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      // Converter Voltages
+      new Paragraph({
+        text: `HDRM 12V Converter 1 Voltage        : ${formatValue(results.converters.hdrm12v1_voltage, "V")}    ${results.passFailStatus?.hdrm12v1_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `5V Converter 1 Voltage              : ${formatValue(results.converters.v5_1_voltage, "V")}    ${results.passFailStatus?.v5_1_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `12V Converter 1 Voltage             : ${formatValue(results.converters.v12_1_voltage, "V")}    ${results.passFailStatus?.v12_1_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `15V Converter Voltage               : ${formatValue(results.converters.v15_voltage, "V")}    ${results.passFailStatus?.v15_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 12V Converter 2 Voltage        : ${formatValue(results.converters.hdrm12v2_voltage, "V")}    ${results.passFailStatus?.hdrm12v2_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `5V Converter 2 Voltage              : ${formatValue(results.converters.v5_2_voltage, "V")}    ${results.passFailStatus?.v5_2_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `12V Converter 2 Voltage             : ${formatValue(results.converters.v12_2_voltage, "V")}    ${results.passFailStatus?.v12_2_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // Converter Temperatures
+      new Paragraph({
+        text: `HDRM 12V Converter 1 Temperature    : ${formatValue(results.converters.hdrm12v1_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `5V Converter 1 Temperature          : ${formatValue(results.converters.v5_1_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `12V Converter 1 Temperature         : ${formatValue(results.converters.v12_1_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `15V Converter Temperature           : ${formatValue(results.converters.v15_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 12V Converter 2 Temperature    : ${formatValue(results.converters.hdrm12v2_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `5V Converter 2 Temperature          : ${formatValue(results.converters.v5_2_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `12V Converter 2 Temperature         : ${formatValue(results.converters.v12_2_temp, "deg C")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Load Summary (RLCL)
+  if (results.loads) {
+    children.push(
+      new Paragraph({
+        text: "* Load Summary (RLCL) :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBC-1 Voltage               : ${formatValue(results.loads.obc1_voltage, "V")}    ${results.passFailStatus?.obc1_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBC-1 Current               : ${formatValue(results.loads.obc1_current, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBC-2 Voltage               : ${formatValue(results.loads.obc2_voltage, "V")}    ${results.passFailStatus?.obc2_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `OBC-2 Current               : ${formatValue(results.loads.obc2_current, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `S-Band Voltage               : ${formatValue(results.loads.sband_voltage, "V")}    ${results.passFailStatus?.sband_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `S-Band Current               : ${formatValue(results.loads.sband_current, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `UHF Voltage                  : ${formatValue(results.loads.uhf_voltage, "V")}    ${results.passFailStatus?.uhf_voltage || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `UHF Current                  : ${formatValue(results.loads.uhf_current, "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // LCL Summary (Additional Load Channels) - Include all the additional channels from lclVi
+  if (results.rawParameters) {
+    children.push(
+      new Paragraph({
+        text: "* LCL Summary (Additional Load Channels) :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      // ADCS channels
+      new Paragraph({
+        text: `ADCS IF Voltage              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS_IF_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ADCS IF Current              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS-IF_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ADCS RW Voltage              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ADCS RW Current              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // GPS channels
+      new Paragraph({
+        text: `GPS 5V Voltage               : ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `GPS 5V Current               : ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // ECU channels
+      new Paragraph({
+        text: `ECU 1 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 1 Current                : ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 2 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `ECU 2 Current                : ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // Thruster channels
+      new Paragraph({
+        text: `Thruster 1 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Thruster 1 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Thruster 2 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Thruster 2 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // PCS channels
+      new Paragraph({
+        text: `PCS Voltage                  : ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `PCS Current                  : ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // Optical Camera channels
+      new Paragraph({
+        text: `Optical Camera Voltage       : ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Optical Camera Current       : ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // X-Band channels
+      new Paragraph({
+        text: `X-Band Voltage               : ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `X-Band Current               : ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // AOD channels
+      new Paragraph({
+        text: `AOD 1 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `AOD 1 Current                : ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `AOD 2 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `AOD 2 Current                : ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // CIP channels
+      new Paragraph({
+        text: `CIP Voltage                  : ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `CIP Current                  : ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // HDRM Voltage/Current Summary
+  if (results.rawParameters) {
+    children.push(
+      new Paragraph({
+        text: "* HDRM Voltage/Current Summary :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      // HDRM 1 channels
+      new Paragraph({
+        text: `HDRM 1 ARM Voltage           : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_ARM_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW01 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW01 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW02 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW02 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW03 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 1 SW03 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      }),
+      // HDRM 2 channels
+      new Paragraph({
+        text: `HDRM 2 ARM Voltage           : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_ARM_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW01 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW01 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW02 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW02 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW03 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_V"], "V")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `HDRM 2 SW03 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_I"], "A")}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+// Heater System Summary
+if (results.rawParameters) {
+  children.push(
+    new Paragraph({
+      text: "* Heater System Summary :",
+      heading: HeadingLevel.HEADING_2,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: "--------------------------------------------------------------------",
+      spacing: { after: 100 }
+    })
+  );
+
+  // Heater Group 1 (PSM1) - heater1Vi parameters
+  children.push(
+    new Paragraph({
+      text: "Heater Group 1 (PSM1):",
+      heading: HeadingLevel.HEADING_3,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `HT1 LCL Status                  : ${formatValue(results.rawParameters["HEPS1_PSM1_HT1_LCL"])}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Battery Heater 1 Voltage        : ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Battery Heater 1 Current        : ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Thruster Heater 1 Voltage       : ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Thruster Heater 1 Current       : ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Camera Heater 1 Voltage         : ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Camera Heater 1 Current         : ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: "",
+      spacing: { after: 100 }
+    })
+  );
+  
+  // Heater Group 2 (PSM2) - heater2Vi parameters
+  children.push(
+    new Paragraph({
+      text: "Heater Group 2 (PSM2):",
+      heading: HeadingLevel.HEADING_3,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `HT2 LCL Status                  : ${formatValue(results.rawParameters["HEPS1_PSM2_HT2_LCL"])}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Battery Heater 2 Voltage        : ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Battery Heater 2 Current        : ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Thruster Heater 2 Voltage       : ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Thruster Heater 2 Current       : ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Camera Heater 2 Voltage         : ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_V"], "V")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Camera Heater 2 Current         : ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_I"], "A")}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: "",
+      spacing: { after: 100 }
+    })
+  );
+
+  // Legacy heater summary (if available from results.heaters)
+  if (results.heaters && results.heaters.length > 0) {
+    children.push(
+      new Paragraph({
+        text: "Summary Data:",
+        heading: HeadingLevel.HEADING_3,
+        spacing: { after: 100 }
+      })
+    );
+    
+    // Heater Group 1 Summary
+    if (results.heaters[0]) {
+      children.push(
+        new Paragraph({
+          text: `Heater Group 1 Status           : ${results.heaters[0].status || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Heater Group 1 Total Power      : ${formatValue(results.heaters[0].power, "W")}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        })
+      );
+    }
+
+    // Heater Group 2 Summary
+    if (results.heaters[1]) {
+      children.push(
+        new Paragraph({
+          text: `Heater Group 2 Status           : ${results.heaters[1].status || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Heater Group 2 Total Power      : ${formatValue(results.heaters[1].power, "W")}`,
+          spacing: { after: 100 }
+        })
+      );
+    }
+  }
+
+  children.push(
+    new Paragraph({
+      text: "--------------------------------------------------------------------",
+      spacing: { after: 100 }
+    })
+  );
+}
+
+  // Heater Test Results (if available)
+  if (results.heaterTests && results.heaterTests.length > 0) {
+    children.push(
+      new Paragraph({
+        text: "* Heater Test Results :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+
+    results.heaterTests.forEach((heaterTest: any, index: number) => {
+      children.push(
+        new Paragraph({
+text: `Heater ${index + 1} Test Results:`,
+          heading: HeadingLevel.HEADING_3,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Initial Temperature          : ${heaterTest.initialTemp || "N/A"} deg C`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Test Result                  : ${heaterTest.testResult || "N/A"}`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Reading Interval             : ${heaterTest.readingInterval || "N/A"} seconds`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Thermal Rise Performance:`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Total Temperature Rise     : ${heaterTest.thermalRise?.totalRise || "N/A"} deg C`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Rise Rate                  : ${heaterTest.thermalRise?.riseRate || "N/A"} deg C/min`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Time to 5°C Rise           : ${heaterTest.thermalRise?.timeTo5C || "N/A"} seconds`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Time to 10°C Rise          : ${heaterTest.thermalRise?.timeTo10C || "N/A"} seconds`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `Power Consumption:`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Average Current            : ${heaterTest.power?.avgCurrent || "N/A"} mA`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Maximum Current            : ${heaterTest.power?.maxCurrent || "N/A"} mA`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Average Power              : ${heaterTest.power?.avgPower || "N/A"} W`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: `  Total Energy Used          : ${heaterTest.power?.totalEnergy || "N/A"} Wh`,
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          text: "",
+          spacing: { after: 100 }
+        })
+      );
+    });
+
+    children.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Current Test Results (if available)
+  if (results.currentTest) {
+    children.push(
+      new Paragraph({
+        text: "* Current Measurement Test Results :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Test Result                  : ${results.currentTest.testResult || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Test Duration                : ${results.currentTest.testDuration || "N/A"} seconds`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Samples Collected            : ${results.currentTest.sampleCount || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Maximum Deviation            : ${results.currentTest.maxDeviation || "N/A"}%`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Tolerance Range              : ±${results.currentTest.tolerance || "N/A"}%`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "",
+        spacing: { after: 100 }
+      })
+    );
+
+    // Heater-specific current test results
+    if (results.currentTest.heaterResults && results.currentTest.heaterResults.length > 0) {
+      results.currentTest.heaterResults.forEach((heaterResult: any, index: number) => {
+        children.push(
+          new Paragraph({
+            text: `Heater ${index + 1} Current Test:`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `  Expected Current           : ${heaterResult.expectedCurrent || "N/A"} mA`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `  Measured Current           : ${heaterResult.measuredCurrent || "N/A"} mA`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `  Deviation                  : ${heaterResult.deviation || "N/A"}%`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: `  In Range                   : ${heaterResult.inRange ? "YES" : "NO"}`,
+            spacing: { after: 100 }
+          }),
+          new Paragraph({
+            text: "",
+            spacing: { after: 100 }
+          })
+        );
+      });
+    }
+
+    children.push(
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Power Cycle Test Results (if available)
+  if (results.powerCycleTest) {
+    children.push(
+      new Paragraph({
+        text: "* Power Cycle Test Results :",
+        heading: HeadingLevel.HEADING_2,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Power Cycle Test Result      : ${results.powerCycleTest.testResult || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Cycles Completed             : ${results.powerCycleTest.cyclesCompleted || "N/A"} of ${results.powerCycleTest.totalCycles || "N/A"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Cycle Time                   : ${results.powerCycleTest.cycleTime || "N/A"} seconds`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Power On Time                : ${results.powerCycleTest.powerOnTime || "N/A"} seconds`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Power Off Time               : ${results.powerCycleTest.powerOffTime || "N/A"} seconds`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Total Test Time              : ${results.powerCycleTest.totalTestTime || "N/A"} seconds`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: `Failures                     : ${results.powerCycleTest.failures || "0"}`,
+        spacing: { after: 100 }
+      }),
+      new Paragraph({
+        text: "--------------------------------------------------------------------",
+        spacing: { after: 100 }
+      })
+    );
+  }
+
+  // Test Completion Summary
+  children.push(
+    new Paragraph({
+      text: "* Test Completion Summary :",
+      heading: HeadingLevel.HEADING_2,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: "--------------------------------------------------------------------",
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: `Report generated: ${now.toLocaleString()}`,
+      spacing: { after: 100 }
+    }),
+    new Paragraph({
+      text: "--------------------------------------------------------------------",
+      spacing: { after: 200, before: 200 }
+    })
+  );
 
   // Create the document with all the children elements
   const doc = new Document({
     sections: [
       {
         properties: {},
-        children: children  // This can now handle both Paragraph and Table types
+        children: children
       }
     ]
   });
@@ -701,6 +1717,14 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
   const filename = `HEPS_Checkout_${dateStr}_${timeStr}.pdf`;
   
   console.log(`📝 Generating HEPS PDF report: ${filename}`);
+  
+  // Helper function to format values
+  const formatValue = (value: string | number | undefined, unit: string = '') => {
+    if (value === undefined || value === null || value === '') return 'N/A';
+    const numValue = parseFloat(String(value));
+    if (isNaN(numValue)) return String(value);
+    return `${numValue.toFixed(3)}${unit ? ' ' + unit : ''}`;
+  };
   
   try {
     // Create new PDF document
@@ -811,7 +1835,7 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
       addSectionHeader('HEPS-1 CAN Check Summary');
       addText(`Primary CAN: ${results.canTest.primaryResult || "N/A"}`);
       
-      if (results.canTest.primaryBefore && results.canTest.primaryBefore.length > 0) {
+      if (results.canTest.primaryBefore && results.canTest.primaryBefore.length >= 20) {
         yPosition += 5;
         addText('Before Test Results:', 5);
         addText(`PCM Transmit: ${results.canTest.primaryBefore[0] || "N/A"}`, 10);
@@ -834,12 +1858,12 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
         addText(`PSM2 Error: ${results.canTest.primaryBefore[17] || "N/A"}`, 10);
         addText(`PDM1 Error: ${results.canTest.primaryBefore[18] || "N/A"}`, 10);
         addText(`PDM2 Error: ${results.canTest.primaryBefore[19] || "N/A"}`, 10);
-        if (results.canTest.primaryBefore[20]) {
-          addText(`CAN Primary Secondary Config: ${results.canTest.primaryBefore[20]}`, 10);
+        if (results.rawParameters?.["OBC1_Intercomm_PriSec_Cfg"]) {
+          addText(`CAN Primary Secondary Config: ${results.rawParameters["OBC1_Intercomm_PriSec_Cfg"]}`, 10);
         }
       }
       
-      if (results.canTest.primaryAfter && results.canTest.primaryAfter.length > 0) {
+      if (results.canTest.primaryAfter && results.canTest.primaryAfter.length >= 20) {
         yPosition += 5;
         addText('After Test Results:', 5);
         addText(`PCM Transmit: ${results.canTest.primaryAfter[0] || "N/A"}`, 10);
@@ -871,11 +1895,57 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
       addSectionHeader('OBC-2 CAN Check Summary');
       addText(`Secondary CAN: ${results.canTest.secondaryResult || "N/A"}`);
       
-      if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length > 0) {
+      if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length >= 20) {
         yPosition += 5;
         addText('Before Test Results:', 5);
         addText(`PCM Transmit: ${results.canTest.secondaryBefore[0] || "N/A"}`, 10);
-        // Add other secondary CAN values as needed...
+        addText(`PSM1 Transmit: ${results.canTest.secondaryBefore[1] || "N/A"}`, 10);
+        addText(`PSM2 Transmit: ${results.canTest.secondaryBefore[2] || "N/A"}`, 10);
+        addText(`PDM1 Transmit: ${results.canTest.secondaryBefore[3] || "N/A"}`, 10);
+        addText(`PDM2 Transmit: ${results.canTest.secondaryBefore[4] || "N/A"}`, 10);
+        addText(`PCM Acknowledgement: ${results.canTest.secondaryBefore[5] || "N/A"}`, 10);
+        addText(`PSM1 Acknowledgement: ${results.canTest.secondaryBefore[6] || "N/A"}`, 10);
+        addText(`PSM2 Acknowledgement: ${results.canTest.secondaryBefore[7] || "N/A"}`, 10);
+        addText(`PDM1 Acknowledgement: ${results.canTest.secondaryBefore[8] || "N/A"}`, 10);
+        addText(`PDM2 Acknowledgement: ${results.canTest.secondaryBefore[9] || "N/A"}`, 10);
+        addText(`PCM Timeout: ${results.canTest.secondaryBefore[10] || "N/A"}`, 10);
+        addText(`PSM1 Timeout: ${results.canTest.secondaryBefore[11] || "N/A"}`, 10);
+        addText(`PSM2 Timeout: ${results.canTest.secondaryBefore[12] || "N/A"}`, 10);
+        addText(`PDM1 Timeout: ${results.canTest.secondaryBefore[13] || "N/A"}`, 10);
+        addText(`PDM2 Timeout: ${results.canTest.secondaryBefore[14] || "N/A"}`, 10);
+        addText(`PCM Error: ${results.canTest.secondaryBefore[15] || "N/A"}`, 10);
+        addText(`PSM1 Error: ${results.canTest.secondaryBefore[16] || "N/A"}`, 10);
+        addText(`PSM2 Error: ${results.canTest.secondaryBefore[17] || "N/A"}`, 10);
+        addText(`PDM1 Error: ${results.canTest.secondaryBefore[18] || "N/A"}`, 10);
+        addText(`PDM2 Error: ${results.canTest.secondaryBefore[19] || "N/A"}`, 10);
+        if (results.rawParameters?.["sec_OBC1_Intercomm_PriSec_Cfg"]) {
+          addText(`CAN Primary Secondary Config: ${results.rawParameters["sec_OBC1_Intercomm_PriSec_Cfg"]}`, 10);
+        }
+      }
+
+      if (results.canTest.secondaryAfter && results.canTest.secondaryAfter.length >= 20) {
+        yPosition += 5;
+        addText('After Test Results:', 5);
+        addText(`PCM Transmit: ${results.canTest.secondaryAfter[0] || "N/A"}`, 10);
+        addText(`PSM1 Transmit: ${results.canTest.secondaryAfter[1] || "N/A"}`, 10);
+        addText(`PSM2 Transmit: ${results.canTest.secondaryAfter[2] || "N/A"}`, 10);
+        addText(`PDM1 Transmit: ${results.canTest.secondaryAfter[3] || "N/A"}`, 10);
+        addText(`PDM2 Transmit: ${results.canTest.secondaryAfter[4] || "N/A"}`, 10);
+        addText(`PCM Acknowledgement: ${results.canTest.secondaryAfter[5] || "N/A"}`, 10);
+        addText(`PSM1 Acknowledgement: ${results.canTest.secondaryAfter[6] || "N/A"}`, 10);
+        addText(`PSM2 Acknowledgement: ${results.canTest.secondaryAfter[7] || "N/A"}`, 10);
+        addText(`PDM1 Acknowledgement: ${results.canTest.secondaryAfter[8] || "N/A"}`, 10);
+        addText(`PDM2 Acknowledgement: ${results.canTest.secondaryAfter[9] || "N/A"}`, 10);
+        addText(`PCM Timeout: ${results.canTest.secondaryAfter[10] || "N/A"}`, 10);
+        addText(`PSM1 Timeout: ${results.canTest.secondaryAfter[11] || "N/A"}`, 10);
+        addText(`PSM2 Timeout: ${results.canTest.secondaryAfter[12] || "N/A"}`, 10);
+        addText(`PDM1 Timeout: ${results.canTest.secondaryAfter[13] || "N/A"}`, 10);
+        addText(`PDM2 Timeout: ${results.canTest.secondaryAfter[14] || "N/A"}`, 10);
+        addText(`PCM Error: ${results.canTest.secondaryAfter[15] || "N/A"}`, 10);
+        addText(`PSM1 Error: ${results.canTest.secondaryAfter[16] || "N/A"}`, 10);
+        addText(`PSM2 Error: ${results.canTest.secondaryAfter[17] || "N/A"}`, 10);
+        addText(`PDM1 Error: ${results.canTest.secondaryAfter[18] || "N/A"}`, 10);
+        addText(`PDM2 Error: ${results.canTest.secondaryAfter[19] || "N/A"}`, 10);
       }
       yPosition += 10;
     }
@@ -883,39 +1953,39 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
     // Battery Summary
     if (results.battery) {
       addSectionHeader('Battery Summary');
-      addText(`Battery 1 Voltage: ${results.battery.voltage1 ? parseFloat(results.battery.voltage1).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery1 || "N/A"})`);
-      addText(`Battery 2 Voltage: ${results.battery.voltage2 ? parseFloat(results.battery.voltage2).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery2 || "N/A"})`);
-      addText(`Battery 3 Voltage: ${results.battery.voltage3 ? parseFloat(results.battery.voltage3).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery3 || "N/A"})`);
+      addText(`Battery 1 Voltage: ${formatValue(results.battery.voltage1, "V")} (${results.passFailStatus?.battery1 || "N/A"})`);
+      addText(`Battery 2 Voltage: ${formatValue(results.battery.voltage2, "V")} (${results.passFailStatus?.battery2 || "N/A"})`);
+      addText(`Battery 3 Voltage: ${formatValue(results.battery.voltage3, "V")} (${results.passFailStatus?.battery3 || "N/A"})`);
       yPosition += 5;
-      addText(`Battery 1 Charging Current: ${results.battery.current1 ? parseFloat(results.battery.current1).toFixed(3) : "N/A"} A`);
-      addText(`Battery 2 Charging Current: ${results.battery.current2 ? parseFloat(results.battery.current2).toFixed(3) : "N/A"} A`);
-      addText(`Battery 3 Charging Current: ${results.battery.current3 ? parseFloat(results.battery.current3).toFixed(3) : "N/A"} A`);
+      addText(`Battery 1 Charging Current: ${formatValue(results.battery.current1, "A")}`);
+      addText(`Battery 2 Charging Current: ${formatValue(results.battery.current2, "A")}`);
+      addText(`Battery 3 Charging Current: ${formatValue(results.battery.current3, "A")}`);
       yPosition += 5;
-      addText(`Battery 1 Temperature: ${results.battery.temperature1 ? parseFloat(results.battery.temperature1).toFixed(3) : "N/A"} °C`);
-      addText(`Battery 2 Temperature: ${results.battery.temperature2 ? parseFloat(results.battery.temperature2).toFixed(3) : "N/A"} °C`);
-      addText(`Battery 3 Temperature: ${results.battery.temperature3 ? parseFloat(results.battery.temperature3).toFixed(3) : "N/A"} °C`);
+      addText(`Battery 1 Temperature: ${formatValue(results.battery.temperature1, "°C")}`);
+      addText(`Battery 2 Temperature: ${formatValue(results.battery.temperature2, "°C")}`);
+      addText(`Battery 3 Temperature: ${formatValue(results.battery.temperature3, "°C")}`);
       yPosition += 10;
     }
 
     // Solar Array Summary
     if (results.solarArray) {
       addSectionHeader('Solar Array Summary');
-      addText(`Solar Array 1 Voltage: ${results.solarArray.voltage1 ? parseFloat(results.solarArray.voltage1).toFixed(3) : "N/A"} V`);
-      addText(`Solar Array 2 Voltage: ${results.solarArray.voltage2 ? parseFloat(results.solarArray.voltage2).toFixed(3) : "N/A"} V`);
-      addText(`Solar Array 3 Voltage: ${results.solarArray.voltage3 ? parseFloat(results.solarArray.voltage3).toFixed(3) : "N/A"} V`);
+      addText(`Solar Array 1 Voltage: ${formatValue(results.solarArray.voltage1, "V")}`);
+      addText(`Solar Array 2 Voltage: ${formatValue(results.solarArray.voltage2, "V")}`);
+      addText(`Solar Array 3 Voltage: ${formatValue(results.solarArray.voltage3, "V")}`);
       yPosition += 5;
-      addText(`Solar Array 1 Y- Temperature: ${results.solarArray.tempYNeg1 ? parseFloat(results.solarArray.tempYNeg1).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array 2 Y- Temperature: ${results.solarArray.tempYNeg2 ? parseFloat(results.solarArray.tempYNeg2).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array 3 Y- Temperature: ${results.solarArray.tempYNeg3 ? parseFloat(results.solarArray.tempYNeg3).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array Body Mount Temperature: ${results.solarArray.tempBodyMount ? parseFloat(results.solarArray.tempBodyMount).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array 1 Y+ Temperature: ${results.solarArray.tempYPos1 ? parseFloat(results.solarArray.tempYPos1).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array 2 Y+ Temperature: ${results.solarArray.tempYPos2 ? parseFloat(results.solarArray.tempYPos2).toFixed(3) : "N/A"} °C`);
-      addText(`Solar Array 3 Y+ Temperature: ${results.solarArray.tempYPos3 ? parseFloat(results.solarArray.tempYPos3).toFixed(3) : "N/A"} °C`);
+addText(`Solar Array 1 Y- Temperature: ${formatValue(results.solarArray.tempYNeg1, "°C")}`);
+      addText(`Solar Array 2 Y- Temperature: ${formatValue(results.solarArray.tempYNeg2, "°C")}`);
+      addText(`Solar Array 3 Y- Temperature: ${formatValue(results.solarArray.tempYNeg3, "°C")}`);
+      addText(`Solar Array Body Mount Temperature: ${formatValue(results.solarArray.tempBodyMount, "°C")}`);
+      addText(`Solar Array 1 Y+ Temperature: ${formatValue(results.solarArray.tempYPos1, "°C")}`);
+      addText(`Solar Array 2 Y+ Temperature: ${formatValue(results.solarArray.tempYPos2, "°C")}`);
+      addText(`Solar Array 3 Y+ Temperature: ${formatValue(results.solarArray.tempYPos3, "°C")}`);
       
       if (results.hdrmStatus) {
         yPosition += 5;
-        addText(`HDRM 1 Deploy Status: ${results.hdrmStatus.deploy1 ? parseFloat(results.hdrmStatus.deploy1).toFixed(3) : "N/A"} V`);
-        addText(`HDRM 2 Deploy Status: ${results.hdrmStatus.deploy2 ? parseFloat(results.hdrmStatus.deploy2).toFixed(3) : "N/A"} V`);
+        addText(`HDRM 1 Deploy Status: ${formatValue(results.hdrmStatus.deploy1, "V")}`);
+        addText(`HDRM 2 Deploy Status: ${formatValue(results.hdrmStatus.deploy2, "V")}`);
       }
       yPosition += 10;
     }
@@ -923,73 +1993,216 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
     // OBN Summary
     if (results.obn) {
       addSectionHeader('OBN Summary');
-      addText(`OBN 1 Voltage: ${results.obn.voltage1 ? parseFloat(results.obn.voltage1).toFixed(3) : "N/A"} V (${results.passFailStatus?.obn1Voltage || "N/A"})`);
-      addText(`OBN 1 Current: ${results.obn.current1 ? parseFloat(results.obn.current1).toFixed(3) : "N/A"} A`);
+      addText(`OBN 1 Voltage: ${formatValue(results.obn.voltage1, "V")} (${results.passFailStatus?.obn1Voltage || "N/A"})`);
+      addText(`OBN 1 Current: ${formatValue(results.obn.current1, "A")}`);
       yPosition += 3;
-      addText(`OBN 2 Voltage: ${results.obn.voltage2 ? parseFloat(results.obn.voltage2).toFixed(3) : "N/A"} V (${results.passFailStatus?.obn2Voltage || "N/A"})`);
-      addText(`OBN 2 Current: ${results.obn.current2 ? parseFloat(results.obn.current2).toFixed(3) : "N/A"} A`);
+      addText(`OBN 2 Voltage: ${formatValue(results.obn.voltage2, "V")} (${results.passFailStatus?.obn2Voltage || "N/A"})`);
+      addText(`OBN 2 Current: ${formatValue(results.obn.current2, "A")}`);
       yPosition += 3;
-      addText(`AUX 12V Voltage: ${results.obn.auxVoltage ? parseFloat(results.obn.auxVoltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.auxVoltage || "N/A"})`);
+      addText(`AUX 12V Voltage: ${formatValue(results.obn.auxVoltage, "V")} (${results.passFailStatus?.auxVoltage || "N/A"})`);
       yPosition += 10;
     }
 
     // Battery Charging Regulator Summary
     if (results.bcr) {
       addSectionHeader('Battery Charging Regulator Summary');
-      addText(`BCR 1 Current: ${results.bcr.current1 ? parseFloat(results.bcr.current1).toFixed(3) : "N/A"} A`);
-      addText(`BCR 2 Current: ${results.bcr.current2 ? parseFloat(results.bcr.current2).toFixed(3) : "N/A"} A`);
-      addText(`BCR 3 Current: ${results.bcr.current3 ? parseFloat(results.bcr.current3).toFixed(3) : "N/A"} A`);
+      addText(`BCR 1 Current: ${formatValue(results.bcr.current1, "A")}`);
+      addText(`BCR 2 Current: ${formatValue(results.bcr.current2, "A")}`);
+      addText(`BCR 3 Current: ${formatValue(results.bcr.current3, "A")}`);
       yPosition += 5;
-      addText(`BCR 1 Temperature: ${results.bcr.temp1 ? parseFloat(results.bcr.temp1).toFixed(3) : "N/A"} °C`);
-      addText(`BCR 2 Temperature: ${results.bcr.temp2 ? parseFloat(results.bcr.temp2).toFixed(3) : "N/A"} °C`);
-      addText(`BCR 3 Temperature: ${results.bcr.temp3 ? parseFloat(results.bcr.temp3).toFixed(3) : "N/A"} °C`);
+      addText(`BCR 1 Temperature: ${formatValue(results.bcr.temp1, "°C")}`);
+      addText(`BCR 2 Temperature: ${formatValue(results.bcr.temp2, "°C")}`);
+      addText(`BCR 3 Temperature: ${formatValue(results.bcr.temp3, "°C")}`);
       yPosition += 10;
     }
 
     // PCB Temperature Summary
     if (results.pdmTemperature) {
       addSectionHeader('PCB Temperature Summary');
-      addText(`PDM 1 Temperature: ${results.pdmTemperature.pdm1 ? parseFloat(results.pdmTemperature.pdm1).toFixed(3) : "N/A"} °C`);
-      addText(`PDM 2 Temperature: ${results.pdmTemperature.pdm2 ? parseFloat(results.pdmTemperature.pdm2).toFixed(3) : "N/A"} °C`);
+      addText(`PDM 1 Temperature: ${formatValue(results.pdmTemperature.pdm1, "°C")}`);
+      addText(`PDM 2 Temperature: ${formatValue(results.pdmTemperature.pdm2, "°C")}`);
       yPosition += 10;
     }
 
     // Converter Summary
     if (results.converters) {
       addSectionHeader('Converter Summary');
-      addText(`HDRM 12V Converter 1 Voltage: ${results.converters.hdrm12v1_voltage ? parseFloat(results.converters.hdrm12v1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.hdrm12v1_voltage || "N/A"})`);
-      addText(`5V Converter 1 Voltage: ${results.converters.v5_1_voltage ? parseFloat(results.converters.v5_1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v5_1_voltage || "N/A"})`);
-      addText(`12V Converter 1 Voltage: ${results.converters.v12_1_voltage ? parseFloat(results.converters.v12_1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v12_1_voltage || "N/A"})`);
-      addText(`15V Converter Voltage: ${results.converters.v15_voltage ? parseFloat(results.converters.v15_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v15_voltage || "N/A"})`);
-      addText(`HDRM 12V Converter 2 Voltage: ${results.converters.hdrm12v2_voltage ? parseFloat(results.converters.hdrm12v2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.hdrm12v2_voltage || "N/A"})`);
-      addText(`5V Converter 2 Voltage: ${results.converters.v5_2_voltage ? parseFloat(results.converters.v5_2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v5_2_voltage || "N/A"})`);
-      addText(`12V Converter 2 Voltage: ${results.converters.v12_2_voltage ? parseFloat(results.converters.v12_2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v12_2_voltage || "N/A"})`);
+      addText(`HDRM 12V Converter 1 Voltage: ${formatValue(results.converters.hdrm12v1_voltage, "V")} (${results.passFailStatus?.hdrm12v1_voltage || "N/A"})`);
+      addText(`5V Converter 1 Voltage: ${formatValue(results.converters.v5_1_voltage, "V")} (${results.passFailStatus?.v5_1_voltage || "N/A"})`);
+      addText(`12V Converter 1 Voltage: ${formatValue(results.converters.v12_1_voltage, "V")} (${results.passFailStatus?.v12_1_voltage || "N/A"})`);
+      addText(`15V Converter Voltage: ${formatValue(results.converters.v15_voltage, "V")} (${results.passFailStatus?.v15_voltage || "N/A"})`);
+      addText(`HDRM 12V Converter 2 Voltage: ${formatValue(results.converters.hdrm12v2_voltage, "V")} (${results.passFailStatus?.hdrm12v2_voltage || "N/A"})`);
+      addText(`5V Converter 2 Voltage: ${formatValue(results.converters.v5_2_voltage, "V")} (${results.passFailStatus?.v5_2_voltage || "N/A"})`);
+      addText(`12V Converter 2 Voltage: ${formatValue(results.converters.v12_2_voltage, "V")} (${results.passFailStatus?.v12_2_voltage || "N/A"})`);
       yPosition += 5;
-      addText(`HDRM 12V Converter 1 Temperature: ${results.converters.hdrm12v1_temp ? parseFloat(results.converters.hdrm12v1_temp).toFixed(3) : "N/A"} °C`);
-      addText(`5V Converter 1 Temperature: ${results.converters.v5_1_temp ? parseFloat(results.converters.v5_1_temp).toFixed(3) : "N/A"} °C`);
-      addText(`12V Converter 1 Temperature: ${results.converters.v12_1_temp ? parseFloat(results.converters.v12_1_temp).toFixed(3) : "N/A"} °C`);
-      addText(`15V Converter Temperature: ${results.converters.v15_temp ? parseFloat(results.converters.v15_temp).toFixed(3) : "N/A"} °C`);
-      addText(`HDRM 12V Converter 2 Temperature: ${results.converters.hdrm12v2_temp ? parseFloat(results.converters.hdrm12v2_temp).toFixed(3) : "N/A"} °C`);
-      addText(`5V Converter 2 Temperature: ${results.converters.v5_2_temp ? parseFloat(results.converters.v5_2_temp).toFixed(3) : "N/A"} °C`);
-      addText(`12V Converter 2 Temperature: ${results.converters.v12_2_temp ? parseFloat(results.converters.v12_2_temp).toFixed(3) : "N/A"} °C`);
+      addText(`HDRM 12V Converter 1 Temperature: ${formatValue(results.converters.hdrm12v1_temp, "°C")}`);
+      addText(`5V Converter 1 Temperature: ${formatValue(results.converters.v5_1_temp, "°C")}`);
+      addText(`12V Converter 1 Temperature: ${formatValue(results.converters.v12_1_temp, "°C")}`);
+      addText(`15V Converter Temperature: ${formatValue(results.converters.v15_temp, "°C")}`);
+      addText(`HDRM 12V Converter 2 Temperature: ${formatValue(results.converters.hdrm12v2_temp, "°C")}`);
+      addText(`5V Converter 2 Temperature: ${formatValue(results.converters.v5_2_temp, "°C")}`);
+      addText(`12V Converter 2 Temperature: ${formatValue(results.converters.v12_2_temp, "°C")}`);
       yPosition += 10;
     }
 
-    // Load Summary
+    // Load Summary (RLCL)
     if (results.loads) {
-      addSectionHeader('Load Summary');
-      addText(`OBC-1 Voltage: ${results.loads.obc1_voltage ? parseFloat(results.loads.obc1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.obc1_voltage || "N/A"})`);
-      addText(`OBC-1 Current: ${results.loads.obc1_current ? parseFloat(results.loads.obc1_current).toFixed(3) : "N/A"} A`);
+      addSectionHeader('Load Summary (RLCL)');
+      addText(`OBC-1 Voltage: ${formatValue(results.loads.obc1_voltage, "V")} (${results.passFailStatus?.obc1_voltage || "N/A"})`);
+      addText(`OBC-1 Current: ${formatValue(results.loads.obc1_current, "A")}`);
       yPosition += 3;
-      addText(`OBC-2 Voltage: ${results.loads.obc2_voltage ? parseFloat(results.loads.obc2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.obc2_voltage || "N/A"})`);
-      addText(`OBC-2 Current: ${results.loads.obc2_current ? parseFloat(results.loads.obc2_current).toFixed(3) : "N/A"} A`);
+      addText(`OBC-2 Voltage: ${formatValue(results.loads.obc2_voltage, "V")} (${results.passFailStatus?.obc2_voltage || "N/A"})`);
+      addText(`OBC-2 Current: ${formatValue(results.loads.obc2_current, "A")}`);
       yPosition += 3;
-      addText(`S-Band Voltage: ${results.loads.sband_voltage ? parseFloat(results.loads.sband_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.sband_voltage || "N/A"})`);
-      addText(`S-Band Current: ${results.loads.sband_current ? parseFloat(results.loads.sband_current).toFixed(3) : "N/A"} A`);
+      addText(`S-Band Voltage: ${formatValue(results.loads.sband_voltage, "V")} (${results.passFailStatus?.sband_voltage || "N/A"})`);
+      addText(`S-Band Current: ${formatValue(results.loads.sband_current, "A")}`);
       yPosition += 3;
-      addText(`UHF Voltage: ${results.loads.uhf_voltage ? parseFloat(results.loads.uhf_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.uhf_voltage || "N/A"})`);
-      addText(`UHF Current: ${results.loads.uhf_current ? parseFloat(results.loads.uhf_current).toFixed(3) : "N/A"} A`);
+      addText(`UHF Voltage: ${formatValue(results.loads.uhf_voltage, "V")} (${results.passFailStatus?.uhf_voltage || "N/A"})`);
+      addText(`UHF Current: ${formatValue(results.loads.uhf_current, "A")}`);
       yPosition += 10;
+    }
+
+    // LCL Summary (Additional Load Channels)
+    if (results.rawParameters) {
+      addSectionHeader('LCL Summary (Additional Load Channels)');
+      
+      // ADCS channels
+      addText(`ADCS IF Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS_IF_V"], "V")}`);
+      addText(`ADCS IF Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS-IF_I"], "A")}`);
+      addText(`ADCS RW Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_V"], "V")}`);
+      addText(`ADCS RW Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_I"], "A")}`);
+      yPosition += 3;
+      
+      // GPS channels
+      addText(`GPS 5V Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_V"], "V")}`);
+      addText(`GPS 5V Current: ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_I"], "A")}`);
+      yPosition += 3;
+      
+      // ECU channels
+      addText(`ECU 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_V"], "V")}`);
+      addText(`ECU 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_I"], "A")}`);
+      addText(`ECU 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_V"], "V")}`);
+      addText(`ECU 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_I"], "A")}`);
+      yPosition += 3;
+      
+      // Thruster channels
+      addText(`Thruster 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_V"], "V")}`);
+      addText(`Thruster 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_I"], "A")}`);
+      addText(`Thruster 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_V"], "V")}`);
+      addText(`Thruster 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_I"], "A")}`);
+      yPosition += 3;
+      
+      // PCS channels
+      addText(`PCS Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_V"], "V")}`);
+      addText(`PCS Current: ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_I"], "A")}`);
+      yPosition += 3;
+      
+      // Optical Camera channels
+      addText(`Optical Camera Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_V"], "V")}`);
+      addText(`Optical Camera Current: ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_I"], "A")}`);
+      yPosition += 3;
+      
+      // X-Band channels
+      addText(`X-Band Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_V"], "V")}`);
+      addText(`X-Band Current: ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_I"], "A")}`);
+      yPosition += 3;
+      
+      // AOD channels
+      addText(`AOD 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_V"], "V")}`);
+      addText(`AOD 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_I"], "A")}`);
+      addText(`AOD 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_V"], "V")}`);
+      addText(`AOD 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_I"], "A")}`);
+      yPosition += 3;
+      
+      // CIP channels
+      addText(`CIP Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_V"], "V")}`);
+      addText(`CIP Current: ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_I"], "A")}`);
+      yPosition += 10;
+    }
+
+    // HDRM Voltage/Current Summary
+    if (results.rawParameters) {
+      addSectionHeader('HDRM Voltage/Current Summary');
+      
+      // HDRM 1 channels
+      addText(`HDRM 1 ARM Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_ARM_V"], "V")}`);
+      addText(`HDRM 1 SW01 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_V"], "V")}`);
+      addText(`HDRM 1 SW01 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_I"], "A")}`);
+      addText(`HDRM 1 SW02 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_V"], "V")}`);
+      addText(`HDRM 1 SW02 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_I"], "A")}`);
+      addText(`HDRM 1 SW03 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_V"], "V")}`);
+      addText(`HDRM 1 SW03 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_I"], "A")}`);
+      yPosition += 3;
+      
+      // HDRM 2 channels
+      addText(`HDRM 2 ARM Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_ARM_V"], "V")}`);
+      addText(`HDRM 2 SW01 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_V"], "V")}`);
+      addText(`HDRM 2 SW01 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_I"], "A")}`);
+      addText(`HDRM 2 SW02 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_V"], "V")}`);
+      addText(`HDRM 2 SW02 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_I"], "A")}`);
+      addText(`HDRM 2 SW03 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_V"], "V")}`);
+      addText(`HDRM 2 SW03 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_I"], "A")}`);
+      yPosition += 10;
+    }
+
+    // Heater System Summary
+    if (results.rawParameters) {
+      addSectionHeader('Heater System Summary');
+      
+      // Heater Group 1 (PSM1) - heater1Vi parameters
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'bold');
+      addText('Heater Group 1 (PSM1):');
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      addText(`HT1 LCL Status: ${formatValue(results.rawParameters["HEPS1_PSM1_HT1_LCL"])}`);
+      addText(`Battery Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_V"], "V")}`);
+      addText(`Battery Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_I"], "A")}`);
+      addText(`Thruster Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_V"], "V")}`);
+      addText(`Thruster Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_I"], "A")}`);
+      addText(`Camera Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_V"], "V")}`);
+      addText(`Camera Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_I"], "A")}`);
+      yPosition += 3;
+      
+      // Heater Group 2 (PSM2) - heater2Vi parameters
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'bold');
+      addText('Heater Group 2 (PSM2):');
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      addText(`HT2 LCL Status: ${formatValue(results.rawParameters["HEPS1_PSM2_HT2_LCL"])}`);
+      addText(`Battery Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_V"], "V")}`);
+      addText(`Battery Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_I"], "A")}`);
+      addText(`Thruster Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_V"], "V")}`);
+      addText(`Thruster Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_I"], "A")}`);
+      addText(`Camera Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_V"], "V")}`);
+      addText(`Camera Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_I"], "A")}`);
+      yPosition += 3;
+
+      // Legacy heater summary (if available from results.heaters)
+      if (results.heaters && results.heaters.length > 0) {
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        addText('Summary Data:');
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        
+        // Heater Group 1 Summary
+        if (results.heaters[0]) {
+          addText(`Heater Group 1 Status: ${results.heaters[0].status || "N/A"}`);
+          addText(`Heater Group 1 Total Power: ${formatValue(results.heaters[0].power, "W")}`);
+          yPosition += 3;
+        }
+
+        // Heater Group 2 Summary
+        if (results.heaters[1]) {
+          addText(`Heater Group 2 Status: ${results.heaters[1].status || "N/A"}`);
+          addText(`Heater Group 2 Total Power: ${formatValue(results.heaters[1].power, "W")}`);
+          yPosition += 10;
+        }
+      } else {
+        yPosition += 10;
+      }
     }
 
     // Heater Test Results (if available)
@@ -997,7 +2210,7 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
       addSectionHeader('Heater Test Results');
       
       results.heaterTests.forEach((heaterTest: any, index: number) => {
-        checkNewPage(50);
+        checkNewPage(60);
         pdf.setFontSize(12);
         pdf.setFont('helvetica', 'bold');
         pdf.text(`Heater ${index + 1} Test Results:`, margin, yPosition);
@@ -1005,29 +2218,29 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
         
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
-        addText(`Initial Temperature: ${heaterTest.initialTemp} °C`);
-        addText(`Test Duration: ${heaterTest.testDuration} seconds`);
-        addText(`Test Result: ${heaterTest.testResult}`);
+        addText(`Initial Temperature: ${heaterTest.initialTemp || "N/A"} °C`);
+        addText(`Test Result: ${heaterTest.testResult || "N/A"}`);
+        addText(`Reading Interval: ${heaterTest.readingInterval || "N/A"} seconds`);
         yPosition += 3;
         
         // Thermal Rise Performance
         pdf.setFont('helvetica', 'bold');
         addText('Thermal Rise Performance:');
         pdf.setFont('helvetica', 'normal');
-        addText(`Total Temperature Rise: ${heaterTest.thermalRise.totalRise.toFixed(1)} °C`, 5);
-        addText(`Rise Rate: ${heaterTest.thermalRise.riseRate.toFixed(2)} °C/min`, 5);
-        addText(`Time to 5°C Rise: ${heaterTest.thermalRise.timeTo5C.toFixed(1)} seconds`, 5);
-        addText(`Time to 10°C Rise: ${heaterTest.thermalRise.timeTo10C ? heaterTest.thermalRise.timeTo10C.toFixed(1) + ' seconds' : 'N/A'}`, 5);
+        addText(`Total Temperature Rise: ${heaterTest.thermalRise?.totalRise || "N/A"} °C`, 5);
+        addText(`Rise Rate: ${heaterTest.thermalRise?.riseRate || "N/A"} °C/min`, 5);
+        addText(`Time to 5°C Rise: ${heaterTest.thermalRise?.timeTo5C || "N/A"} seconds`, 5);
+        addText(`Time to 10°C Rise: ${heaterTest.thermalRise?.timeTo10C || "N/A"} seconds`, 5);
         yPosition += 3;
         
         // Power Consumption
         pdf.setFont('helvetica', 'bold');
         addText('Power Consumption:');
         pdf.setFont('helvetica', 'normal');
-        addText(`Average Current: ${heaterTest.power.avgCurrent} mA`, 5);
-        addText(`Maximum Current: ${heaterTest.power.maxCurrent} mA`, 5);
-        addText(`Average Power: ${heaterTest.power.avgPower.toFixed(2)} W`, 5);
-        addText(`Total Energy Used: ${heaterTest.power.totalEnergy.toFixed(2)} Wh`, 5);
+        addText(`Average Current: ${heaterTest.power?.avgCurrent || "N/A"} mA`, 5);
+        addText(`Maximum Current: ${heaterTest.power?.maxCurrent || "N/A"} mA`, 5);
+        addText(`Average Power: ${heaterTest.power?.avgPower || "N/A"} W`, 5);
+        addText(`Total Energy Used: ${heaterTest.power?.totalEnergy || "N/A"} Wh`, 5);
         yPosition += 10;
       });
     }
@@ -1035,24 +2248,37 @@ async function generateHEPSPDFReport(results: any): Promise<string> {
     // Current Test Results (if available)
     if (results.currentTest) {
       addSectionHeader('Current Measurement Test Results');
-      addText(`Test Result: ${results.currentTest.testResult}`);
-      addText(`Test Duration: ${results.currentTest.testDuration} seconds`);
-      addText(`Samples Collected: ${results.currentTest.sampleCount}`);
-      addText(`Maximum Deviation: ${results.currentTest.maxDeviation.toFixed(2)}%`);
-      addText(`Tolerance Range: ±${results.currentTest.tolerance}%`);
+      addText(`Test Result: ${results.currentTest.testResult || "N/A"}`);
+      addText(`Test Duration: ${results.currentTest.testDuration || "N/A"} seconds`);
+      addText(`Samples Collected: ${results.currentTest.sampleCount || "N/A"}`);
+      addText(`Maximum Deviation: ${results.currentTest.maxDeviation || "N/A"}%`);
+      addText(`Tolerance Range: ±${results.currentTest.tolerance || "N/A"}%`);
+      
+      // Heater-specific current test results
+      if (results.currentTest.heaterResults && results.currentTest.heaterResults.length > 0) {
+        yPosition += 5;
+        results.currentTest.heaterResults.forEach((heaterResult: any, index: number) => {
+          addText(`Heater ${index + 1} Current Test:`);
+          addText(`Expected Current: ${heaterResult.expectedCurrent || "N/A"} mA`, 5);
+          addText(`Measured Current: ${heaterResult.measuredCurrent || "N/A"} mA`, 5);
+          addText(`Deviation: ${heaterResult.deviation || "N/A"}%`, 5);
+          addText(`In Range: ${heaterResult.inRange ? "YES" : "NO"}`, 5);
+          yPosition += 3;
+        });
+      }
       yPosition += 10;
     }
 
     // Power Cycle Test Results (if available)
     if (results.powerCycleTest) {
       addSectionHeader('Power Cycle Test Results');
-      addText(`Power Cycle Test Result: ${results.powerCycleTest.testResult}`);
-      addText(`Cycles Completed: ${results.powerCycleTest.cyclesCompleted} of ${results.powerCycleTest.totalCycles}`);
-      addText(`Cycle Time: ${results.powerCycleTest.cycleTime} seconds`);
-      addText(`Power On Time: ${results.powerCycleTest.powerOnTime} seconds`);
-      addText(`Power Off Time: ${results.powerCycleTest.powerOffTime} seconds`);
-      addText(`Total Test Time: ${results.powerCycleTest.totalTestTime} seconds`);
-addText(`Failures: ${results.powerCycleTest.failures}`);
+      addText(`Power Cycle Test Result: ${results.powerCycleTest.testResult || "N/A"}`);
+      addText(`Cycles Completed: ${results.powerCycleTest.cyclesCompleted || "N/A"} of ${results.powerCycleTest.totalCycles || "N/A"}`);
+      addText(`Cycle Time: ${results.powerCycleTest.cycleTime || "N/A"} seconds`);
+      addText(`Power On Time: ${results.powerCycleTest.powerOnTime || "N/A"} seconds`);
+      addText(`Power Off Time: ${results.powerCycleTest.powerOffTime || "N/A"} seconds`);
+      addText(`Total Test Time: ${results.powerCycleTest.totalTestTime || "N/A"} seconds`);
+      addText(`Failures: ${results.powerCycleTest.failures || "0"}`);
       yPosition += 10;
     }
 

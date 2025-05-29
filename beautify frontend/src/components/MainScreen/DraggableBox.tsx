@@ -18,8 +18,8 @@ interface DraggableBoxProps {
   className?: string;
   removeDroppedItem?: (id: string) => void;
   isCheckoutEditing?: boolean;
-  checkedOptions?: Record<string, boolean>; // New prop to track checked state
-  onOptionChange?: (id: string, option: string, checked: boolean) => void; // New handler
+  checkedOptions?: Record<string, boolean>; // prop to track checked state
+  onOptionChange?: (id: string, option: string, checked: boolean) => void;
 }
 
 const DraggableBox: React.FC<DraggableBoxProps> = ({ 
@@ -91,21 +91,21 @@ const DraggableBox: React.FC<DraggableBoxProps> = ({
     backgroundColor: isDropped ? droppedBgColor : defaultBgColor,
     border: "1px solid #ccc",
     borderRadius: "4px",
-    cursor: shouldApplyEffect ? "not-allowed" : isDragging ? "grabbing" : "grab", // ✅ Only disable cursor in bottom section
+    cursor: shouldApplyEffect ? "not-allowed" : isDragging ? "grabbing" : "grab", // Only disable cursor in bottom section
     display: "inline-block",
     width: "145px",
-    height: `${maxHeight}px`, // ✅ Apply max height across all boxes
+    height: `${maxHeight}px`, // Apply max height across all boxes
     boxSizing: "border-box",
-    opacity: shouldApplyEffect ? 0.5 : 1, // ✅ Only make translucent in bottom section
+    opacity: shouldApplyEffect ? 0.5 : 1, // Only make translucent in bottom section
     color: isDarkMode ? "#ffffff" : "black",
     position: "relative",
-    zIndex: isDragging ? 999 : 1, // ✅ Ensure correct layering
+    zIndex: isDragging ? 999 : 1, // Ensure correct layering
     touchAction: "none",
     userSelect: "none",
-    overflowY: requiresScroll ? "auto" : "hidden", // ✅ Only enable scrolling after 10 options
+    overflowY: requiresScroll ? "auto" : "hidden", // Only enable scrolling after 10 options
     overflowX: "hidden", 
     whiteSpace: "normal", 
-    pointerEvents: shouldApplyEffect ? "none" : "auto", // ✅ Only make unselectable in bottom section
+    pointerEvents: shouldApplyEffect ? "none" : "auto", // Only make unselectable in bottom section
   };
 
   // Handle checkbox change

@@ -90,7 +90,6 @@ export const TestDetailsModal: React.FC<TestDetailsModalProps> = ({
               </div>
             </div>
             
-            {/* Replace the existing Test Type div with this updated version */}
             <div>
               <div style={{
                 fontSize: '14px',
@@ -109,7 +108,7 @@ export const TestDetailsModal: React.FC<TestDetailsModalProps> = ({
               }}>
                 {test.test_type || 'Standard Test'}
                 
-                {/* Add badge to indicate if test was real or simulated */}
+                {/* badge to indicate if test was real or simulated */}
                 {test.results && test.results.simulated ? (
                   <span style={{
                     backgroundColor: 'rgba(245, 158, 11, 0.1)',

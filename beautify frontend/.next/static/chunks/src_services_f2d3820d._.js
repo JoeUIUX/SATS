@@ -1033,7 +1033,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
-// src/services/reports/obc1Report.ts
+// src/services/reports/obc1Report.ts - Enhanced with all parameters
 __turbopack_context__.s({
     "generateOBC1Report": (()=>generateOBC1Report)
 });
@@ -1125,6 +1125,12 @@ async function generateOBC1Report(results) {
                             after: 100
                         }
                     }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Simulation Mode: ${results._simulationUsed || results.simulated ? 'YES' : 'NO'}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
                     // Separator
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "--------------------------------------------------------------------",
@@ -1201,7 +1207,7 @@ async function generateOBC1Report(results) {
                         text: "",
                         pageBreakBefore: true
                     }),
-                    // FPGA section
+                    // FPGA section - Enhanced with all voltage parameters
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "* FPGA Voltage Current Temperature Summary:",
                         heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
@@ -1215,8 +1221,8 @@ async function generateOBC1Report(results) {
                             after: 100
                         }
                     }),
-                    // Create FPGA info paragraphs
-                    ...results.fpga ? createFpgaInfoParagraphs(results) : [
+                    // Create comprehensive FPGA info paragraphs
+                    ...results.fpga || results.rawParameters ? createComprehensiveFpgaInfoParagraphs(results) : [
                         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                             text: "FPGA information not available",
                             spacing: {
@@ -1289,6 +1295,43 @@ async function generateOBC1Report(results) {
                     ...results.emmc ? createEmmcInfoParagraphs(results) : [
                         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                             text: "eMMC test information not available",
+                            spacing: {
+                                after: 100
+                            }
+                        })
+                    ],
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200,
+                            before: 200
+                        }
+                    }),
+                    // Page break
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    // Raw Parameters section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Raw Parameter Values:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    // Create raw parameters table
+                    ...results.rawParameters ? [
+                        createRawParametersTable(results)
+                    ] : [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: "Raw parameter information not available",
                             spacing: {
                                 after: 100
                             }
@@ -1413,6 +1456,8 @@ async function generateOBC1Report(results) {
         pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`, margin, yPosition);
         yPosition += 6;
         pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
+        yPosition += 6;
+        pdf.text(`Simulation Mode: ${results._simulationUsed || results.simulated ? 'YES' : 'NO'}`, margin, yPosition);
         yPosition += 15;
         // Add a separator line
         pdf.line(margin, yPosition, pageWidth - margin, yPosition);
@@ -1432,7 +1477,7 @@ async function generateOBC1Report(results) {
         }
         yPosition += 15;
         // Kernel Information Section
-        checkNewPage(50);
+        checkNewPage(80);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('Kernel Information', margin, yPosition);
@@ -1453,41 +1498,173 @@ async function generateOBC1Report(results) {
             yPosition += 6;
             pdf.text(`Free RAM: ${kernelData.memory?.freeRam || 'N/A'} bytes`, margin, yPosition);
             yPosition += 6;
+            pdf.text(`Shared RAM: ${kernelData.memory?.sharedRam || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Buffer RAM: ${kernelData.memory?.bufferRam || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Total Swap: ${kernelData.memory?.totalSwap || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Free Swap: ${kernelData.memory?.freeSwap || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Total High: ${kernelData.memory?.totalHigh || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Free High: ${kernelData.memory?.freeHigh || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Memory Unit: ${kernelData.memory?.memUnit || 'N/A'} bytes`, margin, yPosition);
+            yPosition += 6;
             pdf.text(`Processes: ${kernelData.processes || 'N/A'}`, margin, yPosition);
         } else {
             pdf.text('Kernel information not available', margin, yPosition);
         }
         yPosition += 15;
         // FPGA Section
-        checkNewPage(40);
+        checkNewPage(120);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('FPGA Voltages & Temperatures', margin, yPosition);
         yPosition += 10;
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
-        if (results.fpga) {
-            const fpgaData = results.fpga;
-            if (fpgaData.voltages) {
-                pdf.text(`vcc_pspll: ${fpgaData.voltages.vccPspll || 'N/A'} V`, margin, yPosition);
-                yPosition += 6;
-                pdf.text(`vcc_psbatt: ${fpgaData.voltages.vccPsbatt || 'N/A'} V`, margin, yPosition);
-                yPosition += 6;
-                pdf.text(`vccint: ${fpgaData.voltages.vccint || 'N/A'} V`, margin, yPosition);
-                yPosition += 6;
+        // All FPGA voltages from the checkout variables
+        const fpgaVoltageParams = [
+            {
+                param: 'OBC1_vcc_pspll',
+                label: 'vcc_pspll'
+            },
+            {
+                param: 'OBC1_vcc_psbatt',
+                label: 'vcc_psbatt'
+            },
+            {
+                param: 'OBC1_vccint',
+                label: 'vccint'
+            },
+            {
+                param: 'OBC1_vccbram',
+                label: 'vccbram'
+            },
+            {
+                param: 'OBC1_vccaux',
+                label: 'vccaux'
+            },
+            {
+                param: 'OBC1_vcc_psddr_pll',
+                label: 'vcc_psddr_pll'
+            },
+            {
+                param: 'OBC1_vccpsintfp_ddr',
+                label: 'vccpsintfp_ddr'
+            },
+            {
+                param: 'OBC1_vccint1',
+                label: 'vccint1'
+            },
+            {
+                param: 'OBC1_vccaux1',
+                label: 'vccaux1'
+            },
+            {
+                param: 'OBC1_vccvrefp',
+                label: 'vccvrefp'
+            },
+            {
+                param: 'OBC1_vccvrefn',
+                label: 'vccvrefn'
+            },
+            {
+                param: 'OBC1_vccbram1',
+                label: 'vccbram1'
+            },
+            {
+                param: 'OBC1_vccplintlp',
+                label: 'vccplintlp'
+            },
+            {
+                param: 'OBC1_vccplintfp',
+                label: 'vccplintfp'
+            },
+            {
+                param: 'OBC1_vccplaux',
+                label: 'vccplaux'
+            },
+            {
+                param: 'OBC1_vccams',
+                label: 'vccams'
+            },
+            {
+                param: 'OBC1_vccpsintlp',
+                label: 'vccpsintlp'
+            },
+            {
+                param: 'OBC1_vccpsintfp',
+                label: 'vccpsintfp'
+            },
+            {
+                param: 'OBC1_vccpsaux',
+                label: 'vccpsaux'
+            },
+            {
+                param: 'OBC1_vccpsddr',
+                label: 'vccpsddr'
+            },
+            {
+                param: 'OBC1_vccpsio3',
+                label: 'vccpsio3'
+            },
+            {
+                param: 'OBC1_vccpsio0',
+                label: 'vccpsio0'
+            },
+            {
+                param: 'OBC1_vccpsio1',
+                label: 'vccpsio1'
+            },
+            {
+                param: 'OBC1_vccpsio2',
+                label: 'vccpsio2'
+            },
+            {
+                param: 'OBC1_psmgtravcc',
+                label: 'psmgtravcc'
+            },
+            {
+                param: 'OBC1_psmgtravtt',
+                label: 'psmgtravtt'
+            },
+            {
+                param: 'OBC1_vccams1',
+                label: 'vccams1'
             }
-            if (fpgaData.temperatures) {
-                pdf.text(`PS Temperature: ${fpgaData.temperatures.psTemp || 'N/A'} °C`, margin, yPosition);
-                yPosition += 6;
-                pdf.text(`Remote Temperature: ${fpgaData.temperatures.remoteTemp || 'N/A'} °C`, margin, yPosition);
-                yPosition += 6;
-                pdf.text(`PL Temperature: ${fpgaData.temperatures.plTemp || 'N/A'} °C`, margin, yPosition);
-                yPosition += 6;
-            }
-        } else {
-            pdf.text('FPGA information not available', margin, yPosition);
+        ];
+        // Print all FPGA voltages
+        for (const voltage of fpgaVoltageParams){
+            checkNewPage(6);
+            const value = results.rawParameters?.[voltage.param] || results.fpga?.voltages && getNestedValue(results.fpga.voltages, voltage.param) || 'N/A';
+            pdf.text(`${voltage.label}: ${value} V`, margin, yPosition);
+            yPosition += 6;
         }
-        yPosition += 15;
+        // FPGA temperatures
+        checkNewPage(20);
+        const fpgaTempParams = [
+            {
+                param: 'OBC1_ps_temp',
+                label: 'PS Temperature'
+            },
+            {
+                param: 'OBC1_remote_temp',
+                label: 'Remote Temperature'
+            },
+            {
+                param: 'OBC1_pl_temp',
+                label: 'PL Temperature'
+            }
+        ];
+        for (const temp of fpgaTempParams){
+            const value = results.rawParameters?.[temp.param] || results.fpga?.temperatures && getNestedValue(results.fpga.temperatures, temp.param) || 'N/A';
+            pdf.text(`${temp.label}: ${value} °C`, margin, yPosition);
+            yPosition += 6;
+        }
+        yPosition += 10;
         // Voltage & Current Section
         checkNewPage(40);
         pdf.setFontSize(14);
@@ -1528,6 +1705,7 @@ async function generateOBC1Report(results) {
             yPosition += 6;
             if (tempData.leocam && Array.isArray(tempData.leocam)) {
                 tempData.leocam.forEach((temp, index)=>{
+                    checkNewPage(6);
                     pdf.text(`LEOCAM ${index + 1}: ${temp || 'N/A'} °C`, margin, yPosition);
                     yPosition += 6;
                 });
@@ -1558,10 +1736,181 @@ async function generateOBC1Report(results) {
             ];
             states.forEach((stateName, index)=>{
                 if (index < emmcData.emmc0States.length) {
+                    checkNewPage(6);
                     pdf.text(`${stateName}: eMMC-0=${emmcData.emmc0States[index] || 'N/A'}, eMMC-1=${emmcData.emmc1States[index] || 'N/A'}`, margin, yPosition);
                     yPosition += 6;
                 }
             });
+            yPosition += 10;
+        }
+        // Raw Parameters Section
+        checkNewPage(60);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Complete Raw Parameter Values', margin, yPosition);
+        yPosition += 10;
+        if (results.rawParameters) {
+            const rawParams = results.rawParameters;
+            // Parameter groups matching the Word document
+            const parameterGroups = {
+                'Firmware Parameters': [
+                    'OBC1_FW_Ver_Major',
+                    'OBC1_FW_Ver_Minor',
+                    'OBC1_FW_Ver_Patch'
+                ],
+                'Kernel Parameters': [
+                    'OBC1_Sys_uptime',
+                    'OBC1_Sys_loads_1m',
+                    'OBC1_Sys_loads_5m',
+                    'OBC1_Sys_loads_15m',
+                    'OBC1_Sys_totalram',
+                    'OBC1_Sys_freeram',
+                    'OBC1_Sys_sharedram',
+                    'OBC1_Sys_bufferram',
+                    'OBC1_Sys_totalswap',
+                    'OBC1_Sys_freeswap',
+                    'OBC1_Sys_procs',
+                    'OBC1_Sys_pad',
+                    'OBC1_Sys_totalhigh',
+                    'OBC1_Sys_freehigh',
+                    'OBC1_Sys_mem_unit'
+                ],
+                'FPGA Voltage Parameters': [
+                    'OBC1_vcc_pspll',
+                    'OBC1_vcc_psbatt',
+                    'OBC1_vccint',
+                    'OBC1_vccbram',
+                    'OBC1_vccaux',
+                    'OBC1_vcc_psddr_pll',
+                    'OBC1_vccpsintfp_ddr',
+                    'OBC1_vccint1',
+                    'OBC1_vccaux1',
+                    'OBC1_vccvrefp',
+                    'OBC1_vccvrefn',
+                    'OBC1_vccbram1',
+                    'OBC1_vccplintlp',
+                    'OBC1_vccplintfp',
+                    'OBC1_vccplaux',
+                    'OBC1_vccams',
+                    'OBC1_vccpsintlp',
+                    'OBC1_vccpsintfp',
+                    'OBC1_vccpsaux',
+                    'OBC1_vccpsddr',
+                    'OBC1_vccpsio3',
+                    'OBC1_vccpsio0',
+                    'OBC1_vccpsio1',
+                    'OBC1_vccpsio2',
+                    'OBC1_psmgtravcc',
+                    'OBC1_psmgtravtt',
+                    'OBC1_vccams1'
+                ],
+                'FPGA Temperature Parameters': [
+                    'OBC1_ps_temp',
+                    'OBC1_remote_temp',
+                    'OBC1_pl_temp'
+                ],
+                'Voltage & Current Parameters': [
+                    'OBC1_3V3_D',
+                    'OBC1_PS_3V3_OBC2_V',
+                    'OBC1_PS_5V_OBC2_V',
+                    'OBC1_PS_5V_OBC2_I',
+                    'OBC1_PS_3V3_OBC2_I'
+                ],
+                'Temperature Sensor Parameters': [
+                    'OBC1_thruster_ch1_T',
+                    'OBC1_thruster_ch2_T',
+                    'OBC1_leocam_ch1_T',
+                    'OBC1_leocam_ch2_T',
+                    'OBC1_leocam_ch3_T',
+                    'OBC1_leocam_ch4_T'
+                ],
+                'eMMC Parameters': [
+                    'OBC1_Q8_eMMC0_state',
+                    'OBC1_Q8_eMMC1_state'
+                ]
+            };
+            // Display parameters by group
+            Object.entries(parameterGroups).forEach(([groupName, params])=>{
+                checkNewPage(20);
+                // Group header
+                pdf.setFontSize(12);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text(groupName, margin, yPosition);
+                yPosition += 8;
+                // Parameters in this group
+                pdf.setFontSize(9);
+                pdf.setFont('helvetica', 'normal');
+                params.forEach((param)=>{
+                    checkNewPage(6);
+                    const value = rawParams[param] || 'N/A';
+                    const displayText = `${param}: ${value}`;
+                    // Check if text is too long for one line
+                    const textWidth = pdf.getTextWidth(displayText);
+                    const maxWidth = contentWidth;
+                    if (textWidth > maxWidth) {
+                        // Split long text
+                        const colonIndex = displayText.indexOf(':');
+                        const paramName = displayText.substring(0, colonIndex + 1);
+                        const paramValue = displayText.substring(colonIndex + 1).trim();
+                        pdf.text(paramName, margin, yPosition);
+                        yPosition += 5;
+                        pdf.text(`    ${paramValue}`, margin, yPosition);
+                    } else {
+                        pdf.text(displayText, margin, yPosition);
+                    }
+                    yPosition += 5;
+                });
+                yPosition += 5; // Extra space after each group
+            });
+            // Add any additional parameters not in the predefined groups
+            const definedParams = new Set(Object.values(parameterGroups).flat());
+            const additionalParams = Object.keys(rawParams).filter((param)=>!definedParams.has(param));
+            if (additionalParams.length > 0) {
+                checkNewPage(20);
+                pdf.setFontSize(12);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('Additional Parameters', margin, yPosition);
+                yPosition += 8;
+                pdf.setFontSize(9);
+                pdf.setFont('helvetica', 'normal');
+                additionalParams.forEach((param)=>{
+                    checkNewPage(6);
+                    const value = rawParams[param];
+                    const displayText = `${param}: ${value}`;
+                    // Check if text is too long for one line
+                    const textWidth = pdf.getTextWidth(displayText);
+                    const maxWidth = contentWidth;
+                    if (textWidth > maxWidth) {
+                        // Split long text
+                        const colonIndex = displayText.indexOf(':');
+                        const paramName = displayText.substring(0, colonIndex + 1);
+                        const paramValue = displayText.substring(colonIndex + 1).trim();
+                        pdf.text(paramName, margin, yPosition);
+                        yPosition += 5;
+                        pdf.text(`    ${paramValue}`, margin, yPosition);
+                    } else {
+                        pdf.text(displayText, margin, yPosition);
+                    }
+                    yPosition += 5;
+                });
+            }
+            // Show summary at the end
+            checkNewPage(15);
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'bold');
+            const paramCount = Object.keys(rawParams).length;
+            pdf.text(`Total parameters recorded: ${paramCount}`, margin, yPosition);
+            yPosition += 6;
+            // Show simulation status
+            if (rawParams._simulation_used) {
+                pdf.text(`Simulation used: ${rawParams._simulation_used}`, margin, yPosition);
+                yPosition += 6;
+            }
+        } else {
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'normal');
+            pdf.text('Raw parameter information not available', margin, yPosition);
+            yPosition += 10;
         }
         // Add footer to all pages
         const totalPages = pdf.internal.pages.length - 1;
@@ -1580,7 +1929,7 @@ async function generateOBC1Report(results) {
         throw new Error(`Failed to generate OBC-1 PDF report: ${error instanceof Error ? error.message : String(error)}`);
     }
 }
-// Helper function to create kernel info table
+// Helper function to create comprehensive kernel info table
 function createKernelInfoTable(results) {
     const kernelData = results.kernel || {};
     const rows = [
@@ -1696,21 +2045,171 @@ function createKernelInfoTable(results) {
         }
     });
 }
-// Helper function to create FPGA info paragraphs
-function createFpgaInfoParagraphs(results) {
-    const fpgaData = results.fpga || {};
-    const voltages = fpgaData.voltages || {};
-    const temperatures = fpgaData.temperatures || {};
-    return [
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`vcc_pspll       : ${padString(voltages.vccPspll || 'N/A', 4)} V`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`vcc_psbatt      : ${padString(voltages.vccPsbatt || 'N/A', 4)} V`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`vccint          : ${padString(voltages.vccint || 'N/A', 4)} V`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`vccbram         : ${padString(voltages.vccbram || 'N/A', 4)} V`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`vccaux          : ${padString(voltages.vccaux || 'N/A', 4)} V`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`ps_temp         : ${padString(temperatures.psTemp || 'N/A', 4)} deg C`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`remote_temp     : ${padString(temperatures.remoteTemp || 'N/A', 4)} deg C`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`pl_temp         : ${padString(temperatures.plTemp || 'N/A', 4)} deg C`)
+// Helper function to create comprehensive FPGA info paragraphs
+function createComprehensiveFpgaInfoParagraphs(results) {
+    const paragraphs = [];
+    // FPGA Voltages Section
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "FPGA Voltages:",
+        spacing: {
+            after: 100
+        },
+        run: {
+            bold: true
+        }
+    }));
+    // All FPGA voltage parameters from the checkout
+    const fpgaVoltageParams = [
+        {
+            param: 'OBC1_vcc_pspll',
+            label: 'vcc_pspll'
+        },
+        {
+            param: 'OBC1_vcc_psbatt',
+            label: 'vcc_psbatt'
+        },
+        {
+            param: 'OBC1_vccint',
+            label: 'vccint'
+        },
+        {
+            param: 'OBC1_vccbram',
+            label: 'vccbram'
+        },
+        {
+            param: 'OBC1_vccaux',
+            label: 'vccaux'
+        },
+        {
+            param: 'OBC1_vcc_psddr_pll',
+            label: 'vcc_psddr_pll'
+        },
+        {
+            param: 'OBC1_vccpsintfp_ddr',
+            label: 'vccpsintfp_ddr'
+        },
+        {
+            param: 'OBC1_vccint1',
+            label: 'vccint1'
+        },
+        {
+            param: 'OBC1_vccaux1',
+            label: 'vccaux1'
+        },
+        {
+            param: 'OBC1_vccvrefp',
+            label: 'vccvrefp'
+        },
+        {
+            param: 'OBC1_vccvrefn',
+            label: 'vccvrefn'
+        },
+        {
+            param: 'OBC1_vccbram1',
+            label: 'vccbram1'
+        },
+        {
+            param: 'OBC1_vccplintlp',
+            label: 'vccplintlp'
+        },
+        {
+            param: 'OBC1_vccplintfp',
+            label: 'vccplintfp'
+        },
+        {
+            param: 'OBC1_vccplaux',
+            label: 'vccplaux'
+        },
+        {
+            param: 'OBC1_vccams',
+            label: 'vccams'
+        },
+        {
+            param: 'OBC1_vccpsintlp',
+            label: 'vccpsintlp'
+        },
+        {
+            param: 'OBC1_vccpsintfp',
+            label: 'vccpsintfp'
+        },
+        {
+            param: 'OBC1_vccpsaux',
+            label: 'vccpsaux'
+        },
+        {
+            param: 'OBC1_vccpsddr',
+            label: 'vccpsddr'
+        },
+        {
+            param: 'OBC1_vccpsio3',
+            label: 'vccpsio3'
+        },
+        {
+            param: 'OBC1_vccpsio0',
+            label: 'vccpsio0'
+        },
+        {
+            param: 'OBC1_vccpsio1',
+            label: 'vccpsio1'
+        },
+        {
+            param: 'OBC1_vccpsio2',
+            label: 'vccpsio2'
+        },
+        {
+            param: 'OBC1_psmgtravcc',
+            label: 'psmgtravcc'
+        },
+        {
+            param: 'OBC1_psmgtravtt',
+            label: 'psmgtravtt'
+        },
+        {
+            param: 'OBC1_vccams1',
+            label: 'vccams1'
+        }
     ];
+    // Add voltage paragraphs
+    fpgaVoltageParams.forEach((voltage)=>{
+        const value = results.rawParameters?.[voltage.param] || results.fpga?.voltages && getNestedValue(results.fpga.voltages, voltage.param) || 'N/A';
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${voltage.label.padEnd(20)} : ${padString(value, 6)} V`));
+    });
+    // Add spacing
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "",
+        spacing: {
+            after: 100
+        }
+    }));
+    // FPGA Temperatures Section
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "FPGA Temperatures:",
+        spacing: {
+            after: 100
+        },
+        run: {
+            bold: true
+        }
+    }));
+    const fpgaTempParams = [
+        {
+            param: 'OBC1_ps_temp',
+            label: 'ps_temp'
+        },
+        {
+            param: 'OBC1_remote_temp',
+            label: 'remote_temp'
+        },
+        {
+            param: 'OBC1_pl_temp',
+            label: 'pl_temp'
+        }
+    ];
+    fpgaTempParams.forEach((temp)=>{
+        const value = results.rawParameters?.[temp.param] || results.fpga?.temperatures && getNestedValue(results.fpga.temperatures, temp.param) || 'N/A';
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${temp.label.padEnd(20)} : ${padString(value, 6)} deg C`));
+    });
+    return paragraphs;
 }
 // Helper function to create VI info paragraphs
 function createViInfoParagraphs(results) {
@@ -1762,6 +2261,279 @@ function createEmmcInfoParagraphs(results) {
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`eMMC-1 : ${padString(emmc1States[5] || 'N/A', 3)}`)
     ];
 }
+// Helper function to create raw parameters table
+function createRawParametersTable(results) {
+    const rawParams = results.rawParameters || {};
+    // Group parameters by category for better organization
+    const parameterGroups = {
+        'Firmware Parameters': [
+            'OBC1_FW_Ver_Major',
+            'OBC1_FW_Ver_Minor',
+            'OBC1_FW_Ver_Patch'
+        ],
+        'Kernel Parameters': [
+            'OBC1_Sys_uptime',
+            'OBC1_Sys_loads_1m',
+            'OBC1_Sys_loads_5m',
+            'OBC1_Sys_loads_15m',
+            'OBC1_Sys_totalram',
+            'OBC1_Sys_freeram',
+            'OBC1_Sys_sharedram',
+            'OBC1_Sys_bufferram',
+            'OBC1_Sys_totalswap',
+            'OBC1_Sys_freeswap',
+            'OBC1_Sys_procs',
+            'OBC1_Sys_pad',
+            'OBC1_Sys_totalhigh',
+            'OBC1_Sys_freehigh',
+            'OBC1_Sys_mem_unit'
+        ],
+        'FPGA Voltage Parameters': [
+            'OBC1_vcc_pspll',
+            'OBC1_vcc_psbatt',
+            'OBC1_vccint',
+            'OBC1_vccbram',
+            'OBC1_vccaux',
+            'OBC1_vcc_psddr_pll',
+            'OBC1_vccpsintfp_ddr',
+            'OBC1_vccint1',
+            'OBC1_vccaux1',
+            'OBC1_vccvrefp',
+            'OBC1_vccvrefn',
+            'OBC1_vccbram1',
+            'OBC1_vccplintlp',
+            'OBC1_vccplintfp',
+            'OBC1_vccplaux',
+            'OBC1_vccams',
+            'OBC1_vccpsintlp',
+            'OBC1_vccpsintfp',
+            'OBC1_vccpsaux',
+            'OBC1_vccpsddr',
+            'OBC1_vccpsio3',
+            'OBC1_vccpsio0',
+            'OBC1_vccpsio1',
+            'OBC1_vccpsio2',
+            'OBC1_psmgtravcc',
+            'OBC1_psmgtravtt',
+            'OBC1_vccams1'
+        ],
+        'FPGA Temperature Parameters': [
+            'OBC1_ps_temp',
+            'OBC1_remote_temp',
+            'OBC1_pl_temp'
+        ],
+        'Voltage & Current Parameters': [
+            'OBC1_3V3_D',
+            'OBC1_PS_3V3_OBC2_V',
+            'OBC1_PS_5V_OBC2_V',
+            'OBC1_PS_5V_OBC2_I',
+            'OBC1_PS_3V3_OBC2_I'
+        ],
+        'Temperature Sensor Parameters': [
+            'OBC1_thruster_ch1_T',
+            'OBC1_thruster_ch2_T',
+            'OBC1_leocam_ch1_T',
+            'OBC1_leocam_ch2_T',
+            'OBC1_leocam_ch3_T',
+            'OBC1_leocam_ch4_T'
+        ],
+        'eMMC Parameters': [
+            'OBC1_Q8_eMMC0_state',
+            'OBC1_Q8_eMMC1_state'
+        ]
+    };
+    const rows = [];
+    // Add header row
+    rows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+        children: [
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Parameter Category",
+                        run: {
+                            bold: true
+                        }
+                    })
+                ],
+                width: {
+                    size: 40,
+                    type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                }
+            }),
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Parameter Name",
+                        run: {
+                            bold: true
+                        }
+                    })
+                ],
+                width: {
+                    size: 35,
+                    type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                }
+            }),
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Value",
+                        run: {
+                            bold: true
+                        }
+                    })
+                ],
+                width: {
+                    size: 25,
+                    type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                }
+            })
+        ]
+    }));
+    // Add parameters by group
+    Object.entries(parameterGroups).forEach(([groupName, params])=>{
+        // Add group header
+        rows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+            children: [
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: groupName,
+                            run: {
+                                bold: true,
+                                color: "0066CC"
+                            }
+                        })
+                    ],
+                    columnSpan: 3
+                })
+            ]
+        }));
+        // Add parameters in this group
+        params.forEach((param)=>{
+            const value = rawParams[param] || 'N/A';
+            rows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]("")
+                        ],
+                        width: {
+                            size: 40,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](param)
+                        ],
+                        width: {
+                            size: 35,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](String(value))
+                        ],
+                        width: {
+                            size: 25,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    })
+                ]
+            }));
+        });
+    });
+    // Add any additional parameters not in the predefined groups
+    const definedParams = new Set(Object.values(parameterGroups).flat());
+    const additionalParams = Object.keys(rawParams).filter((param)=>!definedParams.has(param));
+    if (additionalParams.length > 0) {
+        rows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+            children: [
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: "Additional Parameters",
+                            run: {
+                                bold: true,
+                                color: "CC6600"
+                            }
+                        })
+                    ],
+                    columnSpan: 3
+                })
+            ]
+        }));
+        additionalParams.forEach((param)=>{
+            const value = rawParams[param];
+            rows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]("")
+                        ],
+                        width: {
+                            size: 40,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](param)
+                        ],
+                        width: {
+                            size: 35,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](String(value))
+                        ],
+                        width: {
+                            size: 25,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    })
+                ]
+            }));
+        });
+    }
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"]({
+        rows,
+        width: {
+            size: 100,
+            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+        },
+        borders: {
+            top: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            bottom: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            left: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            right: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideHorizontal: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideVertical: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            }
+        }
+    });
+}
 /**
  * Utility function to pad a string to a specific length
  * 
@@ -1771,6 +2543,26 @@ function createEmmcInfoParagraphs(results) {
  */ function padString(value, length) {
     if (!value) return ''.padStart(length, ' ');
     return value.toString().padStart(length, ' ');
+}
+/**
+ * Helper function to get nested values from objects
+ * 
+ * @param obj The object to search in
+ * @param path The path to the value
+ * @returns The value or undefined
+ */ function getNestedValue(obj, path) {
+    if (!obj || !path) return undefined;
+    // Try to find the value by different mapping strategies
+    const pathParts = path.split('_').slice(1); // Remove 'OBC1' prefix
+    // Try direct property access first
+    if (obj[path]) return obj[path];
+    // Try camelCase conversion
+    const camelCasePath = pathParts.map((part, index)=>index === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()).join('');
+    if (obj[camelCasePath]) return obj[camelCasePath];
+    // Try other common patterns
+    const simplePath = pathParts.join('').toLowerCase();
+    if (obj[simplePath]) return obj[simplePath];
+    return undefined;
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
@@ -2480,7 +3272,7 @@ async function generateOBC2Report(results) {
                 children: [
                     // Title
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: "OBC-2 Automated Self Check Out Test",
+                        text: "OBC-2 Automated Self Check Out Test Report",
                         heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_1,
                         spacing: {
                             after: 200
@@ -2502,7 +3294,27 @@ async function generateOBC2Report(results) {
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: `Test Time: ${now.toLocaleTimeString()}`,
                         spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Generated by: SATS - Satellite Automated Testing System`,
+                        spacing: {
                             after: 200
+                        }
+                    }),
+                    // Test Summary
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Test Summary",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`,
+                        spacing: {
+                            after: 100
                         }
                     }),
                     // Separator
@@ -2527,7 +3339,7 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Current OBC-2 Firmware Version: ${results.firmware.major}.${results.firmware.minor}.${results.firmware.patch}`,
+                        text: `Current OBC-2 Firmware Version: ${results.firmware?.major || 'N/A'}.${results.firmware?.minor || 'N/A'}.${results.firmware?.patch || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -2554,13 +3366,13 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `BEFORE update OBC-2 Time: ${results.time.before} UTC`,
+                        text: `BEFORE update OBC-2 Time: ${results.time?.before || 'N/A'} UTC`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `AFTER update OBC-2 Time: ${results.time.after} UTC`,
+                        text: `AFTER update OBC-2 Time: ${results.time?.after || 'N/A'} UTC`,
                         spacing: {
                             after: 100
                         }
@@ -2587,55 +3399,55 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Primary CAN             : ${results.can.primary.result}`,
+                        text: `Primary CAN             : ${results.can?.primary?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Secondary CAN           : ${results.can.secondary.result}`,
+                        text: `Secondary CAN           : ${results.can?.secondary?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `SD Card Voltage         : ${results.voltage.sdCard.result}`,
+                        text: `SD Card Voltage         : ${results.voltage?.sdCard?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Flash Voltage           : ${results.voltage.flash.result}`,
+                        text: `Flash Voltage           : ${results.voltage?.flash?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `EEPROM Voltage          : ${results.voltage.eeprom.result}`,
+                        text: `EEPROM Voltage          : ${results.voltage?.eeprom?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Payload Voltage         : ${results.voltage.payload.result}`,
+                        text: `Payload Voltage         : ${results.voltage?.payload?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `UHF Voltage             : ${results.voltage.uhf.result}`,
+                        text: `UHF Voltage             : ${results.voltage?.uhf?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `SD Card                 : ${results.memory.sdCard.result}`,
+                        text: `SD Card                 : ${results.memory?.sdCard?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `EEPROM                  : ${results.memory.eeprom.result}`,
+                        text: `EEPROM                  : ${results.memory?.eeprom?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -2667,37 +3479,37 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Time              : ${results.time.current} UTC`,
+                        text: `OBC-2 Time              : ${results.time?.current || 'N/A'} UTC`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Uptime Total      : ${results.time.uptime.total} sec`,
+                        text: `OBC-2 Uptime Total      : ${results.time?.uptime?.total || 'N/A'} sec`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Store Period      : ${results.time.storePeriod} sec`,
+                        text: `OBC-2 Store Period      : ${results.time?.storePeriod || 'N/A'} sec`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Uptime Session    : ${results.time.uptime.session} sec`,
+                        text: `OBC-2 Uptime Session    : ${results.time?.uptime?.session || 'N/A'} sec`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Reset Count       : ${results.time.resetCount}`,
+                        text: `OBC-2 Reset Count       : ${results.time?.resetCount || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `OBC-2 Reset Source      : ${results.time.resetSource}`,
+                        text: `OBC-2 Reset Source      : ${results.time?.resetSource || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -2716,7 +3528,7 @@ async function generateOBC2Report(results) {
                     }),
                     // Primary CAN Check Summary section
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: "* OBC-2 CAN Check Summary:",
+                        text: "* OBC-2 Primary CAN Check Summary:",
                         heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
                         spacing: {
                             after: 100
@@ -2729,7 +3541,7 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Primary CAN : -- ${results.can.primary.result}`,
+                        text: `Primary CAN : -- ${results.can?.primary?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -2749,7 +3561,7 @@ async function generateOBC2Report(results) {
                     }),
                     // Secondary CAN Check Summary section
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: "* OBC-2 CAN Check Summary:",
+                        text: "* OBC-2 Secondary CAN Check Summary:",
                         heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
                         spacing: {
                             after: 100
@@ -2762,7 +3574,7 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `Secondary CAN : -- ${results.can.secondary.result}`,
+                        text: `Secondary CAN : -- ${results.can?.secondary?.result || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -2829,6 +3641,143 @@ async function generateOBC2Report(results) {
                             before: 200
                         }
                     }),
+                    // Page break
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    // Raw Parameters Section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Raw Parameter Values:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Displaying all parameters with their exact names as read from the hardware or simulation.",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    // Firmware Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Firmware Parameters:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                        spacing: {
+                            after: 100,
+                            before: 200
+                        }
+                    }),
+                    ...createRawParametersTable("firmware", [
+                        "OBC2_FW_Ver_Major",
+                        "OBC2_FW_Ver_Minor",
+                        "OBC2_FW_Ver_Patch"
+                    ], results),
+                    // Time Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Time Parameters:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                        spacing: {
+                            after: 100,
+                            before: 200
+                        }
+                    }),
+                    ...createRawParametersTable("time", [
+                        "OBC2_Time",
+                        "OBC2_Uptime_Total",
+                        "OBC2_StorePeriod",
+                        "OBC2_Uptime_Session",
+                        "OBC2_ResetCount",
+                        "OBC2_ResetSource"
+                    ], results),
+                    // CAN Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "CAN Communication Parameters:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                        spacing: {
+                            after: 100,
+                            before: 200
+                        }
+                    }),
+                    ...createRawParametersTable("can", [
+                        "OBC1_InterComm_Obc2_Hkp_Tx",
+                        "OBC1_InterComm_Obc2_Cfg_Tx",
+                        "OBC1_InterComm_Obc2_Met_Tx",
+                        "OBC1_InterComm_Obc2_Etc_Tx",
+                        "OBC1_InterComm_Obc2_Uhf_Tx",
+                        "OBC1_InterComm_Obc2_Hkp_Ack",
+                        "OBC1_InterComm_Obc2_Cfg_Ack",
+                        "OBC1_InterComm_Obc2_Met_Ack",
+                        "OBC1_InterComm_Obc2_Etc_Ack",
+                        "OBC1_InterComm_Obc2_Uhf_Ack",
+                        "OBC1_InterComm_Obc2_Hkp_Timeout",
+                        "OBC1_InterComm_Obc2_Cfg_Timeout",
+                        "OBC1_InterComm_Obc2_Met_Timeout",
+                        "OBC1_InterComm_Obc2_Etc_Timeout",
+                        "OBC1_InterComm_Obc2_Uhf_Timeout",
+                        "OBC1_InterComm_Obc2_Hkp_Error",
+                        "OBC1_InterComm_Obc2_Cfg_Error",
+                        "OBC1_InterComm_Obc2_Met_Error",
+                        "OBC1_InterComm_Obc2_Etc_Error",
+                        "OBC1_InterComm_Obc2_Uhf_Error",
+                        "OBC1_Intercomm_PriSec_Cfg"
+                    ], results),
+                    // Voltage and Current Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Voltage and Current Parameters:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                        spacing: {
+                            after: 100,
+                            before: 200
+                        }
+                    }),
+                    ...createRawParametersTable("voltage", [
+                        "OBC2_SDCard_3V3_V",
+                        "OBC2_Flash_3v3_V",
+                        "OBC2_EEPROM_3V3_V",
+                        "OBC2_Payload_3V3_V",
+                        "OBC2_Payload_3V3_I",
+                        "OBC2_UHF_3V3_V",
+                        "OBC2_UHF_3V3_I",
+                        "OBC2_PP_3V3_V",
+                        "OBC2_PP_3V3_I",
+                        "OBC2_GPS_3V3_V",
+                        "OBC2_LNA_V",
+                        "OBC2_LNA_I"
+                    ], results),
+                    // Memory Test Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Memory Test Parameters:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                        spacing: {
+                            after: 100,
+                            before: 200
+                        }
+                    }),
+                    ...createRawParametersTable("memory", [
+                        "OBC2_SD_WriteSuccess",
+                        "OBC2_SD_ReadSuccess",
+                        "OBC2_SD_WriteFail",
+                        "OBC2_SD_ReadFail",
+                        "OBC2_EEPROM_WriteSuccess",
+                        "OBC2_EEPROM_ReadSuccess",
+                        "OBC2_EEPROM_WriteFail",
+                        "OBC2_EEPROM_ReadFail"
+                    ], results),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200,
+                            before: 200
+                        }
+                    }),
                     // Final checkout time information
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "* OBC-2 Final Checkout Summary:",
@@ -2844,6 +3793,39 @@ async function generateOBC2Report(results) {
                         }
                     }),
                     ...createFinalCheckoutSection(results),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200,
+                            before: 200
+                        }
+                    }),
+                    // Test Completion Summary
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Test Completion Summary:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Report generated: ${now.toLocaleString()}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "--------------------------------------------------------------------",
                         spacing: {
@@ -2868,7 +3850,9 @@ async function generateOBC2Report(results) {
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$file$2d$saver$2f$dist$2f$FileSaver$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["saveAs"])(blob, filename);
         console.log(`✅ OBC-2 Word report saved successfully: ${filename}`);
         // Mark the report as generated
-        results.reportGenerated = true;
+        if (results && typeof results === 'object') {
+            results.reportGenerated = true;
+        }
         return filename;
     } catch (error) {
         console.error('❌ Error generating OBC-2 Word report:', error);
@@ -2938,13 +3922,13 @@ async function generateOBC2Report(results) {
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         if (results.firmware) {
-            pdf.text(`Version: ${results.firmware.major}.${results.firmware.minor}.${results.firmware.patch}`, margin, yPosition);
+            pdf.text(`Version: ${results.firmware.major || 'N/A'}.${results.firmware.minor || 'N/A'}.${results.firmware.patch || 'N/A'}`, margin, yPosition);
         } else {
             pdf.text('Firmware information not available', margin, yPosition);
         }
         yPosition += 15;
         // Time Sync Section
-        checkNewPage(30);
+        checkNewPage(40);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('Time Synchronization', margin, yPosition);
@@ -2952,25 +3936,25 @@ async function generateOBC2Report(results) {
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         if (results.time) {
-            pdf.text(`Before Update: ${results.time.before} UTC`, margin, yPosition);
+            pdf.text(`Before Update: ${results.time.before || 'N/A'} UTC`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`After Update: ${results.time.after} UTC`, margin, yPosition);
+            pdf.text(`After Update: ${results.time.after || 'N/A'} UTC`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Current Time: ${results.time.current} UTC`, margin, yPosition);
+            pdf.text(`Current Time: ${results.time.current || 'N/A'} UTC`, margin, yPosition);
             yPosition += 6;
             pdf.text(`Uptime Total: ${results.time.uptime?.total || 'N/A'} sec`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Store Period: ${results.time.storePeriod} sec`, margin, yPosition);
+            pdf.text(`Store Period: ${results.time.storePeriod || 'N/A'} sec`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Reset Count: ${results.time.resetCount}`, margin, yPosition);
+            pdf.text(`Reset Count: ${results.time.resetCount || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Reset Source: ${results.time.resetSource}`, margin, yPosition);
+            pdf.text(`Reset Source: ${results.time.resetSource || 'N/A'}`, margin, yPosition);
         } else {
             pdf.text('Time information not available', margin, yPosition);
         }
         yPosition += 15;
         // Test Summary Section
-        checkNewPage(50);
+        checkNewPage(60);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('Test Summary', margin, yPosition);
@@ -2978,23 +3962,23 @@ async function generateOBC2Report(results) {
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         if (results.can && results.voltage && results.memory) {
-            pdf.text(`Primary CAN: ${results.can.primary.result}`, margin, yPosition);
+            pdf.text(`Primary CAN: ${results.can.primary?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Secondary CAN: ${results.can.secondary.result}`, margin, yPosition);
+            pdf.text(`Secondary CAN: ${results.can.secondary?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`SD Card Voltage: ${results.voltage.sdCard.result}`, margin, yPosition);
+            pdf.text(`SD Card Voltage: ${results.voltage.sdCard?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Flash Voltage: ${results.voltage.flash.result}`, margin, yPosition);
+            pdf.text(`Flash Voltage: ${results.voltage.flash?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`EEPROM Voltage: ${results.voltage.eeprom.result}`, margin, yPosition);
+            pdf.text(`EEPROM Voltage: ${results.voltage.eeprom?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Payload Voltage: ${results.voltage.payload.result}`, margin, yPosition);
+            pdf.text(`Payload Voltage: ${results.voltage.payload?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`UHF Voltage: ${results.voltage.uhf.result}`, margin, yPosition);
+            pdf.text(`UHF Voltage: ${results.voltage.uhf?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`SD Card Test: ${results.memory.sdCard.result}`, margin, yPosition);
+            pdf.text(`SD Card Test: ${results.memory.sdCard?.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`EEPROM Test: ${results.memory.eeprom.result}`, margin, yPosition);
+            pdf.text(`EEPROM Test: ${results.memory.eeprom?.result || 'N/A'}`, margin, yPosition);
         } else {
             pdf.text('Test summary not available', margin, yPosition);
         }
@@ -3013,7 +3997,7 @@ async function generateOBC2Report(results) {
         pdf.setFont('helvetica', 'normal');
         if (results.can?.primary) {
             const primary = results.can.primary;
-            pdf.text(`Result: ${primary.result}`, margin, yPosition);
+            pdf.text(`Result: ${primary.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
             // Add before/after statistics if available
             if (primary.before && primary.after) {
@@ -3028,6 +4012,7 @@ async function generateOBC2Report(results) {
                 ];
                 modules.forEach((module, index)=>{
                     if (primary.before.tx && primary.after.tx) {
+                        checkNewPage(8);
                         pdf.text(`${module} TX: ${primary.before.tx[index] || 0} → ${primary.after.tx[index] || 0}`, margin + 10, yPosition);
                         yPosition += 5;
                     }
@@ -3043,12 +4028,12 @@ async function generateOBC2Report(results) {
         pdf.setFont('helvetica', 'normal');
         if (results.can?.secondary) {
             const secondary = results.can.secondary;
-            pdf.text(`Result: ${secondary.result}`, margin, yPosition);
+            pdf.text(`Result: ${secondary.result || 'N/A'}`, margin, yPosition);
             yPosition += 6;
         }
         yPosition += 15;
         // Voltage Section
-        checkNewPage(50);
+        checkNewPage(60);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('Voltage Measurements', margin, yPosition);
@@ -3067,12 +4052,16 @@ async function generateOBC2Report(results) {
             yPosition += 6;
             pdf.text(`UHF 3V3: ${v.uhf?.value || 'N/A'} mV (${v.uhf?.result || 'N/A'})`, margin, yPosition);
             yPosition += 6;
+            pdf.text(`GPS 3V3: ${v.gps?.value || 'N/A'} mV`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`LNA: ${v.lna?.value || 'N/A'} mV, ${v.lna?.current || 'N/A'} mA`, margin, yPosition);
+            yPosition += 6;
         } else {
             pdf.text('Voltage information not available', margin, yPosition);
         }
         yPosition += 15;
         // Memory Tests Section
-        checkNewPage(40);
+        checkNewPage(50);
         pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.text('Memory Tests', margin, yPosition);
@@ -3084,9 +4073,9 @@ async function generateOBC2Report(results) {
             yPosition += 6;
             if (results.memory.sdCard?.before && results.memory.sdCard?.after) {
                 const sd = results.memory.sdCard;
-                pdf.text(`  Write Success: ${sd.before.writeSuccess} → ${sd.after.writeSuccess}`, margin + 10, yPosition);
+                pdf.text(`  Write Success: ${sd.before.writeSuccess || 'N/A'} → ${sd.after.writeSuccess || 'N/A'}`, margin + 10, yPosition);
                 yPosition += 5;
-                pdf.text(`  Read Success: ${sd.before.readSuccess} → ${sd.after.readSuccess}`, margin + 10, yPosition);
+                pdf.text(`  Read Success: ${sd.before.readSuccess || 'N/A'} → ${sd.after.readSuccess || 'N/A'}`, margin + 10, yPosition);
                 yPosition += 5;
             }
             yPosition += 6;
@@ -3094,14 +4083,159 @@ async function generateOBC2Report(results) {
             yPosition += 6;
             if (results.memory.eeprom?.before && results.memory.eeprom?.after) {
                 const eeprom = results.memory.eeprom;
-                pdf.text(`  Write Success: ${eeprom.before.writeSuccess} → ${eeprom.after.writeSuccess}`, margin + 10, yPosition);
+                pdf.text(`  Write Success: ${eeprom.before.writeSuccess || 'N/A'} → ${eeprom.after.writeSuccess || 'N/A'}`, margin + 10, yPosition);
                 yPosition += 5;
-                pdf.text(`  Read Success: ${eeprom.before.readSuccess} → ${eeprom.after.readSuccess}`, margin + 10, yPosition);
+                pdf.text(`  Read Success: ${eeprom.before.readSuccess || 'N/A'} → ${eeprom.after.readSuccess || 'N/A'}`, margin + 10, yPosition);
                 yPosition += 5;
             }
         } else {
             pdf.text('Memory test information not available', margin, yPosition);
         }
+        yPosition += 15;
+        // Raw Parameters Section
+        checkNewPage(50);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Raw Parameter Values', margin, yPosition);
+        yPosition += 10;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Displaying all parameters with their exact names as read from the hardware or simulation.', margin, yPosition);
+        yPosition += 10;
+        // Firmware Parameters
+        checkNewPage(30);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Firmware Parameters', margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const fwParams = [
+            "OBC2_FW_Ver_Major",
+            "OBC2_FW_Ver_Minor",
+            "OBC2_FW_Ver_Patch"
+        ];
+        fwParams.forEach((param)=>{
+            checkNewPage(8);
+            const value = getParameterValue(param, results);
+            pdf.text(`${param}: ${value}`, margin, yPosition);
+            yPosition += 6;
+        });
+        yPosition += 10;
+        // Time Parameters
+        checkNewPage(50);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Time Parameters', margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const timeParams = [
+            "OBC2_Time",
+            "OBC2_Uptime_Total",
+            "OBC2_StorePeriod",
+            "OBC2_Uptime_Session",
+            "OBC2_ResetCount",
+            "OBC2_ResetSource"
+        ];
+        timeParams.forEach((param)=>{
+            checkNewPage(8);
+            const value = getParameterValue(param, results);
+            pdf.text(`${param}: ${value}`, margin, yPosition);
+            yPosition += 6;
+        });
+        yPosition += 10;
+        // CAN Parameters
+        checkNewPage(80);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('CAN Communication Parameters', margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const canParams = [
+            "OBC1_InterComm_Obc2_Hkp_Tx",
+            "OBC1_InterComm_Obc2_Cfg_Tx",
+            "OBC1_InterComm_Obc2_Met_Tx",
+            "OBC1_InterComm_Obc2_Etc_Tx",
+            "OBC1_InterComm_Obc2_Uhf_Tx",
+            "OBC1_InterComm_Obc2_Hkp_Ack",
+            "OBC1_InterComm_Obc2_Cfg_Ack",
+            "OBC1_InterComm_Obc2_Met_Ack",
+            "OBC1_InterComm_Obc2_Etc_Ack",
+            "OBC1_InterComm_Obc2_Uhf_Ack",
+            "OBC1_InterComm_Obc2_Hkp_Timeout",
+            "OBC1_InterComm_Obc2_Cfg_Timeout",
+            "OBC1_InterComm_Obc2_Met_Timeout",
+            "OBC1_InterComm_Obc2_Etc_Timeout",
+            "OBC1_InterComm_Obc2_Uhf_Timeout",
+            "OBC1_InterComm_Obc2_Hkp_Error",
+            "OBC1_InterComm_Obc2_Cfg_Error",
+            "OBC1_InterComm_Obc2_Met_Error",
+            "OBC1_InterComm_Obc2_Etc_Error",
+            "OBC1_InterComm_Obc2_Uhf_Error",
+            "OBC1_Intercomm_PriSec_Cfg"
+        ];
+        canParams.forEach((param)=>{
+            checkNewPage(8);
+            const value = getParameterValue(param, results);
+            pdf.text(`${param}: ${value}`, margin, yPosition);
+            yPosition += 6;
+        });
+        yPosition += 10;
+        // Voltage and Current Parameters
+        checkNewPage(50);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Voltage and Current Parameters', margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const viParams = [
+            "OBC2_SDCard_3V3_V",
+            "OBC2_Flash_3v3_V",
+            "OBC2_EEPROM_3V3_V",
+            "OBC2_Payload_3V3_V",
+            "OBC2_Payload_3V3_I",
+            "OBC2_UHF_3V3_V",
+            "OBC2_UHF_3V3_I",
+            "OBC2_PP_3V3_V",
+            "OBC2_PP_3V3_I",
+            "OBC2_GPS_3V3_V",
+            "OBC2_LNA_V",
+            "OBC2_LNA_I"
+        ];
+        viParams.forEach((param)=>{
+            checkNewPage(8);
+            const value = getParameterValue(param, results);
+            pdf.text(`${param}: ${value}`, margin, yPosition);
+            yPosition += 6;
+        });
+        yPosition += 10;
+        // Memory Test Parameters
+        checkNewPage(40);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Memory Test Parameters', margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const memParams = [
+            "OBC2_SD_WriteSuccess",
+            "OBC2_SD_ReadSuccess",
+            "OBC2_SD_WriteFail",
+            "OBC2_SD_ReadFail",
+            "OBC2_EEPROM_WriteSuccess",
+            "OBC2_EEPROM_ReadSuccess",
+            "OBC2_EEPROM_WriteFail",
+            "OBC2_EEPROM_ReadFail"
+        ];
+        memParams.forEach((param)=>{
+            checkNewPage(8);
+            const value = getParameterValue(param, results);
+            pdf.text(`${param}: ${value}`, margin, yPosition);
+            yPosition += 6;
+        });
         // Add footer to all pages
         const totalPages = pdf.internal.pages.length - 1;
         for(let i = 1; i <= totalPages; i++){
@@ -3119,16 +4253,61 @@ async function generateOBC2Report(results) {
         throw new Error(`Failed to generate OBC-2 PDF report: ${error instanceof Error ? error.message : String(error)}`);
     }
 }
+// Helper function to get parameter value from results with fallback to allResults array
+function getParameterValue(paramName, results) {
+    // First try to get from structured results based on parameter name
+    if (paramName.includes("FW_Ver_Major")) return results.firmware?.major || 'N/A';
+    if (paramName.includes("FW_Ver_Minor")) return results.firmware?.minor || 'N/A';
+    if (paramName.includes("FW_Ver_Patch")) return results.firmware?.patch || 'N/A';
+    if (paramName === "OBC2_Time") return results.time?.current || 'N/A';
+    if (paramName === "OBC2_Uptime_Total") return results.time?.uptime?.total || 'N/A';
+    if (paramName === "OBC2_StorePeriod") return results.time?.storePeriod || 'N/A';
+    if (paramName === "OBC2_Uptime_Session") return results.time?.uptime?.session || 'N/A';
+    if (paramName === "OBC2_ResetCount") return results.time?.resetCount || 'N/A';
+    if (paramName === "OBC2_ResetSource") return results.time?.resetSource || 'N/A';
+    if (paramName === "OBC2_SDCard_3V3_V") return results.voltage?.sdCard?.value || 'N/A';
+    if (paramName === "OBC2_Flash_3v3_V") return results.voltage?.flash?.value || 'N/A';
+    if (paramName === "OBC2_EEPROM_3V3_V") return results.voltage?.eeprom?.value || 'N/A';
+    if (paramName === "OBC2_Payload_3V3_V") return results.voltage?.payload?.value || 'N/A';
+    if (paramName === "OBC2_Payload_3V3_I") return results.voltage?.payload?.current || 'N/A';
+    if (paramName === "OBC2_UHF_3V3_V") return results.voltage?.uhf?.value || 'N/A';
+    if (paramName === "OBC2_UHF_3V3_I") return results.voltage?.uhf?.current || 'N/A';
+    if (paramName === "OBC2_PP_3V3_V") return results.voltage?.pp?.value || 'N/A';
+    if (paramName === "OBC2_PP_3V3_I") return results.voltage?.pp?.current || 'N/A';
+    if (paramName === "OBC2_GPS_3V3_V") return results.voltage?.gps?.value || 'N/A';
+    if (paramName === "OBC2_LNA_V") return results.voltage?.lna?.value || 'N/A';
+    if (paramName === "OBC2_LNA_I") return results.voltage?.lna?.current || 'N/A';
+    // For CAN parameters, try to extract from the structured CAN data
+    if (paramName.includes("InterComm_Obc2")) {
+    // would require more complex logic to map CAN parameter names to array positions
+    // For now, return N/A if not found in allResults
+    }
+    // Memory parameters
+    if (paramName === "OBC2_SD_WriteSuccess") return results.memory?.sdCard?.after?.writeSuccess || results.memory?.sdCard?.before?.writeSuccess || 'N/A';
+    if (paramName === "OBC2_SD_ReadSuccess") return results.memory?.sdCard?.after?.readSuccess || results.memory?.sdCard?.before?.readSuccess || 'N/A';
+    if (paramName === "OBC2_SD_WriteFail") return results.memory?.sdCard?.after?.writeFail || results.memory?.sdCard?.before?.writeFail || 'N/A';
+    if (paramName === "OBC2_SD_ReadFail") return results.memory?.sdCard?.after?.readFail || results.memory?.sdCard?.before?.readFail || 'N/A';
+    if (paramName === "OBC2_EEPROM_WriteSuccess") return results.memory?.eeprom?.after?.writeSuccess || results.memory?.eeprom?.before?.writeSuccess || 'N/A';
+    if (paramName === "OBC2_EEPROM_ReadSuccess") return results.memory?.eeprom?.after?.readSuccess || results.memory?.eeprom?.before?.readSuccess || 'N/A';
+    if (paramName === "OBC2_EEPROM_WriteFail") return results.memory?.eeprom?.after?.writeFail || results.memory?.eeprom?.before?.writeFail || 'N/A';
+    if (paramName === "OBC2_EEPROM_ReadFail") return results.memory?.eeprom?.after?.readFail || results.memory?.eeprom?.before?.readFail || 'N/A';
+    // Fallback to allResults array if available
+    if (results.allResults && Array.isArray(results.allResults)) {
+    // This would require a mapping of parameter names to array indices
+    // Since don't have that mapping readily available, return N/A
+    }
+    return 'N/A';
+}
 // Helper function for Primary CAN section
 function createPrimaryCansSection(results) {
     const paragraphs = [];
     if (results.can && results.can.primary) {
         const section = results.can.primary;
         // Before test
-        const txBefore = section.before.tx || [];
-        const ackBefore = section.before.ack || [];
-        const timeoutBefore = section.before.timeout || [];
-        const errorBefore = section.before.error || [];
+        const txBefore = section.before?.tx || [];
+        const ackBefore = section.before?.ack || [];
+        const timeoutBefore = section.before?.timeout || [];
+        const errorBefore = section.before?.error || [];
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: `HKP Transmit before test        : ${padString(txBefore[0], 4)}`,
             spacing: {
@@ -3256,7 +4435,7 @@ function createPrimaryCansSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `CAN Primary Secondary Config    : ${results.canConfig || "0"}`,
+            text: `CAN Primary Secondary Config    : ${results.canPrimaryConfig || "0"}`,
             spacing: {
                 after: 100
             }
@@ -3268,10 +4447,10 @@ function createPrimaryCansSection(results) {
             }
         }));
         // After test
-        const txAfter = section.after.tx || [];
-        const ackAfter = section.after.ack || [];
-        const timeoutAfter = section.after.timeout || [];
-        const errorAfter = section.after.error || [];
+        const txAfter = section.after?.tx || [];
+        const ackAfter = section.after?.ack || [];
+        const timeoutAfter = section.after?.timeout || [];
+        const errorAfter = section.after?.error || [];
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: `HKP Transmit after test         : ${padString(txAfter[0], 4)}`,
             spacing: {
@@ -3401,10 +4580,10 @@ function createSecondaryCansSection(results) {
     if (results.can && results.can.secondary) {
         const section = results.can.secondary;
         // Before test
-        const txBefore = section.before.tx || [];
-        const ackBefore = section.before.ack || [];
-        const timeoutBefore = section.before.timeout || [];
-        const errorBefore = section.before.error || [];
+        const txBefore = section.before?.tx || [];
+        const ackBefore = section.before?.ack || [];
+        const timeoutBefore = section.before?.timeout || [];
+        const errorBefore = section.before?.error || [];
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: `HKP Transmit before test        : ${padString(txBefore[0], 4)}`,
             spacing: {
@@ -3532,7 +4711,7 @@ function createSecondaryCansSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `CAN Primary Secondary Config    : ${results.canConfig || "31"}`,
+            text: `CAN Primary Secondary Config    : ${results.canSecondaryConfig || "31"}`,
             spacing: {
                 after: 100
             }
@@ -3544,10 +4723,10 @@ function createSecondaryCansSection(results) {
             }
         }));
         // After test
-        const txAfter = section.after.tx || [];
-        const ackAfter = section.after.ack || [];
-        const timeoutAfter = section.after.timeout || [];
-        const errorAfter = section.after.error || [];
+        const txAfter = section.after?.tx || [];
+        const ackAfter = section.after?.ack || [];
+        const timeoutAfter = section.after?.timeout || [];
+        const errorAfter = section.after?.error || [];
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: `HKP Transmit after test         : ${padString(txAfter[0], 4)}`,
             spacing: {
@@ -3677,37 +4856,19 @@ function createVoltageCurrentSection(results) {
     if (results.voltage) {
         const v = results.voltage;
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 SDCard 3V3 V  : ${padString(v.sdCard.value, 4)} mV    ${v.sdCard.result}`,
+            text: `OBC-2 SDCard 3V3 V  : ${padString(v.sdCard?.value, 4)} mV    ${v.sdCard?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Flash 3v3 V   : ${padString(v.flash.value, 4)} mV    ${v.flash.result}`,
+            text: `OBC-2 Flash 3v3 V   : ${padString(v.flash?.value, 4)} mV    ${v.flash?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 EEPROM 3V3 V  : ${padString(v.eeprom.value, 4)} mV    ${v.eeprom.result}`,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: ``,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Payload 3V3 V : ${padString(v.payload.value, 4)} mV    ${v.payload.result}`,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Payload 3V3 I : ${padString(v.payload.current, 4)} mA`,
+            text: `OBC-2 EEPROM 3V3 V  : ${padString(v.eeprom?.value, 4)} mV    ${v.eeprom?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
@@ -3719,31 +4880,13 @@ function createVoltageCurrentSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 UHF 3V3 V     : ${padString(v.uhf.value, 4)} mV    ${v.uhf.result}`,
+            text: `OBC-2 Payload 3V3 V : ${padString(v.payload?.value, 4)} mV    ${v.payload?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 UHF 3V3 I     : ${padString(v.uhf.current, 4)} mA`,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: ``,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 PP 3V3 V      : ${padString(v.pp.value, 4)} mV`,
-            spacing: {
-                after: 100
-            }
-        }));
-        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 PP 3V3 I      : ${padString(v.pp.current, 4)} mA`,
+            text: `OBC-2 Payload 3V3 I : ${padString(v.payload?.current, 4)} mA`,
             spacing: {
                 after: 100
             }
@@ -3755,19 +4898,55 @@ function createVoltageCurrentSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 GPS V         : ${padString(v.gps.value, 4)} mV`,
+            text: `OBC-2 UHF 3V3 V     : ${padString(v.uhf?.value, 4)} mV    ${v.uhf?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 LNA V         : ${padString(v.lna.value, 4)} mV`,
+            text: `OBC-2 UHF 3V3 I     : ${padString(v.uhf?.current, 4)} mA`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 LNA I         : ${padString(v.lna.current, 4)} mA`,
+            text: ``,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 PP 3V3 V      : ${padString(v.pp?.value, 4)} mV`,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 PP 3V3 I      : ${padString(v.pp?.current, 4)} mA`,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: ``,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 GPS 3V3 V     : ${padString(v.gps?.value, 4)} mV`,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 LNA V         : ${padString(v.lna?.value, 4)} mV`,
+            spacing: {
+                after: 100
+            }
+        }));
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 LNA I         : ${padString(v.lna?.current, 4)} mA`,
             spacing: {
                 after: 100
             }
@@ -3781,63 +4960,63 @@ function createMemoryTestSection(results) {
     if (results.memory) {
         // SD Card Test
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `SD Card : -- ${results.memory.sdCard.result}`,
+            text: `SD Card : -- ${results.memory.sdCard?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
-        if (results.memory.sdCard.result !== "Not tested") {
+        if (results.memory.sdCard?.result !== "Not tested") {
             const sdCard = results.memory.sdCard;
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `OBC-2 SDCard 3V3 V          : ${padString(results.voltage.sdCard.value, 4)} mV`,
+                text: `OBC-2 SDCard 3V3 V          : ${padString(results.voltage?.sdCard?.value, 4)} mV`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Success before test   : ${padString(sdCard.before.writeSuccess, 4)}`,
+                text: `Write Success before test   : ${padString(sdCard.before?.writeSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Success before test    : ${padString(sdCard.before.readSuccess, 4)}`,
+                text: `Read Success before test    : ${padString(sdCard.before?.readSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Fail before test      : ${padString(sdCard.before.writeFail, 4)}`,
+                text: `Write Fail before test      : ${padString(sdCard.before?.writeFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Fail before test       : ${padString(sdCard.before.readFail, 4)}`,
+                text: `Read Fail before test       : ${padString(sdCard.before?.readFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Success after test    : ${padString(sdCard.after.writeSuccess, 4)}`,
+                text: `Write Success after test    : ${padString(sdCard.after?.writeSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Success after test     : ${padString(sdCard.after.readSuccess, 4)}`,
+                text: `Read Success after test     : ${padString(sdCard.after?.readSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Fail after test       : ${padString(sdCard.after.writeFail, 4)}`,
+                text: `Write Fail after test       : ${padString(sdCard.after?.writeFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Fail after test        : ${padString(sdCard.after.readFail, 4)}`,
+                text: `Read Fail after test        : ${padString(sdCard.after?.readFail, 4)}`,
                 spacing: {
                     after: 100
                 }
@@ -3858,63 +5037,63 @@ function createMemoryTestSection(results) {
         }));
         // EEPROM Test
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `EEPROM : -- ${results.memory.eeprom.result}`,
+            text: `EEPROM : -- ${results.memory.eeprom?.result || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
-        if (results.memory.eeprom.result !== "Not tested") {
+        if (results.memory.eeprom?.result !== "Not tested") {
             const eeprom = results.memory.eeprom;
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `OBC-2 EEPROM 3V3 V          : ${padString(results.voltage.eeprom.value, 4)} mV`,
+                text: `OBC-2 EEPROM 3V3 V          : ${padString(results.voltage?.eeprom?.value, 4)} mV`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Success before test   : ${padString(eeprom.before.writeSuccess, 4)}`,
+                text: `Write Success before test   : ${padString(eeprom.before?.writeSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Success before test    : ${padString(eeprom.before.readSuccess, 4)}`,
+                text: `Read Success before test    : ${padString(eeprom.before?.readSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Fail before test      : ${padString(eeprom.before.writeFail, 4)}`,
+                text: `Write Fail before test      : ${padString(eeprom.before?.writeFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Fail before test       : ${padString(eeprom.before.readFail, 4)}`,
+                text: `Read Fail before test       : ${padString(eeprom.before?.readFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Success after test    : ${padString(eeprom.after.writeSuccess, 4)}`,
+                text: `Write Success after test    : ${padString(eeprom.after?.writeSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Success after test     : ${padString(eeprom.after.readSuccess, 4)}`,
+                text: `Read Success after test     : ${padString(eeprom.after?.readSuccess, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Write Fail after test       : ${padString(eeprom.after.writeFail, 4)}`,
+                text: `Write Fail after test       : ${padString(eeprom.after?.writeFail, 4)}`,
                 spacing: {
                     after: 100
                 }
             }));
             paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `Read Fail after test        : ${padString(eeprom.after.readFail, 4)}`,
+                text: `Read Fail after test        : ${padString(eeprom.after?.readFail, 4)}`,
                 spacing: {
                     after: 100
                 }
@@ -3942,7 +5121,7 @@ function createFinalCheckoutSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Uptime Total      : ${final.uptime.total} sec`,
+            text: `OBC-2 Uptime Total      : ${final.uptime?.total || 'N/A'} sec`,
             spacing: {
                 after: 100
             }
@@ -3954,7 +5133,7 @@ function createFinalCheckoutSection(results) {
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Uptime Session    : ${final.uptime.session} sec`,
+            text: `OBC-2 Uptime Session    : ${final.uptime?.session || 'N/A'} sec`,
             spacing: {
                 after: 100
             }
@@ -3974,37 +5153,37 @@ function createFinalCheckoutSection(results) {
     } else {
         // Use the initial time readings if final time readings are not available
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Time              : ${results.time.current} UTC`,
+            text: `OBC-2 Time              : ${results.time?.current || 'N/A'} UTC`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Uptime Total      : ${results.time.uptime.total} sec`,
+            text: `OBC-2 Uptime Total      : ${results.time?.uptime?.total || 'N/A'} sec`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Store Period      : ${results.time.storePeriod} sec`,
+            text: `OBC-2 Store Period      : ${results.time?.storePeriod || 'N/A'} sec`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Uptime Session    : ${results.time.uptime.session} sec`,
+            text: `OBC-2 Uptime Session    : ${results.time?.uptime?.session || 'N/A'} sec`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Reset Count       : ${results.time.resetCount}`,
+            text: `OBC-2 Reset Count       : ${results.time?.resetCount || 'N/A'}`,
             spacing: {
                 after: 100
             }
         }));
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `OBC-2 Reset Source      : ${results.time.resetSource}`,
+            text: `OBC-2 Reset Source      : ${results.time?.resetSource || 'N/A'}`,
             spacing: {
                 after: 100
             }
@@ -4012,13 +5191,76 @@ function createFinalCheckoutSection(results) {
     }
     return paragraphs;
 }
+// Helper function to create raw parameters table
+function createRawParametersTable(category, parameters, results) {
+    const tableRows = parameters.map((param)=>{
+        const value = getParameterValue(param, results);
+        return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+            children: [
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](param)
+                    ],
+                    width: {
+                        size: 60,
+                        type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                    }
+                }),
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](value)
+                    ],
+                    width: {
+                        size: 40,
+                        type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                    }
+                })
+            ]
+        });
+    });
+    return [
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"]({
+            rows: tableRows,
+            width: {
+                size: 100,
+                type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+            },
+            borders: {
+                top: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                },
+                bottom: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                },
+                left: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                },
+                right: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                },
+                insideHorizontal: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                },
+                insideVertical: {
+                    style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                    size: 1
+                }
+            }
+        })
+    ];
+}
 /**
-   * Utility function to pad a string to a specific length
-   * 
-   * @param value The string value to pad
-   * @param length The desired length
-   * @returns The padded string
-   */ function padString(value, length) {
+ * Utility function to pad a string to a specific length
+ * 
+ * @param value The string value to pad
+ * @param length The desired length
+ * @returns The padded string
+ */ function padString(value, length) {
     if (value === undefined || value === null) return ''.padStart(length, ' ');
     return String(value).padStart(length, ' ');
 }
@@ -4130,7 +5372,7 @@ async function runSBandCheckout(sock, options, onProgress = ()=>{}) {
         try {
             // Send activation command (value 5 corresponds to S-Band activation)
             if (options.testTX || options.testRX) {
-                //await mccifSet(sock, "OBC1_Command", 5); functionality removed (21 May Test)
+                //await mccifSet(sock, "OBC1_Command", 5); (functionality removed 21 May 2025 Test)
                 // Wait for activation (60 seconds in the original Python script)
                 onProgress('Waiting for S-Band hardware to initialize', 15);
                 // Simulate waiting with multiple progress updates
@@ -5091,7 +6333,6 @@ async function runUHFCheckout(sock, options, onProgress = ()=>{}) {
         const allResults = [];
         // Step 1: Initialize test (5%)
         onProgress('Initializing UHF Checkout', 5);
-        // Define all telemetry variables based on the Python script
         const telemetryVars = [
             "OBC2_Uhf_BoardTemperature",
             "OBC2_Uhf_PaTemperature",
@@ -5186,7 +6427,7 @@ async function runUHFCheckout(sock, options, onProgress = ()=>{}) {
         // Step 2: Send downlink type command (20%)
         onProgress('Setting UHF Downlink Type', 20);
         try {
-            // Similar to the Python implementation, we need to send the same command multiple times
+            // Similar to the Python implementation, need to send the same command multiple times
             for(let i = 0; i < 4; i++){
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC2_Downlink_Type", 3);
                 await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds between commands
@@ -6724,7 +7965,6 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             "HEPS1_PDM2_THRU2_V",
             "HEPS1_PDM2_THRU2_I"
         ];
-        // Complete propulsion telemetry parameters from the Python code
         const prop1TmParams = [
             "PROPULSION1_ECU_Temp",
             "PROPULSION1_Anode_PPU_1_Set_Voltage",
@@ -6789,7 +8029,7 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             "PROPULSION1_MFC_3_Flow",
             "PROPULSION1_MFC_4_Flow",
             "PROPULSION1_SPARE_2",
-            //here onwards mostly
+            // need replace params here onwards mostly
             "PROPULSION1_MFC_2_Thruster_Selector",
             "PROPULSION1_MFC_4_Thruster_Selector",
             "PROPULSION1_MFC_1_Thruster_Selector",
@@ -6915,7 +8155,7 @@ async function runPropulsionCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
             // Get ECU-1 voltage/current
             const ecu1ViResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, ecu1ViParams);
-            // Add this tracking code
+            // tracking code
             ecu1ViParams.forEach((param, index)=>{
                 const value = safeParseValue(ecu1ViResults[index]);
                 rawParameters[param] = value;
@@ -7432,6 +8672,39 @@ async function generatePropulsionReport(results) {
                             after: 200
                         }
                     }),
+                    // Test Summary
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "Test Summary",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'PMA and PPU tests as configured'}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    // Test configuration
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `PMA Test: ${results.pma?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `PPU Test: ${results.ppu?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
                     // Separator
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "--------------------------------------------------------------------",
@@ -7460,13 +8733,13 @@ async function generatePropulsionReport(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 1 Voltage   : ${padString(results.ecu1.voltage, 6)} V    ${results.ecu1.status || 'N/A'}`,
+                        text: `ECU 1 Voltage   : ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.ecu1?.status || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 1 Current   : ${padString(results.ecu1.current, 6)} A`,
+                        text: `ECU 1 Current   : ${padString(results.ecu1?.current || 'N/A', 6)} A`,
                         spacing: {
                             after: 100
                         }
@@ -7483,7 +8756,8 @@ async function generatePropulsionReport(results) {
                             after: 100
                         }
                     }),
-                    ...createPropulsionTmParagraphs(results.prop1Tm),
+                    // ECU-1 Propulsion Telemetry Parameters
+                    ...createPropulsionTmParagraphs(results.prop1Tm, "ECU-1"),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "",
                         spacing: {
@@ -7497,7 +8771,7 @@ async function generatePropulsionReport(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[1] || 'N/A'}`,
+                        text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[1] || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -7540,13 +8814,13 @@ async function generatePropulsionReport(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 2 Voltage   : ${padString(results.ecu2.voltage, 6)} V    ${results.ecu2.status || 'N/A'}`,
+                        text: `ECU 2 Voltage   : ${padString(results.ecu2?.voltage || 'N/A', 6)} V    ${results.ecu2?.status || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 2 Current   : ${padString(results.ecu2.current, 6)} A`,
+                        text: `ECU 2 Current   : ${padString(results.ecu2?.current || 'N/A', 6)} A`,
                         spacing: {
                             after: 100
                         }
@@ -7563,7 +8837,8 @@ async function generatePropulsionReport(results) {
                             after: 100
                         }
                     }),
-                    ...createPropulsionTmParagraphs(results.prop2Tm),
+                    // ECU-2 Propulsion Telemetry Parameters
+                    ...createPropulsionTmParagraphs(results.prop2Tm, "ECU-2"),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "",
                         spacing: {
@@ -7577,7 +8852,7 @@ async function generatePropulsionReport(results) {
                         }
                     }),
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                        text: `ECU 2 Voltage   : ${padString(results.ecu2OffVoltage || '0.000', 6)} V    ${results.passFailStatus[3] || 'N/A'}`,
+                        text: `ECU 2 Voltage   : ${padString(results.ecu2OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[3] || 'N/A'}`,
                         spacing: {
                             after: 100
                         }
@@ -7639,7 +8914,70 @@ async function generatePropulsionReport(results) {
                             after: 100
                         }
                     }),
-                    ...createPpuInfoParagraphs(results)
+                    ...createPpuInfoParagraphs(results),
+                    // Add page break for Raw Parameters section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    // Raw Parameters Section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Raw Parameters Summary :",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    ...createRawParametersParagraphs(results),
+                    // Test Completion Summary
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Test Completion Summary:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: `Report generated: ${now.toLocaleString()}`,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200,
+                            before: 200
+                        }
+                    })
                 ]
             }
         ]
@@ -7717,6 +9055,14 @@ async function generatePropulsionReport(results) {
         pdf.text(`Test Time: ${now.toLocaleTimeString()}`, margin, yPosition);
         yPosition += 6;
         pdf.text(`Test Version: 24.3.21`, margin, yPosition);
+        yPosition += 6;
+        pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'PMA and PPU tests as configured'}`, margin, yPosition);
+        yPosition += 6;
+        pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
+        yPosition += 6;
+        pdf.text(`PMA Test: ${results.pma?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`, margin, yPosition);
+        yPosition += 6;
+        pdf.text(`PPU Test: ${results.ppu?.status === 'N.A.' ? 'DISABLED' : 'ENABLED'}`, margin, yPosition);
         yPosition += 15;
         // Add a separator line
         pdf.line(margin, yPosition, pageWidth - margin, yPosition);
@@ -7731,11 +9077,11 @@ async function generatePropulsionReport(results) {
         pdf.setFont('helvetica', 'normal');
         pdf.text('Voltage Current On Record:', margin, yPosition);
         yPosition += 8;
-        pdf.text(`ECU 1 Voltage: ${padString(results.ecu1.voltage, 6)} V    ${results.ecu1.status || 'N/A'}`, margin, yPosition);
+        pdf.text(`ECU 1 Voltage: ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.ecu1?.status || 'N/A'}`, margin, yPosition);
         yPosition += 6;
-        pdf.text(`ECU 1 Current: ${padString(results.ecu1.current, 6)} A`, margin, yPosition);
+        pdf.text(`ECU 1 Current: ${padString(results.ecu1?.current || 'N/A', 6)} A`, margin, yPosition);
         yPosition += 12;
-        // ECU-1 Data Get Parameters (abbreviated for space)
+        // ECU-1 Data Get Parameters (key values only for PDF space constraints)
         if (results.prop1Tm) {
             pdf.text('Data Get Parameters (Key Values):', margin, yPosition);
             yPosition += 8;
@@ -7765,6 +9111,16 @@ async function generatePropulsionReport(results) {
                     key: 'HP_Tank_Pressure_1',
                     label: 'HP Tank Pressure 1',
                     unit: 'bar'
+                },
+                {
+                    key: 'Thruster_1_Temp',
+                    label: 'Thruster 1 Temp',
+                    unit: '°C'
+                },
+                {
+                    key: 'Thruster_2_Temp',
+                    label: 'Thruster 2 Temp',
+                    unit: '°C'
                 }
             ];
             keyParams.forEach((param)=>{
@@ -7792,11 +9148,11 @@ async function generatePropulsionReport(results) {
         pdf.setFont('helvetica', 'normal');
         pdf.text('Voltage Current On Record:', margin, yPosition);
         yPosition += 8;
-        pdf.text(`ECU 2 Voltage: ${padString(results.ecu2.voltage, 6)} V    ${results.ecu2.status || 'N/A'}`, margin, yPosition);
+        pdf.text(`ECU 2 Voltage: ${padString(results.ecu2?.voltage || 'N/A', 6)} V    ${results.ecu2?.status || 'N/A'}`, margin, yPosition);
         yPosition += 6;
-        pdf.text(`ECU 2 Current: ${padString(results.ecu2.current, 6)} A`, margin, yPosition);
+        pdf.text(`ECU 2 Current: ${padString(results.ecu2?.current || 'N/A', 6)} A`, margin, yPosition);
         yPosition += 12;
-        // ECU-2 Data Get Parameters (abbreviated)
+        // ECU-2 Data Get Parameters (key values only)
         if (results.prop2Tm) {
             pdf.text('Data Get Parameters (Key Values):', margin, yPosition);
             yPosition += 8;
@@ -7929,13 +9285,13 @@ async function generatePropulsionReport(results) {
             checkNewPage(30);
             pdf.text('Voltage Current On Record:', margin, yPosition);
             yPosition += 8;
-            pdf.text(`ECU 1 Voltage: ${padString(results.ecu1.voltage, 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`, margin, yPosition);
+            pdf.text(`ECU 1 Voltage: ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`ECU 1 Current: ${padString(results.ecu1.current, 6)} A`, margin, yPosition);
+            pdf.text(`ECU 1 Current: ${padString(results.ecu1?.current || 'N/A', 6)} A`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`PPU 1 Voltage: ${padString(results.ppu1.voltage, 6)} V    ${results.ppu1.status || 'N/A'}`, margin, yPosition);
+            pdf.text(`PPU 1 Voltage: ${padString(results.ppu1?.voltage || 'N/A', 6)} V    ${results.ppu1?.status || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`PPU 1 Current: ${padString(results.ppu1.current, 6)} A`, margin, yPosition);
+            pdf.text(`PPU 1 Current: ${padString(results.ppu1?.current || 'N/A', 6)} A`, margin, yPosition);
             yPosition += 12;
             // Add final voltage current records
             pdf.text('Voltage Current Off Record:', margin, yPosition);
@@ -7951,6 +9307,84 @@ async function generatePropulsionReport(results) {
         } else {
             pdf.text('PPU test was not performed', margin, yPosition);
             yPosition += 12;
+        }
+        // Complete Raw Parameters Summary for PDF - SHOWS ALL PARAMETERS
+        checkNewPage(50);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Raw Parameters Summary', margin, yPosition);
+        yPosition += 10;
+        pdf.setFontSize(7); // Even smaller font for more parameters
+        pdf.setFont('helvetica', 'normal');
+        if (results.rawParameters) {
+            const paramGroups = [
+                {
+                    title: 'ECU Voltage/Current Parameters',
+                    filter: (key)=>key.includes('ECU') && (key.includes('_V') || key.includes('_I'))
+                },
+                {
+                    title: 'PPU Voltage/Current Parameters',
+                    filter: (key)=>key.includes('THRU') && (key.includes('_V') || key.includes('_I'))
+                },
+                {
+                    title: 'PMA Timing Parameters',
+                    filter: (key)=>key.includes('PmaCheck')
+                },
+                {
+                    title: 'PPU Timing Parameters',
+                    filter: (key)=>key.includes('PpuCheck')
+                },
+                {
+                    title: 'Propulsion Telecommand Parameters',
+                    filter: (key)=>key.startsWith('OBC1_Prop_') && !key.includes('Check') && !key.includes('Count') && !key.includes('Error')
+                },
+                {
+                    title: 'Propulsion Telemetry ECU-1 Parameters',
+                    filter: (key)=>key.startsWith('PROPULSION1_')
+                },
+                {
+                    title: 'Propulsion Telemetry ECU-2 Parameters',
+                    filter: (key)=>key.startsWith('PROPULSION2_')
+                },
+                {
+                    title: 'Propulsion Statistics',
+                    filter: (key)=>key.includes('Prop_') && (key.includes('Count') || key.includes('Error'))
+                }
+            ];
+            paramGroups.forEach((group)=>{
+                const groupParams = Object.entries(results.rawParameters).filter(([key])=>group.filter(key));
+                if (groupParams.length > 0) {
+                    checkNewPage(15);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(group.title + ':', margin, yPosition);
+                    yPosition += 5;
+                    pdf.setFont('helvetica', 'normal');
+                    // FIXED: Show ALL parameters, not limited to 10
+                    groupParams.forEach(([key, value])=>{
+                        checkNewPage(3);
+                        const displayKey = key.length > 45 ? key.substring(0, 45) + '...' : key;
+                        pdf.text(`${displayKey}: ${String(value)}`, margin + 2, yPosition);
+                        yPosition += 3;
+                    });
+                    yPosition += 4;
+                }
+            });
+            // Add miscellaneous parameters that don't fit in other categories
+            const allGroupFilters = paramGroups.map((g)=>g.filter);
+            const miscParams = Object.entries(results.rawParameters).filter(([key])=>!allGroupFilters.some((filter)=>filter(key)));
+            if (miscParams.length > 0) {
+                checkNewPage(15);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('Miscellaneous Parameters:', margin, yPosition);
+                yPosition += 5;
+                pdf.setFont('helvetica', 'normal');
+                miscParams.forEach(([key, value])=>{
+                    checkNewPage(3);
+                    const displayKey = key.length > 45 ? key.substring(0, 45) + '...' : key;
+                    pdf.text(`${displayKey}: ${String(value)}`, margin + 2, yPosition);
+                    yPosition += 3;
+                });
+            }
         }
         // Add footer to all pages
         const totalPages = pdf.internal.pages.length - 1;
@@ -7969,12 +9403,12 @@ async function generatePropulsionReport(results) {
         throw new Error(`Failed to generate Propulsion PDF report: ${error instanceof Error ? error.message : String(error)}`);
     }
 }
-// Helper function to create propulsion telemetry paragraphs
-function createPropulsionTmParagraphs(propTm) {
+// Helper function to create propulsion telemetry paragraphs with all parameters
+function createPropulsionTmParagraphs(propTm, ecuLabel) {
     if (!propTm) {
         return [
             new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: "No propulsion telemetry data available",
+                text: `No propulsion telemetry data available for ${ecuLabel}`,
                 spacing: {
                     after: 100
                 }
@@ -8426,7 +9860,7 @@ function createPropulsionTmParagraphs(propTm) {
     }
     return paragraphs;
 }
-// Helper function to create PMA info paragraphs
+// Helper function to create PMA info paragraphs with complete parameter coverage
 function createPmaInfoParagraphs(results) {
     if (!results.pma || results.pma.status === 'N.A.') {
         return [
@@ -8649,19 +10083,19 @@ function createPmaInfoParagraphs(results) {
             },
             {
                 key: "Test_Override",
-                label: "Test Duration                   :"
+                label: "Test Override                   :"
             },
             {
                 key: "Spare_3",
-                label: "Spare                           :"
+                label: "Spare 3                         :"
             },
             {
                 key: "Spare_4",
-                label: "Spare                           :"
+                label: "Spare 4                         :"
             },
             {
                 key: "Spare_5",
-                label: "Spare                           :"
+                label: "Spare 5                         :"
             }
         ];
         for (const param of propTcParams){
@@ -8697,7 +10131,7 @@ function createPmaInfoParagraphs(results) {
                 after: 100
             }
         }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `ECU 1 Voltage   : ${padString(results.ecu1TestVoltage, 6)} V    ${results.passFailStatus[4] || 'N/A'}`,
+            text: `ECU 1 Voltage   : ${padString(results.ecu1TestVoltage, 6)} V    ${results.passFailStatus?.[4] || 'N/A'}`,
             spacing: {
                 after: 100
             }
@@ -8720,7 +10154,7 @@ function createPmaInfoParagraphs(results) {
             spacing: {
                 after: 100
             }
-        }), ...createPropulsionTmParagraphs(results.pmaTm));
+        }), ...createPropulsionTmParagraphs(results.pmaTm, "PMA"));
     }
     // Add statistics if available
     if (results.propStat) {
@@ -8769,7 +10203,7 @@ function createPmaInfoParagraphs(results) {
                 after: 100
             }
         }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `ECU 1 Voltage   : ${padString(results.ecu1FinalVoltage, 6)} V    ${results.passFailStatus[5] || 'N/A'}`,
+            text: `ECU 1 Voltage   : ${padString(results.ecu1FinalVoltage, 6)} V    ${results.passFailStatus?.[5] || 'N/A'}`,
             spacing: {
                 after: 100
             }
@@ -8782,7 +10216,7 @@ function createPmaInfoParagraphs(results) {
     }
     return paragraphs;
 }
-// Helper function to create PPU info paragraphs
+// Helper function to create PPU info paragraphs with complete parameter coverage
 function createPpuInfoParagraphs(results) {
     if (!results.ppu || results.ppu.status === 'N.A.') {
         return [
@@ -8874,7 +10308,7 @@ function createPpuInfoParagraphs(results) {
             }
         })
     ];
-    // Add propulsion TC parameters if available
+    // Add propulsion TC parameters if available (same as PMA)
     if (results.propTc) {
         const propTcParams = [
             {
@@ -8900,6 +10334,10 @@ function createPpuInfoParagraphs(results) {
             {
                 key: "Cathode_PPU_2_Set_A",
                 label: "Set Current Cathode PPU 2       :"
+            },
+            {
+                key: "Heater_1_PWM",
+                label: "PWM Setting for Heater 1        :"
             },
             {
                 key: "Heater_1_PWM",
@@ -9023,19 +10461,19 @@ function createPpuInfoParagraphs(results) {
             },
             {
                 key: "Test_Override",
-                label: "Test Duration                   :"
+                label: "Test Override                   :"
             },
             {
                 key: "Spare_3",
-                label: "Spare                           :"
+                label: "Spare 3                         :"
             },
             {
                 key: "Spare_4",
-                label: "Spare                           :"
+                label: "Spare 4                         :"
             },
             {
                 key: "Spare_5",
-                label: "Spare                           :"
+                label: "Spare 5                         :"
             }
         ];
         for (const param of propTcParams){
@@ -9070,22 +10508,22 @@ function createPpuInfoParagraphs(results) {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `ECU 1 Voltage   : ${padString(results.ecu1.voltage, 6)} V    ${results.passFailStatus[6] || 'N/A'}`,
+        text: `ECU 1 Voltage   : ${padString(results.ecu1?.voltage || 'N/A', 6)} V    ${results.passFailStatus?.[6] || 'N/A'}`,
         spacing: {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `ECU 1 Current   : ${padString(results.ecu1.current, 6)} A`,
+        text: `ECU 1 Current   : ${padString(results.ecu1?.current || 'N/A', 6)} A`,
         spacing: {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `PPU 1 Voltage   : ${padString(results.ppu1.voltage, 6)} V    ${results.ppu1.status || 'N/A'}`,
+        text: `PPU 1 Voltage   : ${padString(results.ppu1?.voltage || 'N/A', 6)} V    ${results.ppu1?.status || 'N/A'}`,
         spacing: {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `PPU 1 Current   : ${padString(results.ppu1.current, 6)} A`,
+        text: `PPU 1 Current   : ${padString(results.ppu1?.current || 'N/A', 6)} A`,
         spacing: {
             after: 100
         }
@@ -9102,7 +10540,7 @@ function createPpuInfoParagraphs(results) {
             spacing: {
                 after: 100
             }
-        }), ...createPropulsionTmParagraphs(results.ppuTm));
+        }), ...createPropulsionTmParagraphs(results.ppuTm, "PPU"));
     }
     // Add statistics if available
     if (results.propStat) {
@@ -9150,7 +10588,7 @@ function createPpuInfoParagraphs(results) {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[8] || 'N/A'}`,
+        text: `ECU 1 Voltage   : ${padString(results.ecu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[8] || 'N/A'}`,
         spacing: {
             after: 100
         }
@@ -9160,7 +10598,7 @@ function createPpuInfoParagraphs(results) {
             after: 100
         }
     }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-        text: `PPU 1 Voltage   : ${padString(results.ppu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus[9] || 'N/A'}`,
+        text: `PPU 1 Voltage   : ${padString(results.ppu1OffVoltage || '0.000', 6)} V    ${results.passFailStatus?.[9] || 'N/A'}`,
         spacing: {
             after: 100
         }
@@ -9172,13 +10610,146 @@ function createPpuInfoParagraphs(results) {
     }));
     return paragraphs;
 }
+// New helper function to create Raw Parameters section
+function createRawParametersParagraphs(results) {
+    if (!results.rawParameters) {
+        return [
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: 'No raw parameters available',
+                spacing: {
+                    after: 100
+                }
+            })
+        ];
+    }
+    const paragraphs = [
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "All raw parameters captured during the propulsion checkout test:",
+            spacing: {
+                after: 100
+            }
+        })
+    ];
+    // Group parameters by category for better organization
+    const parameterGroups = [
+        {
+            title: "PMA Timing Parameters",
+            filter: (key)=>key.includes("PmaCheck"),
+            params: []
+        },
+        {
+            title: "PPU Timing Parameters",
+            filter: (key)=>key.includes("PpuCheck"),
+            params: []
+        },
+        {
+            title: "ECU Voltage/Current Parameters",
+            filter: (key)=>key.includes("ECU") && (key.includes("_V") || key.includes("_I")),
+            params: []
+        },
+        {
+            title: "PPU Voltage/Current Parameters",
+            filter: (key)=>key.includes("THRU") && (key.includes("_V") || key.includes("_I")),
+            params: []
+        },
+        {
+            title: "Propulsion Telecommand Parameters",
+            filter: (key)=>key.startsWith("OBC1_Prop_") && !key.includes("Check") && !key.includes("Count") && !key.includes("Error"),
+            params: []
+        },
+        {
+            title: "Propulsion Telemetry ECU-1 Parameters",
+            filter: (key)=>key.startsWith("PROPULSION1_"),
+            params: []
+        },
+        {
+            title: "Propulsion Telemetry ECU-2 Parameters",
+            filter: (key)=>key.startsWith("PROPULSION2_"),
+            params: []
+        },
+        {
+            title: "Propulsion Statistics Parameters",
+            filter: (key)=>key.includes("Prop_") && (key.includes("Count") || key.includes("Error")),
+            params: []
+        }
+    ];
+    // Organize parameters into groups
+    Object.entries(results.rawParameters).forEach(([key, value])=>{
+        let assigned = false;
+        for (const group of parameterGroups){
+            if (group.filter(key)) {
+                group.params.push({
+                    key,
+                    value
+                });
+                assigned = true;
+                break;
+            }
+        }
+        // If not assigned to any group, add to a miscellaneous group
+        if (!assigned) {
+            let miscGroup = parameterGroups.find((g)=>g.title === "Miscellaneous Parameters");
+            if (!miscGroup) {
+                miscGroup = {
+                    title: "Miscellaneous Parameters",
+                    filter: ()=>true,
+                    params: []
+                };
+                parameterGroups.push(miscGroup);
+            }
+            miscGroup.params.push({
+                key,
+                value
+            });
+        }
+    });
+    // Add each group to paragraphs
+    parameterGroups.forEach((group)=>{
+        if (group.params.length > 0) {
+            paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TextRun"]({
+                        text: `${group.title}:`,
+                        bold: true,
+                        size: 24
+                    })
+                ],
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "--------------------------------------------------------------------",
+                spacing: {
+                    after: 50
+                }
+            }));
+            group.params.forEach(({ key, value })=>{
+                // Ensure key is a string and pad it safely
+                const keyStr = String(key);
+                const paddedKey = keyStr + ' '.repeat(Math.max(0, 45 - keyStr.length));
+                paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `${paddedKey}: ${String(value)}`,
+                    spacing: {
+                        after: 25
+                    }
+                }));
+            });
+        }
+    });
+    return paragraphs;
+}
 /**
-* Utility function to pad a string to a specific length
-* 
-* @param value The string value to pad
-* @param length The desired length
-* @returns The padded string
-*/ function padString(value, length) {
+ * Utility function to pad a string to a specific length
+ * 
+ * @param value The string value to pad
+ * @param length The desired length
+ * @returns The padded string
+ */ function padString(value, length) {
     const strValue = String(value || '');
     if (!strValue) return ''.padStart(length, ' ');
     // If it's a number, format it with fixed precision
@@ -9310,7 +10881,7 @@ async function runPCSCheckout(sock, enableSDTest, onProgress = ()=>{}) {
         // Step 1: Turn on PCS (10%)
         onProgress('Powering on PCS', 10);
         //await mccifSet(sock, "OBC1_Ch_ExtReqOn", 7);
-        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC-1_Heps_Lcl_ExtReqOn", 14); // new parameter name and value (21 May 2025 Test)
+        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); // new parameter name and value (21 May 2025 Test)
         // Allow time for power up
         await new Promise((resolve)=>setTimeout(resolve, 2000));
         // Step 2: Read voltage and current (20%)
@@ -10304,7 +11875,7 @@ async function runXBandCheckout(sock, onProgress = ()=>{}) {
         // Step 2: Enable PCS (20%)
         onProgress('Enabling PCS', 20);
         // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 7);
-        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); //changed parameter name and value (21 May 2025)
+        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); //changed parameter name and value (21 May 2025 Test)
         await new Promise((resolve)=>setTimeout(resolve, 2000));
         // Step 3: Check PCS voltage and current (30%)
         onProgress('Checking PCS Voltage and Current', 30);
@@ -10329,7 +11900,7 @@ async function runXBandCheckout(sock, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 1000));
             // Step 5: Enable X-Band (50%)
             onProgress('Enabling X-Band', 50);
-            // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 14);
+            // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 14); // changed parameter name and value (21 May 2025 Test)
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Heps_Lcl_ExtReqOn", 14);
             await new Promise((resolve)=>setTimeout(resolve, 2000));
             // Check X-Band voltage and current
@@ -11196,7 +12767,7 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
             // Read GPS values
             try {
                 const gpsResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, gpsVi);
-                // Add this new tracking code
+                // tracking code
                 gpsVi.forEach((param, index)=>{
                     const value = safeParseValue(gpsResults[index]);
                     rawParameters[param] = value;
@@ -11242,7 +12813,7 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 // Read LEOCAM voltage values - Add tracking
                 try {
                     const leocamResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVi);
-                    // Add this tracking code
+                    // tracking code
                     leocamVi.forEach((param, index)=>{
                         const value = safeParseValue(leocamResults[index]);
                         rawParameters[param] = value;
@@ -11328,7 +12899,7 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 try {
                     // First chunk: Health Status and CPU data
                     const telemetryStart = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamVarStart);
-                    // Add this tracking code
+                    // tracking code
                     leocamVarStart.forEach((param, index)=>{
                         const value = safeParseValue(telemetryStart[index]);
                         rawParameters[param] = value;
@@ -11428,12 +12999,11 @@ async function runLEOCAMCheckout(sock, options, onProgress = ()=>{}) {
                 ];
             }
             // Step 9: Read disk information if enabled (80%)
-            // In the enableDiskOperations section
             if (enableDiskOperations) {
                 onProgress('Reading LEOCAM disk information', 80);
                 try {
                     const diskResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, leocamDiskVars);
-                    // Add this tracking code
+                    // tracking code
                     leocamDiskVars.forEach((param, index)=>{
                         const value = safeParseValue(diskResults[index]);
                         rawParameters[param] = value;
@@ -11733,6 +13303,110 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jspdf$2f$dis
 ;
 ;
 ;
+// Parameter arrays from leocamCheckout.ts
+const pcsVi = [
+    "HEPS1_PDM2_PCS_V",
+    "HEPS1_PDM2_PCS_I"
+];
+const gpsVi = [
+    "HEPS1_PDM2_GPS_5V_V",
+    "HEPS1_PDM2_GPS_5V_I"
+];
+const leocamVi = [
+    "HEPS1_PDM1_OPT_CAM_V",
+    "HEPS1_PDM1_OPT_CAM_I"
+];
+const leocamSet = [
+    "Leocam_Sen_Mode",
+    "Leocam_Sen_PWR",
+    "Leocam_Sen_Line_Frame_Rate",
+    "Leocam_Sen_BIT_DEPTH",
+    "Leocam_Sen_ROI_1",
+    "Leocam_Sen_ROI_2",
+    "Leocam_Sen_ROI_3",
+    "Leocam_Sen_ROI_4",
+    "Leocam_Sen_ROI_5_1",
+    "Leocam_Sen_ROI_5_2",
+    "Leocam_Sen_ROI_5_3",
+    "Leocam_Sen_Gain_Analog",
+    "Leocam_Sen_Scan_Direction",
+    "Leocam_Sen_Test_Pattern_Sel"
+];
+const leocamVarStart = [
+    "Leocam_Health_Status",
+    "Leocam_Datetime",
+    "Leocam_CPU_Voltage_1",
+    "Leocam_CPU_Voltage_2",
+    "Leocam_CPU_Voltage_3",
+    "Leocam_CPU_Voltage_4",
+    "Leocam_CPU_Temp_1",
+    "Leocam_CPU_Temp_2",
+    "Leocam_CPU_Temp_3",
+    "Leocam_CPU_Temp_4"
+];
+const leocamVarMiddle = [
+    "Leocam_Int_Temp_1",
+    "Leocam_Int_Temp_2",
+    "Leocam_Int_Temp_3",
+    "Leocam_Int_Temp_4",
+    "Leocam_Int_Temp_5",
+    "Leocam_Int_Temp_6",
+    "Leocam_Int_Temp_7",
+    "Leocam_Int_Temp_8"
+];
+const leocamVarConfig = [
+    "Leocam_Sen_PWR",
+    "Leocam_Sen_Mode",
+    "Leocam_Sen_Line_Frame_Rate",
+    "Leocam_Sen_BIT_DEPTH",
+    "Leocam_Sen_ROI_1",
+    "Leocam_Sen_ROI_2",
+    "Leocam_Sen_ROI_3",
+    "Leocam_Sen_ROI_4",
+    "Leocam_Sen_ROI_5_1",
+    "Leocam_Sen_ROI_5_2",
+    "Leocam_Sen_ROI_5_3",
+    "Leocam_Sen_Gain_Analog",
+    "Leocam_Sen_Scan_Direction",
+    "Leocam_Sen_Test_Pattern_Sel"
+];
+const leocamVarEnd = [
+    "Leocam_Sen_VOLTAGE",
+    "Leocam_Sen_TEMP_1",
+    "Leocam_Sen_TEMP_2",
+    "Leocam_Sen_Reset"
+];
+const leocamDiskVars = [
+    "Leocam_Disk_Used_1",
+    "Leocam_Disk_Used_2",
+    "Leocam_Disk_Used_3",
+    "Leocam_Disk_TEMP_1",
+    "Leocam_Disk_TEMP_2",
+    "Leocam_Disk_TEMP_3",
+    "Leocam_Disk_Lifetime_1",
+    "Leocam_Disk_Lifetime_2",
+    "Leocam_Disk_Lifetime_3",
+    "Leocam_Disk_Err_Correction_Count_1",
+    "Leocam_Disk_Err_Correction_Count_2",
+    "Leocam_Disk_Err_Correction_Count_3",
+    "Leocam_Disk_Err_Uncorrectable_Count_1",
+    "Leocam_Disk_Err_Uncorrectable_Count_2",
+    "Leocam_Disk_Err_Uncorrectable_Count_3",
+    "Leocam_Disk_Total_Bytes_Read_1",
+    "Leocam_Disk_Total_Bytes_Read_2",
+    "Leocam_Disk_Total_Bytes_Read_3",
+    "Leocam_Disk_Total_Bytes_Written_1",
+    "Leocam_Disk_Total_Bytes_Written_2",
+    "Leocam_Disk_Total_Bytes_Written_3",
+    "Leocam_Disk_List_Datasets",
+    "Leocam_Disk_List_Datafiles_in_Dataset"
+];
+const leocamStat = [
+    "PCS_Leocam_Cmd_Count",
+    "PCS_Leocam_Ack_Count",
+    "PCS_Leocam_Timeout_Count",
+    "PCS_Leocam_Error_Count"
+];
 async function generateLEOCAMReport(results) {
     try {
         // Generate both Word and PDF reports
@@ -11933,6 +13607,33 @@ async function generateLEOCAMReport(results) {
                             before: 200
                         }
                     }),
+                    // Page break for Raw Parameters
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    // Raw Parameters Section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Raw Parameter Values:",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    ...createRawParametersParagraphs(results),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200,
+                            before: 200
+                        }
+                    }),
                     // Test Completion Summary
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "* Test Completion Summary:",
@@ -12095,8 +13796,6 @@ async function generateLEOCAMReport(results) {
         pdf.setFont('helvetica', 'normal');
         if (results.leocamConfig) {
             const config = results.leocamConfig;
-            const roiValues = config.sensorRoi || [];
-            const roiStr = roiValues.length > 0 ? roiValues.join('') : 'N/A';
             pdf.text(`Sensor Mode: ${config.sensorMode || 'N/A'}`, margin, yPosition);
             yPosition += 6;
             pdf.text(`Sensor Power: ${config.sensorPower || 'N/A'}`, margin, yPosition);
@@ -12105,7 +13804,13 @@ async function generateLEOCAMReport(results) {
             yPosition += 6;
             pdf.text(`Sensor Bit Depth: ${config.sensorBitDepth || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Sensor ROI: ${roiStr}`, margin, yPosition);
+            pdf.text(`Sensor ROI 1: ${config.sensorRoi1 || 'N/A'}`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Sensor ROI 2: ${config.sensorRoi2 || 'N/A'}`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Sensor ROI 3: ${config.sensorRoi3 || 'N/A'}`, margin, yPosition);
+            yPosition += 6;
+            pdf.text(`Sensor ROI 4: ${config.sensorRoi4 || 'N/A'}`, margin, yPosition);
             yPosition += 6;
             pdf.text(`Sensor Gain Analog: ${config.sensorGainAnalog || 'N/A'}`, margin, yPosition);
             yPosition += 6;
@@ -12130,7 +13835,7 @@ async function generateLEOCAMReport(results) {
             const telemetry = results.leocamTelemetry;
             pdf.text(`Health Status: ${telemetry.healthStatus || 'N/A'}`, margin, yPosition);
             yPosition += 6;
-            pdf.text(`Current Date Time: ${telemetry.dateTime || 'N/A'}`, margin, yPosition);
+            pdf.text(`Current Date Time: ${telemetry.datetime || 'N/A'}`, margin, yPosition);
             yPosition += 8;
             // CPU Voltages
             const cpuVoltages = telemetry.cpuVoltages || [];
@@ -12148,7 +13853,7 @@ async function generateLEOCAMReport(results) {
             }
             // Internal Temperatures
             const internalTemperatures = telemetry.internalTemperatures || [];
-            for(let i = 0; i < Math.min(internalTemperatures.length, 4); i++){
+            for(let i = 0; i < Math.min(internalTemperatures.length, 8); i++){
                 checkNewPage(6);
                 pdf.text(`Internal Temperature ${i + 1}: ${internalTemperatures[i] || 'N/A'} °C`, margin, yPosition);
                 yPosition += 6;
@@ -12158,7 +13863,7 @@ async function generateLEOCAMReport(results) {
             yPosition += 6;
             // Sensor Temperatures
             const sensorTemperatures = telemetry.sensorTemperatures || [];
-            for(let i = 0; i < Math.min(sensorTemperatures.length, 4); i++){
+            for(let i = 0; i < Math.min(sensorTemperatures.length, 2); i++){
                 checkNewPage(6);
                 pdf.text(`Sensor Temperature ${i + 1}: ${sensorTemperatures[i] || 'N/A'} °C`, margin, yPosition);
                 yPosition += 6;
@@ -12166,11 +13871,17 @@ async function generateLEOCAMReport(results) {
             checkNewPage(6);
             pdf.text(`Sensor Reset: ${telemetry.sensorReset || 'N/A'}`, margin, yPosition);
             yPosition += 8;
-            // Disk data (limited to prevent overflow)
+            // Disk data
             const diskUsed = telemetry.diskUsed || [];
-            for(let i = 0; i < Math.min(diskUsed.length, 2); i++){
+            for(let i = 0; i < Math.min(diskUsed.length, 3); i++){
                 checkNewPage(6);
                 pdf.text(`Disk Used ${i + 1}: ${diskUsed[i] || 'N/A'} Kbytes`, margin, yPosition);
+                yPosition += 6;
+            }
+            const diskTemperatures = telemetry.diskTemperatures || [];
+            for(let i = 0; i < Math.min(diskTemperatures.length, 3); i++){
+                checkNewPage(6);
+                pdf.text(`Disk Temperature ${i + 1}: ${diskTemperatures[i] || 'N/A'} °C`, margin, yPosition);
                 yPosition += 6;
             }
         } else {
@@ -12236,6 +13947,17 @@ async function generateLEOCAMReport(results) {
             pdf.text('Final voltage test information not available', margin, yPosition);
             yPosition += 6;
         }
+        yPosition += 15;
+        // Raw Parameters Section
+        checkNewPage(40);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Raw Parameter Values', margin, yPosition);
+        yPosition += 10;
+        pdf.setFontSize(9); // Smaller font for parameter tables
+        pdf.setFont('helvetica', 'normal');
+        // Add raw parameters to PDF
+        yPosition = addRawParametersToPDF(pdf, results, margin, yPosition, pageHeight, checkNewPage);
         // Add footer to all pages
         const totalPages = pdf.internal.pages.length - 1;
         for(let i = 1; i <= totalPages; i++){
@@ -12281,14 +14003,18 @@ async function generateLEOCAMReport(results) {
  * Create paragraphs for the Configuration section
  */ function createConfigurationParagraphs(results) {
     const config = results.leocamConfig || {};
-    const roiValues = config.sensorRoi || [];
-    const roiStr = roiValues.length > 0 ? roiValues.join('') : 'N/A';
     return [
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Mode                 : ${config.sensorMode || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Power                : ${config.sensorPower || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Line Frame Rate      : ${config.sensorLineFrameRate || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Bit Depth            : ${config.sensorBitDepth || 'N/A'}`),
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI                  : ${roiStr}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 1                : ${config.sensorRoi1 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 2                : ${config.sensorRoi2 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 3                : ${config.sensorRoi3 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 4                : ${config.sensorRoi4 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 5_1              : ${config.sensorRoi5_1 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 5_2              : ${config.sensorRoi5_2 || 'N/A'}`),
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor ROI 5_3              : ${config.sensorRoi5_3 || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Gain Analog          : ${config.sensorGainAnalog || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Scan Direction       : ${config.sensorScanDirection || 'N/A'}`),
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Test Pattern Select  : ${config.sensorTestPatternSel || 'N/A'}`)
@@ -12301,56 +14027,56 @@ async function generateLEOCAMReport(results) {
     const paragraphs = [];
     // Add Health Status and DateTime
     paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Health Status                       : ${telemetry.healthStatus || 'N/A'}`));
-    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Current Date Time                   : ${telemetry.dateTime || 'N/A'}`));
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Current Date Time                   : ${telemetry.datetime || 'N/A'}`));
     // Add CPU Voltages
     const cpuVoltages = telemetry.cpuVoltages || [];
-    for(let i = 0; i < cpuVoltages.length; i++){
+    for(let i = 0; i < cpuVoltages.length && i < 4; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`CPU Voltage ${i + 1}                       : ${cpuVoltages[i] || 'N/A'} V`));
     }
     // Add CPU Temperatures
     const cpuTemperatures = telemetry.cpuTemperatures || [];
-    for(let i = 0; i < cpuTemperatures.length; i++){
+    for(let i = 0; i < cpuTemperatures.length && i < 4; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`CPU Temperature ${i + 1}                   : ${cpuTemperatures[i] || 'N/A'} deg C`));
     }
     // Add Internal Temperatures
     const internalTemperatures = telemetry.internalTemperatures || [];
-    for(let i = 0; i < internalTemperatures.length; i++){
+    for(let i = 0; i < internalTemperatures.length && i < 8; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Internal Temperature ${i + 1}              : ${internalTemperatures[i] || 'N/A'} deg C`));
     }
     // Add sensor-specific data
     paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Voltage                      : ${telemetry.sensorVoltage || 'N/A'} V`));
     const sensorTemperatures = telemetry.sensorTemperatures || [];
-    for(let i = 0; i < sensorTemperatures.length; i++){
+    for(let i = 0; i < sensorTemperatures.length && i < 2; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Temperature ${i + 1}                : ${sensorTemperatures[i] || 'N/A'} deg C`));
     }
     paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Sensor Reset                        : ${telemetry.sensorReset || 'N/A'}`));
     // Add disk data
     const diskUsed = telemetry.diskUsed || [];
-    for(let i = 0; i < diskUsed.length; i++){
+    for(let i = 0; i < diskUsed.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Used ${i + 1}                         : ${diskUsed[i] || 'N/A'} Kbytes`));
     }
     const diskTemperatures = telemetry.diskTemperatures || [];
-    for(let i = 0; i < diskTemperatures.length; i++){
+    for(let i = 0; i < diskTemperatures.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Temperature ${i + 1}                  : ${diskTemperatures[i] || 'N/A'} deg C`));
     }
     const diskLifetimes = telemetry.diskLifetimes || [];
-    for(let i = 0; i < diskLifetimes.length; i++){
+    for(let i = 0; i < diskLifetimes.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Lifetime ${i + 1}                     : ${diskLifetimes[i] || 'N/A'} hours`));
     }
     const diskErrorCorrectionCounts = telemetry.diskErrorCorrectionCounts || [];
-    for(let i = 0; i < diskErrorCorrectionCounts.length; i++){
+    for(let i = 0; i < diskErrorCorrectionCounts.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Error Correction Count ${i + 1}       : ${diskErrorCorrectionCounts[i] || 'N/A'}`));
     }
     const diskErrorUncorrectableCounts = telemetry.diskErrorUncorrectableCounts || [];
-    for(let i = 0; i < diskErrorUncorrectableCounts.length; i++){
+    for(let i = 0; i < diskErrorUncorrectableCounts.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Error Uncorrectable Count ${i + 1}    : ${diskErrorUncorrectableCounts[i] || 'N/A'}`));
     }
     const diskTotalBytesRead = telemetry.diskTotalBytesRead || [];
-    for(let i = 0; i < diskTotalBytesRead.length; i++){
+    for(let i = 0; i < diskTotalBytesRead.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Total Bytes Read ${i + 1}             : ${diskTotalBytesRead[i] || 'N/A'} MiB`));
     }
     const diskTotalBytesWritten = telemetry.diskTotalBytesWritten || [];
-    for(let i = 0; i < diskTotalBytesWritten.length; i++){
+    for(let i = 0; i < diskTotalBytesWritten.length && i < 3; i++){
         paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk Total Bytes Written ${i + 1}          : ${diskTotalBytesWritten[i] || 'N/A'} MiB`));
     }
     paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`Disk List Datasets                  : ${telemetry.diskListDatasets || 'N/A'}`));
@@ -12392,12 +14118,205 @@ async function generateLEOCAMReport(results) {
     ];
 }
 /**
-* Utility function to pad a string to a specific length
-* 
-* @param value The string value to pad
-* @param length The desired length
-* @returns The padded string
-*/ function padString(value, length) {
+ * Create paragraphs for the Raw Parameters section
+ */ function createRawParametersParagraphs(results) {
+    const rawParams = results.rawParameters || {};
+    const paragraphs = [];
+    // Add section header
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "All raw parameter values as read from the hardware:",
+        spacing: {
+            after: 100
+        }
+    }));
+    // Voltage and Current Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "Voltage and Current Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    [
+        ...pcsVi,
+        ...gpsVi,
+        ...leocamVi
+    ].forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Sensor Configuration Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Sensor Configuration Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamSet.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Telemetry Start Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Telemetry Start Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamVarStart.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Internal Temperature Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Internal Temperature Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamVarMiddle.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Configuration Readback Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Configuration Readback Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamVarConfig.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Sensor End Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Sensor End Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamVarEnd.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Disk Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Disk Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamDiskVars.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    // LEOCAM Statistics Parameters
+    paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "LEOCAM Statistics Parameters:",
+        spacing: {
+            before: 100,
+            after: 50
+        }
+    }));
+    leocamStat.forEach((param)=>{
+        paragraphs.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](`${param.padEnd(35)} : ${rawParams[param] || 'N/A'}`));
+    });
+    return paragraphs;
+}
+/**
+ * Add raw parameters to PDF
+ */ function addRawParametersToPDF(pdf, results, margin, startYPosition, pageHeight, checkNewPage) {
+    const rawParams = results.rawParameters || {};
+    let yPosition = startYPosition;
+    // Helper function to add a section header
+    const addSectionHeader = (title)=>{
+        // Check if we need more space for header + at least 3 parameter lines
+        if (yPosition + 25 > pageHeight - 30) {
+            pdf.addPage();
+            yPosition = 20;
+        }
+        pdf.setFontSize(11);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(title, margin, yPosition);
+        yPosition += 8;
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+    };
+    // Helper function to add parameters with better page break handling
+    const addParameters = (params)=>{
+        params.forEach((param)=>{
+            // Check if we need a new page (allow space for parameter line)
+            if (yPosition + 6 > pageHeight - 30) {
+                pdf.addPage();
+                yPosition = 20;
+            }
+            const value = rawParams[param] || 'N/A';
+            // Truncate very long parameter names/values to fit on page
+            const truncatedParam = param.length > 40 ? param.substring(0, 37) + '...' : param;
+            const truncatedValue = value.toString().length > 30 ? value.toString().substring(0, 27) + '...' : value;
+            pdf.text(`${truncatedParam}: ${truncatedValue}`, margin, yPosition);
+            yPosition += 5;
+        });
+        yPosition += 3; // Add small gap after each section
+    };
+    try {
+        // Voltage and Current Parameters
+        addSectionHeader('Voltage and Current Parameters:');
+        addParameters([
+            ...pcsVi,
+            ...gpsVi,
+            ...leocamVi
+        ]);
+        // LEOCAM Sensor Configuration Parameters  
+        addSectionHeader('LEOCAM Sensor Configuration Parameters:');
+        addParameters(leocamSet);
+        // LEOCAM Telemetry Start Parameters
+        addSectionHeader('LEOCAM Telemetry Start Parameters:');
+        addParameters(leocamVarStart);
+        // LEOCAM Internal Temperature Parameters
+        addSectionHeader('LEOCAM Internal Temperature Parameters:');
+        addParameters(leocamVarMiddle);
+        // LEOCAM Configuration Readback Parameters
+        addSectionHeader('LEOCAM Configuration Readback Parameters:');
+        addParameters(leocamVarConfig);
+        // LEOCAM Sensor End Parameters
+        addSectionHeader('LEOCAM Sensor End Parameters:');
+        addParameters(leocamVarEnd);
+        // LEOCAM Disk Parameters (split into smaller chunks due to length)
+        addSectionHeader('LEOCAM Disk Usage Parameters:');
+        addParameters(leocamDiskVars.filter((param)=>param.includes('Used') || param.includes('TEMP')));
+        addSectionHeader('LEOCAM Disk Lifetime Parameters:');
+        addParameters(leocamDiskVars.filter((param)=>param.includes('Lifetime')));
+        addSectionHeader('LEOCAM Disk Error Parameters:');
+        addParameters(leocamDiskVars.filter((param)=>param.includes('Err')));
+        addSectionHeader('LEOCAM Disk I/O Parameters:');
+        addParameters(leocamDiskVars.filter((param)=>param.includes('Bytes')));
+        addSectionHeader('LEOCAM Disk List Parameters:');
+        addParameters(leocamDiskVars.filter((param)=>param.includes('List')));
+        // LEOCAM Statistics Parameters
+        addSectionHeader('LEOCAM Statistics Parameters:');
+        addParameters(leocamStat);
+    } catch (error) {
+        console.error('Error adding raw parameters to PDF:', error);
+        // Add error message to PDF
+        if (yPosition + 12 > pageHeight - 30) {
+            pdf.addPage();
+            yPosition = 20;
+        }
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Error: Some raw parameters could not be displayed', margin, yPosition);
+        yPosition += 10;
+    }
+    return yPosition;
+}
+/**
+ * Utility function to pad a string to a specific length
+ * 
+ * @param value The string value to pad
+ * @param length The desired length
+ * @returns The padded string
+ */ function padString(value, length) {
     if (!value) return ''.padStart(length, ' ');
     return value.padStart(length, ' ');
 }
@@ -13140,7 +15059,7 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         });
         lclViValues.forEach((value)=>checkoutResult.push(value));
         // Add specific load LCL voltages and currents to results as needed
-        // We're not adding all of them to keep results object manageable
+        // not adding all of them to keep results object manageable
         index += lclVi.length;
         // Twelfth step - HDRM VI Test (80%)
         onProgress('Testing HDRM Voltage/Current', 80);
@@ -13153,7 +15072,7 @@ async function runHEPSCheckout(sock, options, onProgress = ()=>{}) {
         });
         hdrmViValues.forEach((value)=>checkoutResult.push(value));
         // Add specific HDRM values to results as needed
-        // We're not adding all of them to keep results object manageable
+        // not adding all of them to keep results object manageable
         index += hdrmVi.length;
         // Thirteenth step - Heater Tests (85%)
         onProgress('Testing Heater Systems', 85);
@@ -13532,6 +15451,13 @@ async function generateHEPSReport(results) {
     const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
     const filename = `HEPS_Checkout_${dateStr}_${timeStr}.docx`;
     console.log(`📝 Generating HEPS Word report: ${filename}`);
+    // Helper function to format values
+    const formatValue = (value, unit = '')=>{
+        if (value === undefined || value === null || value === '') return 'N/A';
+        const numValue = parseFloat(String(value));
+        if (isNaN(numValue)) return String(value);
+        return `${numValue.toFixed(3)}${unit ? ' ' + unit : ''}`;
+    };
     // Create all document children (paragraphs and tables) in one array
     const children = [
         // Title
@@ -13717,142 +15643,119 @@ async function generateHEPSReport(results) {
                 after: 100
             }
         }));
-        // Add CAN data if available
-        if (results.canTest.primaryBefore && results.canTest.primaryBefore.length > 0) {
-            children.push(// PCM Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        // Add detailed CAN data if available
+        if (results.canTest.primaryBefore && results.canTest.primaryBefore.length >= 20) {
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Transmit before test            : ${results.canTest.primaryBefore[0] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Transmit before test           : ${results.canTest.primaryBefore[1] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Transmit before test           : ${results.canTest.primaryBefore[2] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Transmit before test           : ${results.canTest.primaryBefore[3] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Transmit before test           : ${results.canTest.primaryBefore[4] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Acknowledgement before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Acknowledgement before test     : ${results.canTest.primaryBefore[5] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Acknowledgement before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Acknowledgement before test    : ${results.canTest.primaryBefore[6] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Acknowledgement before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Acknowledgement before test    : ${results.canTest.primaryBefore[7] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Acknowledgement before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Acknowledgement before test    : ${results.canTest.primaryBefore[8] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Acknowledgement before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Acknowledgement before test    : ${results.canTest.primaryBefore[9] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Timeout before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Timeout before test             : ${results.canTest.primaryBefore[10] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Timeout before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Timeout before test            : ${results.canTest.primaryBefore[11] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Timeout before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Timeout before test            : ${results.canTest.primaryBefore[12] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Timeout before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Timeout before test            : ${results.canTest.primaryBefore[13] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Timeout before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Timeout before test            : ${results.canTest.primaryBefore[14] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Error before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Error before test               : ${results.canTest.primaryBefore[15] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Error before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Error before test              : ${results.canTest.primaryBefore[16] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Error before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Error before test              : ${results.canTest.primaryBefore[17] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Error before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Error before test              : ${results.canTest.primaryBefore[18] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Error before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Error before test              : ${results.canTest.primaryBefore[19] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // Empty line
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: "",
                 spacing: {
                     after: 100
                 }
-            }), // CAN Primary Secondary Config
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `CAN Primary Secondary Config        : ${results.canTest.primaryBefore[20] || "N/A"}`,
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `CAN Primary Secondary Config        : ${results.rawParameters?.["OBC1_Intercomm_PriSec_Cfg"] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // Empty line
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: "",
                 spacing: {
                     after: 100
@@ -13860,135 +15763,115 @@ async function generateHEPSReport(results) {
             }));
         }
         // Add CAN after test data if available
-        if (results.canTest.primaryAfter && results.canTest.primaryAfter.length > 0) {
-            children.push(// PCM Transmit after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        if (results.canTest.primaryAfter && results.canTest.primaryAfter.length >= 20) {
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Transmit after test             : ${results.canTest.primaryAfter[0] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Transmit after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Transmit after test            : ${results.canTest.primaryAfter[1] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Transmit after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Transmit after test            : ${results.canTest.primaryAfter[2] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Transmit after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Transmit after test            : ${results.canTest.primaryAfter[3] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Transmit after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Transmit after test            : ${results.canTest.primaryAfter[4] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Acknowledgement after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Acknowledgement after test      : ${results.canTest.primaryAfter[5] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Acknowledgement after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Acknowledgement after test     : ${results.canTest.primaryAfter[6] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Acknowledgement after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Acknowledgement after test     : ${results.canTest.primaryAfter[7] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Acknowledgement after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Acknowledgement after test     : ${results.canTest.primaryAfter[8] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Acknowledgement after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Acknowledgement after test     : ${results.canTest.primaryAfter[9] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Timeout after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Timeout after test              : ${results.canTest.primaryAfter[10] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Timeout after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Timeout after test             : ${results.canTest.primaryAfter[11] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Timeout after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Timeout after test             : ${results.canTest.primaryAfter[12] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Timeout after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Timeout after test             : ${results.canTest.primaryAfter[13] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Timeout after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Timeout after test             : ${results.canTest.primaryAfter[14] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PCM Error after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Error after test                : ${results.canTest.primaryAfter[15] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM1 Error after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM1 Error after test               : ${results.canTest.primaryAfter[16] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PSM2 Error after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PSM2 Error after test               : ${results.canTest.primaryAfter[17] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM1 Error after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM1 Error after test               : ${results.canTest.primaryAfter[18] || "N/A"}`,
                 spacing: {
                     after: 100
                 }
-            }), // PDM2 Error after test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PDM2 Error after test               : ${results.canTest.primaryAfter[19] || "N/A"}`,
-                spacing: {
-                    after: 100
-                }
-            }), // Separator
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: "--------------------------------------------------------------------",
                 spacing: {
                     after: 100
                 }
             }));
         }
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
         // Add page break
         children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "",
@@ -14018,20 +15901,229 @@ async function generateHEPSReport(results) {
             }
         }));
         // Add secondary CAN data if available
-        if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length > 0) {
-            // Similar structure to primary CAN, add all the values
-            // (Same structure as primary, so not repeating all the paragraphs for brevity)
-            // In a real implementation, you would add all the specific details here
-            children.push(// PCM Transmit before test
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length >= 20) {
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                 text: `PCM Transmit before test            : ${results.canTest.secondaryBefore[0] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Transmit before test           : ${results.canTest.secondaryBefore[1] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Transmit before test           : ${results.canTest.secondaryBefore[2] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Transmit before test           : ${results.canTest.secondaryBefore[3] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Transmit before test           : ${results.canTest.secondaryBefore[4] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Acknowledgement before test     : ${results.canTest.secondaryBefore[5] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Acknowledgement before test    : ${results.canTest.secondaryBefore[6] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Acknowledgement before test    : ${results.canTest.secondaryBefore[7] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Acknowledgement before test    : ${results.canTest.secondaryBefore[8] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Acknowledgement before test    : ${results.canTest.secondaryBefore[9] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Timeout before test             : ${results.canTest.secondaryBefore[10] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Timeout before test            : ${results.canTest.secondaryBefore[11] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Timeout before test            : ${results.canTest.secondaryBefore[12] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Timeout before test            : ${results.canTest.secondaryBefore[13] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Timeout before test            : ${results.canTest.secondaryBefore[14] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Error before test               : ${results.canTest.secondaryBefore[15] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Error before test              : ${results.canTest.secondaryBefore[16] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Error before test              : ${results.canTest.secondaryBefore[17] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Error before test              : ${results.canTest.secondaryBefore[18] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Error before test              : ${results.canTest.secondaryBefore[19] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `CAN Primary Secondary Config        : ${results.rawParameters?.["sec_OBC1_Intercomm_PriSec_Cfg"] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
                 spacing: {
                     after: 100
                 }
             }));
         }
-        children.push(// Separator
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        // Add secondary CAN after test data
+        if (results.canTest.secondaryAfter && results.canTest.secondaryAfter.length >= 20) {
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Transmit after test             : ${results.canTest.secondaryAfter[0] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Transmit after test            : ${results.canTest.secondaryAfter[1] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Transmit after test            : ${results.canTest.secondaryAfter[2] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Transmit after test            : ${results.canTest.secondaryAfter[3] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Transmit after test            : ${results.canTest.secondaryAfter[4] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Acknowledgement after test      : ${results.canTest.secondaryAfter[5] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Acknowledgement after test     : ${results.canTest.secondaryAfter[6] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Acknowledgement after test     : ${results.canTest.secondaryAfter[7] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Acknowledgement after test     : ${results.canTest.secondaryAfter[8] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Acknowledgement after test     : ${results.canTest.secondaryAfter[9] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Timeout after test              : ${results.canTest.secondaryAfter[10] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Timeout after test             : ${results.canTest.secondaryAfter[11] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Timeout after test             : ${results.canTest.secondaryAfter[12] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Timeout after test             : ${results.canTest.secondaryAfter[13] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Timeout after test             : ${results.canTest.secondaryAfter[14] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PCM Error after test                : ${results.canTest.secondaryAfter[15] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM1 Error after test               : ${results.canTest.secondaryAfter[16] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PSM2 Error after test               : ${results.canTest.secondaryAfter[17] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM1 Error after test               : ${results.canTest.secondaryAfter[18] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `PDM2 Error after test               : ${results.canTest.secondaryAfter[19] || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }));
+        }
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "--------------------------------------------------------------------",
             spacing: {
                 after: 200,
@@ -14057,74 +16149,65 @@ async function generateHEPSReport(results) {
             spacing: {
                 after: 100
             }
-        }), // Battery 1 Voltage
+        }), // Battery Voltages
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 1 Voltage           : ${results.battery.voltage1 ? parseFloat(results.battery.voltage1).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery1 || "N/A"}`,
+            text: `Battery 1 Voltage           : ${formatValue(results.battery.voltage1, "V")}    ${results.passFailStatus?.battery1 || "N/A"}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 2 Voltage
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 2 Voltage           : ${results.battery.voltage2 ? parseFloat(results.battery.voltage2).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery2 || "N/A"}`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 2 Voltage           : ${formatValue(results.battery.voltage2, "V")}    ${results.passFailStatus?.battery2 || "N/A"}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 3 Voltage
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 3 Voltage           : ${results.battery.voltage3 ? parseFloat(results.battery.voltage3).toFixed(3) : "N/A"} V    ${results.passFailStatus.battery3 || "N/A"}`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 3 Voltage           : ${formatValue(results.battery.voltage3, "V")}    ${results.passFailStatus?.battery3 || "N/A"}`,
             spacing: {
                 after: 100
             }
-        }), // Empty line
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "",
             spacing: {
                 after: 100
             }
-        }), // Battery 1 Charging Current
+        }), // Battery Charging Currents
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 1 Charging Current  : ${results.battery.current1 ? parseFloat(results.battery.current1).toFixed(3) : "N/A"} A`,
+            text: `Battery 1 Charging Current  : ${formatValue(results.battery.current1, "A")}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 2 Charging Current
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 2 Charging Current  : ${results.battery.current2 ? parseFloat(results.battery.current2).toFixed(3) : "N/A"} A`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 2 Charging Current  : ${formatValue(results.battery.current2, "A")}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 3 Charging Current
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 3 Charging Current  : ${results.battery.current3 ? parseFloat(results.battery.current3).toFixed(3) : "N/A"} A`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 3 Charging Current  : ${formatValue(results.battery.current3, "A")}`,
             spacing: {
                 after: 100
             }
-        }), // Empty line
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "",
             spacing: {
                 after: 100
             }
-        }), // Battery 1 Temperature
+        }), // Battery Temperatures
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 1 Temperature       : ${results.battery.temperature1 ? parseFloat(results.battery.temperature1).toFixed(3) : "N/A"} deg C`,
+            text: `Battery 1 Temperature       : ${formatValue(results.battery.temperature1, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 2 Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 2 Temperature       : ${results.battery.temperature2 ? parseFloat(results.battery.temperature2).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 2 Temperature       : ${formatValue(results.battery.temperature2, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Battery 3 Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Battery 3 Temperature       : ${results.battery.temperature3 ? parseFloat(results.battery.temperature3).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery 3 Temperature       : ${formatValue(results.battery.temperature3, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Separator
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "--------------------------------------------------------------------",
             spacing: {
                 after: 100
@@ -14144,75 +16227,64 @@ async function generateHEPSReport(results) {
             spacing: {
                 after: 100
             }
-        }), // Solar Array 1 Voltage
+        }), // Solar Array Voltages
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 1 Voltage               : ${results.solarArray.voltage1 ? parseFloat(results.solarArray.voltage1).toFixed(3) : "N/A"} V`,
+            text: `Solar Array 1 Voltage               : ${formatValue(results.solarArray.voltage1, "V")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 2 Voltage
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 2 Voltage               : ${results.solarArray.voltage2 ? parseFloat(results.solarArray.voltage2).toFixed(3) : "N/A"} V`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 2 Voltage               : ${formatValue(results.solarArray.voltage2, "V")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 3 Voltage
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 3 Voltage               : ${results.solarArray.voltage3 ? parseFloat(results.solarArray.voltage3).toFixed(3) : "N/A"} V`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 3 Voltage               : ${formatValue(results.solarArray.voltage3, "V")}`,
             spacing: {
                 after: 100
             }
-        }), // Empty line
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "",
             spacing: {
                 after: 100
             }
-        }), // Solar Array temperature values
-        // Solar Array 1 Y- Temperature
+        }), // Solar Array Temperatures
         new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 1 Y- Temperature        : ${results.solarArray.tempYNeg1 ? parseFloat(results.solarArray.tempYNeg1).toFixed(3) : "N/A"} deg C`,
+            text: `Solar Array 1 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg1, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 2 Y- Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 2 Y- Temperature        : ${results.solarArray.tempYNeg2 ? parseFloat(results.solarArray.tempYNeg2).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 2 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg2, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 3 Y- Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 3 Y- Temperature        : ${results.solarArray.tempYNeg3 ? parseFloat(results.solarArray.tempYNeg3).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 3 Y- Temperature        : ${formatValue(results.solarArray.tempYNeg3, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array Body Mount Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array Body Mount Temperature  : ${results.solarArray.tempBodyMount ? parseFloat(results.solarArray.tempBodyMount).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array Body Mount Temperature  : ${formatValue(results.solarArray.tempBodyMount, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 1 Y+ Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 1 Y+ Temperature        : ${results.solarArray.tempYPos1 ? parseFloat(results.solarArray.tempYPos1).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 1 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos1, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 2 Y+ Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 2 Y+ Temperature        : ${results.solarArray.tempYPos2 ? parseFloat(results.solarArray.tempYPos2).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 2 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos2, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Solar Array 3 Y+ Temperature
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-            text: `Solar Array 3 Y+ Temperature        : ${results.solarArray.tempYPos3 ? parseFloat(results.solarArray.tempYPos3).toFixed(3) : "N/A"} deg C`,
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Solar Array 3 Y+ Temperature        : ${formatValue(results.solarArray.tempYPos3, "deg C")}`,
             spacing: {
                 after: 100
             }
-        }), // Empty line
-        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
             text: "",
             spacing: {
                 after: 100
@@ -14220,30 +16292,1079 @@ async function generateHEPSReport(results) {
         }));
         // HDRM Deploy Status
         if (results.hdrmStatus) {
-            children.push(// HDRM 1 Deploy Status
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `HDRM 1 Deploy Status                : ${results.hdrmStatus.deploy1 ? parseFloat(results.hdrmStatus.deploy1).toFixed(3) : "N/A"} V`,
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `HDRM 1 Deploy Status                : ${formatValue(results.hdrmStatus.deploy1, "V")}`,
                 spacing: {
                     after: 100
                 }
-            }), // HDRM 2 Deploy Status
-            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
-                text: `HDRM 2 Deploy Status                : ${results.hdrmStatus.deploy2 ? parseFloat(results.hdrmStatus.deploy2).toFixed(3) : "N/A"} V`,
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `HDRM 2 Deploy Status                : ${formatValue(results.hdrmStatus.deploy2, "V")}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "--------------------------------------------------------------------",
                 spacing: {
                     after: 100
                 }
             }));
         }
     }
-    // Add additional sections as in the original implementation...
-    // (OBN Summary, BCR Summary, PCB Temperature, Converter Summary, Load Summary, etc.)
-    // [The rest of the Word document generation logic remains the same as in your original code]
+    // OBN Summary
+    if (results.obn) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* OBN Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBN 1 Voltage               : ${formatValue(results.obn.voltage1, "V")}    ${results.passFailStatus?.obn1Voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBN 1 Current               : ${formatValue(results.obn.current1, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBN 2 Voltage               : ${formatValue(results.obn.voltage2, "V")}    ${results.passFailStatus?.obn2Voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBN 2 Current               : ${formatValue(results.obn.current2, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `AUX 12V Voltage             : ${formatValue(results.obn.auxVoltage, "V")}    ${results.passFailStatus?.auxVoltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Battery Charging Regulator Summary
+    if (results.bcr) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Battery Charging Regulator Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 1 Current               : ${formatValue(results.bcr.current1, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 2 Current               : ${formatValue(results.bcr.current2, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 3 Current               : ${formatValue(results.bcr.current3, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 1 Temperature           : ${formatValue(results.bcr.temp1, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 2 Temperature           : ${formatValue(results.bcr.temp2, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `BCR 3 Temperature           : ${formatValue(results.bcr.temp3, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // PCB Temperature Summary
+    if (results.pdmTemperature) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* PCB Temperature Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `PDM 1 Temperature           : ${formatValue(results.pdmTemperature.pdm1, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `PDM 2 Temperature           : ${formatValue(results.pdmTemperature.pdm2, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Converter Summary
+    if (results.converters) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Converter Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), // Converter Voltages
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 12V Converter 1 Voltage        : ${formatValue(results.converters.hdrm12v1_voltage, "V")}    ${results.passFailStatus?.hdrm12v1_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `5V Converter 1 Voltage              : ${formatValue(results.converters.v5_1_voltage, "V")}    ${results.passFailStatus?.v5_1_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `12V Converter 1 Voltage             : ${formatValue(results.converters.v12_1_voltage, "V")}    ${results.passFailStatus?.v12_1_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `15V Converter Voltage               : ${formatValue(results.converters.v15_voltage, "V")}    ${results.passFailStatus?.v15_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 12V Converter 2 Voltage        : ${formatValue(results.converters.hdrm12v2_voltage, "V")}    ${results.passFailStatus?.hdrm12v2_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `5V Converter 2 Voltage              : ${formatValue(results.converters.v5_2_voltage, "V")}    ${results.passFailStatus?.v5_2_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `12V Converter 2 Voltage             : ${formatValue(results.converters.v12_2_voltage, "V")}    ${results.passFailStatus?.v12_2_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // Converter Temperatures
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 12V Converter 1 Temperature    : ${formatValue(results.converters.hdrm12v1_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `5V Converter 1 Temperature          : ${formatValue(results.converters.v5_1_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `12V Converter 1 Temperature         : ${formatValue(results.converters.v12_1_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `15V Converter Temperature           : ${formatValue(results.converters.v15_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 12V Converter 2 Temperature    : ${formatValue(results.converters.hdrm12v2_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `5V Converter 2 Temperature          : ${formatValue(results.converters.v5_2_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `12V Converter 2 Temperature         : ${formatValue(results.converters.v12_2_temp, "deg C")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Load Summary (RLCL)
+    if (results.loads) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Load Summary (RLCL) :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-1 Voltage               : ${formatValue(results.loads.obc1_voltage, "V")}    ${results.passFailStatus?.obc1_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-1 Current               : ${formatValue(results.loads.obc1_current, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 Voltage               : ${formatValue(results.loads.obc2_voltage, "V")}    ${results.passFailStatus?.obc2_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `OBC-2 Current               : ${formatValue(results.loads.obc2_current, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `S-Band Voltage               : ${formatValue(results.loads.sband_voltage, "V")}    ${results.passFailStatus?.sband_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `S-Band Current               : ${formatValue(results.loads.sband_current, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `UHF Voltage                  : ${formatValue(results.loads.uhf_voltage, "V")}    ${results.passFailStatus?.uhf_voltage || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `UHF Current                  : ${formatValue(results.loads.uhf_current, "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // LCL Summary (Additional Load Channels) - Include all the additional channels from lclVi
+    if (results.rawParameters) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* LCL Summary (Additional Load Channels) :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), // ADCS channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ADCS IF Voltage              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS_IF_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ADCS IF Current              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS-IF_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ADCS RW Voltage              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ADCS RW Current              : ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // GPS channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `GPS 5V Voltage               : ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `GPS 5V Current               : ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // ECU channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ECU 1 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ECU 1 Current                : ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ECU 2 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `ECU 2 Current                : ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // Thruster channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster 1 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster 1 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster 2 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster 2 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // PCS channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `PCS Voltage                  : ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `PCS Current                  : ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // Optical Camera channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Optical Camera Voltage       : ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Optical Camera Current       : ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // X-Band channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `X-Band Voltage               : ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `X-Band Current               : ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // AOD channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `AOD 1 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `AOD 1 Current                : ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `AOD 2 Voltage                : ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `AOD 2 Current                : ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // CIP channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `CIP Voltage                  : ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `CIP Current                  : ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // HDRM Voltage/Current Summary
+    if (results.rawParameters) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* HDRM Voltage/Current Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), // HDRM 1 channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 ARM Voltage           : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_ARM_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW01 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW01 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW02 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW02 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW03 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 1 SW03 Current          : ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }), // HDRM 2 channels
+        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 ARM Voltage           : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_ARM_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW01 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW01 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW02 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW02 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW03 Voltage          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HDRM 2 SW03 Current          : ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Heater System Summary
+    if (results.rawParameters) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Heater System Summary :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+        // Heater Group 1 (PSM1) - heater1Vi parameters
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "Heater Group 1 (PSM1):",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HT1 LCL Status                  : ${formatValue(results.rawParameters["HEPS1_PSM1_HT1_LCL"])}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery Heater 1 Voltage        : ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery Heater 1 Current        : ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster Heater 1 Voltage       : ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster Heater 1 Current       : ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Camera Heater 1 Voltage         : ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Camera Heater 1 Current         : ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }));
+        // Heater Group 2 (PSM2) - heater2Vi parameters
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "Heater Group 2 (PSM2):",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `HT2 LCL Status                  : ${formatValue(results.rawParameters["HEPS1_PSM2_HT2_LCL"])}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery Heater 2 Voltage        : ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Battery Heater 2 Current        : ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster Heater 2 Voltage       : ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Thruster Heater 2 Current       : ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Camera Heater 2 Voltage         : ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_V"], "V")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Camera Heater 2 Current         : ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_I"], "A")}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }));
+        // Legacy heater summary (if available from results.heaters)
+        if (results.heaters && results.heaters.length > 0) {
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "Summary Data:",
+                heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                spacing: {
+                    after: 100
+                }
+            }));
+            // Heater Group 1 Summary
+            if (results.heaters[0]) {
+                children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `Heater Group 1 Status           : ${results.heaters[0].status || "N/A"}`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `Heater Group 1 Total Power      : ${formatValue(results.heaters[0].power, "W")}`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: "",
+                    spacing: {
+                        after: 100
+                    }
+                }));
+            }
+            // Heater Group 2 Summary
+            if (results.heaters[1]) {
+                children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `Heater Group 2 Status           : ${results.heaters[1].status || "N/A"}`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `Heater Group 2 Total Power      : ${formatValue(results.heaters[1].power, "W")}`,
+                    spacing: {
+                        after: 100
+                    }
+                }));
+            }
+        }
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Heater Test Results (if available)
+    if (results.heaterTests && results.heaterTests.length > 0) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Heater Test Results :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+        results.heaterTests.forEach((heaterTest, index)=>{
+            children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Heater ${index + 1} Test Results:`,
+                heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_3,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Initial Temperature          : ${heaterTest.initialTemp || "N/A"} deg C`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Test Result                  : ${heaterTest.testResult || "N/A"}`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Reading Interval             : ${heaterTest.readingInterval || "N/A"} seconds`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Thermal Rise Performance:`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Total Temperature Rise     : ${heaterTest.thermalRise?.totalRise || "N/A"} deg C`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Rise Rate                  : ${heaterTest.thermalRise?.riseRate || "N/A"} deg C/min`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Time to 5°C Rise           : ${heaterTest.thermalRise?.timeTo5C || "N/A"} seconds`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Time to 10°C Rise          : ${heaterTest.thermalRise?.timeTo10C || "N/A"} seconds`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `Power Consumption:`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Average Current            : ${heaterTest.power?.avgCurrent || "N/A"} mA`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Maximum Current            : ${heaterTest.power?.maxCurrent || "N/A"} mA`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Average Power              : ${heaterTest.power?.avgPower || "N/A"} W`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: `  Total Energy Used          : ${heaterTest.power?.totalEnergy || "N/A"} Wh`,
+                spacing: {
+                    after: 100
+                }
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                text: "",
+                spacing: {
+                    after: 100
+                }
+            }));
+        });
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Current Test Results (if available)
+    if (results.currentTest) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Current Measurement Test Results :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Test Result                  : ${results.currentTest.testResult || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Test Duration                : ${results.currentTest.testDuration || "N/A"} seconds`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Samples Collected            : ${results.currentTest.sampleCount || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Maximum Deviation            : ${results.currentTest.maxDeviation || "N/A"}%`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Tolerance Range              : ±${results.currentTest.tolerance || "N/A"}%`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "",
+            spacing: {
+                after: 100
+            }
+        }));
+        // Heater-specific current test results
+        if (results.currentTest.heaterResults && results.currentTest.heaterResults.length > 0) {
+            results.currentTest.heaterResults.forEach((heaterResult, index)=>{
+                children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `Heater ${index + 1} Current Test:`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `  Expected Current           : ${heaterResult.expectedCurrent || "N/A"} mA`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `  Measured Current           : ${heaterResult.measuredCurrent || "N/A"} mA`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `  Deviation                  : ${heaterResult.deviation || "N/A"}%`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: `  In Range                   : ${heaterResult.inRange ? "YES" : "NO"}`,
+                    spacing: {
+                        after: 100
+                    }
+                }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                    text: "",
+                    spacing: {
+                        after: 100
+                    }
+                }));
+            });
+        }
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Power Cycle Test Results (if available)
+    if (results.powerCycleTest) {
+        children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "* Power Cycle Test Results :",
+            heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Power Cycle Test Result      : ${results.powerCycleTest.testResult || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Cycles Completed             : ${results.powerCycleTest.cyclesCompleted || "N/A"} of ${results.powerCycleTest.totalCycles || "N/A"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Cycle Time                   : ${results.powerCycleTest.cycleTime || "N/A"} seconds`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Power On Time                : ${results.powerCycleTest.powerOnTime || "N/A"} seconds`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Power Off Time               : ${results.powerCycleTest.powerOffTime || "N/A"} seconds`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Total Test Time              : ${results.powerCycleTest.totalTestTime || "N/A"} seconds`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: `Failures                     : ${results.powerCycleTest.failures || "0"}`,
+            spacing: {
+                after: 100
+            }
+        }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+            text: "--------------------------------------------------------------------",
+            spacing: {
+                after: 100
+            }
+        }));
+    }
+    // Test Completion Summary
+    children.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "* Test Completion Summary :",
+        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+        spacing: {
+            after: 100
+        }
+    }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "--------------------------------------------------------------------",
+        spacing: {
+            after: 100
+        }
+    }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: results.error ? `Test completed with errors: ${results.error}` : "All tests completed successfully",
+        spacing: {
+            after: 100
+        }
+    }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: `Report generated: ${now.toLocaleString()}`,
+        spacing: {
+            after: 100
+        }
+    }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+        text: "--------------------------------------------------------------------",
+        spacing: {
+            after: 200,
+            before: 200
+        }
+    }));
     // Create the document with all the children elements
     const doc = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Document"]({
         sections: [
             {
                 properties: {},
-                children: children // This can now handle both Paragraph and Table types
+                children: children
             }
         ]
     });
@@ -14281,6 +17402,13 @@ async function generateHEPSReport(results) {
     const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
     const filename = `HEPS_Checkout_${dateStr}_${timeStr}.pdf`;
     console.log(`📝 Generating HEPS PDF report: ${filename}`);
+    // Helper function to format values
+    const formatValue = (value, unit = '')=>{
+        if (value === undefined || value === null || value === '') return 'N/A';
+        const numValue = parseFloat(String(value));
+        if (isNaN(numValue)) return String(value);
+        return `${numValue.toFixed(3)}${unit ? ' ' + unit : ''}`;
+    };
     try {
         // Create new PDF document
         const pdf = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jspdf$2f$dist$2f$jspdf$2e$es$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]({
@@ -14377,7 +17505,7 @@ async function generateHEPSReport(results) {
         if (results.canTest) {
             addSectionHeader('HEPS-1 CAN Check Summary');
             addText(`Primary CAN: ${results.canTest.primaryResult || "N/A"}`);
-            if (results.canTest.primaryBefore && results.canTest.primaryBefore.length > 0) {
+            if (results.canTest.primaryBefore && results.canTest.primaryBefore.length >= 20) {
                 yPosition += 5;
                 addText('Before Test Results:', 5);
                 addText(`PCM Transmit: ${results.canTest.primaryBefore[0] || "N/A"}`, 10);
@@ -14400,11 +17528,11 @@ async function generateHEPSReport(results) {
                 addText(`PSM2 Error: ${results.canTest.primaryBefore[17] || "N/A"}`, 10);
                 addText(`PDM1 Error: ${results.canTest.primaryBefore[18] || "N/A"}`, 10);
                 addText(`PDM2 Error: ${results.canTest.primaryBefore[19] || "N/A"}`, 10);
-                if (results.canTest.primaryBefore[20]) {
-                    addText(`CAN Primary Secondary Config: ${results.canTest.primaryBefore[20]}`, 10);
+                if (results.rawParameters?.["OBC1_Intercomm_PriSec_Cfg"]) {
+                    addText(`CAN Primary Secondary Config: ${results.rawParameters["OBC1_Intercomm_PriSec_Cfg"]}`, 10);
                 }
             }
-            if (results.canTest.primaryAfter && results.canTest.primaryAfter.length > 0) {
+            if (results.canTest.primaryAfter && results.canTest.primaryAfter.length >= 20) {
                 yPosition += 5;
                 addText('After Test Results:', 5);
                 addText(`PCM Transmit: ${results.canTest.primaryAfter[0] || "N/A"}`, 10);
@@ -14434,173 +17562,354 @@ async function generateHEPSReport(results) {
         if (results.canTest) {
             addSectionHeader('OBC-2 CAN Check Summary');
             addText(`Secondary CAN: ${results.canTest.secondaryResult || "N/A"}`);
-            if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length > 0) {
+            if (results.canTest.secondaryBefore && results.canTest.secondaryBefore.length >= 20) {
                 yPosition += 5;
                 addText('Before Test Results:', 5);
                 addText(`PCM Transmit: ${results.canTest.secondaryBefore[0] || "N/A"}`, 10);
-            // Add other secondary CAN values as needed...
+                addText(`PSM1 Transmit: ${results.canTest.secondaryBefore[1] || "N/A"}`, 10);
+                addText(`PSM2 Transmit: ${results.canTest.secondaryBefore[2] || "N/A"}`, 10);
+                addText(`PDM1 Transmit: ${results.canTest.secondaryBefore[3] || "N/A"}`, 10);
+                addText(`PDM2 Transmit: ${results.canTest.secondaryBefore[4] || "N/A"}`, 10);
+                addText(`PCM Acknowledgement: ${results.canTest.secondaryBefore[5] || "N/A"}`, 10);
+                addText(`PSM1 Acknowledgement: ${results.canTest.secondaryBefore[6] || "N/A"}`, 10);
+                addText(`PSM2 Acknowledgement: ${results.canTest.secondaryBefore[7] || "N/A"}`, 10);
+                addText(`PDM1 Acknowledgement: ${results.canTest.secondaryBefore[8] || "N/A"}`, 10);
+                addText(`PDM2 Acknowledgement: ${results.canTest.secondaryBefore[9] || "N/A"}`, 10);
+                addText(`PCM Timeout: ${results.canTest.secondaryBefore[10] || "N/A"}`, 10);
+                addText(`PSM1 Timeout: ${results.canTest.secondaryBefore[11] || "N/A"}`, 10);
+                addText(`PSM2 Timeout: ${results.canTest.secondaryBefore[12] || "N/A"}`, 10);
+                addText(`PDM1 Timeout: ${results.canTest.secondaryBefore[13] || "N/A"}`, 10);
+                addText(`PDM2 Timeout: ${results.canTest.secondaryBefore[14] || "N/A"}`, 10);
+                addText(`PCM Error: ${results.canTest.secondaryBefore[15] || "N/A"}`, 10);
+                addText(`PSM1 Error: ${results.canTest.secondaryBefore[16] || "N/A"}`, 10);
+                addText(`PSM2 Error: ${results.canTest.secondaryBefore[17] || "N/A"}`, 10);
+                addText(`PDM1 Error: ${results.canTest.secondaryBefore[18] || "N/A"}`, 10);
+                addText(`PDM2 Error: ${results.canTest.secondaryBefore[19] || "N/A"}`, 10);
+                if (results.rawParameters?.["sec_OBC1_Intercomm_PriSec_Cfg"]) {
+                    addText(`CAN Primary Secondary Config: ${results.rawParameters["sec_OBC1_Intercomm_PriSec_Cfg"]}`, 10);
+                }
+            }
+            if (results.canTest.secondaryAfter && results.canTest.secondaryAfter.length >= 20) {
+                yPosition += 5;
+                addText('After Test Results:', 5);
+                addText(`PCM Transmit: ${results.canTest.secondaryAfter[0] || "N/A"}`, 10);
+                addText(`PSM1 Transmit: ${results.canTest.secondaryAfter[1] || "N/A"}`, 10);
+                addText(`PSM2 Transmit: ${results.canTest.secondaryAfter[2] || "N/A"}`, 10);
+                addText(`PDM1 Transmit: ${results.canTest.secondaryAfter[3] || "N/A"}`, 10);
+                addText(`PDM2 Transmit: ${results.canTest.secondaryAfter[4] || "N/A"}`, 10);
+                addText(`PCM Acknowledgement: ${results.canTest.secondaryAfter[5] || "N/A"}`, 10);
+                addText(`PSM1 Acknowledgement: ${results.canTest.secondaryAfter[6] || "N/A"}`, 10);
+                addText(`PSM2 Acknowledgement: ${results.canTest.secondaryAfter[7] || "N/A"}`, 10);
+                addText(`PDM1 Acknowledgement: ${results.canTest.secondaryAfter[8] || "N/A"}`, 10);
+                addText(`PDM2 Acknowledgement: ${results.canTest.secondaryAfter[9] || "N/A"}`, 10);
+                addText(`PCM Timeout: ${results.canTest.secondaryAfter[10] || "N/A"}`, 10);
+                addText(`PSM1 Timeout: ${results.canTest.secondaryAfter[11] || "N/A"}`, 10);
+                addText(`PSM2 Timeout: ${results.canTest.secondaryAfter[12] || "N/A"}`, 10);
+                addText(`PDM1 Timeout: ${results.canTest.secondaryAfter[13] || "N/A"}`, 10);
+                addText(`PDM2 Timeout: ${results.canTest.secondaryAfter[14] || "N/A"}`, 10);
+                addText(`PCM Error: ${results.canTest.secondaryAfter[15] || "N/A"}`, 10);
+                addText(`PSM1 Error: ${results.canTest.secondaryAfter[16] || "N/A"}`, 10);
+                addText(`PSM2 Error: ${results.canTest.secondaryAfter[17] || "N/A"}`, 10);
+                addText(`PDM1 Error: ${results.canTest.secondaryAfter[18] || "N/A"}`, 10);
+                addText(`PDM2 Error: ${results.canTest.secondaryAfter[19] || "N/A"}`, 10);
             }
             yPosition += 10;
         }
         // Battery Summary
         if (results.battery) {
             addSectionHeader('Battery Summary');
-            addText(`Battery 1 Voltage: ${results.battery.voltage1 ? parseFloat(results.battery.voltage1).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery1 || "N/A"})`);
-            addText(`Battery 2 Voltage: ${results.battery.voltage2 ? parseFloat(results.battery.voltage2).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery2 || "N/A"})`);
-            addText(`Battery 3 Voltage: ${results.battery.voltage3 ? parseFloat(results.battery.voltage3).toFixed(3) : "N/A"} V (${results.passFailStatus?.battery3 || "N/A"})`);
+            addText(`Battery 1 Voltage: ${formatValue(results.battery.voltage1, "V")} (${results.passFailStatus?.battery1 || "N/A"})`);
+            addText(`Battery 2 Voltage: ${formatValue(results.battery.voltage2, "V")} (${results.passFailStatus?.battery2 || "N/A"})`);
+            addText(`Battery 3 Voltage: ${formatValue(results.battery.voltage3, "V")} (${results.passFailStatus?.battery3 || "N/A"})`);
             yPosition += 5;
-            addText(`Battery 1 Charging Current: ${results.battery.current1 ? parseFloat(results.battery.current1).toFixed(3) : "N/A"} A`);
-            addText(`Battery 2 Charging Current: ${results.battery.current2 ? parseFloat(results.battery.current2).toFixed(3) : "N/A"} A`);
-            addText(`Battery 3 Charging Current: ${results.battery.current3 ? parseFloat(results.battery.current3).toFixed(3) : "N/A"} A`);
+            addText(`Battery 1 Charging Current: ${formatValue(results.battery.current1, "A")}`);
+            addText(`Battery 2 Charging Current: ${formatValue(results.battery.current2, "A")}`);
+            addText(`Battery 3 Charging Current: ${formatValue(results.battery.current3, "A")}`);
             yPosition += 5;
-            addText(`Battery 1 Temperature: ${results.battery.temperature1 ? parseFloat(results.battery.temperature1).toFixed(3) : "N/A"} °C`);
-            addText(`Battery 2 Temperature: ${results.battery.temperature2 ? parseFloat(results.battery.temperature2).toFixed(3) : "N/A"} °C`);
-            addText(`Battery 3 Temperature: ${results.battery.temperature3 ? parseFloat(results.battery.temperature3).toFixed(3) : "N/A"} °C`);
+            addText(`Battery 1 Temperature: ${formatValue(results.battery.temperature1, "°C")}`);
+            addText(`Battery 2 Temperature: ${formatValue(results.battery.temperature2, "°C")}`);
+            addText(`Battery 3 Temperature: ${formatValue(results.battery.temperature3, "°C")}`);
             yPosition += 10;
         }
         // Solar Array Summary
         if (results.solarArray) {
             addSectionHeader('Solar Array Summary');
-            addText(`Solar Array 1 Voltage: ${results.solarArray.voltage1 ? parseFloat(results.solarArray.voltage1).toFixed(3) : "N/A"} V`);
-            addText(`Solar Array 2 Voltage: ${results.solarArray.voltage2 ? parseFloat(results.solarArray.voltage2).toFixed(3) : "N/A"} V`);
-            addText(`Solar Array 3 Voltage: ${results.solarArray.voltage3 ? parseFloat(results.solarArray.voltage3).toFixed(3) : "N/A"} V`);
+            addText(`Solar Array 1 Voltage: ${formatValue(results.solarArray.voltage1, "V")}`);
+            addText(`Solar Array 2 Voltage: ${formatValue(results.solarArray.voltage2, "V")}`);
+            addText(`Solar Array 3 Voltage: ${formatValue(results.solarArray.voltage3, "V")}`);
             yPosition += 5;
-            addText(`Solar Array 1 Y- Temperature: ${results.solarArray.tempYNeg1 ? parseFloat(results.solarArray.tempYNeg1).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array 2 Y- Temperature: ${results.solarArray.tempYNeg2 ? parseFloat(results.solarArray.tempYNeg2).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array 3 Y- Temperature: ${results.solarArray.tempYNeg3 ? parseFloat(results.solarArray.tempYNeg3).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array Body Mount Temperature: ${results.solarArray.tempBodyMount ? parseFloat(results.solarArray.tempBodyMount).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array 1 Y+ Temperature: ${results.solarArray.tempYPos1 ? parseFloat(results.solarArray.tempYPos1).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array 2 Y+ Temperature: ${results.solarArray.tempYPos2 ? parseFloat(results.solarArray.tempYPos2).toFixed(3) : "N/A"} °C`);
-            addText(`Solar Array 3 Y+ Temperature: ${results.solarArray.tempYPos3 ? parseFloat(results.solarArray.tempYPos3).toFixed(3) : "N/A"} °C`);
+            addText(`Solar Array 1 Y- Temperature: ${formatValue(results.solarArray.tempYNeg1, "°C")}`);
+            addText(`Solar Array 2 Y- Temperature: ${formatValue(results.solarArray.tempYNeg2, "°C")}`);
+            addText(`Solar Array 3 Y- Temperature: ${formatValue(results.solarArray.tempYNeg3, "°C")}`);
+            addText(`Solar Array Body Mount Temperature: ${formatValue(results.solarArray.tempBodyMount, "°C")}`);
+            addText(`Solar Array 1 Y+ Temperature: ${formatValue(results.solarArray.tempYPos1, "°C")}`);
+            addText(`Solar Array 2 Y+ Temperature: ${formatValue(results.solarArray.tempYPos2, "°C")}`);
+            addText(`Solar Array 3 Y+ Temperature: ${formatValue(results.solarArray.tempYPos3, "°C")}`);
             if (results.hdrmStatus) {
                 yPosition += 5;
-                addText(`HDRM 1 Deploy Status: ${results.hdrmStatus.deploy1 ? parseFloat(results.hdrmStatus.deploy1).toFixed(3) : "N/A"} V`);
-                addText(`HDRM 2 Deploy Status: ${results.hdrmStatus.deploy2 ? parseFloat(results.hdrmStatus.deploy2).toFixed(3) : "N/A"} V`);
+                addText(`HDRM 1 Deploy Status: ${formatValue(results.hdrmStatus.deploy1, "V")}`);
+                addText(`HDRM 2 Deploy Status: ${formatValue(results.hdrmStatus.deploy2, "V")}`);
             }
             yPosition += 10;
         }
         // OBN Summary
         if (results.obn) {
             addSectionHeader('OBN Summary');
-            addText(`OBN 1 Voltage: ${results.obn.voltage1 ? parseFloat(results.obn.voltage1).toFixed(3) : "N/A"} V (${results.passFailStatus?.obn1Voltage || "N/A"})`);
-            addText(`OBN 1 Current: ${results.obn.current1 ? parseFloat(results.obn.current1).toFixed(3) : "N/A"} A`);
+            addText(`OBN 1 Voltage: ${formatValue(results.obn.voltage1, "V")} (${results.passFailStatus?.obn1Voltage || "N/A"})`);
+            addText(`OBN 1 Current: ${formatValue(results.obn.current1, "A")}`);
             yPosition += 3;
-            addText(`OBN 2 Voltage: ${results.obn.voltage2 ? parseFloat(results.obn.voltage2).toFixed(3) : "N/A"} V (${results.passFailStatus?.obn2Voltage || "N/A"})`);
-            addText(`OBN 2 Current: ${results.obn.current2 ? parseFloat(results.obn.current2).toFixed(3) : "N/A"} A`);
+            addText(`OBN 2 Voltage: ${formatValue(results.obn.voltage2, "V")} (${results.passFailStatus?.obn2Voltage || "N/A"})`);
+            addText(`OBN 2 Current: ${formatValue(results.obn.current2, "A")}`);
             yPosition += 3;
-            addText(`AUX 12V Voltage: ${results.obn.auxVoltage ? parseFloat(results.obn.auxVoltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.auxVoltage || "N/A"})`);
+            addText(`AUX 12V Voltage: ${formatValue(results.obn.auxVoltage, "V")} (${results.passFailStatus?.auxVoltage || "N/A"})`);
             yPosition += 10;
         }
         // Battery Charging Regulator Summary
         if (results.bcr) {
             addSectionHeader('Battery Charging Regulator Summary');
-            addText(`BCR 1 Current: ${results.bcr.current1 ? parseFloat(results.bcr.current1).toFixed(3) : "N/A"} A`);
-            addText(`BCR 2 Current: ${results.bcr.current2 ? parseFloat(results.bcr.current2).toFixed(3) : "N/A"} A`);
-            addText(`BCR 3 Current: ${results.bcr.current3 ? parseFloat(results.bcr.current3).toFixed(3) : "N/A"} A`);
+            addText(`BCR 1 Current: ${formatValue(results.bcr.current1, "A")}`);
+            addText(`BCR 2 Current: ${formatValue(results.bcr.current2, "A")}`);
+            addText(`BCR 3 Current: ${formatValue(results.bcr.current3, "A")}`);
             yPosition += 5;
-            addText(`BCR 1 Temperature: ${results.bcr.temp1 ? parseFloat(results.bcr.temp1).toFixed(3) : "N/A"} °C`);
-            addText(`BCR 2 Temperature: ${results.bcr.temp2 ? parseFloat(results.bcr.temp2).toFixed(3) : "N/A"} °C`);
-            addText(`BCR 3 Temperature: ${results.bcr.temp3 ? parseFloat(results.bcr.temp3).toFixed(3) : "N/A"} °C`);
+            addText(`BCR 1 Temperature: ${formatValue(results.bcr.temp1, "°C")}`);
+            addText(`BCR 2 Temperature: ${formatValue(results.bcr.temp2, "°C")}`);
+            addText(`BCR 3 Temperature: ${formatValue(results.bcr.temp3, "°C")}`);
             yPosition += 10;
         }
         // PCB Temperature Summary
         if (results.pdmTemperature) {
             addSectionHeader('PCB Temperature Summary');
-            addText(`PDM 1 Temperature: ${results.pdmTemperature.pdm1 ? parseFloat(results.pdmTemperature.pdm1).toFixed(3) : "N/A"} °C`);
-            addText(`PDM 2 Temperature: ${results.pdmTemperature.pdm2 ? parseFloat(results.pdmTemperature.pdm2).toFixed(3) : "N/A"} °C`);
+            addText(`PDM 1 Temperature: ${formatValue(results.pdmTemperature.pdm1, "°C")}`);
+            addText(`PDM 2 Temperature: ${formatValue(results.pdmTemperature.pdm2, "°C")}`);
             yPosition += 10;
         }
         // Converter Summary
         if (results.converters) {
             addSectionHeader('Converter Summary');
-            addText(`HDRM 12V Converter 1 Voltage: ${results.converters.hdrm12v1_voltage ? parseFloat(results.converters.hdrm12v1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.hdrm12v1_voltage || "N/A"})`);
-            addText(`5V Converter 1 Voltage: ${results.converters.v5_1_voltage ? parseFloat(results.converters.v5_1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v5_1_voltage || "N/A"})`);
-            addText(`12V Converter 1 Voltage: ${results.converters.v12_1_voltage ? parseFloat(results.converters.v12_1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v12_1_voltage || "N/A"})`);
-            addText(`15V Converter Voltage: ${results.converters.v15_voltage ? parseFloat(results.converters.v15_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v15_voltage || "N/A"})`);
-            addText(`HDRM 12V Converter 2 Voltage: ${results.converters.hdrm12v2_voltage ? parseFloat(results.converters.hdrm12v2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.hdrm12v2_voltage || "N/A"})`);
-            addText(`5V Converter 2 Voltage: ${results.converters.v5_2_voltage ? parseFloat(results.converters.v5_2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v5_2_voltage || "N/A"})`);
-            addText(`12V Converter 2 Voltage: ${results.converters.v12_2_voltage ? parseFloat(results.converters.v12_2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.v12_2_voltage || "N/A"})`);
+            addText(`HDRM 12V Converter 1 Voltage: ${formatValue(results.converters.hdrm12v1_voltage, "V")} (${results.passFailStatus?.hdrm12v1_voltage || "N/A"})`);
+            addText(`5V Converter 1 Voltage: ${formatValue(results.converters.v5_1_voltage, "V")} (${results.passFailStatus?.v5_1_voltage || "N/A"})`);
+            addText(`12V Converter 1 Voltage: ${formatValue(results.converters.v12_1_voltage, "V")} (${results.passFailStatus?.v12_1_voltage || "N/A"})`);
+            addText(`15V Converter Voltage: ${formatValue(results.converters.v15_voltage, "V")} (${results.passFailStatus?.v15_voltage || "N/A"})`);
+            addText(`HDRM 12V Converter 2 Voltage: ${formatValue(results.converters.hdrm12v2_voltage, "V")} (${results.passFailStatus?.hdrm12v2_voltage || "N/A"})`);
+            addText(`5V Converter 2 Voltage: ${formatValue(results.converters.v5_2_voltage, "V")} (${results.passFailStatus?.v5_2_voltage || "N/A"})`);
+            addText(`12V Converter 2 Voltage: ${formatValue(results.converters.v12_2_voltage, "V")} (${results.passFailStatus?.v12_2_voltage || "N/A"})`);
             yPosition += 5;
-            addText(`HDRM 12V Converter 1 Temperature: ${results.converters.hdrm12v1_temp ? parseFloat(results.converters.hdrm12v1_temp).toFixed(3) : "N/A"} °C`);
-            addText(`5V Converter 1 Temperature: ${results.converters.v5_1_temp ? parseFloat(results.converters.v5_1_temp).toFixed(3) : "N/A"} °C`);
-            addText(`12V Converter 1 Temperature: ${results.converters.v12_1_temp ? parseFloat(results.converters.v12_1_temp).toFixed(3) : "N/A"} °C`);
-            addText(`15V Converter Temperature: ${results.converters.v15_temp ? parseFloat(results.converters.v15_temp).toFixed(3) : "N/A"} °C`);
-            addText(`HDRM 12V Converter 2 Temperature: ${results.converters.hdrm12v2_temp ? parseFloat(results.converters.hdrm12v2_temp).toFixed(3) : "N/A"} °C`);
-            addText(`5V Converter 2 Temperature: ${results.converters.v5_2_temp ? parseFloat(results.converters.v5_2_temp).toFixed(3) : "N/A"} °C`);
-            addText(`12V Converter 2 Temperature: ${results.converters.v12_2_temp ? parseFloat(results.converters.v12_2_temp).toFixed(3) : "N/A"} °C`);
+            addText(`HDRM 12V Converter 1 Temperature: ${formatValue(results.converters.hdrm12v1_temp, "°C")}`);
+            addText(`5V Converter 1 Temperature: ${formatValue(results.converters.v5_1_temp, "°C")}`);
+            addText(`12V Converter 1 Temperature: ${formatValue(results.converters.v12_1_temp, "°C")}`);
+            addText(`15V Converter Temperature: ${formatValue(results.converters.v15_temp, "°C")}`);
+            addText(`HDRM 12V Converter 2 Temperature: ${formatValue(results.converters.hdrm12v2_temp, "°C")}`);
+            addText(`5V Converter 2 Temperature: ${formatValue(results.converters.v5_2_temp, "°C")}`);
+            addText(`12V Converter 2 Temperature: ${formatValue(results.converters.v12_2_temp, "°C")}`);
             yPosition += 10;
         }
-        // Load Summary
+        // Load Summary (RLCL)
         if (results.loads) {
-            addSectionHeader('Load Summary');
-            addText(`OBC-1 Voltage: ${results.loads.obc1_voltage ? parseFloat(results.loads.obc1_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.obc1_voltage || "N/A"})`);
-            addText(`OBC-1 Current: ${results.loads.obc1_current ? parseFloat(results.loads.obc1_current).toFixed(3) : "N/A"} A`);
+            addSectionHeader('Load Summary (RLCL)');
+            addText(`OBC-1 Voltage: ${formatValue(results.loads.obc1_voltage, "V")} (${results.passFailStatus?.obc1_voltage || "N/A"})`);
+            addText(`OBC-1 Current: ${formatValue(results.loads.obc1_current, "A")}`);
             yPosition += 3;
-            addText(`OBC-2 Voltage: ${results.loads.obc2_voltage ? parseFloat(results.loads.obc2_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.obc2_voltage || "N/A"})`);
-            addText(`OBC-2 Current: ${results.loads.obc2_current ? parseFloat(results.loads.obc2_current).toFixed(3) : "N/A"} A`);
+            addText(`OBC-2 Voltage: ${formatValue(results.loads.obc2_voltage, "V")} (${results.passFailStatus?.obc2_voltage || "N/A"})`);
+            addText(`OBC-2 Current: ${formatValue(results.loads.obc2_current, "A")}`);
             yPosition += 3;
-            addText(`S-Band Voltage: ${results.loads.sband_voltage ? parseFloat(results.loads.sband_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.sband_voltage || "N/A"})`);
-            addText(`S-Band Current: ${results.loads.sband_current ? parseFloat(results.loads.sband_current).toFixed(3) : "N/A"} A`);
+            addText(`S-Band Voltage: ${formatValue(results.loads.sband_voltage, "V")} (${results.passFailStatus?.sband_voltage || "N/A"})`);
+            addText(`S-Band Current: ${formatValue(results.loads.sband_current, "A")}`);
             yPosition += 3;
-            addText(`UHF Voltage: ${results.loads.uhf_voltage ? parseFloat(results.loads.uhf_voltage).toFixed(3) : "N/A"} V (${results.passFailStatus?.uhf_voltage || "N/A"})`);
-            addText(`UHF Current: ${results.loads.uhf_current ? parseFloat(results.loads.uhf_current).toFixed(3) : "N/A"} A`);
+            addText(`UHF Voltage: ${formatValue(results.loads.uhf_voltage, "V")} (${results.passFailStatus?.uhf_voltage || "N/A"})`);
+            addText(`UHF Current: ${formatValue(results.loads.uhf_current, "A")}`);
             yPosition += 10;
+        }
+        // LCL Summary (Additional Load Channels)
+        if (results.rawParameters) {
+            addSectionHeader('LCL Summary (Additional Load Channels)');
+            // ADCS channels
+            addText(`ADCS IF Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS_IF_V"], "V")}`);
+            addText(`ADCS IF Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCS-IF_I"], "A")}`);
+            addText(`ADCS RW Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_V"], "V")}`);
+            addText(`ADCS RW Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ADCD_RW_I"], "A")}`);
+            yPosition += 3;
+            // GPS channels
+            addText(`GPS 5V Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_V"], "V")}`);
+            addText(`GPS 5V Current: ${formatValue(results.rawParameters["HEPS1_PDM2_GPS_5V_I"], "A")}`);
+            yPosition += 3;
+            // ECU channels
+            addText(`ECU 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_V"], "V")}`);
+            addText(`ECU 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_ECU1_I"], "A")}`);
+            addText(`ECU 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_V"], "V")}`);
+            addText(`ECU 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_ECU2_I"], "A")}`);
+            yPosition += 3;
+            // Thruster channels
+            addText(`Thruster 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_V"], "V")}`);
+            addText(`Thruster 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_THRU1_I"], "A")}`);
+            addText(`Thruster 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_V"], "V")}`);
+            addText(`Thruster 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_THRU2_I"], "A")}`);
+            yPosition += 3;
+            // PCS channels
+            addText(`PCS Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_V"], "V")}`);
+            addText(`PCS Current: ${formatValue(results.rawParameters["HEPS1_PDM2_PCS_I"], "A")}`);
+            yPosition += 3;
+            // Optical Camera channels
+            addText(`Optical Camera Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_V"], "V")}`);
+            addText(`Optical Camera Current: ${formatValue(results.rawParameters["HEPS1_PDM1_OPT_CAM_I"], "A")}`);
+            yPosition += 3;
+            // X-Band channels
+            addText(`X-Band Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_V"], "V")}`);
+            addText(`X-Band Current: ${formatValue(results.rawParameters["HEPS1_PDM1_X-BAND_I"], "A")}`);
+            yPosition += 3;
+            // AOD channels
+            addText(`AOD 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_V"], "V")}`);
+            addText(`AOD 1 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_AOD1_I"], "A")}`);
+            addText(`AOD 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_V"], "V")}`);
+            addText(`AOD 2 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_AOD2_I"], "A")}`);
+            yPosition += 3;
+            // CIP channels
+            addText(`CIP Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_V"], "V")}`);
+            addText(`CIP Current: ${formatValue(results.rawParameters["HEPS1_PDM1_CIP_I"], "A")}`);
+            yPosition += 10;
+        }
+        // HDRM Voltage/Current Summary
+        if (results.rawParameters) {
+            addSectionHeader('HDRM Voltage/Current Summary');
+            // HDRM 1 channels
+            addText(`HDRM 1 ARM Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_ARM_V"], "V")}`);
+            addText(`HDRM 1 SW01 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_V"], "V")}`);
+            addText(`HDRM 1 SW01 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW01_I"], "A")}`);
+            addText(`HDRM 1 SW02 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_V"], "V")}`);
+            addText(`HDRM 1 SW02 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW02_I"], "A")}`);
+            addText(`HDRM 1 SW03 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_V"], "V")}`);
+            addText(`HDRM 1 SW03 Current: ${formatValue(results.rawParameters["HEPS1_PDM1_HDRM1_SW03_I"], "A")}`);
+            yPosition += 3;
+            // HDRM 2 channels
+            addText(`HDRM 2 ARM Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_ARM_V"], "V")}`);
+            addText(`HDRM 2 SW01 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_V"], "V")}`);
+            addText(`HDRM 2 SW01 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW01_I"], "A")}`);
+            addText(`HDRM 2 SW02 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_V"], "V")}`);
+            addText(`HDRM 2 SW02 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW02_I"], "A")}`);
+            addText(`HDRM 2 SW03 Voltage: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_V"], "V")}`);
+            addText(`HDRM 2 SW03 Current: ${formatValue(results.rawParameters["HEPS1_PDM2_HDRM2_SW03_I"], "A")}`);
+            yPosition += 10;
+        }
+        // Heater System Summary
+        if (results.rawParameters) {
+            addSectionHeader('Heater System Summary');
+            // Heater Group 1 (PSM1) - heater1Vi parameters
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'bold');
+            addText('Heater Group 1 (PSM1):');
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'normal');
+            addText(`HT1 LCL Status: ${formatValue(results.rawParameters["HEPS1_PSM1_HT1_LCL"])}`);
+            addText(`Battery Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_V"], "V")}`);
+            addText(`Battery Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_BAT_HT1_I"], "A")}`);
+            addText(`Thruster Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_V"], "V")}`);
+            addText(`Thruster Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_THRU_HT1_I"], "A")}`);
+            addText(`Camera Heater 1 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_V"], "V")}`);
+            addText(`Camera Heater 1 Current: ${formatValue(results.rawParameters["HEPS1_PSM1_CAM_HT1_I"], "A")}`);
+            yPosition += 3;
+            // Heater Group 2 (PSM2) - heater2Vi parameters
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'bold');
+            addText('Heater Group 2 (PSM2):');
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'normal');
+            addText(`HT2 LCL Status: ${formatValue(results.rawParameters["HEPS1_PSM2_HT2_LCL"])}`);
+            addText(`Battery Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_V"], "V")}`);
+            addText(`Battery Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_BAT_HT2_I"], "A")}`);
+            addText(`Thruster Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_V"], "V")}`);
+            addText(`Thruster Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_THRU_HT2_I"], "A")}`);
+            addText(`Camera Heater 2 Voltage: ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_V"], "V")}`);
+            addText(`Camera Heater 2 Current: ${formatValue(results.rawParameters["HEPS1_PSM2_CAM_HT2_I"], "A")}`);
+            yPosition += 3;
+            // Legacy heater summary (if available from results.heaters)
+            if (results.heaters && results.heaters.length > 0) {
+                pdf.setFontSize(12);
+                pdf.setFont('helvetica', 'bold');
+                addText('Summary Data:');
+                pdf.setFontSize(10);
+                pdf.setFont('helvetica', 'normal');
+                // Heater Group 1 Summary
+                if (results.heaters[0]) {
+                    addText(`Heater Group 1 Status: ${results.heaters[0].status || "N/A"}`);
+                    addText(`Heater Group 1 Total Power: ${formatValue(results.heaters[0].power, "W")}`);
+                    yPosition += 3;
+                }
+                // Heater Group 2 Summary
+                if (results.heaters[1]) {
+                    addText(`Heater Group 2 Status: ${results.heaters[1].status || "N/A"}`);
+                    addText(`Heater Group 2 Total Power: ${formatValue(results.heaters[1].power, "W")}`);
+                    yPosition += 10;
+                }
+            } else {
+                yPosition += 10;
+            }
         }
         // Heater Test Results (if available)
         if (results.heaterTests && results.heaterTests.length > 0) {
             addSectionHeader('Heater Test Results');
             results.heaterTests.forEach((heaterTest, index)=>{
-                checkNewPage(50);
+                checkNewPage(60);
                 pdf.setFontSize(12);
                 pdf.setFont('helvetica', 'bold');
                 pdf.text(`Heater ${index + 1} Test Results:`, margin, yPosition);
                 yPosition += 8;
                 pdf.setFontSize(10);
                 pdf.setFont('helvetica', 'normal');
-                addText(`Initial Temperature: ${heaterTest.initialTemp} °C`);
-                addText(`Test Duration: ${heaterTest.testDuration} seconds`);
-                addText(`Test Result: ${heaterTest.testResult}`);
+                addText(`Initial Temperature: ${heaterTest.initialTemp || "N/A"} °C`);
+                addText(`Test Result: ${heaterTest.testResult || "N/A"}`);
+                addText(`Reading Interval: ${heaterTest.readingInterval || "N/A"} seconds`);
                 yPosition += 3;
                 // Thermal Rise Performance
                 pdf.setFont('helvetica', 'bold');
                 addText('Thermal Rise Performance:');
                 pdf.setFont('helvetica', 'normal');
-                addText(`Total Temperature Rise: ${heaterTest.thermalRise.totalRise.toFixed(1)} °C`, 5);
-                addText(`Rise Rate: ${heaterTest.thermalRise.riseRate.toFixed(2)} °C/min`, 5);
-                addText(`Time to 5°C Rise: ${heaterTest.thermalRise.timeTo5C.toFixed(1)} seconds`, 5);
-                addText(`Time to 10°C Rise: ${heaterTest.thermalRise.timeTo10C ? heaterTest.thermalRise.timeTo10C.toFixed(1) + ' seconds' : 'N/A'}`, 5);
+                addText(`Total Temperature Rise: ${heaterTest.thermalRise?.totalRise || "N/A"} °C`, 5);
+                addText(`Rise Rate: ${heaterTest.thermalRise?.riseRate || "N/A"} °C/min`, 5);
+                addText(`Time to 5°C Rise: ${heaterTest.thermalRise?.timeTo5C || "N/A"} seconds`, 5);
+                addText(`Time to 10°C Rise: ${heaterTest.thermalRise?.timeTo10C || "N/A"} seconds`, 5);
                 yPosition += 3;
                 // Power Consumption
                 pdf.setFont('helvetica', 'bold');
                 addText('Power Consumption:');
                 pdf.setFont('helvetica', 'normal');
-                addText(`Average Current: ${heaterTest.power.avgCurrent} mA`, 5);
-                addText(`Maximum Current: ${heaterTest.power.maxCurrent} mA`, 5);
-                addText(`Average Power: ${heaterTest.power.avgPower.toFixed(2)} W`, 5);
-                addText(`Total Energy Used: ${heaterTest.power.totalEnergy.toFixed(2)} Wh`, 5);
+                addText(`Average Current: ${heaterTest.power?.avgCurrent || "N/A"} mA`, 5);
+                addText(`Maximum Current: ${heaterTest.power?.maxCurrent || "N/A"} mA`, 5);
+                addText(`Average Power: ${heaterTest.power?.avgPower || "N/A"} W`, 5);
+                addText(`Total Energy Used: ${heaterTest.power?.totalEnergy || "N/A"} Wh`, 5);
                 yPosition += 10;
             });
         }
         // Current Test Results (if available)
         if (results.currentTest) {
             addSectionHeader('Current Measurement Test Results');
-            addText(`Test Result: ${results.currentTest.testResult}`);
-            addText(`Test Duration: ${results.currentTest.testDuration} seconds`);
-            addText(`Samples Collected: ${results.currentTest.sampleCount}`);
-            addText(`Maximum Deviation: ${results.currentTest.maxDeviation.toFixed(2)}%`);
-            addText(`Tolerance Range: ±${results.currentTest.tolerance}%`);
+            addText(`Test Result: ${results.currentTest.testResult || "N/A"}`);
+            addText(`Test Duration: ${results.currentTest.testDuration || "N/A"} seconds`);
+            addText(`Samples Collected: ${results.currentTest.sampleCount || "N/A"}`);
+            addText(`Maximum Deviation: ${results.currentTest.maxDeviation || "N/A"}%`);
+            addText(`Tolerance Range: ±${results.currentTest.tolerance || "N/A"}%`);
+            // Heater-specific current test results
+            if (results.currentTest.heaterResults && results.currentTest.heaterResults.length > 0) {
+                yPosition += 5;
+                results.currentTest.heaterResults.forEach((heaterResult, index)=>{
+                    addText(`Heater ${index + 1} Current Test:`);
+                    addText(`Expected Current: ${heaterResult.expectedCurrent || "N/A"} mA`, 5);
+                    addText(`Measured Current: ${heaterResult.measuredCurrent || "N/A"} mA`, 5);
+                    addText(`Deviation: ${heaterResult.deviation || "N/A"}%`, 5);
+                    addText(`In Range: ${heaterResult.inRange ? "YES" : "NO"}`, 5);
+                    yPosition += 3;
+                });
+            }
             yPosition += 10;
         }
         // Power Cycle Test Results (if available)
         if (results.powerCycleTest) {
             addSectionHeader('Power Cycle Test Results');
-            addText(`Power Cycle Test Result: ${results.powerCycleTest.testResult}`);
-            addText(`Cycles Completed: ${results.powerCycleTest.cyclesCompleted} of ${results.powerCycleTest.totalCycles}`);
-            addText(`Cycle Time: ${results.powerCycleTest.cycleTime} seconds`);
-            addText(`Power On Time: ${results.powerCycleTest.powerOnTime} seconds`);
-            addText(`Power Off Time: ${results.powerCycleTest.powerOffTime} seconds`);
-            addText(`Total Test Time: ${results.powerCycleTest.totalTestTime} seconds`);
-            addText(`Failures: ${results.powerCycleTest.failures}`);
+            addText(`Power Cycle Test Result: ${results.powerCycleTest.testResult || "N/A"}`);
+            addText(`Cycles Completed: ${results.powerCycleTest.cyclesCompleted || "N/A"} of ${results.powerCycleTest.totalCycles || "N/A"}`);
+            addText(`Cycle Time: ${results.powerCycleTest.cycleTime || "N/A"} seconds`);
+            addText(`Power On Time: ${results.powerCycleTest.powerOnTime || "N/A"} seconds`);
+            addText(`Power Off Time: ${results.powerCycleTest.powerOffTime || "N/A"} seconds`);
+            addText(`Total Test Time: ${results.powerCycleTest.totalTestTime || "N/A"} seconds`);
+            addText(`Failures: ${results.powerCycleTest.failures || "0"}`);
             yPosition += 10;
         }
         // Test Completion Summary
@@ -14755,8 +18064,12 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             // Store all raw results for reporting
             allResults: [],
             // Store all command results for reporting
-            commandResults: []
+            commandResults: [],
+            // Add new field to store raw parameters with their exact parameter names
+            rawParameters: {}
         };
+        // Create a record to store raw parameter values with their exact names
+        const rawParameters = {};
         // Define variables to read
         const adcsVi = [
             "HEPS1_PDM2_ADCS_IF_V",
@@ -14786,8 +18099,13 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOn", 2);
             await new Promise((resolve)=>setTimeout(resolve, 1000)); // Wait 1 second
+            // Store power on commands in raw parameters
+            rawParameters["OBC1_Ch_ExtReqOn_1"] = "1";
+            rawParameters["OBC1_Ch_ExtReqOn_2"] = "2";
         } catch (error) {
             console.error("Error powering on ADCS:", error);
+            // Store error in raw parameters
+            rawParameters["power_on_error"] = "true";
         // Continue with test despite error
         }
         // Step 2: Read power status (20%)
@@ -14795,6 +18113,10 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
         try {
             const viResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, adcsVi);
             const viValues = viResults.map(safeParseValue);
+            // Store raw parameters with their exact parameter names
+            adcsVi.forEach((param, index)=>{
+                rawParameters[param] = viValues[index];
+            });
             // Store the values
             results.vi.adcsIfVoltage.value = viValues[0];
             results.vi.adcsIfCurrent.value = viValues[1];
@@ -14803,6 +18125,9 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             // Check the voltages
             results.vi.adcsIfVoltage.status = checkUnregVoltage(viValues[0]);
             results.vi.adcsRwVoltage.status = checkUnregVoltage(viValues[2]);
+            // Store status results in raw parameters
+            rawParameters["HEPS1_PDM2_ADCS_IF_V_status"] = results.vi.adcsIfVoltage.status;
+            rawParameters["HEPS1_PDM2_ADCS_RW_V_status"] = results.vi.adcsRwVoltage.status;
             // Store all results
             results.allResults.push(...viValues);
         } catch (error) {
@@ -14822,6 +18147,11 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             results.vi.adcsRwCurrent = {
                 value: "unknown"
             };
+            // Store error values in raw parameters
+            adcsVi.forEach((param)=>{
+                rawParameters[param] = "unknown";
+            });
+            rawParameters["vi_read_error"] = "true";
             // Store placeholder results
             results.allResults.push("unknown", "unknown", "unknown", "unknown");
         }
@@ -14831,12 +18161,21 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
         try {
             const statResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, adcsStat);
             const statValues = statResults.map(safeParseValue);
+            // Store raw parameters with their exact parameter names (before command)
+            adcsStat.forEach((param, index)=>{
+                rawParameters[`${param}_before`] = statValues[index];
+            });
             // Store command results before command
             cmdResults.push(...statValues);
             // Store all results
             results.allResults.push(...statValues);
         } catch (error) {
             console.error("Error reading ADCS command status:", error);
+            // Store error values in raw parameters
+            adcsStat.forEach((param)=>{
+                rawParameters[`${param}_before`] = "0";
+            });
+            rawParameters["command_status_before_error"] = "true";
             // Store placeholder results
             cmdResults.push("0", "0", "0", "0");
             results.allResults.push("0", "0", "0", "0");
@@ -14849,8 +18188,13 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 1000)); // Wait 1 second
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Adcs_Control", 2);
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
+            // Store command parameters in raw parameters
+            rawParameters["OBC1_Adcs_TlmID"] = "128";
+            rawParameters["OBC1_Adcs_Control"] = "2";
         } catch (error) {
             console.error("Error sending command to ADCS:", error);
+            // Store error in raw parameters
+            rawParameters["command_send_error"] = "true";
         // Continue with test despite error
         }
         // Step 5: Read command status after sending command (50%)
@@ -14858,22 +18202,34 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
         try {
             const statResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, adcsStat);
             const statValues = statResults.map(safeParseValue);
+            // Store raw parameters with their exact parameter names (after command)
+            adcsStat.forEach((param, index)=>{
+                rawParameters[`${param}_after`] = statValues[index];
+            });
             // Store command results after command
             cmdResults.push(...statValues);
             // Check command execution status
             results.command.status = cmdCheck(cmdResults);
             // Store detailed command results
             results.commandResults = cmdResults;
+            // Store command execution status in raw parameters
+            rawParameters["command_execution_status"] = results.command.status;
             // Store all results
             results.allResults.push(...statValues);
         } catch (error) {
             console.error("Error reading ADCS command status after command:", error);
+            // Store error values in raw parameters
+            adcsStat.forEach((param)=>{
+                rawParameters[`${param}_after`] = "0";
+            });
+            rawParameters["command_status_after_error"] = "true";
             // Store placeholder results
             cmdResults.push("0", "0", "0", "0");
             results.allResults.push("0", "0", "0", "0");
             // Set command status
             results.command.status = "ERROR";
             results.commandResults = cmdResults;
+            rawParameters["command_execution_status"] = "ERROR";
         }
         // Step 6: Read telemetry (if enabled) (70%)
         if (options.testTelemetry) {
@@ -14881,6 +18237,10 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             try {
                 const tlmResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, adcsTlm128);
                 const tlmValues = tlmResults.map(safeParseValue);
+                // Store raw parameters with their exact parameter names
+                adcsTlm128.forEach((param, index)=>{
+                    rawParameters[param] = tlmValues[index];
+                });
                 // Store telemetry values
                 results.telemetry.identifier = tlmValues[0];
                 results.telemetry.interfaceVersion = tlmValues[1];
@@ -14901,9 +18261,17 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
                     runtimeSec: "unknown",
                     runtimeMiliSec: "unknown"
                 };
+                // Store error values in raw parameters
+                adcsTlm128.forEach((param)=>{
+                    rawParameters[param] = "unknown";
+                });
+                rawParameters["telemetry_read_error"] = "true";
                 // Store placeholder results
                 results.allResults.push("unknown", "unknown", "unknown", "unknown", "unknown", "unknown");
             }
+        } else {
+            // Store that telemetry test was skipped
+            rawParameters["telemetry_test_skipped"] = "true";
         }
         // Step 7: Power off the ADCS (90%)
         onProgress('Powering off ADCS', 90);
@@ -14913,8 +18281,13 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
             await new Promise((resolve)=>setTimeout(resolve, 2000)); // Wait 2 seconds
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifSet"])(sock, "OBC1_Ch_ExtReqOff", 1);
             await new Promise((resolve)=>setTimeout(resolve, 1000)); // Wait 1 second
+            // Store power off commands in raw parameters
+            rawParameters["OBC1_Ch_ExtReqOff_1"] = "2";
+            rawParameters["OBC1_Ch_ExtReqOff_2"] = "1";
         } catch (error) {
             console.error("Error powering off ADCS:", error);
+            // Store error in raw parameters
+            rawParameters["power_off_error"] = "true";
         // Continue with test despite error
         }
         // Step 8: Verify power off status (100%)
@@ -14922,6 +18295,10 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
         try {
             const viResults = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$mccUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mccifRead"])(sock, adcsVi);
             const viValues = viResults.map(safeParseValue);
+            // Store raw parameters with their exact parameter names (power off state)
+            adcsVi.forEach((param, index)=>{
+                rawParameters[`${param}_off`] = viValues[index];
+            });
             // Store the values
             results.vi.adcsIfVoltageOff = {
                 value: viValues[0],
@@ -14931,6 +18308,9 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
                 value: viValues[2],
                 status: checkOffVFloat(viValues[2])
             };
+            // Store status results in raw parameters
+            rawParameters["HEPS1_PDM2_ADCS_IF_V_off_status"] = results.vi.adcsIfVoltageOff.status;
+            rawParameters["HEPS1_PDM2_ADCS_RW_V_off_status"] = results.vi.adcsRwVoltageOff.status;
             // Store current values for completion
             const ifCurrentOff = viValues[1];
             const rwCurrentOff = viValues[3];
@@ -14947,16 +18327,36 @@ async function runADCSCheckout(sock, options, onProgress = ()=>{}) {
                 value: "unknown",
                 status: "ERROR"
             };
+            // Store error values in raw parameters
+            adcsVi.forEach((param)=>{
+                rawParameters[`${param}_off`] = "unknown";
+            });
+            rawParameters["vi_off_read_error"] = "true";
             // Store placeholder results
             results.allResults.push("unknown", "unknown", "unknown", "unknown");
         }
         // Complete checkout (100%)
         onProgress('ADCS Checkout Complete', 100);
+        // Add test summary to raw parameters
+        rawParameters["test_completion_time"] = new Date().toISOString();
+        rawParameters["test_status"] = results.error ? "FAILED" : "COMPLETED";
+        // Store the raw parameters in the results
+        results.rawParameters = rawParameters;
         // Return the processed results
         return results;
     } catch (error) {
         console.error('Error during ADCS checkout:', error);
-        throw error;
+        // Create minimal raw parameters for the error case
+        const rawParameters = {
+            "fatal_error": error instanceof Error ? error.message : String(error),
+            "error_timestamp": new Date().toISOString()
+        };
+        // Return error results with raw parameters
+        const errorResults = {
+            error: error instanceof Error ? error.message : String(error),
+            rawParameters
+        };
+        throw errorResults;
     }
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -15118,6 +18518,43 @@ async function generateADCSReport(results) {
                         text: "",
                         pageBreakBefore: true
                     }),
+                    // ADCS Command Status section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* ADCS Command Status :",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    // Command status table
+                    ...results.command ? [
+                        createCommandStatusTable(results)
+                    ] : [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: "Command status information not available",
+                            spacing: {
+                                after: 100
+                            }
+                        })
+                    ],
+                    // Separator
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200
+                        }
+                    }),
+                    // Page break
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
                     // ADCS Telemetry section
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "* ADCS Telemetry :",
@@ -15189,6 +18626,11 @@ async function generateADCSReport(results) {
                             after: 200
                         }
                     }),
+                    // Page break
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
                     // Voltage Current Summary after power off section
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "* Voltage Current Summary (After Power Off) :",
@@ -15228,6 +18670,43 @@ async function generateADCSReport(results) {
                             after: 100
                         }
                     }),
+                    // Separator
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 200
+                        }
+                    }),
+                    // Page break
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "",
+                        pageBreakBefore: true
+                    }),
+                    // Raw Parameters section
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "* Raw Parameter Values :",
+                        heading: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadingLevel"].HEADING_2,
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: "--------------------------------------------------------------------",
+                        spacing: {
+                            after: 100
+                        }
+                    }),
+                    // Raw parameters table
+                    ...results.rawParameters ? [
+                        createRawParametersTable(results)
+                    ] : [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: "Raw parameter data not available",
+                            spacing: {
+                                after: 100
+                            }
+                        })
+                    ],
                     // Separator
                     new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
                         text: "--------------------------------------------------------------------",
@@ -15328,6 +18807,23 @@ async function generateADCSReport(results) {
             }
             return false;
         };
+        // Helper function to add text with proper wrapping
+        const addWrappedText = (text, x = margin, maxWidth = contentWidth)=>{
+            checkNewPage(8);
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'normal');
+            // Split text if it's too long
+            const lines = pdf.splitTextToSize(text, maxWidth);
+            if (Array.isArray(lines)) {
+                lines.forEach((line)=>{
+                    pdf.text(line, x, yPosition);
+                    yPosition += 6;
+                });
+            } else {
+                pdf.text(lines, x, yPosition);
+                yPosition += 6;
+            }
+        };
         // Title
         pdf.setFontSize(18);
         pdf.setFont('helvetica', 'bold');
@@ -15340,14 +18836,11 @@ async function generateADCSReport(results) {
         yPosition += 10;
         // Test metadata
         pdf.setFontSize(10);
-        pdf.text(`Test Date: ${now.toLocaleDateString()}`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`Test Time: ${now.toLocaleTimeString()}`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`, margin, yPosition);
-        yPosition += 6;
-        pdf.text(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`, margin, yPosition);
-        yPosition += 15;
+        addWrappedText(`Test Date: ${now.toLocaleDateString()}`);
+        addWrappedText(`Test Time: ${now.toLocaleTimeString()}`);
+        addWrappedText(`Tested Options: ${results.testedOptions ? results.testedOptions.join(', ') : 'Default configuration'}`);
+        addWrappedText(`Test Status: ${results.error ? 'FAILED' : 'COMPLETED'}`);
+        yPosition += 10;
         // Add a separator line
         pdf.line(margin, yPosition, pageWidth - margin, yPosition);
         yPosition += 10;
@@ -15361,19 +18854,37 @@ async function generateADCSReport(results) {
         pdf.setFont('helvetica', 'normal');
         if (results.vi) {
             const viData = results.vi;
-            pdf.text(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltage?.value)} V    ${formatStatus(viData.adcsIfVoltage?.status)}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltage?.value)} V    ${formatStatus(viData.adcsRwVoltage?.status)}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`, margin, yPosition);
-            yPosition += 6;
+            addWrappedText(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltage?.value)} V    ${formatStatus(viData.adcsIfVoltage?.status)}`);
+            addWrappedText(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`);
+            addWrappedText(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltage?.value)} V    ${formatStatus(viData.adcsRwVoltage?.status)}`);
+            addWrappedText(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`);
         } else {
-            pdf.text('Voltage and current information not available', margin, yPosition);
-            yPosition += 6;
+            addWrappedText('Voltage and current information not available');
         }
+        yPosition += 5;
+        // Command Status Section
+        checkNewPage(50);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('ADCS Command Status', margin, yPosition);
         yPosition += 10;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        if (results.command && results.commandResults) {
+            addWrappedText(`Overall Command Status: ${formatCommandStatus(results.command.status)}`);
+            yPosition += 2;
+            const cmdResults = results.commandResults;
+            if (cmdResults.length >= 8) {
+                addWrappedText('Command Counters (Before -> After):');
+                addWrappedText(`  TX Count:     ${cmdResults[0]} -> ${cmdResults[4]}`, margin + 5);
+                addWrappedText(`  ACK Count:    ${cmdResults[1]} -> ${cmdResults[5]}`, margin + 5);
+                addWrappedText(`  Timeout Count: ${cmdResults[2]} -> ${cmdResults[6]}`, margin + 5);
+                addWrappedText(`  Error Count:   ${cmdResults[3]} -> ${cmdResults[7]}`, margin + 5);
+            }
+        } else {
+            addWrappedText('Command status information not available');
+        }
+        yPosition += 5;
         // ADCS Telemetry Section
         checkNewPage(60);
         pdf.setFontSize(14);
@@ -15383,30 +18894,22 @@ async function generateADCSReport(results) {
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         if (results.command) {
-            pdf.text(`TLM 128: -- ${formatCommandStatus(results.command.status)}`, margin, yPosition);
-            yPosition += 8;
+            addWrappedText(`TLM 128: -- ${formatCommandStatus(results.command.status)}`);
+            yPosition += 2;
         }
         if (results.telemetry) {
             const telemetryData = results.telemetry;
-            pdf.text(`Node type identifier:        ${telemetryData.identifier || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Program type identifier:     ${telemetryData.identifier || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Interface version:           ${telemetryData.interfaceVersion || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Firmware version (Major):    ${telemetryData.fwVersionMajor || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Firmware version (Minor):    ${telemetryData.fwVersionMinor || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Runtime (seconds):           ${telemetryData.runtimeSec || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`Runtime (milliseconds):      ${telemetryData.runtimeMiliSec || 'N/A'}`, margin, yPosition);
-            yPosition += 6;
+            addWrappedText(`Node type identifier:        ${telemetryData.identifier || 'N/A'}`);
+            addWrappedText(`Program type identifier:     ${telemetryData.identifier || 'N/A'}`);
+            addWrappedText(`Interface version:           ${telemetryData.interfaceVersion || 'N/A'}`);
+            addWrappedText(`Firmware version (Major):    ${telemetryData.fwVersionMajor || 'N/A'}`);
+            addWrappedText(`Firmware version (Minor):    ${telemetryData.fwVersionMinor || 'N/A'}`);
+            addWrappedText(`Runtime (seconds):           ${telemetryData.runtimeSec || 'N/A'}`);
+            addWrappedText(`Runtime (milliseconds):      ${telemetryData.runtimeMiliSec || 'N/A'}`);
         } else {
-            pdf.text('Telemetry information not available', margin, yPosition);
-            yPosition += 6;
+            addWrappedText('Telemetry information not available');
         }
-        yPosition += 10;
+        yPosition += 5;
         // Voltage Current Summary After Power Off Section
         checkNewPage(50);
         pdf.setFontSize(14);
@@ -15417,19 +18920,96 @@ async function generateADCSReport(results) {
         pdf.setFont('helvetica', 'normal');
         if (results.vi) {
             const viData = results.vi;
-            pdf.text(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltageOff?.value)} V    ${formatStatus(viData.adcsIfVoltageOff?.status)}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltageOff?.value)} V    ${formatStatus(viData.adcsRwVoltageOff?.status)}`, margin, yPosition);
-            yPosition += 6;
-            pdf.text(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`, margin, yPosition);
-            yPosition += 6;
+            addWrappedText(`ADCS Interface Voltage:      ${formatVoltage(viData.adcsIfVoltageOff?.value)} V    ${formatStatus(viData.adcsIfVoltageOff?.status)}`);
+            addWrappedText(`ADCS Interface Current:      ${formatCurrent(viData.adcsIfCurrent?.value)} A`);
+            addWrappedText(`ADCS Reaction Wheel Voltage: ${formatVoltage(viData.adcsRwVoltageOff?.value)} V    ${formatStatus(viData.adcsRwVoltageOff?.status)}`);
+            addWrappedText(`ADCS Reaction Wheel Current: ${formatCurrent(viData.adcsRwCurrent?.value)} A`);
         } else {
-            pdf.text('Power off voltage and current information not available', margin, yPosition);
-            yPosition += 6;
+            addWrappedText('Power off voltage and current information not available');
         }
-        yPosition += 15;
+        yPosition += 10;
+        // Raw Parameters Section
+        checkNewPage(80);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Raw Parameter Values', margin, yPosition);
+        yPosition += 10;
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        if (results.rawParameters) {
+            addWrappedText('Voltage & Current Parameters:');
+            yPosition += 2;
+            const adcsVi = [
+                "HEPS1_PDM2_ADCS_IF_V",
+                "HEPS1_PDM2_ADCS-IF_I",
+                "HEPS1_PDM2_ADCS_RW_V",
+                "HEPS1_PDM2_ADCS_RW_I"
+            ];
+            adcsVi.forEach((param)=>{
+                if (results.rawParameters[param] !== undefined) {
+                    addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+                }
+            });
+            yPosition += 3;
+            checkNewPage(40);
+            addWrappedText('Telemetry Parameters:');
+            yPosition += 2;
+            const adcsTlm128 = [
+                "ADCS1_TLM_Identifier",
+                "ADCS1_TLM_InterfaceVer",
+                "ADCS1_TLM_IdFwVerMajor",
+                "ADCS1_TLM_IdFwVerMinor",
+                "ADCS1_TLM_RuntimeSec",
+                "ADCS1_TLM_RuntimeMiliSec"
+            ];
+            adcsTlm128.forEach((param)=>{
+                if (results.rawParameters[param] !== undefined) {
+                    addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+                }
+            });
+            yPosition += 3;
+            checkNewPage(40);
+            addWrappedText('Command Status Parameters (Before):');
+            yPosition += 2;
+            const adcsStat = [
+                "OBC1_Itc_Adcs_Tm_TxCount",
+                "OBC1_Itc_Adcs_Tm_AckCount",
+                "OBC1_Itc_Adcs_Tm_TimeoutCount",
+                "OBC1_Itc_Adcs_Tm_ErrCount"
+            ];
+            adcsStat.forEach((param)=>{
+                if (results.rawParameters[`${param}_before`] !== undefined) {
+                    addWrappedText(`  ${param}_before: ${results.rawParameters[`${param}_before`]}`, margin + 5, contentWidth - 10);
+                }
+            });
+            yPosition += 3;
+            addWrappedText('Command Status Parameters (After):');
+            yPosition += 2;
+            adcsStat.forEach((param)=>{
+                if (results.rawParameters[`${param}_after`] !== undefined) {
+                    addWrappedText(`  ${param}_after: ${results.rawParameters[`${param}_after`]}`, margin + 5, contentWidth - 10);
+                }
+            });
+            yPosition += 3;
+            addWrappedText('Power Control Parameters:');
+            yPosition += 2;
+            const powerParams = [
+                "OBC1_Ch_ExtReqOn_1",
+                "OBC1_Ch_ExtReqOn_2",
+                "OBC1_Ch_ExtReqOff_1",
+                "OBC1_Ch_ExtReqOff_2",
+                "OBC1_Adcs_TlmID",
+                "OBC1_Adcs_Control"
+            ];
+            powerParams.forEach((param)=>{
+                if (results.rawParameters[param] !== undefined) {
+                    addWrappedText(`  ${param}: ${results.rawParameters[param]}`, margin + 5, contentWidth - 10);
+                }
+            });
+        } else {
+            addWrappedText('Raw parameter data not available');
+        }
+        yPosition += 10;
         // Test Completion Summary
         checkNewPage(30);
         pdf.setFontSize(14);
@@ -15438,9 +19018,8 @@ async function generateADCSReport(results) {
         yPosition += 10;
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
-        pdf.text(results.error ? `Test completed with errors: ${results.error}` : 'All tests completed successfully', margin, yPosition);
-        yPosition += 6;
-        pdf.text(`Report generated: ${now.toLocaleString()}`, margin, yPosition);
+        addWrappedText(results.error ? `Test completed with errors: ${results.error}` : 'All tests completed successfully');
+        addWrappedText(`Report generated: ${now.toLocaleString()}`);
         // Add footer to all pages
         const totalPages = pdf.internal.pages.length - 1;
         for(let i = 1; i <= totalPages; i++){
@@ -15457,6 +19036,269 @@ async function generateADCSReport(results) {
         console.error('❌ Error generating ADCS PDF report:', error);
         throw new Error(`Failed to generate ADCS PDF report: ${error instanceof Error ? error.message : String(error)}`);
     }
+}
+/**
+ * Helper function to create command status table for Word document
+ */ function createCommandStatusTable(results) {
+    const cmdResults = results.commandResults || [];
+    if (cmdResults.length < 8) {
+        return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"]({
+            rows: [
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                            children: [
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]('Command status data incomplete')
+                            ],
+                            width: {
+                                size: 100,
+                                type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                            }
+                        })
+                    ]
+                })
+            ],
+            width: {
+                size: 100,
+                type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+            }
+        });
+    }
+    const rows = [
+        [
+            'Counter Type',
+            'Before Command',
+            'After Command',
+            'Difference'
+        ],
+        [
+            'TX Count',
+            cmdResults[0] || 'N/A',
+            cmdResults[4] || 'N/A',
+            String(parseInt(cmdResults[4] || '0') - parseInt(cmdResults[0] || '0') || 0)
+        ],
+        [
+            'ACK Count',
+            cmdResults[1] || 'N/A',
+            cmdResults[5] || 'N/A',
+            String(parseInt(cmdResults[5] || '0') - parseInt(cmdResults[1] || '0') || 0)
+        ],
+        [
+            'Timeout Count',
+            cmdResults[2] || 'N/A',
+            cmdResults[6] || 'N/A',
+            String(parseInt(cmdResults[6] || '0') - parseInt(cmdResults[2] || '0') || 0)
+        ],
+        [
+            'Error Count',
+            cmdResults[3] || 'N/A',
+            cmdResults[7] || 'N/A',
+            String(parseInt(cmdResults[7] || '0') - parseInt(cmdResults[3] || '0') || 0)
+        ],
+        [
+            'Overall Status',
+            '',
+            '',
+            formatCommandStatus(results.command?.status)
+        ]
+    ].map((row, index)=>new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+            children: row.map((cell)=>new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: cell,
+                            run: index === 0 ? {
+                                bold: true
+                            } : undefined // Make header row bold
+                        })
+                    ],
+                    width: {
+                        size: 25,
+                        type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                    }
+                }))
+        }));
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"]({
+        rows,
+        width: {
+            size: 100,
+            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+        },
+        borders: {
+            top: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            bottom: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            left: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            right: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideHorizontal: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideVertical: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            }
+        }
+    });
+}
+/**
+ * Helper function to create raw parameters table for Word document
+ */ function createRawParametersTable(results) {
+    const rawParams = results.rawParameters || {};
+    // Define parameter groups
+    const parameterGroups = [
+        {
+            title: 'Voltage & Current Parameters',
+            params: [
+                "HEPS1_PDM2_ADCS_IF_V",
+                "HEPS1_PDM2_ADCS-IF_I",
+                "HEPS1_PDM2_ADCS_RW_V",
+                "HEPS1_PDM2_ADCS_RW_I"
+            ]
+        },
+        {
+            title: 'Telemetry Parameters',
+            params: [
+                "ADCS1_TLM_Identifier",
+                "ADCS1_TLM_InterfaceVer",
+                "ADCS1_TLM_IdFwVerMajor",
+                "ADCS1_TLM_IdFwVerMinor",
+                "ADCS1_TLM_RuntimeSec",
+                "ADCS1_TLM_RuntimeMiliSec"
+            ]
+        },
+        {
+            title: 'Command Status Parameters',
+            params: [
+                "OBC1_Itc_Adcs_Tm_TxCount",
+                "OBC1_Itc_Adcs_Tm_AckCount",
+                "OBC1_Itc_Adcs_Tm_TimeoutCount",
+                "OBC1_Itc_Adcs_Tm_ErrCount"
+            ]
+        }
+    ];
+    const tableRows = [];
+    // Add header row
+    tableRows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+        children: [
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: 'Parameter',
+                        run: {
+                            bold: true
+                        }
+                    })
+                ],
+                width: {
+                    size: 70,
+                    type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                }
+            }),
+            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                        text: 'Value',
+                        run: {
+                            bold: true
+                        }
+                    })
+                ],
+                width: {
+                    size: 30,
+                    type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                }
+            })
+        ]
+    }));
+    // Add parameters by group
+    parameterGroups.forEach((group)=>{
+        // Add group header
+        tableRows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+            children: [
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                    children: [
+                        new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"]({
+                            text: group.title,
+                            run: {
+                                bold: true,
+                                italics: true
+                            }
+                        })
+                    ],
+                    columnSpan: 2
+                })
+            ]
+        }));
+        // Add parameters in this group
+        group.params.forEach((param)=>{
+            tableRows.push(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"]({
+                children: [
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](param)
+                        ],
+                        width: {
+                            size: 70,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    }),
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"]({
+                        children: [
+                            new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Paragraph"](rawParams[param] || 'N/A')
+                        ],
+                        width: {
+                            size: 30,
+                            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+                        }
+                    })
+                ]
+            }));
+        });
+    });
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"]({
+        rows: tableRows,
+        width: {
+            size: 100,
+            type: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WidthType"].PERCENTAGE
+        },
+        borders: {
+            top: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            bottom: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            left: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            right: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideHorizontal: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            },
+            insideVertical: {
+                style: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$docx$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BorderStyle"].SINGLE,
+                size: 1
+            }
+        }
+    });
 }
 /**
  * Format voltage value to display with proper precision

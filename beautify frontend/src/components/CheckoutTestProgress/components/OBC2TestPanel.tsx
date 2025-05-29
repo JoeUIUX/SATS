@@ -12,7 +12,6 @@ import { generateOBC2Report } from '@/services/reports/obc2Report';
 import { TestHistoryChart, TestHistoryTable } from '@/components/CheckoutTestProgress/components';
 import { TestDetailsModal } from '@/components/CheckoutTestProgress/components';
 
-// Create a reusable SimulationBadge component for consistency
 const SimulationBadge: React.FC<SimulationBadgeProps> = ({ isSimulation }) => (
   <div style={{ 
     fontSize: '12px', 
@@ -37,10 +36,9 @@ interface OBC2TestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -125,14 +123,14 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('voltage.sdCard.value');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -145,7 +143,7 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
   // API URL
   const API_URL = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
   
-  // Available metrics for visualization - expanded based on OBC2Checkout.ts
+  // Available metrics for visualization - based on OBC2Checkout.ts
   const metricOptions = [
     { label: 'SD Card Voltage', value: 'voltage.sdCard.value' },
     { label: 'Flash Voltage', value: 'voltage.flash.value' },
@@ -227,7 +225,7 @@ export const OBC2TestPanel: React.FC<OBC2TestPanelProps> = ({
     }
   }, [sock]);
   
-// Create a more responsive version of the useEffect hook
+// a more responsive version
 useEffect(() => {
   // This will run whenever isInitialRun changes
   if (isInitialRun) {
@@ -245,7 +243,7 @@ useEffect(() => {
   }
 }, [isInitialRun]); // Only depend on isInitialRun
   
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -332,7 +330,7 @@ useEffect(() => {
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -437,11 +435,11 @@ useEffect(() => {
     return isNaN(numValue) ? null : numValue;
   };
   
-  // Format chart data for test history - ensure we only use real data
+  // Format chart data for test history - ensure only use real data
   const prepareChartData = () => {
     return testHistory
       .filter(item => {
-        // Ensure we only use real (non-simulated) data for charts
+        // Ensure only use real (non-simulated) data for charts
         if (item.is_simulated || item.results?.simulated) {
           return false;
         }
@@ -762,7 +760,7 @@ useEffect(() => {
     }
   };
 
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   /**
    * Toggle multi-select mode
    */

@@ -39,10 +39,9 @@ interface SBandTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -126,14 +125,14 @@ export const SBandTestPanel: React.FC<SBandTestPanelProps> = ({
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('receiver.frequencyShift');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   
-  // Add state variables for history management
+  // state variables for history management
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -873,7 +872,7 @@ export const SBandTestPanel: React.FC<SBandTestPanelProps> = ({
     }
   };
 
-  // Optionally add automatic cleanup on component mount
+  // automatic cleanup on component mount
   useEffect(() => {
     if (profileId) {
       // Automatically limit history to 30 records when the component mounts

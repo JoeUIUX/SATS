@@ -3172,3 +3172,548 @@
 [23/05/2025 11:03:36 am] [Frontend] ✓ Compiled /_not-found/page in 2.4s
 [23/05/2025 11:03:39 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5209ms
 [23/05/2025 11:11:20 am] Frontend process exited with code 1
+[23/05/2025 4:45:36 pm] Starting frontend development server...
+[23/05/2025 4:45:38 pm] [Frontend] > beautify@0.1.0 dev
+[23/05/2025 4:45:38 pm] [Frontend] > next dev --turbopack
+[23/05/2025 4:45:46 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[23/05/2025 4:45:46 pm] [Frontend] - Local:        http://localhost:3000
+[23/05/2025 4:45:46 pm] [Frontend]    - Network:      http://10.97.25.124:3000
+[23/05/2025 4:45:46 pm] [Frontend]    - Environments: .env
+[23/05/2025 4:45:46 pm] [Frontend]  ✓ Starting...
+[23/05/2025 4:45:50 pm] [Frontend] ✓ Ready in 5.3s
+[23/05/2025 4:46:06 pm] [Frontend] ○ Compiling / ...
+[23/05/2025 4:46:27 pm] [Frontend] ✓ Compiled / in 21.7s
+[23/05/2025 4:46:31 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[23/05/2025 4:46:31 pm] [Frontend] GET / 500 in 25516ms
+[23/05/2025 4:46:33 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[23/05/2025 4:46:33 pm] [Frontend] GET / 500 in 2491ms
+[23/05/2025 4:46:37 pm] [Frontend] ○ Compiling /_not-found/page ...
+[23/05/2025 4:46:40 pm] [Frontend] ✓ Compiled /_not-found/page in 3.4s
+[23/05/2025 4:46:44 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7834ms
+[23/05/2025 5:06:34 pm] Frontend process exited with code 1
+[26/05/2025 10:15:13 am] Starting frontend development server...
+[26/05/2025 10:15:15 am] [Frontend] > beautify@0.1.0 dev
+[26/05/2025 10:15:15 am] [Frontend] > next dev --turbopack
+[26/05/2025 10:15:25 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[26/05/2025 10:15:25 am] [Frontend] - Local:        http://localhost:3000
+[26/05/2025 10:15:25 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[26/05/2025 10:15:25 am] [Frontend]    - Environments: .env
+[26/05/2025 10:15:25 am] [Frontend]  ✓ Starting...
+[26/05/2025 10:15:29 am] [Frontend] ✓ Ready in 6s
+[26/05/2025 10:15:47 am] [Frontend] ○ Compiling / ...
+[26/05/2025 10:16:06 am] [Frontend] ✓ Compiled / in 19.6s
+[26/05/2025 10:16:06 am] [Frontend Error] ⨯ ./src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx:8:1
+[26/05/2025 10:16:06 am] [Frontend Error] Export runLEOCAMCheckout doesn't exist in target module
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  6 |[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  7 |[39m [90m// Import the LEOCAM-specific functions[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { runLEOCAMCheckout } [36mfrom[39m [32m'@/services/checkout/leocamCheckout'[39m[33m;[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { generateLEOCAMReport } [36mfrom[39m [32m'@/services/reports/leocamReport'[39m[33m;[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m 10 |[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m 11 |[39m [90m// Import test history components[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] The export runLEOCAMCheckout was not found in module [project]/src/services/checkout/leocamCheckout.ts [app-client] (ecmascript).
+[26/05/2025 10:16:06 am] [Frontend Error] Did you mean to import generateLEOCAMReport?
+[26/05/2025 10:16:06 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[26/05/2025 10:16:06 am] [Frontend Error] ./src/components/CheckoutTestProgress/components/LEOCAMTestPanel.tsx:8:1
+[26/05/2025 10:16:06 am] [Frontend Error] Export runLEOCAMCheckout doesn't exist in target module
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  6 |[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  7 |[39m [90m// Import the LEOCAM-specific functions[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m[31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { runLEOCAMCheckout } [36mfrom[39m [32m'@/services/checkout/leocamCheckout'[39m[33m;[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m  9 |[39m [36mimport[39m { generateLEOCAMReport } [36mfrom[39m [32m'@/services/reports/leocamReport'[39m[33m;[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m 10 |[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] [0m [90m 11 |[39m [90m// Import test history components[39m[0m
+[26/05/2025 10:16:06 am] [Frontend Error] The export runLEOCAMCheckout was not found in module [project]/src/services/checkout/leocamCheckout.ts [app-ssr] (ecmascript).
+[26/05/2025 10:16:06 am] [Frontend Error] Did you mean to import generateLEOCAMReport?
+[26/05/2025 10:16:06 am] [Frontend Error] All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+[26/05/2025 10:16:07 am] [Frontend] ○ Compiling /_error ...
+[26/05/2025 10:16:09 am] [Frontend] ✓ Compiled /_error in 2.1s
+[26/05/2025 10:16:12 am] [Frontend] GET / 500 in 25381ms
+[26/05/2025 10:16:13 am] [Frontend] ○ Compiling /favicon.ico ...
+[26/05/2025 10:16:14 am] [Frontend] ✓ Compiled /favicon.ico in 1670ms
+[26/05/2025 10:16:16 am] [Frontend] GET /favicon.ico 500 in 3635ms
+[26/05/2025 10:17:42 am] [Frontend] ✓ Compiled in 1194ms
+[26/05/2025 10:17:43 am] [Frontend] ○ Compiling / ...
+[26/05/2025 10:17:45 am] [Frontend] ✓ Compiled / in 2.1s
+[26/05/2025 10:17:50 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:17:50 am] [Frontend] GET / 500 in 7675ms
+[26/05/2025 10:17:54 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2314ms
+[26/05/2025 10:18:14 am] [Frontend] ✓ Compiled in 996ms
+[26/05/2025 10:18:24 am] Frontend process exited with code 1
+[26/05/2025 10:18:55 am] Starting frontend development server...
+[26/05/2025 10:18:57 am] [Frontend] > beautify@0.1.0 dev
+[26/05/2025 10:18:57 am] [Frontend] > next dev --turbopack
+[26/05/2025 10:19:05 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[26/05/2025 10:19:05 am] [Frontend] - Local:        http://localhost:3000
+[26/05/2025 10:19:05 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[26/05/2025 10:19:05 am] [Frontend]    - Environments: .env
+[26/05/2025 10:19:05 am] [Frontend]  ✓ Starting...
+[26/05/2025 10:19:09 am] [Frontend] ✓ Ready in 5.2s
+[26/05/2025 10:19:29 am] [Frontend] ○ Compiling / ...
+[26/05/2025 10:19:46 am] [Frontend] ✓ Compiled / in 17s
+[26/05/2025 10:19:50 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:19:50 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:19:50 am] [Frontend] GET / 500 in 21229ms
+[26/05/2025 10:19:52 am] [Frontend] ○ Compiling /favicon.ico ...
+[26/05/2025 10:19:53 am] [Frontend] ✓ Compiled /favicon.ico in 1274ms
+[26/05/2025 10:19:55 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3067ms
+[26/05/2025 10:19:56 am] [Frontend] ○ Compiling /_not-found/page ...
+[26/05/2025 10:19:58 am] [Frontend] ✓ Compiled /_not-found/page in 2.8s
+[26/05/2025 10:20:00 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5206ms
+[26/05/2025 10:24:14 am] [Frontend] ✓ Compiled in 1026ms
+[26/05/2025 10:24:23 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:24:24 am] [Frontend] GET / 500 in 5477ms
+[26/05/2025 10:24:32 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7853ms
+[26/05/2025 10:27:07 am] [Frontend] ✓ Compiled in 998ms
+[26/05/2025 10:36:03 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:36:03 am] [Frontend] GET / 500 in 3544ms
+[26/05/2025 10:36:07 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4069ms
+[26/05/2025 10:36:11 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 10:36:11 am] [Frontend] GET / 500 in 4584ms
+[26/05/2025 10:36:15 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3626ms
+[26/05/2025 10:36:19 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3367ms
+[26/05/2025 10:36:21 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1626ms
+[26/05/2025 10:59:01 am] [Frontend] ✓ Compiled in 896ms
+[26/05/2025 11:08:57 am] [Frontend] ✓ Compiled in 838ms
+[26/05/2025 11:11:48 am] [Frontend] ✓ Compiled in 1054ms
+[26/05/2025 11:12:36 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 11:12:36 am] [Frontend] GET / 500 in 3652ms
+[26/05/2025 11:12:40 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3138ms
+[26/05/2025 11:12:44 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 11:12:44 am] [Frontend] GET / 500 in 4011ms
+[26/05/2025 11:12:48 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4256ms
+[26/05/2025 11:12:51 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2001ms
+[26/05/2025 12:03:43 pm] [Frontend] ✓ Compiled in 1043ms
+[26/05/2025 12:03:51 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 12:03:51 pm] [Frontend] GET / 500 in 4651ms
+[26/05/2025 12:03:56 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4921ms
+[26/05/2025 12:10:18 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 12:10:18 pm] [Frontend] GET / 500 in 2155ms
+[26/05/2025 12:10:23 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4927ms
+[26/05/2025 12:22:37 pm] [Frontend] ✓ Compiled in 985ms
+[26/05/2025 12:23:07 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 12:23:07 pm] [Frontend] GET / 500 in 4857ms
+[26/05/2025 12:23:11 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4130ms
+[26/05/2025 12:38:42 pm] Frontend process exited with code 1
+[26/05/2025 4:37:07 pm] Starting frontend development server...
+[26/05/2025 4:37:10 pm] [Frontend] > beautify@0.1.0 dev
+[26/05/2025 4:37:10 pm] [Frontend] > next dev --turbopack
+[26/05/2025 4:37:19 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[26/05/2025 4:37:19 pm] [Frontend] - Local:        http://localhost:3000
+[26/05/2025 4:37:19 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[26/05/2025 4:37:19 pm] [Frontend]    - Environments: .env
+[26/05/2025 4:37:19 pm] [Frontend]  ✓ Starting...
+[26/05/2025 4:37:24 pm] [Frontend] ✓ Ready in 5.6s
+[26/05/2025 4:37:24 pm] [Frontend] ○ Compiling / ...
+[26/05/2025 4:37:43 pm] [Frontend] ✓ Compiled / in 19s
+[26/05/2025 4:37:47 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 4:37:47 pm] [Frontend] GET / 500 in 22942ms
+[26/05/2025 4:37:49 pm] [Frontend] ○ Compiling /favicon.ico ...
+[26/05/2025 4:37:55 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 6119ms
+[26/05/2025 4:37:58 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3417ms
+[26/05/2025 4:38:01 pm] [Frontend] ✓ Compiled /favicon.ico in 12.1s
+[26/05/2025 4:38:03 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 13338ms
+[26/05/2025 4:49:03 pm] [Frontend] HEAD /models/profile_1.glb 404 in 3244ms
+[26/05/2025 4:49:05 pm] [Frontend] HEAD /models/profile_1.glb 404 in 5453ms
+[26/05/2025 4:49:05 pm] [Frontend] HEAD /models/profile_1.glb 404 in 5668ms
+[26/05/2025 4:54:50 pm] [Frontend] ✓ Compiled in 931ms
+[26/05/2025 4:55:05 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 4:55:05 pm] [Frontend] GET / 500 in 3455ms
+[26/05/2025 4:55:10 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4443ms
+[26/05/2025 5:00:14 pm] [Frontend] ✓ Compiled in 919ms
+[26/05/2025 5:00:43 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:00:43 pm] [Frontend] GET / 500 in 3272ms
+[26/05/2025 5:00:48 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3987ms
+[26/05/2025 5:00:51 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:00:51 pm] [Frontend] GET / 500 in 2070ms
+[26/05/2025 5:00:54 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2971ms
+[26/05/2025 5:00:58 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2382ms
+[26/05/2025 5:16:52 pm] [Frontend] ✓ Compiled in 1167ms
+[26/05/2025 5:17:07 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:17:07 pm] [Frontend] GET / 500 in 4653ms
+[26/05/2025 5:17:11 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3814ms
+[26/05/2025 5:17:15 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:17:15 pm] [Frontend] GET / 500 in 4213ms
+[26/05/2025 5:17:18 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2922ms
+[26/05/2025 5:17:23 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3146ms
+[26/05/2025 5:17:25 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1861ms
+[26/05/2025 5:30:28 pm] [Frontend] ✓ Compiled in 1348ms
+[26/05/2025 5:30:43 pm] [Frontend] ✓ Compiled in 1015ms
+[26/05/2025 5:33:23 pm] [Frontend] ✓ Compiled in 874ms
+[26/05/2025 5:33:40 pm] [Frontend] ✓ Compiled in 925ms
+[26/05/2025 5:36:16 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:36:16 pm] [Frontend] GET / 500 in 3914ms
+[26/05/2025 5:36:21 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4637ms
+[26/05/2025 5:36:25 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[26/05/2025 5:36:25 pm] [Frontend] GET / 500 in 4482ms
+[26/05/2025 5:36:29 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4206ms
+[26/05/2025 5:36:34 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3923ms
+[26/05/2025 5:39:30 pm] Frontend process exited with code 1
+[27/05/2025 10:08:15 am] Starting frontend development server...
+[27/05/2025 10:08:17 am] [Frontend] > beautify@0.1.0 dev
+[27/05/2025 10:08:17 am] [Frontend] > next dev --turbopack
+[27/05/2025 10:08:26 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[27/05/2025 10:08:26 am] [Frontend] - Local:        http://localhost:3000
+[27/05/2025 10:08:26 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[27/05/2025 10:08:26 am] [Frontend]    - Environments: .env
+[27/05/2025 10:08:26 am] [Frontend]  ✓ Starting...
+[27/05/2025 10:08:31 am] [Frontend] ✓ Ready in 5.9s
+[27/05/2025 10:08:39 am] [Frontend] ○ Compiling / ...
+[27/05/2025 10:08:58 am] [Frontend] ✓ Compiled / in 19.5s
+[27/05/2025 10:09:01 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 10:09:02 am] [Frontend] GET / 500 in 23347ms
+[27/05/2025 10:09:04 am] [Frontend] ○ Compiling /favicon.ico ...
+[27/05/2025 10:09:05 am] [Frontend] ✓ Compiled /favicon.ico in 1765ms
+[27/05/2025 10:09:07 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3531ms
+[27/05/2025 10:09:09 am] [Frontend] ○ Compiling /_not-found/page ...
+[27/05/2025 10:09:12 am] [Frontend] ✓ Compiled /_not-found/page in 3.4s
+[27/05/2025 10:09:17 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 8106ms
+[27/05/2025 11:26:49 am] [Frontend] ✓ Compiled in 1111ms
+[27/05/2025 11:28:04 am] Frontend process exited with code 1
+[27/05/2025 11:28:31 am] Starting frontend development server...
+[27/05/2025 11:28:32 am] [Frontend] > beautify@0.1.0 dev
+[27/05/2025 11:28:32 am] [Frontend] > next dev --turbopack
+[27/05/2025 11:28:41 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[27/05/2025 11:28:41 am] [Frontend] - Local:        http://localhost:3000
+[27/05/2025 11:28:41 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[27/05/2025 11:28:41 am] [Frontend]    - Environments: .env
+[27/05/2025 11:28:41 am] [Frontend]  ✓ Starting...
+[27/05/2025 11:28:45 am] [Frontend] ✓ Ready in 5.3s
+[27/05/2025 11:29:01 am] [Frontend] ○ Compiling / ...
+[27/05/2025 11:29:20 am] [Frontend] ✓ Compiled / in 19.3s
+[27/05/2025 11:29:24 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 11:29:24 am] [Frontend] GET / 500 in 23658ms
+[27/05/2025 11:29:26 am] [Frontend] ○ Compiling /favicon.ico ...
+[27/05/2025 11:29:28 am] [Frontend] ✓ Compiled /favicon.ico in 1642ms
+[27/05/2025 11:29:30 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3785ms
+[27/05/2025 11:29:31 am] [Frontend] ○ Compiling /_not-found/page ...
+[27/05/2025 11:29:35 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 5613ms
+[27/05/2025 11:29:38 am] [Frontend] ✓ Compiled /_not-found/page in 7.5s
+[27/05/2025 11:29:41 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 10875ms
+[27/05/2025 11:52:08 am] [Frontend] ✓ Compiled in 925ms
+[27/05/2025 11:52:21 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 11:52:21 am] [Frontend] GET / 500 in 3661ms
+[27/05/2025 11:52:26 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4853ms
+[27/05/2025 11:57:25 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 11:57:25 am] [Frontend] GET / 500 in 2664ms
+[27/05/2025 11:57:29 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3793ms
+[27/05/2025 11:57:34 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 11:57:34 am] [Frontend] GET / 500 in 4768ms
+[27/05/2025 11:57:37 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3383ms
+[27/05/2025 11:57:43 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4010ms
+[27/05/2025 11:57:45 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1809ms
+[27/05/2025 12:10:24 pm] Frontend process exited with code 1
+[27/05/2025 12:10:53 pm] Starting frontend development server...
+[27/05/2025 12:10:55 pm] [Frontend] > beautify@0.1.0 dev
+[27/05/2025 12:10:55 pm] [Frontend] > next dev --turbopack
+[27/05/2025 12:11:03 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[27/05/2025 12:11:03 pm] [Frontend] - Local:        http://localhost:3000
+[27/05/2025 12:11:03 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[27/05/2025 12:11:03 pm] [Frontend]    - Environments: .env
+[27/05/2025 12:11:03 pm] [Frontend]  ✓ Starting...
+[27/05/2025 12:11:08 pm] [Frontend] ✓ Ready in 5.9s
+[27/05/2025 12:11:08 pm] [Frontend] ○ Compiling / ...
+[27/05/2025 12:11:26 pm] [Frontend] ✓ Compiled / in 17.8s
+[27/05/2025 12:11:29 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 12:11:30 pm] [Frontend] GET / 500 in 21589ms
+[27/05/2025 12:11:32 pm] [Frontend] ○ Compiling /favicon.ico ...
+[27/05/2025 12:11:33 pm] [Frontend] ✓ Compiled /favicon.ico in 1581ms
+[27/05/2025 12:11:35 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3890ms
+[27/05/2025 12:11:36 pm] [Frontend] ○ Compiling /_not-found/page ...
+[27/05/2025 12:11:38 pm] [Frontend] ✓ Compiled /_not-found/page in 3.2s
+[27/05/2025 12:11:43 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 8051ms
+[27/05/2025 12:14:35 pm] [Frontend] ✓ Compiled in 943ms
+[27/05/2025 12:25:28 pm] [Frontend] ✓ Compiled in 888ms
+[27/05/2025 12:29:39 pm] Frontend process exited with code 1
+[27/05/2025 2:17:50 pm] Starting frontend development server...
+[27/05/2025 2:17:52 pm] [Frontend] > beautify@0.1.0 dev
+[27/05/2025 2:17:52 pm] [Frontend] > next dev --turbopack
+[27/05/2025 2:18:01 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[27/05/2025 2:18:01 pm] [Frontend] - Local:        http://localhost:3000
+[27/05/2025 2:18:01 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[27/05/2025 2:18:01 pm] [Frontend]    - Environments: .env
+[27/05/2025 2:18:01 pm] [Frontend]  ✓ Starting...
+[27/05/2025 2:18:05 pm] [Frontend] ✓ Ready in 5.5s
+[27/05/2025 2:18:25 pm] [Frontend] ○ Compiling / ...
+[27/05/2025 2:18:43 pm] [Frontend] ✓ Compiled / in 18.2s
+[27/05/2025 2:18:47 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 2:18:47 pm] [Frontend] GET / 500 in 21894ms
+[27/05/2025 2:18:49 pm] [Frontend] ○ Compiling /favicon.ico ...
+[27/05/2025 2:18:50 pm] [Frontend] ✓ Compiled /favicon.ico in 1262ms
+[27/05/2025 2:18:51 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3158ms
+[27/05/2025 2:18:55 pm] [Frontend] ○ Compiling /_not-found/page ...
+[27/05/2025 2:18:57 pm] [Frontend] ✓ Compiled /_not-found/page in 2.7s
+[27/05/2025 2:19:01 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6778ms
+[27/05/2025 2:19:08 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 2:19:08 pm] [Frontend] GET / 500 in 3206ms
+[27/05/2025 2:19:14 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5530ms
+[27/05/2025 2:31:51 pm] [Frontend] ✓ Compiled in 1021ms
+[27/05/2025 2:33:04 pm] [Frontend] ✓ Compiled in 817ms
+[27/05/2025 2:33:26 pm] [Frontend] ✓ Compiled in 921ms
+[27/05/2025 2:36:15 pm] [Frontend] ✓ Compiled in 828ms
+[27/05/2025 2:36:27 pm] [Frontend] ✓ Compiled in 851ms
+[27/05/2025 2:38:31 pm] [Frontend] ✓ Compiled in 860ms
+[27/05/2025 2:39:23 pm] [Frontend] ✓ Compiled in 1023ms
+[27/05/2025 2:39:38 pm] [Frontend] ✓ Compiled in 836ms
+[27/05/2025 2:40:14 pm] [Frontend] ✓ Compiled in 915ms
+[27/05/2025 2:40:47 pm] [Frontend] ✓ Compiled in 978ms
+[27/05/2025 2:40:56 pm] [Frontend] ✓ Compiled in 908ms
+[27/05/2025 2:41:02 pm] [Frontend] ✓ Compiled in 954ms
+[27/05/2025 2:42:18 pm] [Frontend] ✓ Compiled in 931ms
+[27/05/2025 2:42:29 pm] [Frontend] ✓ Compiled in 991ms
+[27/05/2025 2:42:37 pm] [Frontend] ✓ Compiled in 870ms
+[27/05/2025 2:43:25 pm] [Frontend] ✓ Compiled in 911ms
+[27/05/2025 2:44:22 pm] [Frontend] ✓ Compiled in 1096ms
+[27/05/2025 2:45:48 pm] [Frontend] ✓ Compiled in 982ms
+[27/05/2025 2:45:58 pm] [Frontend] ✓ Compiled in 933ms
+[27/05/2025 2:49:52 pm] [Frontend] ✓ Compiled in 927ms
+[27/05/2025 2:50:05 pm] [Frontend] ✓ Compiled in 964ms
+[27/05/2025 2:51:07 pm] [Frontend] ✓ Compiled in 943ms
+[27/05/2025 2:51:30 pm] [Frontend] ✓ Compiled in 931ms
+[27/05/2025 2:52:02 pm] [Frontend] ✓ Compiled in 918ms
+[27/05/2025 2:55:07 pm] [Frontend] ✓ Compiled in 950ms
+[27/05/2025 2:56:23 pm] [Frontend] ✓ Compiled in 1059ms
+[27/05/2025 3:15:34 pm] [Frontend] ✓ Compiled in 845ms
+[27/05/2025 3:16:42 pm] [Frontend] ✓ Compiled in 6.1s
+[27/05/2025 3:16:45 pm] [Frontend] GET / 200 in 4502ms
+[27/05/2025 3:16:46 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:16:48 pm] [Frontend] GET /main 404 in 3008ms
+[27/05/2025 3:16:51 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1813ms
+[27/05/2025 3:16:52 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3357ms
+[27/05/2025 3:16:57 pm] Frontend process exited with code 1
+[27/05/2025 3:17:31 pm] Starting frontend development server...
+[27/05/2025 3:17:33 pm] [Frontend] > beautify@0.1.0 dev
+[27/05/2025 3:17:33 pm] [Frontend] > next dev --turbopack
+[27/05/2025 3:17:42 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[27/05/2025 3:17:42 pm] [Frontend] - Local:        http://localhost:3000
+[27/05/2025 3:17:42 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[27/05/2025 3:17:42 pm] [Frontend]    - Environments: .env
+[27/05/2025 3:17:42 pm] [Frontend]  ✓ Starting...
+[27/05/2025 3:17:46 pm] [Frontend] ✓ Ready in 5.4s
+[27/05/2025 3:18:06 pm] [Frontend] ○ Compiling / ...
+[27/05/2025 3:18:23 pm] [Frontend] ✓ Compiled / in 17s
+[27/05/2025 3:18:26 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:18:26 pm] [Frontend] GET / 500 in 20527ms
+[27/05/2025 3:18:28 pm] [Frontend] ○ Compiling /favicon.ico ...
+[27/05/2025 3:18:29 pm] [Frontend] ✓ Compiled /favicon.ico in 1604ms
+[27/05/2025 3:18:32 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4027ms
+[27/05/2025 3:18:35 pm] [Frontend] ○ Compiling /_not-found/page ...
+[27/05/2025 3:18:37 pm] [Frontend] ✓ Compiled /_not-found/page in 2.7s
+[27/05/2025 3:18:40 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5539ms
+[27/05/2025 3:28:49 pm] [Frontend] ✓ Compiled in 938ms
+[27/05/2025 3:28:57 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:28:57 pm] [Frontend] GET / 500 in 2665ms
+[27/05/2025 3:28:59 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1018ms
+[27/05/2025 3:29:33 pm] [Frontend] ✓ Compiled in 850ms
+[27/05/2025 3:29:39 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:29:39 pm] [Frontend] GET / 500 in 2840ms
+[27/05/2025 3:29:42 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1353ms
+[27/05/2025 3:30:14 pm] [Frontend] ✓ Compiled in 861ms
+[27/05/2025 3:30:18 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:30:18 pm] [Frontend] GET / 500 in 2634ms
+[27/05/2025 3:30:21 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1119ms
+[27/05/2025 3:30:50 pm] [Frontend] ✓ Compiled in 860ms
+[27/05/2025 3:30:56 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:30:56 pm] [Frontend] GET / 500 in 2666ms
+[27/05/2025 3:30:58 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 1156ms
+[27/05/2025 3:31:18 pm] [Frontend] ✓ Compiled in 838ms
+[27/05/2025 3:31:48 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2622ms
+[27/05/2025 3:38:14 pm] [Frontend] ✓ Compiled in 881ms
+[27/05/2025 3:38:26 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:38:26 pm] [Frontend] GET / 500 in 3472ms
+[27/05/2025 3:38:30 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4165ms
+[27/05/2025 3:38:35 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3130ms
+[27/05/2025 3:40:59 pm] [Frontend] ✓ Compiled in 917ms
+[27/05/2025 3:41:36 pm] [Frontend] ✓ Compiled in 838ms
+[27/05/2025 3:42:35 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:42:35 pm] [Frontend] GET / 500 in 5559ms
+[27/05/2025 3:42:40 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4201ms
+[27/05/2025 3:42:44 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3273ms
+[27/05/2025 3:43:09 pm] [Frontend] ✓ Compiled in 1028ms
+[27/05/2025 3:43:31 pm] [Frontend] ✓ Compiled in 966ms
+[27/05/2025 3:45:13 pm] [Frontend] ✓ Compiled in 873ms
+[27/05/2025 3:49:10 pm] [Frontend] ✓ Compiled in 819ms
+[27/05/2025 3:52:39 pm] [Frontend] ✓ Compiled in 812ms
+[27/05/2025 3:53:14 pm] [Frontend] ✓ Compiled in 875ms
+[27/05/2025 3:53:19 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:53:19 pm] [Frontend] GET / 500 in 3068ms
+[27/05/2025 3:53:23 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4090ms
+[27/05/2025 3:53:27 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2987ms
+[27/05/2025 3:53:50 pm] [Frontend] ✓ Compiled in 978ms
+[27/05/2025 3:53:55 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:53:55 pm] [Frontend] GET / 500 in 2588ms
+[27/05/2025 3:53:59 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4278ms
+[27/05/2025 3:54:03 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2809ms
+[27/05/2025 3:54:20 pm] [Frontend] ✓ Compiled in 897ms
+[27/05/2025 3:54:25 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:54:25 pm] [Frontend] GET / 500 in 2710ms
+[27/05/2025 3:54:30 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4771ms
+[27/05/2025 3:54:34 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3034ms
+[27/05/2025 3:55:20 pm] [Frontend] ✓ Compiled in 829ms
+[27/05/2025 3:55:40 pm] [Frontend] ✓ Compiled in 863ms
+[27/05/2025 3:55:44 pm] [Frontend] ✓ Compiled in 824ms
+[27/05/2025 3:55:48 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:55:49 pm] [Frontend] GET / 500 in 3007ms
+[27/05/2025 3:55:53 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4294ms
+[27/05/2025 3:55:57 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2569ms
+[27/05/2025 3:56:19 pm] [Frontend] ✓ Compiled in 820ms
+[27/05/2025 3:57:54 pm] [Frontend] ✓ Compiled in 813ms
+[27/05/2025 3:57:59 pm] [Frontend] ✓ Compiled in 808ms
+[27/05/2025 3:58:22 pm] [Frontend] ✓ Compiled in 828ms
+[27/05/2025 3:58:28 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 3:58:28 pm] [Frontend] GET / 500 in 3289ms
+[27/05/2025 3:58:32 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4045ms
+[27/05/2025 3:58:37 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3444ms
+[27/05/2025 4:04:20 pm] [Frontend] ✓ Compiled in 984ms
+[27/05/2025 4:04:36 pm] [Frontend] ✓ Compiled in 763ms
+[27/05/2025 4:04:57 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:04:57 pm] [Frontend] GET / 500 in 3012ms
+[27/05/2025 4:05:01 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3355ms
+[27/05/2025 4:05:05 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3226ms
+[27/05/2025 4:05:52 pm] [Frontend] ✓ Compiled in 957ms
+[27/05/2025 4:06:17 pm] [Frontend] ✓ Compiled in 796ms
+[27/05/2025 4:11:44 pm] [Frontend] ✓ Compiled in 820ms
+[27/05/2025 4:12:10 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:12:10 pm] [Frontend] GET / 500 in 4872ms
+[27/05/2025 4:12:14 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3935ms
+[27/05/2025 4:12:18 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2988ms
+[27/05/2025 4:12:38 pm] [Frontend] ✓ Compiled in 881ms
+[27/05/2025 4:13:15 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3011ms
+[27/05/2025 4:14:12 pm] [Frontend] ✓ Compiled in 887ms
+[27/05/2025 4:16:29 pm] [Frontend] ✓ Compiled in 796ms
+[27/05/2025 4:17:13 pm] [Frontend] ✓ Compiled in 850ms
+[27/05/2025 4:18:47 pm] [Frontend] ✓ Compiled in 790ms
+[27/05/2025 4:22:21 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:22:21 pm] [Frontend] GET / 500 in 2610ms
+[27/05/2025 4:22:23 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:22:23 pm] [Frontend] GET / 500 in 2044ms
+[27/05/2025 4:22:27 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:22:27 pm] [Frontend] GET / 500 in 2086ms
+[27/05/2025 4:22:31 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2026ms
+[27/05/2025 4:22:33 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3532ms
+[27/05/2025 4:26:34 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4056ms
+[27/05/2025 4:34:14 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '2641524254' }
+[27/05/2025 4:34:14 pm] [Frontend] GET / 500 in 1936ms
+[27/05/2025 4:34:18 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 3762ms
+[27/05/2025 4:35:29 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4015ms
+[27/05/2025 5:12:45 pm] Frontend process exited with code 1
+[28/05/2025 2:24:03 pm] Starting frontend development server...
+[28/05/2025 2:24:06 pm] [Frontend] > beautify@0.1.0 dev
+[28/05/2025 2:24:06 pm] [Frontend] > next dev --turbopack
+[28/05/2025 2:24:16 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[28/05/2025 2:24:16 pm] [Frontend] - Local:        http://localhost:3000
+[28/05/2025 2:24:16 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[28/05/2025 2:24:16 pm] [Frontend]    - Environments: .env
+[28/05/2025 2:24:16 pm] [Frontend] ✓ Starting...
+[28/05/2025 2:24:21 pm] [Frontend] ✓ Ready in 6s
+[28/05/2025 2:24:43 pm] [Frontend] ○ Compiling / ...
+[28/05/2025 2:25:03 pm] [Frontend] ✓ Compiled / in 20.8s
+[28/05/2025 2:25:07 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[28/05/2025 2:25:07 pm] [Frontend] GET / 500 in 24265ms
+[28/05/2025 2:25:09 pm] [Frontend] ○ Compiling /favicon.ico ...
+[28/05/2025 2:25:11 pm] [Frontend] ✓ Compiled /favicon.ico in 2.1s
+[28/05/2025 2:25:13 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4201ms
+[28/05/2025 2:25:14 pm] [Frontend] ○ Compiling /_not-found/page ...
+[28/05/2025 2:25:16 pm] [Frontend] ✓ Compiled /_not-found/page in 3s
+[28/05/2025 2:25:19 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5684ms
+[28/05/2025 2:26:00 pm] Frontend process exited with code 1
+[28/05/2025 2:35:29 pm] Starting frontend development server...
+[28/05/2025 2:35:30 pm] [Frontend] > beautify@0.1.0 dev
+[28/05/2025 2:35:30 pm] [Frontend] > next dev --turbopack
+[28/05/2025 2:35:40 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[28/05/2025 2:35:40 pm] [Frontend] - Local:        http://localhost:3000
+[28/05/2025 2:35:40 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[28/05/2025 2:35:40 pm] [Frontend]    - Environments: .env
+[28/05/2025 2:35:40 pm] [Frontend] ✓ Starting...
+[28/05/2025 2:35:44 pm] [Frontend] ✓ Ready in 5.4s
+[28/05/2025 2:35:44 pm] [Frontend] ○ Compiling / ...
+[28/05/2025 2:36:02 pm] [Frontend] ✓ Compiled / in 17.8s
+[28/05/2025 2:36:05 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[28/05/2025 2:36:06 pm] [Frontend] GET / 500 in 21605ms
+[28/05/2025 2:36:08 pm] [Frontend] ○ Compiling /favicon.ico ...
+[28/05/2025 2:36:09 pm] [Frontend] ✓ Compiled /favicon.ico in 1530ms
+[28/05/2025 2:36:11 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3266ms
+[28/05/2025 2:40:39 pm] [Frontend] ✓ Compiled in 894ms
+[28/05/2025 2:43:27 pm] [Frontend] ✓ Compiled in 782ms
+[28/05/2025 2:49:43 pm] [Frontend] ✓ Compiled in 478ms
+[28/05/2025 3:18:02 pm] [Frontend] ✓ Compiled in 859ms
+[28/05/2025 3:25:21 pm] [Frontend] ✓ Compiled in 854ms
+[28/05/2025 3:28:02 pm] [Frontend] ✓ Compiled in 773ms
+[28/05/2025 3:30:06 pm] [Frontend] ✓ Compiled in 829ms
+[28/05/2025 3:32:00 pm] [Frontend] ✓ Compiled in 827ms
+[28/05/2025 3:32:46 pm] [Frontend] ✓ Compiled in 832ms
+[28/05/2025 3:36:09 pm] [Frontend] ✓ Compiled in 776ms
+[28/05/2025 3:42:39 pm] [Frontend] ✓ Compiled in 835ms
+[28/05/2025 3:52:27 pm] [Frontend] ✓ Compiled in 772ms
+[28/05/2025 4:01:49 pm] [Frontend] ✓ Compiled in 787ms
+[28/05/2025 4:04:19 pm] [Frontend] ✓ Compiled in 763ms
+[28/05/2025 4:16:07 pm] [Frontend] ✓ Compiled in 936ms
+[28/05/2025 4:29:21 pm] [Frontend] ✓ Compiled in 860ms
+[28/05/2025 4:35:57 pm] [Frontend] ✓ Compiled in 502ms
+[28/05/2025 4:39:54 pm] [Frontend] ✓ Compiled in 847ms
+[28/05/2025 4:42:35 pm] [Frontend] ✓ Compiled in 963ms
+[28/05/2025 4:47:45 pm] [Frontend] ✓ Compiled in 960ms
+[28/05/2025 4:50:09 pm] [Frontend] ✓ Compiled in 1016ms
+[28/05/2025 4:51:44 pm] [Frontend] ✓ Compiled in 783ms
+[28/05/2025 4:57:50 pm] [Frontend] ✓ Compiled in 791ms
+[28/05/2025 5:02:11 pm] [Frontend] ✓ Compiled in 794ms
+[28/05/2025 5:05:00 pm] [Frontend] ✓ Compiled in 911ms
+[28/05/2025 5:08:35 pm] [Frontend] ✓ Compiled in 840ms
+[28/05/2025 5:22:59 pm] [Frontend] ✓ Compiled in 839ms
+[28/05/2025 5:29:15 pm] [Frontend] ✓ Compiled in 817ms
+[28/05/2025 5:31:45 pm] [Frontend] ✓ Compiled in 835ms
+[28/05/2025 5:34:49 pm] [Frontend] ✓ Compiled in 776ms
+[28/05/2025 5:38:50 pm] [Frontend] ✓ Compiled in 955ms
+[28/05/2025 5:43:57 pm] [Frontend] ✓ Compiled in 815ms
+[28/05/2025 5:48:33 pm] [Frontend] ✓ Compiled in 824ms
+[28/05/2025 5:55:54 pm] [Frontend] ✓ Compiled in 913ms
+[28/05/2025 5:56:21 pm] [Frontend] ✓ Compiled in 835ms
+[28/05/2025 6:01:41 pm] [Frontend] ✓ Compiled in 816ms
+[28/05/2025 6:04:06 pm] [Frontend] ✓ Compiled in 853ms
+[28/05/2025 6:04:26 pm] Frontend process exited with code 1
+[29/05/2025 10:44:00 am] Starting frontend development server...
+[29/05/2025 10:44:02 am] [Frontend] > beautify@0.1.0 dev
+[29/05/2025 10:44:02 am] [Frontend] > next dev --turbopack
+[29/05/2025 10:44:12 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[29/05/2025 10:44:12 am] [Frontend] - Local:        http://localhost:3000
+[29/05/2025 10:44:12 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[29/05/2025 10:44:12 am] [Frontend]    - Environments: .env
+[29/05/2025 10:44:12 am] [Frontend]  ✓ Starting...
+[29/05/2025 10:44:17 am] [Frontend] ✓ Ready in 6.1s
+[29/05/2025 10:47:16 am] [Frontend] ○ Compiling / ...
+[29/05/2025 10:47:37 am] [Frontend] ✓ Compiled / in 21.7s
+[29/05/2025 10:47:41 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 10:47:41 am] [Frontend] GET / 500 in 25959ms
+[29/05/2025 11:10:10 am] [Frontend] ○ Compiling /_not-found/page ...
+[29/05/2025 11:10:15 am] [Frontend] ✓ Compiled /_not-found/page in 5.3s
+[29/05/2025 11:10:21 am] [Frontend] HEAD /models/profile_1.glb 404 in 11370ms
+[29/05/2025 11:10:21 am] [Frontend] HEAD /models/profile_1.glb 404 in 11367ms
+[29/05/2025 11:10:21 am] [Frontend] HEAD /models/profile_1.glb 404 in 11686ms
+[29/05/2025 2:26:59 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 2:26:59 pm] [Frontend] GET / 500 in 5299ms
+[29/05/2025 2:27:02 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 2:27:02 pm] [Frontend] GET / 500 in 2428ms
+[29/05/2025 2:27:04 pm] Frontend process exited with code 1
+[29/05/2025 2:27:28 pm] Starting frontend development server...
+[29/05/2025 2:27:29 pm] [Frontend] > beautify@0.1.0 dev
+[29/05/2025 2:27:29 pm] [Frontend] > next dev --turbopack
+[29/05/2025 2:27:39 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[29/05/2025 2:27:39 pm] [Frontend] - Local:        http://localhost:3000
+[29/05/2025 2:27:39 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[29/05/2025 2:27:39 pm] [Frontend]    - Environments: .env
+[29/05/2025 2:27:39 pm] [Frontend]  ✓ Starting...
+[29/05/2025 2:27:43 pm] [Frontend] ✓ Ready in 5.4s
+[29/05/2025 2:28:03 pm] [Frontend] ○ Compiling / ...
+[29/05/2025 2:28:20 pm] [Frontend] ✓ Compiled / in 17.2s
+[29/05/2025 2:28:24 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 2:28:24 pm] [Frontend] GET / 500 in 20891ms
+[29/05/2025 2:28:26 pm] [Frontend] ○ Compiling /favicon.ico ...
+[29/05/2025 2:28:27 pm] [Frontend] ✓ Compiled /favicon.ico in 1302ms
+[29/05/2025 2:28:29 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3139ms
+[29/05/2025 2:28:58 pm] [Frontend] ○ Compiling /_not-found/page ...
+[29/05/2025 2:28:59 pm] [Frontend] ✓ Compiled /_not-found/page in 1263ms
+[29/05/2025 2:46:04 pm] [Frontend] ✓ Compiled in 975ms
+[29/05/2025 2:47:32 pm] [Frontend] ✓ Compiled in 783ms
+[29/05/2025 2:47:35 pm] [Frontend] ✓ Compiled in 729ms
+[29/05/2025 2:47:39 pm] [Frontend] ✓ Compiled in 865ms
+[29/05/2025 3:14:48 pm] Frontend process exited with code 1

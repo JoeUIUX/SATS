@@ -37,7 +37,7 @@ interface XBandTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
 interface XBandTestResults {
@@ -56,7 +56,6 @@ interface XBandTestResults {
   _simulationUsed?: boolean;
 }
 
-// Update interface for TestHistoryItem to match what's needed for the X-Band tests
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -100,7 +99,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
@@ -108,7 +107,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -197,7 +196,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
     }
   }, [isInitialRun, hasRunTest, isRunning]);
   
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -276,7 +275,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -694,7 +693,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
     }
   };
 
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   /**
    * Toggle multi-select mode
    */
@@ -800,7 +799,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
     }
   };
 
-  // Modify the useEffect for socket detection to watch for simulation indicators
+  // useEffect for socket detection to watch for simulation indicators
   useEffect(() => {
     // Check if we have real socket info saved
     const socketInfo = localStorage.getItem('mccSocketInfo');
@@ -849,7 +848,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
     setSimulationMode(isActuallySimulated);
   }, [sock]);
 
-  // Optionally add automatic cleanup on component mount
+  // automatic cleanup on component mount
   useEffect(() => {
     if (profileId) {
       // Automatically limit history to 30 records when the component mounts
@@ -1079,7 +1078,7 @@ export const XBandTestPanel: React.FC<XBandTestPanelProps> = ({
                     Voltage Measurements
                   </h3>
                   
-        {/* Add simulation badge */}
+        {/* simulation badge */}
         <SimulationBadge isSimulation={detectedSimulation} />
                 </div>
                 

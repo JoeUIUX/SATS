@@ -48,7 +48,7 @@ export async function runXBandCheckout(
     onProgress('Enabling PCS', 20);
     
     // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 7);
-    await mccifSet(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); //changed parameter name and value (21 May 2025)
+    await mccifSet(sock, "OBC1_Heps_Lcl_ExtReqOn", 14); //changed parameter name and value (21 May 2025 Test)
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     // Step 3: Check PCS voltage and current (30%)
@@ -79,7 +79,7 @@ export async function runXBandCheckout(
       // Step 5: Enable X-Band (50%)
       onProgress('Enabling X-Band', 50);
       
-      // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 14);
+      // await mccifSet(sock, "OBC1_Ch_ExtReqOn", 14); // changed parameter name and value (21 May 2025 Test)
     await mccifSet(sock, "OBC1_Heps_Lcl_ExtReqOn", 14);
       await new Promise(resolve => setTimeout(resolve, 2000));
       

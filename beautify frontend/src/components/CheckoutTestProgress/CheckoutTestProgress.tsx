@@ -30,7 +30,6 @@ import { generateLEOCAMReport } from '@/services/reports/leocamReport';
 import styles from "./CheckoutTestProgress.module.css";
 import { setSimulationMode } from '@/utils/mccUtils';
 
-// Updated interface to include checkedOptions
 interface CheckoutItem {
   id: string;
   header: string;
@@ -113,7 +112,7 @@ const setupTestTimeout = (testName: string) => {
   
   console.log(`⏱️ Setting up timeout for test ${testName}: ${TEST_TIMEOUT_MS/1000} seconds`);
   
-  // Set a new timeout for the current test
+  // set a timeout for the current test
   testTimeoutRef.current = setTimeout(() => {
     if (!isMountedRef.current) return; // Prevent state updates after unmount
     
@@ -221,10 +220,8 @@ useEffect(() => {
   }
 }, [droppedItems]);
 
-  // Also, let's add a small optimization to make the scroll buttons look better
-// and handle tab overflow more intelligently
-
-// Add these utility functions inside your component
+  // a small optimization to make the scroll buttons look better
+  // and handle tab overflow more intelligently
 const canScrollLeft = () => {
   const tabsList = tabsListRef.current;
   return tabsList ? tabsList.scrollLeft > 0 : false;
@@ -238,7 +235,7 @@ const canScrollRight = () => {
 const [canScrollStart, setCanScrollStart] = useState(false);
 const [canScrollEnd, setCanScrollEnd] = useState(false);
 
-// Add this function to update scroll button states
+// function to update scroll button states
 const updateScrollButtonStates = () => {
   setCanScrollStart(canScrollLeft());
   setCanScrollEnd(canScrollRight());
@@ -523,7 +520,7 @@ const generateGenericReport = async (componentName: string, results: any, filena
   }
 };
 
-// Add automatic report generation when all tests complete
+// automatic report generation when all tests complete
 useEffect(() => {
   console.log('🔍 Auto-report useEffect triggered:', {
     isComplete,
@@ -583,8 +580,6 @@ useEffect(() => {
 }, [testResults, filteredDroppedItems.length, reportsGenerated]);
 
   // Generate and save test report
-// In CheckoutTestProgress.tsx, modify the saveTestReport function:
-
 const saveTestReport = async () => {
   if (filteredDroppedItems.length === 0) {
     alert('No test components available to generate reports.');
@@ -613,7 +608,7 @@ const saveTestReport = async () => {
         try {
           console.log(`📝 Generating report ${i + 1}/${filteredDroppedItems.length} for ${item.header}...`);
           
-          // Add progress indicator
+          // progress indicator
           setReportProgress({
             current: i + 1,
             total: filteredDroppedItems.length,
@@ -715,7 +710,7 @@ const saveTestReport = async () => {
 };
 
 // Run all tests again (reset and restart)
-// Also update the runAllTests function to reset the reportsGenerated flag
+// reset the reportsGenerated flag
 const runAllTests = () => {
   // First, clear any running tests and timeouts
   if (currentlyRunningTest) {
@@ -895,7 +890,7 @@ const scrollTabs = (direction: 'left' | 'right') => {
   });
 };
 
-// Add this useEffect to check if scrolling is needed
+// useEffect to check if scrolling is needed
 useEffect(() => {
   const checkScrollable = () => {
     const tabsList = tabsListRef.current;
@@ -972,7 +967,7 @@ useEffect(() => {
   };
 }, []);
 
-// Add this useEffect to ensure any pending timers are cleaned up
+// useEffect to ensure any pending timers are cleaned up
 useEffect(() => {
   return () => {
     if (runNextTestTimeoutRef.current) {
@@ -1095,7 +1090,7 @@ useEffect(() => {
                     {/* Render the appropriate test panel based on component type */}
                     {item.header === "OBC-1" && (
                       <OBC1TestPanel
-                        key={`panel-${panelKey}`} // Add this key to force remount
+                        key={`panel-${panelKey}`} // key to force remount
                         options={getComponentOptions(item.header)} // Pass only the filtered/checked options
                         sock={sock}
                         onTestComplete={(results) => 
@@ -1122,7 +1117,7 @@ useEffect(() => {
                     
                     {item.header === "OBC-2" && (
   <OBC2TestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1149,7 +1144,7 @@ useEffect(() => {
 
 {item.header === "S-Band" && (
   <SBandTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)} // Pass only the filtered/checked options
     sock={sock}
     onTestComplete={(results) => 
@@ -1176,7 +1171,7 @@ useEffect(() => {
 
 {item.header === "UHF" && (
   <UHFTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1203,7 +1198,7 @@ useEffect(() => {
 
 {item.header === "LEOCAM" && (
   <LEOCAMTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1230,7 +1225,7 @@ useEffect(() => {
 
 {item.header === "HEPS" && (
   <HEPSTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1257,7 +1252,7 @@ useEffect(() => {
 
 {item.header === "ADCS" && (
   <ADCSTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1284,7 +1279,7 @@ useEffect(() => {
 
 {item.header === "GPS" && (
   <GPSTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1311,7 +1306,7 @@ useEffect(() => {
 
 {item.header === "Propulsion" && (
   <PropulsionTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1338,7 +1333,7 @@ useEffect(() => {
 
 {item.header === "PCS" && (
   <PCSTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 
@@ -1365,7 +1360,7 @@ useEffect(() => {
 
 {item.header === "X-Band" && (
   <XBandTestPanel
-    key={`panel-${panelKey}`} // Add this key to force remount
+    key={`panel-${panelKey}`} // key to force remount
     options={getComponentOptions(item.header)}
     sock={sock}
     onTestComplete={(results) => 

@@ -1239,8 +1239,21 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].appTitle,
-                                                children: "Satellite Automated Testing System"
-                                            }, void 0, false, {
+                                                children: [
+                                                    "SATS ",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 808,
+                                                        columnNumber: 54
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 808,
+                                                        columnNumber: 63
+                                                    }, this),
+                                                    " Satellite Automated Testing System"
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                 lineNumber: 808,
                                                 columnNumber: 17
@@ -1337,83 +1350,208 @@ const SettingsWindow = ({ zIndex, onMouseDown, onClose, bringWindowToFront, wind
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                         lineNumber: 825,
-                                                        columnNumber: 19
+                                                        columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                         children: "Main Features:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                         lineNumber: 831,
-                                                        columnNumber: 19
+                                                        columnNumber: 3
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                children: "Checkout Test - Subsystems and Components"
-                                                            }, void 0, false, {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "Profile Management:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 833,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Create, edit, delete customizable test profiles"
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                                 lineNumber: 833,
-                                                                columnNumber: 3
+                                                                columnNumber: 5
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                children: "Real-time hardware integration with simulation fallback capability"
-                                                            }, void 0, false, {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "11 Subsystem Tests:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 834,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Automated testing for OBC-1/2, S-Band, UHF, ADCS, GPS, HEPS, etc."
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                                 lineNumber: 834,
-                                                                columnNumber: 3
+                                                                columnNumber: 5
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                children: "Interactive Satellite 3D model Viewer"
-                                                            }, void 0, false, {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "Drag-and-Drop Test Selection:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 835,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Visual component selection for customized testing"
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                                 lineNumber: 835,
-                                                                columnNumber: 3
+                                                                columnNumber: 5
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                children: "Comprehensive test result logging and report generation"
-                                                            }, void 0, false, {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "3D Model Viewer:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 836,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Interactive visualization of uploaded .glb satellite models"
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                                 lineNumber: 836,
-                                                                columnNumber: 3
+                                                                columnNumber: 5
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                children: "Customisability features"
-                                                            }, void 0, false, {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "Test History & Reports:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 837,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Parameter tracking, visualization, and auto-generated .docx/.pdf reports"
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                                 lineNumber: 837,
-                                                                columnNumber: 3
+                                                                columnNumber: 5
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "MCC Integration:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 838,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Real hardware connection with simulation fallback"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                lineNumber: 838,
+                                                                columnNumber: 5
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "Multi-Window Interface:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 839,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Draggable, resizable floating windows with taskbar"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                lineNumber: 839,
+                                                                columnNumber: 5
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                        children: "Theming & Customization:"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                        lineNumber: 840,
+                                                                        columnNumber: 9
+                                                                    }, this),
+                                                                    " Light/dark mode, fonts, and background settings"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                                lineNumber: 840,
+                                                                columnNumber: 5
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                         lineNumber: 832,
-                                                        columnNumber: 1
+                                                        columnNumber: 3
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                        children: "NTU Professional Internship Project - Jan to May 2025:"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("em", {
+                                                            children: "For complete documentation and setup instructions, refer to the SATS README.md file."
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                            lineNumber: 844,
+                                                            columnNumber: 5
+                                                        }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 841,
+                                                        lineNumber: 843,
+                                                        columnNumber: 3
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 847,
+                                                        columnNumber: 2
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        children: "Credits"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 849,
+                                                        columnNumber: 2
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: "SATS - 🐧Joe Goh, Lew Jia Min"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 850,
                                                         columnNumber: 1
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("em", {
-                                                            children: "Building Satellite - Development and implementation of Automated Testing System for Satellite"
+                                                            children: "Migrated from & Built upon:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                            lineNumber: 842,
+                                                            lineNumber: 851,
                                                             columnNumber: 4
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
-                                                        lineNumber: 842,
+                                                        lineNumber: 851,
+                                                        columnNumber: 1
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: "VLEO Checkout - Ng Siew Juan, Lew Jia Min, William Xu KaiChao  "
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
+                                                        lineNumber: 852,
                                                         columnNumber: 1
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/SettingsWindow/SettingsWindow.tsx",
                                                 lineNumber: 824,
-                                                columnNumber: 17
+                                                columnNumber: 1
                                             }, this)
                                         ]
                                     }, void 0, true, {

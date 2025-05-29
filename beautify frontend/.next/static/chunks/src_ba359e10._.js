@@ -70,7 +70,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 // themeInitializer.js - with improved theme switching and event dispatching
-// This script should be included in your main layout to initialize themes from the database
+// script to initialize themes from the database
 // Import theme event functions
 __turbopack_context__.s({
     "applyBackgroundSettings": (()=>applyBackgroundSettings),

@@ -38,10 +38,9 @@ interface PropulsionTestPanelProps {
   onTestError: (error: any) => void;
   onTestStart: () => void;
   isInitialRun: boolean;
-  profileId?: string; // Add profile ID for test history
+  profileId?: string; // profile ID for test history
 }
 
-// Update your TestHistoryItem interface definition to include is_simulated
 interface TestHistoryItem {
   id: number;
   component_id: string;
@@ -64,7 +63,7 @@ interface TestHistoryItem {
   };
   status: string;
   notes?: string;
-  is_simulated?: boolean; // Add this field with optional marker
+  is_simulated?: boolean;
 }
 
 const pmaTimeParams = [
@@ -216,13 +215,13 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
   const [isForceSimulation, setIsForceSimulation] = useState(false);
   const [detectedSimulation, setDetectedSimulation] = useState(false);
   
-  // Add new states for test history
+  // states for test history
   const [showHistory, setShowHistory] = useState(false);
   const [testHistory, setTestHistory] = useState<TestHistoryItem[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<string>('temperatures.Thruster_1_Temp');
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<TestHistoryItem | null>(null);
-  // Add state variables for messages
+  // state variables for messages
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
   const [limitMessage, setLimitMessage] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -242,7 +241,6 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     { label: 'Tank Temp 1', value: 'temperatures.Tank_Temperature_1' }
   ];
   
-
 
   // Determine test options based on the filtered options
   // Check if any option contains "PMA" or "PPU"
@@ -326,7 +324,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     }
   }, [isInitialRun, hasRunTest, isRunning]);
 
-  // Add function to fetch test history
+  // function to fetch test history
   const fetchTestHistory = async (limit: number = 30) => {
     if (!profileId) {
       console.log("Cannot fetch history: No profile ID provided");
@@ -408,7 +406,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     }
   }, [showHistory, profileId]);
   
-  // Add function to save test result to history
+  // function to save test result to history
   const saveTestResult = async (testResults: any, status: string, wasSimulated: boolean) => {
     if (!profileId) {
       console.log("Cannot save history: No profile ID provided");
@@ -513,11 +511,11 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     return isNaN(numValue) ? null : numValue;
   };
   
-  // Format chart data for test history - ensure we only use real data
+  // Format chart data for test history - ensure only use real data
   const prepareChartData = () => {
     return testHistory
       .filter(item => {
-        // Ensure we only use real (non-simulated) data for charts
+        // Ensure only use real (non-simulated) data for charts
         if (item.is_simulated || item.results?.simulated) {
           return false;
         }
@@ -703,7 +701,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
     }
   };
   
-  // Add these functions for multi-select mode
+  // functions for multi-select mode
   const toggleMultiSelectMode = () => {
     setIsMultiSelectMode(!isMultiSelectMode);
     if (isMultiSelectMode) {
@@ -1180,7 +1178,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
           Propulsion Test Results - Raw Parameter Values
         </h3>
         
-        {/* Add simulation badge */}
+        {/* simulation badge */}
         <SimulationBadge isSimulation={detectedSimulation} />
       </div>
       
@@ -1758,7 +1756,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                   fontWeight: 500
                 }}>
                   <tr>
-                    {/* Add a checkbox column when in multi-select mode */}
+                    {/* a checkbox column when in multi-select mode */}
                     {isMultiSelectMode && (
                       <th style={{ 
                         padding: '12px 12px',
@@ -1828,7 +1826,7 @@ export const PropulsionTestPanel: React.FC<PropulsionTestPanelProps> = ({
                           : (isDarkMode ? '#1f2937' : '#f9fafb')),
                       transition: 'background-color 0.2s ease'
                     }}>
-                      {/* Add a checkbox column when in multi-select mode */}
+                      {/* a checkbox column when in multi-select mode */}
                       {isMultiSelectMode && (
                         <td style={{ 
                           padding: '12px 12px',

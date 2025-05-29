@@ -3,7 +3,7 @@ export interface Profile {
   name: string;
   description: string;
   images: { src: string; alt: string }[];
-  uploadedFileName?: string; // ✅ Add this line
+  uploadedFileName?: string;
 }
 
 export type WindowName = "ToTestList" | "ServerWindow" | "ThreeDModelWindow" | "SettingsWindow";

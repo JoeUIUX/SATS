@@ -1,4 +1,40 @@
-# SATS (Satellite Automated Testing System)
+# 🛰️ SATS (Satellite Automated Testing System)
+
+<!-- Row 1 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss4.png" width="45%" alt="SATS Welcome Page">
+  <img src="./SATS_images_in_README/ss5.png" width="45%" alt="To Test List">
+</p>
+<!-- Row 2 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss6.png" width="45%" alt="Server Window">
+  <img src="./SATS_images_in_README/ss7.png" width="45%" alt="Main Screen (Navigated to after Server Connection)">
+</p>
+<!-- Row 3 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss8.png" width="45%" alt="Profile About/Specifications Section 1">
+  <img src="./SATS_images_in_README/ss9.png" width="45%" alt="Profile About/Specifications Section 1">
+</p>
+<!-- Row 4 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss10.png" width="45%" alt="Profile Drag-and-Drop Checkout Test Selection">
+  <img src="./SATS_images_in_README/ss11.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 1">
+</p>
+<!-- Row 5 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss12.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 2">
+  <img src="./SATS_images_in_README/ss13.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 3">
+</p>
+<!-- Row 6 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss14.png" width="45%" alt="Automatic .docx and .pdf Reports Download upon Completion">
+  <img src="./SATS_images_in_README/ss15.png" width="45%" alt="Settings Window - Background & Font">
+</p>
+<!-- Row 7 -->
+<p align="center">
+  <img src="./SATS_images_in_README/ss16.png" width="45%" alt="Settings Window - About SATS">
+  <img src="./SATS_images_in_README/ss17.png" width="45%" alt="SATS in Lightmode">
+</p>
 
 ## Overview
 SATS is a comprehensive system designed to automate satellite testing processes. It provides engineers and operators with powerful tools for hardware checkout, system verification, and test execution. The system consists of:
@@ -7,31 +43,38 @@ SATS is a comprehensive system designed to automate satellite testing processes.
 - **Frontend**: A React/TypeScript application with an intuitive user interface for test configuration, execution, and reporting
 - **MCC Proxy**: A Node.js-based proxy for real hardware communication
 
-This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, automated checkout testing, 3D model visualization, and comprehensive reporting.
+This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, automated checkout testing, comprehensive reporting and 3D model visualization. SATS brings an enhanced user experience to the day-to-day satellite testing processes across 11 satellite subsystem tests.
 
 ---
 
 ## 🎯 Key Features
 
-### Core Functionality
-- **Profile Management**: Create, read, update, and delete satellite profiles with rich documentation
-- **Test List Management**: Track and manage tests to be conducted with customizable parameters
-- **Floating Window System**: Multi-window interface with draggable, resizable components
-- **Light/Dark Mode**: Comprehensive theming system with persistent preferences
+- **Profile Management**: Create, Edit, or Delete Profiles. Customizable persistent test profiles - About/Specifications Section, Checkout Test drag-and-drop selection, Satellite Model Viewer
+- **Profile About/Specifications**: Supports user uploads, in-app edits of text, images and formatting
+- **Profile Checkout Test Selection**: Drag-and-Drop component selection for customised testing
+- **Profile Test History**: Tracking and visualization of various parameters across 11 tests. Supports data export in .json
+- **Profile Satellite Model Viewer**: View and interact with user uploaded .glb 3D models of satellites. Shows Stats of file.
+- **Persistent To Test List**: Update and Track tests to be conducted, with notification at the Welcome Page
+- **Floating Window System**: Multi-window interface with draggable, resizable, bring-to-front components, minimizable ServerWindow to TaskBar
+- **Light/Dark Mode, Font & Background Settings**: Comprehensive theming system with persistent preferences
+
 
 ### Testing & Hardware Integration
-- **Automated Testing System**: Component-specific test panels with real-time progress tracking
-- **Multiple Subsystem Support**: OBC-1, OBC-2, S-Band, and UHF test implementations
-- **Test Report Generation**: Generate detailed Word-format test reports for all components
-- **MCC Connection**: Connect to Mission Control Center servers with simulation fallback
-- **Simulation Mode**: Toggle between real and simulated test execution
 
-### Data & Visualization
-- **Rich Document Support**: Upload and process text, docx, and image files
-- **3D Model Visualization**: View and interact with 3D models of satellites
-- **Model Optimization**: Automatic optimization of uploaded 3D models
-- **Drag-and-Drop Interface**: Interactive component selection for testing
-- **Taskbar Integration**: Minimizable windows with status tracking
+- **Multiple Subsystem Support**: Supports 11 satellite subsystem tests
+- **Automated Testing System**: Component-specific test panels with real-time progress tracking
+- **Test Report Generation**: Automatically generates and downloads detailed .docx and .pdf-format test reports after selected tests completion
+- **MCC Connection**: Connect to actual Mission Control Center servers
+- **Simulation Mode**: Simulation fallback for further development of SATS
+
+### Others
+
+- **Model Optimization**: Automatic optimization of uploaded 3D models in Satellite Model Viewer
+- **Taskbar Integration**: Minimizable Server window with status tracking while working
+- **Process Script Manager**: Launch `start-sats.bat` to run all SATS frontend, backend, MCC Proxy processes. Various in-console commands.
+- **SATS Diagnostic Tool**: Run `diagnose.js` for error identification in running SATS
+- **Frontend, Backend, MCC Proxy Logs**: Logs saved in the `logs/` directory
+- **User-Friendly prompts, insightful console logs**
 
 ---
 
@@ -39,14 +82,16 @@ This system supports efficient satellite testing workflows and includes features
 
 ```
 SATS Satellite Automated Testing System/
+│-- SATS_images_in_README/
 │-- backend/
-│   ├── .env                  # backend environment variables
-│   ├── backend_server.py     # Flask server and API endpoints
-│   ├── mccif.py              # MCC server communication module
-│   ├── requirements.txt      # Python dependencies
-│   ├── models/               # Directory for uploaded 3D models
-│   ├── satellites.db         # SQLite database
-│   ├── venv                  # virtual environment
+│   ├── .env                      # backend environment variables
+│   ├── backend_server.py         # Flask server and API endpoints
+│   ├── mccif.py                  # MCC server communication module
+│   ├── requirements.txt          # Python dependencies
+│   ├── models/                   # Directory for uploaded 3D models
+│   ├── satellites.db             # SQLite database
+│   ├── SQLiteDatabaseREADME.md   # satellites.db SQLite Database Schema (Entity Relationship Diagram)
+│   ├── venv                      # virtual environment
 │
 │-- mcc-proxy/
 │   ├── mcc-proxy.js          # Node.js proxy server for MCC communication
@@ -122,7 +167,7 @@ SATS Satellite Automated Testing System/
 │   │   │   │       ├── TestHistoryTable.tsx       # reusable component for Test History
 │   │   │   │       ├── index.ts                   # component exports
 │   │
-│   │   ├── services/         # Business logic
+│   │   ├── services/         # Business services
 │   │   │   ├── checkout/     # Test execution services
 │   │   │   │   ├── obc1Checkout.ts
 │   │   │   │   ├── obc2Checkout.ts
@@ -189,99 +234,14 @@ Make sure the following are installed before running the project:
 
 ## 🚀 Setup Instructions
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 Run the following commands in your terminal:
 ```bash
 git clone https://github.com/JoeUIUX/SATS.git
 cd "SATS Satellite Automated Testing System"
 ```
 
-### 2️⃣ Backend Setup
-Follow these steps to set up the backend:
-
-1. **Navigate to the backend folder:**
-   ```bash
-   cd backend
-   ```
-
-2. **Create and activate a virtual environment:**
-   
-   For Windows:
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-   
-   For macOS/Linux:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install the required Python dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Create a `.env` file** in the `backend` folder and add the following:
-   ```env
-   REACT_APP_BACKEND_URL=http://127.0.0.1:5000
-   FLASK_PORT=5000
-   SIMULATION_MODE=true
-   FLASK_CORS_ENABLED=true
-   ```
-
-5. **Run the backend server manually:**
-   ```bash
-   python backend_server.py
-   ```
-   Or continue with the full setup to use the integrated process manager.
-
-### 3️⃣ MCC Proxy Setup
-The MCC proxy server enables real hardware communication:
-
-1. **Navigate to the mcc-proxy folder:**
-   ```bash
-   cd ../mcc-proxy
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install ws net http
-   ```
-
-3. **Run the proxy server manually:**
-   ```bash
-   node mcc-proxy.js
-   ```
-   Or continue with the full setup to use the integrated process manager.
-
-### 4️⃣ Frontend Setup
-Follow these steps to set up the frontend:
-
-1. **Navigate to the frontend folder:**
-   ```bash
-   cd "../beautify frontend"
-   ```
-
-2. **Install the frontend dependencies:**
-   ```bash
-   npm install
-   ```
-
-   This will install all dependencies listed in package.json, including:
-   - UI component libraries (Radix UI, tailwindcss)
-   - Drag and drop libraries
-   - Document processing libraries
-   - 3D libraries
-
-3. **Run the frontend development server manually:**
-   ```bash
-   npm run dev
-   ```
-   Or continue with the full setup to use the integrated process manager.
-
-### 5️⃣ Unified System Startup (Recommended)
+### Unified System Startup (Recommended)
 SATS includes a process manager that handles all components simultaneously:
 
 1. **From the project root directory**, run:
@@ -317,18 +277,110 @@ SATS includes a process manager that handles all components simultaneously:
    http://localhost:3000
    ```
 
+### Manual Start Up
+### 1️⃣ Backend Setup
+Follow these steps to set up the backend:
+
+1. **Navigate to the backend folder:**
+   ```bash
+   cd backend
+   ```
+
+2. **Create and activate a virtual environment:**
+   
+   For Windows:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+   
+   For macOS/Linux:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install the required Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Create a `.env` file** in the `backend` folder and add the following:
+   ```env
+   REACT_APP_BACKEND_URL=http://127.0.0.1:5000
+   FLASK_PORT=5000
+   SIMULATION_MODE=false
+   FLASK_CORS_ENABLED=true
+   ```
+
+5. **Run the backend server manually:**
+   ```bash
+   python backend_server.py
+   ```
+   Or continue with the full setup to use the integrated process manager.
+
+### 2️⃣ MCC Proxy Setup
+The MCC proxy server enables real hardware communication:
+
+1. **Navigate to the mcc-proxy folder:**
+   ```bash
+   cd ../mcc-proxy
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install ws net http
+   ```
+
+3. **Run the proxy server manually:**
+   ```bash
+   node mcc-proxy.js
+   ```
+   Or continue with the full setup to use the integrated process manager.
+
+### 3️⃣ Frontend Setup
+Follow these steps to set up the frontend:
+
+1. **Navigate to the frontend folder:**
+   ```bash
+   cd "../beautify frontend"
+   ```
+
+2. **Install the frontend dependencies:**
+   ```bash
+   npm install
+   ```
+
+   This will install all dependencies listed in package.json, including:
+   - UI component libraries (Radix UI, tailwindcss)
+   - Drag and drop libraries
+   - Document processing libraries
+   - 3D libraries
+
+3. **Run the frontend development server manually:**
+   ```bash
+   npm run dev
+   ```
+   Or continue with the full setup to use the integrated process manager.
+
 ---
 
 ## 📝 Environment Variables
 
+### Environment Variables
+In the `SATS Satellite Automated Testing System/.env` file:
+```env
+REACT_APP_BACKEND_URL=http://127.0.0.1:5000 
+REACT_APP_MCC_SIMULATION=false 
+REACT_APP_MCC_LOG_LEVEL=debug 
+FLASK_CORS_ENABLED=true 
+FLASK_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000 
+```
+
 ### Backend Environment Variables
 In the `backend/.env` file:
 ```env
-REACT_APP_BACKEND_URL=http://127.0.0.1:5000
 FLASK_PORT=5000
-SIMULATION_MODE=true
-FLASK_CORS_ENABLED=true
-FLASK_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ```
 
 ### Frontend Environment Variables
@@ -352,35 +404,47 @@ FLASK_CORS_ENABLED=true
 ## 🔌 API Endpoints
 
 ### Profile Management
-- `GET /profiles` - Get all profiles
-- `POST /profiles` - Create a new profile
-- `PUT /profiles/<name>` - Update a profile
-- `DELETE /profiles/<name>` - Delete a profile
+- `GET /profiles` - Get all profiles with descriptions and images
+- `POST /profiles` - Create a new profile with description, images, and uploaded filename
+- `PUT /profiles/<name>` - Update profile description, images, and uploaded filename
+- `DELETE /profiles/<name>` - Delete a profile by name
 
 ### 3D Model Management
-- `GET /api/profile/<profile_id>` - Get profile model path
-- `POST /api/upload-glb` - Upload a GLB model file
-- `GET /models/<filename>` - Serve a 3D model file
+- `GET /api/profile/<int:profile_id>` - Get 3D model path for a specific profile ID
+- `POST /api/upload-glb` - Upload and assign a GLB model to a profile (with optimization)
+- `GET /models/<filename>` - Serve 3D model files with caching headers
 
 ### Test Management
-- `GET /test-items` - Get all test items
-- `POST /test-items` - Save test items
-- `DELETE /test-items/<item_id>` - Delete a specific test item
-- `DELETE /test-items/clear` - Clear all test items
+- `GET /test-items` - Get all test items from database
+- `POST /test-items` - Save/replace all test items in database
+- `DELETE /test-items/<int:item_id>` - Delete a specific test item by ID
+- `DELETE /test-items/clear` - Clear all test items from database
 
 ### Checkout Management
-- `POST /checkout/save` - Save checkout items for a profile
-- `GET /checkout/load/<profile_id>` - Load checkout items for a profile
+- `POST /checkout/save` - Save checkout items configuration for a profile
+- `GET /checkout/load/<profile_id>` - Load saved checkout items for a profile
+- `OPTIONS /checkout/save` - CORS preflight for checkout save
+- `OPTIONS /checkout/load/<profile_id>` - CORS preflight for checkout load
+
+### Test Results & History
+- `GET /test-results/<profile_id>` - Get test results for a profile (with optional component filter)
+- `POST /test-results` - Save a new test result with simulation tracking
+- `POST /test-results/cleanup-simulated` - Remove all simulated test results from database
+- `POST /test-results/limit/<profile_id>` - Limit test history records for a profile
+- `DELETE /test-results/clear/<profile_id>` - Clear all test history for a profile (with optional component filter)
+- `DELETE /test-results/<int:result_id>` - Delete a specific test result by ID
 
 ### MCC Connection
-- `POST /connect_mcc` - Connect to MCC server
+- `POST /connect_mcc` - Connect to MCC server with address, port, server_id, and proxy options
 
-### Theme Management
-- `GET /settings` - Get application settings including theme
-- `POST /settings` - Save application settings
-- `GET /backgrounds` - Get available background options
-- `POST /upload-background` - Upload a custom background
-- `POST /apply-background` - Apply a selected background
+### Settings & Theme Management
+- `GET /settings` - Get application settings (theme, font, backgrounds)
+- `POST /settings` - Save application settings with automatic timestamp updates
+- `GET /backgrounds` - Get available backgrounds (default and custom uploaded)
+- `POST /upload-background` - Upload a custom background image
+- `DELETE /backgrounds/<int:background_id>` - Delete a custom background
+- `POST /apply-background` - Apply a background for specific theme mode (dark/light)
+- `GET /assets/<filename>` - Serve static assets (backgrounds) with caching headers
 
 ---
 
@@ -425,6 +489,7 @@ The React frontend uses the following dependencies (defined in `package.json`):
 - **`file-saver`** - File download functionality
 - **`papaparse`** - CSV parsing
 - **`sheetjs`** - Excel file processing
+- **`jspdf`** - PDF report generation
 
 #### 3D Visualization
 - **`three`** – 3D model rendering
@@ -481,49 +546,140 @@ If the MCC proxy fails to connect:
 
 ---
 
-## 📦 New Features & Additions
+## 🆕 Possible Additions
 
-### Latest Feature Additions
-- **Multiple Test Panels**: Added OBC-2, S-Band, and UHF test panels
-- **Comprehensive Report Generation**: Report generators for all subsystems
-- **Taskbar Component**: New taskbar for managing minimized windows
-- **Enhanced Theme System**: Dynamic theme changes with event system
-- **Background Customization**: Upload and manage custom backgrounds
-- **Window State Management**: Persistent window positions and states
-- **Diagnostic Tools**: System diagnosis and troubleshooting utilities
-- **Process Manager**: Unified service management for easier startup
-- **Log Rotation**: Automatic log management to prevent disk space issues
-
-### Upcoming Features
-- Data visualization for test results
-- Additional hardware component support
-- Test sequence automation
-- Advanced 3D model interaction
-- User account management
-- PDF report generation
-- Test history and comparison tools
+### Potential Features
+- Additional hardware component support for new checkout subsytem tests or satellite integration test type
+- Advanced 3D model interaction e.g. highlighting and describing satellite payloads from cursor hover
 
 ---
 
-## 🎯 Best Practices
+## 🔧 Development Guidelines
 
-### System Operation
-- Always use the process manager (`sats-manager.js` or `start-sats.bat`) for the most stable operation
-- For development, consider running components individually for better error isolation
-- Check logs regularly for potential issues (`logs/` directory)
-- Use simulation mode for development and testing without hardware
-- Enable real mode only when hardware is properly connected
-
-### Development Guidelines
+- For development, consider running SATS Frontend, Backend, MCC Proxy individually for better error isolation
 - Follow the established component patterns for new features
 - Use TypeScript for type safety
 - Implement proper error handling in all network operations
 - Use CSS modules for component-specific styling
 - Maintain the existing theme compatibility
 
+### Add a New Window in MainScreen
+- To ensure the new window is shown in MainScreen (after a Server Connection), ensure windows are not hidden with these CSS styles
+   ```bash
+        top: 0,          /* Make sure it's not hidden below viewport */
+        left: 0          /* Make sure it's not hidden off-screen */
+   ```
+- Refer to CSS styles in existing windows that are shown in MainScreen such as in CheckoutTestProgress.module.css (note that WelcomeWindow is shown before MainScreen)
+![CSS styles for windows in MainScreen](./SATS_images_in_README/ss1.png)
+
+
+### Add a New Checkout Test
+- Add a new draggable item for the new test, with its test options. This will show as a new item in the Checkout Test Selection draggable items.
+**add in MainScreen.tsx**
+e.g. OBC-1 Test
+   ```bash
+        const [items, setItems] = useState<DraggableItem[]>([
+          { 
+            id: "1", 
+            header: "OBC-1", 
+            options: ["eMMC"], 
+            isDropped: false, 
+            checkedOptions: createDefaultCheckedOptions(["eMMC"])
+          },
+   ```
+
+- Create `newtestCheckout.ts` in the `SATS Satellite Automated Testing System\beautify frontend\src\services\checkout` directory. 
+The Checkout file will serve as the **core testing logic module** for the new test. 
+It will 
+  - orchestrate the complete new test sequence
+  - handle hardware communication via `mccifRead()`, `mccifSet()`etc
+  - manage simulation vs. real hardware mode
+  - processes and structures test data into organized data for reporting and analysis
+  - provides progress tracking which will report test progress to the UI components through callback functions
+
+- Create `newtestReport.ts` in the `SATS Satellite Automated Testing System\beautify frontend\src\services\reports` directory. 
+The Report file will serve as the **report generation service** that creates comprehensive .docx and .pdf test reports for the new test. 
+
+- Create a `NEWTESTTestPanel.tsx` in the `SATS Satellite Automated Testing System\beautify frontend\src\components\CheckoutTestProgress\components` directory.
+The Test Panel file will serve as the dedicated test interface for the new test.
+It will **handle automated checkout testing specifically for the new test**
+  - Test Configuration and Execution where specific tests are determined to run based on checked test options
+  - Handles both real hardware and simulation modes
+  - Manages test parameters and progress tracking
+  - Test parameters results display
+  - Test History tracking and display, Visualization with charts, Manages test result storage and retrieval
+  - Calls for Report Generation
+
+- To have **additional specific styles on top of the reusable base CSS styles for the new test**, create an accompanying `NEWTESTTestPanel.module.css` in the `SATS Satellite Automated Testing System\beautify frontend\src\components\CheckoutTestProgress\components` directory for its CSS Styles to be imported in `NEWTESTTestPanel.tsx` in additional to the reusable base CSS styles
+
+- Add on to `CheckoutTestProgress.tsx` in the following parts
+
+  - Generate report for the new test
+
+  e.g. OBC-1 Test
+  ```bash
+          // Generate report based on component type
+          switch (item.header) {
+            case 'OBC-1':
+              reportFileName = await generateOBC1Report(result.results);
+              break;
+   ```
+
+  - Render the new test panel
+    ```bash
+                    {/* Render the appropriate test panel based on component type */}
+                    {item.header === "OBC-1" && (
+                      <OBC1TestPanel
+                        key={`panel-${panelKey}`} // key to force remount
+                        options={getComponentOptions(item.header)} // Pass only the filtered/checked options
+                        sock={sock}
+                        onTestComplete={(results) => 
+                          updateTestResult(item.header, { 
+                            status: 'completed', 
+                            results 
+                          })
+                        }
+                        onTestError={(error: Error | string | unknown) => 
+                          updateTestResult(item.header, { 
+                            status: 'error', 
+                            message: error instanceof Error ? error.message : String(error) 
+                          })
+                        }
+                        onTestStart={() => 
+                          updateTestResult(item.header, { 
+                            status: 'running' 
+                          })
+                        }
+                        isInitialRun={currentlyRunningTest === item.header}
+                        profileId={selectedProfile ?? undefined}
+                      />
+                    )}
+   ```
+   add it above the placeholder, look for these lines
+   ```bash
+
+                    {/* Add implementations for other component types here */}
+                    {/* For now, show a placeholder for unimplemented components */}
+
+   ```
+
+- Verify that necessary export and import statements are present
+
+### Updating Parameters in a Specifc Checkout Test
+- Replace parameters in variable arrays, edit displayed text in TestPanel tab UI and in Report, and fix errors caused by parameter if any (e.g. expecting how many arguments) in corresponding `TestPanel.tsx`, `Checkout.ts`, `Report.ts` files
+
+e.g. updating parameters in Propulsion Checkout Test - to replace `PROPULSION1_Error_vector_1` parameter
+  - find and replace the parameter in its variable array in `PropulsionTestPanel.tsx`, `propulsionCheckout.ts`, `propulsionReport.ts`
+  ![Propulsion test parameters array](./SATS_images_in_README/ss2.png)
+
+  - Rename any UI and Report texts that displays the reading of the `PROPULSION1_Error_vector_1` parameter 
+  ![Parameter label](./SATS_images_in_README/ss3.png)
+
+
 ---
 
 ## **Author**
-👤 **Joe Goh**  
+🐧 **Joe Goh**  
+Developed from Jan - May 2025
 
 ---

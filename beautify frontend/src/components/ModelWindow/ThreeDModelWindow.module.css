@@ -6,7 +6,7 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: var(--window-z-index, 1) !important; /* ✅ Uses dynamic z-index */
+  z-index: var(--window-z-index, 1) !important; /* Uses dynamic z-index */
 }
   
   @keyframes popup-show {
@@ -57,11 +57,11 @@
     text-align: center;
   }
   
-/* ✅ Fix drag cursor */
+/* Fix drag cursor */
 .drag-handle {
   cursor: grab !important;
-  background-color: rgba(0, 0, 0, 0.1) !important; /* ✅ Makes drag area visible */
-  padding: 12px !important; /* ✅ Ensures easy dragging */
+  background-color: rgba(0, 0, 0, 0.1) !important; /* Makes drag area visible */
+  padding: 12px !important; /* Ensures easy dragging */
   border-bottom: 2px solid var(--border-color) !important;
 }
 
@@ -70,7 +70,6 @@
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Add this to your CSS file or include it in a style tag */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
