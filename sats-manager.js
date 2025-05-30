@@ -1,12 +1,171 @@
 // sats-manager.js
 // Process manager for Satellite Automated Testing System
 // Starts and manages all three required processes - backend, mcc-proxy, frontend
+// edit together with start-sats.bat usually
 
 const { spawn } = require('child_process');
 const path = require('path');
 const readline = require('readline');
 const fs = require('fs');
 const os = require('os');
+
+// prerequisite checking function
+const checkPrerequisites = () => {
+  return new Promise((resolve) => {
+    const { spawn } = require('child_process');
+    const checks = [];
+    
+    // Check Node.js
+    const nodeCheck = spawn('node', ['--version'], { shell: true });
+    nodeCheck.on('close', (code) => {
+      if (code === 0) {
+        log('✅ Node.js is available', null);
+      } else {
+        log('❌ Node.js not found - please install from https://nodejs.org/', null);
+        checks.push('node');
+      }
+    });
+    
+    // Check npm
+    const npmCheck = spawn('npm', ['--version'], { shell: true });
+    npmCheck.on('close', (code) => {
+      if (code === 0) {
+        log('✅ npm is available', null);
+      } else {
+        log('❌ npm not found - should come with Node.js installation', null);
+        checks.push('npm');
+      }
+    });
+    
+    // Check Python
+    const pythonCheck = spawn('python', ['--version'], { shell: true });
+    pythonCheck.on('close', (code) => {
+      if (code === 0) {
+        log('✅ Python is available', null);
+        setTimeout(() => resolve(checks.length === 0), 1000);
+      } else {
+        // Try python3
+        const python3Check = spawn('python3', ['--version'], { shell: true });
+        python3Check.on('close', (code3) => {
+          if (code3 === 0) {
+            log('✅ Python3 is available', null);
+          } else {
+            log('❌ Python/Python3 not found - please install from https://python.org/', null);
+            checks.push('python');
+          }
+          setTimeout(() => resolve(checks.length === 0), 1000);
+        });
+      }
+    });
+  });
+};
+
+// frontend dependency installation
+const installFrontendDependencies = () => {
+  return new Promise((resolve) => {
+    const nodeModulesPath = path.join(CONFIG.frontendPath, 'node_modules');
+    
+    if (fs.existsSync(nodeModulesPath)) {
+      log('Frontend dependencies already installed', frontendLog);
+      resolve(true);
+      return;
+    }
+    
+    log('Installing frontend dependencies...', frontendLog);
+    log('This may take a few minutes for first-time setup', frontendLog);
+    
+    const installProcess = spawn(CONFIG.frontendCommand, ['install'], {
+      cwd: CONFIG.frontendPath,
+      shell: true
+    });
+    
+    installProcess.stdout.on('data', (data) => {
+      handleProcessOutput(data, 'Frontend Install', frontendLog);
+    });
+    
+    installProcess.stderr.on('data', (data) => {
+      handleProcessOutput(data, 'Frontend Install Error', frontendLog);
+    });
+    
+    installProcess.on('close', (code) => {
+      if (code === 0) {
+        log('✅ Frontend dependencies installed successfully', frontendLog);
+        resolve(true);
+      } else {
+        log(`❌ Failed to install frontend dependencies (exit code: ${code})`, frontendLog);
+        resolve(false);
+      }
+    });
+    
+    installProcess.on('error', (err) => {
+      log(`❌ Error installing frontend dependencies: ${err.message}`, frontendLog);
+      resolve(false);
+    });
+  });
+};
+
+// MCC proxy dependency installation
+const installProxyDependencies = () => {
+  return new Promise((resolve) => {
+    const nodeModulesPath = path.join(CONFIG.proxyPath, 'node_modules');
+    
+    if (fs.existsSync(nodeModulesPath)) {
+      log('MCC proxy dependencies already installed', proxyLog);
+      resolve(true);
+      return;
+    }
+    
+    log('Installing MCC proxy dependencies...', proxyLog);
+    
+    const installProcess = spawn(CONFIG.frontendCommand, ['install', 'ws', 'net', 'http'], {
+      cwd: CONFIG.proxyPath,
+      shell: true
+    });
+    
+    installProcess.stdout.on('data', (data) => {
+      handleProcessOutput(data, 'Proxy Install', proxyLog);
+    });
+    
+    installProcess.stderr.on('data', (data) => {
+      handleProcessOutput(data, 'Proxy Install Error', proxyLog);
+    });
+    
+    installProcess.on('close', (code) => {
+      if (code === 0) {
+        log('✅ MCC proxy dependencies installed successfully', proxyLog);
+        resolve(true);
+      } else {
+        log(`❌ Failed to install MCC proxy dependencies (exit code: ${code})`, proxyLog);
+        resolve(false);
+      }
+    });
+    
+    installProcess.on('error', (err) => {
+      log(`❌ Error installing MCC proxy dependencies: ${err.message}`, proxyLog);
+      resolve(false);
+    });
+  });
+};
+
+// directory creation function
+const createNecessaryDirectories = () => {
+  const dirs = [
+    CONFIG.logPath,
+    path.join(CONFIG.backendPath, 'models'),
+    path.join(process.cwd(), 'logs')
+  ];
+  
+  dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      try {
+        fs.mkdirSync(dir, { recursive: true });
+        log(`✅ Created directory: ${dir}`, null);
+      } catch (error) {
+        log(`❌ Failed to create directory ${dir}: ${error.message}`, null);
+      }
+    }
+  });
+};
 
 // Configuration (adjust these paths as needed)
 const CONFIG = {
@@ -567,24 +726,56 @@ const startFrontend = () => {
 };
 
 // Start all processes
-const startAll = () => {
-  log('Starting all SATS services...', null);
-
+const startAll = async () => {
+  log('SATS Startup Sequence Starting...', null);
+  log('=================================', null);
+  
+  // Step 1: Check prerequisites
+  log('Step 1: Checking prerequisites...', null);
+  const prereqsOk = await checkPrerequisites();
+  if (!prereqsOk) {
+    log('❌ Prerequisites check failed. Please install missing components.', null);
+    return;
+  }
+  
+  // Step 2: Create directories
+  log('Step 2: Creating necessary directories...', null);
+  createNecessaryDirectories();
+  
+  // Step 3: Rotate logs
+  log('Step 3: Checking log files...', null);
   rotateLogFiles();
-
+  
+  // Step 4: Install dependencies
+  log('Step 4: Installing dependencies...', null);
+  
+  const frontendOk = await installFrontendDependencies();
+  const proxyOk = await installProxyDependencies();
+  
+  if (!frontendOk || !proxyOk) {
+    log('❌ Dependency installation failed. Check logs for details.', null);
+    log('You may need to run npm install manually in the respective directories.', null);
+  }
+  
+  // Step 5: Start services
+  log('Step 5: Starting all SATS services...', null);
+  
   startBackend();
   
-  // Increase the delay before starting proxy
   setTimeout(() => {
     startProxy();
     
-    // Increase the delay before starting frontend
     setTimeout(() => {
       startFrontend();
-      log('All SATS services started!', null);
-      log('Press "q" to quit all processes, or "h" for help', null);
-    }, 5000); // Increased from 2000ms to 5000ms
-  }, 8000); // Increased from 3000ms to 8000ms
+      log('==========================================', null);
+      log('✅ All SATS services started successfully!', null);
+      log('🌐 Frontend: http://localhost:3000', null);
+      log('🔧 Backend: http://localhost:5000', null);
+      log('🔗 MCC Proxy: ws://localhost:8080', null);
+      log('==========================================', null);
+      log('Commands: q=quit, r=restart, h=help', null);
+    }, 5000);
+  }, 8000);
 };
   
   // Helper function to kill a process with the appropriate signal for the platform
@@ -745,6 +936,70 @@ const commands = {
   description: 'Clean/rotate log files',
   action: rotateLogFiles
 },
+'d': {
+    description: 'Run diagnostics',
+    action: async () => {
+      log('Running system diagnostics...', null);
+      const prereqsOk = await checkPrerequisites();
+      createNecessaryDirectories();
+      
+      // Check if all services are responding
+      const http = require('http');
+      
+      // Check backend
+      const backendReq = http.get('http://localhost:5000', (res) => {
+        log(`✅ Backend responding (Status: ${res.statusCode})`, null);
+      });
+      backendReq.on('error', () => {
+        log('❌ Backend not responding', null);
+      });
+      backendReq.setTimeout(2000, () => {
+        backendReq.abort();
+        log('❌ Backend timeout', null);
+      });
+      
+      // Check frontend
+      const frontendReq = http.get('http://localhost:3000', (res) => {
+        log(`✅ Frontend responding (Status: ${res.statusCode})`, null);
+      });
+      frontendReq.on('error', () => {
+        log('❌ Frontend not responding', null);
+      });
+      frontendReq.setTimeout(2000, () => {
+        frontendReq.abort();
+        log('❌ Frontend timeout', null);
+      });
+    }
+  },
+  
+  'i': {
+    description: 'Reinstall all dependencies',
+    action: async () => {
+      log('Reinstalling all dependencies...', null);
+      
+      // Remove node_modules directories
+      const frontendNodeModules = path.join(CONFIG.frontendPath, 'node_modules');
+      const proxyNodeModules = path.join(CONFIG.proxyPath, 'node_modules');
+      
+      try {
+        if (fs.existsSync(frontendNodeModules)) {
+          fs.rmSync(frontendNodeModules, { recursive: true, force: true });
+          log('Removed frontend node_modules', null);
+        }
+        if (fs.existsSync(proxyNodeModules)) {
+          fs.rmSync(proxyNodeModules, { recursive: true, force: true });
+          log('Removed proxy node_modules', null);
+        }
+      } catch (error) {
+        log(`Error removing node_modules: ${error.message}`, null);
+      }
+      
+      // Reinstall
+      await installFrontendDependencies();
+      await installProxyDependencies();
+      log('Dependency reinstallation complete', null);
+    }
+  }
 };
 
 // Process keypresses
@@ -759,7 +1014,7 @@ process.stdin.on('keypress', (str, key) => {
 
 // Start all processes
 log('SATS Process Manager', null);
-log('-----------------', null);
+log('--------------------', null);
 log('Starting services...', null);
 log('Press "h" for available commands', null);
 

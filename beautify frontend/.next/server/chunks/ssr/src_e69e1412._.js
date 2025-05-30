@@ -829,20 +829,20 @@ function debugSocketType(sock) {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-// Fixed page.tsx - Key changes to avoid infinite rendering loop and keep ServerWindow open
-/* implement routing using react-router-dom, 
-you'll need to transform your page.tsx into an entry point for routing. */ /* npm install react-router-dom */ __turbopack_context__.s({
+// using Next.js routing
+// remove react-router-dom via npm uninstall react-router-dom in frontend directory
+__turbopack_context__.s({
     "default": (()=>Page)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-router-dom/dist/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/MainScreen/MainScreen.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ToTestList$2f$ToTestList$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ToTestList/ToTestList.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ServerWindow/ServerWindow.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ModelWindow/ThreeDModelWindow.jsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/WelcomeWindow/WelcomeWindow.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Taskbar$2f$Taskbar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Taskbar/Taskbar.tsx [app-ssr] (ecmascript)"); // Import the Taskbar component
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Taskbar$2f$Taskbar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Taskbar/Taskbar.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/SettingsWindow/SettingsWindow.tsx [app-ssr] (ecmascript)");
 "use client";
 ;
@@ -858,6 +858,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Setting
 // Global variable to track ToTestList state across routes and navigations
 let isToTestListOpen = false;
 function Page() {
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
+    // Get current route from URL params
+    const currentRoute = searchParams.get('route') || 'welcome';
     // Window visibility state - Use refs to avoid state race conditions
     const windowVisibilityRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({
         ToTestList: false,
@@ -873,9 +877,8 @@ function Page() {
         SettingsWindow: false
     });
     // New state for minimized windows - only for ServerWindow
-    // Store just the window info, not the restore function
     const [minimizedWindows, setMinimizedWindows] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [zIndexCounter, setZIndexCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(10000); // Base z-index
+    const [zIndexCounter, setZIndexCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(10000);
     const [windowZIndexes, setWindowZIndexes] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         ToTestList: 10002,
         ServerWindow: 10001,
@@ -884,38 +887,41 @@ function Page() {
     });
     const [threeDModelProfileId, setThreeDModelProfileId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const [isOnMainScreen, setIsOnMainScreen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [serverWindowKey, setServerWindowKey] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(Date.now()); // Key for ServerWindow
+    const [serverWindowKey, setServerWindowKey] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(Date.now());
     // Monitor current route to track if we're on main screen
-    const RouteObserver = ()=>{
-        const location = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLocation"])();
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-            const isMain = location.pathname === '/main';
-            setIsOnMainScreen(isMain);
-            // When navigating to main screen, restore window visibility from global state
-            if (isMain) {
-                console.log("🧭 Navigated to main screen, checking window states");
-                // Check if ToTestList should be open based on global flag
-                if (isToTestListOpen && !windowVisibility.ToTestList) {
-                    console.log("🔄 ToTestList should be visible - restoring state");
-                    setWindowVisibility((prev)=>({
-                            ...prev,
-                            ToTestList: true
-                        }));
-                    // Force the ref to match as well
-                    windowVisibilityRef.current = {
-                        ...windowVisibilityRef.current,
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const isMain = currentRoute === 'main';
+        setIsOnMainScreen(isMain);
+        // When navigating to main screen, restore window visibility from global state
+        if (isMain) {
+            console.log("🧭 Navigated to main screen, checking window states");
+            // Check if ToTestList should be open based on global flag
+            if (isToTestListOpen && !windowVisibility.ToTestList) {
+                console.log("🔄 ToTestList should be visible - restoring state");
+                setWindowVisibility((prev)=>({
+                        ...prev,
                         ToTestList: true
-                    };
-                }
+                    }));
+                // Force the ref to match as well
+                windowVisibilityRef.current = {
+                    ...windowVisibilityRef.current,
+                    ToTestList: true
+                };
             }
-        }, [
-            location
-        ]);
-        return null;
+        }
+    }, [
+        currentRoute,
+        windowVisibility.ToTestList
+    ]);
+    // Navigation functions to replace react-router-dom
+    const navigateToMain = ()=>{
+        router.push('/?route=main');
+    };
+    const navigateToWelcome = ()=>{
+        router.push('/');
     };
     // Load window state from sessionStorage on initial mount
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // Load window visibility from sessionStorage on mount
         const savedVisibility = sessionStorage.getItem('windowVisibility');
         if (savedVisibility) {
             try {
@@ -932,7 +938,6 @@ function Page() {
     }, []);
     // Save window visibility to sessionStorage whenever it changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // Save visibility state to sessionStorage for persistence
         sessionStorage.setItem('windowVisibility', JSON.stringify(windowVisibility));
         console.log("💾 Saved window visibility state:", windowVisibility);
         // Update global flag for ToTestList
@@ -942,7 +947,6 @@ function Page() {
     ]);
     // Extra check to ensure ToTestList stays visible when it should be
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // If global flag is true but component is not visible, fix it
         if (isToTestListOpen && !windowVisibility.ToTestList) {
             console.log("🔄 Fixing ToTestList visibility mismatch");
             setWindowVisibility((prev)=>({
@@ -1027,7 +1031,6 @@ function Page() {
             }
             // Only update if we're actually bringing something to the front
             console.log(`Updating z-index for ${windowName} from ${prevIndexes[windowName]} to ${highestZIndex + 1}`);
-            // FIX: Use prevIndexes instead of prev
             return {
                 ...prevIndexes,
                 [windowName]: highestZIndex + 1
@@ -1041,7 +1044,7 @@ function Page() {
     // Function to minimize a window - ONLY for ServerWindow
     const minimizeServerWindow = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((status)=>{
         console.log(`⬇️ Minimizing ServerWindow with status: ${status}`);
-        // Add to minimized windows - just the window info, not the restore function
+        // Add to minimized windows
         setMinimizedWindows((prev)=>{
             // Check if already minimized
             if (prev.some((win)=>win.id === "ServerWindow")) {
@@ -1051,7 +1054,7 @@ function Page() {
                         status
                     } : win);
             }
-            // Add to minimized windows - ONLY STORE THE DATA, NOT THE FUNCTION
+            // Add to minimized windows
             return [
                 ...prev,
                 {
@@ -1072,25 +1075,16 @@ function Page() {
             ServerWindow: false
         };
     }, []);
-    // Enhanced openToTestList function with force render option
     const openToTestList = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((forceRender = false)=>{
         console.log("🔍 openToTestList called with forceRender:", forceRender);
         console.log("🔍 Current visibility state:", windowVisibility.ToTestList);
-        console.log("🟢 Opening ToTestList window, force:", forceRender);
-        // If force render, skip the check for already being open
+        // If window is already open and we're not forcing a render, just bring to front
         if (!forceRender && windowVisibility.ToTestList === true) {
             console.log("ToTestList already open - just bringing to front");
-            // Check if the actual window exists in the DOM
-            const elementExists = !!document.querySelector('[data-window="ToTestList"]');
-            if (!elementExists) {
-                console.log("⚠️ ToTestList state is true but window not in DOM - forcing render");
-            // Continue execution to render the window
-            } else {
-                // Just bring to front and exit
-                bringWindowToFront("ToTestList");
-                return;
-            }
+            bringWindowToFront("ToTestList");
+            return;
         }
+        console.log("🟢 Opening ToTestList window, force:", forceRender);
         // Set global flag for cross-component communication
         isToTestListOpen = true;
         // Update ref (for immediate access without waiting for re-render)
@@ -1119,31 +1113,10 @@ function Page() {
         };
         sessionStorage.setItem('windowVisibility', JSON.stringify(currentState));
         console.log("Updated sessionStorage:", currentState);
-        // Verify if window was actually rendered
-        setTimeout(()=>{
-            const elementExists = !!document.querySelector('[data-window="ToTestList"]');
-            console.log(`Verification after opening: ToTestList in DOM: ${elementExists}`);
-            // If it still doesn't exist, try one more time with a state reset
-            if (!elementExists) {
-                console.log("⚠️ ToTestList still not in DOM after opening - trying state reset");
-                // Force a clear state first
-                setWindowVisibility((prev)=>({
-                        ...prev,
-                        ToTestList: false
-                    }));
-                // Then re-render after a short delay
-                setTimeout(()=>{
-                    setWindowVisibility((prev)=>({
-                            ...prev,
-                            ToTestList: true
-                        }));
-                }, 10);
-            }
-        }, 50);
     }, [
         bringWindowToFront,
         windowVisibility.ToTestList
-    ]);
+    ]); // no unnecessary verification logic
     const closeToTestList = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
         console.log("🔍 closeToTestList called");
         console.log("🔍 Current visibility state:", windowVisibility.ToTestList);
@@ -1284,63 +1257,45 @@ function Page() {
                 SettingsWindow: false
             }));
     }, []);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BrowserRouter"], {
+    // Render based on current route
+    const renderCurrentView = ()=>{
+        if (currentRoute === 'main') {
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                showSettingsWindow: windowVisibility.SettingsWindow,
+                openSettingsWindow: openSettingsWindow,
+                closeSettingsWindow: closeSettingsWindow,
+                openToTestList: openToTestList,
+                closeToTestList: closeToTestList,
+                openServerWindow: openServerWindow,
+                openModelWindow: openModelWindow,
+                closeModelWindow: closeModelWindow,
+                showToTestList: windowVisibility.ToTestList,
+                showThreeDModelWindow: windowVisibility.ThreeDModelWindow,
+                threeDModelProfileId: threeDModelProfileId,
+                windowZIndexes: windowZIndexes,
+                bringWindowToFront: bringWindowToFront,
+                zIndexCounter: zIndexCounter
+            }, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 458,
+                columnNumber: 9
+            }, this);
+        }
+        // Default to WelcomeWindow
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+            openToTestList: openToTestList,
+            openServerWindow: openServerWindow,
+            // Pass navigation function to allow navigation to main
+            onNavigateToMain: navigateToMain
+        }, void 0, false, {
+            fileName: "[project]/src/app/page.tsx",
+            lineNumber: 479,
+            columnNumber: 7
+        }, this);
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(RouteObserver, {}, void 0, false, {
-                fileName: "[project]/src/app/page.tsx",
-                lineNumber: 483,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Routes"], {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Route"], {
-                        path: "/",
-                        element: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WelcomeWindow$2f$WelcomeWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            openToTestList: openToTestList,
-                            openServerWindow: openServerWindow
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 487,
-                            columnNumber: 11
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 486,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$router$2d$dom$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Route"], {
-                        path: "/main",
-                        element: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MainScreen$2f$MainScreen$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            showSettingsWindow: windowVisibility.SettingsWindow,
-                            openSettingsWindow: openSettingsWindow,
-                            closeSettingsWindow: closeSettingsWindow,
-                            openToTestList: openToTestList,
-                            closeToTestList: closeToTestList,
-                            openServerWindow: openServerWindow,
-                            openModelWindow: openModelWindow,
-                            closeModelWindow: closeModelWindow,
-                            showToTestList: windowVisibility.ToTestList,
-                            showThreeDModelWindow: windowVisibility.ThreeDModelWindow,
-                            threeDModelProfileId: threeDModelProfileId,
-                            windowZIndexes: windowZIndexes,
-                            bringWindowToFront: bringWindowToFront,
-                            zIndexCounter: zIndexCounter
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 493,
-                            columnNumber: 11
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 492,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/app/page.tsx",
-                lineNumber: 485,
-                columnNumber: 7
-            }, this),
+            renderCurrentView(),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "window-container",
                 children: [
@@ -1351,10 +1306,11 @@ function Page() {
                         bringWindowToFront: bringWindowToFront,
                         windowZIndexes: windowZIndexes,
                         zIndexCounter: zIndexCounter
-                    }, `ToTestList-${Date.now()}`, false, {
+                    }, "ToTestList" // <- USE STABLE KEY
+                    , false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 515,
-                        columnNumber: 11
+                        lineNumber: 496,
+                        columnNumber: 3
                     }, this),
                     windowVisibility.ServerWindow && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServerWindow$2f$ServerWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         zIndex: windowZIndexes.ServerWindow,
@@ -1363,10 +1319,12 @@ function Page() {
                         onMinimize: minimizeServerWindow,
                         bringWindowToFront: bringWindowToFront,
                         windowZIndexes: windowZIndexes,
-                        zIndexCounter: zIndexCounter
+                        zIndexCounter: zIndexCounter,
+                        // Pass navigation function for when connection is successful
+                        onNavigateToMain: navigateToMain
                     }, `ServerWindow-${serverWindowKey}`, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 527,
+                        lineNumber: 508,
                         columnNumber: 11
                     }, this),
                     windowVisibility.ThreeDModelWindow && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModelWindow$2f$ThreeDModelWindow$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1380,7 +1338,7 @@ function Page() {
                         bringWindowToFront: bringWindowToFront
                     }, `ThreeDModel-${threeDModelProfileId}`, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 540,
+                        lineNumber: 523,
                         columnNumber: 11
                     }, this),
                     windowVisibility.SettingsWindow && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SettingsWindow$2f$SettingsWindow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1392,13 +1350,13 @@ function Page() {
                         zIndexCounter: zIndexCounter
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 554,
-                        columnNumber: 3
+                        lineNumber: 537,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 513,
+                lineNumber: 494,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Taskbar$2f$Taskbar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1408,15 +1366,11 @@ function Page() {
                     }))
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 566,
+                lineNumber: 549,
                 columnNumber: 7
             }, this)
         ]
-    }, void 0, true, {
-        fileName: "[project]/src/app/page.tsx",
-        lineNumber: 482,
-        columnNumber: 5
-    }, this);
+    }, void 0, true);
 }
 }}),
 

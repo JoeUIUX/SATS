@@ -1,4 +1,4 @@
-// themeInitializer.js - with improved theme switching and event dispatching
+// themeInitializer.js - improved theme switching and event dispatching with complete SSR protection
 // script to initialize themes from the database
 
 // Import theme event functions
@@ -17,6 +17,12 @@ const CACHE_TTL = 2000; // Cache time-to-live in milliseconds (2 seconds)
  * This should be called when the application starts
  */
 export async function initializeThemeBackgrounds() {
+  // ENHANCED SSR CHECK - Don't run during SSR
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    console.log('Skipping theme initialization during SSR');
+    return;
+  }
+
   try {
     // Fetch settings from the backend
     const settings = await fetchThemeSettings();
@@ -48,6 +54,12 @@ export async function initializeThemeBackgrounds() {
  * Fetch theme settings from the server with caching
  */
 export async function fetchThemeSettings(forceRefresh = false) {
+  // SSR CHECK
+  if (typeof window === 'undefined') {
+    console.log('Skipping fetch during SSR');
+    return getDefaultSettings();
+  }
+
   const currentTime = Date.now();
   
   // Use cached settings if they exist and aren't expired, unless force refresh is requested
@@ -80,18 +92,28 @@ export async function fetchThemeSettings(forceRefresh = false) {
     }
     
     // Otherwise, return default settings
-    return {
-      background: "/assets/curve_background.png",
-      background_light: "/assets/lightcurve_background.png",
-      backgroundColor: "#000000",
-      backgroundColorLight: "#ffffff",
-      font: "Arial, sans-serif"
-    };
+    return getDefaultSettings();
   }
+}
+
+// Helper function to get default settings
+function getDefaultSettings() {
+  return {
+    background: "/assets/curve_background.png",
+    background_light: "/assets/lightcurve_background.png",
+    backgroundColor: "#000000",
+    backgroundColorLight: "#ffffff",
+    font: "Arial, sans-serif"
+  };
 }
 
 // function to handle font application
 function applyFontSettings(fontFamily) {
+  // SSR CHECK
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
   if (!fontFamily) return;
   
   console.log(`Applying font family: ${fontFamily}`);
@@ -145,6 +167,11 @@ function applyFontSettings(fontFamily) {
  * @param {boolean} isDarkMode - Whether dark mode is active
  */
 export function applyBackgroundSettings(settings, isDarkMode) {
+  // SSR CHECK
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
   // Determine which background to use based on current theme
   const backgroundPath = isDarkMode 
     ? settings.background || "/assets/curve_background.png"
@@ -192,6 +219,11 @@ export function applyBackgroundSettings(settings, isDarkMode) {
  * This will fetch fresh settings every time the theme changes
  */
 function observeThemeChanges() {
+  // SSR CHECK
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
   // Create observer to watch for theme class changes
   const observer = new MutationObserver(async mutations => {
     for (const mutation of mutations) {
@@ -226,6 +258,12 @@ function observeThemeChanges() {
 
 // Public method to immediately refresh and apply theme settings
 export async function refreshThemeSettings() {
+  // SSR CHECK
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    console.log('Skipping refresh during SSR');
+    return false;
+  }
+
   try {
     // Force a refresh of settings from the server
     const settings = await fetchThemeSettings(true);
@@ -248,11 +286,5 @@ export async function refreshThemeSettings() {
   }
 }
 
-// Call this function when the DOM is ready
-if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeThemeBackgrounds);
-  } else {
-    initializeThemeBackgrounds();
-  }
-}
+// REMOVED: Automatic execution at module load
+// The initialization is called manually from layout.tsx after mounting, to prevent hydration errors when loading SATS at localhost:3000

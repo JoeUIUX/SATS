@@ -74,7 +74,7 @@ function onSettingsUpdated(callback) {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-// themeInitializer.js - with improved theme switching and event dispatching
+// themeInitializer.js - improved theme switching and event dispatching with complete SSR protection
 // script to initialize themes from the database
 // Import theme event functions
 __turbopack_context__.s({
@@ -92,197 +92,74 @@ let cachedSettings = null;
 let lastFetchTime = 0;
 const CACHE_TTL = 2000; // Cache time-to-live in milliseconds (2 seconds)
 async function initializeThemeBackgrounds() {
-    try {
-        // Fetch settings from the backend
-        const settings = await fetchThemeSettings();
-        console.log('Loaded theme settings:', settings);
-        // Get current theme mode
-        const isDarkMode = document.documentElement.classList.contains('dark');
-        // Apply background settings based on theme
-        applyBackgroundSettings(settings, isDarkMode);
-        // Apply font settings if available
-        if (settings.font) {
-            applyFontSettings(settings.font);
-        }
-        // Set up observer for theme changes to update background
-        observeThemeChanges(settings);
-        // Dispatch event that settings were initialized
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeEvents$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dispatchSettingsUpdatedEvent"])(settings);
-    } catch (error) {
-        console.error('Error initializing theme backgrounds:', error);
+    // ENHANCED SSR CHECK - Don't run during SSR
+    if ("TURBOPACK compile-time truthy", 1) {
+        console.log('Skipping theme initialization during SSR');
+        return;
     }
+    "TURBOPACK unreachable";
 }
 async function fetchThemeSettings(forceRefresh = false) {
-    const currentTime = Date.now();
-    // Use cached settings if they exist and aren't expired, unless force refresh is requested
-    if (!forceRefresh && cachedSettings && currentTime - lastFetchTime < CACHE_TTL) {
-        console.log('Using cached theme settings');
-        return cachedSettings;
+    // SSR CHECK
+    if ("TURBOPACK compile-time truthy", 1) {
+        console.log('Skipping fetch during SSR');
+        return getDefaultSettings();
     }
-    try {
-        console.log('Fetching fresh theme settings from server');
-        const response = await fetch(`${API_URL}/settings`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch theme settings: ${response.status}`);
-        }
-        const settings = await response.json();
-        // Update the cache
-        cachedSettings = settings;
-        lastFetchTime = currentTime;
-        return settings;
-    } catch (error) {
-        console.error('Error fetching theme settings:', error);
-        // If we have cached settings, use them as fallback
-        if (cachedSettings) {
-            console.warn('Using cached settings as fallback after fetch error');
-            return cachedSettings;
-        }
-        // Otherwise, return default settings
-        return {
-            background: "/assets/curve_background.png",
-            background_light: "/assets/lightcurve_background.png",
-            backgroundColor: "#000000",
-            backgroundColorLight: "#ffffff",
-            font: "Arial, sans-serif"
-        };
-    }
+    "TURBOPACK unreachable";
+    const currentTime = undefined;
+}
+// Helper function to get default settings
+function getDefaultSettings() {
+    return {
+        background: "/assets/curve_background.png",
+        background_light: "/assets/lightcurve_background.png",
+        backgroundColor: "#000000",
+        backgroundColorLight: "#ffffff",
+        font: "Arial, sans-serif"
+    };
 }
 // function to handle font application
 function applyFontSettings(fontFamily) {
-    if (!fontFamily) return;
-    console.log(`Applying font family: ${fontFamily}`);
-    // Set CSS custom property for font
-    document.documentElement.style.setProperty('--app-font-family', fontFamily);
+    // SSR CHECK
+    if ("TURBOPACK compile-time truthy", 1) {
+        return;
+    }
+    "TURBOPACK unreachable";
     // Create or update the font style element
-    let fontStyle = document.getElementById('app-font-style');
-    if (!fontStyle) {
-        fontStyle = document.createElement('style');
-        fontStyle.id = 'app-font-style';
-        document.head.appendChild(fontStyle);
-    }
-    // Apply the font to all relevant elements with higher specificity
-    fontStyle.textContent = `
-    html body, 
-    html button, 
-    html input, 
-    html select, 
-    html textarea,
-    html .popup, 
-    html .welcomeWindow,
-    html .mainScreen,
-    html .sidebar,
-    html .sidebar *,
-    html .menu,
-    html .menu *,
-    html .menuItem,
-    html .profilesButton,
-    html .profileContainer,
-    html .profileSidebarItem,
-    html .profileButtonGroup,
-    html .settingsContainer,
-    html .content,
-    html .aboutSection,
-    html .checkoutSection,
-    html .settingsWindow,
-    html .topSection,
-    html .bottomSection,
-    html * {
-      font-family: ${fontFamily} !important;
-    }
-  `;
+    let fontStyle;
 }
 function applyBackgroundSettings(settings, isDarkMode) {
-    // Determine which background to use based on current theme
-    const backgroundPath = isDarkMode ? settings.background || "/assets/curve_background.png" : settings.background_light || "/assets/lightcurve_background.png";
-    // Determine background color for solid color mode
-    const backgroundColor = isDarkMode ? settings.backgroundColor || "#000000" : settings.backgroundColorLight || "#ffffff";
-    // Apply background to body
-    if (backgroundPath === "none") {
-        // Solid color mode
-        document.body.style.backgroundImage = "none";
-        document.body.style.backgroundColor = backgroundColor;
-        // Also update CSS variables
-        if (isDarkMode) {
-            document.documentElement.style.setProperty('--page-bg-image', 'none');
-            document.documentElement.style.setProperty('--page-bg-color', backgroundColor);
-        } else {
-            document.documentElement.style.setProperty('--page-bg-image', 'none');
-            document.documentElement.style.setProperty('--page-bg-color', backgroundColor);
-        }
-    } else {
-        // Image background mode
-        document.body.style.backgroundImage = `url(${backgroundPath})`;
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
-        document.body.style.backgroundRepeat = "no-repeat";
-        // Also update CSS variables
-        if (isDarkMode) {
-            document.documentElement.style.setProperty('--page-bg-image', `url(${backgroundPath})`);
-        } else {
-            document.documentElement.style.setProperty('--page-bg-image', `url(${backgroundPath})`);
-        }
+    // SSR CHECK
+    if ("TURBOPACK compile-time truthy", 1) {
+        return;
     }
-    console.log(`Applied ${isDarkMode ? 'dark' : 'light'} mode background: ${backgroundPath === "none" ? backgroundColor : backgroundPath}`);
+    "TURBOPACK unreachable";
+    // Determine which background to use based on current theme
+    const backgroundPath = undefined;
+    // Determine background color for solid color mode
+    const backgroundColor = undefined;
 }
 /**
  * Observe theme changes to update background accordingly
  * This will fetch fresh settings every time the theme changes
  */ function observeThemeChanges() {
+    // SSR CHECK
+    if ("TURBOPACK compile-time truthy", 1) {
+        return;
+    }
+    "TURBOPACK unreachable";
     // Create observer to watch for theme class changes
-    const observer = new MutationObserver(async (mutations)=>{
-        for (const mutation of mutations){
-            if (mutation.attributeName === 'class') {
-                // Check if dark mode was toggled
-                const isDarkMode = document.documentElement.classList.contains('dark');
-                console.log(`Theme changed to ${isDarkMode ? 'dark' : 'light'} mode - fetching latest settings`);
-                // Dispatch theme changed event
-                (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeEvents$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dispatchThemeChangedEvent"])(isDarkMode);
-                // Fetch fresh settings from the server and apply them
-                try {
-                    const settings = await fetchThemeSettings(true); // Force refresh when theme changes
-                    applyBackgroundSettings(settings, isDarkMode);
-                    // Dispatch event that settings were updated
-                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeEvents$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dispatchSettingsUpdatedEvent"])(settings);
-                } catch (error) {
-                    console.error('Error applying theme change:', error);
-                }
-            }
-        }
-    });
-    // Start observing theme changes
-    observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: [
-            'class'
-        ]
-    });
+    const observer = undefined;
 }
 async function refreshThemeSettings() {
-    try {
-        // Force a refresh of settings from the server
-        const settings = await fetchThemeSettings(true);
-        // Apply based on current theme
-        const isDarkMode = document.documentElement.classList.contains('dark');
-        applyBackgroundSettings(settings, isDarkMode);
-        if (settings.font) {
-            applyFontSettings(settings.font);
-        }
-        // Dispatch events about the update
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeEvents$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dispatchSettingsUpdatedEvent"])(settings);
-        return true;
-    } catch (error) {
-        console.error('Error refreshing theme settings:', error);
+    // SSR CHECK
+    if ("TURBOPACK compile-time truthy", 1) {
+        console.log('Skipping refresh during SSR');
         return false;
     }
-}
-// Call this function when the DOM is ready
-if (typeof document !== 'undefined') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeThemeBackgrounds);
-    } else {
-        initializeThemeBackgrounds();
-    }
-}
+    "TURBOPACK unreachable";
+} // REMOVED: Automatic execution at module load
+ // The initialization is called manually from layout.tsx after mounting, to prevent hydration errors when loading SATS at localhost:3000
 }}),
 "[project]/src/app/layout.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -295,7 +172,7 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeInitializer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/themeInitializer.js [app-ssr] (ecmascript)");
-/* LIGHT DARK MODE SLIDER TOGGLER - START */ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$react$2d$fontawesome$2f$index$2e$es$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@fortawesome/react-fontawesome/index.es.js [app-ssr] (ecmascript)");
+/* LIGHT DARK MODE SLIDER TOGGLER */ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$react$2d$fontawesome$2f$index$2e$es$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@fortawesome/react-fontawesome/index.es.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$free$2d$solid$2d$svg$2d$icons$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@fortawesome/free-solid-svg-icons/index.mjs [app-ssr] (ecmascript)");
 "use client";
 ;
@@ -306,10 +183,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesom
 ;
 function RootLayout({ children }) {
     const [darkMode, setDarkMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    // First useEffect: Set mounted state
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setMounted(true);
+    }, []);
+    // Second useEffect: Initialize theme after mounting
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (!mounted) return;
+        // Initialize theme from localStorage
         const savedMode = localStorage.getItem("darkMode");
-        if (savedMode) setDarkMode(savedMode === "true");
-        // Apply dark/light mode classes to <html> on component mount
+        if (savedMode) {
+            setDarkMode(savedMode === "true");
+        }
+        // Apply dark/light mode classes to <html>
         const htmlElement = document.documentElement;
         if (savedMode === "true") {
             htmlElement.classList.add("dark");
@@ -318,39 +205,44 @@ function RootLayout({ children }) {
             htmlElement.classList.add("light");
             htmlElement.classList.remove("dark");
         }
-        // Initialize theme backgrounds from database settings
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeInitializer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["initializeThemeBackgrounds"])();
-        // Load and apply previously saved font from localStorage
-        const loadSavedFont = async ()=>{
-            // Try to get font setting from backend
+        // Initialize theme backgrounds and fonts
+        const initializeTheme = async ()=>{
             try {
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"}/settings`);
-                if (response.ok) {
-                    const settings = await response.json();
-                    if (settings.font) {
-                        // Apply the font immediately
-                        applyFontToDocument(settings.font);
-                    }
-                }
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeInitializer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["initializeThemeBackgrounds"])();
+                await loadSavedFont();
+                loadFonts();
             } catch (error) {
-                console.error("Error loading font settings:", error);
+                console.error("Error initializing theme:", error);
             }
         };
-        loadSavedFont();
-    }, []);
-    // Helper function to apply font - with proper type annotation
+        // Small delay to ensure DOM is ready
+        setTimeout(initializeTheme, 100);
+    }, [
+        mounted
+    ]);
+    const loadSavedFont = async ()=>{
+        if (!mounted) return;
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"}/settings`);
+            if (response.ok) {
+                const settings = await response.json();
+                if (settings.font) {
+                    applyFontToDocument(settings.font);
+                }
+            }
+        } catch (error) {
+            console.error("Error loading font settings:", error);
+        }
+    };
     const applyFontToDocument = (fontFamily)=>{
-        if (!fontFamily) return;
-        // Set CSS variable
+        if (!fontFamily || !mounted) return;
         document.documentElement.style.setProperty('--app-font-family', fontFamily);
-        // Create or update style element
         let fontStyle = document.getElementById('app-font-style');
         if (!fontStyle) {
             fontStyle = document.createElement('style');
             fontStyle.id = 'app-font-style';
             document.head.appendChild(fontStyle);
         }
-        // Set comprehensive CSS rules
         fontStyle.textContent = `
       html body,
       html button,
@@ -384,7 +276,6 @@ function RootLayout({ children }) {
         font-family: ${fontFamily} !important;
       }
     `;
-        // Load font file if needed (for non-system fonts)
         const loadFontFile = (fontName)=>{
             const fontUrls = {
                 'Roboto': 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
@@ -392,11 +283,9 @@ function RootLayout({ children }) {
                 'Montserrat': 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap',
                 'Source Code Pro': 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap'
             };
-            // Find the font name from the value
             const fontMatch = Object.entries(fontUrls).find(([_, value])=>fontFamily.includes(value.split(',')[0]));
             if (fontMatch) {
                 const [matchedFontName] = fontMatch;
-                // Type guard to ensure matchedFontName is a valid key
                 if (matchedFontName in fontUrls) {
                     const url = fontUrls[matchedFontName];
                     const link = document.createElement('link');
@@ -406,22 +295,19 @@ function RootLayout({ children }) {
                 }
             }
         };
-        // Only load external fonts, not system fonts
         if (!fontFamily.includes('Arial') && !fontFamily.includes('sans-serif')) {
             loadFontFile(fontFamily);
         }
     };
-    // Add to layout.tsx with proper typing
     const loadFonts = ()=>{
+        if (!mounted) return;
         const fontUrls = {
             'Roboto': 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
             'Open Sans': 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
             'Montserrat': 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap',
             'Source Code Pro': 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap'
         };
-        // Add each font link to the document head
         Object.entries(fontUrls).forEach(([name, url])=>{
-            // Check if link already exists to prevent duplicates
             const existingLink = document.querySelector(`link[href="${url}"]`);
             if (!existingLink) {
                 const link = document.createElement('link');
@@ -432,16 +318,11 @@ function RootLayout({ children }) {
             }
         });
     };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // Your existing code...
-        // Load fonts
-        loadFonts();
-    }, []);
     const toggleDarkMode = async ()=>{
+        if (!mounted) return;
         setDarkMode((prevMode)=>{
             const newMode = !prevMode;
             localStorage.setItem("darkMode", newMode.toString());
-            // Update <html> class dynamically
             const htmlElement = document.documentElement;
             if (newMode) {
                 htmlElement.classList.add("dark");
@@ -450,13 +331,40 @@ function RootLayout({ children }) {
                 htmlElement.classList.add("light");
                 htmlElement.classList.remove("dark");
             }
-            // Refresh theme settings to ensure we apply the latest backgrounds
             setTimeout(async ()=>{
                 await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$themeInitializer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["refreshThemeSettings"])();
             }, 50);
             return newMode;
         });
     };
+    // Return basic HTML structure during SSR
+    if (!mounted) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
+            lang: "en",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    suppressHydrationWarning: true,
+                    style: {
+                        visibility: 'hidden'
+                    },
+                    children: children
+                }, void 0, false, {
+                    fileName: "[project]/src/app/layout.tsx",
+                    lineNumber: 206,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/app/layout.tsx",
+                lineNumber: 205,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/src/app/layout.tsx",
+            lineNumber: 204,
+            columnNumber: 7
+        }, this);
+    }
+    // Return full layout after mounting
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
         lang: "en",
         className: darkMode ? "dark" : "light",
@@ -473,7 +381,7 @@ function RootLayout({ children }) {
                                 onChange: toggleDarkMode
                             }, void 0, false, {
                                 fileName: "[project]/src/app/layout.tsx",
-                                lineNumber: 204,
+                                lineNumber: 220,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -484,7 +392,7 @@ function RootLayout({ children }) {
                                         className: "icon moon"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/layout.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 222,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$react$2d$fontawesome$2f$index$2e$es$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FontAwesomeIcon"], {
@@ -492,39 +400,39 @@ function RootLayout({ children }) {
                                         className: "icon sun"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/layout.tsx",
-                                        lineNumber: 207,
+                                        lineNumber: 223,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/layout.tsx",
-                                lineNumber: 205,
+                                lineNumber: 221,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/layout.tsx",
-                        lineNumber: 203,
+                        lineNumber: 219,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/layout.tsx",
-                    lineNumber: 202,
+                    lineNumber: 218,
                     columnNumber: 9
                 }, this),
                 children
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/layout.tsx",
-            lineNumber: 201,
+            lineNumber: 217,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.tsx",
-        lineNumber: 200,
+        lineNumber: 216,
         columnNumber: 5
     }, this);
-} /* LIGHT DARK MODE SLIDER TOGGLER - END */ 
+}
 }}),
 
 };

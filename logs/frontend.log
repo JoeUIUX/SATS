@@ -3717,3 +3717,383 @@
 [29/05/2025 2:47:35 pm] [Frontend] ✓ Compiled in 729ms
 [29/05/2025 2:47:39 pm] [Frontend] ✓ Compiled in 865ms
 [29/05/2025 3:14:48 pm] Frontend process exited with code 1
+[29/05/2025 3:49:34 pm] Starting frontend development server...
+[29/05/2025 3:49:36 pm] [Frontend] > beautify@0.1.0 dev
+[29/05/2025 3:49:36 pm] [Frontend] > next dev --turbopack
+[29/05/2025 3:49:46 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[29/05/2025 3:49:46 pm] [Frontend] - Local:        http://localhost:3000
+[29/05/2025 3:49:46 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[29/05/2025 3:49:46 pm] [Frontend]    - Environments: .env
+[29/05/2025 3:49:46 pm] [Frontend] ✓ Starting...
+[29/05/2025 3:49:50 pm] [Frontend] ✓ Ready in 5.6s
+[29/05/2025 3:49:50 pm] [Frontend] ○ Compiling / ...
+[29/05/2025 3:50:08 pm] [Frontend] ✓ Compiled / in 18s
+[29/05/2025 3:50:12 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 3:50:12 pm] [Frontend] GET / 500 in 21918ms
+[29/05/2025 3:50:14 pm] [Frontend] ○ Compiling /favicon.ico ...
+[29/05/2025 3:50:15 pm] [Frontend] ✓ Compiled /favicon.ico in 1244ms
+[29/05/2025 3:50:16 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2788ms
+[29/05/2025 3:52:51 pm] [Frontend] ○ Compiling /_not-found/page ...
+[29/05/2025 3:52:53 pm] [Frontend] ✓ Compiled /_not-found/page in 2.8s
+[29/05/2025 3:52:56 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5701ms
+[29/05/2025 3:57:09 pm] Frontend process exited with code 1
+[29/05/2025 3:57:34 pm] Starting frontend development server...
+[29/05/2025 3:57:36 pm] [Frontend] > beautify@0.1.0 dev
+[29/05/2025 3:57:36 pm] [Frontend] > next dev --turbopack
+[29/05/2025 3:57:44 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[29/05/2025 3:57:44 pm] [Frontend] - Local:        http://localhost:3000
+[29/05/2025 3:57:44 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[29/05/2025 3:57:44 pm] [Frontend]    - Environments: .env
+[29/05/2025 3:57:44 pm] [Frontend] ✓ Starting...
+[29/05/2025 3:57:48 pm] [Frontend] ✓ Ready in 5.2s
+[29/05/2025 3:57:56 pm] [Frontend] ○ Compiling / ...
+[29/05/2025 3:58:15 pm] [Frontend] ✓ Compiled / in 19.1s
+[29/05/2025 3:58:19 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 3:58:19 pm] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[29/05/2025 3:58:19 pm] [Frontend] GET / 500 in 11870ms
+[29/05/2025 3:58:21 pm] [Frontend] ○ Compiling /favicon.ico ...
+[29/05/2025 3:58:22 pm] [Frontend] ✓ Compiled /favicon.ico in 1414ms
+[29/05/2025 3:58:23 pm] [Frontend] ○ Compiling /_not-found/page ...
+[29/05/2025 3:58:25 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4330ms
+[29/05/2025 3:58:27 pm] [Frontend] ✓ Compiled /_not-found/page in 4.5s
+[29/05/2025 3:58:29 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6953ms
+[29/05/2025 3:59:56 pm] Frontend process exited with code 1
+[30/05/2025 10:03:16 am] Starting frontend development server...
+[30/05/2025 10:03:21 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 10:03:21 am] [Frontend] > next dev --turbopack
+[30/05/2025 10:03:31 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 10:03:31 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 10:03:31 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 10:03:31 am] [Frontend]    - Environments: .env
+[30/05/2025 10:03:31 am] [Frontend] ✓ Starting...
+[30/05/2025 10:03:35 am] [Frontend] ✓ Ready in 5.8s
+[30/05/2025 10:03:51 am] [Frontend] ○ Compiling / ...
+[30/05/2025 10:04:18 am] [Frontend] ✓ Compiled / in 27s
+[30/05/2025 10:04:23 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[30/05/2025 10:04:23 am] [Frontend] GET / 500 in 32201ms
+[30/05/2025 10:04:49 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 10:04:51 am] [Frontend] ✓ Compiled /_not-found/page in 2.5s
+[30/05/2025 10:04:54 am] [Frontend] HEAD /models/profile_2.glb 404 in 6030ms
+[30/05/2025 10:04:55 am] [Frontend] HEAD /models/profile_2.glb 404 in 6488ms
+[30/05/2025 10:04:55 am] [Frontend] HEAD /models/profile_2.glb 404 in 6757ms
+[30/05/2025 10:05:10 am] Frontend process exited with code 1
+[30/05/2025 10:42:16 am] Frontend dependencies already installed
+[30/05/2025 10:42:29 am] Starting frontend development server...
+[30/05/2025 10:42:30 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 10:42:30 am] [Frontend] > next dev --turbopack
+[30/05/2025 10:42:38 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 10:42:38 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 10:42:38 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 10:42:38 am] [Frontend]    - Environments: .env
+[30/05/2025 10:42:38 am] [Frontend] ✓ Starting...
+[30/05/2025 10:42:42 am] [Frontend] ✓ Ready in 5.4s
+[30/05/2025 10:43:28 am] [Frontend] ○ Compiling / ...
+[30/05/2025 10:43:51 am] [Frontend] ✓ Compiled / in 22.8s
+[30/05/2025 10:43:55 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[30/05/2025 10:43:55 am] [Frontend] GET / 500 in 27025ms
+[30/05/2025 10:44:28 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 10:44:30 am] [Frontend] ✓ Compiled /_not-found/page in 2.2s
+[30/05/2025 10:44:40 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5838ms
+[30/05/2025 10:44:50 am] [Frontend Error] ⨯ [ReferenceError: document is not defined] { digest: '3954514207' }
+[30/05/2025 10:44:50 am] [Frontend] GET / 500 in 3818ms
+[30/05/2025 10:44:56 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5715ms
+[30/05/2025 11:03:58 am] Frontend process exited with code 1
+[30/05/2025 11:19:30 am] Frontend dependencies already installed
+[30/05/2025 11:19:43 am] Starting frontend development server...
+[30/05/2025 11:19:45 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:19:45 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:19:55 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:19:55 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:19:55 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:19:55 am] [Frontend]    - Environments: .env
+[30/05/2025 11:19:55 am] [Frontend] ✓ Starting...
+[30/05/2025 11:19:59 am] [Frontend] ✓ Ready in 6s
+[30/05/2025 11:20:00 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:20:22 am] [Frontend] ✓ Compiled / in 22.8s
+[30/05/2025 11:20:26 am] [Frontend Error] ⨯ ReferenceError: document is not defined
+[30/05/2025 11:20:26 am] [Frontend Error]     at WelcomeWindow (file://C%3A/Users/joeg0001/Documents/SATS%20Satellite%20Automated%20Testing%20System/beautify%20frontend/src/components/WelcomeWindow/WelcomeWindow.tsx:30:21)
+[30/05/2025 11:20:26 am] [Frontend Error]   28 |
+[30/05/2025 11:20:26 am] [Frontend Error]   29 |   // Check if the page is in dark mode
+[30/05/2025 11:20:26 am] [Frontend Error] > 30 |   const isDarkMode = document.documentElement.classList.contains("dark");
+[30/05/2025 11:20:26 am] [Frontend Error]      |                     ^
+[30/05/2025 11:20:26 am] [Frontend Error]   31 |
+[30/05/2025 11:20:26 am] [Frontend Error]   32 | // Function to format date and time as DD/MM/YYYY HH:MM:SS Timezone
+[30/05/2025 11:20:26 am] [Frontend Error]   33 | const formatDateTime = (date: Date) => { {
+[30/05/2025 11:20:26 am] [Frontend Error]   digest: '620562807'
+[30/05/2025 11:20:26 am] [Frontend Error] }
+[30/05/2025 11:20:26 am] [Frontend] GET / 500 in 26982ms
+[30/05/2025 11:20:29 am] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 11:20:30 am] [Frontend] ✓ Compiled /favicon.ico in 1494ms
+[30/05/2025 11:20:32 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3479ms
+[30/05/2025 11:20:34 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 11:20:37 am] [Frontend] ✓ Compiled /_not-found/page in 3.5s
+[30/05/2025 11:20:40 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6558ms
+[30/05/2025 11:23:18 am] [Frontend] GET /?route=main 200 in 2049ms
+[30/05/2025 11:23:23 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 4874ms
+[30/05/2025 11:27:18 am] [Frontend] ✓ Compiled in 1062ms
+[30/05/2025 11:27:33 am] Frontend process exited with code 1
+[30/05/2025 11:27:52 am] Frontend dependencies already installed
+[30/05/2025 11:28:05 am] Starting frontend development server...
+[30/05/2025 11:28:06 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:28:06 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:28:15 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:28:15 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:28:15 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:28:15 am] [Frontend]    - Environments: .env
+[30/05/2025 11:28:15 am] [Frontend] ✓ Starting...
+[30/05/2025 11:28:20 am] [Frontend] ✓ Ready in 5.8s
+[30/05/2025 11:28:45 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:29:03 am] [Frontend] ✓ Compiled / in 17.9s
+[30/05/2025 11:29:06 am] [Frontend] GET / 200 in 21502ms
+[30/05/2025 11:29:43 am] [Frontend] GET /?route=main 200 in 2397ms
+[30/05/2025 11:29:45 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 11:29:47 am] [Frontend] ✓ Compiled /_not-found/page in 2.7s
+[30/05/2025 11:29:51 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6621ms
+[30/05/2025 11:29:58 am] [Frontend] GET / 200 in 3201ms
+[30/05/2025 11:33:28 am] [Frontend] ✓ Compiled in 998ms
+[30/05/2025 11:33:55 am] [Frontend] ✓ Compiled in 836ms
+[30/05/2025 11:34:59 am] [Frontend] ✓ Compiled in 883ms
+[30/05/2025 11:36:01 am] [Frontend] ✓ Compiled in 1022ms
+[30/05/2025 11:36:14 am] [Frontend] ✓ Compiled in 777ms
+[30/05/2025 11:39:20 am] [Frontend] ✓ Compiled in 810ms
+[30/05/2025 11:39:33 am] Frontend process exited with code 1
+[30/05/2025 11:40:01 am] Frontend dependencies already installed
+[30/05/2025 11:40:14 am] Starting frontend development server...
+[30/05/2025 11:40:15 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:40:15 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:40:24 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:40:24 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:40:24 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:40:24 am] [Frontend]    - Environments: .env
+[30/05/2025 11:40:24 am] [Frontend]  ✓ Starting...
+[30/05/2025 11:40:28 am] [Frontend] ✓ Ready in 5.4s
+[30/05/2025 11:40:29 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:40:46 am] [Frontend] ✓ Compiled / in 18.1s
+[30/05/2025 11:40:50 am] [Frontend] GET / 200 in 21867ms
+[30/05/2025 11:40:52 am] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 11:40:53 am] [Frontend] ✓ Compiled /favicon.ico in 1704ms
+[30/05/2025 11:40:55 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3928ms
+[30/05/2025 11:40:58 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2842ms
+[30/05/2025 11:41:05 am] [Frontend] GET /?route=main 200 in 2363ms
+[30/05/2025 11:41:08 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 11:41:12 am] [Frontend] ✓ Compiled /_not-found/page in 3.8s
+[30/05/2025 11:41:15 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 7325ms
+[30/05/2025 11:45:42 am] [Frontend Error] ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+[30/05/2025 11:45:49 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:45:49 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:45:49 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:45:49 am] [Frontend]    - Environments: .env
+[30/05/2025 11:45:49 am] [Frontend] ✓ Starting...
+[30/05/2025 11:45:53 am] [Frontend] ✓ Ready in 6.3s
+[30/05/2025 11:45:53 am] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 11:45:53 am] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 11:45:53 am] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 11:45:54 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:46:03 am] Frontend process exited with code 1
+[30/05/2025 11:46:19 am] Frontend dependencies already installed
+[30/05/2025 11:46:32 am] Starting frontend development server...
+[30/05/2025 11:46:33 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:46:33 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:46:41 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:46:41 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:46:41 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:46:41 am] [Frontend]    - Environments: .env
+[30/05/2025 11:46:41 am] [Frontend] ✓ Starting...
+[30/05/2025 11:46:46 am] [Frontend] ✓ Ready in 5.6s
+[30/05/2025 11:46:46 am] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 11:46:46 am] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 11:46:46 am] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 11:46:46 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:47:04 am] [Frontend] ✓ Compiled / in 18.2s
+[30/05/2025 11:47:08 am] [Frontend] GET / 200 in 22495ms
+[30/05/2025 11:48:05 am] [Frontend] GET / 200 in 2729ms
+[30/05/2025 11:48:07 am] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 11:48:08 am] [Frontend] ✓ Compiled /favicon.ico in 1827ms
+[30/05/2025 11:48:11 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 4736ms
+[30/05/2025 11:48:17 am] [Frontend] GET /?route=main 200 in 2025ms
+[30/05/2025 11:52:35 am] [Frontend] ✓ Compiled in 1047ms
+[30/05/2025 11:53:11 am] [Frontend] ✓ Compiled in 964ms
+[30/05/2025 11:53:15 am] Frontend process exited with code 1
+[30/05/2025 11:53:47 am] Frontend dependencies already installed
+[30/05/2025 11:54:00 am] Starting frontend development server...
+[30/05/2025 11:54:01 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:54:01 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:54:10 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:54:10 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:54:10 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:54:10 am] [Frontend]    - Environments: .env
+[30/05/2025 11:54:10 am] [Frontend] ✓ Starting...
+[30/05/2025 11:54:14 am] [Frontend] ✓ Ready in 5.5s
+[30/05/2025 11:54:14 am] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 11:54:14 am] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 11:54:14 am] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 11:54:15 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:54:32 am] [Frontend] ✓ Compiled / in 17.5s
+[30/05/2025 11:54:36 am] [Frontend] GET / 200 in 22131ms
+[30/05/2025 11:54:38 am] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 11:54:39 am] [Frontend] ✓ Compiled /favicon.ico in 1330ms
+[30/05/2025 11:54:41 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3886ms
+[30/05/2025 11:54:44 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2531ms
+[30/05/2025 11:54:53 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 11:54:56 am] [Frontend] ✓ Compiled /_not-found/page in 3.2s
+[30/05/2025 11:55:13 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5593ms
+[30/05/2025 11:56:22 am] Frontend process exited with code 1
+[30/05/2025 11:56:46 am] Frontend dependencies already installed
+[30/05/2025 11:56:59 am] Starting frontend development server...
+[30/05/2025 11:57:00 am] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 11:57:00 am] [Frontend] > next dev --turbopack
+[30/05/2025 11:57:10 am] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 11:57:10 am] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 11:57:10 am] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 11:57:10 am] [Frontend]    - Environments: .env
+[30/05/2025 11:57:10 am] [Frontend] ✓ Starting...
+[30/05/2025 11:57:14 am] [Frontend] ✓ Ready in 5.9s
+[30/05/2025 11:57:14 am] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 11:57:14 am] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 11:57:14 am] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 11:57:15 am] [Frontend] ○ Compiling / ...
+[30/05/2025 11:57:36 am] [Frontend] ✓ Compiled / in 21.8s
+[30/05/2025 11:57:40 am] [Frontend] GET / 200 in 25527ms
+[30/05/2025 11:57:41 am] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 11:57:43 am] [Frontend] ✓ Compiled /favicon.ico in 2.2s
+[30/05/2025 11:57:44 am] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 11:57:46 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 5064ms
+[30/05/2025 11:57:50 am] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3987ms
+[30/05/2025 11:57:54 am] [Frontend] GET /?route=main 200 in 5711ms
+[30/05/2025 11:57:55 am] [Frontend] ✓ Compiled /_not-found/page in 11.5s
+[30/05/2025 11:57:58 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 14534ms
+[30/05/2025 11:59:22 am] [Frontend] GET / 200 in 4564ms
+[30/05/2025 11:59:29 am] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 6834ms
+[30/05/2025 12:02:15 pm] [Frontend] ✓ Compiled in 1027ms
+[30/05/2025 12:03:00 pm] [Frontend] ✓ Compiled in 1081ms
+[30/05/2025 12:04:09 pm] [Frontend] ✓ Compiled in 846ms
+[30/05/2025 12:04:16 pm] Frontend process exited with code 1
+[30/05/2025 12:05:33 pm] Frontend dependencies already installed
+[30/05/2025 12:05:46 pm] Starting frontend development server...
+[30/05/2025 12:05:48 pm] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 12:05:48 pm] [Frontend] > next dev --turbopack
+[30/05/2025 12:05:57 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 12:05:57 pm] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 12:05:57 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 12:05:57 pm] [Frontend]    - Environments: .env
+[30/05/2025 12:05:57 pm] [Frontend]  ✓ Starting...
+[30/05/2025 12:06:01 pm] [Frontend] ✓ Ready in 5.3s
+[30/05/2025 12:06:01 pm] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 12:06:01 pm] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 12:06:01 pm] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 12:06:01 pm] [Frontend] ○ Compiling / ...
+[30/05/2025 12:06:19 pm] [Frontend] ✓ Compiled / in 18.3s
+[30/05/2025 12:06:22 pm] [Frontend] GET / 200 in 21432ms
+[30/05/2025 12:06:24 pm] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 12:06:25 pm] [Frontend] ✓ Compiled /favicon.ico in 1862ms
+[30/05/2025 12:06:27 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 3756ms
+[30/05/2025 12:06:29 pm] [Frontend] GET /favicon.ico?favicon.45db1c09.ico 200 in 2151ms
+[30/05/2025 12:06:38 pm] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 12:06:40 pm] [Frontend] ✓ Compiled /_not-found/page in 2.3s
+[30/05/2025 12:06:43 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5642ms
+[30/05/2025 12:07:09 pm] [Frontend] GET /?route=main 200 in 2481ms
+[30/05/2025 12:07:41 pm] [Frontend] HEAD /models/profile_1.glb 404 in 5672ms
+[30/05/2025 12:07:42 pm] [Frontend] HEAD /models/profile_1.glb 404 in 6167ms
+[30/05/2025 12:07:42 pm] [Frontend] HEAD /models/profile_1.glb 404 in 6847ms
+[30/05/2025 12:07:58 pm] [Frontend] HEAD /models/profile_2.glb 404 in 4074ms
+[30/05/2025 12:07:58 pm] [Frontend] HEAD /models/profile_2.glb 404 in 4531ms
+[30/05/2025 12:07:58 pm] [Frontend] HEAD /models/profile_2.glb 404 in 4962ms
+[30/05/2025 12:08:50 pm] [Frontend] GET / 200 in 2350ms
+[30/05/2025 12:08:58 pm] [Frontend] GET /?route=main 200 in 2426ms
+[30/05/2025 12:09:12 pm] [Frontend] GET / 200 in 2860ms
+[30/05/2025 12:09:29 pm] [Frontend] GET /?route=main 200 in 1907ms
+[30/05/2025 12:09:37 pm] [Frontend] Rendering MainScreen:
+[30/05/2025 12:09:37 pm] [Frontend] showToTestList: false
+[30/05/2025 12:09:37 pm] [Frontend] showThreeDModelWindow: false
+[30/05/2025 12:09:37 pm] [Frontend] 🔍 Rendering MainScreen component
+[30/05/2025 12:09:37 pm] [Frontend] - showCheckoutTest: false
+[30/05/2025 12:09:37 pm] [Frontend] - droppedItems length: 0
+[30/05/2025 12:09:37 pm] [Frontend Error] ⨯ ReferenceError: localStorage is not defined
+[30/05/2025 12:09:37 pm] [Frontend Error]     at MainScreen (file://C%3A/Users/joeg0001/Documents/SATS%20Satellite%20Automated%20Testing%20System/beautify%20frontend/src/components/MainScreen/MainScreen.tsx:2244:22)
+[30/05/2025 12:09:37 pm] [Frontend Error]   2242 |   })()}
+[30/05/2025 12:09:37 pm] [Frontend Error]   2243 |
+[30/05/2025 12:09:37 pm] [Frontend Error] > 2244 | {(showCheckoutTest || localStorage.getItem('showCheckoutTest') === 'true') && droppedItems.length > 0 && (
+[30/05/2025 12:09:37 pm] [Frontend Error]        |                      ^
+[30/05/2025 12:09:37 pm] [Frontend Error]   2245 |   <div id="checkout-test-container" style={{ position: 'relative', zIndex: 9999 }}>
+[30/05/2025 12:09:37 pm] [Frontend Error]   2246 |     {(() => {
+[30/05/2025 12:09:37 pm] [Frontend Error]   2247 |       console.log("⭐ Rendering CheckoutTestProgress window", { {
+[30/05/2025 12:09:37 pm] [Frontend Error]   digest: '1605483348'
+[30/05/2025 12:09:37 pm] [Frontend Error] }
+[30/05/2025 12:09:37 pm] [Frontend] GET /?route=main 500 in 2490ms
+[30/05/2025 12:21:52 pm] [Frontend] GET / 200 in 2077ms
+[30/05/2025 12:21:58 pm] [Frontend] GET /?route=main 200 in 1496ms
+[30/05/2025 12:26:06 pm] [Frontend] ○ Compiling / ...
+[30/05/2025 12:26:06 pm] [Frontend] ✓ Compiled in 631ms
+[30/05/2025 12:26:07 pm] [Frontend] ✓ Compiled / in 1031ms
+[30/05/2025 12:26:08 pm] [Frontend] GET /?route=main 200 in 2875ms
+[30/05/2025 12:26:10 pm] [Frontend] GET /?route=main 200 in 1074ms
+[30/05/2025 12:26:11 pm] [Frontend] GET /favicon.ico?favicon.3196767a.ico 200 in 1630ms
+[30/05/2025 12:27:17 pm] Frontend process exited with code 1
+[30/05/2025 12:27:46 pm] Frontend dependencies already installed
+[30/05/2025 12:27:59 pm] Starting frontend development server...
+[30/05/2025 12:28:00 pm] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 12:28:00 pm] [Frontend] > next dev --turbopack
+[30/05/2025 12:28:09 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 12:28:09 pm] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 12:28:09 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 12:28:09 pm] [Frontend]    - Environments: .env
+[30/05/2025 12:28:09 pm] [Frontend] ✓ Starting...
+[30/05/2025 12:28:13 pm] [Frontend] ✓ Ready in 5.4s
+[30/05/2025 12:28:13 pm] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 12:28:13 pm] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 12:28:13 pm] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 12:29:25 pm] [Frontend] ○ Compiling / ...
+[30/05/2025 12:29:44 pm] [Frontend] ✓ Compiled / in 19.5s
+[30/05/2025 12:29:48 pm] [Frontend] GET / 200 in 23253ms
+[30/05/2025 12:30:45 pm] [Frontend] GET /?route=main 200 in 2633ms
+[30/05/2025 12:30:58 pm] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 12:30:59 pm] [Frontend] ✓ Compiled /_not-found/page in 1955ms
+[30/05/2025 12:31:02 pm] [Frontend] HEAD /models/profile_2.glb 404 in 5011ms
+[30/05/2025 12:31:02 pm] [Frontend] HEAD /models/profile_2.glb 404 in 5011ms
+[30/05/2025 12:31:03 pm] [Frontend] HEAD /models/profile_2.glb 404 in 5349ms
+[30/05/2025 12:31:13 pm] [Frontend] HEAD /models/profile_1.glb 404 in 2827ms
+[30/05/2025 12:31:13 pm] [Frontend] HEAD /models/profile_1.glb 404 in 3404ms
+[30/05/2025 12:31:13 pm] [Frontend] HEAD /models/profile_1.glb 404 in 3425ms
+[30/05/2025 12:36:09 pm] [Frontend] ○ Compiling / ...
+[30/05/2025 12:36:09 pm] [Frontend] ✓ Compiled in 884ms
+[30/05/2025 12:36:10 pm] [Frontend] ✓ Compiled / in 1564ms
+[30/05/2025 12:36:12 pm] [Frontend] GET /?route=main 200 in 3934ms
+[30/05/2025 12:36:16 pm] [Frontend] GET /?route=main 200 in 3814ms
+[30/05/2025 12:36:18 pm] [Frontend] ○ Compiling /favicon.ico ...
+[30/05/2025 12:36:19 pm] [Frontend] ✓ Compiled /favicon.ico in 2s
+[30/05/2025 12:36:21 pm] [Frontend] GET /favicon.ico?favicon.5501593d.ico 200 in 4049ms
+[30/05/2025 12:36:39 pm] Frontend process exited with code 1
+[30/05/2025 12:37:10 pm] Frontend dependencies already installed
+[30/05/2025 12:37:23 pm] Starting frontend development server...
+[30/05/2025 12:37:25 pm] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 12:37:25 pm] [Frontend] > next dev --turbopack
+[30/05/2025 12:37:33 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 12:37:33 pm] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 12:37:33 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 12:37:33 pm] [Frontend]    - Environments: .env
+[30/05/2025 12:37:33 pm] [Frontend]  ✓ Starting...
+[30/05/2025 12:37:38 pm] [Frontend] ✓ Ready in 5.4s
+[30/05/2025 12:37:38 pm] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 12:37:38 pm] [Frontend Error]  ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 12:37:38 pm] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 12:37:46 pm] [Frontend] ○ Compiling / ...
+[30/05/2025 12:38:04 pm] [Frontend] ✓ Compiled / in 18.8s
+[30/05/2025 12:38:08 pm] [Frontend] GET / 200 in 22728ms
+[30/05/2025 12:38:52 pm] [Frontend] ○ Compiling /_not-found/page ...
+[30/05/2025 12:38:54 pm] [Frontend] ✓ Compiled /_not-found/page in 2.7s
+[30/05/2025 12:38:57 pm] [Frontend] GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5855ms
+[30/05/2025 12:39:24 pm] Frontend process exited with code 1
+[30/05/2025 12:54:53 pm] Frontend dependencies already installed
+[30/05/2025 12:55:06 pm] Starting frontend development server...
+[30/05/2025 12:55:07 pm] [Frontend] > beautify@0.1.0 dev
+[30/05/2025 12:55:07 pm] [Frontend] > next dev --turbopack
+[30/05/2025 12:55:16 pm] [Frontend] ▲ Next.js 15.2.4 (Turbopack)
+[30/05/2025 12:55:16 pm] [Frontend] - Local:        http://localhost:3000
+[30/05/2025 12:55:16 pm] [Frontend]    - Network:      http://10.97.26.51:3000
+[30/05/2025 12:55:16 pm] [Frontend]    - Environments: .env
+[30/05/2025 12:55:16 pm] [Frontend]  ✓ Starting...
+[30/05/2025 12:55:20 pm] [Frontend] ✓ Ready in 5.2s
+[30/05/2025 12:55:20 pm] [Frontend Error] ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[30/05/2025 12:55:20 pm] [Frontend Error] ⚠ See instructions if you need to configure Turbopack:
+[30/05/2025 12:55:20 pm] [Frontend Error]   https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+[30/05/2025 12:56:51 pm] Frontend process exited with code 1

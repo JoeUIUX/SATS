@@ -1,20 +1,17 @@
-// Fixed page.tsx - Key changes to avoid infinite rendering loop and keep ServerWindow open
+// using Next.js routing
+// remove react-router-dom via npm uninstall react-router-dom in frontend directory
 
-/* implement routing using react-router-dom, 
-you'll need to transform your page.tsx into an entry point for routing. */
-
-/* npm install react-router-dom */
 
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { useRouter, useSearchParams } from "next/navigation";
 import MainScreen from "../components/MainScreen/MainScreen";
 import ToTestList from "../components/ToTestList/ToTestList";
 import ServerWindow from "../components/ServerWindow/ServerWindow";
 import ThreeDModelWindow from "../components/ModelWindow/ThreeDModelWindow";
 import WelcomeWindow from "../components/WelcomeWindow/WelcomeWindow";
-import Taskbar from "../components/Taskbar/Taskbar"; // Import the Taskbar component
+import Taskbar from "../components/Taskbar/Taskbar";
 import { WindowName } from "@/types/types";
 import SettingsWindow from "../components/SettingsWindow/SettingsWindow";
 
@@ -29,6 +26,12 @@ interface MinimizedWindow {
 }
 
 export default function Page() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // Get current route from URL params
+  const currentRoute = searchParams.get('route') || 'welcome';
+
   // Window visibility state - Use refs to avoid state race conditions
   const windowVisibilityRef = useRef({
     ToTestList: false,
@@ -46,10 +49,9 @@ export default function Page() {
   });
 
   // New state for minimized windows - only for ServerWindow
-  // Store just the window info, not the restore function
   const [minimizedWindows, setMinimizedWindows] = useState<MinimizedWindow[]>([]);
 
-  const [zIndexCounter, setZIndexCounter] = useState(10000); // Base z-index
+  const [zIndexCounter, setZIndexCounter] = useState(10000);
   const [windowZIndexes, setWindowZIndexes] = useState<{
     ToTestList: number;
     ServerWindow: number;
@@ -59,45 +61,47 @@ export default function Page() {
     ToTestList: 10002,
     ServerWindow: 10001,
     ThreeDModelWindow: 10000,
-    SettingsWindow: 10003, // Start as highest z-index
+    SettingsWindow: 10003,
   });
   
   const [threeDModelProfileId, setThreeDModelProfileId] = useState<number | null>(1);
   const [isOnMainScreen, setIsOnMainScreen] = useState(false);
-  const [serverWindowKey, setServerWindowKey] = useState(Date.now()); // Key for ServerWindow
+  const [serverWindowKey, setServerWindowKey] = useState(Date.now());
   
   // Monitor current route to track if we're on main screen
-  const RouteObserver = () => {
-    const location = useLocation();
+  useEffect(() => {
+    const isMain = currentRoute === 'main';
+    setIsOnMainScreen(isMain);
     
-    useEffect(() => {
-      const isMain = location.pathname === '/main';
-      setIsOnMainScreen(isMain);
+    // When navigating to main screen, restore window visibility from global state
+    if (isMain) {
+      console.log("🧭 Navigated to main screen, checking window states");
       
-      // When navigating to main screen, restore window visibility from global state
-      if (isMain) {
-        console.log("🧭 Navigated to main screen, checking window states");
+      // Check if ToTestList should be open based on global flag
+      if (isToTestListOpen && !windowVisibility.ToTestList) {
+        console.log("🔄 ToTestList should be visible - restoring state");
+        setWindowVisibility(prev => ({ ...prev, ToTestList: true }));
         
-        // Check if ToTestList should be open based on global flag
-        if (isToTestListOpen && !windowVisibility.ToTestList) {
-          console.log("🔄 ToTestList should be visible - restoring state");
-          setWindowVisibility(prev => ({ ...prev, ToTestList: true }));
-          
-          // Force the ref to match as well
-          windowVisibilityRef.current = {
-            ...windowVisibilityRef.current,
-            ToTestList: true
-          };
-        }
+        // Force the ref to match as well
+        windowVisibilityRef.current = {
+          ...windowVisibilityRef.current,
+          ToTestList: true
+        };
       }
-    }, [location]);
-    
-    return null;
+    }
+  }, [currentRoute, windowVisibility.ToTestList]);
+
+  // Navigation functions to replace react-router-dom
+  const navigateToMain = () => {
+    router.push('/?route=main');
+  };
+
+  const navigateToWelcome = () => {
+    router.push('/');
   };
 
   // Load window state from sessionStorage on initial mount
   useEffect(() => {
-    // Load window visibility from sessionStorage on mount
     const savedVisibility = sessionStorage.getItem('windowVisibility');
     if (savedVisibility) {
       try {
@@ -117,7 +121,6 @@ export default function Page() {
 
   // Save window visibility to sessionStorage whenever it changes
   useEffect(() => {
-    // Save visibility state to sessionStorage for persistence
     sessionStorage.setItem('windowVisibility', JSON.stringify(windowVisibility));
     console.log("💾 Saved window visibility state:", windowVisibility);
     
@@ -127,7 +130,6 @@ export default function Page() {
 
   // Extra check to ensure ToTestList stays visible when it should be
   useEffect(() => {
-    // If global flag is true but component is not visible, fix it
     if (isToTestListOpen && !windowVisibility.ToTestList) {
       console.log("🔄 Fixing ToTestList visibility mismatch");
       setWindowVisibility(prev => ({
@@ -216,7 +218,6 @@ export default function Page() {
       
       // Only update if we're actually bringing something to the front
       console.log(`Updating z-index for ${windowName} from ${prevIndexes[windowName]} to ${highestZIndex + 1}`);
-      // FIX: Use prevIndexes instead of prev
       return { ...prevIndexes, [windowName]: highestZIndex + 1 };
     });
     
@@ -228,7 +229,7 @@ export default function Page() {
   const minimizeServerWindow = useCallback((status: string) => {
     console.log(`⬇️ Minimizing ServerWindow with status: ${status}`);
     
-    // Add to minimized windows - just the window info, not the restore function
+    // Add to minimized windows
     setMinimizedWindows(prev => {
       // Check if already minimized
       if (prev.some(win => win.id === "ServerWindow")) {
@@ -240,7 +241,7 @@ export default function Page() {
         );
       }
       
-      // Add to minimized windows - ONLY STORE THE DATA, NOT THE FUNCTION
+      // Add to minimized windows
       return [...prev, {
         id: "ServerWindow",
         title: "Server Connection",
@@ -262,27 +263,18 @@ export default function Page() {
     
   }, []);
 
-// Enhanced openToTestList function with force render option
 const openToTestList = useCallback((forceRender = false) => {
   console.log("🔍 openToTestList called with forceRender:", forceRender);
   console.log("🔍 Current visibility state:", windowVisibility.ToTestList);
-  console.log("🟢 Opening ToTestList window, force:", forceRender);
   
-  // If force render, skip the check for already being open
+  // If window is already open and we're not forcing a render, just bring to front
   if (!forceRender && windowVisibility.ToTestList === true) {
     console.log("ToTestList already open - just bringing to front");
-    
-    // Check if the actual window exists in the DOM
-    const elementExists = !!document.querySelector('[data-window="ToTestList"]');
-    if (!elementExists) {
-      console.log("⚠️ ToTestList state is true but window not in DOM - forcing render");
-      // Continue execution to render the window
-    } else {
-      // Just bring to front and exit
-      bringWindowToFront("ToTestList");
-      return;
-    }
+    bringWindowToFront("ToTestList");
+    return;
   }
+  
+  console.log("🟢 Opening ToTestList window, force:", forceRender);
   
   // Set global flag for cross-component communication
   isToTestListOpen = true;
@@ -313,25 +305,7 @@ const openToTestList = useCallback((forceRender = false) => {
   sessionStorage.setItem('windowVisibility', JSON.stringify(currentState));
   console.log("Updated sessionStorage:", currentState);
   
-  // Verify if window was actually rendered
-  setTimeout(() => {
-    const elementExists = !!document.querySelector('[data-window="ToTestList"]');
-    console.log(`Verification after opening: ToTestList in DOM: ${elementExists}`);
-    
-    // If it still doesn't exist, try one more time with a state reset
-    if (!elementExists) {
-      console.log("⚠️ ToTestList still not in DOM after opening - trying state reset");
-      
-      // Force a clear state first
-      setWindowVisibility(prev => ({ ...prev, ToTestList: false }));
-      
-      // Then re-render after a short delay
-      setTimeout(() => {
-        setWindowVisibility(prev => ({ ...prev, ToTestList: true }));
-      }, 10);
-    }
-  }, 50);
-}, [bringWindowToFront, windowVisibility.ToTestList]);
+}, [bringWindowToFront, windowVisibility.ToTestList]); // no unnecessary verification logic
 
   const closeToTestList = useCallback(() => {
     console.log("🔍 closeToTestList called");
@@ -476,56 +450,63 @@ const openToTestList = useCallback((forceRender = false) => {
     };
     setWindowVisibility(prev => ({ ...prev, SettingsWindow: false }));
   }, []);
-  
+
+  // Render based on current route
+  const renderCurrentView = () => {
+    if (currentRoute === 'main') {
+      return (
+        <MainScreen 
+          showSettingsWindow={windowVisibility.SettingsWindow}
+          openSettingsWindow={openSettingsWindow}
+          closeSettingsWindow={closeSettingsWindow}
+          openToTestList={openToTestList}
+          closeToTestList={closeToTestList}
+          openServerWindow={openServerWindow}
+          openModelWindow={openModelWindow}
+          closeModelWindow={closeModelWindow}
+          showToTestList={windowVisibility.ToTestList}
+          showThreeDModelWindow={windowVisibility.ThreeDModelWindow}
+          threeDModelProfileId={threeDModelProfileId}
+          windowZIndexes={windowZIndexes}
+          bringWindowToFront={bringWindowToFront}
+          zIndexCounter={zIndexCounter}
+        />
+      );
+    }
+    
+    // Default to WelcomeWindow
+    return (
+      <WelcomeWindow 
+        openToTestList={openToTestList} 
+        openServerWindow={openServerWindow}
+        // Pass navigation function to allow navigation to main
+        onNavigateToMain={navigateToMain}
+      />
+    );
+  };
 
   return (
-    <Router>
-      <RouteObserver />
-      
-      <Routes>
-        <Route path="/" element={
-          <WelcomeWindow 
-            openToTestList={openToTestList} 
-            openServerWindow={openServerWindow}
-          />
-        } />
-        <Route path="/main" element={
-          <MainScreen 
-            showSettingsWindow={windowVisibility.SettingsWindow}
-            openSettingsWindow={openSettingsWindow}
-            closeSettingsWindow={closeSettingsWindow}
-            openToTestList={openToTestList}
-            closeToTestList={closeToTestList}
-            openServerWindow={openServerWindow}
-            openModelWindow={openModelWindow}
-            closeModelWindow={closeModelWindow}
-            showToTestList={windowVisibility.ToTestList}
-            showThreeDModelWindow={windowVisibility.ThreeDModelWindow}
-            threeDModelProfileId={threeDModelProfileId}
-            windowZIndexes={windowZIndexes}
-            bringWindowToFront={bringWindowToFront}
-            zIndexCounter={zIndexCounter}
-          />
-        } />
-      </Routes>
+    <>
+      {/* Main content based on route */}
+      {renderCurrentView()}
 
       {/* Floating windows */}
       <div className="window-container">
-        {windowVisibility.ToTestList && (
-          <ToTestList
-            key={`ToTestList-${Date.now()}`} // Force new instance on every render
-            zIndex={windowZIndexes.ToTestList}
-            onMouseDown={() => bringWindowToFront("ToTestList")}
-            onClose={closeToTestList}
-            bringWindowToFront={bringWindowToFront}
-            windowZIndexes={windowZIndexes}
-            zIndexCounter={zIndexCounter}
-          />
-        )}
+{windowVisibility.ToTestList && (
+  <ToTestList
+    key="ToTestList"  // <- USE STABLE KEY
+    zIndex={windowZIndexes.ToTestList}
+    onMouseDown={() => bringWindowToFront("ToTestList")}
+    onClose={closeToTestList}
+    bringWindowToFront={bringWindowToFront}
+    windowZIndexes={windowZIndexes}
+    zIndexCounter={zIndexCounter}
+  />
+)}
 
         {windowVisibility.ServerWindow && (
           <ServerWindow
-            key={`ServerWindow-${serverWindowKey}`} // ✓ Use dynamic key for forced remount
+            key={`ServerWindow-${serverWindowKey}`}
             zIndex={windowZIndexes.ServerWindow}
             onMouseDown={() => bringWindowToFront("ServerWindow")}
             onClose={closeServerWindow}
@@ -533,6 +514,8 @@ const openToTestList = useCallback((forceRender = false) => {
             bringWindowToFront={bringWindowToFront}
             windowZIndexes={windowZIndexes}
             zIndexCounter={zIndexCounter}
+            // Pass navigation function for when connection is successful
+            onNavigateToMain={navigateToMain}
           />
         )}
 
@@ -550,25 +533,25 @@ const openToTestList = useCallback((forceRender = false) => {
           />
         )}
 
-{windowVisibility.SettingsWindow && (
-  <SettingsWindow
-    zIndex={windowZIndexes.SettingsWindow}
-    onMouseDown={() => bringWindowToFront("SettingsWindow")}
-    onClose={closeSettingsWindow}
-    bringWindowToFront={bringWindowToFront}
-    windowZIndexes={windowZIndexes}
-    zIndexCounter={zIndexCounter}
-  />
-)}
+        {windowVisibility.SettingsWindow && (
+          <SettingsWindow
+            zIndex={windowZIndexes.SettingsWindow}
+            onMouseDown={() => bringWindowToFront("SettingsWindow")}
+            onClose={closeSettingsWindow}
+            bringWindowToFront={bringWindowToFront}
+            windowZIndexes={windowZIndexes}
+            zIndexCounter={zIndexCounter}
+          />
+        )}
       </div>
 
-      {/* Add Taskbar component - with direct restore handler */}
+      {/* Add Taskbar component */}
       <Taskbar 
         minimizedWindows={minimizedWindows.map(window => ({
           ...window,
           onRestore: () => restoreWindowFromTaskbar(window.id as WindowName)
         }))} 
       />
-    </Router>
+    </>
   );
 }

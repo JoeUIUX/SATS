@@ -75,25 +75,31 @@ const ToTestList: React.FC<ToTestListProps> = ({
   const [position, setPosition] = useState(defaultPosition);
   
   // Fetch data from the server when component mounts
-  useEffect(() => {
-    console.log("🔵 ToTestList mounted");
-    
-    // Focus window, but only once on initial mount
-    if (initialMount.current && !hasFocused.current) {
-      const focusTimeout = setTimeout(() => {
-        console.log("🎯 ToTestList initial focusing");
-        onMouseDown();
-        hasFocused.current = true;
-      }, 50);
-      
-      initialMount.current = false;
-      
-      return () => clearTimeout(focusTimeout);
-    }
+useEffect(() => {
+  console.log("🔵 ToTestList mounted");
+  
+  // Only fetch data, don't focus automatically
+  fetchTestItems();
+  
+  // Mark as initial mount complete
+  if (initialMount.current) {
+    initialMount.current = false;
+  }
+}, []); // Empty dependency array - run once on mount
 
-    // Fetch data from the server
-    fetchTestItems();
-  }, []); // Empty dependency array - run once on mount
+// a SEPARATE useEffect for one-time focusing:
+useEffect(() => {
+  // Only focus once when the component first becomes visible
+  if (!hasFocused.current && windowZIndexes["ToTestList"]) {
+    const focusTimeout = setTimeout(() => {
+      console.log("🎯 ToTestList one-time focusing");
+      onMouseDown();
+      hasFocused.current = true;
+    }, 100);
+    
+    return () => clearTimeout(focusTimeout);
+  }
+}, [windowZIndexes, onMouseDown]); // Depend on windowZIndexes to trigger once when window becomes active
 
   // Clean up portal and timers on unmount
   useEffect(() => {

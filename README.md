@@ -1,46 +1,122 @@
 # 🛰️ SATS (Satellite Automated Testing System)
 
 <!-- Row 1 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss4.png" width="45%" alt="SATS Welcome Page">
-  <img src="./SATS_images_in_README/ss5.png" width="45%" alt="To Test List">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss4.png" width="400" alt="SATS Welcome Page">
+      <br>
+      <em>SATS Welcome Page</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss5.png" width="400" alt="To Test List">
+      <br>
+      <em>To Test List</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 2 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss6.png" width="45%" alt="Server Window">
-  <img src="./SATS_images_in_README/ss7.png" width="45%" alt="Main Screen (Navigated to after Server Connection)">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss6.png" width="400" alt="Server Window">
+      <br>
+      <em>Server Window</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss7.png" width="400" alt="Main Screen (Navigated to after Server Connection)">
+      <br>
+      <em>Main Screen (Navigated to after Server Connection)</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 3 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss8.png" width="45%" alt="Profile About/Specifications Section 1">
-  <img src="./SATS_images_in_README/ss9.png" width="45%" alt="Profile About/Specifications Section 1">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss8.png" width="400" alt="Profile About/Specifications Section 1">
+      <br>
+      <em>Profile About/Specifications Section 1</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss9.png" width="400" alt="Profile About/Specifications Section 2">
+      <br>
+      <em>Profile About/Specifications Section 2</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 4 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss10.png" width="45%" alt="Profile Drag-and-Drop Checkout Test Selection">
-  <img src="./SATS_images_in_README/ss11.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 1">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss10.png" width="400" alt="Profile Drag-and-Drop Checkout Test Selection">
+      <br>
+      <em>Profile Drag-and-Drop Checkout Test Selection</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss11.png" width="400" alt="Checkout Test Progress Window of Selected Tests 1">
+      <br>
+      <em>Checkout Test Progress Window of Selected Tests 1</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 5 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss12.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 2">
-  <img src="./SATS_images_in_README/ss13.png" width="45%" alt="Checkout Test Progress Window of Selected Tests 3">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss12.png" width="400" alt="Checkout Test Progress Window of Selected Tests 2">
+      <br>
+      <em>Checkout Test Progress Window of Selected Tests 2</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss13.png" width="400" alt="Checkout Test Progress Window of Selected Tests 3">
+      <br>
+      <em>Checkout Test Progress Window of Selected Tests 3</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 6 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss14.png" width="45%" alt="Automatic .docx and .pdf Reports Download upon Completion">
-  <img src="./SATS_images_in_README/ss15.png" width="45%" alt="Settings Window - Background & Font">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss14.png" width="400" alt="Automatic .docx and .pdf Reports Download upon Completion">
+      <br>
+      <em>Automatic .docx and .pdf Reports Download upon Completion</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss15.png" width="400" alt="Settings Window - Background & Font">
+      <br>
+      <em>Settings Window - Background & Font</em>
+    </td>
+  </tr>
+</table>
+
 <!-- Row 7 -->
-<p align="center">
-  <img src="./SATS_images_in_README/ss16.png" width="45%" alt="Settings Window - About SATS">
-  <img src="./SATS_images_in_README/ss17.png" width="45%" alt="SATS in Lightmode">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss16.png" width="400" alt="Settings Window - About SATS">
+      <br>
+      <em>Settings Window - About SATS</em>
+    </td>
+    <td align="center">
+      <img src="./SATS_images_in_README/ss17.png" width="400" alt="SATS in Lightmode">
+      <br>
+      <em>SATS in Lightmode</em>
+    </td>
+  </tr>
+</table>
 
 ## Overview
 SATS is a comprehensive system designed to automate satellite testing processes. It provides engineers and operators with powerful tools for hardware checkout, system verification, and test execution. The system consists of:
 
 - **Backend**: A Python-based Flask server that handles core functionalities, data management, and hardware communication
-- **Frontend**: A React/TypeScript application with an intuitive user interface for test configuration, execution, and reporting
+- **Frontend**: A React/TypeScript application built using Next.js with an intuitive user interface for test configuration, execution, and reporting
 - **MCC Proxy**: A Node.js-based proxy for real hardware communication
 
 This system supports efficient satellite testing workflows and includes features like dynamic profile creation, test management, automated checkout testing, comprehensive reporting and 3D model visualization. SATS brings an enhanced user experience to the day-to-day satellite testing processes across 11 satellite subsystem tests.
@@ -241,7 +317,7 @@ git clone https://github.com/JoeUIUX/SATS.git
 cd "SATS Satellite Automated Testing System"
 ```
 
-### Unified System Startup (Recommended)
+### Unified System Startup (One-Command Setup)
 SATS includes a process manager that handles all components simultaneously:
 
 1. **From the project root directory**, run:
@@ -264,6 +340,8 @@ SATS includes a process manager that handles all components simultaneously:
    - `l` - Show log paths
    - `h` - Display help
    - `c` - Clean/rotate log files
+   - `d` - Run diagnostics
+   - `i` - Reinstall all dependencies
 
 3. **Logs** are stored in the `logs/` directory for debugging.
 
@@ -277,7 +355,7 @@ SATS includes a process manager that handles all components simultaneously:
    http://localhost:3000
    ```
 
-### Manual Start Up
+### Manual Startup
 ### 1️⃣ Backend Setup
 Follow these steps to set up the backend:
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./globals.css";
 import { initializeThemeBackgrounds, refreshThemeSettings } from "@/utils/themeInitializer";
 
-/* LIGHT DARK MODE SLIDER TOGGLER - START */
+/* LIGHT DARK MODE SLIDER TOGGLER */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,18 +12,29 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 type FontName = 'Roboto' | 'Open Sans' | 'Montserrat' | 'Source Code Pro';
 
 interface FontUrls {
-  [key: string]: string; // Add index signature for string keys
+  [key: string]: string;
 }
 
-/* memory of user specified light/dark mode */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // First useEffect: Set mounted state
   useEffect(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    if (savedMode) setDarkMode(savedMode === "true");
+    setMounted(true);
+  }, []);
 
-    // Apply dark/light mode classes to <html> on component mount
+  // Second useEffect: Initialize theme after mounting
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Initialize theme from localStorage
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode) {
+      setDarkMode(savedMode === "true");
+    }
+
+    // Apply dark/light mode classes to <html>
     const htmlElement = document.documentElement;
     if (savedMode === "true") {
       htmlElement.classList.add("dark");
@@ -33,37 +44,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       htmlElement.classList.remove("dark");
     }
     
-    // Initialize theme backgrounds from database settings
-    initializeThemeBackgrounds();
-    
-    // Load and apply previously saved font from localStorage
-    const loadSavedFont = async () => {
-      // Try to get font setting from backend
+    // Initialize theme backgrounds and fonts
+    const initializeTheme = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"}/settings`);
-        if (response.ok) {
-          const settings = await response.json();
-          if (settings.font) {
-            // Apply the font immediately
-            applyFontToDocument(settings.font);
-          }
-        }
+        await initializeThemeBackgrounds();
+        await loadSavedFont();
+        loadFonts();
       } catch (error) {
-        console.error("Error loading font settings:", error);
+        console.error("Error initializing theme:", error);
       }
     };
-    
-    loadSavedFont();
-  }, []);
 
-  // Helper function to apply font - with proper type annotation
+    // Small delay to ensure DOM is ready
+    setTimeout(initializeTheme, 100);
+  }, [mounted]);
+
+  const loadSavedFont = async () => {
+    if (!mounted) return;
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000"}/settings`);
+      if (response.ok) {
+        const settings = await response.json();
+        if (settings.font) {
+          applyFontToDocument(settings.font);
+        }
+      }
+    } catch (error) {
+      console.error("Error loading font settings:", error);
+    }
+  };
+
   const applyFontToDocument = (fontFamily: string): void => {
-    if (!fontFamily) return;
+    if (!fontFamily || !mounted) return;
     
-    // Set CSS variable
     document.documentElement.style.setProperty('--app-font-family', fontFamily);
     
-    // Create or update style element
     let fontStyle = document.getElementById('app-font-style');
     if (!fontStyle) {
       fontStyle = document.createElement('style');
@@ -71,7 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       document.head.appendChild(fontStyle);
     }
     
-    // Set comprehensive CSS rules
     fontStyle.textContent = `
       html body,
       html button,
@@ -106,7 +121,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       }
     `;
     
-    // Load font file if needed (for non-system fonts)
     const loadFontFile = (fontName: string): void => {
       const fontUrls: FontUrls = {
         'Roboto': 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
@@ -115,14 +129,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         'Source Code Pro': 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap'
       };
       
-      // Find the font name from the value
       const fontMatch = Object.entries(fontUrls).find(([_, value]) => 
         fontFamily.includes(value.split(',')[0])
       );
       
       if (fontMatch) {
         const [matchedFontName] = fontMatch;
-        // Type guard to ensure matchedFontName is a valid key
         if (matchedFontName in fontUrls) {
           const url = fontUrls[matchedFontName as keyof typeof fontUrls];
           const link = document.createElement('link');
@@ -133,15 +145,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       }
     };
     
-    // Only load external fonts, not system fonts
     if (!fontFamily.includes('Arial') && !fontFamily.includes('sans-serif')) {
       loadFontFile(fontFamily);
     }
   };
 
-  // Add to layout.tsx with proper typing
   const loadFonts = (): void => {
-    // Define valid font names as a type to ensure type safety
+    if (!mounted) return;
+
     type FontName = 'Roboto' | 'Open Sans' | 'Montserrat' | 'Source Code Pro';
     
     const fontUrls: Record<FontName, string> = {
@@ -151,9 +162,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       'Source Code Pro': 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap'
     };
     
-    // Add each font link to the document head
     Object.entries(fontUrls).forEach(([name, url]) => {
-      // Check if link already exists to prevent duplicates
       const existingLink = document.querySelector(`link[href="${url}"]`);
       if (!existingLink) {
         const link = document.createElement('link');
@@ -165,19 +174,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     });
   };
 
-  useEffect(() => {
-    // Your existing code...
-    
-    // Load fonts
-    loadFonts();
-  }, []);
-
   const toggleDarkMode = async () => {
+    if (!mounted) return;
+
     setDarkMode((prevMode) => {
       const newMode = !prevMode;
       localStorage.setItem("darkMode", newMode.toString());
 
-      // Update <html> class dynamically
       const htmlElement = document.documentElement;
       if (newMode) {
         htmlElement.classList.add("dark");
@@ -187,7 +190,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         htmlElement.classList.remove("dark");
       }
 
-      // Refresh theme settings to ensure we apply the latest backgrounds
       setTimeout(async () => {
         await refreshThemeSettings();
       }, 50);
@@ -196,6 +198,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     });
   };
 
+  // Return basic HTML structure during SSR
+  if (!mounted) {
+    return (
+      <html lang="en">
+        <body>
+          <div suppressHydrationWarning={true} style={{ visibility: 'hidden' }}>
+            {children}
+          </div>
+        </body>
+      </html>
+    );
+  }
+
+  // Return full layout after mounting
   return (
     <html lang="en" className={darkMode ? "dark" : "light"}>
       <body>
@@ -213,5 +229,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
-/* LIGHT DARK MODE SLIDER TOGGLER - END */

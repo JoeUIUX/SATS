@@ -6,7 +6,6 @@ import ToTestList from "../ToTestList/ToTestList";
 import ServerWindow from "../ServerWindow/ServerWindow";
 import styles from "./WelcomeWindow.module.css";
 import { WindowName } from "@/types/types";
-import { useNavigate } from "react-router-dom";
 
 // Use require if not using images.d.ts
 //const logo = require("../../assets/logo.jpg");
@@ -14,9 +13,11 @@ import { useNavigate } from "react-router-dom";
 const WelcomeWindow: React.FC<{
   openToTestList: () => void;
   openServerWindow: () => void;
+  onNavigateToMain?: () => void;
 }> = ({ 
   openToTestList,
-  openServerWindow
+  openServerWindow,
+  onNavigateToMain
 }) => {
 
   const [dateTime, setDateTime] = useState<string | null>(null);
@@ -24,10 +25,36 @@ const WelcomeWindow: React.FC<{
   const [showServerWindow, setShowServerWindow] = useState(false);
   const [hasTests, setHasTests] = useState(false); // Track if there are rows in the list
   const nodeRef = useRef<HTMLDivElement>(null!);
-  const navigate = useNavigate();
 
   // Check if the page is in dark mode
-  const isDarkMode = document.documentElement.classList.contains("dark");
+const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // useEffect that safely checks after mounting:
+  useEffect(() => {
+    // Only access document after component mounts (client-side only)
+    const checkDarkMode = () => {
+      if (typeof window !== 'undefined') {
+        setIsDarkMode(document.documentElement.classList.contains("dark"));
+      }
+    };
+    
+    // Initial check
+    checkDarkMode();
+    
+    // Listen for theme changes if needed
+    const observer = new MutationObserver(() => {
+      checkDarkMode();
+    });
+    
+    if (typeof window !== 'undefined') {
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
+    
+    return () => observer.disconnect();
+  }, []);
 
 // Function to format date and time as DD/MM/YYYY HH:MM:SS Timezone
 const formatDateTime = (date: Date) => {
@@ -89,13 +116,17 @@ const formatDateTime = (date: Date) => {
   }, []);
 
   // Check for rows in localStorage
+  // protect localStorage access for Server Side Rendering (SSR)
   useEffect(() => {
-    const savedRows = localStorage.getItem("toTestListRows");
-    const hasRows = savedRows ? JSON.parse(savedRows).length > 0 : false;
+    // Also protect localStorage access for SSR
+    if (typeof window !== 'undefined') {
+      const savedRows = localStorage.getItem("toTestListRows");
+      const hasRows = savedRows ? JSON.parse(savedRows).length > 0 : false;
     // setHasTests is always passed a valid boolean (true or false).
     // may receive null or an empty string due to the logic
     // without true / false and just > 0
-    setHasTests(hasRows);
+      setHasTests(hasRows);
+    }
   }, [showToTestList]);
 
   const handleToTestListOpen = () => {
