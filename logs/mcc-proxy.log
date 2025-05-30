@@ -1824,3 +1824,48 @@
 [30/05/2025 12:55:01 pm] [MCC Proxy] MCC Proxy Server running on port 8080
 [30/05/2025 12:55:01 pm] [MCC Proxy] CORS enabled for all origins
 [30/05/2025 12:56:52 pm] MCC Proxy process exited with code 1
+[30/05/2025 2:23:18 pm] MCC proxy dependencies already installed
+[30/05/2025 2:23:27 pm] Starting MCC proxy server...
+[30/05/2025 2:23:27 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/05/2025 2:23:27 pm] [MCC Proxy] CORS enabled for all origins
+[30/05/2025 2:26:32 pm] MCC Proxy process exited with code 1
+[30/05/2025 3:20:49 pm] MCC proxy dependencies already installed
+[30/05/2025 3:20:57 pm] Starting MCC proxy server...
+[30/05/2025 3:20:57 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/05/2025 3:20:57 pm] [MCC Proxy] CORS enabled for all origins
+[30/05/2025 3:22:12 pm] [MCC Proxy] New WebSocket connection from browser
+[30/05/2025 3:22:12 pm] [MCC Proxy] Browser disconnected
+[30/05/2025 3:22:17 pm] [MCC Proxy] New WebSocket connection from browser
+[30/05/2025 3:22:17 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/05/2025 3:22:17 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/05/2025 3:22:27 pm] [MCC Proxy] MCC server connection closed
+[30/05/2025 3:25:01 pm] MCC Proxy process exited with code 1
+[30/05/2025 3:55:00 pm] MCC proxy dependencies already installed
+[30/05/2025 3:55:08 pm] Starting MCC proxy server...
+[30/05/2025 3:55:08 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/05/2025 3:55:08 pm] [MCC Proxy] CORS enabled for all origins
+[30/05/2025 4:34:47 pm] [MCC Proxy Error] ^C
+[30/05/2025 4:34:47 pm] MCC Proxy process exited with code 3221225786
+[30/05/2025 4:35:40 pm] MCC proxy dependencies already installed
+[30/05/2025 4:35:48 pm] Starting MCC proxy server...
+[30/05/2025 4:35:49 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/05/2025 4:35:49 pm] [MCC Proxy] CORS enabled for all origins
+[30/05/2025 4:36:57 pm] [MCC Proxy Error] ^C
+[30/05/2025 4:36:57 pm] MCC Proxy process exited with code 3221225786
+[30/05/2025 4:37:12 pm] MCC proxy dependencies already installed
+[30/05/2025 4:37:20 pm] Starting MCC proxy server...
+[30/05/2025 4:37:20 pm] [MCC Proxy] MCC Proxy Server running on port 8080
+[30/05/2025 4:37:20 pm] [MCC Proxy] CORS enabled for all origins
+[30/05/2025 4:38:21 pm] [MCC Proxy] New WebSocket connection from browser
+[30/05/2025 4:38:21 pm] [MCC Proxy] Browser disconnected
+[30/05/2025 4:38:22 pm] [MCC Proxy] New WebSocket connection from browser
+[30/05/2025 4:38:22 pm] [MCC Proxy] New WebSocket connection from browser
+[30/05/2025 4:38:22 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/05/2025 4:38:22 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/05/2025 4:38:22 pm] [MCC Proxy] Received from browser: {"command":"connect","host":"192.168.1.109","port":9377}
+[30/05/2025 4:38:22 pm] [MCC Proxy] Connecting to MCC server at 192.168.1.109:9377
+[30/05/2025 4:38:32 pm] [MCC Proxy] MCC server connection closed
+[30/05/2025 4:38:32 pm] [MCC Proxy] MCC server connection closed
+[30/05/2025 4:39:36 pm] [MCC Proxy] Browser disconnected
+[30/05/2025 4:39:36 pm] [MCC Proxy] Browser disconnected
+[30/05/2025 4:41:06 pm] MCC Proxy process exited with code 1

@@ -1796,3 +1796,1101 @@ Log rotated at 29/05/2025, 3:49:08 pm
 [30/05/2025 12:56:53 pm] [Backend Info] * Debugger is active!
 [30/05/2025 12:56:53 pm] [Backend Info] * Debugger PIN: 297-594-587
 [30/05/2025 12:56:53 pm] Backend process exited with code 1
+[30/05/2025 2:23:18 pm] Starting backend server...
+[30/05/2025 2:23:18 pm] Created temporary batch file at C:\Users\joeg0001\AppData\Local\Temp\run_flask_venv.bat
+[30/05/2025 2:23:21 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 2:23:21 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 2:23:21 pm] [Backend]  * Serving Flask app 'backend_server.py'
+[30/05/2025 2:23:21 pm] [Backend]  * Debug mode: on
+[30/05/2025 2:23:21 pm] [Backend Info] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[30/05/2025 2:23:21 pm] [Backend Info]  * Running on all addresses (0.0.0.0)
+[30/05/2025 2:23:21 pm] [Backend Info]  * Running on http://127.0.0.1:5000
+[30/05/2025 2:23:21 pm] [Backend Info]  * Running on http://10.97.26.51:5000
+[30/05/2025 2:23:21 pm] [Backend Info] Press CTRL+C to quit
+[30/05/2025 2:23:21 pm] [Backend Info] * Restarting with stat
+[30/05/2025 2:23:22 pm] [Backend Info] * Debugger is active!
+[30/05/2025 2:23:22 pm] [Backend Info] * Debugger PIN: 297-594-587
+[30/05/2025 2:24:30 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 14:24:30] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 2:24:30 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 14:24:30] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 2:26:31 pm] Sending database cleanup signal to backend...
+[30/05/2025 2:26:31 pm] Deleted temporary batch file
+[30/05/2025 2:26:31 pm] Backend process exited with code 1
+[30/05/2025 2:26:31 pm] Falling back to system Python due to error...
+[30/05/2025 2:26:31 pm] Falling back to system Python for Flask server
+[30/05/2025 2:26:31 pm] Starting backend with command: python -m flask run --host=0.0.0.0 --port=5000
+[30/05/2025 2:26:33 pm] Backend process exited with code 1
+[30/05/2025 3:20:49 pm] Starting backend server...
+[30/05/2025 3:20:49 pm] Created temporary batch file at C:\Users\joeg0001\AppData\Local\Temp\run_flask_venv.bat
+[30/05/2025 3:20:51 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 3:20:51 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 3:20:51 pm] [Backend]  * Serving Flask app 'backend_server.py'
+[30/05/2025 3:20:51 pm] [Backend]  * Debug mode: on
+[30/05/2025 3:20:51 pm] [Backend Info] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[30/05/2025 3:20:51 pm] [Backend Info]  * Running on all addresses (0.0.0.0)
+[30/05/2025 3:20:51 pm] [Backend Info]  * Running on http://127.0.0.1:5000
+[30/05/2025 3:20:51 pm] [Backend Info]  * Running on http://10.97.26.51:5000
+[30/05/2025 3:20:51 pm] [Backend Info] Press CTRL+C to quit
+[30/05/2025 3:20:51 pm] [Backend Info] * Restarting with stat
+[30/05/2025 3:20:52 pm] [Backend Info] * Debugger is active!
+[30/05/2025 3:20:52 pm] [Backend Info] * Debugger PIN: 297-594-587
+[30/05/2025 3:22:04 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:04] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 3:22:04 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:04] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 3:22:09 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:09] "GET /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:10 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:10] "OPTIONS /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:10 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:10] "POST /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:12 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:12] "OPTIONS /connect_mcc HTTP/1.1" 200 -
+[30/05/2025 3:22:12 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:12] "POST /connect_mcc HTTP/1.1" 200 -
+[30/05/2025 3:22:17 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:17] "GET /profiles HTTP/1.1" 200 -
+[30/05/2025 3:22:20 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:20] "OPTIONS /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:20 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:20] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:21 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:21] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:22 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:22] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "OPTIONS /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:23 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:23] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:33 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:33] "GET /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:34 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:34] "OPTIONS /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:34 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:34] "POST /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:36 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:36] "GET /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:37 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:37] "POST /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:37 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:37] "OPTIONS /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:37 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:37] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:37 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:37] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:39 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:39] "GET /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:39 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:39] "OPTIONS /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:39 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:39] "POST /test-items HTTP/1.1" 200 -
+[30/05/2025 3:22:41 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:41] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:41 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:41] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "OPTIONS /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "OPTIONS /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:22:43 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 15:22:43] "POST /test-results/limit/ELITE HTTP/1.1" 200 -
+[30/05/2025 3:25:00 pm] Sending database cleanup signal to backend...
+[30/05/2025 3:25:00 pm] Deleted temporary batch file
+[30/05/2025 3:25:00 pm] Backend process exited with code 1
+[30/05/2025 3:25:00 pm] Falling back to system Python due to error...
+[30/05/2025 3:25:00 pm] Falling back to system Python for Flask server
+[30/05/2025 3:25:00 pm] Starting backend with command: python -m flask run --host=0.0.0.0 --port=5000
+[30/05/2025 3:25:02 pm] Backend process exited with code 1
+[30/05/2025 3:55:00 pm] Starting backend server...
+[30/05/2025 3:55:00 pm] Created temporary batch file at C:\Users\joeg0001\AppData\Local\Temp\run_flask_venv.bat
+[30/05/2025 3:55:01 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 3:55:01 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 3:55:01 pm] [Backend]  * Serving Flask app 'backend_server.py'
+[30/05/2025 3:55:01 pm] [Backend]  * Debug mode: on
+[30/05/2025 3:55:01 pm] [Backend Info] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[30/05/2025 3:55:01 pm] [Backend Info]  * Running on all addresses (0.0.0.0)
+[30/05/2025 3:55:01 pm] [Backend Info]  * Running on http://127.0.0.1:5000
+[30/05/2025 3:55:01 pm] [Backend Info]  * Running on http://10.97.26.51:5000
+[30/05/2025 3:55:01 pm] [Backend Info] Press CTRL+C to quit
+[30/05/2025 3:55:01 pm] [Backend Info] * Restarting with stat
+[30/05/2025 3:55:02 pm] [Backend Info] * Debugger is active!
+[30/05/2025 3:55:02 pm] [Backend Info] * Debugger PIN: 297-594-587
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:06:53 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:35 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:18:44 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:17 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:30:26 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:34:47 pm] [Backend Error] ^C
+[30/05/2025 4:34:47 pm] [Backend Error] ^C
+[30/05/2025 4:35:40 pm] Starting backend server...
+[30/05/2025 4:35:40 pm] Created temporary batch file at C:\Users\joeg0001\AppData\Local\Temp\run_flask_venv.bat
+[30/05/2025 4:35:42 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:35:42 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:35:42 pm] [Backend]  * Serving Flask app 'backend_server.py'
+[30/05/2025 4:35:42 pm] [Backend]  * Debug mode: on
+[30/05/2025 4:35:43 pm] [Backend Info] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[30/05/2025 4:35:43 pm] [Backend Info]  * Running on all addresses (0.0.0.0)
+[30/05/2025 4:35:43 pm] [Backend Info]  * Running on http://127.0.0.1:5000
+[30/05/2025 4:35:43 pm] [Backend Info]  * Running on http://10.97.26.51:5000
+[30/05/2025 4:35:43 pm] [Backend Info] Press CTRL+C to quit
+[30/05/2025 4:35:43 pm] [Backend Info] * Restarting with stat
+[30/05/2025 4:35:44 pm] [Backend Info] * Debugger is active!
+[30/05/2025 4:35:44 pm] [Backend Info] * Debugger PIN: 297-594-587
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_2.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend] ⚠️ No available profile for profile_1.glb, skipping.
+[30/05/2025 4:36:57 pm] [Backend Error] ^C
+[30/05/2025 4:36:57 pm] [Backend Error] ^C
+[30/05/2025 4:37:12 pm] Starting backend server...
+[30/05/2025 4:37:12 pm] Created temporary batch file at C:\Users\joeg0001\AppData\Local\Temp\run_flask_venv.bat
+[30/05/2025 4:37:14 pm] [Backend] * Serving Flask app 'backend_server.py'
+[30/05/2025 4:37:14 pm] [Backend]  * Debug mode: on
+[30/05/2025 4:37:14 pm] [Backend Info] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[30/05/2025 4:37:14 pm] [Backend Info]  * Running on all addresses (0.0.0.0)
+[30/05/2025 4:37:14 pm] [Backend Info]  * Running on http://127.0.0.1:5000
+[30/05/2025 4:37:14 pm] [Backend Info]  * Running on http://10.97.26.51:5000
+[30/05/2025 4:37:14 pm] [Backend Info] Press CTRL+C to quit
+[30/05/2025 4:37:14 pm] [Backend Info] * Restarting with stat
+[30/05/2025 4:37:15 pm] [Backend Info] * Debugger is active!
+[30/05/2025 4:37:15 pm] [Backend Info] * Debugger PIN: 297-594-587
+[30/05/2025 4:38:10 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:10] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:11 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:11] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:38:19 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:19] "GET /test-items HTTP/1.1" 200 -
+[30/05/2025 4:38:19 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:19] "OPTIONS /test-items HTTP/1.1" 200 -
+[30/05/2025 4:38:20 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:20] "POST /test-items HTTP/1.1" 200 -
+[30/05/2025 4:38:21 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:21] "OPTIONS /connect_mcc HTTP/1.1" 200 -
+[30/05/2025 4:38:21 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:21] "POST /connect_mcc HTTP/1.1" 200 -
+[30/05/2025 4:38:22 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:22] "GET /profiles HTTP/1.1" 200 -
+[30/05/2025 4:38:22 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:22] "GET /profiles HTTP/1.1" 200 -
+[30/05/2025 4:38:24 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:24] "OPTIONS /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:24 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:24] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:24 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:24] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:25 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:25] "OPTIONS /checkout/load/VELOX-AM HTTP/1.1" 200 -
+[30/05/2025 4:38:25 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:25] "GET /checkout/load/VELOX-AM HTTP/1.1" 200 -
+[30/05/2025 4:38:25 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:25] "GET /checkout/load/VELOX-AM HTTP/1.1" 200 -
+[30/05/2025 4:38:25 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:25] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:25 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:25] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:26 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:26] "GET /checkout/load/ELITE HTTP/1.1" 200 -
+[30/05/2025 4:38:28 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:28] "OPTIONS /profiles HTTP/1.1" 200 -
+[30/05/2025 4:38:28 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:28] "GET /api/profile/1 HTTP/1.1" 200 -
+[30/05/2025 4:38:28 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:28] "GET /api/profile/1 HTTP/1.1" 200 -
+[30/05/2025 4:38:29 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:38:29] "GET /api/profile/1 HTTP/1.1" 200 -
+[30/05/2025 4:40:55 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:55] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:55 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:55] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:55] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:40:56 pm] [Backend Request] 127.0.0.1 - - [30/May/2025 16:40:56] "GET /settings HTTP/1.1" 200 -
+[30/05/2025 4:41:04 pm] Sending database cleanup signal to backend...
+[30/05/2025 4:41:05 pm] Deleted temporary batch file
+[30/05/2025 4:41:05 pm] Backend process exited with code 1
+[30/05/2025 4:41:05 pm] Falling back to system Python due to error...
+[30/05/2025 4:41:05 pm] Falling back to system Python for Flask server
+[30/05/2025 4:41:05 pm] Starting backend with command: python -m flask run --host=0.0.0.0 --port=5000
+[30/05/2025 4:41:07 pm] Backend process exited with code 1

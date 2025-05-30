@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./ServerWindow.module.css";
 import Draggable from "react-draggable";
 import { createPortal } from "react-dom";
@@ -13,7 +14,6 @@ interface ServerWindowProps {
   bringWindowToFront: (windowName: WindowName) => void;
   windowZIndexes: { [key: string]: number };
   zIndexCounter: number;
-  onNavigateToMain?: () => void;
 }
 
 const ServerWindow: React.FC<ServerWindowProps> = ({ 
@@ -23,8 +23,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
   onMinimize,
   bringWindowToFront, 
   windowZIndexes, 
-  zIndexCounter,
-  onNavigateToMain
+  zIndexCounter 
 }) => {
   const [serverAddress, setServerAddress] = useState<string>("");
   const [serverPort, setServerPort] = useState<string>("9377"); // Default MCC port
@@ -36,6 +35,7 @@ const ServerWindow: React.FC<ServerWindowProps> = ({
   const [shouldAutoMinimize, setShouldAutoMinimize] = useState<boolean>(false);
 
   const logsEndRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:5000";
 
   // Create portal element once on mount
@@ -310,9 +310,7 @@ const testProxyConnection = async (): Promise<boolean> => {
         // Add a small delay to ensure all state updates complete
         setTimeout(() => {
           try {
-            if (onNavigateToMain) {
-              onNavigateToMain();
-            }
+            navigate("/main");
             console.log("📱 Navigation command executed");
           } catch (error) {
             console.error("Navigation error:", error);

@@ -27,6 +27,7 @@ import { rectIntersection } from "@dnd-kit/core";
 import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 import ThreeDModelWindow from "@/components/ModelWindow/ThreeDModelWindow";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 import { WindowName } from "@/types/types";
 import CheckoutTestProgress from "@/components/CheckoutTestProgress/CheckoutTestProgress";
 import { connectToMcc, setSimulationMode } from "@/utils/mccUtils";
