@@ -176,6 +176,7 @@ SATS Satellite Automated Testing System/
 │   ├── .env                  # frontend environment variables
 │   ├── src/
 │   │   ├── app/              # Core application structure
+│   │   │   ├── favicon.ico   # Custom SATS browser icon
 │   │   │   ├── globals.css   # Global styles
 │   │   │   ├── layout.tsx    # Root layout with theme switching
 │   │   │   ├── page.tsx      # Main entry point
