@@ -175,7 +175,7 @@ const CONFIG = {
   proxyScript: 'mcc-proxy.js',
   frontendPath: path.resolve(process.cwd(), 'beautify frontend'),
   frontendCommand: os.platform() === 'win32' ? 'npm.cmd' : 'npm',
-  frontendArgs: ['run', 'dev'],
+frontendArgs: ['run', 'dev', '--', '--hostname', 'localhost', '--port', '3000'],
   logPath: path.resolve(process.cwd(), 'logs'),
   logToFile: true,
   venvPath: path.resolve(process.cwd(), 'backend', 'venv'),
